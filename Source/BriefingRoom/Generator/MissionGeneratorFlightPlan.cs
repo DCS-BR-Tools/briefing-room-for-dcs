@@ -86,10 +86,8 @@ namespace BriefingRoom4DCS.Generator
 
         internal static void GenerateBullseyeWaypoint(ref DCSMission mission)
         {
-            // TODO: Enable this after testing to make the bullseye waypoint generation conditional. The UI
-            // should obviously be modified to include the relevant checkbox. 
-            // if (!mission.TemplateRecord.MissionFeatures.Contains("BullseyeWaypoint"))
-            //    return;
+            if (!mission.TemplateRecord.MissionFeatures.Contains("BullseyeWaypoint"))
+                return;
 
             BriefingRoom.PrintToLog($"Generating (blue) bullseye waypoint...");
 
