@@ -44,6 +44,8 @@ namespace BriefingRoom4DCS.Data
 
         internal LanguageString WPIngressName { get; }
 
+        internal LanguageString WPBullseyeName { get; }
+
         internal LanguageString WPInitialName { get; }
 
         internal LanguageString WPObjectivesNames { get; }
@@ -77,6 +79,7 @@ namespace BriefingRoom4DCS.Data
             WPEgressName = ini.GetLangStrings(LangDB, className, "Name", "Waypoints", "Egress");
             WPFinalName = ini.GetLangStrings(LangDB, className, "Name", "Waypoints", "Final");
             WPIngressName = ini.GetLangStrings(LangDB, className, "Name", "Waypoints", "Ingress");
+            WPBullseyeName = ini.GetLangStrings(LangDB, className, "Name", "Waypoints", "Bullseye");
             WPInitialName = ini.GetLangStrings(LangDB, className, "Name", "Waypoints", "Initial");
             WPObjectivesNames = ini.GetLangStrings(LangDB, className, "Name", "Waypoints", "Objectives");
         }

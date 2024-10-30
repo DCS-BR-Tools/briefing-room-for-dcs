@@ -307,6 +307,7 @@ namespace BriefingRoom4DCS.Generator
             MissionGeneratorFlightPlan.GenerateObjectiveWPCoordinatesLua(ref mission);
             MissionGeneratorFlightPlan.GenerateAircraftPackageWaypoints(ref mission);
             MissionGeneratorFlightPlan.GenerateIngressAndEgressWaypoints(ref mission);
+            MissionGeneratorFlightPlan.GenerateBullseyeWaypoint(ref mission);
             MissionGeneratorFrontLine.GenerateFrontLine(ref mission);
 
             foreach (var waypoint in mission.Waypoints)

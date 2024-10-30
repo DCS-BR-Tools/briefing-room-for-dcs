@@ -84,6 +84,26 @@ namespace BriefingRoom4DCS.Generator
                     baseIngressPosition + Coordinates.CreateRandom(ingressDeviation * 0.9, ingressDeviation * 1.1)));
         }
 
+        internal static void GenerateBullseyeWaypoint(ref DCSMission mission)
+        {
+            // TODO: Enable this after testing to make the bullseye waypoint generation conditional. The UI
+            // should obviously be modified to include the relevant checkbox. 
+            // if (!mission.TemplateRecord.MissionFeatures.Contains("BullseyeWaypoint"))
+            //    return;
+
+            BriefingRoom.PrintToLog($"Generating (blue) bullseye waypoint...");
+
+            double bullseyeBlueX = double.Parse(mission.GetValue("BullseyeBlueX"));
+            double bullseyeBlueY = double.Parse(mission.GetValue("BullseyeBlueY"));
+
+            Coordinates bullseyeBlueCoordinates = new Coordinates(bullseyeBlueX, bullseyeBlueY);
+
+            mission.Waypoints.Add(
+                new Waypoint(
+                    $"{Database.Instance.Common.Names.WPBullseyeName.Get(mission.LangKey).ToUpper()}_{mission.WaypointNameGenerator.GetWaypointName()}",
+                    bullseyeBlueCoordinates));
+        }
+
         internal static void GenerateObjectiveWPCoordinatesLua(ref DCSMission mission)
         {
             var scriptWaypoints = mission.Waypoints.Where(x => !x.ScriptIgnore).ToList();
