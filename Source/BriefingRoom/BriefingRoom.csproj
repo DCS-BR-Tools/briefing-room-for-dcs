@@ -11,7 +11,7 @@
     <PackageReference Include="FluentRandomPicker" Version="3.5.1" />
     <PackageReference Include="NGeoKDBush" Version="1.0.1" />
     <PackageReference Include="Polly" Version="8.4.2" />
-    <PackageReference Include="YamlDotNet" Version="16.1.3" />
+    <PackageReference Include="YamlDotNet" Version="16.2.0" />
   </ItemGroup>
   <ItemGroup>
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
