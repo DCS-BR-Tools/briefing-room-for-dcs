@@ -22,10 +22,10 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: 9.0.x
       - name: Restore dependencies
-        run: dotnet restore Source/BriefingRoom.sln
+        run: dotnet restore src/BriefingRoom.sln
       - name: Build
-        run: dotnet build --no-restore Source/BriefingRoom.sln
+        run: dotnet build --no-restore src/BriefingRoom.sln
       - name: Test
-        run: dotnet test --no-build --verbosity normal Source/BriefingRoom.sln
+        run: dotnet test --no-build --verbosity normal src/BriefingRoom.sln

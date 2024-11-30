@@ -1,9 +1,9 @@
 /.vs
 /.vscode
 [Dd]ebug[Oo]utput/
-[Ss]ource/.vs/
-[Ss]ource/**/[Bb]in/
-[Ss]ource/**/[Oo]bj/
+[Ss]rc/.vs/
+[Ss]rc/**/[Bb]in/
+[Ss]rc/**/[Oo]bj/
 [Rr]elease/
 
 *.*.config

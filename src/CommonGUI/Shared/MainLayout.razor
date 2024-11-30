@@ -13,7 +13,7 @@
                 <div class="form-group language-selector">
                     <label>@briefingRoom.Translate("Language") <a href="https://poeditor.com/join/project/MJES2FW5lh"
                             class="img-link-tiny" target="_blank"><img
-                                src="_content/BriefingRoomCommonGUI/img/poeditor.svg" alt="poeditor.com" /></a></label>
+                                src="_content/CommonGUI/img/poeditor.svg" alt="poeditor.com" /></a></label>
                     <select class="form-control" value=@briefingRoom.LanguageKey
                         @onchange="eventArgs => SetLanguage((string)eventArgs.Value)">
                         @foreach (var key in BriefingRoom.AvailableLanguagesMap.Keys)
@@ -29,11 +29,11 @@
                 }
                 <a href="@BriefingRoom.WEBSITE_URL" target="_blank">@briefingRoom.Translate("About")</a>
                 <a href="@BriefingRoom.DISCORD_URL" target="_blank" class="img-link"><img alt="Discord"
-                        src="_content/BriefingRoomCommonGUI/img/discord-icon-svgrepo-com.svg"></a>
+                        src="_content/CommonGUI/img/discord-icon-svgrepo-com.svg"></a>
                 <a href="@BriefingRoom.REPO_URL" target="_blank" class="img-link"><img alt="Github"
-                        src="_content/BriefingRoomCommonGUI/img/github-mark@((darkmode? "-white" : "")).svg"></a>
+                        src="_content/CommonGUI/img/github-mark@((darkmode? "-white" : "")).svg"></a>
                 <a href="https://www.patreon.com/bePatron?u=99514930" target="_blank" class="img-link"><img
-                        alt="Become a Patron!" src="_content/BriefingRoomCommonGUI/img/patreon-icon.png"></a>
+                        alt="Become a Patron!" src="_content/CommonGUI/img/patreon-icon.png"></a>
                 @if (BriefingRoom.RUNNING_IN_DOCKER)
                 {
                     <div class="btn-container"><a title="Support me on ko-fi.com" class="kofi-button"
@@ -45,7 +45,7 @@
                 else
                 {
                     <a href="https://ko-fi.com/V7V0IZI9N" target="_blank" class="img-link"><img alt="Support us with Ko-fi"
-                            src="_content/BriefingRoomCommonGUI/img/Kofi-icon.png"></a>
+                            src="_content/CommonGUI/img/Kofi-icon.png"></a>
                 }
                 <label class="bulb">
                     <input type="checkbox" checked=@darkmode

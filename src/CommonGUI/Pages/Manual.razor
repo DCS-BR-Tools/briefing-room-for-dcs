@@ -47,6 +47,6 @@
     Documents = files.ToDictionary(x => x.Replace(sourcePath, "").Replace(".md", "").Replace("_", " ").Replace("\\",
     "").Replace("/", ""), x =>
     Markdown.ToHtml(File.ReadAllText(x).Replace("Media/SplashScreen.png",
-    "_content/BriefingRoomCommonGUI/img/br-logo-white.png").Replace("(#", "(/Manual/#"), pipeline));
+    "_content/CommonGUI/img/br-logo-white.png").Replace("(#", "(/Manual/#"), pipeline));
   }
 }

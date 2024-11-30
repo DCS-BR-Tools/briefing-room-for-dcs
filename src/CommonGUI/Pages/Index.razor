@@ -5,7 +5,7 @@
 @inject BriefingRoom4DCS.BriefingRoom briefingRoom
 
 <div class="landing-screen">
-  <img class="img" src="_content/BriefingRoomCommonGUI/img/br-logo-white.png" alt="BriefingRoom Logo" />
+  <img class="img" src="_content/CommonGUI/img/br-logo-white.png" alt="BriefingRoom Logo" />
   <div class="landing-menu">
     <a href="/QuickBuilder" class="btn btn-primary">@briefingRoom.Translate("QuickGenerator")</a>
     <a href="/FullBuilder" class="btn btn-primary">@briefingRoom.Translate("FullGenerator")</a>
@@ -17,7 +17,7 @@
     <div class="form-group language-selector index">
       <label>@briefingRoom.Translate("Language")
         <a href="https://poeditor.com/join/project/MJES2FW5lh" class="img-link-tiny" target="_blank"><img
-            src="_content/BriefingRoomCommonGUI/img/poeditor.svg" alt="poeditor.com" /></a>
+            src="_content/CommonGUI/img/poeditor.svg" alt="poeditor.com" /></a>
       </label>
       <select class="form-control" @bind=@briefingRoom.LanguageKey>
         @foreach (var key in BriefingRoom.AvailableLanguagesMap.Keys)
@@ -29,11 +29,11 @@
     </div>
     <div class="row flex-justify-spaced">
       <a href="@BriefingRoom.DISCORD_URL" target="_blank" class="col-1 img-link"><img alt="Discord"
-          src="_content/BriefingRoomCommonGUI/img/discord-icon-svgrepo-com.svg"></a>
+          src="_content/CommonGUI/img/discord-icon-svgrepo-com.svg"></a>
       <a href="@BriefingRoom.REPO_URL" target="_blank" class="col-1 img-link"><img alt="Github"
-          src="_content/BriefingRoomCommonGUI/img/github-mark-white.svg"></a>
+          src="_content/CommonGUI/img/github-mark-white.svg"></a>
       <a href="https://www.patreon.com/bePatron?u=99514930" target="_blank" class="col-1 img-link"><img
-          alt="Become a Patron!" src="_content/BriefingRoomCommonGUI/img/patreon-icon.png"></a>
+          alt="Become a Patron!" src="_content/CommonGUI/img/patreon-icon.png"></a>
       @if (BriefingRoom.RUNNING_IN_DOCKER)
       {
         <div class="col-1 btn-container"><a title="Support me on ko-fi.com" class="kofi-button"
@@ -44,7 +44,7 @@
       else
       {
         <a href="https://ko-fi.com/V7V0IZI9N" target="_blank" class="col-1 img-link"><img alt="Support us with Ko-fi"
-            src="_content/BriefingRoomCommonGUI/img/Kofi-icon.png"></a>
+            src="_content/CommonGUI/img/Kofi-icon.png"></a>
       }
     </div>
   </div>

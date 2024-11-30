@@ -1,7 +1,6 @@
 ﻿@using BriefingRoom4DCS.GUI.Common.Shared;
 
-<Router AppAssembly="@typeof(Program).Assembly" AdditionalAssemblies="new[] { typeof(MainLayout).Assembly }"
-    PreferExactMatches="@true">
+<Router AppAssembly="@typeof(Program).Assembly" AdditionalAssemblies="new[] { typeof(MainLayout).Assembly }">
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
     </Found>

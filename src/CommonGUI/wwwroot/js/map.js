@@ -123,7 +123,7 @@ function createHintMarker(key, map) {
     var marker = new L.marker([hintPositions[key].x, hintPositions[key].y], {
         icon: new L.DivIcon({
             className: 'my-div-icon',
-            html: `<img class="map_point_icon" src="_content/BriefingRoomCommonGUI/img/nato-icons/${GetNatoIcon(key, false)}.svg" alt="${key}"/>` +
+            html: `<img class="map_point_icon" src="_content/CommonGUI/img/nato-icons/${GetNatoIcon(key, false)}.svg" alt="${key}"/>` +
                 `<span class="map_point_icon map_point_icon_text">${key.slice(key.indexOf('_') + 1).replaceAll("_", " ")}</span>`
         }),
         draggable: 'true'
@@ -223,7 +223,7 @@ function AddIcon(key, data, map, mapName, inverted) {
         new L.Marker(GetFromMapCoordData(data[0], mapName), {
             title: GetTitle(key),
             icon: new L.DivIcon({
-                html: `<img class="map_point_icon" src="_content/BriefingRoomCommonGUI/img/nato-icons/${GetNatoIcon(key, inverted)}.svg" alt="${key}"/>`
+                html: `<img class="map_point_icon" src="_content/CommonGUI/img/nato-icons/${GetNatoIcon(key, inverted)}.svg" alt="${key}"/>`
             }),
             zIndexOffset: key == "AIRBASE_HOME" || key.includes("OBJECTIVE_AREA") ? 200 : 100
         }).addTo(map)
@@ -255,7 +255,7 @@ function AddUnit(key, data, map, mapName, inverted) {
     group.addLayer(new L.Marker(coords, {
         title: GetTitle(key),
         icon: new L.DivIcon({
-            html: `<img class="map_point_icon map_unit"src="_content/BriefingRoomCommonGUI/img/nato-icons/${GetNatoIcon(key, inverted)}.svg" alt="${key}"/>`
+            html: `<img class="map_point_icon map_unit"src="_content/CommonGUI/img/nato-icons/${GetNatoIcon(key, inverted)}.svg" alt="${key}"/>`
         })
     }))
     const range = GetRange(key);

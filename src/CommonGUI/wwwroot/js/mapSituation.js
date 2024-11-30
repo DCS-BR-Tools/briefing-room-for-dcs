@@ -100,7 +100,7 @@ async function RenderEditorMap(map, spawnPoints) {
         SPGroup.addLayer(new L.Marker(GetFromMapCoordData(sp.coords, map), {
             title: sp.pt,
             icon: new L.DivIcon({
-                html: `<img class="map_point_icon_small" src="_content/BriefingRoomCommonGUI/img/nato-icons/${iconType}.svg" alt="${sp.bRtype}"/>`
+                html: `<img class="map_point_icon_small" src="_content/CommonGUI/img/nato-icons/${iconType}.svg" alt="${sp.bRtype}"/>`
             }),
         }))
     });

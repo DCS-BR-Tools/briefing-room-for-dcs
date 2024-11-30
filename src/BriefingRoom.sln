@@ -5,15 +5,15 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BriefingRoom", "BriefingRoom\BriefingRoom.csproj", "{573309FF-E2E2-4765-920C-B3F8718D3947}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BriefingRoomDesktop", "BriefingRoomDesktop\BriefingRoomDesktop.csproj", "{BD6A1E3D-2245-4285-BB9E-BA73B7FF6F52}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desktop", "Desktop\Desktop.csproj", "{BD6A1E3D-2245-4285-BB9E-BA73B7FF6F52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BriefingRoomCommandLine", "BriefingRoomCommandLine\BriefingRoomCommandLine.csproj", "{0493DE5C-C82C-40C6-8512-3BFAA7C361E4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLine", "CommandLine\CommandLine.csproj", "{0493DE5C-C82C-40C6-8512-3BFAA7C361E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BriefingRoomCommonGUI", "BriefingRoomCommonGUI\BriefingRoomCommonGUI.csproj", "{5005F6CE-9FE4-4B28-8051-75FF9EDA961E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonGUI", "CommonGUI\CommonGUI.csproj", "{5005F6CE-9FE4-4B28-8051-75FF9EDA961E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BriefingRoomWeb", "BriefingRoomWeb\BriefingRoomWeb.csproj", "{B967C8C3-2D49-48BB-89DB-D12AAA77BE0B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{B967C8C3-2D49-48BB-89DB-D12AAA77BE0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BriefingRoom.Tests", "BriefingRoom.Tests\BriefingRoom.Tests.csproj", "{E8995184-91C1-4543-8786-8DCC34FADF85}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{E8995184-91C1-4543-8786-8DCC34FADF85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

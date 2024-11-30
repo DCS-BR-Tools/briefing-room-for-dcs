@@ -1,10 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <RootNamespace>BriefingRoom4DCS</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="IronPdf" Version="2023.12.6" />
+    <PackageReference Include="IronPdf" Version="2024.11.4" />
     <PackageReference Include="LuaTableSerializer" Version="0.0.3" />
     <PackageReference Include="Microsoft.Maui.Graphics" Version="9.0.10" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
@@ -15,7 +15,7 @@
   </ItemGroup>
   <ItemGroup>
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
-      <_Parameter1>$(AssemblyName).Tests</_Parameter1>
+      <_Parameter1>Tests</_Parameter1>
     </AssemblyAttribute>
     </ItemGroup>
 </Project>

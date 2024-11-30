@@ -18,10 +18,10 @@ jobs:
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: "8.0.x"
+          dotnet-version: "9.0.x"
 
       - name: Restore NuGet Packages
-        run: dotnet restore Source/BriefingRoom.sln
+        run: dotnet restore src/BriefingRoom.sln
 
       - name: Get current time
         uses: 1466587594/get-current-time@v2
@@ -41,21 +41,21 @@ jobs:
       - name: Set Build Version
         id: build_version
         run: |
-          (Get-Content -path  Source\BriefingRoom\BriefingRoom.cs -Raw) -replace '~BUILD_VERSION~','${{ steps.current-time.outputs.formattedTime }}' | Set-Content Source\BriefingRoom\BriefingRoom.cs
+          (Get-Content -path  src\BriefingRoom\BriefingRoom.cs -Raw) -replace '~BUILD_VERSION~','${{ steps.current-time.outputs.formattedTime }}' | Set-Content src\BriefingRoom\BriefingRoom.cs
 
       - name: Set Release Version
         id: release_version
         run: |
-          (Get-Content -path  Source\BriefingRoom\BriefingRoom.cs -Raw) -replace '~RELEASE_VERSION~','${{ steps.current-date.outputs.formattedTime }}' | Set-Content Source\BriefingRoom\BriefingRoom.cs
+          (Get-Content -path  src\BriefingRoom\BriefingRoom.cs -Raw) -replace '~RELEASE_VERSION~','${{ steps.current-date.outputs.formattedTime }}' | Set-Content src\BriefingRoom\BriefingRoom.cs
     
       - name: Build and Publish App
         run: |
-          dotnet publish Source/BriefingRoomCommandLine -o BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }} -c Release
-          dotnet publish Source/BriefingRoomWeb -o BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }} -c Release
-          dotnet publish Source/BriefingRoomDesktop -o BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }} -c Release
+          dotnet publish src/CommandLine -o BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }} -c Release
+          dotnet publish src/Web -o BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }} -c Release
+          dotnet publish src/Desktop -o BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }} -c Release
 
       - name: Zip Release
-        run: 7z a -tzip BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }}.zip BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }} "-xr!.git\" "-xr!.github\" "-xr!.git*" "-xr!.vscode\" "-xr!dataExtractors\"  "-xr!Source\" "-xr!docs\" "-x!*.bat" "-x!*.filelist"
+        run: 7z a -tzip BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }}.zip BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }} "-xr!.git\" "-xr!.github\" "-xr!.git*" "-xr!.vscode\" "-xr!dataExtractors\"  "-xr!src\" "-xr!docs\" "-x!*.bat" "-x!*.filelist"
 
 
       - name: Create Changelog
