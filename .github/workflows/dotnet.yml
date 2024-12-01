@@ -70,3 +70,46 @@ jobs:
           prerelease: true
           artifacts: "beta-release-${{ steps.current-time.outputs.formattedTime }}.zip"
           token: ${{ secrets.GITHUB_TOKEN }}
+  docker:
+    name: docker build and push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3    
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+       - name: Get current time
+        uses: 1466587594/get-current-time@v2
+        id: current-time
+        with:
+          format: YYMMDD-HHMMSS
+          utcOffset: "+00:00"
+      
+      - name: Get current date
+        uses: 1466587594/get-current-time@v2
+        id: current-date
+        with:
+          format: YMM.DD
+          utcOffset: "+00:00"
+
+      - name: Set Build Version
+        id: build_version
+        run: |
+          (Get-Content -path  src\BriefingRoom\BriefingRoom.cs -Raw) -replace '~BUILD_VERSION~','${{ steps.current-time.outputs.formattedTime }}' | Set-Content src\BriefingRoom\BriefingRoom.cs
+
+      - name: Set Release Version
+        id: release_version
+        run: |
+          (Get-Content -path  src\BriefingRoom\BriefingRoom.cs -Raw) -replace '~RELEASE_VERSION~','${{ steps.current-date.outputs.formattedTime }}' | Set-Content src\BriefingRoom\BriefingRoom.cs
+    
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          tags: johnharvey/dcs-briefing-room-web:beta-${{ steps.current-time.outputs.formattedTime }}

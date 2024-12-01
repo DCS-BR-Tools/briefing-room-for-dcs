@@ -11,8 +11,8 @@ on:
 
 jobs:
   build:
+    name: Build and Test
     runs-on: windows-latest
-
     steps:
       - name: Set git to use LF
         run: |
