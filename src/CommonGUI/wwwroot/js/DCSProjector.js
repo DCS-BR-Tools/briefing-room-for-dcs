@@ -68,6 +68,12 @@ const config = {
     false_northing: -3759657.000000049,
     scale_factor: 0.9996,
   },
+  Iraq: {
+    central_meridian: 45,
+    false_easting: 72290,
+    false_northing: -3680057,
+    scale_factor: 0.9996,
+  },
 };
 
 function GetDCSMapProjector(mapName) {
