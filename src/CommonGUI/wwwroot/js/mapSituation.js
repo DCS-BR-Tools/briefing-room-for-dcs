@@ -20,7 +20,7 @@ async function RenderEditorMap(map, spawnPoints, airbaseData) {
         SPGroup = new L.layerGroup()
         L.easyButton('oi oi-dial', function (btn, map) {
             ToggleSPLayer()
-        }, 'Spawn Points').addTo(leafSituationMap);
+        }, `Spawn Points (${spawnPoints.length})`).addTo(leafSituationMap);
     } catch (error) {
         console.warn(error)
     }
