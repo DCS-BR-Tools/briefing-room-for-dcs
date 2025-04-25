@@ -36,6 +36,8 @@ namespace BriefingRoom4DCS.GUI.Web
     OPEN Browser on http://localhost:5000                                                                                                                                                                                                 
                                                                                                               
 Server Logs:");
+            Console.WriteLine($"VERSION: {BriefingRoom.VERSION}");
+            Console.WriteLine($"BUILD_VERSION: {BriefingRoom.BUILD_VERSION}");
             try
             {
                 Process.Start("explorer.exe", "http://localhost:5000");
