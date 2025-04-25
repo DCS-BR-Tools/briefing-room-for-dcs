@@ -2,86 +2,84 @@ name: beta-release
 
 on:
   push:
-    branches: ["beta-release"]
+    branches: ["CI-BETA"]
 
 jobs:
-  build:
-    runs-on: windows-latest
+  # build:
+  #   runs-on: windows-latest
 
-    steps:
-      - name: Set git to use LF
-        run: |
-          git config --global core.autocrlf false
-          git config --global core.eol crlf
-      - uses: actions/checkout@v1
-        name: Checkout Code
-      - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: "9.0.x"
+  #   steps:
+  #     - name: Set git to use LF
+  #       run: |
+  #         git config --global core.autocrlf false
+  #         git config --global core.eol crlf
+  #     - uses: actions/checkout@v1
+  #       name: Checkout Code
+  #     - name: Setup .NET Core SDK
+  #       uses: actions/setup-dotnet@v1
+  #       with:
+  #         dotnet-version: "9.0.x"
 
-      - name: Restore NuGet Packages
-        run: dotnet restore src/BriefingRoom.sln
+  #     - name: Restore NuGet Packages
+  #       run: dotnet restore src/BriefingRoom.sln
 
-      - name: Get current time
-        uses: 1466587594/get-current-time@v2
-        id: current-time
-        with:
-          format: YYMMDD-HHMMSS
-          utcOffset: "+00:00"
+  #     - name: Get current time
+  #       uses: 1466587594/get-current-time@v2
+  #       id: current-time
+  #       with:
+  #         format: YYMMDD-HHMMSS
+  #         utcOffset: "+00:00"
 
-      - name: Set Build Version
-        id: build_version
-        run: |
-          (Get-Content -path  src\BriefingRoom\BriefingRoom.cs -Raw) -replace '~BUILD_VERSION~','${{ steps.current-time.outputs.formattedTime }}' | Set-Content src\BriefingRoom\BriefingRoom.cs
+  #     - name: Set Build Version
+  #       id: build_version
+  #       run: |
+  #         (Get-Content -path  src\BriefingRoom\BriefingRoom.cs -Raw) -replace '~BUILD_VERSION~','${{ steps.current-time.outputs.formattedTime }}' | Set-Content src\BriefingRoom\BriefingRoom.cs
       
-      - name: Set Release Version
-        id: release_version
-        run: |
-          (Get-Content -path  src\BriefingRoom\BriefingRoom.cs -Raw) -replace '~RELEASE_VERSION~','BETA' | Set-Content src\BriefingRoom\BriefingRoom.cs
+  #     - name: Set Release Version
+  #       id: release_version
+  #       run: |
+  #         (Get-Content -path  src\BriefingRoom\BriefingRoom.cs -Raw) -replace '~RELEASE_VERSION~','BETA' | Set-Content src\BriefingRoom\BriefingRoom.cs
 
-      - name: Build and Publish App
-        run: |
-          dotnet publish src/CommandLine -o BriefingRoom-build${{ steps.current-time.outputs.formattedTime }} -c Release
-          dotnet publish src/Web -o BriefingRoom-build${{ steps.current-time.outputs.formattedTime }} -c Release
-          dotnet publish src/Desktop -o BriefingRoom-build${{ steps.current-time.outputs.formattedTime }} -c Release
+  #     - name: Build and Publish App
+  #       run: |
+  #         dotnet publish src/CommandLine -o BriefingRoom-build${{ steps.current-time.outputs.formattedTime }} -c Release
+  #         dotnet publish src/Web -o BriefingRoom-build${{ steps.current-time.outputs.formattedTime }} -c Release
+  #         dotnet publish src/Desktop -o BriefingRoom-build${{ steps.current-time.outputs.formattedTime }} -c Release
 
-      - name: Create Changelog
-        id: change_log
-        shell: bash
-        run: |
-          LOGS=$(git log --pretty=format:"%s" HEAD...$(git describe  --abbrev=0 HEAD --tags))
-          LOGS="${LOGS//'%'/'%25'}"
-          LOGS="${LOGS//$'\n'/'%0A'}"
-          LOGS="${LOGS//$'\r'/'%0D'}"
-          echo "$LOGS" > logs.txt
-          sort -u logs.txt -o logs.txt
-          echo "::set-output name=log::$(cat logs.txt)"
-          rm logs.txt
+  #     - name: Create Changelog
+  #       id: change_log
+  #       shell: bash
+  #       run: |
+  #         LOGS=$(git log --pretty=format:"%s" HEAD...$(git describe  --abbrev=0 HEAD --tags))
+  #         LOGS="${LOGS//'%'/'%25'}"
+  #         LOGS="${LOGS//$'\n'/'%0A'}"
+  #         LOGS="${LOGS//$'\r'/'%0D'}"
+  #         echo "$LOGS" > logs.txt
+  #         sort -u logs.txt -o logs.txt
+  #         echo "::set-output name=log::$(cat logs.txt)"
+  #         rm logs.txt
 
-      - name: Zip Release
-        run: 7z a -tzip beta-release-${{ steps.current-time.outputs.formattedTime }}.zip BriefingRoom-build${{ steps.current-time.outputs.formattedTime }} "-xr!.git\" "-xr!.github\" "-xr!.git*" "-xr!.vscode\" "-xr!dataExtractors\"  "-xr!src\" "-xr!docs\" "-x!*.bat" "-x!*.filelist"
+  #     - name: Zip Release
+  #       run: 7z a -tzip beta-release-${{ steps.current-time.outputs.formattedTime }}.zip BriefingRoom-build${{ steps.current-time.outputs.formattedTime }} "-xr!.git\" "-xr!.github\" "-xr!.git*" "-xr!.vscode\" "-xr!dataExtractors\"  "-xr!src\" "-xr!docs\" "-x!*.bat" "-x!*.filelist"
 
-      - name: Upload Release
-        uses: ncipollo/release-action@v1
-        with:
-          tag: "beta-release-${{ steps.current-time.outputs.formattedTime }}-${{ github.run_id }}-${{ github.run_attempt }}"
-          name: "beta-release-${{ steps.current-time.outputs.formattedTime }}"
-          body: |
-            This is a automated beta build. This may not work. Its not recommend to overwrite a official release with this.
-            ${{ steps.change_log.outputs.log }}
-          prerelease: true
-          artifacts: "beta-release-${{ steps.current-time.outputs.formattedTime }}.zip"
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Post to Discord
-        uses: tsickert/discord-webhook@v6.0.0
-        with:
-          webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
-          content: |
-            New Beta Release out https://github.com/DCS-BR-Tools/briefing-room-for-dcs/releases/tag/beta-release-${{ steps.current-time.outputs.formattedTime }}-${{ github.run_id }}-${{ github.run_attempt }}
-            ${{ steps.change_log.outputs.log }}
-
-
+  #     - name: Upload Release
+  #       uses: ncipollo/release-action@v1
+  #       with:
+  #         tag: "beta-release-${{ steps.current-time.outputs.formattedTime }}-${{ github.run_id }}-${{ github.run_attempt }}"
+  #         name: "beta-release-${{ steps.current-time.outputs.formattedTime }}"
+  #         body: |
+  #           This is a automated beta build. This may not work. Its not recommend to overwrite a official release with this.
+  #           ${{ steps.change_log.outputs.log }}
+  #         prerelease: true
+  #         artifacts: "beta-release-${{ steps.current-time.outputs.formattedTime }}.zip"
+  #         token: ${{ secrets.GITHUB_TOKEN }}
+  #     - name: Post to Discord
+  #       uses: tsickert/discord-webhook@v6.0.0
+  #       with:
+  #         webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
+  #         content: |
+  #           New Beta Release out https://github.com/DCS-BR-Tools/briefing-room-for-dcs/releases/tag/beta-release-${{ steps.current-time.outputs.formattedTime }}-${{ github.run_id }}-${{ github.run_attempt }}
+  #           ${{ steps.change_log.outputs.log }}
 
   docker:
     name: docker build and push
@@ -123,8 +121,11 @@ jobs:
         run: |
           sed -i 's/~RELEASE_VERSION~/BETA/g' ./src/BriefingRoom/BriefingRoom.cs
     
-      - name: Build and push
-        uses: docker/build-push-action@v6
-        with:
-          push: true
-          tags: johnharvey/dcs-briefing-room-web:beta-${{ steps.current-time.outputs.formattedTime }}
+      - name: check
+        run: |
+          cat ./src/BriefingRoom/BriefingRoom.cs
+      # - name: Build and push
+      #   uses: docker/build-push-action@v6
+      #   with:
+      #     push: true
+      #     tags: johnharvey/dcs-briefing-room-web:beta-${{ steps.current-time.outputs.formattedTime }}
