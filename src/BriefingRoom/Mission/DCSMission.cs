@@ -98,6 +98,8 @@ namespace BriefingRoom4DCS.Mission
             AirbaseParkingSpots = [];
             SpawnPoints = [];
             UsedSpawnPoints = [];
+            TemplateLocations = [];
+            UsedTemplateLocations = [];
 
             GroupID = 1;
             UnitID = 1;
@@ -164,6 +166,8 @@ namespace BriefingRoom4DCS.Mission
             AirbaseParkingSpots = prevState.AirbaseParkingSpots.ToDictionary(x => x.Key, x => x.Value.ToList());
             SpawnPoints = prevState.SpawnPoints.ToList();
             UsedSpawnPoints = prevState.UsedSpawnPoints.ToList();
+            TemplateLocations = prevState.TemplateLocations.ToList();
+            UsedTemplateLocations = prevState.UsedTemplateLocations.ToList();
             FrontLine = prevState.FrontLine.ToList();
             PlayerSideOfFrontLine = prevState.PlayerSideOfFrontLine;
             GroupID = prevState.GroupID;

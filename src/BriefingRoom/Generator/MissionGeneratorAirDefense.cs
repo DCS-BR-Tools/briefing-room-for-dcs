@@ -90,36 +90,57 @@ namespace BriefingRoom4DCS.Generator
             {
                 var unitCount = 1;
                 var forceTryTemplate = false;
+                var units = new List<string>();
+                var usedSP = false;
+                Coordinates? spawnPoint = null;
+                DBEntryTemplateLocation? templateLocation = null;
+                var extraSetting = new Dictionary<string, object>();
                 if (airDefenseRange == AirDefenseRange.ShortRangeBattery)
                 {
                     unitCount = Toolbox.RandomMinMax(2, 5);
                     forceTryTemplate = Toolbox.RandomChance(2);
                 }
-                var extraSetting = new Dictionary<string, object>();
-                var (units, _) = UnitMaker.GetUnits(ref mission, unitFamilies, unitCount, side, 0, ref extraSetting, true, forceTryTemplate: forceTryTemplate, allowDefaults: false);
-                if (units.Count == 0)
+                if (airDefenseRange == AirDefenseRange.MediumRange || airDefenseRange == AirDefenseRange.LongRange)
                 {
-                    return groupCount - i;
-                }
-                // Find spawn point at the proper distance
-                Coordinates? spawnPoint =
-                    UnitMakerSpawnPointSelector.GetRandomSpawnPoint(
-                        ref mission,
-                        validSpawnPoints,
-                        centerPoint,
-                        commonAirDefenseDB.DistanceFromCenter[(int)side, (int)airDefenseRange],
+                    templateLocation = UnitMakerSpawnPointSelector.GetRandomTemplateLocation(mission, DBEntryTemplateLocationType.SAM, centerPoint, commonAirDefenseDB.DistanceFromCenter[(int)side, (int)airDefenseRange],
                         opposingPoint,
                         new MinMaxD(commonAirDefenseDB.MinDistanceFromOpposingPoint[(int)side, (int)airDefenseRange], 99999),
-                        GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, side),
-                        unitFamilies.First());
+                        GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, side));
+                    if (templateLocation.HasValue)
+                    {
+                        spawnPoint = templateLocation.Value.Coordinates;
+                        (units, _) = UnitMaker.GetUnitsForTemplateLocation(ref mission, templateLocation.Value, side, unitFamilies, ref extraSetting);
+                        BriefingRoom.PrintToLog("WE USED A TEMPLATE YAY!", LogMessageErrorLevel.Warning);
+                    }
+                }
+                // if (units.Count == 0)
+                // {
+                //     usedSP = true;
+                //     (units, _) = UnitMaker.GetUnits(ref mission, unitFamilies, unitCount, side, 0, ref extraSetting, true, forceTryTemplate: forceTryTemplate, allowDefaults: false);
+                //     if (units.Count == 0)
+                //     {
+                //         return groupCount - i;
+                //     }
+                //     // Find spawn point at the proper distance
+                //     spawnPoint =
+                //         UnitMakerSpawnPointSelector.GetRandomSpawnPoint(
+                //             ref mission,
+                //             validSpawnPoints,
+                //             centerPoint,
+                //             commonAirDefenseDB.DistanceFromCenter[(int)side, (int)airDefenseRange],
+                //             opposingPoint,
+                //             new MinMaxD(commonAirDefenseDB.MinDistanceFromOpposingPoint[(int)side, (int)airDefenseRange], 99999),
+                //             GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, side),
+                //             unitFamilies.First());
+
+                // }
 
                 // No spawn point found, stop here.
                 if (!spawnPoint.HasValue)
                 {
-                    BriefingRoom.PrintTranslatableWarning(mission.LangKey, "NoSpawnPointForAirDefense",airDefenseRange);
+                    BriefingRoom.PrintTranslatableWarning(mission.LangKey, "NoSpawnPointForAirDefense", airDefenseRange);
                     return groupCount - i;
                 }
-
                 UnitMakerGroupInfo? groupInfo = UnitMaker.AddUnitGroup(
                     ref mission,
                         units, side, unitFamilies.First(),
@@ -133,7 +154,10 @@ namespace BriefingRoom4DCS.Generator
 
                 if (!groupInfo.HasValue)
                 {
-                    UnitMakerSpawnPointSelector.RecoverSpawnPoint(ref mission, spawnPoint.Value);
+                    if (usedSP)
+                        UnitMakerSpawnPointSelector.RecoverSpawnPoint(ref mission, spawnPoint.Value);
+                    else
+                        UnitMakerSpawnPointSelector.RecoverTemplateLocation(ref mission, spawnPoint.Value);
                     return groupCount - i;
                 }
 

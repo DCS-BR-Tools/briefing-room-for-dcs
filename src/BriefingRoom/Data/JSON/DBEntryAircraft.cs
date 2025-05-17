@@ -194,12 +194,13 @@ namespace BriefingRoom4DCS.Data
                     foreach (var pylonItem in ((IDictionary)itemEntry["pylons"]).Values)
                     {
                         var pylonItemEntry = (IDictionary)pylonItem;
-                        var pylon = new Pylon{
+                        var pylon = new Pylon
+                        {
                             CLSID = (string)pylonItemEntry["CLSID"],
                             num = (int)(long)pylonItemEntry["num"],
                         };
 
-                        if(pylonItemEntry.Contains("settings"))
+                        if (pylonItemEntry.Contains("settings"))
                         {
                             pylon.settings = new Dictionary<string, object>();
                             foreach (var settingItem in ((IDictionary)pylonItemEntry["settings"]))
@@ -207,28 +208,31 @@ namespace BriefingRoom4DCS.Data
                                 var settingKV = (DictionaryEntry)settingItem;
                                 pylon.settings.Add((string)settingKV.Key, settingKV.Value);
                             }
-                        
+
                         }
                         pylons.Add(pylon);
                     }
-            
-                    var payload = new Payload {
+
+                    var payload = new Payload
+                    {
                         name = (string)itemEntry["name"],
                         displayName = (string)(itemEntry.Contains("displayName") ? itemEntry["displayName"] : itemEntry["name"]),
                         tasks = tasks,
                         pylons = pylons,
                     };
 
-                    Payloads.Add( payload );
-                    
+                    Payloads.Add(payload);
+
                     BriefingRoom.PrintToLog($"Imported payload {payload.displayName} for {DCSID}");
                 }
 
             }
             catch (System.Exception e)
             {
-                Console.WriteLine(e);
                 BriefingRoom.PrintToLog($"Cannot parse player payloads for {DCSID}. Likely as a payload name isn't happy with our parser, Reccomend you remove any of these characters {{}}/\\: from your custom payload names.", LogMessageErrorLevel.Warning);
+                Console.WriteLine(e);
+                // Debugging
+                // Console.WriteLine(fileText);
             }
 
         }
