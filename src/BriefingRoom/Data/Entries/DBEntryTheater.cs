@@ -94,6 +94,11 @@ namespace BriefingRoom4DCS.Data
                     new DBEntryTheaterTemplateLocation(x)
                 ).ToArray();
                 BriefingRoom.PrintToLog($"{DCSID} loaded {TemplateLocations.Length} Template Locations");
+            } 
+            else
+            {
+                TemplateLocations = Array.Empty<DBEntryTheaterTemplateLocation>();
+                BriefingRoom.PrintToLog($"{DCSID} no Template Locations found", LogMessageErrorLevel.Warning);
             }
 
             // [Temperature] section
