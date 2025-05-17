@@ -230,6 +230,65 @@ namespace BriefingRoom4DCS.Generator
             mission.SpawnPoints.Add(usedSP);
         }
 
+         internal static DBEntryTemplateLocation? GetRandomTemplateLocation(
+            DCSMission mission,
+            DBEntryTemplateLocationType locationType,
+            Coordinates distanceOrigin1, MinMaxD distanceFrom1,
+            Coordinates? distanceOrigin2 = null, MinMaxD? distanceFrom2 = null,
+            Coalition? coalition = null,
+            bool nested = false
+        )
+        {
+            var validTL = from DBEntryTemplateLocation pt in mission.TemplateLocations where pt.LocationType == locationType select pt;
+            Coordinates?[] distanceOrigin = [distanceOrigin1, distanceOrigin2];
+            MinMaxD?[] distanceFrom = [distanceFrom1, distanceFrom2];
+            for (int i = 0; i < 2; i++)
+            {
+                if (!validTL.Any()) break;
+                if (!distanceFrom[i].HasValue || !distanceOrigin[i].HasValue) continue;
+
+                var borderLimit = (double)mission.TemplateRecord.BorderLimit;
+                Coordinates origin = distanceOrigin[i].Value;
+                var searchRange = distanceFrom[i].Value * Toolbox.NM_TO_METERS; // convert distance to meters
+
+                IEnumerable<DBEntryTemplateLocation> validTLInRange;
+
+                int iterationsLeft = MAX_RADIUS_SEARCH_ITERATIONS;
+
+                var validTLArray = validTL.ToArray();
+                var index = new KDBush<DBEntryTemplateLocation>(validTLArray, p => p.Coordinates.X, p => p.Coordinates.Y);
+                do
+                {
+                    var within = index.Within(origin.X, origin.Y, searchRange.Max).Select(x => validTLArray[x]);
+                    validTLInRange = (from DBEntryTemplateLocation s in within
+                                      where
+                                        searchRange.Contains(origin.GetDistanceFrom(s.Coordinates)) &&
+                                        CheckNotInHostileCoords(ref mission, s.Coordinates, coalition)
+                                      select s);
+                    searchRange = new MinMaxD(searchRange.Min * 0.95, searchRange.Max * 1.05);
+                    if (iterationsLeft < MAX_RADIUS_SEARCH_ITERATIONS * 0.3)
+                        borderLimit *= 1.05;
+                    iterationsLeft--;
+                } while ((!validTLInRange.Any()) && (iterationsLeft > 0));
+                validTL = validTLInRange;
+            }
+
+            if (!validTL.Any())
+                return !coalition.HasValue && nested ? null : GetRandomTemplateLocation(mission, locationType, distanceOrigin1, distanceFrom1, distanceOrigin2, distanceFrom2, null, true);
+            DBEntryTemplateLocation selectedTemplateLocation = Toolbox.RandomFrom(validTL.ToArray());
+            mission.TemplateLocations.Remove(selectedTemplateLocation); // Remove spawn point so it won't be used again;
+            mission.UsedTemplateLocations.Add(selectedTemplateLocation);
+            return selectedTemplateLocation;
+        }
+
+        internal static void RecoverTemplateLocation(ref DCSMission mission, Coordinates coords)
+        {
+            var usedSP = mission.UsedSpawnPoints.Find(x => x.Coordinates.X == coords.X && x.Coordinates.Y == x.Coordinates.Y);
+            if (usedSP.Coordinates.ToString() == Coordinates.Zero.ToString())
+                return;
+            mission.SpawnPoints.Add(usedSP);
+        }
+
         internal static double GetDirToFrontLine(ref DCSMission mission, Coordinates coords)
         {
             if (mission.FrontLine.Count == 0)

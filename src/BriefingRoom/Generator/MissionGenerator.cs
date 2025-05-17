@@ -234,12 +234,17 @@ namespace BriefingRoom4DCS.Generator
             {
                 var situationDB = mission.SituationDB;
                 mission.SpawnPoints.AddRange(mission.TheaterDB.SpawnPoints.Where(x => UnitMakerSpawnPointSelector.CheckNotInNoSpawnCoords(situationDB, x.Coordinates)).ToList());
+                mission.TemplateLocations.AddRange(mission.TheaterDB.TemplateLocations.Where(x => UnitMakerSpawnPointSelector.CheckNotInNoSpawnCoords(situationDB, x.Coordinates)).ToList());
             }
 
             var theaterDB = mission.TheaterDB;
             var brokenSP = mission.SpawnPoints.Where(x => UnitMakerSpawnPointSelector.CheckInSea(theaterDB, x.Coordinates)).ToList();
             if (brokenSP.Count > 0)
                 throw new BriefingRoomException(mission.LangKey, "SpawnPointsInSea", string.Join("\n", brokenSP.Select(x => $"[{x.Coordinates.X},{x.Coordinates.Y}],{x.PointType}").ToList()));
+
+            var brokenTL = mission.TemplateLocations.Where(x => UnitMakerSpawnPointSelector.CheckInSea(theaterDB, x.Coordinates)).ToList();
+            if (brokenTL.Count > 0)
+                throw new BriefingRoomException(mission.LangKey, "TemplateLocationsInSea", string.Join("\n", brokenTL.Select(x => $"[{x.Coordinates.X},{x.Coordinates.Y}],{x.LocationType}").ToList()));
 
             foreach (DBEntryAirbase airbase in mission.AirbaseDB)
             {
