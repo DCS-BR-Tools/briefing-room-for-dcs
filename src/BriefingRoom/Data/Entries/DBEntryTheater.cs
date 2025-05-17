@@ -46,8 +46,9 @@ namespace BriefingRoom4DCS.Data
 
         internal List<List<Coordinates>> WaterExclusionCoordinates { get; private set; }
 
-        internal DBEntryTheaterSpawnPoint[] SpawnPoints { get { return GetSpawnPoints(); }  }
+        internal DBEntryTheaterSpawnPoint[] SpawnPoints { get { return GetSpawnPoints(); } }
         internal DBEntryTheaterSpawnPoint[] _SpawnPoints { get; private set; }
+        internal DBEntryTemplateLocation[] TemplateLocations { get; private set; }
         internal MinMaxI[] Temperature { get; private set; }
 
 
@@ -84,6 +85,15 @@ namespace BriefingRoom4DCS.Data
             var terrainData = JsonConvert.DeserializeObject<TerrainBounds>(File.ReadAllText(boundsJsonFilePath));
             WaterCoordinates = terrainData.waters.Select(x => x.Select(y => new Coordinates(y)).ToList()).ToList();
             WaterExclusionCoordinates = terrainData.landMasses.Select(x => x.Select(y => new Coordinates(y)).ToList()).ToList();
+
+            var templateLocationFilePath = Path.Combine(BRPaths.DATABASEJSON, "TheaterTemplateLocations", $"{DCSID}.json");
+            if (File.Exists(templateLocationFilePath))
+            {
+                TemplateLocations = JsonConvert.DeserializeObject<List<TemplateLocation>>(File.ReadAllText(templateLocationFilePath)).Select(x =>
+                    new DBEntryTemplateLocation(x)
+                ).ToArray();
+                BriefingRoom.PrintToLog($"{DCSID} loaded {TemplateLocations.Length} Template Locations");
+            }
 
             // [Temperature] section
             Temperature = new MinMaxI[12];

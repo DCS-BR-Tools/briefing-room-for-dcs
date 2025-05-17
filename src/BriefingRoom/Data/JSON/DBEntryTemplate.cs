@@ -98,11 +98,11 @@ namespace BriefingRoom4DCS.Data
         public DBEntryTemplate() { }
     }
 
-    internal class DBEntryTemplateUnit
+    public class DBEntryTemplateUnit
     {
         public DBEntryTemplateUnit() { }
-        internal Coordinates DCoordinates { get; init; }
-        internal double Heading { get; init; }
-        internal string DCSID { get; init; }
+        public Coordinates DCoordinates { get; init; }
+        public double Heading { get; init; }
+        public string DCSID { get; init; }
     }
 }

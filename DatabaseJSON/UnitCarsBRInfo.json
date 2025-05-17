@@ -388,7 +388,8 @@
         "type": "Kub 2P25 ln",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMLauncher"
         ],
         "lowPolly": false,
         "immovable": true
@@ -397,7 +398,8 @@
         "type": "5p73 s-125 ln",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMLauncher"
         ],
         "lowPolly": false,
         "immovable": true
@@ -406,7 +408,8 @@
         "type": "S-300PS 5P85C ln",
         "families": [
             "VehicleSAMLong",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMLauncher"
         ],
         "lowPolly": false,
         "immovable": true
@@ -415,7 +418,8 @@
         "type": "S-300PS 5P85D ln",
         "families": [
             "VehicleSAMLong",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMLauncher"
         ],
         "lowPolly": false,
         "immovable": true
@@ -424,7 +428,8 @@
         "type": "SA-11 Buk LN 9A310M1",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMLauncher"
         ],
         "lowPolly": false,
         "immovable": true
@@ -465,7 +470,8 @@
         "type": "SA-11 Buk CC 9S470M1",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMCmd"
         ],
         "lowPolly": false,
         "immovable": true
@@ -474,7 +480,8 @@
         "type": "Patriot AMG",
         "families": [
             "VehicleSAMLong",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMCmd"
         ],
         "lowPolly": false,
         "immovable": true
@@ -483,7 +490,8 @@
         "type": "Patriot ECS",
         "families": [
             "VehicleSAMLong",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMCmd"
         ],
         "lowPolly": false,
         "immovable": true
@@ -500,7 +508,8 @@
         "type": "Hawk pcp",
         "families": [
             "VehicleSAMMedium",
-            "VehicleSAMMedium"
+            "VehicleStatic",
+            "VehicleSAMCmd"
         ],
         "lowPolly": false,
         "immovable": true
@@ -517,7 +526,8 @@
         "type": "Hawk ln",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMLauncher"
         ],
         "lowPolly": false,
         "immovable": true
@@ -542,7 +552,8 @@
         "type": "Patriot ln",
         "families": [
             "VehicleSAMLong",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMLauncher"
         ],
         "lowPolly": false,
         "immovable": true
@@ -559,7 +570,8 @@
         "type": "Patriot EPP",
         "families": [
             "VehicleSAMLong",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMCmd"
         ],
         "lowPolly": false,
         "immovable": true
@@ -568,7 +580,8 @@
         "type": "Patriot cp",
         "families": [
             "VehicleSAMLong",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMCmd"
         ],
         "lowPolly": false,
         "immovable": true
@@ -585,7 +598,8 @@
         "type": "S-300PS 54K6 cp",
         "families": [
             "VehicleSAMLong",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMCmd"
         ],
         "lowPolly": false,
         "immovable": true
@@ -722,7 +736,8 @@
         "type": "Kub 1S91 str",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMsr"
         ],
         "lowPolly": false,
         "immovable": true
@@ -731,7 +746,8 @@
         "type": "S-300PS 40B6M tr",
         "families": [
             "VehicleSAMLong",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMtr"
         ],
         "lowPolly": false,
         "immovable": true
@@ -740,7 +756,8 @@
         "type": "S-300PS 40B6MD sr",
         "families": [
             "VehicleSAMLong",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMsr"
         ],
         "lowPolly": false,
         "immovable": true
@@ -757,7 +774,8 @@
         "type": "S-300PS 64H6E sr",
         "families": [
             "VehicleSAMLong",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMsr"
         ],
         "lowPolly": false,
         "immovable": true
@@ -766,7 +784,8 @@
         "type": "SA-11 Buk SR 9S18M1",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMsr"
         ],
         "lowPolly": false,
         "immovable": true
@@ -783,7 +802,8 @@
         "type": "Hawk tr",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMtr"
         ],
         "lowPolly": false,
         "immovable": true
@@ -792,7 +812,8 @@
         "type": "Hawk sr",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMsr"
         ],
         "lowPolly": false,
         "immovable": true
@@ -801,7 +822,9 @@
         "type": "Patriot str",
         "families": [
             "VehicleSAMLong",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMsr",
+            "VehicleSAMtr"
         ],
         "lowPolly": false,
         "immovable": true
@@ -819,7 +842,8 @@
         "type": "p-19 s-125 sr",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMsr"
         ],
         "lowPolly": false,
         "immovable": false
@@ -836,7 +860,8 @@
         "type": "snr s-125 tr",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMtr"
         ],
         "lowPolly": false,
         "immovable": true
@@ -1036,7 +1061,8 @@
     {
         "type": "GAZ-3308",
         "families": [
-            "VehicleTransport"
+            "VehicleTransport",
+            "VehicleSupply"
         ],
         "lowPolly": true,
         "immovable": false
@@ -1044,7 +1070,8 @@
     {
         "type": "GAZ-66",
         "families": [
-            "VehicleTransport"
+            "VehicleTransport",
+            "VehicleSupply"
         ],
         "lowPolly": false,
         "immovable": false
@@ -1076,7 +1103,8 @@
     {
         "type": "KAMAZ Truck",
         "families": [
-            "VehicleTransport"
+            "VehicleTransport",
+            "VehicleSupply"
         ],
         "lowPolly": false,
         "immovable": false
@@ -1108,7 +1136,8 @@
     {
         "type": "M 818",
         "families": [
-            "VehicleTransport"
+            "VehicleTransport",
+            "VehicleSupply"
         ],
         "lowPolly": false,
         "immovable": false
@@ -1180,7 +1209,8 @@
     {
         "type": "Ural-4320-31",
         "families": [
-            "VehicleTransport"
+            "VehicleTransport",
+            "VehicleSupply"
         ],
         "lowPolly": false,
         "immovable": false
@@ -1188,7 +1218,8 @@
     {
         "type": "Ural-4320T",
         "families": [
-            "VehicleTransport"
+            "VehicleTransport",
+            "VehicleSupply"
         ],
         "lowPolly": false,
         "immovable": false
@@ -1204,7 +1235,8 @@
     {
         "type": "Ural-375",
         "families": [
-            "VehicleTransport"
+            "VehicleTransport",
+            "VehicleSupply"
         ],
         "lowPolly": false,
         "immovable": false
@@ -1252,7 +1284,8 @@
     {
         "type": "KrAZ6322",
         "families": [
-            "VehicleTransport"
+            "VehicleTransport",
+            "VehicleSupply"
         ],
         "lowPolly": false,
         "immovable": false
@@ -1420,7 +1453,7 @@
     {
         "type": "HL_B8M1",
         "families": [
-            "VehicleTransport"
+            "VehicleArtillery"
         ],
         "lowPolly": false,
         "immovable": false
@@ -1437,7 +1470,8 @@
         "type": "NASAMS_Radar_MPQ64F1",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMsr"
         ],
         "lowPolly": false,
         "immovable": true
@@ -1446,7 +1480,8 @@
         "type": "NASAMS_Command_Post",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMCmd"
         ],
         "lowPolly": false,
         "immovable": true
@@ -1455,7 +1490,8 @@
         "type": "NASAMS_LN_B",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMLauncher"
         ],
         "lowPolly": false,
         "immovable": true
@@ -1464,7 +1500,8 @@
         "type": "NASAMS_LN_C",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMLauncher"
         ],
         "lowPolly": false,
         "immovable": true
@@ -1521,7 +1558,8 @@
         "type": "RD_75",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMtr"
         ],
         "lowPolly": false,
         "immovable": true
@@ -1530,7 +1568,8 @@
         "type": "S_75M_Volhov",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMLauncher"
         ],
         "lowPolly": false,
         "immovable": true
@@ -1539,7 +1578,8 @@
         "type": "SNR_75V",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMtr"
         ],
         "lowPolly": false,
         "immovable": true
@@ -1548,7 +1588,8 @@
         "type": "RLS_19J6",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMsr"
         ],
         "lowPolly": false,
         "immovable": true
@@ -1557,7 +1598,8 @@
         "type": "RPC_5N62V",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMsr"
         ],
         "lowPolly": false,
         "immovable": true
@@ -1566,7 +1608,8 @@
         "type": "S-200_Launcher",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMLauncher"
         ],
         "lowPolly": false,
         "immovable": true
@@ -1654,7 +1697,8 @@
     {
         "type": "ZIL-135",
         "families": [
-            "VehicleTransport"
+            "VehicleTransport",
+            "VehicleSupply"
         ],
         "lowPolly": false,
         "immovable": false
@@ -1671,7 +1715,8 @@
         "type": "rapier_fsa_launcher",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMLauncher"
         ],
         "lowPolly": false,
         "immovable": true
@@ -1680,7 +1725,8 @@
         "type": "rapier_fsa_optical_tracker_unit",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMtr"
         ],
         "lowPolly": false,
         "immovable": true
@@ -1689,7 +1735,8 @@
         "type": "rapier_fsa_blindfire_radar",
         "families": [
             "VehicleSAMMedium",
-            "VehicleStatic"
+            "VehicleStatic",
+            "VehicleSAMsr"
         ],
         "lowPolly": false,
         "immovable": true
@@ -1713,7 +1760,8 @@
     {
         "type": "Bedford_MWD",
         "families": [
-            "VehicleTransport"
+            "VehicleTransport",
+            "VehicleSupply"
         ],
         "lowPolly": false,
         "immovable": false
@@ -1841,7 +1889,8 @@
     {
         "type": "Blitz_36-6700A",
         "families": [
-            "VehicleTransport"
+            "VehicleTransport",
+            "VehicleSupply"
         ],
         "lowPolly": false,
         "immovable": false
@@ -2241,7 +2290,8 @@
     {
         "type": "CCKW_353",
         "families": [
-            "VehicleTransport"
+            "VehicleTransport",
+            "VehicleSupply"
         ],
         "lowPolly": false,
         "immovable": false
@@ -2369,7 +2419,9 @@
     {
         "type": "S-300PS 40B6MD sr_19J6",
         "families": [
-            "VehicleSAMLong"
+            "VehicleSAMLong",
+            "VehicleStatic",
+            "VehicleSAMsr"
         ],
         "lowPolly": false,
         "immovable": true
@@ -2377,7 +2429,9 @@
     {
         "type": "S-300PS 5H63C 30H6_tr",
         "families": [
-            "VehicleSAMLong"
+            "VehicleSAMLong",
+            "VehicleStatic",
+            "VehicleSAMtr"
         ],
         "lowPolly": false,
         "immovable": true

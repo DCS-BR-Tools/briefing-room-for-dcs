@@ -67,12 +67,13 @@ namespace BriefingRoom4DCS.Data
                 var unitFamily = ((UnitFamily)i).ToString();
                 var unitFamilyNames = ini.GetLangStrings(LangDB, className, "Name", "UnitFamilies", unitFamily);
                 if (unitFamilyNames.Count() == 0)
-                    throw new BriefingRoomException("en", $"No UnitFamilies name for {unitFamily}.");
+                     BriefingRoom.PrintToLog( $"No UnitFamilies name for {unitFamily}.", LogMessageErrorLevel.Warning);
                 UnitFamilies[i] = unitFamilyNames;
 
                 var unitGroupNames = ini.GetLangStrings(LangDB, className, "Name", "UnitGroups", unitFamily);
                 if (unitGroupNames.Count() == 0)
-                    throw new BriefingRoomException("en", $"No UnitGroups name for {unitFamily}.");
+                    BriefingRoom.PrintToLog($"No UnitGroups name for {unitFamily}.", LogMessageErrorLevel.Warning);
+
                 UnitGroups[i] = unitGroupNames;
             }
 

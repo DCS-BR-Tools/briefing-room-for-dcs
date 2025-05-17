@@ -72,6 +72,8 @@ namespace BriefingRoom4DCS.Mission
         protected internal Dictionary<int, List<DBEntryAirbaseParkingSpot>> AirbaseParkingSpots { get; protected set; }
         protected internal List<DBEntryTheaterSpawnPoint> SpawnPoints { get; protected set; }
         protected internal List<DBEntryTheaterSpawnPoint> UsedSpawnPoints { get; protected set; }
+        protected internal List<DBEntryTemplateLocation> TemplateLocations { get; protected set; }
+        protected internal List<DBEntryTemplateLocation> UsedTemplateLocations { get; protected set; }
         protected internal List<Coordinates> FrontLine { get; protected set; }
         protected internal bool PlayerSideOfFrontLine { get; protected set; }
         protected internal int GroupID { get; set; }
@@ -105,6 +107,8 @@ namespace BriefingRoom4DCS.Mission
             AirbaseParkingSpots = mission.AirbaseParkingSpots.ToDictionary(x => x.Key, x => x.Value.ToList());
             SpawnPoints = mission.SpawnPoints.ToList();
             UsedSpawnPoints = mission.UsedSpawnPoints.ToList();
+            TemplateLocations = mission.TemplateLocations.ToList();
+            UsedTemplateLocations = mission.UsedTemplateLocations.ToList();
             FrontLine = mission.FrontLine.ToList();
             PlayerSideOfFrontLine = mission.PlayerSideOfFrontLine;
             GroupID = mission.GroupID;

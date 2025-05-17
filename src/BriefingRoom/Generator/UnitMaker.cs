@@ -119,6 +119,69 @@ namespace BriefingRoom4DCS.Generator
             return new(units, Database.Instance.GetEntries<DBEntryJSONUnit>(units));
         }
 
+        internal static Tuple<List<string>, List<DBEntryJSONUnit>> GetUnitsForTemplateLocation(
+            ref DCSMission mission,
+            DBEntryTemplateLocation templateLocation,
+            Side side,
+            List<UnitFamily> families,
+            ref Dictionary<string, object> extraSettings
+        )
+        {
+            DBEntryCoalition unitsCoalitionDB = mission.CoalitionsDB[(int)((side == Side.Ally) ? mission.TemplateRecord.ContextPlayerCoalition : mission.TemplateRecord.ContextPlayerCoalition.GetEnemy())];
+            Country country = Country.ALL;
+            var unitMap = templateLocation.GetRequiredFamilyMap();
+            if (templateLocation.LocationType == DBEntryTemplateLocationType.SAM)
+            {
+                //Always pull from a template to get the right units for SAM Sites
+                var response = unitsCoalitionDB.GetRandomTemplate(families, mission.TemplateRecord.ContextDecade, mission.TemplateRecord.Mods, mission.TemplateRecord.OptionsUnitBanList);
+                if (response != null)
+                {
+                    (country, var unitTemplate) = response;
+                    foreach (var unit in unitTemplate.Units)
+                    {
+                        var unitDB = Database.Instance.GetEntry<DBEntryJSONUnit>(unit.DCSID);
+                        if (unitDB == null)
+                        {
+                            BriefingRoom.PrintToLog("Unit not found in template: " + unit.DCSID, LogMessageErrorLevel.Warning);
+                            continue;
+                        }
+                        var matchingFamilies = unitDB.Families.Intersect(unitMap.Keys).ToList();
+                        if (matchingFamilies.Count > 0)
+                        {
+                            unitMap[matchingFamilies.First()].Add(unit.DCSID);
+                        }
+                    }
+                }
+            }
+
+            foreach (var unitFamily in unitMap.Keys)
+            {
+                if (unitMap[unitFamily].Count > 0) continue;
+                var (newCountry, unitSet) = unitsCoalitionDB.GetRandomUnits(
+                    mission.LangKey,
+                    new List<UnitFamily> { unitFamily },
+                    mission.TemplateRecord.ContextDecade,
+                    1, mission.TemplateRecord.Mods,
+                    mission.TemplateRecord.OptionsUnitBanList,
+                    mission.TemplateRecord.OptionsMission.Contains("AllowLowPoly"),
+                    mission.TemplateRecord.OptionsMission.Contains("BlockSuppliers"),
+                    requiredCountry: country != Country.ALL ? country : null,
+                    lowUnitVariation: false,
+                    allowStatic: true,
+                    allowDefaults: true);
+                unitMap[unitFamily] = unitSet;
+                if (country == Country.ALL && newCountry != Country.ALL)
+                    country = newCountry;
+            }
+
+
+            var (units ,convertedUnitTemplate) = templateLocation.CreateTemplatePositionMap(unitMap);
+            extraSettings["TemplatePositionMap"] = convertedUnitTemplate;
+            if (country != Country.ALL && unitsCoalitionDB.Countries.Contains(country))
+                extraSettings["Country"] = country;
+            return new(units, Database.Instance.GetEntries<DBEntryJSONUnit>(units));
+        }
+
         internal static UnitMakerGroupInfo? AddUnitGroupTemplate(
             ref DCSMission mission,
             DBEntryTemplate unitTemplate,
@@ -683,7 +746,7 @@ namespace BriefingRoom4DCS.Generator
         private static double GetGroupHeading(Coordinates groupCoordinates, Dictionary<string, object> extraSettings)
         {
             if (!extraSettings.ContainsKey("GroupX2"))
-                return 0.0;
+                return 3.141593;
             var waypointCoor = new Coordinates((double)extraSettings["GroupX2"], (double)extraSettings["GroupY2"]);
             return Coordinates.ToAngleInRadians(groupCoordinates, waypointCoor);
         }

@@ -1,0 +1,752 @@
+[
+  {
+    "coords": [-15778.579472597, -79728.016973319],
+    "locations": [
+      {
+        "heading": 4.7123889803847,
+        "coords": [0, 0],
+        "unitTypes": ["VehicleSAMtr"],
+        "originalType": "S-300PS 40B6M tr"
+      },
+      {
+        "heading": 0,
+        "coords": [0.21416471099838, -41.333789176992],
+        "unitTypes": ["VehicleSAMsr"],
+        "originalType": "S-300PS 40B6MD sr"
+      },
+      {
+        "heading": 3.1415926535898,
+        "coords": [-43.676126271001, -93.695432843],
+        "unitTypes": ["VehicleSAMCmd"],
+        "originalType": "S-300PS 54K6 cp"
+      },
+      {
+        "heading": 3.1415926535898,
+        "coords": [-260.836363099, -187.771045455],
+        "unitTypes": ["VehicleEWR"],
+        "originalType": "1L13 EWR"
+      },
+      {
+        "heading": 2.0594885173533,
+        "coords": [-69.796279238, 21.266555779002],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85C ln"
+      },
+      {
+        "heading": 3.3161255787892,
+        "coords": [-83.459987784001, -60.008951954995],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 1.8151424220741,
+        "coords": [-5.9537789590013, 38.463982052999],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 6.14355896702,
+        "coords": [88.985437321999, -48.936636408995],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85C ln"
+      },
+      {
+        "heading": 4.9567350756639,
+        "coords": [10.772484951, -116.07727323299],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 1.0995574287564,
+        "coords": [58.831046046, 15.141445051006],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 2.164208272473,
+        "coords": [42.793549988999, -108.433472712],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "GAZ-66"
+      },
+      {
+        "heading": 2.1816615649929,
+        "coords": [-143.307164666, -127.360432188],
+        "unitTypes": [
+          "VehicleSAMShort",
+          "VehicleSAMShortIR",
+          "VehicleAAA",
+          "VehicleAAAStatic",
+          "InfantryMANPADS"
+        ],
+        "originalType": "Tor 9A331"
+      },
+      {
+        "heading": 2.1816615649929,
+        "coords": [47.674260016, -106.427701468],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "KAMAZ Truck"
+      }
+    ],
+    "locationType": "SAM"
+  },
+  {
+    "coords": [-19169.75270166, -18484.536170648],
+    "locations": [
+      {
+        "heading": 4.4593162388455,
+        "coords": [0, 0],
+        "unitTypes": ["VehicleSAMtr"],
+        "originalType": "S-300PS 40B6M tr"
+      },
+      {
+        "heading": 6.0301125656404,
+        "coords": [-10.141811242, -40.070833021],
+        "unitTypes": ["VehicleSAMsr"],
+        "originalType": "S-300PS 40B6MD sr"
+      },
+      {
+        "heading": 2.8885199120506,
+        "coords": [-65.744401445001, -79.775383549],
+        "unitTypes": ["VehicleSAMCmd"],
+        "originalType": "S-300PS 54K6 cp"
+      },
+      {
+        "heading": 1.8064157758141,
+        "coords": [-62.248382728998, 38.064758475],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85C ln"
+      },
+      {
+        "heading": 3.06305283725,
+        "coords": [-92.476734150001, -39.994750148999],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 1.5620696805349,
+        "coords": [3.8664749320014, 38.729520664001],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 5.8904862254809,
+        "coords": [77.804285019, -64.501695835999],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85C ln"
+      },
+      {
+        "heading": 4.7036623341247,
+        "coords": [-11.491137771001, -113.79727624],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 0.84648468721725,
+        "coords": [61.184632197001, 5.0754947919995],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 1.9111355309338,
+        "coords": [14.280901107999, -115.694259965],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "GAZ-66"
+      },
+      {
+        "heading": 1.9285888234537,
+        "coords": [19.508354017002, -114.974409464],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "KAMAZ Truck"
+      }
+    ],
+    "locationType": "SAM"
+  },
+  {
+    "coords": [-28526.564114935, -8616.9284861343],
+    "locations": [
+      {
+        "heading": 4.4680428851055,
+        "coords": [0, 0],
+        "unitTypes": ["VehicleSAMtr"],
+        "originalType": "S-300PS 40B6M tr"
+      },
+      {
+        "heading": 6.0388392119004,
+        "coords": [82.315138326998, -321.5617182792],
+        "unitTypes": ["VehicleSAMsr", "VehicleEWR", "VehicleSAMtr"],
+        "originalType": "S-300PS 64H6E sr"
+      },
+      {
+        "heading": 6.0388392119004,
+        "coords": [-9.7917455260031, -40.1578101222],
+        "unitTypes": ["VehicleSAMsr"],
+        "originalType": "S-300PS 40B6MD sr"
+      },
+      {
+        "heading": 2.8972465583106,
+        "coords": [-65.045735383002, -80.346066799701],
+        "unitTypes": ["VehicleSAMCmd"],
+        "originalType": "S-300PS 54K6 cp"
+      },
+      {
+        "heading": 2.8972465583106,
+        "coords": [-300.029007134, -124.6789577429],
+        "unitTypes": ["VehicleEWR"],
+        "originalType": "1L13 EWR"
+      },
+      {
+        "heading": 1.8151424220741,
+        "coords": [-62.578185967002, 37.5200963637],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85C ln"
+      },
+      {
+        "heading": 3.07177948351,
+        "coords": [-95.498348872003, -38.0356311695],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 1.5707963267949,
+        "coords": [3.5283531719979, 38.761786893399],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 5.8992128717408,
+        "coords": [74.503345689998, -69.010534843901],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85C ln"
+      },
+      {
+        "heading": 4.7123889803847,
+        "coords": [-17.629137867003, -115.2353821159],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 0.85521133347722,
+        "coords": [60.746559641, 0.45916124289943],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 1.9198621771938,
+        "coords": [15.289967401997, -115.5652318913],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "GAZ-66"
+      },
+      {
+        "heading": 1.9373154697137,
+        "coords": [212.845145313, -290.5608416202],
+        "unitTypes": [
+          "VehicleSAMShort",
+          "VehicleSAMShortIR",
+          "VehicleAAA",
+          "VehicleAAAStatic",
+          "InfantryMANPADS"
+        ],
+        "originalType": "Tor 9A331"
+      },
+      {
+        "heading": 1.9373154697137,
+        "coords": [-169.861606599, -88.908142119801],
+        "unitTypes": [
+          "VehicleSAMShort",
+          "VehicleSAMShortIR",
+          "VehicleAAA",
+          "VehicleAAAStatic",
+          "InfantryMANPADS"
+        ],
+        "originalType": "Tor 9A331"
+      },
+      {
+        "heading": 1.9373154697137,
+        "coords": [20.510939463999, -114.799791247],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "KAMAZ Truck"
+      }
+    ],
+    "locationType": "SAM"
+  },
+  {
+    "coords": [-30206.628721453, 9367.3757623226],
+    "locations": [
+      {
+        "heading": 5.4279739737024,
+        "coords": [0, 0],
+        "unitTypes": ["VehicleSAMtr"],
+        "originalType": "S-300PS 40B6M tr"
+      },
+      {
+        "heading": 0.71558499331767,
+        "coords": [27.279037751003, -31.0545019867],
+        "unitTypes": ["VehicleSAMsr"],
+        "originalType": "S-300PS 40B6MD sr"
+      },
+      {
+        "heading": 3.8571776469075,
+        "coords": [28.506943768003, -99.366957781001],
+        "unitTypes": ["VehicleSAMCmd"],
+        "originalType": "S-300PS 54K6 cp"
+      },
+      {
+        "heading": 2.775073510671,
+        "coords": [-66.628036538998, -29.740405799201],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85C ln"
+      },
+      {
+        "heading": 4.0317105721069,
+        "coords": [-23.618637594998, -100.0440094854],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 2.5307274153918,
+        "coords": [-29.728016735997, 25.1231053061],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 0.57595865315813,
+        "coords": [99.263484212002, 21.446751281799],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85C ln"
+      },
+      {
+        "heading": 5.6723200689816,
+        "coords": [84.283640761001, -80.537244138401],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 1.8151424220741,
+        "coords": [34.466672328002, 50.0240325822],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 2.8797932657906,
+        "coords": [103.435460966, -53.760685819901],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "GAZ-66"
+      },
+      {
+        "heading": 2.8972465583106,
+        "coords": [-24.599328614997, -190.1380976116],
+        "unitTypes": [
+          "VehicleSAMShort",
+          "VehicleSAMShortIR",
+          "VehicleAAA",
+          "VehicleAAAStatic",
+          "InfantryMANPADS"
+        ],
+        "originalType": "Tor 9A331"
+      },
+      {
+        "heading": 2.8972465583106,
+        "coords": [105.803075248, -49.044877165201],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "KAMAZ Truck"
+      }
+    ],
+    "locationType": "SAM"
+  },
+  {
+    "coords": [-47007.954957191, -3601.1989387242],
+    "locations": [
+      {
+        "heading": 4.921828490624,
+        "coords": [0, 0],
+        "unitTypes": ["VehicleSAMtr"],
+        "originalType": "S-300PS 40B6M tr"
+      },
+      {
+        "heading": 0.20943951023932,
+        "coords": [8.8032626939967, -40.3860193658],
+        "unitTypes": ["VehicleSAMsr"],
+        "originalType": "S-300PS 40B6MD sr"
+      },
+      {
+        "heading": 3.3510321638291,
+        "coords": [-23.241322256006, -100.7287400967],
+        "unitTypes": ["VehicleSAMCmd"],
+        "originalType": "S-300PS 54K6 cp"
+      },
+      {
+        "heading": 2.2689280275926,
+        "coords": [-72.692628646, 6.2903680817999],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85C ln"
+      },
+      {
+        "heading": 3.5255650890285,
+        "coords": [-69.159624143002, -76.0499195539],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 2.0245819323134,
+        "coords": [-13.820786148004, 36.3855915096],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 0.069813170079764,
+        "coords": [97.215390835998, -29.36614076],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85C ln"
+      },
+      {
+        "heading": 5.1661745859032,
+        "coords": [39.762662704998, -109.2810166561],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 1.3089969389957,
+        "coords": [52.296198133998, 29.2653614679],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 2.3736477827123,
+        "coords": [64.402994901997, -97.1666618388],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "GAZ-66"
+      },
+      {
+        "heading": 2.3911010752322,
+        "coords": [-99.664863609003, -156.9742320239],
+        "unitTypes": [
+          "VehicleSAMShort",
+          "VehicleSAMShortIR",
+          "VehicleAAA",
+          "VehicleAAAStatic",
+          "InfantryMANPADS"
+        ],
+        "originalType": "Tor 9A331"
+      },
+      {
+        "heading": 2.3911010752322,
+        "coords": [68.760026413998, -94.1899648347],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "KAMAZ Truck"
+      }
+    ],
+    "locationType": "SAM"
+  },
+  {
+    "coords": [203.44152708256, -32779.128116967],
+    "locations": [
+      {
+        "heading": 4.3633231299858,
+        "coords": [0, 0],
+        "unitTypes": ["VehicleSAMtr"],
+        "originalType": "S-300PS 40B6M tr"
+      },
+      {
+        "heading": 5.9341194567807,
+        "coords": [-13.93573950025, -38.914305323997],
+        "unitTypes": ["VehicleSAMsr"],
+        "originalType": "S-300PS 40B6MD sr"
+      },
+      {
+        "heading": 2.7925268031909,
+        "coords": [-73.08785893088, -73.106791877995],
+        "unitTypes": ["VehicleSAMCmd"],
+        "originalType": "S-300PS 54K6 cp"
+      },
+      {
+        "heading": 1.7104226669544,
+        "coords": [-58.31345810237, 43.855758963],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85C ln"
+      },
+      {
+        "heading": 2.9670597283903,
+        "coords": [-98.95100500049, -27.844972349998],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 1.4660765716752,
+        "coords": [7.56073450092, 38.180632434007],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 5.7944931166212,
+        "coords": [66.88164341027, -76.420208146996],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85C ln"
+      },
+      {
+        "heading": 4.607669225265,
+        "coords": [-29.57794101183, -112.761363946],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 0.75049157835756,
+        "coords": [60.46177904956, -5.8930986189953],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 1.8151424220741,
+        "coords": [3.12635126383, -116.530390255],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "GAZ-66"
+      },
+      {
+        "heading": 1.832595714594,
+        "coords": [-171.3670362352, -77.672948257998],
+        "unitTypes": [
+          "VehicleSAMShort",
+          "VehicleSAMShortIR",
+          "VehicleAAA",
+          "VehicleAAAStatic",
+          "InfantryMANPADS"
+        ],
+        "originalType": "Tor 9A331"
+      },
+      {
+        "heading": 1.832595714594,
+        "coords": [8.39873262883, -116.314882961],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "KAMAZ Truck"
+      }
+    ],
+    "locationType": "SAM"
+  },
+  {
+    "coords": [-95.680725135836, -32455.80271848],
+    "locations": [
+      {
+        "heading": 4.1189770347066,
+        "coords": [0, 0],
+        "unitTypes": ["VehicleSAMtr"],
+        "originalType": "S-300PS 40B6M tr"
+      },
+      {
+        "heading": 5.6897733615015,
+        "coords": [-22.936010989525, -34.387023630999],
+        "unitTypes": ["VehicleSAMsr"],
+        "originalType": "S-300PS 40B6MD sr"
+      },
+      {
+        "heading": 2.5481807079117,
+        "coords": [-88.602970835478, -53.253654343],
+        "unitTypes": ["VehicleSAMCmd"],
+        "originalType": "S-300PS 54K6 cp"
+      },
+      {
+        "heading": 1.4660765716752,
+        "coords": [-45.971630839779, 56.660357818],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85C ln"
+      },
+      {
+        "heading": 2.7227136331111,
+        "coords": [-102.74804575653, -3.0794429680027],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 1.221730476396,
+        "coords": [16.572879347394, 35.217397254997],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 5.550147021342,
+        "coords": [46.407251150334, -90.330335320999],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85C ln"
+      },
+      {
+        "heading": 4.3633231299858,
+        "coords": [-55.978792671917, -102.256317968],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 0.50614548307836,
+        "coords": [57.240136226084, -20.345076603],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 1.5707963267949,
+        "coords": [-25.157767635358, -113.82527247],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "GAZ-66"
+      },
+      {
+        "heading": 1.5882496193148,
+        "coords": [-190.02607378674, -25.450234043001],
+        "unitTypes": [
+          "VehicleSAMShort",
+          "VehicleSAMShortIR",
+          "VehicleAAA",
+          "VehicleAAAStatic",
+          "InfantryMANPADS"
+        ],
+        "originalType": "Tor 9A331"
+      },
+      {
+        "heading": 1.5882496193148,
+        "coords": [-19.989862596528, -114.891671158],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "KAMAZ Truck"
+      }
+    ],
+    "locationType": "SAM"
+  },
+  {
+    "coords": [-3371.8041835521, 5948.5554091704],
+    "locations": [
+      {
+        "heading": 2.9792770331543,
+        "coords": [0, 0],
+        "unitTypes": ["VehicleSAMtr"],
+        "originalType": "S-300PS 40B6M tr"
+      },
+      {
+        "heading": 4.5500733599492,
+        "coords": [-40.8250959659, 6.4683486026997],
+        "unitTypes": ["VehicleSAMsr"],
+        "originalType": "S-300PS 40B6MD sr"
+      },
+      {
+        "heading": 1.4084807063594,
+        "coords": [-85.4056446064, 58.2435748479],
+        "unitTypes": ["VehicleSAMCmd"],
+        "originalType": "S-300PS 54K6 cp"
+      },
+      {
+        "heading": 0.32637657012294,
+        "coords": [32.2663675622, 65.442100474],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85C ln"
+      },
+      {
+        "heading": 1.5830136315588,
+        "coords": [-45.7327243379, 92.0606419726],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 4.4104470197897,
+        "coords": [-54.5425547172, -83.412272982],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85C ln"
+      },
+      {
+        "heading": 3.2236231284335,
+        "coords": [-113.3217279172, 2.8355988048997],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 0.4310963252426,
+        "coords": [-113.9237935932, -24.7077959065],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "GAZ-66"
+      },
+      {
+        "heading": 0.44854961776254,
+        "coords": [-112.7331281654, -29.8484927942],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "KAMAZ Truck"
+      }
+    ],
+    "locationType": "SAM"
+  },
+  {
+    "coords": [-13986.893423053, 13063.983346291],
+    "locations": [
+      {
+        "heading": 4.1538836197465,
+        "coords": [0, 0],
+        "unitTypes": ["VehicleSAMtr"],
+        "originalType": "S-300PS 40B6M tr"
+      },
+      {
+        "heading": 5.7246799465414,
+        "coords": [-21.721949172999, -35.166531225001],
+        "unitTypes": ["VehicleSAMsr"],
+        "originalType": "S-300PS 40B6MD sr"
+      },
+      {
+        "heading": 2.5830872929516,
+        "coords": [-86.690470564999, -56.313412744001],
+        "unitTypes": ["VehicleSAMCmd"],
+        "originalType": "S-300PS 54K6 cp"
+      },
+      {
+        "heading": 1.5009831567151,
+        "coords": [-47.921044134999, 55.021455079999],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85C ln"
+      },
+      {
+        "heading": 2.757620218151,
+        "coords": [-102.577983413, -6.6634221390013],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 1.2566370614359,
+        "coords": [15.333714158001, 35.774328915999],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 5.5850536063819,
+        "coords": [49.531464347001, -88.655718812],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85C ln"
+      },
+      {
+        "heading": 4.3982297150257,
+        "coords": [-52.375997871999, -104.147657872],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 0.54105206811824,
+        "coords": [57.915300016, -18.335030987],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 1.6057029118348,
+        "coords": [-21.169997482, -114.633926618],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "GAZ-66"
+      },
+      {
+        "heading": 1.6231562043547,
+        "coords": [-189.022114678, -32.066544784],
+        "unitTypes": [
+          "VehicleSAMShort",
+          "VehicleSAMShortIR",
+          "VehicleAAA",
+          "VehicleAAAStatic",
+          "InfantryMANPADS"
+        ],
+        "originalType": "Tor 9A331"
+      },
+      {
+        "heading": 1.6231562043547,
+        "coords": [-15.968023813999, -115.5193184],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "KAMAZ Truck"
+      }
+    ],
+    "locationType": "SAM"
+  }
+]
