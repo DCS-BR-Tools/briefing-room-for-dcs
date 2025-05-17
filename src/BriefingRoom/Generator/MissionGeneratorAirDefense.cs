@@ -93,16 +93,12 @@ namespace BriefingRoom4DCS.Generator
                 var units = new List<string>();
                 var usedSP = false;
                 Coordinates? spawnPoint = null;
-                DBEntryTemplateLocation? templateLocation = null;
+                DBEntryTheaterTemplateLocation? templateLocation = null;
                 var extraSetting = new Dictionary<string, object>();
-                if (airDefenseRange == AirDefenseRange.ShortRangeBattery)
-                {
-                    unitCount = Toolbox.RandomMinMax(2, 5);
-                    forceTryTemplate = Toolbox.RandomChance(2);
-                }
+
                 if (airDefenseRange == AirDefenseRange.MediumRange || airDefenseRange == AirDefenseRange.LongRange)
                 {
-                    templateLocation = UnitMakerSpawnPointSelector.GetRandomTemplateLocation(mission, DBEntryTemplateLocationType.SAM, centerPoint, commonAirDefenseDB.DistanceFromCenter[(int)side, (int)airDefenseRange],
+                    templateLocation = UnitMakerSpawnPointSelector.GetRandomTemplateLocation(mission, TheaterTemplateLocationType.SAM, centerPoint, commonAirDefenseDB.DistanceFromCenter[(int)side, (int)airDefenseRange],
                         opposingPoint,
                         new MinMaxD(commonAirDefenseDB.MinDistanceFromOpposingPoint[(int)side, (int)airDefenseRange], 99999),
                         GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, side));
@@ -110,30 +106,37 @@ namespace BriefingRoom4DCS.Generator
                     {
                         spawnPoint = templateLocation.Value.Coordinates;
                         (units, _) = UnitMaker.GetUnitsForTemplateLocation(ref mission, templateLocation.Value, side, unitFamilies, ref extraSetting);
-                        BriefingRoom.PrintToLog("WE USED A TEMPLATE YAY!", LogMessageErrorLevel.Warning);
+                        if (units.Count == 0)
+                            UnitMakerSpawnPointSelector.RecoverTemplateLocation(ref mission, templateLocation.Value.Coordinates);
                     }
                 }
-                // if (units.Count == 0)
-                // {
-                //     usedSP = true;
-                //     (units, _) = UnitMaker.GetUnits(ref mission, unitFamilies, unitCount, side, 0, ref extraSetting, true, forceTryTemplate: forceTryTemplate, allowDefaults: false);
-                //     if (units.Count == 0)
-                //     {
-                //         return groupCount - i;
-                //     }
-                //     // Find spawn point at the proper distance
-                //     spawnPoint =
-                //         UnitMakerSpawnPointSelector.GetRandomSpawnPoint(
-                //             ref mission,
-                //             validSpawnPoints,
-                //             centerPoint,
-                //             commonAirDefenseDB.DistanceFromCenter[(int)side, (int)airDefenseRange],
-                //             opposingPoint,
-                //             new MinMaxD(commonAirDefenseDB.MinDistanceFromOpposingPoint[(int)side, (int)airDefenseRange], 99999),
-                //             GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, side),
-                //             unitFamilies.First());
+                
+                if (units.Count == 0)
+                {
+                    usedSP = true;
+                    if (airDefenseRange == AirDefenseRange.ShortRangeBattery)
+                    {
+                        unitCount = Toolbox.RandomMinMax(2, 5);
+                        forceTryTemplate = Toolbox.RandomChance(2);
+                    }
+                    (units, _) = UnitMaker.GetUnits(ref mission, unitFamilies, unitCount, side, 0, ref extraSetting, true, forceTryTemplate: forceTryTemplate, allowDefaults: false);
+                    if (units.Count == 0)
+                    {
+                        return groupCount - i;
+                    }
+                    // Find spawn point at the proper distance
+                    spawnPoint =
+                        UnitMakerSpawnPointSelector.GetRandomSpawnPoint(
+                            ref mission,
+                            validSpawnPoints,
+                            centerPoint,
+                            commonAirDefenseDB.DistanceFromCenter[(int)side, (int)airDefenseRange],
+                            opposingPoint,
+                            new MinMaxD(commonAirDefenseDB.MinDistanceFromOpposingPoint[(int)side, (int)airDefenseRange], 99999),
+                            GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, side),
+                            unitFamilies.First());
 
-                // }
+                }
 
                 // No spawn point found, stop here.
                 if (!spawnPoint.HasValue)

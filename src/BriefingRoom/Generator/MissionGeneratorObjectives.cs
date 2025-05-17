@@ -32,53 +32,7 @@ namespace BriefingRoom4DCS.Generator
 {
     internal class MissionGeneratorObjectives
     {
-        private static readonly List<DBEntryObjectiveTargetBehaviorLocation> AIRBASE_LOCATIONS = new()
-        {
-            DBEntryObjectiveTargetBehaviorLocation.SpawnOnAirbase,
-            DBEntryObjectiveTargetBehaviorLocation.SpawnOnAirbaseParking,
-            DBEntryObjectiveTargetBehaviorLocation.SpawnOnAirbaseParkingNoHardenedShelter,
-        };
 
-        private static readonly List<DBEntryObjectiveTargetBehaviorLocation> AIR_ON_GROUND_LOCATIONS = new()
-        {
-            DBEntryObjectiveTargetBehaviorLocation.SpawnOnAirbaseParking,
-            DBEntryObjectiveTargetBehaviorLocation.SpawnOnAirbaseParkingNoHardenedShelter
-        };
-
-        private static readonly List<SpawnPointType> LAND_SPAWNS = new()
-        {
-            SpawnPointType.LandSmall,
-            SpawnPointType.LandMedium,
-            SpawnPointType.LandLarge,
-        };
-
-        private static readonly List<List<UnitFamily>> MIXED_INFANTRY_SETS = new()
-        {
-            new List<UnitFamily> {UnitFamily.Infantry},
-            new List<UnitFamily> {UnitFamily.Infantry},
-            new List<UnitFamily> {UnitFamily.Infantry},
-            new List<UnitFamily> {UnitFamily.Infantry, UnitFamily.Infantry, UnitFamily.InfantryMANPADS},
-            new List<UnitFamily> {UnitFamily.Infantry, UnitFamily.Infantry, UnitFamily.InfantryMANPADS},
-            new List<UnitFamily> {UnitFamily.Infantry, UnitFamily.Infantry, UnitFamily.InfantryMANPADS},
-            new List<UnitFamily> {UnitFamily.Infantry, UnitFamily.InfantryMANPADS},
-            new List<UnitFamily> {UnitFamily.Infantry, UnitFamily.InfantryMANPADS, UnitFamily.InfantryMANPADS},
-            new List<UnitFamily> {UnitFamily.InfantryMANPADS},
-        };
-
-        private static readonly List<List<UnitFamily>> MIXED_VEHICLE_SETS = new()
-        {
-            new List<UnitFamily> {UnitFamily.VehicleAPC},
-            new List<UnitFamily> {UnitFamily.VehicleAPC, UnitFamily.VehicleAPC, UnitFamily.VehicleMBT},
-            new List<UnitFamily> {UnitFamily.VehicleAPC, UnitFamily.VehicleAPC, UnitFamily.VehicleTransport},
-            new List<UnitFamily> {UnitFamily.VehicleArtillery},
-            new List<UnitFamily> {UnitFamily.VehicleArtillery,UnitFamily.VehicleArtillery,UnitFamily.VehicleAPC,UnitFamily.VehicleTransport},
-            new List<UnitFamily> {UnitFamily.VehicleMBT},
-            new List<UnitFamily> {UnitFamily.VehicleMBT,UnitFamily.VehicleMBT,UnitFamily.VehicleAPC,UnitFamily.VehicleTransport},
-            new List<UnitFamily> {UnitFamily.VehicleMissile},
-            new List<UnitFamily> {UnitFamily.VehicleMissile,UnitFamily.VehicleMissile,UnitFamily.VehicleAPC,UnitFamily.VehicleTransport},
-            new List<UnitFamily> {UnitFamily.VehicleTransport},
-            new List<UnitFamily> {UnitFamily.VehicleTransport,UnitFamily.VehicleTransport,UnitFamily.VehicleAPC,},
-        };
 
 
         internal static Tuple<Coordinates, List<List<Waypoint>>> GenerateObjective(
@@ -133,9 +87,9 @@ namespace BriefingRoom4DCS.Generator
             var (targetDB, targetBehaviorDB, taskDB, objectiveOptions, _) = GetCustomObjectiveData(mission.LangKey, task);
 
             preValidSpawns.AddRange(targetDB.ValidSpawnPoints);
-            if (preValidSpawns.Contains(SpawnPointType.Sea) && preValidSpawns.Any(x => LAND_SPAWNS.Contains(x)))
+            if (preValidSpawns.Contains(SpawnPointType.Sea) && preValidSpawns.Any(x => Constants.LAND_SPAWNS.Contains(x)))
                 throw new BriefingRoomException(mission.LangKey, "LandSeaSubMix");
-            if (AIRBASE_LOCATIONS.Contains(targetBehaviorDB.Location) && !AIRBASE_LOCATIONS.Contains(mainObjLocation))
+            if (Constants.AIRBASE_LOCATIONS.Contains(targetBehaviorDB.Location) && !Constants.AIRBASE_LOCATIONS.Contains(mainObjLocation))
                 throw new BriefingRoomException(mission.LangKey, "AirbaseSubMix");
             var objectiveCoords = GetNearestSpawnCoordinates(ref mission, coreCoordinates, targetDB);
             return CreateObjective(
@@ -162,14 +116,30 @@ namespace BriefingRoom4DCS.Generator
             string[] featuresID)
         {
             var extraSettings = new Dictionary<string, object>();
+            List<string> units = [];
+            List<DBEntryJSONUnit> unitDBs = [];
             var (luaUnit, unitCount, unitCountMinMax, objectiveTargetUnitFamilies, groupFlags) = GetUnitData(task, targetDB, targetBehaviorDB, objectiveOptions);
+            if (Constants.THEATER_TEMPLATE_LOCATION_MAP.Keys.Any(x => objectiveTargetUnitFamilies.Contains(x)) && targetBehaviorDB.IsStatic)
+            {
+                var locationType = Toolbox.RandomFrom(Constants.THEATER_TEMPLATE_LOCATION_MAP.Keys.Intersect(objectiveTargetUnitFamilies).Select(x => Constants.THEATER_TEMPLATE_LOCATION_MAP[x]).ToList());
+                var templateLocation = UnitMakerSpawnPointSelector.GetNearestTemplateLocation(ref mission, locationType, objectiveCoordinates, true);
+                if (templateLocation.HasValue)
+                {
+                    objectiveCoordinates = templateLocation.Value.Coordinates;
+                    (units, unitDBs) = UnitMaker.GetUnitsForTemplateLocation(ref mission, templateLocation.Value, taskDB.TargetSide, objectiveTargetUnitFamilies, ref extraSettings);
+                    if (units.Count == 0)
+                        UnitMakerSpawnPointSelector.RecoverTemplateLocation(ref mission, templateLocation.Value.Coordinates);
+                }
+            }
+
             var isInverseTransportWayPoint = false;
-            var (units, unitDBs) = UnitMaker.GetUnits(ref mission, objectiveTargetUnitFamilies, unitCount, taskDB.TargetSide, groupFlags, ref extraSettings, targetBehaviorDB.IsStatic);
+            if (units.Count == 0)
+                (units, unitDBs) = UnitMaker.GetUnits(ref mission, objectiveTargetUnitFamilies, unitCount, taskDB.TargetSide, groupFlags, ref extraSettings, targetBehaviorDB.IsStatic);
             var objectiveTargetUnitFamily = objectiveTargetUnitFamilies.First();
             if (units.Count == 0 || unitDBs.Count == 0)
                 throw new BriefingRoomException(mission.LangKey, "NoUnitsForTimePeriod", taskDB.TargetSide, objectiveTargetUnitFamily);
             var unitDB = unitDBs.First();
-            if (AIRBASE_LOCATIONS.Contains(targetBehaviorDB.Location) && targetDB.UnitCategory.IsAircraft())
+            if (Constants.AIRBASE_LOCATIONS.Contains(targetBehaviorDB.Location) && targetDB.UnitCategory.IsAircraft())
                 objectiveCoordinates = PlaceInAirbase(ref mission, extraSettings, targetBehaviorDB, objectiveCoordinates, unitCount, unitDB);
 
             // Set destination point for moving unit groups
@@ -217,8 +187,12 @@ namespace BriefingRoom4DCS.Generator
                 destinationPoint = objectiveCoordinates;
             }
 
-            extraSettings.Add("GroupX2", destinationPoint.X);
-            extraSettings.Add("GroupY2", destinationPoint.Y);
+            if (!targetBehaviorDB.IsStatic)
+            {
+                extraSettings.Add("GroupX2", destinationPoint.X);
+                extraSettings.Add("GroupY2", destinationPoint.Y);
+            }
+
             extraSettings.Add("playerCanDrive", false);
 
             var unitCoordinates = objectiveCoordinates;
@@ -272,7 +246,7 @@ namespace BriefingRoom4DCS.Generator
             if (
                 objectiveTargetUnitFamily.GetUnitCategory().IsAircraft() &&
                 !groupFlags.HasFlag(UnitMakerGroupFlags.RadioAircraftSpawn) &&
-                !AIR_ON_GROUND_LOCATIONS.Contains(targetBehaviorDB.Location)
+                !Constants.AIR_ON_GROUND_LOCATIONS.Contains(targetBehaviorDB.Location)
                 )
             {
                 if (task.ProgressionActivation)
@@ -374,51 +348,11 @@ namespace BriefingRoom4DCS.Generator
             var featureList = taskDB.RequiredFeatures.Concat(featuresID).ToHashSet();
             var playerHasPlanes = mission.TemplateRecord.PlayerFlightGroups.Any(x => Database.Instance.GetEntry<DBEntryJSONUnit>(x.Aircraft).Category == UnitCategory.Plane) || mission.TemplateRecord.AirbaseDynamicSpawn != DsAirbase.None;
             if (taskDB.IsEscort())
-            {
-                switch (targetDB.UnitCategory)
-                {
-                    case UnitCategory.Plane:
-                    case UnitCategory.Helicopter:
-                        featureList.Add("HiddenEnemyCAPAttackingObj");
-                        break;
-                    case UnitCategory.Ship:
-                        if (playerHasPlanes && Toolbox.RollChance(AmountNR.High)) { featureList.Add("HiddenEnemyCASAttackingObj"); }
-                        if (Toolbox.RollChance(AmountNR.Average)) { featureList.Add("HiddenEnemyHeloAttackingObj"); }
-                        if (Toolbox.RollChance(AmountNR.Low)) { featureList.Add("HiddenEnemyShipAttackingObj"); }
-                        break;
-                    default:
-                        if (playerHasPlanes && Toolbox.RollChance(AmountNR.High)) { featureList.Add("HiddenEnemyCASAttackingObj"); }
-                        if (Toolbox.RollChance(AmountNR.Average)) { featureList.Add("HiddenEnemyHeloAttackingObj"); }
-                        if (Toolbox.RollChance(AmountNR.VeryHigh)) { featureList.Add("HiddenEnemyGroundAttackingObj"); }
-                        break;
-                }
-            }
-            if (taskDB.ID == "HoldSuperiority")
-            {
-                switch (targetDB.UnitCategory)
-                {
-                    case UnitCategory.Plane:
-                        featureList.Add("HiddenEnemyCAPAttackingObj");
-                        break;
-                    case UnitCategory.Helicopter:
-                        if (playerHasPlanes && Toolbox.RollChance(AmountNR.High)) { featureList.Add("HiddenEnemyCASAttackingObj"); }
-                        if (playerHasPlanes && Toolbox.RollChance(AmountNR.Average)) { featureList.Add("HiddenEnemyCAPAttackingObj"); }
-                        if (Toolbox.RollChance(AmountNR.High)) { featureList.Add("HiddenEnemyHeloAttackingObj"); }
-                        break;
-                    case UnitCategory.Ship:
-                        if (playerHasPlanes && Toolbox.RollChance(AmountNR.High)) { featureList.Add("HiddenEnemyCASAttackingObj"); }
-                        if (playerHasPlanes && Toolbox.RollChance(AmountNR.Average)) { featureList.Add("HiddenEnemyCAPAttackingObj"); }
-                        if (Toolbox.RollChance(AmountNR.Average)) { featureList.Add("HiddenEnemyHeloAttackingObj"); }
-                        if (Toolbox.RollChance(AmountNR.Average)) { featureList.Add("HiddenEnemyShipAttackingObj"); }
-                        break;
-                    default:
-                        if (playerHasPlanes && Toolbox.RollChance(AmountNR.High)) { featureList.Add("HiddenEnemyCASAttackingObj"); }
-                        if (playerHasPlanes && Toolbox.RollChance(AmountNR.Average)) { featureList.Add("HiddenEnemyCAPAttackingObj"); }
-                        if (Toolbox.RollChance(AmountNR.Average)) { featureList.Add("HiddenEnemyHeloAttackingObj"); }
-                        if (Toolbox.RollChance(AmountNR.VeryHigh)) { featureList.Add("HiddenEnemyGroundAttackingObj"); }
-                        break;
-                }
-            }
+                SetEscortFeatures(targetDB, ref featureList, playerHasPlanes);
+
+            if (taskDB.IsHoldSuperiority())
+                SetHoldSuperiorityFeatures(targetDB, ref featureList, playerHasPlanes);
+
             foreach (string featureID in featureList)
                 MissionGeneratorFeaturesObjectives.GenerateMissionFeature(ref mission, featureID, objectiveName, objectiveIndex, targetGroupInfo.Value, taskDB.TargetSide, objectiveOptions, overrideCoords: targetBehaviorDB.ID.StartsWith("ToFrontLine") ? objectiveCoordinates : null);
 
@@ -433,6 +367,55 @@ namespace BriefingRoom4DCS.Generator
             if (!targetGroupInfo.Value.UnitDB.IsAircraft)
                 mission.MapData.Add($"UNIT-{targetGroupInfo.Value.UnitDB.Families[0]}-{taskDB.TargetSide}-{targetGroupInfo.Value.GroupID}", new List<double[]> { targetGroupInfo.Value.Coordinates.ToArray() });
             return objectiveWaypoints;
+
+        }
+
+        private static void SetEscortFeatures(DBEntryObjectiveTarget targetDB, ref HashSet<string> featureList, bool playerHasPlanes)
+        {
+            switch (targetDB.UnitCategory)
+            {
+                case UnitCategory.Plane:
+                case UnitCategory.Helicopter:
+                    featureList.Add("HiddenEnemyCAPAttackingObj");
+                    break;
+                case UnitCategory.Ship:
+                    if (playerHasPlanes && Toolbox.RollChance(AmountNR.High)) { featureList.Add("HiddenEnemyCASAttackingObj"); }
+                    if (Toolbox.RollChance(AmountNR.Average)) { featureList.Add("HiddenEnemyHeloAttackingObj"); }
+                    if (Toolbox.RollChance(AmountNR.Low)) { featureList.Add("HiddenEnemyShipAttackingObj"); }
+                    break;
+                default:
+                    if (playerHasPlanes && Toolbox.RollChance(AmountNR.High)) { featureList.Add("HiddenEnemyCASAttackingObj"); }
+                    if (Toolbox.RollChance(AmountNR.Average)) { featureList.Add("HiddenEnemyHeloAttackingObj"); }
+                    if (Toolbox.RollChance(AmountNR.VeryHigh)) { featureList.Add("HiddenEnemyGroundAttackingObj"); }
+                    break;
+            }
+        }
+
+        private static void SetHoldSuperiorityFeatures(DBEntryObjectiveTarget targetDB, ref HashSet<string> featureList, bool playerHasPlanes)
+        {
+            switch (targetDB.UnitCategory)
+            {
+                case UnitCategory.Plane:
+                    featureList.Add("HiddenEnemyCAPAttackingObj");
+                    break;
+                case UnitCategory.Helicopter:
+                    if (playerHasPlanes && Toolbox.RollChance(AmountNR.High)) { featureList.Add("HiddenEnemyCASAttackingObj"); }
+                    if (playerHasPlanes && Toolbox.RollChance(AmountNR.Average)) { featureList.Add("HiddenEnemyCAPAttackingObj"); }
+                    if (Toolbox.RollChance(AmountNR.High)) { featureList.Add("HiddenEnemyHeloAttackingObj"); }
+                    break;
+                case UnitCategory.Ship:
+                    if (playerHasPlanes && Toolbox.RollChance(AmountNR.High)) { featureList.Add("HiddenEnemyCASAttackingObj"); }
+                    if (playerHasPlanes && Toolbox.RollChance(AmountNR.Average)) { featureList.Add("HiddenEnemyCAPAttackingObj"); }
+                    if (Toolbox.RollChance(AmountNR.Average)) { featureList.Add("HiddenEnemyHeloAttackingObj"); }
+                    if (Toolbox.RollChance(AmountNR.Average)) { featureList.Add("HiddenEnemyShipAttackingObj"); }
+                    break;
+                default:
+                    if (playerHasPlanes && Toolbox.RollChance(AmountNR.High)) { featureList.Add("HiddenEnemyCASAttackingObj"); }
+                    if (playerHasPlanes && Toolbox.RollChance(AmountNR.Average)) { featureList.Add("HiddenEnemyCAPAttackingObj"); }
+                    if (Toolbox.RollChance(AmountNR.Average)) { featureList.Add("HiddenEnemyHeloAttackingObj"); }
+                    if (Toolbox.RollChance(AmountNR.VeryHigh)) { featureList.Add("HiddenEnemyGroundAttackingObj"); }
+                    break;
+            }
         }
 
         private static (string luaUnit, int unitCount, MinMaxI unitCountMinMax, List<UnitFamily> objectiveTargetUnitFamily, UnitMakerGroupFlags groupFlags) GetUnitData(MissionTemplateSubTaskRecord task, DBEntryObjectiveTarget targetDB, DBEntryObjectiveTargetBehavior targetBehaviorDB, ObjectiveOption[] objectiveOptions)
@@ -446,13 +429,13 @@ namespace BriefingRoom4DCS.Generator
             switch (true)
             {
                 case true when targetDB.ID == "VehicleAny":
-                    unitFamilies = Toolbox.RandomFrom(MIXED_VEHICLE_SETS);
+                    unitFamilies = Toolbox.RandomFrom(Constants.MIXED_VEHICLE_SETS);
                     break;
                 case true when targetDB.ID == "InfantryAny":
-                    unitFamilies = Toolbox.RandomFrom(MIXED_INFANTRY_SETS);
+                    unitFamilies = Toolbox.RandomFrom(Constants.MIXED_INFANTRY_SETS);
                     break;
                 case true when targetDB.ID == "GroundAny":
-                    unitFamilies = Toolbox.RandomFrom(MIXED_INFANTRY_SETS).Concat(Toolbox.RandomFrom(MIXED_VEHICLE_SETS)).ToList();
+                    unitFamilies = Toolbox.RandomFrom(Constants.MIXED_INFANTRY_SETS).Concat(Toolbox.RandomFrom(Constants.MIXED_VEHICLE_SETS)).ToList();
                     break;
                 default:
                     unitFamilies = [Toolbox.RandomFrom(targetDB.UnitFamilies)];
@@ -653,7 +636,7 @@ namespace BriefingRoom4DCS.Generator
             if (targetDB == null) throw new BriefingRoomException(mission.LangKey, "TargetNotFound", targetDB.UIDisplayName);
 
             Coordinates waypointCoordinates = objectiveCoordinates;
-            bool onGround = !targetDB.UnitCategory.IsAircraft() || AIR_ON_GROUND_LOCATIONS.Contains(targetBehaviorLocation); // Ground targets = waypoint on the ground
+            bool onGround = !targetDB.UnitCategory.IsAircraft() || Constants.AIR_ON_GROUND_LOCATIONS.Contains(targetBehaviorLocation); // Ground targets = waypoint on the ground
 
             if (objectiveOptions.Contains(ObjectiveOption.InaccurateWaypoint) && (!taskDB.UICategory.ContainsValue("Transport") || objectiveName.EndsWith("Pickup")))
             {

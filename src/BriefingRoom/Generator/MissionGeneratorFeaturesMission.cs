@@ -61,8 +61,8 @@ namespace BriefingRoom4DCS.Generator
             if (FeatureHasUnitGroup(featureDB))
             {
                 var unitFamily = Toolbox.RandomFrom(featureDB.UnitGroupFamilies);
-                var useFrontLine =  mission.FrontLine.Count > 0 && featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.UseFrontLine);
-                Coordinates pointSearchCenter = useFrontLine ? mission.FrontLine[(int)Math.Floor((double)mission.FrontLine.Count/2)]  : Coordinates.Lerp(mission.AverageInitialPosition, mission.ObjectivesCenter, featureDB.UnitGroupSpawnDistance);
+                var useFrontLine = mission.FrontLine.Count > 0 && featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.UseFrontLine);
+                Coordinates pointSearchCenter = useFrontLine ? mission.FrontLine[(int)Math.Floor((double)mission.FrontLine.Count / 2)] : Coordinates.Lerp(mission.AverageInitialPosition, mission.ObjectivesCenter, featureDB.UnitGroupSpawnDistance);
                 spawnPoint =
                     UnitMakerSpawnPointSelector.GetRandomSpawnPoint(
                         ref mission,
@@ -102,7 +102,7 @@ namespace BriefingRoom4DCS.Generator
             foreach (DBEntryAirbase airbase in airbases)
             {
 
-                Coordinates? spawnPoint = UnitMakerSpawnPointSelector.GetNearestSpawnPoint(ref mission,featureDB.UnitGroupValidSpawnPoints, airbase.Coordinates);
+                Coordinates? spawnPoint = UnitMakerSpawnPointSelector.GetNearestSpawnPoint(ref mission, featureDB.UnitGroupValidSpawnPoints, airbase.Coordinates);
                 if (!spawnPoint.HasValue) // No spawn point found
                 {
                     throw new BriefingRoomException(mission.LangKey, "NoSpawnPointForMissionFeature", featureID);

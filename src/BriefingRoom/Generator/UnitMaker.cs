@@ -39,19 +39,6 @@ namespace BriefingRoom4DCS.Generator
 
     internal static class UnitMaker
     {
-        private static readonly List<UnitFamily> TEMPLATE_PREFERENCE_FAMILIES = new()
-        {
-            UnitFamily.StaticStructureMilitary,
-            UnitFamily.StaticStructureProduction,
-            UnitFamily.VehicleSAMLong,
-            UnitFamily.VehicleSAMMedium
-        };
-
-        private static readonly List<UnitFamily> TEMPLATE_ALWAYS_FAMILIES = new()
-        {
-            UnitFamily.VehicleSAMLong,
-            UnitFamily.VehicleSAMMedium
-        };
         private const double AIRCRAFT_UNIT_SPACING = 50.0;
         private const double SHIP_UNIT_SPACING = 100.0;
         private const double STATIC_UNIT_SPACING = 30.0;
@@ -80,7 +67,7 @@ namespace BriefingRoom4DCS.Generator
                 (country, units) = GeneratorTools.GetNeutralRandomUnits(mission.LangKey, families, ignoreCountries, mission.TemplateRecord.ContextDecade, unitCount, mission.TemplateRecord.Mods, mission.TemplateRecord.OptionsMission.Contains("AllowLowPoly"), mission.TemplateRecord.OptionsUnitBanList);
                 if (!units.Where(x => x != null).Any()) return new(new List<string>(), new List<DBEntryJSONUnit>());
             }
-            else if (forceTryTemplate || families.All(x => TEMPLATE_ALWAYS_FAMILIES.Contains(x)) || (families.All(x => TEMPLATE_PREFERENCE_FAMILIES.Contains(x)) && Toolbox.RandomChance(3)))
+            else if (forceTryTemplate || families.All(x => Constants.TEMPLATE_ALWAYS_FAMILIES.Contains(x)) || (families.All(x => Constants.TEMPLATE_PREFERENCE_FAMILIES.Contains(x)) && Toolbox.RandomChance(3)))
             {
                 var response = unitsCoalitionDB.GetRandomTemplate(families, mission.TemplateRecord.ContextDecade, mission.TemplateRecord.Mods, mission.TemplateRecord.OptionsUnitBanList);
                 if (response != null)
@@ -121,7 +108,7 @@ namespace BriefingRoom4DCS.Generator
 
         internal static Tuple<List<string>, List<DBEntryJSONUnit>> GetUnitsForTemplateLocation(
             ref DCSMission mission,
-            DBEntryTemplateLocation templateLocation,
+            DBEntryTheaterTemplateLocation templateLocation,
             Side side,
             List<UnitFamily> families,
             ref Dictionary<string, object> extraSettings
@@ -130,7 +117,7 @@ namespace BriefingRoom4DCS.Generator
             DBEntryCoalition unitsCoalitionDB = mission.CoalitionsDB[(int)((side == Side.Ally) ? mission.TemplateRecord.ContextPlayerCoalition : mission.TemplateRecord.ContextPlayerCoalition.GetEnemy())];
             Country country = Country.ALL;
             var unitMap = templateLocation.GetRequiredFamilyMap();
-            if (templateLocation.LocationType == DBEntryTemplateLocationType.SAM)
+            if (templateLocation.LocationType == TheaterTemplateLocationType.SAM)
             {
                 //Always pull from a template to get the right units for SAM Sites
                 var response = unitsCoalitionDB.GetRandomTemplate(families, mission.TemplateRecord.ContextDecade, mission.TemplateRecord.Mods, mission.TemplateRecord.OptionsUnitBanList);

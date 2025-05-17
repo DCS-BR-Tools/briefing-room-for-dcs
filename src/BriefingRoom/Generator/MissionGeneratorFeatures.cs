@@ -86,7 +86,29 @@ namespace BriefingRoom4DCS.Generator
                 var groupLua = featureDB.UnitGroupLuaGroup;
                 var unitCount = featureDB.UnitGroupSize.GetValue();
                 var luaUnit = featureDB.UnitGroupLuaUnit;
-                var (units, unitDBs) = UnitMaker.GetUnits(ref mission, featureDB.UnitGroupFamilies.ToList(), unitCount, groupSide, groupFlags, ref extraSettings, featureDB.UnitGroupAllowStatic);
+                List<string> units = [];
+                List<DBEntryJSONUnit> unitDBs = [];
+                if (Constants.THEATER_TEMPLATE_LOCATION_MAP.Keys.Any(x => featureDB.UnitGroupFamilies.Contains(x)))
+                {
+                    var locationType = Toolbox.RandomFrom(Constants.THEATER_TEMPLATE_LOCATION_MAP.Keys.Intersect(featureDB.UnitGroupFamilies).Select(x => Constants.THEATER_TEMPLATE_LOCATION_MAP[x]).ToList());
+                    var templateLocation = UnitMakerSpawnPointSelector.GetNearestTemplateLocation(ref mission, locationType, coordinatesValue, true);
+                    if (templateLocation.HasValue)
+                    {
+                        coordinatesValue = templateLocation.Value.Coordinates;
+                        (units, unitDBs) = UnitMaker.GetUnitsForTemplateLocation(ref mission, templateLocation.Value, groupSide, featureDB.UnitGroupFamilies.ToList(), ref extraSettings);
+                        if (units.Count == 0)
+                            UnitMakerSpawnPointSelector.RecoverTemplateLocation(ref mission, templateLocation.Value.Coordinates);
+                        else
+                        {
+                            extraSettings.Remove("GroupX2");
+                            extraSettings.Remove("GroupY2");
+                        }
+                    }
+                }
+                if (units.Count == 0)
+                {
+                    (units, unitDBs) = UnitMaker.GetUnits(ref mission, featureDB.UnitGroupFamilies.ToList(), unitCount, groupSide, groupFlags, ref extraSettings, featureDB.UnitGroupAllowStatic);
+                }
                 if (units.Count == 0)
                 {
                     UnitMakerSpawnPointSelector.RecoverSpawnPoint(ref mission, coordinatesValue);
@@ -238,32 +260,54 @@ namespace BriefingRoom4DCS.Generator
                 var groupLua = featureDB.UnitGroupLuaGroup;
                 var unitCount = featureDB.UnitGroupSize.GetValue();
                 var luaUnit = featureDB.UnitGroupLuaUnit;
-                Coordinates? spawnCoords;
-                var (units, unitDBs) = UnitMaker.GetUnits(ref mission, featureDB.UnitGroupFamilies.ToList(), unitCount, groupSide, groupFlags, ref extraSettings, featureDB.UnitGroupAllowStatic);
-                var unitFamily = unitDBs.First().Families.First();
-                if (flags.HasFlag(FeatureUnitGroupFlags.ExtraGroupsNearby))
-                    spawnCoords = UnitMakerSpawnPointSelector.GetNearestSpawnPoint(ref mission, featureDB.UnitGroupValidSpawnPoints, coordinates);
-                else
-                    spawnCoords = UnitMakerSpawnPointSelector.GetRandomSpawnPoint(
-                        ref mission,
-                        featureDB.UnitGroupValidSpawnPoints, coordinates,
-                        new MinMaxD(0, 5),
-                        coalition: GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, groupSide),
-                        nearFrontLineFamily: featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.UseFrontLine) ? unitFamily : null
-                        );
-
-                if (!spawnCoords.HasValue)
+                Coordinates? spawnCoords = null;
+                extraSettings.Remove("TemplatePositionMap");
+                List<string> units = [];
+                List<DBEntryJSONUnit> unitDBs = [];
+                if (Constants.THEATER_TEMPLATE_LOCATION_MAP.Keys.Any(x => featureDB.UnitGroupFamilies.Contains(x)))
                 {
-                    BriefingRoom.PrintTranslatableWarning(mission.LangKey, "NoExtraGroupSpawnPoint", featureDB.UIDisplayName.Get(mission.LangKey));
-                    continue;
+                    var locationType = Toolbox.RandomFrom(Constants.THEATER_TEMPLATE_LOCATION_MAP.Keys.Intersect(featureDB.UnitGroupFamilies).Select(x => Constants.THEATER_TEMPLATE_LOCATION_MAP[x]).ToList());
+                    var templateLocation = UnitMakerSpawnPointSelector.GetNearestTemplateLocation(ref mission, locationType, coordinates, true);
+                    if (templateLocation.HasValue)
+                    {
+                        spawnCoords = templateLocation.Value.Coordinates;
+                        (units, unitDBs) = UnitMaker.GetUnitsForTemplateLocation(ref mission, templateLocation.Value, groupSide, featureDB.UnitGroupFamilies.ToList(), ref extraSettings);
+                        if (units.Count == 0)
+                            UnitMakerSpawnPointSelector.RecoverTemplateLocation(ref mission, templateLocation.Value.Coordinates);
+                        else
+                        {
+                            extraSettings.Remove("GroupX2");
+                            extraSettings.Remove("GroupY2");
+                        }
+                    }
                 }
 
-                extraSettings.Remove("TemplatePositionMap");
+                var unitFamily = unitDBs.Any() ? unitDBs.First().Families.First() : featureDB.UnitGroupFamilies.First();
                 if (units.Count == 0)
                 {
-                    UnitMakerSpawnPointSelector.RecoverSpawnPoint(ref mission, spawnCoords.Value);
-                    throw new BriefingRoomException(mission.LangKey, "NoUnitsFoundForMissionFeature", featureDB.ID);
+                    (units, unitDBs) = UnitMaker.GetUnits(ref mission, featureDB.UnitGroupFamilies.ToList(), unitCount, groupSide, groupFlags, ref extraSettings, featureDB.UnitGroupAllowStatic);
+                    if (units.Count == 0)
+                    {
+                        throw new BriefingRoomException(mission.LangKey, "NoUnitsFoundForMissionFeature", featureDB.ID);
+                    }
+                    unitFamily = unitDBs.First().Families.First();
+                    if (flags.HasFlag(FeatureUnitGroupFlags.ExtraGroupsNearby))
+                        spawnCoords = UnitMakerSpawnPointSelector.GetNearestSpawnPoint(ref mission, featureDB.UnitGroupValidSpawnPoints, coordinates);
+                    else
+                        spawnCoords = UnitMakerSpawnPointSelector.GetRandomSpawnPoint(
+                            ref mission,
+                            featureDB.UnitGroupValidSpawnPoints, coordinates,
+                            new MinMaxD(0, 5),
+                            coalition: GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, groupSide),
+                            nearFrontLineFamily: featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.UseFrontLine) ? unitFamily : null
+                            );
+                    if (!spawnCoords.HasValue)
+                    {
+                        BriefingRoom.PrintTranslatableWarning(mission.LangKey, "NoExtraGroupSpawnPoint", featureDB.UIDisplayName.Get(mission.LangKey));
+                        continue;
+                    }
                 }
+
                 var unitDB = unitDBs.First();
                 string airbaseName = null;
                 try

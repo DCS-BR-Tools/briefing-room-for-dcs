@@ -20,8 +20,9 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 
 namespace BriefingRoom4DCS.Data
 {
-    public enum DBEntryTemplateLocationType
+    public enum TheaterTemplateLocationType
     {
-        SAM
+        SAM,
+        BASE
     }
 }

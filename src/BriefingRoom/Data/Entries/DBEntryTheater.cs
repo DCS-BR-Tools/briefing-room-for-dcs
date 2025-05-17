@@ -48,7 +48,8 @@ namespace BriefingRoom4DCS.Data
 
         internal DBEntryTheaterSpawnPoint[] SpawnPoints { get { return GetSpawnPoints(); } }
         internal DBEntryTheaterSpawnPoint[] _SpawnPoints { get; private set; }
-        internal DBEntryTemplateLocation[] TemplateLocations { get; private set; }
+       
+        internal DBEntryTheaterTemplateLocation[] TemplateLocations { get; private set; }
         internal MinMaxI[] Temperature { get; private set; }
 
 
@@ -89,8 +90,8 @@ namespace BriefingRoom4DCS.Data
             var templateLocationFilePath = Path.Combine(BRPaths.DATABASEJSON, "TheaterTemplateLocations", $"{DCSID}.json");
             if (File.Exists(templateLocationFilePath))
             {
-                TemplateLocations = JsonConvert.DeserializeObject<List<TemplateLocation>>(File.ReadAllText(templateLocationFilePath)).Select(x =>
-                    new DBEntryTemplateLocation(x)
+                TemplateLocations = JsonConvert.DeserializeObject<List<TheaterTemplateLocation>>(File.ReadAllText(templateLocationFilePath)).Select(x =>
+                    new DBEntryTheaterTemplateLocation(x)
                 ).ToArray();
                 BriefingRoom.PrintToLog($"{DCSID} loaded {TemplateLocations.Length} Template Locations");
             }

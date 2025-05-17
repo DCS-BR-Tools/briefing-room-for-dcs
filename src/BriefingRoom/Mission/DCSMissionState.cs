@@ -72,8 +72,8 @@ namespace BriefingRoom4DCS.Mission
         protected internal Dictionary<int, List<DBEntryAirbaseParkingSpot>> AirbaseParkingSpots { get; protected set; }
         protected internal List<DBEntryTheaterSpawnPoint> SpawnPoints { get; protected set; }
         protected internal List<DBEntryTheaterSpawnPoint> UsedSpawnPoints { get; protected set; }
-        protected internal List<DBEntryTemplateLocation> TemplateLocations { get; protected set; }
-        protected internal List<DBEntryTemplateLocation> UsedTemplateLocations { get; protected set; }
+        protected internal List<DBEntryTheaterTemplateLocation> TemplateLocations { get; protected set; }
+        protected internal List<DBEntryTheaterTemplateLocation> UsedTemplateLocations { get; protected set; }
         protected internal List<Coordinates> FrontLine { get; protected set; }
         protected internal bool PlayerSideOfFrontLine { get; protected set; }
         protected internal int GroupID { get; set; }

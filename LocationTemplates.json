@@ -100,7 +100,7 @@
       },
       {
         "heading": 6.0301125656404,
-        "coords": [-10.141811242, -40.070833021],
+        "coords": [-58.364117448, -294.832336121],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "S-300PS 40B6MD sr"
       },
@@ -748,5 +748,311 @@
       }
     ],
     "locationType": "SAM"
+  },
+  {
+    "coords": [-8759.6891908849, -12253.995454666],
+    "locations": [
+      {
+        "heading": 4.4593162388455,
+        "coords": [0, 0],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "GAZ-66"
+      },
+      {
+        "heading": 3.3684854563491,
+        "coords": [-101.3705048023, 42.748632436002],
+        "unitTypes": ["VehicleAPC"],
+        "originalType": "BTR-80"
+      },
+      {
+        "heading": 3.7873644768277,
+        "coords": [-43.425644769099, -24.882381760999],
+        "unitTypes": ["VehicleMBT"],
+        "originalType": "T-55"
+      },
+      {
+        "heading": 0.31415926535898,
+        "coords": [114.1358979006, -35.109207579999],
+        "unitTypes": ["VehicleAPC"],
+        "originalType": "BTR-80"
+      },
+      {
+        "heading": 3.06305283725,
+        "coords": [-58.540525413799, 102.343312987],
+        "unitTypes": [
+          "VehicleSAMShort",
+          "VehicleSAMShortIR",
+          "VehicleAAA",
+          "VehicleAAAStatic",
+          "InfantryMANPADS"
+        ],
+        "originalType": "Tor 9A331"
+      },
+      {
+        "heading": 5.8904862254809,
+        "coords": [83.086838609001, -74.673848581999],
+        "unitTypes": [
+          "VehicleSAMShort",
+          "VehicleSAMShortIR",
+          "VehicleAAA",
+          "VehicleAAAStatic",
+          "InfantryMANPADS"
+        ],
+        "originalType": "Tor 9A331"
+      },
+      {
+        "heading": 4.7036623341247,
+        "coords": [-94.6918562675, 68.930667465002],
+        "unitTypes": ["Infantry"],
+        "originalType": "Infantry AK"
+      },
+      {
+        "heading": 4.7036623341247,
+        "coords": [132.8100809946, 39.537878392],
+        "unitTypes": ["Infantry"],
+        "originalType": "Infantry AK"
+      },
+      {
+        "heading": 4.7036623341247,
+        "coords": [0.59225228169998, -6.035800321999],
+        "unitTypes": ["Infantry"],
+        "originalType": "Infantry AK"
+      },
+      {
+        "heading": 4.7036623341247,
+        "coords": [1.8732343312004, -2.0098567379991],
+        "unitTypes": ["Infantry"],
+        "originalType": "Infantry AK"
+      },
+      {
+        "heading": 1.9111355309338,
+        "coords": [21.351420192001, -57.797374508],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "GAZ-66"
+      },
+      {
+        "heading": 1.9285888234537,
+        "coords": [29.677791325601, -55.132935746],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "KAMAZ Truck"
+      }
+    ],
+    "locationType": "BASE"
+  },
+  {
+    "coords": [-1412.4358589517, 8126.7470911059],
+    "locations": [
+      {
+        "heading": 5.3668874498826,
+        "coords": [0, 0],
+        "unitTypes": ["VehicleSAMtr"],
+        "originalType": "S-300PS 40B6M tr"
+      },
+      {
+        "heading": 0.65449846949787,
+        "coords": [25.3323248548, -32.661924495],
+        "unitTypes": ["VehicleSAMsr"],
+        "originalType": "S-300PS 40B6MD sr"
+      },
+      {
+        "heading": 3.7960911230877,
+        "coords": [22.3875649216, -100.9219256585],
+        "unitTypes": ["VehicleSAMCmd"],
+        "originalType": "S-300PS 54K6 cp"
+      },
+      {
+        "heading": 2.7139869868512,
+        "coords": [-68.3193701594, -25.6173896244],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85C ln"
+      },
+      {
+        "heading": 3.9706240482871,
+        "coords": [-25.4180693749, -97.4958878506],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 2.469640891572,
+        "coords": [-28.1388391044, 26.8910976556],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 0.51487212933837,
+        "coords": [98.729130846, 21.5994040523],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85C ln"
+      },
+      {
+        "heading": 5.6112335451618,
+        "coords": [82.598826575, -79.115739112601],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 1.7540558982543,
+        "coords": [33.6694764496, 51.3389347384],
+        "unitTypes": ["VehicleSAMLauncher"],
+        "originalType": "S-300PS 5P85D ln"
+      },
+      {
+        "heading": 2.8187067419709,
+        "coords": [99.9605216281, -59.9749951324],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "GAZ-66"
+      },
+      {
+        "heading": 2.8361600344908,
+        "coords": [101.567709758, -54.176189758],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "KAMAZ Truck"
+      }
+    ],
+    "locationType": "SAM"
+  },
+  {
+    "coords": [-7579.6188140814, -11557.204322135],
+    "locations": [
+      {
+        "heading": 4.4593162388455,
+        "coords": [0, 0],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "GAZ-66"
+      },
+      {
+        "heading": 0.47123889803847,
+        "coords": [-1.0965636469, 34.226333284001],
+        "unitTypes": ["VehicleAPC"],
+        "originalType": "BTR-80"
+      },
+      {
+        "heading": 4.7036623341247,
+        "coords": [0.59225228169998, -6.035800321999],
+        "unitTypes": ["Infantry"],
+        "originalType": "Infantry AK"
+      },
+      {
+        "heading": 4.7036623341247,
+        "coords": [1.8732343311995, -2.0098567379991],
+        "unitTypes": ["Infantry"],
+        "originalType": "Infantry AK"
+      }
+    ],
+    "locationType": "BASE"
+  },
+  {
+    "coords": [12017.840010515, 28609.705167873],
+    "locations": [
+      {
+        "heading": 4.4593162388455,
+        "coords": [0, 0],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "GAZ-66"
+      },
+      {
+        "heading": 0.36651914291881,
+        "coords": [85.590641756999, 58.700922579999],
+        "unitTypes": ["VehicleAPC"],
+        "originalType": "BTR-80"
+      },
+      {
+        "heading": 2.4958208303519,
+        "coords": [-16.528975931, 82.953316436997],
+        "unitTypes": [
+          "VehicleSAMShort",
+          "VehicleSAMShortIR",
+          "VehicleAAA",
+          "VehicleAAAStatic",
+          "InfantryMANPADS"
+        ],
+        "originalType": "Tor 9A331"
+      },
+      {
+        "heading": 6.1086523819802,
+        "coords": [-35.718929638, -53.205741597001],
+        "unitTypes": ["VehicleMissile"],
+        "originalType": "Scud_B"
+      },
+      {
+        "heading": 6.1086523819802,
+        "coords": [-36.104548807001, -58.221629016003],
+        "unitTypes": ["VehicleMissile"],
+        "originalType": "Scud_B"
+      },
+      {
+        "heading": 1.3439035240356,
+        "coords": [55.677973856, 214.422139382],
+        "unitTypes": ["VehicleArtillery"],
+        "originalType": "L118_Unit"
+      },
+      {
+        "heading": 1.4660765716752,
+        "coords": [33.476379124, 219.736691567],
+        "unitTypes": ["VehicleArtillery"],
+        "originalType": "L118_Unit"
+      },
+      {
+        "heading": 1.3613568165556,
+        "coords": [11.705379748, 220.244294699],
+        "unitTypes": ["VehicleArtillery"],
+        "originalType": "L118_Unit"
+      },
+      {
+        "heading": 1.4660765716752,
+        "coords": [-9.8516928090012, 222.110832495],
+        "unitTypes": ["VehicleArtillery"],
+        "originalType": "L118_Unit"
+      },
+      {
+        "heading": 4.7036623341247,
+        "coords": [-52.74091599, -52.316039095],
+        "unitTypes": ["Infantry"],
+        "originalType": "Infantry AK"
+      },
+      {
+        "heading": 4.7036623341247,
+        "coords": [89.630890782999, 129.411256063],
+        "unitTypes": ["Infantry"],
+        "originalType": "Infantry AK"
+      },
+      {
+        "heading": 4.7036623341247,
+        "coords": [0.59225228200012, -6.0358003220026],
+        "unitTypes": ["Infantry"],
+        "originalType": "Infantry AK"
+      },
+      {
+        "heading": 4.7036623341247,
+        "coords": [5.6646444050002, -0.16428505899967],
+        "unitTypes": ["Infantry"],
+        "originalType": "Infantry AK"
+      },
+      {
+        "heading": 0.66322511575785,
+        "coords": [34.967408266, -48.254731498],
+        "unitTypes": ["VehicleTransport"],
+        "originalType": "MTLB"
+      },
+      {
+        "heading": 0.57595865315813,
+        "coords": [29.465456286, -44.813176520001],
+        "unitTypes": ["VehicleTransport"],
+        "originalType": "MTLB"
+      },
+      {
+        "heading": 5.1138147083434,
+        "coords": [35.194172964999, -23.415228972],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "GAZ-66"
+      },
+      {
+        "heading": 4.9916416607038,
+        "coords": [39.603859826, -23.270881138],
+        "unitTypes": ["VehicleSupply"],
+        "originalType": "KAMAZ Truck"
+      }
+    ],
+    "locationType": "BASE"
   }
 ]

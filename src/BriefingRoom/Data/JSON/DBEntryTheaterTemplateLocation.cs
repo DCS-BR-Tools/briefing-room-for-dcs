@@ -6,27 +6,27 @@ using BriefingRoom4DCS.Data.JSON;
 
 namespace BriefingRoom4DCS.Data
 {
-    public readonly struct DBEntryTemplateUnitLocation
+    public readonly struct DBEntryTheaterTemplateUnitLocation
     {
         public double Heading { get; init; }
         public Coordinates Coordinates { get; init; }
         public List<UnitFamily> UnitTypes { get; init; }
     }
 
-    public readonly struct DBEntryTemplateLocation
+    public readonly struct DBEntryTheaterTemplateLocation
     {
         public Coordinates Coordinates { get; init; }
-        public List<DBEntryTemplateUnitLocation> Locations { get; init; }
-        public DBEntryTemplateLocationType LocationType { get; init; }
+        public List<DBEntryTheaterTemplateUnitLocation> Locations { get; init; }
+        public TheaterTemplateLocationType LocationType { get; init; }
 
-        public DBEntryTemplateLocation(TemplateLocation templateLocation)
+        public DBEntryTheaterTemplateLocation(TheaterTemplateLocation TheaterTemplateLocation)
         {
-            Coordinates = new Coordinates(templateLocation.coords[0], templateLocation.coords[1]);
-            Locations = new List<DBEntryTemplateUnitLocation>();
+            Coordinates = new Coordinates(TheaterTemplateLocation.coords[0], TheaterTemplateLocation.coords[1]);
+            Locations = new List<DBEntryTheaterTemplateUnitLocation>();
 
-            foreach (var unitLocation in templateLocation.locations)
+            foreach (var unitLocation in TheaterTemplateLocation.locations)
             {
-                var location = new DBEntryTemplateUnitLocation
+                var location = new DBEntryTheaterTemplateUnitLocation
                 {
                     Heading = unitLocation.heading,
                     Coordinates = new Coordinates(unitLocation.coords[0], unitLocation.coords[1]),
@@ -36,7 +36,7 @@ namespace BriefingRoom4DCS.Data
                 Locations.Add(location);
             }
 
-            LocationType = (DBEntryTemplateLocationType)Enum.Parse(typeof(DBEntryTemplateLocationType), templateLocation.locationType, true);
+            LocationType = (TheaterTemplateLocationType)Enum.Parse(typeof(TheaterTemplateLocationType), TheaterTemplateLocation.locationType, true);
         }
 
         public Dictionary<UnitFamily, List<string>> GetRequiredFamilyMap()

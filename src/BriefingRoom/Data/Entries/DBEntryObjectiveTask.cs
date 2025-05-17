@@ -80,5 +80,6 @@ namespace BriefingRoom4DCS.Data
         }
 
         internal bool IsEscort() => ID == "Escort";
+        internal bool IsHoldSuperiority() => ID == "HoldSuperiority";
     }
 }

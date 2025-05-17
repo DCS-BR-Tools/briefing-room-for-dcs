@@ -49,6 +49,23 @@ function orderedPairs(t)
     return orderedNext, t, nil
 end
 
+function mysplit(inputstr, sep)
+   -- if sep is null, set it as space
+   if sep == nil then
+      sep = '%s'
+   end
+   -- define an array
+   local t={}
+   -- split string based on sep   
+   for str in string.gmatch(inputstr, '([^'..sep..']+)') 
+   do
+      -- insert the substring in table
+      table.insert(t, str)
+   end
+   -- return the array
+   return t
+end
+
 file = io.open("LocationTemplates.json", "w")
 io.output(file)
 
@@ -63,6 +80,12 @@ local unitTypes = {
     ["S-300PS 64H6E sr"] = {"VehicleSAMsr", "VehicleEWR", "VehicleSAMtr"},
     ["S-300PS 54K6 cp"] = {"VehicleSAMCmd"},
     ["1L13 EWR"] = {"VehicleEWR"},
+    ["Infantry AK"] = {"Infantry"},
+    ["BTR-80"] = {"VehicleAPC"},
+    ["T-55"] = {"VehicleMBT"},
+    ["Scud_B"] = {"VehicleMissile"},
+    ["L118_Unit"] = {"VehicleArtillery"},
+    ["MTLB"] = {"VehicleTransport"},
     default = {"UNKNOWN"}
 }
 
@@ -87,7 +110,7 @@ for _, groupValue in orderedPairs(mission.coalition.red.country[1].vehicle.group
         }
         locIndex = locIndex + 1
     end
-    output[index] = { coords = { originX, originY }, locationType = "SAM", locations = locations }
+    output[index] = { coords = { originX, originY }, locationType = mysplit(groupValue.name, "-")[1], locations = locations }
     index = index + 1
 end
 

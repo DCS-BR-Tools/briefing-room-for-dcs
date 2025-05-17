@@ -31,17 +31,6 @@ namespace BriefingRoom4DCS.Generator
     internal static class UnitMakerSpawnPointSelector
     {
         private const int MAX_RADIUS_SEARCH_ITERATIONS = 15;
-        private static readonly List<UnitCategory> NEAR_FRONT_LINE_CATEGORIES = new() { UnitCategory.Static, UnitCategory.Vehicle, UnitCategory.Infantry };
-        private static readonly List<UnitFamily> LARGE_AIRCRAFT = new()
-        {
-            UnitFamily.PlaneAWACS,
-            UnitFamily.PlaneTankerBasket,
-            UnitFamily.PlaneTankerBoom,
-            UnitFamily.PlaneTransport,
-            UnitFamily.PlaneBomber,
-        };
-
-
 
         internal static List<DBEntryAirbaseParkingSpot> GetFreeParkingSpots(ref DCSMission mission, int airbaseID, int unitCount, DBEntryAircraft aircraftDB, bool requiresOpenAirParking = false, int reservedSpots = 0)
         {
@@ -104,7 +93,7 @@ namespace BriefingRoom4DCS.Generator
             bool nested = false
         )
         {
-            var useFrontLine = nearFrontLineFamily.HasValue && mission.FrontLine.Count > 0 && NEAR_FRONT_LINE_CATEGORIES.Contains(nearFrontLineFamily.Value.GetUnitCategory());
+            var useFrontLine = nearFrontLineFamily.HasValue && mission.FrontLine.Count > 0 && Constants.NEAR_FRONT_LINE_CATEGORIES.Contains(nearFrontLineFamily.Value.GetUnitCategory());
             var validSP = from DBEntryTheaterSpawnPoint pt in mission.SpawnPoints where validTypes.Contains(pt.PointType) select pt;
             Coordinates?[] distanceOrigin = [distanceOrigin1, distanceOrigin2];
             MinMaxD?[] distanceFrom = [distanceFrom1, distanceFrom2];
@@ -230,16 +219,16 @@ namespace BriefingRoom4DCS.Generator
             mission.SpawnPoints.Add(usedSP);
         }
 
-         internal static DBEntryTemplateLocation? GetRandomTemplateLocation(
-            DCSMission mission,
-            DBEntryTemplateLocationType locationType,
-            Coordinates distanceOrigin1, MinMaxD distanceFrom1,
-            Coordinates? distanceOrigin2 = null, MinMaxD? distanceFrom2 = null,
-            Coalition? coalition = null,
-            bool nested = false
-        )
+        internal static DBEntryTheaterTemplateLocation? GetRandomTemplateLocation(
+           DCSMission mission,
+           TheaterTemplateLocationType locationType,
+           Coordinates distanceOrigin1, MinMaxD distanceFrom1,
+           Coordinates? distanceOrigin2 = null, MinMaxD? distanceFrom2 = null,
+           Coalition? coalition = null,
+           bool nested = false
+       )
         {
-            var validTL = from DBEntryTemplateLocation pt in mission.TemplateLocations where pt.LocationType == locationType select pt;
+            var validTL = from DBEntryTheaterTemplateLocation pt in mission.TemplateLocations where pt.LocationType == locationType select pt;
             Coordinates?[] distanceOrigin = [distanceOrigin1, distanceOrigin2];
             MinMaxD?[] distanceFrom = [distanceFrom1, distanceFrom2];
             for (int i = 0; i < 2; i++)
@@ -251,16 +240,16 @@ namespace BriefingRoom4DCS.Generator
                 Coordinates origin = distanceOrigin[i].Value;
                 var searchRange = distanceFrom[i].Value * Toolbox.NM_TO_METERS; // convert distance to meters
 
-                IEnumerable<DBEntryTemplateLocation> validTLInRange;
+                IEnumerable<DBEntryTheaterTemplateLocation> validTLInRange;
 
                 int iterationsLeft = MAX_RADIUS_SEARCH_ITERATIONS;
 
                 var validTLArray = validTL.ToArray();
-                var index = new KDBush<DBEntryTemplateLocation>(validTLArray, p => p.Coordinates.X, p => p.Coordinates.Y);
+                var index = new KDBush<DBEntryTheaterTemplateLocation>(validTLArray, p => p.Coordinates.X, p => p.Coordinates.Y);
                 do
                 {
                     var within = index.Within(origin.X, origin.Y, searchRange.Max).Select(x => validTLArray[x]);
-                    validTLInRange = (from DBEntryTemplateLocation s in within
+                    validTLInRange = (from DBEntryTheaterTemplateLocation s in within
                                       where
                                         searchRange.Contains(origin.GetDistanceFrom(s.Coordinates)) &&
                                         CheckNotInHostileCoords(ref mission, s.Coordinates, coalition)
@@ -275,18 +264,37 @@ namespace BriefingRoom4DCS.Generator
 
             if (!validTL.Any())
                 return !coalition.HasValue && nested ? null : GetRandomTemplateLocation(mission, locationType, distanceOrigin1, distanceFrom1, distanceOrigin2, distanceFrom2, null, true);
-            DBEntryTemplateLocation selectedTemplateLocation = Toolbox.RandomFrom(validTL.ToArray());
-            mission.TemplateLocations.Remove(selectedTemplateLocation); // Remove spawn point so it won't be used again;
+            var selectedTemplateLocation = Toolbox.RandomFrom(validTL.ToArray());
+            mission.TemplateLocations.Remove(selectedTemplateLocation);
             mission.UsedTemplateLocations.Add(selectedTemplateLocation);
             return selectedTemplateLocation;
         }
 
+        internal static DBEntryTheaterTemplateLocation? GetNearestTemplateLocation(
+           ref DCSMission mission,
+           TheaterTemplateLocationType locationType,
+           Coordinates origin, bool remove = true)
+        {
+            var options = mission.TemplateLocations.Where(x => x.LocationType == locationType).ToList();
+            if (!options.Any())
+                return null;
+            var tl = options.Aggregate((acc, x) => origin.GetDistanceFrom(x.Coordinates) < origin.GetDistanceFrom(acc.Coordinates) ? x : acc);
+            if (origin.GetDistanceFrom(tl.Coordinates) > (mission.TemplateRecord.FlightPlanObjectiveSeparation.Max * Toolbox.NM_TO_METERS))
+                return null;
+            if (remove)
+            {
+                mission.TemplateLocations.Remove(tl);
+                mission.UsedTemplateLocations.Add(tl);
+            }
+            return tl;
+        }
+
         internal static void RecoverTemplateLocation(ref DCSMission mission, Coordinates coords)
         {
-            var usedSP = mission.UsedSpawnPoints.Find(x => x.Coordinates.X == coords.X && x.Coordinates.Y == x.Coordinates.Y);
-            if (usedSP.Coordinates.ToString() == Coordinates.Zero.ToString())
+            var usedTL = mission.UsedTemplateLocations.Find(x => x.Coordinates.X == coords.X && x.Coordinates.Y == x.Coordinates.Y);
+            if (usedTL.Coordinates.ToString() == Coordinates.Zero.ToString())
                 return;
-            mission.SpawnPoints.Add(usedSP);
+            mission.UsedTemplateLocations.Add(usedTL);
         }
 
         internal static double GetDirToFrontLine(ref DCSMission mission, Coordinates coords)
@@ -317,7 +325,7 @@ namespace BriefingRoom4DCS.Generator
              .OrderBy(x => x.ParkingType)
              .ThenBy(x => x.Length * x.Width * x.Height);
 
-             if (lastParkingSpot.HasValue)
+            if (lastParkingSpot.HasValue)
                 opts = opts.ThenBy(x => x.Coordinates.GetDistanceFrom(lastParkingSpot.Value.Coordinates));
             return opts.ToList();
         }
@@ -345,7 +353,7 @@ namespace BriefingRoom4DCS.Generator
         }
 
         private static bool IsBunkerUnsuitable(UnitFamily unitFamily) =>
-           LARGE_AIRCRAFT.Contains(unitFamily) || unitFamily.GetUnitCategory() == UnitCategory.Helicopter;
+           Constants.LARGE_AIRCRAFT.Contains(unitFamily) || unitFamily.GetUnitCategory() == UnitCategory.Helicopter;
 
         private static bool ValidateAirfieldParking(List<DBEntryAirbaseParkingSpot> parkingSpots, UnitFamily unitFamily, int unitCount)
         {
@@ -367,7 +375,7 @@ namespace BriefingRoom4DCS.Generator
 
         private static bool ValidateAirfieldRunway(DBEntryAirbase airbaseDB, UnitFamily unitFamily)
         {
-            if (airbaseDB.RunwayLengthFt == -1 || !LARGE_AIRCRAFT.Contains(unitFamily)) //TODO implement runway distances on all relavant airbases
+            if (airbaseDB.RunwayLengthFt == -1 || !Constants.LARGE_AIRCRAFT.Contains(unitFamily)) //TODO implement runway distances on all relavant airbases
                 return true;
             return airbaseDB.RunwayLengthFt > 7000; //TODO This is a guess based on most runways I know work so far. Place holder for per aircraft data
         }

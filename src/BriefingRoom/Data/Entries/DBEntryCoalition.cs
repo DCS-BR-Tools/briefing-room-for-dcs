@@ -35,7 +35,7 @@ namespace BriefingRoom4DCS.Data
 
         internal string DefaultUnitList { get; private set; }
 
-        private static readonly List<UnitFamily> SINGLE_TYPE_FAMILIES = new() { UnitFamily.VehicleMissile, UnitFamily.VehicleArtillery };
+        
 
 
         protected override bool OnLoad(string iniFilePath)
@@ -136,7 +136,7 @@ namespace BriefingRoom4DCS.Data
                 case DCSUnitCategory.Static:
                 case DCSUnitCategory.Ship:
                 case DCSUnitCategory.Vehicle:
-                    allowDifferentUnitTypes = families.Count > 1 || !SINGLE_TYPE_FAMILIES.Contains(families.First());
+                    allowDifferentUnitTypes = families.Count > 1 || !Constants.SINGLE_TYPE_FAMILIES.Contains(families.First());
                     break;
             }
 

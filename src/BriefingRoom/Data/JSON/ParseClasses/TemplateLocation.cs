@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BriefingRoom4DCS.Data.JSON
 {
-    public class UnitLocation
+    public class TheaterTemplateUnitLocation
     {
         public double heading { get; set; }
         public List<double> coords { get; set; }
@@ -11,10 +11,10 @@ namespace BriefingRoom4DCS.Data.JSON
         public string originalType { get; set; }
     }
 
-    public class TemplateLocation
+    public class TheaterTemplateLocation
     {
         public List<double> coords { get; set; }
-        public List<UnitLocation> locations { get; set; }
+        public List<TheaterTemplateUnitLocation> locations { get; set; }
         public string locationType { get; set; }
     }
 }
