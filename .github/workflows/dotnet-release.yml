@@ -29,14 +29,13 @@ jobs:
         with:
           format: YYMMDD-HHMMSS
           utcOffset: "+00:00"
-      
+
       - name: Get current date
         uses: 1466587594/get-current-time@v2
         id: current-date
         with:
           format: YMM.DD
           utcOffset: "+00:00"
-
 
       - name: Set Build Version
         id: build_version
@@ -47,7 +46,7 @@ jobs:
         id: release_version
         run: |
           (Get-Content -path  src\BriefingRoom\BriefingRoom.cs -Raw) -replace '~RELEASE_VERSION~','${{ steps.current-date.outputs.formattedTime }}' | Set-Content src\BriefingRoom\BriefingRoom.cs
-    
+
       - name: Build and Publish App
         run: |
           dotnet publish src/CommandLine -o BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }} -c Release
@@ -56,7 +55,6 @@ jobs:
 
       - name: Zip Release
         run: 7z a -tzip BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }}.zip BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }} "-xr!.git\" "-xr!.github\" "-xr!.git*" "-xr!.vscode\" "-xr!dataExtractors\"  "-xr!src\" "-xr!docs\" "-x!*.bat" "-x!*.filelist"
-
 
       - name: Create Changelog
         id: change_log
@@ -95,15 +93,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3    
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-      - name: Login to Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Get current time
         uses: 1466587594/get-current-time@v2
@@ -111,7 +100,7 @@ jobs:
         with:
           format: YYMMDD-HHMMSS
           utcOffset: "+00:00"
-      
+
       - name: Get current date
         uses: 1466587594/get-current-time@v2
         id: current-date
@@ -128,7 +117,16 @@ jobs:
         id: release_version
         run: |
           sed -i 's/~RELEASE_VERSION~/${{ steps.current-date.outputs.formattedTime }}/g' ./src/BriefingRoom/BriefingRoom.cs
-    
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
