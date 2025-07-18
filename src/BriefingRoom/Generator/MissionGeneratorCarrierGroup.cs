@@ -41,7 +41,7 @@ namespace BriefingRoom4DCS.Generator
                 mission.WindDirectionAtSeaLevel = Toolbox.RandomDouble(Toolbox.TWO_PI);
             var carrierPathDeg = ((mission.WindDirectionAtSeaLevel + Math.PI) % Toolbox.TWO_PI) * Toolbox.RADIANS_TO_DEGREES;
             var usedCoordinates = new List<Coordinates>();
-            var templatesDB = Database.Instance.GetAllEntries<DBEntryTemplate>();
+            var templatesDB = Database.Instance.GetAllEntries<DBEntryDCSTemplate>();
             foreach (MissionTemplateFlightGroupRecord flightGroup in mission.TemplateRecord.PlayerFlightGroups)
             {
                 if (string.IsNullOrEmpty(flightGroup.Carrier) || mission.CarrierDictionary.ContainsKey(flightGroup.Carrier)) continue;
@@ -176,7 +176,7 @@ namespace BriefingRoom4DCS.Generator
                 throw new BriefingRoomException(mission.LangKey, "NoFOBAirDefenseSpawnPoint");
             }
 
-            var fobTemplate = Database.Instance.GetEntry<DBEntryTemplate>(flightGroup.Carrier);
+            var fobTemplate = Database.Instance.GetEntry<DBEntryDCSTemplate>(flightGroup.Carrier);
             if (fobTemplate == null) return; // Unit doesn't exist or is not a carrier
 
             double radioFrequency = 127.5 + mission.CarrierDictionary.Count;

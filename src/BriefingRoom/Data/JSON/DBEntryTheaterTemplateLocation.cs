@@ -6,31 +6,39 @@ using BriefingRoom4DCS.Data.JSON;
 
 namespace BriefingRoom4DCS.Data
 {
-    public readonly struct DBEntryTheaterTemplateUnitLocation
+    public readonly struct DBEntryTemplateUnitLocation
     {
+        public DBEntryTemplateUnitLocation()
+        {
+        }
+
         public double Heading { get; init; }
         public Coordinates Coordinates { get; init; }
-        public List<UnitFamily> UnitTypes { get; init; }
+        public List<UnitFamily> UnitFamilies { get; init; } = new List<UnitFamily>();
+        public bool IsScenery { get; init; } = false;
+        public string? DCSID { get; init; } = null;
     }
 
     public readonly struct DBEntryTheaterTemplateLocation
     {
         public Coordinates Coordinates { get; init; }
-        public List<DBEntryTheaterTemplateUnitLocation> Locations { get; init; }
+        public List<DBEntryTemplateUnitLocation> Locations { get; init; }
         public TheaterTemplateLocationType LocationType { get; init; }
 
         public DBEntryTheaterTemplateLocation(TheaterTemplateLocation TheaterTemplateLocation)
         {
             Coordinates = new Coordinates(TheaterTemplateLocation.coords[0], TheaterTemplateLocation.coords[1]);
-            Locations = new List<DBEntryTheaterTemplateUnitLocation>();
+            Locations = new List<DBEntryTemplateUnitLocation>();
 
-            foreach (var unitLocation in TheaterTemplateLocation.locations)
+            foreach (var unitLocation in TheaterTemplateLocation.units)
             {
-                var location = new DBEntryTheaterTemplateUnitLocation
+                var location = new DBEntryTemplateUnitLocation
                 {
                     Heading = unitLocation.heading,
                     Coordinates = new Coordinates(unitLocation.coords[0], unitLocation.coords[1]),
-                    UnitTypes = unitLocation.unitTypes.Select(x => (UnitFamily)Enum.Parse(typeof(UnitFamily), x, true)).ToList()
+                    UnitFamilies = unitLocation.unitFamilies.Select(x => (UnitFamily)Enum.Parse(typeof(UnitFamily), x, true)).ToList(),
+                    IsScenery = unitLocation.isScenery,
+                    DCSID = unitLocation.isSpecificType ? unitLocation.originalType : null
                 };
 
                 Locations.Add(location);
@@ -45,7 +53,7 @@ namespace BriefingRoom4DCS.Data
 
             foreach (var unitLocation in Locations)
             {
-                var unitFamily = Toolbox.RandomFrom(unitLocation.UnitTypes);
+                var unitFamily = Toolbox.RandomFrom(unitLocation.UnitFamilies);
                 if (!familyMap.ContainsKey(unitFamily))
                 {
                     familyMap[unitFamily] = new List<string>();
@@ -55,21 +63,21 @@ namespace BriefingRoom4DCS.Data
             return familyMap;
         }
 
-        public Tuple<List<string>, List<DBEntryTemplateUnit>> CreateTemplatePositionMap(Dictionary<UnitFamily, List<string>> familyMap, Boolean tryUseAll = false)
+        public Tuple<List<string>, List<DBEntryDCSTemplateUnit>> CreateTemplatePositionMap(Dictionary<UnitFamily, List<string>> familyMap, Boolean tryUseAll = false)
         {
-            var positionMap = new List<DBEntryTemplateUnit>();
+            var positionMap = new List<DBEntryDCSTemplateUnit>();
             var units = new List<string>();
             foreach (var unitLocation in Locations)
             {
-                var familyOptions = unitLocation.UnitTypes.Intersect(familyMap.Keys).ToList();
+                var familyOptions = unitLocation.UnitFamilies.Intersect(familyMap.Keys).ToList();
                 if (familyOptions.Count == 0)
                 {
-                    throw new BriefingRoomException("en", $"Unit type {string.Join(",", unitLocation.UnitTypes)} not found in family map.");
+                    throw new BriefingRoomException("en", $"Unit type {string.Join(",", unitLocation.UnitFamilies)} not found in family map.");
                 }
                 var options = familyOptions.SelectMany(x => familyMap[x]).ToList();
                 if (options.Count == 0)
                 {
-                    throw new BriefingRoomException("en", $"Unit type {string.Join(",", unitLocation.UnitTypes)} has no DCSID in family map.");
+                    throw new BriefingRoomException("en", $"Unit type {string.Join(",", unitLocation.UnitFamilies)} has no DCSID in family map.");
                 }
 
                 var unitID = Toolbox.RandomFrom(options);
@@ -80,7 +88,7 @@ namespace BriefingRoom4DCS.Data
                             familyMap[x].Remove(unitID);
                     });
 
-                var templateUnit = new DBEntryTemplateUnit
+                var templateUnit = new DBEntryDCSTemplateUnit
                 {
                     DCoordinates = unitLocation.Coordinates,
                     Heading = unitLocation.Heading,
@@ -90,7 +98,7 @@ namespace BriefingRoom4DCS.Data
                 units.Add(unitID);
             }
 
-            return new Tuple<List<string>, List<DBEntryTemplateUnit>>(units, positionMap);
+            return new Tuple<List<string>, List<DBEntryDCSTemplateUnit>>(units, positionMap);
         }
     }
 }

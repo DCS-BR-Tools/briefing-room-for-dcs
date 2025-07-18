@@ -173,7 +173,7 @@ namespace BriefingRoom4DCS.Generator
 
         internal static UnitMakerGroupInfo? AddUnitGroupTemplate(
             ref DCSMission mission,
-            DBEntryTemplate unitTemplate,
+            DBEntryDCSTemplate unitTemplate,
             Side side,
             string groupTypeLua,
             string unitTypeLua,
@@ -490,7 +490,7 @@ namespace BriefingRoom4DCS.Generator
                     continue;
                 }
                 var groupHeading = GetGroupHeading(coordinates, extraSettings);
-                var (unitCoordinates, unitHeading) = SetUnitCoordinatesAndHeading(ref mission, unitDB, unitIndex, coordinates, groupHeading, (List<DBEntryTemplateUnit>)extraSettings.GetValueOrDefault("TemplatePositionMap", new List<DBEntryTemplateUnit>()));
+                var (unitCoordinates, unitHeading) = SetUnitCoordinatesAndHeading(ref mission, unitDB, unitIndex, coordinates, groupHeading, (List<DBEntryDCSTemplateUnit>)extraSettings.GetValueOrDefault("TemplatePositionMap", new List<DBEntryDCSTemplateUnit>()));
                 var firstUnitID = mission.UnitID;
                 var dCSGroup = CreateGroup(
                     ref mission,
@@ -592,7 +592,7 @@ namespace BriefingRoom4DCS.Generator
             var unit = new DCSUnit(unitType);
 
             var groupHeading = GetGroupHeading(coordinates, extraSettings);
-            var (unitCoordinates, unitHeading) = SetUnitCoordinatesAndHeading(ref mission, unitDB, unitLuaIndex, coordinates, groupHeading, (List<DBEntryTemplateUnit>)extraSettings.GetValueOrDefault("TemplatePositionMap", new List<DBEntryTemplateUnit>()), singleUnit);
+            var (unitCoordinates, unitHeading) = SetUnitCoordinatesAndHeading(ref mission, unitDB, unitLuaIndex, coordinates, groupHeading, (List<DBEntryDCSTemplateUnit>)extraSettings.GetValueOrDefault("TemplatePositionMap", new List<DBEntryDCSTemplateUnit>()), singleUnit);
 
             foreach (KeyValuePair<string, object> extraSetting in extraSettings.Where(x => !IGNORE_PROPS.Contains(x.Key)).ToDictionary(x => x.Key, x => x.Value))
             {
@@ -749,7 +749,7 @@ namespace BriefingRoom4DCS.Generator
             int unitIndex,
             Coordinates groupCoordinates,
             double groupHeading,
-            List<DBEntryTemplateUnit> templatePositionMap,
+            List<DBEntryDCSTemplateUnit> templatePositionMap,
             bool singleUnit = false)
         {
             var unitCoordinates = groupCoordinates;

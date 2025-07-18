@@ -69,7 +69,7 @@ end
 file = io.open("LocationTemplates.json", "w")
 io.output(file)
 
-local unitTypes = {
+local unitTypeToFamilies = {
     ["KAMAZ Truck"] = { "VehicleSupply" },
     ["GAZ-66"] = { "VehicleSupply" },
     ["Tor 9A331"] = { "VehicleSAMShort", "VehicleSAMShortIR", "VehicleAAA", "VehicleAAAStatic", "InfantryMANPADS" },
@@ -157,11 +157,11 @@ for _, country in orderedPairs(mission.coalition.red.country) do
                     coords = { originX - value.x, originY - value.y },
                     heading = value.heading,
                     originalType = value.type,
-                    unitTypes = switch(value.type, unitTypes)
+                    unitFamilies = switch(value.type, unitTypeToFamilies)
                 }
                 locIndex = locIndex + 1
             end
-            output[index] = { coords = { originX, originY }, locationType = mysplit(groupValue.name, "-")[1], locations =
+            output[index] = { coords = { originX, originY }, locationType = mysplit(groupValue.name, "-")[1], units =
             locations }
             index = index + 1
         end
@@ -180,11 +180,11 @@ for _, country in orderedPairs(mission.coalition.blue.country) do
                     coords = { originX - value.x, originY - value.y },
                     heading = value.heading,
                     originalType = value.type,
-                    unitTypes = switch(value.type, unitTypes)
+                    unitFamilies = switch(value.type, unitTypeToFamilies)
                 }
                 locIndex = locIndex + 1
             end
-            output[index] = { coords = { originX, originY }, locationType = mysplit(groupValue.name, "-")[1], locations =
+            output[index] = { coords = { originX, originY }, locationType = mysplit(groupValue.name, "-")[1], units =
             locations }
             index = index + 1
         end

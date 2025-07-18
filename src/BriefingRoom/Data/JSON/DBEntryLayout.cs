@@ -30,7 +30,7 @@ namespace BriefingRoom4DCS.Data
     internal class DBEntryLayout : DBEntry
     {
 
-        internal List<DBEntryTemplateUnit> Units { get; init; }
+        internal List<DBEntryDCSTemplateUnit> Units { get; init; }
         internal List<UnitCategory> Categories { get; init; }
         internal int MinUnits { get; init; }
 
@@ -53,7 +53,7 @@ namespace BriefingRoom4DCS.Data
                     UIDisplayName = new LanguageString(LangDB, GetLanguageClassName(typeof(DBEntryLayout)), id, "name",layout.name),
                     Categories = layout.categories.Select(x => (UnitCategory)Enum.Parse(typeof(UnitCategory), x, true)).ToList(),
                     MinUnits = layout.minUnits,
-                    Units = layout.units.Select(x => new DBEntryTemplateUnit
+                    Units = layout.units.Select(x => new DBEntryDCSTemplateUnit
                     {
                         DCoordinates = new Coordinates(x.dx, x.dy),
                         Heading = x.heading

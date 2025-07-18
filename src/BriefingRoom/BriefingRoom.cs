@@ -157,7 +157,7 @@ namespace BriefingRoom4DCS
 
                 case DatabaseEntryType.UnitCarrier:
                     return Database.Instance.GetAllEntries<DBEntryJSONUnit>().Where(unitCarrier => Toolbox.CARRIER_FAMILIES.Intersect(unitCarrier.Families).Any()).Select(unitCarrier => unitCarrier.GetDBEntryInfo())
-                    .Concat(Database.Instance.GetAllEntries<DBEntryTemplate>().Where(template => template.Type == "FOB").Select(template => template.GetDBEntryInfo()))
+                    .Concat(Database.Instance.GetAllEntries<DBEntryDCSTemplate>().Where(template => template.Type == "FOB").Select(template => template.GetDBEntryInfo()))
                     .OrderBy(x => x.Name.Get(langKey)).ToArray();
 
                 case DatabaseEntryType.UnitFlyableAircraft:

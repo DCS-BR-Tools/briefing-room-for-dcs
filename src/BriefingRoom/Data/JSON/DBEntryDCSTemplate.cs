@@ -27,13 +27,12 @@ using Newtonsoft.Json;
 
 namespace BriefingRoom4DCS.Data
 {
-    internal class DBEntryTemplate : DBEntry
+    internal class DBEntryDCSTemplate : DBEntry
     {
 
-        internal string DCSCategory { get; init; }
         internal string Type { get; init; }
         internal Dictionary<Country, (Decade start, Decade end)> Countries { get; init; }
-        internal List<DBEntryTemplateUnit> Units { get; init; }
+        internal List<DBEntryDCSTemplateUnit> Units { get; init; }
         internal UnitFamily Family { get; init; }
         internal string Module { get; init; }
 
@@ -45,8 +44,8 @@ namespace BriefingRoom4DCS.Data
         internal static Dictionary<string, DBEntry> LoadJSON(string filepath, DatabaseLanguage LangDB)
         {
             var itemMap = new Dictionary<string, DBEntry>(StringComparer.InvariantCulture);
-            var data = JsonConvert.DeserializeObject<List<BriefingRoom4DCS.Data.JSON.Template>>(File.ReadAllText(filepath));
-            var supportData = JsonConvert.DeserializeObject<List<BriefingRoom4DCS.Data.JSON.TemplateBRInfo>>(File.ReadAllText($"{filepath.Replace(".json", "")}BRInfo.json"))
+            var data = JsonConvert.DeserializeObject<List<BriefingRoom4DCS.Data.JSON.DCSTemplate>>(File.ReadAllText(filepath));
+            var supportData = JsonConvert.DeserializeObject<List<BriefingRoom4DCS.Data.JSON.DCSTemplateBRInfo>>(File.ReadAllText($"{filepath.Replace(".json", "")}BRInfo.json"))
                 .ToDictionary(x => x.type, x => x);
             foreach (var template in data)
             {
@@ -59,14 +58,14 @@ namespace BriefingRoom4DCS.Data
                 var supportInfo = supportData[id];
                 var defaultOperational = (start: (Decade)supportInfo.operational[0], end: (Decade)supportInfo.operational[1]);
                 var extraCountries = supportInfo.extraOperators.ToDictionary(x => (Country)Enum.Parse(typeof(Country), x.Key.Replace(" ", ""), true), x => x.Value.Count > 0 ? (start: (Decade)x.Value[0], end: (Decade)x.Value[1]) : defaultOperational);
-                var entry = new DBEntryTemplate
+                var entry = new DBEntryDCSTemplate
                 {
                     ID = id,
-                    UIDisplayName = new LanguageString(LangDB, GetLanguageClassName(typeof(DBEntryTemplate)), id, "name", template.name),
+                    UIDisplayName = new LanguageString(LangDB, GetLanguageClassName(typeof(DBEntryDCSTemplate)), id, "name", template.name),
                     Type = template.type,
                     Countries = extraCountries,
                     Family = (UnitFamily)Enum.Parse(typeof(UnitFamily), supportInfo.family, true),
-                    Units = template.units.Select(x => new DBEntryTemplateUnit
+                    Units = template.units.Select(x => new DBEntryDCSTemplateUnit
                     {
                         DCoordinates = new Coordinates(x.dx, x.dy),
                         DCSID = x.name,
@@ -95,12 +94,12 @@ namespace BriefingRoom4DCS.Data
             return itemMap;
         }
 
-        public DBEntryTemplate() { }
+        public DBEntryDCSTemplate() { }
     }
 
-    public class DBEntryTemplateUnit
+    public class DBEntryDCSTemplateUnit
     {
-        public DBEntryTemplateUnit() { }
+        public DBEntryDCSTemplateUnit() { }
         public Coordinates DCoordinates { get; init; }
         public double Heading { get; init; }
         public string DCSID { get; init; }
