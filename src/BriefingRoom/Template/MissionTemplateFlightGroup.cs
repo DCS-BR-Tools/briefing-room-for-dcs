@@ -37,7 +37,7 @@ namespace BriefingRoom4DCS.Template
             {
                 Carrier_ = Database.Instance.CheckID<DBEntryJSONUnit>(value, allowEmptyStr: true);
                 if (string.IsNullOrEmpty(Carrier_) && !string.IsNullOrEmpty(value))
-                    Carrier_ = Database.Instance.CheckID<DBEntryTemplate>(value, allowEmptyStr: true);
+                    Carrier_ = Database.Instance.CheckID<DBEntryDCSTemplate>(value, allowEmptyStr: true);
             }
         }
         private string Carrier_;

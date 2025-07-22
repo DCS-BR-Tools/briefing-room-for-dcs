@@ -74,15 +74,15 @@ namespace BriefingRoom4DCS.Data
             return true;
         }
 
-        internal Tuple<Country, DBEntryTemplate> GetRandomTemplate(List<UnitFamily> families, Decade decade, List<string> unitMods, List<string> unitBanList, MinMaxI? countMinMax = null, Country[] allyCountries = null)
+        internal Tuple<Country, DBEntryDCSTemplate> GetRandomTemplate(List<UnitFamily> families, Decade decade, List<string> unitMods, List<string> unitBanList, MinMaxI? countMinMax = null, Country[] allyCountries = null)
         {
 
-            var validTemplates = new Dictionary<Country, List<DBEntryTemplate>>();
+            var validTemplates = new Dictionary<Country, List<DBEntryDCSTemplate>>();
             var countryList = allyCountries is null ? Countries : allyCountries;
             foreach (var country in countryList)
             {
                 validTemplates[country] = (
-                        from template in Database.GetAllEntries<DBEntryTemplate>()
+                        from template in Database.GetAllEntries<DBEntryDCSTemplate>()
                         where families.Contains(template.Family) && template.Countries.ContainsKey(country)
                             && !template.Units.Any(x => unitBanList.Contains(x.DCSID))
                             && (string.IsNullOrEmpty(template.Module) || unitMods.Contains(template.Module, StringComparer.InvariantCultureIgnoreCase) || DBEntryDCSMod.CORE_MODS.Contains(template.Module, StringComparer.InvariantCultureIgnoreCase))

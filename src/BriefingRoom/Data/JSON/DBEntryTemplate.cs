@@ -30,12 +30,12 @@ namespace BriefingRoom4DCS.Data
     internal class DBEntryTemplate : DBEntry
     {
 
-        internal string DCSCategory { get; init; }
-        internal string Type { get; init; }
-        internal Dictionary<Country, (Decade start, Decade end)> Countries { get; init; }
-        internal List<DBEntryTemplateUnit> Units { get; init; }
-        internal UnitFamily Family { get; init; }
-        internal string Module { get; init; }
+        internal string Name { get; init; }
+        public List<DBEntryTemplateGroup> Groups { get; init; }
+        internal List<UnitFamily> TargetFamilies { get; init; }
+        internal List<string> Modules { get; init; }
+        internal bool LowPolly { get; init; } = false;
+        internal bool Immovable { get; init; } = false;
 
         protected override bool OnLoad(string o)
         {
@@ -45,52 +45,45 @@ namespace BriefingRoom4DCS.Data
         internal static Dictionary<string, DBEntry> LoadJSON(string filepath, DatabaseLanguage LangDB)
         {
             var itemMap = new Dictionary<string, DBEntry>(StringComparer.InvariantCulture);
-            var data = JsonConvert.DeserializeObject<List<BriefingRoom4DCS.Data.JSON.Template>>(File.ReadAllText(filepath));
-            var supportData = JsonConvert.DeserializeObject<List<BriefingRoom4DCS.Data.JSON.TemplateBRInfo>>(File.ReadAllText($"{filepath.Replace(".json", "")}BRInfo.json"))
-                .ToDictionary(x => x.type, x => x);
+            var data = JsonConvert.DeserializeObject<List<JSON.Template>>(File.ReadAllText(filepath));
             foreach (var template in data)
             {
                 var id = template.name;
-                if (!supportData.ContainsKey(id))
-                {
-                    BriefingRoom.PrintToLog($"Template {id} missing support data.", LogMessageErrorLevel.Warning);
-                    continue;
-                }
-                var supportInfo = supportData[id];
-                var defaultOperational = (start: (Decade)supportInfo.operational[0], end: (Decade)supportInfo.operational[1]);
-                var extraCountries = supportInfo.extraOperators.ToDictionary(x => (Country)Enum.Parse(typeof(Country), x.Key.Replace(" ", ""), true), x => x.Value.Count > 0 ? (start: (Decade)x.Value[0], end: (Decade)x.Value[1]) : defaultOperational);
+                var templateUnits = template.groups.SelectMany(x => x.units).ToList();
+                var definedUnits = templateUnits.Where(x => x.isSpecificType).Select(x => Database.Instance.GetEntry<DBEntryJSONUnit>(x.originalType)).Distinct().ToList();
+                var flexibleUnitFamilies = templateUnits.Where(x => !x.isSpecificType).SelectMany(x => x.unitFamilies).Distinct().Select(x => (UnitFamily)Enum.Parse(typeof(UnitFamily), x, true)).ToList();
+                var definedUnitFamilies = definedUnits.SelectMany(x => x.Families).Distinct().ToList();
                 var entry = new DBEntryTemplate
                 {
                     ID = id,
                     UIDisplayName = new LanguageString(LangDB, GetLanguageClassName(typeof(DBEntryTemplate)), id, "name", template.name),
-                    Type = template.type,
-                    Countries = extraCountries,
-                    Family = (UnitFamily)Enum.Parse(typeof(UnitFamily), supportInfo.family, true),
-                    Units = template.units.Select(x => new DBEntryTemplateUnit
+                    TargetFamilies = flexibleUnitFamilies.Concat(definedUnitFamilies).Distinct().ToList(),
+                    Groups = template.groups.Select(x => new DBEntryTemplateGroup
                     {
-                        DCoordinates = new Coordinates(x.dx, x.dy),
-                        DCSID = x.name,
-                        Heading = x.heading
+                        Coordinates = new Coordinates(x.coords),
+                        Units = x.units.Select(y => new DBEntryTemplateUnit
+                        {
+                            Coordinates = new Coordinates(y.coords),
+                            DCSID = y.isSpecificType ? y.originalType : null,
+                            UnitFamilies = y.unitFamilies.Select(z => (UnitFamily)Enum.Parse(typeof(UnitFamily), z, true)).ToList(),
+                            Heading = y.heading,
+                            IsScenery = y.isScenery,
+                        }).ToList()
                     }).ToList(),
-                    Module = supportInfo.module
+                    Modules = definedUnits.Select(x => x.Module).Where(x => !string.IsNullOrEmpty(x) || !DBEntryDCSMod.CORE_MODS.Contains(x)).Distinct().ToList(),
+                    LowPolly = definedUnits.Any(x => x.LowPolly),
+                    Immovable = template.immovable
                 };
 
-                var units = entry.Units.Where(x => Database.Instance.GetEntry<DBEntryJSONUnit>(x.DCSID) == null).Select(x => x.DCSID).ToList();
+                var units = definedUnits.Where(x => !string.IsNullOrEmpty(x.DCSID) && Database.Instance.GetEntry<DBEntryJSONUnit>(x.DCSID) == null).Select(x => x.DCSID).ToList();
                 if (units.Count > 0)
                 {
                     BriefingRoom.PrintToLog($"{id} has units not in data: {string.Join(',', units)}", LogMessageErrorLevel.Warning);
                     continue;
                 }
-                var missingModuleRefs = entry.Units.Select(x => Database.Instance.GetEntry<DBEntryJSONUnit>(x.DCSID).Module).Where(x => !String.IsNullOrEmpty(x) && x != entry.Module && !DBEntryDCSMod.CORE_MODS.Contains(x)).Distinct().ToList();
-                if (missingModuleRefs.Count > 0)
-                {
-                    BriefingRoom.PrintToLog($"{id} missing module refs in BRInfo data: {string.Join(',', missingModuleRefs)}", LogMessageErrorLevel.Warning);
-                }
 
                 itemMap.Add(id, entry);
             }
-
-            missingDCSDataWarnings(supportData, itemMap, "Templates");
 
             return itemMap;
         }
@@ -98,11 +91,26 @@ namespace BriefingRoom4DCS.Data
         public DBEntryTemplate() { }
     }
 
-    public class DBEntryTemplateUnit
+    public readonly struct DBEntryTemplateGroup
     {
-        public DBEntryTemplateUnit() { }
-        public Coordinates DCoordinates { get; init; }
+        public DBEntryTemplateGroup()
+        {
+        }
+        public Coordinates Coordinates { get; init; }
+
+        public List<DBEntryTemplateUnit> Units { get; init; }
+    }
+
+    public readonly struct DBEntryTemplateUnit
+    {
+        public DBEntryTemplateUnit()
+        {
+        }
+
         public double Heading { get; init; }
-        public string DCSID { get; init; }
+        public Coordinates Coordinates { get; init; }
+        public List<UnitFamily> UnitFamilies { get; init; } = new List<UnitFamily>();
+        public bool IsScenery { get; init; } = false;
+        public string DCSID { get; init; } = null;
     }
 }

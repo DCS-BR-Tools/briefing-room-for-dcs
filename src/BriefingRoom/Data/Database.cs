@@ -22,7 +22,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
 
 namespace BriefingRoom4DCS.Data
@@ -99,8 +98,9 @@ namespace BriefingRoom4DCS.Data
             LoadJSONEntries<DBEntryStatic>("UnitCargo", true);
             LoadJSONModEntries<DBEntryStatic>("UnitCargo", true);
             LoadJSONEntries<DBEntryStatic>("UnitHeliports", true);
-            PrepLoadEntries<DBEntryTemplate>("LoadJSONEntries", "Templates");
-            PrepLoadEntries<DBEntryTemplate>("LoadJSONEntries", "TemplatesCustom");
+            PrepLoadEntries<DBEntryDCSTemplate>("LoadJSONEntries", "DCSTemplates");
+            PrepLoadEntries<DBEntryDCSTemplate>("LoadJSONEntries", "DCSTemplatesCustom");
+            LoadJSONEntries<DBEntryTemplate>("Templates"); // Convert to Prep before merging
             PrepLoadEntries<DBEntryLayout>("LoadJSONEntries", "Layouts");
             PrepLoadEntries<DBEntryDefaultUnitList>("LoadEntries", "DefaultUnitLists");
             LoadEntries<DBEntryCoalition>("Coalitions");
@@ -215,6 +215,7 @@ namespace BriefingRoom4DCS.Data
                 DBEntryShip a => DBEntries[dbType].Concat(DBEntryShip.LoadJSON(filePath, Language)).ToDictionary(pair => pair.Key, pair => pair.Value),
                 DBEntryStatic a => DBEntries[dbType].Concat(DBEntryStatic.LoadJSON(filePath, Language)).ToDictionary(pair => pair.Key, pair => pair.Value),
                 DBEntryCargo a => DBEntries[dbType].Concat(DBEntryCargo.LoadJSON(filePath, Language)).ToDictionary(pair => pair.Key, pair => pair.Value),
+                DBEntryDCSTemplate a => DBEntries[dbType].Concat(DBEntryDCSTemplate.LoadJSON(filePath, Language)).ToDictionary(pair => pair.Key, pair => pair.Value),
                 DBEntryTemplate a => DBEntries[dbType].Concat(DBEntryTemplate.LoadJSON(filePath, Language)).ToDictionary(pair => pair.Key, pair => pair.Value),
                 DBEntryLayout a => DBEntries[dbType].Concat(DBEntryLayout.LoadJSON(filePath, Language)).ToDictionary(pair => pair.Key, pair => pair.Value),
                 DBEntrySituation a => DBEntries[dbType].Concat(DBEntrySituation.LoadJSON(filePath, Language)).ToDictionary(pair => pair.Key, pair => pair.Value),
