@@ -11,6 +11,7 @@
     <PublishReadyToRunShowWarnings>true</PublishReadyToRunShowWarnings>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="9.0.8" />
       <ProjectReference Include="../BriefingRoom/BriefingRoom.csproj" />
   </ItemGroup>
 </Project>
