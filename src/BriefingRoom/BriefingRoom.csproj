@@ -6,7 +6,7 @@
   <ItemGroup>
     <PackageReference Include="IronPdf" Version="2025.9.4" />
     <PackageReference Include="LuaTableSerializer" Version="1.0.2" />
-    <PackageReference Include="Microsoft.Maui.Graphics" Version="9.0.100" />
+    <PackageReference Include="Microsoft.Maui.Graphics" Version="9.0.110" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="FluentRandomPicker" Version="3.5.1" />
     <PackageReference Include="NGeoKDBush" Version="1.0.1" />
