@@ -259,7 +259,7 @@
                                 &nbsp;@string.Join(", ", @objective.Features.Select(x => briefingRoom.GetSingleDatabaseEntryInfo(DatabaseEntryType.ObjectiveFeature, x).Value.Name.Get(briefingRoom.LanguageKey)))
                         </p>
                     }
-                    @if(objective.CoordinateHint[0] != 0 && objective.CoordinateHint[1] != 0)
+                    @if(objective.CoordinateHint != null && objective.CoordinateHint.Length > 1 && objective.CoordinateHint[0] != 0 && objective.CoordinateHint[1] != 0)
                     {
                         <p class="custom-warning">
                             <a @onclick="() => objectiveUtil.ClearObjectiveHint(objective)" >@briefingRoom.Translate("RemoveHint")</a>
@@ -405,8 +405,14 @@
     {
         builderUtils = new BuilderUtils(briefingRoom);
         Template = new MissionTemplate();
-        flightGroupUtil.Tab = Template.PlayerFlightGroups[0];
-        objectiveUtil.Tab = Template.Objectives[0];
+        if (Template.PlayerFlightGroups != null && Template.PlayerFlightGroups.Count > 0)
+            flightGroupUtil.Tab = Template.PlayerFlightGroups[0];
+        else
+            flightGroupUtil.Tab = null;
+        if (Template.Objectives != null && Template.Objectives.Count > 0)
+            objectiveUtil.Tab = Template.Objectives[0];
+        else
+            objectiveUtil.Tab = null;
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -432,8 +438,14 @@
             {
                 Template = new MissionTemplate();
             }
-            flightGroupUtil.Tab = Template.PlayerFlightGroups[0];
-            objectiveUtil.Tab = Template.Objectives[0];
+            if (Template.PlayerFlightGroups != null && Template.PlayerFlightGroups.Count > 0)
+                flightGroupUtil.Tab = Template.PlayerFlightGroups[0];
+            else
+                flightGroupUtil.Tab = null;
+            if (Template.Objectives != null && Template.Objectives.Count > 0)
+                objectiveUtil.Tab = Template.Objectives[0];
+            else
+                objectiveUtil.Tab = null;
         }
     }
 
