@@ -59,7 +59,7 @@ namespace BriefingRoom4DCS
 
         private static event LogHandler OnMessageLogged;
 
-        public BriefingRoom(LogHandler logHandler = null, bool nukeDB = false)
+        public BriefingRoom(LogHandler logHandler = null)
         {
             INIFile ini = new(Path.Combine(BRPaths.DATABASE, "Common.ini"));
             TARGETED_DCS_WORLD_VERSION = ini.GetValue("Versions", "DCSVersion", "2.9.2");
@@ -71,14 +71,7 @@ namespace BriefingRoom4DCS
 
             getSaveGamePath();
             OnMessageLogged = logHandler;
-            if (nukeDB)
-            {
-                Database.Reset();
-            }
-            else
-            {
-                Database.Instance.Initialize();
-            }
+            Database.Instance.Initialize();
             LanguageDB = Database.Instance.Language;
         }
 
