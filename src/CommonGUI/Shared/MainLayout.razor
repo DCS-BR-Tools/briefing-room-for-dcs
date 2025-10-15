@@ -6,7 +6,7 @@
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
 @inject BriefingRoom4DCS.BriefingRoom briefingRoom
 <CascadingValue Value="this">
-    <div class="page @((darkmode ? "darkMode" : ""))">
+    <div class="page">
         <div class="sidebar">
             <NavMenu />
         </div>
@@ -69,11 +69,7 @@
                     <a href="https://ko-fi.com/V7V0IZI9N" target="_blank" class="img-link"><img alt="Support us with Ko-fi"
                             src="_content/CommonGUI/img/Kofi-icon.png"></a>
                 }
-                <label class="bulb">
-                    <input type="checkbox" checked=@darkmode
-                        @onchange="eventArgs => SetDarkMode((bool)eventArgs.Value)" />
-                    <span class="oi oi-@((darkmode ? "sun" : "moon"))"></span>
-                </label>
+                <ThemeSwitcher OnThemeChanged="OnThemeChanged" />
                 <label class="bulb" style="margin-bottom: 3px">
                     <input type="checkbox" checked=@autoLoadPreviousState
                         @onchange="eventArgs => SetAutoLoadPreviousState((bool)eventArgs.Value)" />
@@ -117,11 +113,9 @@
     {
         if (firstRender)
         {
-            darkmode = true;
             briefingRoom.LanguageKey = "en";
             try
             {
-                darkmode = await localStorage.GetItemAsync<bool>("DCSUseDarkMode");
                 autoLoadPreviousState = await localStorage.GetItemAsync<bool>("DCSAutoLoadPreviousState");
                 briefingRoom.LanguageKey = await localStorage.GetItemAsync<string>("DCSLanguage");
                 var path = await localStorage.GetItemAsync<string>("DCSSaveGamePath");
@@ -148,19 +142,13 @@
         }
     }
 
-
-    private async Task SetDarkMode(bool darkModeOn)
+        private void OnThemeChanged(string themeName)
     {
-        darkmode = darkModeOn;
+        darkmode = themeName == "dark" || themeName == "dark-blue";
         StateHasChanged();
-        try
-        {
-            await localStorage.SetItemAsync("DCSUseDarkMode", darkModeOn);
-        }
-        catch (System.Exception)
-        {
-        }
     }
+
+
 
     private async Task SetAutoLoadPreviousState(bool state)
     {

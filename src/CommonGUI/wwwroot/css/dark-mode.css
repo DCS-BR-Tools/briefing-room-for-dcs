@@ -1,3 +1,6 @@
+html[data-bs-theme="dark"]
+
+
 .bulb {
     margin-left: 10px;
 }
@@ -7,72 +10,72 @@
     margin-left: 5px;
 }
 
-.darkMode .main {
+html[data-bs-theme="dark"] .main {
     background-color: #020A10;
     color: white;
 }
 
-.darkMode .main .top-row,
-.darkMode .sidebar .top-row {
+html[data-bs-theme="dark"] .main .top-row,
+html[data-bs-theme="dark"] .sidebar .top-row {
     background-color: #0a263f;
     color: white;
     border-color: black;
 }
 
-.darkMode .form-control {
+html[data-bs-theme="dark"] .form-control {
     background-color: transparent;
     color: white;
 }
 
-.darkMode .nav-link.active {
+html[data-bs-theme="dark"] .nav-link.active {
     background-color: transparent;
     border-color: #dee2e6 #dee2e6 #020A10;
     color: white;
 }
 
-.darkMode .navbar-brand>img {
+html[data-bs-theme="dark"] .navbar-brand>img {
     filter: drop-shadow(0 0 1rem rgb(255, 255, 255));
 }
 
 
-.darkMode .blazored-typeahead__input,
-.darkMode .blazored-typeahead__results {
+html[data-bs-theme="dark"] .blazored-typeahead__input,
+html[data-bs-theme="dark"] .blazored-typeahead__results {
     background-color: #0a263f;
     color: white;
 }
 
-.darkMode .blazored-typeahead__selected-item-highlighted,
-.darkMode .blazored-typeahead__selected-item {
+html[data-bs-theme="dark"] .blazored-typeahead__selected-item-highlighted,
+html[data-bs-theme="dark"] .blazored-typeahead__selected-item {
     color: black;
 }
 
-.darkMode select option {
+html[data-bs-theme="dark"] select option {
     background-color: #0a263f;
 }
 
-.darkMode .accordion-body {
+html[data-bs-theme="dark"] .accordion-body {
     background-color: #020A10;
     color: white;
 }
 
-.darkMode .accordion-button {
+html[data-bs-theme="dark"] .accordion-button {
     background-color: #0a263f;
     color: white;
 }
 
-.darkMode .accordion-button::after {
+html[data-bs-theme="dark"] .accordion-button::after {
     color: white;
 }
 
-.darkMode .language-selector label {
+html[data-bs-theme="dark"] .language-selector label {
     background-color: #0a263f;
 }
 
-.darkMode .offcanvas {
+html[data-bs-theme="dark"] .offcanvas {
     background-color: #0a263f;
     color: white;
 }
 
-.darkMode .custom-warning a {
+html[data-bs-theme="dark"] .custom-warning a {
     color: #0378ff;
 }
