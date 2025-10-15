@@ -25,6 +25,17 @@
     align-items: center;
 }
 
+.top-row .alert {
+    padding-top: 3em;
+    margin-right: 10em;
+    
+}
+
+.top-row .alert a {
+    margin-left: 0.5em;
+    font-weight: bold;
+}
+
 .top-row ::deep a,
 .top-row .btn-link {
     white-space: nowrap;

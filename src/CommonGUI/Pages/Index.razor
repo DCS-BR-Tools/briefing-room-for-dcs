@@ -7,6 +7,14 @@
 <div class="landing-screen">
   <img class="img" src="_content/CommonGUI/img/br-logo-white.png" alt="BriefingRoom Logo" />
   <div class="landing-menu">
+  <VersionNote />
+  @if(briefingRoom.Translate("ReloadDatabase").StartsWith("ERR_Missing_Translation_key"))
+    {
+      <div class="alert alert-danger" role="alert">
+          Database seems to be corrupted or missing translations.
+          <button class="btn btn-secondary" @onclick="Layout.ReloadDatabase">Fix Database!</button>
+      </div>
+    }
     <a href="/QuickBuilder" class="btn btn-primary">@briefingRoom.Translate("QuickGenerator")</a>
     <a href="/FullBuilder" class="btn btn-primary">@briefingRoom.Translate("FullGenerator")</a>
     <a href="/CampaignBuilder" class="btn btn-primary">@briefingRoom.Translate("CampaignGenerator")</a>

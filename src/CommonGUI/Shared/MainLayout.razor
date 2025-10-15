@@ -1,5 +1,8 @@
 @inherits LayoutComponentBase
 @using BriefingRoom4DCS
+@using BriefingRoom4DCS.GUI.Utils
+@inject IJSRuntime JSRuntime
+@inject NavigationManager navigationManager
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
 @inject BriefingRoom4DCS.BriefingRoom briefingRoom
 <CascadingValue Value="this">
@@ -12,6 +15,7 @@
             <div class="top-row px-4">
                 @if (!BriefingRoom.RUNNING_IN_DOCKER)
                 {
+                    <VersionNote />
                      <div class="form-group language-selector @((saveState.HasValue ? (saveState.Value ? "save-path-success" : "save-path-error") : ""))">
                         <label><span class="oi oi-info"></span>&nbsp;@briefingRoom.Translate("SaveGameLocation")  
                         @if(saveState.HasValue)
@@ -78,6 +82,13 @@
             </div>
 
             <div class="content px-4">
+                @if(briefingRoom.Translate("ReloadDatabase").StartsWith("ERR_Missing_Translation_key"))
+                {
+                    <div class="alert alert-danger" role="alert">
+                        Database seems to be corrupted or missing translations.
+                        <button class="btn btn-secondary" @onclick="ReloadDatabase">Fix Database!</button>
+                    </div>
+                }
                 @Body
             </div>
         </div>
@@ -90,6 +101,9 @@
     public bool autoLoadPreviousState = false;
 
     public bool? saveState = null;
+
+    public GitHubRelease MainRelease = null;
+    public GitHubRelease BetaRelease = null;
 
     public static List<Tuple<DateTime, LogMessageErrorLevel, string>> logs = new List<Tuple<DateTime, LogMessageErrorLevel,
     string>>();
@@ -122,6 +136,14 @@
             {
             }
             briefingRoom.SetLogHandler(WriteToDebugLog);
+            try
+            {
+                MainRelease = await JSRuntime.InvokeAsync<GitHubRelease>("GetMainRelease");
+                BetaRelease = await JSRuntime.InvokeAsync<GitHubRelease>("GetBetaRelease");
+            }
+            catch (System.Exception)
+            {
+            }
             StateHasChanged();
         }
     }
@@ -181,5 +203,11 @@
             }
         }
         StateHasChanged();
+    }
+
+    public void ReloadDatabase()
+    {
+        BriefingRoom.ReloadDatabase();
+        navigationManager.NavigateTo(navigationManager.Uri, true);
     }
 }

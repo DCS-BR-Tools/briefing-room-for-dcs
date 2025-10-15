@@ -1,0 +1,17 @@
+@inject BriefingRoom4DCS.BriefingRoom briefingRoom
+
+@if (Layout.MainRelease != null && Layout.MainRelease.versionNumber != BriefingRoom.VERSION)
+{
+    <div class="form-group alert alert-info" role="info">
+        @briefingRoom.Translate("NewReleaseAvailable"):<a href="@Layout.MainRelease.url" target="_blank">@briefingRoom.Translate("Download") @Layout.MainRelease.name</a>
+        @if (Layout.BetaRelease != null && Layout.BetaRelease.publishedDate.CompareTo(Layout.MainRelease.publishedDate) > 0)
+        {
+            <br />
+            <span>@briefingRoom.Translate("BetaReleaseAvailable"):<a href="@Layout.BetaRelease.url" target="_blank">@briefingRoom.Translate("Download") @Layout.BetaRelease.name</a></span>
+        }
+    </div>
+}
+@code {
+    [CascadingParameter]
+    public MainLayout Layout { get; set; }
+}
