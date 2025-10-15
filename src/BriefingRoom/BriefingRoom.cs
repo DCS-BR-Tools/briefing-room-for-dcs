@@ -39,9 +39,9 @@ namespace BriefingRoom4DCS
 
         public static DatabaseLanguage LanguageDB { get; private set; }
 
-        public const string REPO_URL = "https://github.com/akaAgar/briefing-room-for-dcs";
+        public const string REPO_URL = "https://github.com/DCS-BR-Tools/briefing-room-for-dcs";
 
-        public const string WEBSITE_URL = "https://akaagar.github.io/briefing-room-for-dcs/";
+        public const string WEBSITE_URL = "https://DCS-BR-Tools.github.io/briefing-room-for-dcs/";
 
         public const string DISCORD_URL = "https://discord.gg/MvdFTYxkpx";
 
