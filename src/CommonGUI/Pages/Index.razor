@@ -4,7 +4,42 @@
 @using BriefingRoom4DCS
 @inject BriefingRoom4DCS.BriefingRoom briefingRoom
 
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
 <div class="landing-screen">
+  <Modal @ref="modal" IsVerticallyCentered="true" Size="ModalSize.Large" type="ModalType.Info">
+      <BodyTemplate>
+      <div>
+       <Image class="img" src="_content/CommonGUI/img/br-logo-white.png" alt="BriefingRoom Logo" />
+      </div>
+      <h1>Welcome to BriefingRoom</h1>
+        <div>
+        <p>
+            You are using the Hosted Version of the app.
+            Its intended as a quick access Version and is shared with multiple
+            users.</p>
+            <p><b>Its highly recommended to use the Desktop Version for full functionality. Benefits include:</b></p>
+            <ul>
+                <li> <Icon Name="IconName.RocketTakeOff" /> Faster performance</li>
+                <li> <Icon Name="IconName.Router" /> More reliable operation</li>
+                <li> <Icon Name="IconName.Palette" /> Use your Custom Liveries</li>
+                <li> <Icon Name="IconName.AirplaneEngines" /> Use your Custom Payloads</li>
+                <li> <Icon Name="IconName.Gear" /> Modify settings unavailable in the Hosted Version</li>
+                <li> <Icon Name="IconName.Bandaid" /> Beta Versions</li>
+                <li> <Icon Name="IconName.CloudDownload" /> Update when you want (especially if you want to stick to older versions of DCS)</li>
+            </ul>
+            Download the Desktop Version and Beta Versions from
+            <a href="@BriefingRoom.REPO_URL/releases"
+                target="_blank">GitHub</a>
+        </div>
+        <div>
+            Hosting is kindly financed by donators from <a href="https://www.patreon.com/bePatron?u=99514930" target="_blank" class="img-link"><img
+                    alt="Become a Patron!" src="_content/CommonGUI/img/patreon-icon.png"></a>  and
+            donators <a href="https://ko-fi.com/V7V0IZI9N" target="_blank"
+                class="img-link"><img alt="Support us with Ko-fi" src="_content/CommonGUI/img/Kofi-icon.png"></a>
+        </div>
+    </BodyTemplate>
+  </Modal>
   <img class="img" src="_content/CommonGUI/img/br-logo-white.png" alt="BriefingRoom Logo" />
   <div class="landing-menu">
   <VersionNote />
@@ -85,4 +120,21 @@
 @code {
   [CascadingParameter]
   public MainLayout Layout { get; set; }
+
+  private Modal modal = default!;
+  protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+      if (firstRender && BriefingRoom.RUNNING_IN_DOCKER)
+      {
+
+      var returningUser = false;
+        returningUser = await localStorage.GetItemAsync<bool>("DCSReturningUser");
+        if(!returningUser)
+        {
+            await localStorage.SetItemAsync("DCSReturningUser", true);
+            await modal.ShowAsync();
+        }
+      }
+    }
+
 }

@@ -144,7 +144,7 @@ h4 {
     left: 0;
     top: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     background-image: linear-gradient(180deg, #0C3050 0%, #020A10 100%);
     z-index: 99999;
     visibility: visible;
@@ -154,7 +154,7 @@ h4 {
 }
 
 .landing-screen .img {
-    margin: 10vh auto;
+    margin: 5vh auto;
     width: 30%;
     display: block;
 }
