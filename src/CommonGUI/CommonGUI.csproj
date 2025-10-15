@@ -11,6 +11,7 @@
     <PackageReference Include="Blazored.Typeahead" Version="4.7.0" />
     <PackageReference Include="BlazorMonaco" Version="3.3.0" />
     <PackageReference Include="Markdig" Version="0.42.0" />
+    <PackageReference Include="Blazor.Bootstrap" Version="3.4.0" />
     <ProjectReference Include="../BriefingRoom/BriefingRoom.csproj" />
   </ItemGroup>
 

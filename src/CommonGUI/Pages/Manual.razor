@@ -46,7 +46,7 @@
     var files = Directory.GetFiles(sourcePath, "*.md");
     Documents = files.ToDictionary(x => x.Replace(sourcePath, "").Replace(".md", "").Replace("_", " ").Replace("\\",
     "").Replace("/", ""), x =>
-    Markdown.ToHtml(File.ReadAllText(x).Replace("Media/SplashScreen.png",
+    Markdig.Markdown.ToHtml(File.ReadAllText(x).Replace("Media/SplashScreen.png",
     "_content/CommonGUI/img/br-logo-white.png").Replace("(#", "(/Manual/#"), pipeline));
   }
 }

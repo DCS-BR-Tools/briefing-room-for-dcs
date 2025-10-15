@@ -17,6 +17,7 @@ namespace BriefingRoom4DCS.GUI.Desktop
             serviceCollection.AddBlazorWebView();
             serviceCollection.AddWindowsFormsBlazorWebView();
             serviceCollection.AddBlazoredLocalStorage();
+            serviceCollection.AddBlazorBootstrap();
             serviceCollection.AddScoped<BriefingRoom>();
             var blazor = new BlazorWebView()
             {

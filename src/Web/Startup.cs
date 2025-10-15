@@ -31,6 +31,7 @@ namespace BriefingRoom4DCS.GUI.Web
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddBlazoredLocalStorage();
+            services.AddBlazorBootstrap();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
