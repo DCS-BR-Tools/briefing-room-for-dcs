@@ -405,6 +405,11 @@ namespace BriefingRoom4DCS
             return unitCategory == UnitCategory.Helicopter || unitCategory == UnitCategory.Plane;
         }
 
+         internal static bool IsGroundMoving(this UnitCategory unitCategory)
+        {
+            return unitCategory == UnitCategory.Vehicle || unitCategory == UnitCategory.Infantry;
+        }
+
         internal static bool IsAirDefense(this UnitFamily unitFamily)
         {
             return unitFamily switch

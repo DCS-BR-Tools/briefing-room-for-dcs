@@ -100,8 +100,6 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
 
             if (targetDB.UnitCategory.IsAircraft())
                 VIPGroupInfo.Value.DCSGroup.Waypoints.First().Tasks.Insert(0, new DCSWrappedWaypointTask("SetUnlimitedFuel", new Dictionary<string, object> { { "value", true } }));
-
-
             // Setup Threats
             // Assume static threats just exist for now
             var playerHasPlanes = mission.TemplateRecord.PlayerFlightGroups.Any(x => Database.Instance.GetEntry<DBEntryJSONUnit>(x.Aircraft).Category == UnitCategory.Plane) || mission.TemplateRecord.AirbaseDynamicSpawn != DsAirbase.None;
@@ -127,6 +125,11 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
 
 
             var objectiveName = mission.WaypointNameGenerator.GetWaypointName();
+            if(targetBehaviorDB.ID.EndsWith("OnRoads") && targetDB.UnitCategory.IsGroundMoving())
+            {
+              BriefingRoom.PrintTranslatableWarning(mission.LangKey, "EscortOnRoadsImperfect", objectiveName);
+            }
+
             var objectiveWaypoints = new List<Waypoint>();
             var cargoWaypoint = ObjectiveUtils.GenerateObjectiveWaypoint(ref mission, task, unitCoordinates, unitCoordinates, $"{objectiveName} Pickup", scriptIgnore: true);
             mission.Waypoints.Add(cargoWaypoint);
