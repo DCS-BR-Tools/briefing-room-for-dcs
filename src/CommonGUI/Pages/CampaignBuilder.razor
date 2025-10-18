@@ -40,7 +40,7 @@
                 {
                     <li class="nav-item">
                         <a class="nav-link @(tab == value.Key ? "active" : "")" aria-current="page"
-                        @onclick='() => SetTab(value.Key)'>@briefingRoom.Translate(value.Value)</a>
+                        @onclick='() => SetTab(value.Key)'>@string.Join(" & ", value.Value.Select(x => briefingRoom.Translate(x)))</a>
                     </li>
                 }
             </ul>
@@ -61,9 +61,7 @@
                     break;
                 case "situation":
                    <SituationTab Template="Template"/>
-                    break;
-                case "combined-arms":
-                  <CombinedArmsTab Template="Template"/>
+                   <CombinedArmsTab Template="Template"/>
                     break;
                 case "flight-groups":
                    <FlightGroupsTab Template="Template" builderUtils="builderUtils" flightGroupUtil="flightGroupUtil"/>
@@ -320,14 +318,13 @@
     }
 
     private string tab = "context-&-enviroment";
-    private Dictionary<string, string> tabs = new Dictionary<string, string>{
-        { "context-&-enviroment", "ContextAndEnviroment" },
-        { "flight-groups", "FlightGroups" },
-        { "missions", "Missions" },
-        { "situation", "Situation" },
-        { "combined-arms", "CombinedArms" },
-        { "options", "Options" },
-        { "unitBanlist", "UnitBanList"}
+    private Dictionary<string, string[]> tabs = new Dictionary<string, string[]>{
+        { "context-&-enviroment", ["ContextAndEnviroment"] },
+        { "flight-groups", ["FlightGroups"] },
+        { "missions", ["Missions"] },
+        { "situation", ["Situation", "CombinedArms"] },
+        { "options", ["Options"] },
+        { "unitBanlist", ["UnitBanList"] }
     };
     private void SetTab(string var)
     {
