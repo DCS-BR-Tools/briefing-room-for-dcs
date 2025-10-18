@@ -210,7 +210,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 spawnPoint.Value,
                 GroupFlags.RadioAircraftSpawn,
                 threatExtraSettings);
-            var zoneId = ZoneMaker.AddZone(ref mission, $"Threat Trig {threatGroupInfo.Value.Name} attacking {VIPGroupInfo.Value.Name}", zoneCoords, 1524);
+            var zoneId = ZoneMaker.AddZone(ref mission, $"Threat Trig {threatGroupInfo.Value.Name} attacking {VIPGroupInfo.Value.Name}", zoneCoords, VIPGroupInfo.Value.UnitDB.Category.IsAircraft() ? 3000 : 1524);
             TriggerMaker.AddEscortTrigger(ref mission, zoneId, VIPGroupInfo.Value.GroupID, threatGroupInfo.Value.GroupID);
         }
 
