@@ -1,83 +1,88 @@
 [
-    {
-        "type": "ammo_cargo",
-        "displayName": "Ammo",
-        "shapeName": "ammo_box_cargo"
-    },
-    {
-        "type": "barrels_cargo",
-        "displayName": "Barrels",
-        "shapeName": "barrels_cargo"
-    },
-    {
-        "type": "container_cargo",
-        "displayName": "Container",
-        "shapeName": "bw_container_cargo"
-    },
-    {
-        "type": "f_bar_cargo",
-        "displayName": "F-shape barrier",
-        "shapeName": "f_bar_cargo"
-    },
-    {
-        "type": "fueltank_cargo",
-        "displayName": "Fueltank",
-        "shapeName": "fueltank_cargo"
-    },
-    {
-        "type": "iso_container",
-        "displayName": "ISO container",
-        "shapeName": "iso_container_cargo"
-    },
-    {
-        "type": "iso_container_small",
-        "displayName": "ISO container small",
-        "shapeName": "iso_container_small_cargo"
-    },
-    {
-        "type": "l118",
-        "displayName": "L118 Light Artillery",
-        "module": "South_Atlantic_Assets",
-        "shapeName": "l118_cargo"
-    },
-    {
-        "type": "m117_cargo",
-        "displayName": "M117 bombs",
-        "shapeName": "m117_cargo"
-    },
-    {
-        "type": "oiltank_cargo",
-        "displayName": "Oiltank",
-        "shapeName": "oiltank_cargo"
-    },
-    {
-        "type": "pipes_big_cargo",
-        "displayName": "Pipes big",
-        "shapeName": "pipes_big_cargo"
-    },
-    {
-        "type": "pipes_small_cargo",
-        "displayName": "Pipes small",
-        "shapeName": "pipes_small_cargo"
-    },
-    {
-        "type": "tetrapod_cargo",
-        "displayName": "Tetrapod",
-        "shapeName": "tetrapod_cargo"
-    },
-    {
-        "type": "trunks_long_cargo",
-        "displayName": "Trunks long",
-        "shapeName": "trunks_long_cargo"
-    },
-    {
-        "type": "trunks_small_cargo",
-        "displayName": "Trunks short",
-        "shapeName": "trunks_small_cargo"
-    },
-    {
-        "type": "uh1h_cargo",
-        "displayName": "UH-1H cargo",
-        "shapeName": "ab-212_cargo"
-    }
+  {
+    "type": "ammo_cargo",
+    "displayName": "Ammo",
+    "shapeName": "ammo_box_cargo"
+  },
+  {
+    "type": "barrels_cargo",
+    "displayName": "Barrels",
+    "shapeName": "barrels_cargo"
+  },
+  {
+    "type": "container_cargo",
+    "displayName": "Container",
+    "shapeName": "bw_container_cargo"
+  },
+  {
+    "type": "f_bar_cargo",
+    "displayName": "F-shape barrier",
+    "shapeName": "f_bar_cargo"
+  },
+  {
+    "type": "fueltank_cargo",
+    "displayName": "Fueltank",
+    "shapeName": "fueltank_cargo"
+  },
+  {
+    "type": "gbu_43b_airdrop",
+    "displayName": "GBU-43 MOAB",
+    "shapeName": "gbu_43_full"
+  },
+  {
+    "type": "iso_container",
+    "displayName": "ISO container",
+    "shapeName": "iso_container_cargo"
+  },
+  {
+    "type": "iso_container_small",
+    "displayName": "ISO container small",
+    "shapeName": "iso_container_small_cargo"
+  },
+  {
+    "type": "l118",
+    "displayName": "L118 Light Artillery",
+    "module": "South_Atlantic_Assets",
+    "shapeName": "l118_cargo"
+  },
+  {
+    "type": "m117_cargo",
+    "displayName": "M117 bombs",
+    "shapeName": "m117_cargo"
+  },
+  {
+    "type": "oiltank_cargo",
+    "displayName": "Oiltank",
+    "shapeName": "oiltank_cargo"
+  },
+  {
+    "type": "pipes_big_cargo",
+    "displayName": "Pipes big",
+    "shapeName": "pipes_big_cargo"
+  },
+  {
+    "type": "pipes_small_cargo",
+    "displayName": "Pipes small",
+    "shapeName": "pipes_small_cargo"
+  },
+  {
+    "type": "tetrapod_cargo",
+    "displayName": "Tetrapod",
+    "shapeName": "tetrapod_cargo"
+  },
+  {
+    "type": "trunks_long_cargo",
+    "displayName": "Trunks long",
+    "shapeName": "trunks_long_cargo"
+  },
+  {
+    "type": "trunks_small_cargo",
+    "displayName": "Trunks short",
+    "shapeName": "trunks_small_cargo"
+  },
+  {
+    "type": "uh1h_cargo",
+    "displayName": "UH-1H cargo",
+    "shapeName": "ab-212_cargo"
+  }
 ]

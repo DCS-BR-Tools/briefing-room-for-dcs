@@ -1744,5 +1744,7 @@
   { "decade": 2000, "clsid": "{Kh-555}" },
   { "decade": 1980, "clsid": "{PTB_1500_MIG29A}" },
   { "decade": 1980, "clsid": "{R_60}" },
-  { "decade": 1980, "clsid": "B-8M1 - 20 S-8OFP2" }
+  { "decade": 1980, "clsid": "B-8M1 - 20 S-8OFP2" },
+  { "decade": 1980, "clsid": "{CHAP_8x9M120_Ataka_V}"},
+  { "decade": 1980, "clsid": "{CHAP_8x9M120F_Ataka_V}"}
 ]

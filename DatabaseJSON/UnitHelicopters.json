@@ -68499,14 +68499,6 @@
     "paintSchemes": {
       "0": [
         [
-          "night",
-          "Night"
-        ],
-        [
-          "standard",
-          "Standard"
-        ],
-        [
           "black",
           "black"
         ],
@@ -69197,14 +69189,6 @@
       ],
       "70": [
         [
-          "AAF SC-11",
-          "Algerian AF Desert SC-11"
-        ],
-        [
-          "AAF SC-12",
-          "Algerian AF Desert SC-12"
-        ],
-        [
           "black",
           "black"
         ],
@@ -69559,7 +69543,7 @@
       {
         "pylons": [
           {
-            "CLSID": "{57232979-8B0F-4db7-8D9A-55197E06B0F5}",
+            "CLSID": "{CHAP_8x9M120_Ataka_V}",
             "num": 1
           },
           {
@@ -69571,7 +69555,7 @@
             "num": 3
           },
           {
-            "CLSID": "{57232979-8B0F-4db7-8D9A-55197E06B0F5}",
+            "CLSID": "{CHAP_8x9M120_Ataka_V}",
             "num": 4
           }
         ],
@@ -69580,8 +69564,8 @@
           32,
           18
         ],
-        "displayName": "16x9M114, 2xKMGU AT",
-        "name": "16x9M114, 2xKMGU AT"
+        "displayName": "16x9M120, 2xKMGU AT",
+        "name": "16x9M120, 2xKMGU AT"
       },
       {
         "pylons": [
@@ -69611,7 +69595,7 @@
       {
         "pylons": [
           {
-            "CLSID": "{57232979-8B0F-4db7-8D9A-55197E06B0F5}",
+            "CLSID": "{CHAP_8x9M120_Ataka_V}",
             "num": 1
           },
           {
@@ -69623,15 +69607,15 @@
             "num": 3
           },
           {
-            "CLSID": "{57232979-8B0F-4db7-8D9A-55197E06B0F5}",
+            "CLSID": "{CHAP_8x9M120_Ataka_V}",
             "num": 4
           }
         ],
         "tasks": [
           32
         ],
-        "displayName": "16x9M114, 2xFAB-500",
-        "name": "16x9M114, 2xFAB-500"
+        "displayName": "16x9M120, 2xFAB-500",
+        "name": "16x9M120, 2xFAB-500"
       },
       {
         "pylons": [
@@ -69708,7 +69692,7 @@
       {
         "pylons": [
           {
-            "CLSID": "{57232979-8B0F-4db7-8D9A-55197E06B0F5}",
+            "CLSID": "{CHAP_8x9M120_Ataka_V}",
             "num": 1
           },
           {
@@ -69720,7 +69704,7 @@
             "num": 3
           },
           {
-            "CLSID": "{57232979-8B0F-4db7-8D9A-55197E06B0F5}",
+            "CLSID": "{CHAP_8x9M120_Ataka_V}",
             "num": 4
           }
         ],
@@ -69729,8 +69713,8 @@
           32,
           18
         ],
-        "displayName": "16x9M114, 2xUPK-23",
-        "name": "16x9M114, 2xUPK-23"
+        "displayName": "16x9M120, 2xUPK-23",
+        "name": "16x9M120, 2xUPK-23"
       },
       {
         "pylons": [
@@ -69752,7 +69736,7 @@
       {
         "pylons": [
           {
-            "CLSID": "{57232979-8B0F-4db7-8D9A-55197E06B0F5}",
+            "CLSID": "{CHAP_8x9M120_Ataka_V}",
             "num": 1
           },
           {
@@ -69764,7 +69748,7 @@
             "num": 3
           },
           {
-            "CLSID": "{57232979-8B0F-4db7-8D9A-55197E06B0F5}",
+            "CLSID": "{CHAP_8x9M120_Ataka_V}",
             "num": 4
           }
         ],
@@ -69774,17 +69758,17 @@
           18,
           30
         ],
-        "displayName": "16x9M114, 40xS-8",
-        "name": "16x9M114, 40xS-8"
+        "displayName": "16x9M120, 40xS-8",
+        "name": "16x9M120, 40xS-8"
       },
       {
         "pylons": [
           {
-            "CLSID": "{57232979-8B0F-4db7-8D9A-55197E06B0F5}",
+            "CLSID": "{CHAP_8x9M120_Ataka_V}",
             "num": 1
           },
           {
-            "CLSID": "{57232979-8B0F-4db7-8D9A-55197E06B0F5}",
+            "CLSID": "{CHAP_8x9M120_Ataka_V}",
             "num": 4
           }
         ],
@@ -69793,8 +69777,8 @@
           32,
           18
         ],
-        "displayName": "16x9M114",
-        "name": "16x9M114"
+        "displayName": "16x9M120",
+        "name": "16x9M120"
       },
       {
         "pylons": [
@@ -69826,7 +69810,7 @@
       {
         "pylons": [
           {
-            "CLSID": "{57232979-8B0F-4db7-8D9A-55197E06B0F5}",
+            "CLSID": "{CHAP_8x9M120_Ataka_V}",
             "num": 1
           },
           {
@@ -69838,7 +69822,7 @@
             "num": 3
           },
           {
-            "CLSID": "{57232979-8B0F-4db7-8D9A-55197E06B0F5}",
+            "CLSID": "{CHAP_8x9M120_Ataka_V}",
             "num": 4
           }
         ],
@@ -69847,8 +69831,8 @@
           32,
           18
         ],
-        "displayName": "16x9M114, 2xKMGU AP",
-        "name": "16x9M114, 2xKMGU AP"
+        "displayName": "16x9M120, 2xKMGU AP",
+        "name": "16x9M120, 2xKMGU AP"
       },
       {
         "pylons": [
@@ -69903,7 +69887,7 @@
       {
         "pylons": [
           {
-            "CLSID": "{57232979-8B0F-4db7-8D9A-55197E06B0F5}",
+            "CLSID": "{CHAP_8x9M120_Ataka_V}",
             "num": 1
           },
           {
@@ -69915,15 +69899,15 @@
             "num": 3
           },
           {
-            "CLSID": "{57232979-8B0F-4db7-8D9A-55197E06B0F5}",
+            "CLSID": "{CHAP_8x9M120_Ataka_V}",
             "num": 4
           }
         ],
         "tasks": [
           16
         ],
-        "displayName": "16x9M114, 40xS-8 TsM",
-        "name": "16x9M114, 40xS-8 TsM"
+        "displayName": "16x9M120, 40xS-8 TsM",
+        "name": "16x9M120, 40xS-8 TsM"
       },
       {
         "pylons": [
@@ -69970,7 +69954,7 @@
       {
         "pylons": [
           {
-            "CLSID": "{57232979-8B0F-4db7-8D9A-55197E06B0F5}",
+            "CLSID": "{CHAP_8x9M120_Ataka_V}",
             "num": 1
           }
         ],
@@ -69979,8 +69963,8 @@
           32,
           18
         ],
-        "displayName": "9x9M114",
-        "name": "9x9M114"
+        "displayName": "8x9M120",
+        "name": "8x9M120"
       },
       {
         "pylons": [
@@ -70021,7 +70005,7 @@
       {
         "pylons": [
           {
-            "CLSID": "{57232979-8B0F-4db7-8D9A-55197E06B0F5}",
+            "CLSID": "{CHAP_8x9M120_Ataka_V}",
             "num": 1
           },
           {
@@ -70033,20 +70017,20 @@
             "num": 3
           },
           {
-            "CLSID": "{57232979-8B0F-4db7-8D9A-55197E06B0F5}",
+            "CLSID": "{CHAP_8x9M120_Ataka_V}",
             "num": 4
           }
         ],
         "tasks": [
           32
         ],
-        "displayName": "2xFAB-250, 16x9M114",
-        "name": "2xFAB-250, 16x9M114"
+        "displayName": "2xFAB-250, 16x9M120",
+        "name": "2xFAB-250, 16x9M120"
       },
       {
         "pylons": [
           {
-            "CLSID": "{57232979-8B0F-4db7-8D9A-55197E06B0F5}",
+            "CLSID": "{CHAP_8x9M120F_Ataka_V}",
             "num": 1
           },
           {
@@ -70058,7 +70042,7 @@
             "num": 3
           },
           {
-            "CLSID": "{57232979-8B0F-4db7-8D9A-55197E06B0F5}",
+            "CLSID": "{CHAP_8x9M120F_Ataka_V}",
             "num": 4
           }
         ],
@@ -70068,8 +70052,226 @@
           18,
           30
         ],
-        "displayName": "16x9M114, 10xS-13",
-        "name": "16x9M114, 10xS-13"
+        "displayName": "16x9M120F, 10xS-13",
+        "name": "16x9M120F, 10xS-13"
+      },
+      {
+        "pylons": [
+          {
+            "CLSID": "{CHAP_8x9M120F_Ataka_V}",
+            "num": 1
+          },
+          {
+            "CLSID": "{96A7F676-F956-404A-AD04-F33FB2C74881}",
+            "num": 2
+          },
+          {
+            "CLSID": "{96A7F676-F956-404A-AD04-F33FB2C74881}",
+            "num": 3
+          },
+          {
+            "CLSID": "{CHAP_8x9M120F_Ataka_V}",
+            "num": 4
+          }
+        ],
+        "tasks": [
+          31,
+          32,
+          18
+        ],
+        "displayName": "16x9M120F, 2xKMGU AT",
+        "name": "16x9M120F, 2xKMGU AT"
+      },
+      {
+        "pylons": [
+          {
+            "CLSID": "{CHAP_8x9M120F_Ataka_V}",
+            "num": 1
+          },
+          {
+            "CLSID": "{37DCC01E-9E02-432F-B61D-10C166CA2798}",
+            "num": 2
+          },
+          {
+            "CLSID": "{37DCC01E-9E02-432F-B61D-10C166CA2798}",
+            "num": 3
+          },
+          {
+            "CLSID": "{CHAP_8x9M120F_Ataka_V}",
+            "num": 4
+          }
+        ],
+        "tasks": [
+          32
+        ],
+        "displayName": "16x9M120F, 2xFAB-500",
+        "name": "16x9M120F, 2xFAB-500"
+      },
+      {
+        "pylons": [
+          {
+            "CLSID": "{CHAP_8x9M120F_Ataka_V}",
+            "num": 1
+          },
+          {
+            "CLSID": "{05544F1A-C39C-466b-BC37-5BD1D52E57BB}",
+            "num": 2
+          },
+          {
+            "CLSID": "{05544F1A-C39C-466b-BC37-5BD1D52E57BB}",
+            "num": 3
+          },
+          {
+            "CLSID": "{CHAP_8x9M120F_Ataka_V}",
+            "num": 4
+          }
+        ],
+        "tasks": [
+          31,
+          32,
+          18
+        ],
+        "displayName": "16x9M120F, 2xUPK-23",
+        "name": "16x9M120F, 2xUPK-23"
+      },
+      {
+        "pylons": [
+          {
+            "CLSID": "{CHAP_8x9M120F_Ataka_V}",
+            "num": 1
+          },
+          {
+            "CLSID": "{6A4B9E69-64FE-439a-9163-3A87FB6A4D81}",
+            "num": 2
+          },
+          {
+            "CLSID": "{6A4B9E69-64FE-439a-9163-3A87FB6A4D81}",
+            "num": 3
+          },
+          {
+            "CLSID": "{CHAP_8x9M120F_Ataka_V}",
+            "num": 4
+          }
+        ],
+        "tasks": [
+          31,
+          32,
+          18,
+          30
+        ],
+        "displayName": "16x9M120F, 40xS-8",
+        "name": "16x9M120F, 40xS-8"
+      },
+      {
+        "pylons": [
+          {
+            "CLSID": "{CHAP_8x9M120F_Ataka_V}",
+            "num": 1
+          },
+          {
+            "CLSID": "{CHAP_8x9M120F_Ataka_V}",
+            "num": 4
+          }
+        ],
+        "tasks": [
+          31,
+          32,
+          18
+        ],
+        "displayName": "16x9M120F",
+        "name": "16x9M120F"
+      },
+      {
+        "pylons": [
+          {
+            "CLSID": "{CHAP_8x9M120F_Ataka_V}",
+            "num": 1
+          },
+          {
+            "CLSID": "{96A7F676-F956-404A-AD04-F33FB2C74884}",
+            "num": 2
+          },
+          {
+            "CLSID": "{96A7F676-F956-404A-AD04-F33FB2C74884}",
+            "num": 3
+          },
+          {
+            "CLSID": "{CHAP_8x9M120F_Ataka_V}",
+            "num": 4
+          }
+        ],
+        "tasks": [
+          31,
+          32,
+          18
+        ],
+        "displayName": "16x9M120F, 2xKMGU AP",
+        "name": "16x9M120F, 2xKMGU AP"
+      },
+      {
+        "pylons": [
+          {
+            "CLSID": "{CHAP_8x9M120F_Ataka_V}",
+            "num": 1
+          },
+          {
+            "CLSID": "B_8V20A_CM",
+            "num": 2
+          },
+          {
+            "CLSID": "B_8V20A_CM",
+            "num": 3
+          },
+          {
+            "CLSID": "{CHAP_8x9M120F_Ataka_V}",
+            "num": 4
+          }
+        ],
+        "tasks": [
+          16
+        ],
+        "displayName": "16x9M120F, 40xS-8 TsM",
+        "name": "16x9M120F, 40xS-8 TsM"
+      },
+      {
+        "pylons": [
+          {
+            "CLSID": "{CHAP_8x9M120F_Ataka_V}",
+            "num": 1
+          }
+        ],
+        "tasks": [
+          31,
+          32,
+          18
+        ],
+        "displayName": "8x9M120F",
+        "name": "8x9M120F"
+      },
+      {
+        "pylons": [
+          {
+            "CLSID": "{CHAP_8x9M120F_Ataka_V}",
+            "num": 1
+          },
+          {
+            "CLSID": "{3C612111-C7AD-476E-8A8E-2485812F4E5C}",
+            "num": 2
+          },
+          {
+            "CLSID": "{3C612111-C7AD-476E-8A8E-2485812F4E5C}",
+            "num": 3
+          },
+          {
+            "CLSID": "{CHAP_8x9M120F_Ataka_V}",
+            "num": 4
+          }
+        ],
+        "tasks": [
+          32
+        ],
+        "displayName": "2xFAB-250, 16x9M120F",
+        "name": "2xFAB-250, 16x9M120F"
       }
     ],
     "EPLRS": true,
@@ -75453,7 +75655,7 @@
           "Russia Army Weather"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75471,11 +75673,11 @@
           "Egyptian Police"
         ],
         [
-          "Ukraine",
+          "Standard",
           "Standard"
         ],
         [
-          "standard",
+          "Ukraine",
           "Standard"
         ]
       ],
@@ -75497,7 +75699,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75519,7 +75721,7 @@
           "JANDARMA"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75541,7 +75743,7 @@
           "Project curium"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75567,7 +75769,7 @@
           "Fictional NAVY"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75589,7 +75791,7 @@
           "Germany ARMY"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75607,7 +75809,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75629,7 +75831,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75651,7 +75853,7 @@
           "Fictional Spain AF"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75677,7 +75879,7 @@
           "Fictional NAVY"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75699,7 +75901,7 @@
           "Fictional Olive"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75721,7 +75923,7 @@
           "Fictional NAVY"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75743,7 +75945,7 @@
           "Fictional Olive"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75765,7 +75967,7 @@
           "Fictional ARMY"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75787,7 +75989,7 @@
           "Georgian Standard"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75809,7 +76011,7 @@
           "Standard"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75831,7 +76033,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75853,7 +76055,7 @@
           "Fictional RSO"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75879,7 +76081,7 @@
           "Fictional NAVY"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75901,7 +76103,7 @@
           "Fictional ARMY"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75919,7 +76121,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75937,7 +76139,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75955,7 +76157,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75977,7 +76179,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -75999,7 +76201,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76029,7 +76231,7 @@
           "PLA Army Aviation White"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76047,7 +76249,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76065,7 +76267,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76083,7 +76285,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76109,7 +76311,7 @@
           "Hellenic Army Aviation (Fictional)"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76127,7 +76329,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76145,7 +76347,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76175,7 +76377,7 @@
           "NAJA"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76205,7 +76407,7 @@
           "IQAA TRICOLOUR CAMO"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76223,7 +76425,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76241,7 +76443,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76259,7 +76461,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76277,7 +76479,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76295,7 +76497,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76313,7 +76515,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76331,7 +76533,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76349,7 +76551,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76367,7 +76569,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76385,7 +76587,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76403,7 +76605,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76421,7 +76623,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76439,7 +76641,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76457,7 +76659,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76475,7 +76677,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76493,7 +76695,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76511,7 +76713,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76529,7 +76731,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76547,7 +76749,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76565,7 +76767,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76583,7 +76785,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76601,7 +76803,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76619,7 +76821,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76637,7 +76839,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76655,7 +76857,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76673,7 +76875,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76691,7 +76893,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76709,7 +76911,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76727,7 +76929,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76745,7 +76947,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76763,7 +76965,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76781,7 +76983,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76807,7 +77009,7 @@
           "Russia Army Weather"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76825,7 +77027,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76863,7 +77065,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76881,7 +77083,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76899,7 +77101,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76917,7 +77119,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76935,7 +77137,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76953,7 +77155,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76971,7 +77173,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -76989,7 +77191,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -77007,7 +77209,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -77025,7 +77227,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -77043,7 +77245,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -77061,7 +77263,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -77083,7 +77285,7 @@
           "RF UN"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -77101,7 +77303,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -77119,7 +77321,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -77137,7 +77339,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -77155,7 +77357,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -77173,7 +77375,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -77191,7 +77393,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -77209,7 +77411,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -77227,7 +77429,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -77245,7 +77447,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ],
@@ -77263,7 +77465,7 @@
           "Egyptian Police"
         ],
         [
-          "standard",
+          "Standard",
           "Standard"
         ]
       ]

@@ -774,6 +774,12 @@
     "immovable": false
   },
   {
+    "type": "gaz-66_civil",
+    "families": ["VehicleTransport", "VehicleSupply", "VehicleCivilian"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
     "type": "M978 HEMTT Tanker",
     "families": ["VehicleTransport"],
     "lowPolly": false,
@@ -794,6 +800,12 @@
   {
     "type": "KAMAZ Truck",
     "families": ["VehicleTransport", "VehicleSupply"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "kamaz_tent_civil",
+    "families": ["VehicleTransport", "VehicleSupply", "VehicleCivilian"],
     "lowPolly": false,
     "immovable": false
   },
@@ -878,6 +890,18 @@
   {
     "type": "Ural-4320T",
     "families": ["VehicleTransport", "VehicleSupply"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "ural_4230_civil_b",
+    "families": ["VehicleTransport", "VehicleSupply", "VehicleCivilian"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "ural_4230_civil_t",
+    "families": ["VehicleTransport", "VehicleSupply", "VehicleCivilian"],
     "lowPolly": false,
     "immovable": false
   },
@@ -1200,6 +1224,12 @@
     "immovable": false
   },
   {
+    "type": "ural_atz5_civil",
+    "families": ["VehicleTransport", "VehicleCivilian"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
     "type": "AA8",
     "families": ["VehicleTransport"],
     "lowPolly": false,
@@ -1220,6 +1250,12 @@
   {
     "type": "ZIL-135",
     "families": ["VehicleTransport", "VehicleSupply"],
+    "lowPolly": false,
+    "immovable": false
+  },
+    {
+    "type": "zil-131_civil",
+    "families": ["VehicleTransport", "VehicleSupply", "VehicleCivilian"],
     "lowPolly": false,
     "immovable": false
   },

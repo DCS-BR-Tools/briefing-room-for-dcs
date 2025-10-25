@@ -1,194 +1,121 @@
 [
-    {
-        "type": "uh1h_cargo",
-        "families": [
-            "Cargo"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "ammo_cargo",
-        "families": [
-            "Cargo"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "f_bar_cargo",
-        "families": [
-            "Cargo"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "m117_cargo",
-        "families": [
-            "Cargo"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "iso_container",
-        "families": [
-            "Cargo"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "iso_container_small",
-        "families": [
-            "Cargo"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "barrels_cargo",
-        "families": [
-            "Cargo"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "container_cargo",
-        "families": [
-            "Cargo"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "tetrapod_cargo",
-        "families": [
-            "Cargo"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "fueltank_cargo",
-        "families": [
-            "Cargo"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "oiltank_cargo",
-        "families": [
-            "Cargo"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "pipes_big_cargo",
-        "families": [
-            "Cargo"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "pipes_small_cargo",
-        "families": [
-            "Cargo"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "trunks_small_cargo",
-        "families": [
-            "Cargo"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "trunks_long_cargo",
-        "families": [
-            "Cargo"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "l118",
-        "families": [
-            "Cargo"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    }
+  {
+    "type": "uh1h_cargo",
+    "families": ["Cargo"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "ammo_cargo",
+    "families": ["Cargo"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "f_bar_cargo",
+    "families": ["Cargo"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "m117_cargo",
+    "families": ["Cargo"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "iso_container",
+    "families": ["Cargo"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "iso_container_small",
+    "families": ["Cargo"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "barrels_cargo",
+    "families": ["Cargo"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "container_cargo",
+    "families": ["Cargo"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "tetrapod_cargo",
+    "families": ["Cargo"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "fueltank_cargo",
+    "families": ["Cargo"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "oiltank_cargo",
+    "families": ["Cargo"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "pipes_big_cargo",
+    "families": ["Cargo"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "pipes_small_cargo",
+    "families": ["Cargo"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "trunks_small_cargo",
+    "families": ["Cargo"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "trunks_long_cargo",
+    "families": ["Cargo"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "l118",
+    "families": ["Cargo"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "gbu_43b_airdrop",
+    "families": ["Cargo"],
+    "operational": [2000, 2020],
+    "lowPolly": false,
+    "immovable": false
+  }
 ]

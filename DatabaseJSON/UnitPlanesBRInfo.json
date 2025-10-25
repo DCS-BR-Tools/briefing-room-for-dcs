@@ -53,6 +53,12 @@
     "playerControllable": true
   },
   {
+    "type": "QF-4E",
+    "families": ["PlaneDrone"],
+    "lowPolly": false,
+    "playerControllable": false
+  },
+  {
     "type": "B-52H",
     "families": ["PlaneBomber"],
     "lowPolly": false,
@@ -545,6 +551,17 @@
   },
   {
     "type": "F-14A-135-GR",
+    "families": [
+      "PlaneFighter",
+      "PlaneInterceptor",
+      "PlaneStrike",
+      "PlaneCATOBAR"
+    ],
+    "lowPolly": false,
+    "playerControllable": true
+  },
+  {
+    "type": "F-14A-135-GR-Early",
     "families": [
       "PlaneFighter",
       "PlaneInterceptor",
