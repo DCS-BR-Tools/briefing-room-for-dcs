@@ -37,10 +37,10 @@ public class SmokeTests
     {
         var briefingRoom = new BriefingRoom();
         
-        DCSCampaign campaign = briefingRoom.GenerateCampaign($"{BriefingRoom.GetBriefingRoomRootPath()}\\Default.cbrt");
+        DCSCampaign campaign = briefingRoom.GenerateCampaign($"{BriefingRoom.GetBriefingRoomRootPath()}\\testTemplates\\Test.cbrt");
 
         Assert.NotNull(campaign);
-        Assert.Equal(5, campaign.MissionCount);
+        Assert.Equal(3, campaign.MissionCount);
         Assert.NotNull(campaign.Name);
 
 

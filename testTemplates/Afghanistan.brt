@@ -19,7 +19,7 @@ missionfeatures=FriendlyAWACS,FriendlyTankerBasket,FriendlyTankerBoom
 
 [options]
 fogofwar=All
-mission=AllowLowPoly,CombinedArmsPilotControl,ImperialUnitsForBriefing,MarkWaypoints
+mission=AllowLowPoly,CombinedArmsPilotControl,ImperialUnitsForBriefing,MarkWaypoints,DisableKneeboardImages
 realism=DisableDCSRadioAssists,NoBDA
 airbasedynamicspawn=None
 carrierdynamicspawn=False

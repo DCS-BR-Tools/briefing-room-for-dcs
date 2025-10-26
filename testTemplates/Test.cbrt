@@ -3,14 +3,11 @@ coalitionblue=USA
 coalitionred=Russia
 decade=Decade2000
 playercoalition=Blue
-theater=Nevada
+theater=Caucasus
 
 [flightplan]
 objectivedistancemax=160
 objectivedistancemin=40
-objectiveseparationmax=100
-objectiveseparationmin=10
-borderlimit=100
 
 [missionfeatures]
 missionfeatures=FriendlyAWACS,FriendlyTankerBasket,FriendlyTankerBoom
@@ -56,16 +53,19 @@ jtacred=0
 [briefing]
 
 [environment]
-season=Random
-timeofday=RandomDaytime
-wind=Random
+badweatherchance=VeryLow
+nightmissionchance=VeryLow
 
-[objectives]
-objective000.preset=Custom
-objective000.task=DestroyAll
-objective000.target=VehicleAny
-objective000.targetbehavior=Idle
-objective000.targetcount=Average
-objective000.coordinatehint=0,0
-objective000.progression.isany=False
+[missions]
+count=3
+difficultyvariation=Random
+objectives=AirbaseStrike,AntiShipStrike,CloseAirSupport,CombatAirPatrol,CombatSearchAndRescue,CommandoDrop,Custom,DEAD,DeepStrike,DeepStrikeJTAC,DeliverPackage,DeliverTerms,EscortGroundForces,EscortHelicopters,EscortPlane,HeloHunt,Interception,Interdiction,InterdictionJTAC,MoralFlyover,OffensiveCounterAir,Random,RandomFixedWing,RandomRotor,Reconnaissance,ShowOfForce,TransportCargo,TransportTroops
+objectivecount=Average
+objectivevariationdistance=Average
+airbasevariationdistance=Average
+targetcount=Average
+progression=None
+
+[campaignoptions]
+staticsituation=False
 
