@@ -1,5 +1,35 @@
 [
   {
+    "type": "463_Pallet",
+    "displayName": "463 Pallet",
+    "module": "C-130-Assets",
+    "shapeName": "463_Pallet"
+  },
+  {
+    "type": "M92_10Ft_Container",
+    "displayName": "10ft Container",
+    "module": "C-130-Assets",
+    "shapeName": "M92_Container_10ft"
+  },
+  {
+    "type": "M92_Ammo_Pallet",
+    "displayName": "Ammo Pallet",
+    "module": "C-130-Assets",
+    "shapeName": "M92_Cargo03"
+  },
+  {
+    "type": "M92_Concrete_Barrier_Cargo",
+    "displayName": "Concrete Barrier",
+    "module": "C-130-Assets",
+    "shapeName": "M92_barrierb"
+  },
+  {
+    "type": "M92_MRE_Pallet",
+    "displayName": "MRE Pallet",
+    "module": "C-130-Assets",
+    "shapeName": "M92_Cargo01"
+  },
+  {
     "type": "ammo_cargo",
     "displayName": "Ammo",
     "shapeName": "ammo_box_cargo"
@@ -8,6 +38,18 @@
     "type": "barrels_cargo",
     "displayName": "Barrels",
     "shapeName": "barrels_cargo"
+  },
+  {
+    "type": "cds_barrels",
+    "displayName": "CDS Barrels",
+    "module": "C-130-Assets",
+    "shapeName": "cds_barrels"
+  },
+  {
+    "type": "cds_crate",
+    "displayName": "CDS Crate",
+    "module": "C-130-Assets",
+    "shapeName": "cds_crate"
   },
   {
     "type": "container_cargo",

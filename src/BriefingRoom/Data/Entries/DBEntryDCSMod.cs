@@ -77,6 +77,8 @@ namespace BriefingRoom4DCS.Data
             "Mirage F1 Assets by Aerges",
             "Currenthill Assets Pack",
             "MiG-29 Fulcrum AI",
+            "C-130J AI",
+            "C-130-Assets"
         };
 
         internal string Module { get; private set; }

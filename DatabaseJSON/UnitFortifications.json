@@ -386,6 +386,36 @@
     "shapeName": "Dragonsteeth_04"
   },
   {
+    "type": "Drop Zone Marker A",
+    "displayName": "Drop Zone Marker A",
+    "module": "C-130-Assets",
+    "shapeName": "asc_drop_marker_tent"
+  },
+  {
+    "type": "Drop Zone Marker B",
+    "displayName": "Drop Zone Marker B",
+    "module": "C-130-Assets",
+    "shapeName": "asc_drop_marker_cylinder"
+  },
+  {
+    "type": "Drop Zone Marker C",
+    "displayName": "Drop Zone Marker C",
+    "module": "C-130-Assets",
+    "shapeName": "asc_drop_marker_triangle"
+  },
+  {
+    "type": "Drop Zone Marker D",
+    "displayName": "Drop Zone Marker D",
+    "module": "C-130-Assets",
+    "shapeName": "asc_drop_marker_vertical_tall"
+  },
+  {
+    "type": "Drop Zone Marker E",
+    "displayName": "Drop Zone Marker E",
+    "module": "C-130-Assets",
+    "shapeName": "asc_drop_marker_vertical_short"
+  },
+  {
     "type": "Electric power box",
     "displayName": "Electric power box",
     "shapeName": "tr_budka"

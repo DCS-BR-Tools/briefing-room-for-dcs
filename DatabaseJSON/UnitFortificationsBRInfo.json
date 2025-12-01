@@ -1,2702 +1,1612 @@
 [
-    {
-        "type": ".Command Center",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Hangar A",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Tech hangar A",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Farm A",
-        "families": [
-            "StaticStructureCivilian"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Farm B",
-        "families": [
-            "StaticStructureCivilian"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Garage A",
-        "families": [
-            "StaticStructureCivilian"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Boiler-house A",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Restaurant 1",
-        "families": [
-            "StaticStructureCivilian"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Comms tower M",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Cafe",
-        "families": [
-            "StaticStructureCivilian"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Workshop A",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Electric power box",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Supermarket A",
-        "families": [
-            "StaticStructureCivilian"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Water tower A",
-        "families": [
-            "StaticStructureCivilian"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "TV tower",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Shelter",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Repair workshop",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Railway station",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Railway crossing A",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Railway crossing B",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "WC",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Small house 1A area",
-        "families": [
-            "StaticStructureCivilian"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Small house 1A",
-        "families": [
-            "StaticStructureCivilian"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Small house 1B area",
-        "families": [
-            "StaticStructureCivilian"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Small house 1B",
-        "families": [
-            "StaticStructureCivilian"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Small house 1C area",
-        "families": [
-            "StaticStructureCivilian"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Small house 2C",
-        "families": [
-            "StaticStructureCivilian"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Shop",
-        "families": [
-            "StaticStructureCivilian"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Tech combine",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Chemical tank A",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Small werehouse 1",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Small werehouse 2",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Small werehouse 3",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Small werehouse 4",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Garage B",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Garage small A",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Garage small B",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Pump station",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Oil derrick",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Container red 1",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Container red 2",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Container red 3",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Container white",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Container brown",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Barracks 2",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Military staff",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Hangar B",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Fuel tank",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Shelter B",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": true,
-        "immovable": false
-    },
-    {
-        "type": "Oil platform",
-        "families": [
-            "StaticStructureOffshore"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Subsidiary structure 1",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Subsidiary structure 2",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Subsidiary structure 3",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Subsidiary structure A",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Subsidiary structure B",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Subsidiary structure C",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Subsidiary structure D",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Subsidiary structure E",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Subsidiary structure F",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Subsidiary structure G",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Landmine",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "FARP Ammo Dump Coating",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "FARP Tent",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "FARP CP Blindage",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "FARP Fuel Depot",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "GeneratorF",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Airshow_Cone",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Airshow_Crowd",
-        "families": [
-            "StaticStructureCivilian"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Red_Flag",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "White_Flag",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Black_Tyre",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "White_Tyre",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Black_Tyre_RF",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Black_Tyre_WF",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Windsock",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Beer Bomb",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Orca",
-        "families": [
-            "StaticStructureCivilian"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "WindTurbine",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "WindTurbine_11",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "billboard_motorized",
-        "families": [
-            "StaticStructureCivilian"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Stanley_LightHouse",
-        "families": [
-            "StaticStructureCivilian"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "345 Excavator",
-        "families": [
-            "StaticStructureCivilian"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Tower Crane",
-        "families": [
-            "StaticStructureCivilian"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Small_LightHouse",
-        "families": [
-            "StaticStructureCivilian"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "Nodding_Donkey_Pump",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "offshore WindTurbine",
-        "families": [
-            "StaticStructureOffshore"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "offshore WindTurbine2",
-        "families": [
-            "StaticStructureOffshore"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "container_20ft",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "warning_board_a",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "warning_board_b",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "FlagPole",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Belgian gate",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Concertina wire",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Tetrahydra",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Hemmkurvenhindernis",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Czech hedgehogs 1",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Czech hedgehogs 2",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Dragonteeth 1",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Dragonteeth 2",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Dragonteeth 3",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Dragonteeth 4",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Dragonteeth 5",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Fire Control Bunker",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Haystack 1",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Haystack 2",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Haystack 3",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Haystack 4",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Log posts 1",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Log posts 2",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Log posts 3",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Log ramps 1",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Log ramps 2",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Log ramps 3",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Siegfried Line",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Freya_Shelter_Brick",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Freya_Shelter_Concrete",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "AM32a-60_01",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "AM32a-60_02",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "APFC fuel",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "B600",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Barrier A",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Barrier B",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Barrier C",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Barrier D",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "BoomBarrier_open",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "BoomBarrier_closed",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Building01_PBR",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Building02_PBR",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Building03_PBR",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Building04_PBR",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Building05_PBR",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Building06_PBR",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Building07_PBR",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Building08_PBR",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Cargo01",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Cargo02",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Cargo03",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Cargo04",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Cargo05",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Cargo06",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Camouflage01",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Camouflage02",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Camouflage03",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Camouflage04",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Camouflage05",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Camouflage06",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Camouflage07",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Cone01",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Cone02",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Container_10ft",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Container_20ft",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Container_40ft",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "container_40ft",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Container_watchtower",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Container_watchtower_lights",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Container_office",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Container_generator",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "ElevatedPlatform_down",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "ElevatedPlatform_up",
-        "families": [
-            "StaticStructureProduction"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "FireExtinguisher01",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "FireExtinguisher02",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "FireExtinguisher03",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "HESCO_generator",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "HESCO_post_1",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "HESCO_wallperimeter_1",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "HESCO_wallperimeter_2",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "HESCO_wallperimeter_3",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "HESCO_wallperimeter_4",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "HESCO_wallperimeter_5",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "HESCO_watchtower_1",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "HESCO_watchtower_2",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "HESCO_watchtower_3",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Jerrycan",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Ladder",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "LHD_LHA",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "M32-10C_01",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "M32-10C_02",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "M32-10C_03",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "M32-10C_04",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "MJ-1_01",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "MJ-1_02",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "NF-2_LightOn",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "NF-2_LightOff01",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "NF-2_LightOff02",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Oil Barrel",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Pile of Woods",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "P20_01",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Revetment_x4",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Revetment_x8",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "r11_volvo",
-        "families": [
-            "StaticStructureCivilian"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Sandbag_01",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Sandbag_02",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Sandbag_03",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Sandbag_04",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Sandbag_05",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Sandbag_06",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Sandbag_07",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Sandbag_08",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Sandbag_09",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Sandbag_10",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Sandbag_11",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Sandbag_12",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Sandbag_13",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Sandbag_15",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Sandbag_16",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Sandbag_17",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Shelter01",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Shelter02",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "TugHarlan",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Tent05",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Tent04",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Tent03",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Tent02",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Tent01",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Toolbox01",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Toolbox02",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Twall_x1",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Twall_x6",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "Twall_x6_3mts",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "FarpHide_small",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "FarpHide_Med",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "FarpHide_Dsmall",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "FarpHide_Dmed",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "af_hq",
-        "families": [
-            "StaticStructureMilitary"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    },
-    {
-        "type": "ip_tower",
-        "families": [
-            "StaticDecorative"
-        ],
-        "operational": [
-            1940,
-            2020
-        ],
-        "lowPolly": false,
-        "immovable": true
-    }
+  {
+    "type": ".Command Center",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Hangar A",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Tech hangar A",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Farm A",
+    "families": ["StaticStructureCivilian"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Farm B",
+    "families": ["StaticStructureCivilian"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Garage A",
+    "families": ["StaticStructureCivilian"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Boiler-house A",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Restaurant 1",
+    "families": ["StaticStructureCivilian"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Comms tower M",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Cafe",
+    "families": ["StaticStructureCivilian"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Workshop A",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Electric power box",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Supermarket A",
+    "families": ["StaticStructureCivilian"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Water tower A",
+    "families": ["StaticStructureCivilian"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "TV tower",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Shelter",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Repair workshop",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Railway station",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Railway crossing A",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Railway crossing B",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "WC",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Small house 1A area",
+    "families": ["StaticStructureCivilian"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Small house 1A",
+    "families": ["StaticStructureCivilian"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Small house 1B area",
+    "families": ["StaticStructureCivilian"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Small house 1B",
+    "families": ["StaticStructureCivilian"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Small house 1C area",
+    "families": ["StaticStructureCivilian"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Small house 2C",
+    "families": ["StaticStructureCivilian"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Shop",
+    "families": ["StaticStructureCivilian"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Tech combine",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Chemical tank A",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Small werehouse 1",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Small werehouse 2",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Small werehouse 3",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Small werehouse 4",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Garage B",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Garage small A",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Garage small B",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Pump station",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Oil derrick",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Container red 1",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Container red 2",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Container red 3",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Container white",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Container brown",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Barracks 2",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Military staff",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Hangar B",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Fuel tank",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Shelter B",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": true,
+    "immovable": false
+  },
+  {
+    "type": "Oil platform",
+    "families": ["StaticStructureOffshore"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Subsidiary structure 1",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Subsidiary structure 2",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Subsidiary structure 3",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Subsidiary structure A",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Subsidiary structure B",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Subsidiary structure C",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Subsidiary structure D",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Subsidiary structure E",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Subsidiary structure F",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Subsidiary structure G",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Landmine",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "FARP Ammo Dump Coating",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "FARP Tent",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "FARP CP Blindage",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "FARP Fuel Depot",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "GeneratorF",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Airshow_Cone",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Airshow_Crowd",
+    "families": ["StaticStructureCivilian"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Red_Flag",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "White_Flag",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Black_Tyre",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "White_Tyre",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Black_Tyre_RF",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Black_Tyre_WF",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Windsock",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Beer Bomb",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Orca",
+    "families": ["StaticStructureCivilian"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "WindTurbine",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "WindTurbine_11",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "billboard_motorized",
+    "families": ["StaticStructureCivilian"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Stanley_LightHouse",
+    "families": ["StaticStructureCivilian"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "345 Excavator",
+    "families": ["StaticStructureCivilian"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Tower Crane",
+    "families": ["StaticStructureCivilian"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Small_LightHouse",
+    "families": ["StaticStructureCivilian"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "Nodding_Donkey_Pump",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "offshore WindTurbine",
+    "families": ["StaticStructureOffshore"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "offshore WindTurbine2",
+    "families": ["StaticStructureOffshore"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "container_20ft",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "warning_board_a",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "warning_board_b",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "FlagPole",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Belgian gate",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Concertina wire",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Tetrahydra",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Hemmkurvenhindernis",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Czech hedgehogs 1",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Czech hedgehogs 2",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Dragonteeth 1",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Dragonteeth 2",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Dragonteeth 3",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Dragonteeth 4",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Dragonteeth 5",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Fire Control Bunker",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Haystack 1",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Haystack 2",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Haystack 3",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Haystack 4",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Log posts 1",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Log posts 2",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Log posts 3",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Log ramps 1",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Log ramps 2",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Log ramps 3",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Siegfried Line",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Freya_Shelter_Brick",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Freya_Shelter_Concrete",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "AM32a-60_01",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "AM32a-60_02",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "APFC fuel",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "B600",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Barrier A",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Barrier B",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Barrier C",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Barrier D",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "BoomBarrier_open",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "BoomBarrier_closed",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Building01_PBR",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Building02_PBR",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Building03_PBR",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Building04_PBR",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Building05_PBR",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Building06_PBR",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Building07_PBR",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Building08_PBR",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Cargo01",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Cargo02",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Cargo03",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Cargo04",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Cargo05",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Cargo06",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Camouflage01",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Camouflage02",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Camouflage03",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Camouflage04",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Camouflage05",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Camouflage06",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Camouflage07",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Cone01",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Cone02",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Container_10ft",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Container_20ft",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Container_40ft",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "container_40ft",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Container_watchtower",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Container_watchtower_lights",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Container_office",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Container_generator",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "ElevatedPlatform_down",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "ElevatedPlatform_up",
+    "families": ["StaticStructureProduction"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "FireExtinguisher01",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "FireExtinguisher02",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "FireExtinguisher03",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "HESCO_generator",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "HESCO_post_1",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "HESCO_wallperimeter_1",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "HESCO_wallperimeter_2",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "HESCO_wallperimeter_3",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "HESCO_wallperimeter_4",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "HESCO_wallperimeter_5",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "HESCO_watchtower_1",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "HESCO_watchtower_2",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "HESCO_watchtower_3",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Jerrycan",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Ladder",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "LHD_LHA",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "M32-10C_01",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "M32-10C_02",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "M32-10C_03",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "M32-10C_04",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "MJ-1_01",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "MJ-1_02",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "NF-2_LightOn",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "NF-2_LightOff01",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "NF-2_LightOff02",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Oil Barrel",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Pile of Woods",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "P20_01",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Revetment_x4",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Revetment_x8",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "r11_volvo",
+    "families": ["StaticStructureCivilian"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Sandbag_01",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Sandbag_02",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Sandbag_03",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Sandbag_04",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Sandbag_05",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Sandbag_06",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Sandbag_07",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Sandbag_08",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Sandbag_09",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Sandbag_10",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Sandbag_11",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Sandbag_12",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Sandbag_13",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Sandbag_15",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Sandbag_16",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Sandbag_17",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Shelter01",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Shelter02",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "TugHarlan",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Tent05",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Tent04",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Tent03",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Tent02",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Tent01",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Toolbox01",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Toolbox02",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Twall_x1",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Twall_x6",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Twall_x6_3mts",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "FarpHide_small",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "FarpHide_Med",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "FarpHide_Dsmall",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "FarpHide_Dmed",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "af_hq",
+    "families": ["StaticStructureMilitary"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "ip_tower",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Drop Zone Marker A",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Drop Zone Marker B",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Drop Zone Marker C",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Drop Zone Marker D",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "Drop Zone Marker E",
+    "families": ["StaticDecorative"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": true
+  }
 ]

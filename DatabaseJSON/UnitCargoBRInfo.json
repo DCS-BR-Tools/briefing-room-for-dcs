@@ -117,5 +117,54 @@
     "operational": [2000, 2020],
     "lowPolly": false,
     "immovable": false
+  },
+  {
+    "type": "463_Pallet",
+    "families": ["Cargo"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "M92_10Ft_Container",
+    "families": ["Cargo"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "M92_Ammo_Pallet",
+    "families": ["Cargo"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "M92_Concrete_Barrier_Cargo",
+    "families": ["Cargo"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "M92_MRE_Pallet",
+    "families": ["Cargo"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "cds_barrels",
+    "families": ["Cargo"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "cds_crate",
+    "families": ["Cargo"],
+    "operational": [1940, 2020],
+    "lowPolly": false,
+    "immovable": false
   }
 ]

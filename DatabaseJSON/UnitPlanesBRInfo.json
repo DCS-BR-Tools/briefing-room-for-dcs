@@ -250,6 +250,12 @@
     "lowPolly": false,
     "playerControllable": false
   },
+    {
+    "type": "C-130J-30",
+    "families": ["PlaneTransport"],
+    "lowPolly": false,
+    "playerControllable": true
+  },
   {
     "type": "An-26B",
     "families": ["PlaneTransport"],
