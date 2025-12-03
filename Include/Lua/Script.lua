@@ -1657,7 +1657,7 @@ function briefingRoom.mission.objectivesTriggersCommon.registerTransportTroopsTr
         local vec2p = briefingRoom.mission.objectives[objectiveIndex].waypoint
         local vec2u = dcsExtensions.toVec2(unit:getPoint())
         local distance = dcsExtensions.getDistance(vec2p, vec2u);
-        if distance < briefingRoom.mission.objectiveDropDistanceMeters then
+        if distance < briefingRoom.mission.objectiveDropDistanceMeters and not unit:inAir() then
           table.removeValue(briefingRoom.mission.objectives[objectiveIndex].unitNames, u)
           if table.count(briefingRoom.mission.objectives[objectiveIndex].unitNames) < 1 then -- all target units destroyed, objective complete
             briefingRoom.radioManager.play("$LANG_PILOT$: $LANG_TROOPSDELIVERED$", "RadioPilotTroopsDelivered")
