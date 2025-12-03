@@ -1508,33 +1508,13 @@ function briefingRoom.mission.objectivesTriggersCommon.escortNearTriggerlaunchMi
   end
 end
 
+function briefingRoom.mission.objectivesTriggersCommon.fireEscortNearTrigger(objectiveIndex)
+   if briefingRoom.mission.objectivesTriggersCommon.isMissionOrObjectiveComplete(objectiveIndex) then return false end
+    briefingRoom.radioManager.play("$LANG_PILOT$: $LANG_ESCORTCOMPLETE$", "RadioPilotEscortComplete")
+    briefingRoom.mission.coreFunctions.completeObjective(objectiveIndex)
+end
+
 function briefingRoom.mission.objectivesTriggersCommon.registerEscortNearTrigger(objectiveIndex)
-  table.insert(briefingRoom.mission.objectiveTimers,  function ()
-    if briefingRoom.mission.objectivesTriggersCommon.isMissionOrObjectiveComplete(objectiveIndex) then return false end
-    for __,u in ipairs(briefingRoom.mission.objectives[objectiveIndex].unitNames) do
-      local unit = Unit.getByName(u)
-      if unit == nil then
-        unit = StaticObject.getByName(u)
-      end
-      if unit ~= nil then
-        local vec2p = briefingRoom.mission.objectives[objectiveIndex].waypoint
-        local vec2u = dcsExtensions.toVec2(unit:getPoint())
-        local distance = dcsExtensions.getDistance(vec2p, vec2u);
-        local trigDistanceMeters = briefingRoom.mission.objectiveDropDistanceMeters;
-        if unit:inAir() then
-          trigDistanceMeters = briefingRoom.mission.objectiveDropDistanceMeters * 10
-        end
-        if distance < trigDistanceMeters then
-          table.removeValue(briefingRoom.mission.objectives[objectiveIndex].unitNames, u)
-          if table.count(briefingRoom.mission.objectives[objectiveIndex].unitNames) < 1 then -- all target units destroyed, objective complete
-            briefingRoom.radioManager.play("$LANG_PILOT$: $LANG_ESCORTCOMPLETE$", "RadioPilotEscortComplete")
-            briefingRoom.mission.coreFunctions.completeObjective(objectiveIndex)
-          end
-        end
-      end
-    end
-  end)
-  
   local unit = Unit.getByName(briefingRoom.mission.objectives[objectiveIndex].unitNames[1])
   if unit == nil then
     unit = StaticObject.getByName(briefingRoom.mission.objectives[objectiveIndex].unitNames[1])

@@ -170,6 +170,8 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 FeaturesObjectives.GenerateMissionFeature(ref mission, featureID, objectiveName, objectiveIndex, VIPGroupInfo.Value, taskDB.TargetSide, objectiveOptions, overrideCoords: targetBehaviorDB.ID.StartsWith("ToFrontLine") ? objectiveCoordinates : null);
 
             mission.ObjectiveCoordinates.Add(objectiveCoordinates);
+            var zoneId = ZoneMaker.AddZone(ref mission, $"Escort End Zone {objectiveName}", objectiveCoordinates, VIPGroupInfo.Value.UnitDB.IsAircraft ? Database.Instance.Common.DropOffDistanceMeters * 10 : Database.Instance.Common.DropOffDistanceMeters);
+            TriggerMaker.AddEscortEndTrigger(ref mission, zoneId, VIPGroupInfo.Value.GroupID, objectiveIndex);
             var objCoords = objectiveCoordinates;
             var furthestWaypoint = VIPGroupInfo.Value.DCSGroup.Waypoints.Aggregate(objectiveCoordinates, (furthest, x) => objCoords.GetDistanceFrom(x.Coordinates) > objCoords.GetDistanceFrom(furthest) ? x.Coordinates : furthest);
             var waypoint = ObjectiveUtils.GenerateObjectiveWaypoint(ref mission, task, objectiveCoordinates, furthestWaypoint, objectiveName, VIPGroupInfo.Value.DCSGroups.Select(x => x.GroupId).ToList(), hiddenMapMarker: task.ProgressionOptions.Contains(ObjectiveProgressionOption.ProgressionHiddenBrief));
@@ -212,7 +214,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 GroupFlags.RadioAircraftSpawn,
                 threatExtraSettings);
             var zoneId = ZoneMaker.AddZone(ref mission, $"Threat Trig {threatGroupInfo.Value.Name} attacking {VIPGroupInfo.Value.Name}", zoneCoords, VIPGroupInfo.Value.UnitDB.Category.IsAircraft() ? 3000 : 1524);
-            TriggerMaker.AddEscortTrigger(ref mission, zoneId, VIPGroupInfo.Value.GroupID, threatGroupInfo.Value.GroupID);
+            TriggerMaker.AddEscortThreatTrigger(ref mission, zoneId, VIPGroupInfo.Value.GroupID, threatGroupInfo.Value.GroupID);
         }
 
         private static Tuple<MinMaxD, List<UnitFamily>, string, string, MinMaxI, SpawnPointType[], MinMaxD> getThreatValues(string type)
