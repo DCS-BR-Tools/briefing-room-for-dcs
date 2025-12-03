@@ -88,7 +88,8 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             var taskString = GeneratorTools.ParseRandomString(taskDB.BriefingTask[pluralIndex].Get(mission.LangKey), mission).Replace("\"", "''");
 
             var luaExtraSettings = new Dictionary<string, object>();
-            ObjectiveUtils.CreateTaskString(ref mission, pluralIndex, ref taskString, objectiveName, objectiveTargetUnitFamily, task, luaExtraSettings);
+            var unitDisplayName = targetGroupInfo.Value.UnitDB.UIDisplayName;
+            ObjectiveUtils.CreateTaskString(ref mission, pluralIndex, ref taskString, objectiveName, objectiveTargetUnitFamily, unitDisplayName, task, luaExtraSettings);
             ObjectiveUtils.CreateLua(ref mission, targetDB, taskDB, objectiveIndex, objectiveName, targetGroupInfo, taskString, task, luaExtraSettings);
 
             // Add briefing remarks for this objective task

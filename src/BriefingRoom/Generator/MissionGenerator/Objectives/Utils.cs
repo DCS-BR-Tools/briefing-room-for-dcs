@@ -139,12 +139,13 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             }
         }
 
-        internal static void CreateTaskString(ref DCSMission mission, int pluralIndex, ref string taskString, string objectiveName, UnitFamily objectiveTargetUnitFamily, MissionTemplateSubTaskRecord task, Dictionary<string, object> extraSettings)
+        internal static void CreateTaskString(ref DCSMission mission, int pluralIndex, ref string taskString, string objectiveName, UnitFamily objectiveTargetUnitFamily, LanguageString unitDisplayName, MissionTemplateSubTaskRecord task, Dictionary<string, object> extraSettings)
         {
             // Get tasking string for the briefing
             if (string.IsNullOrEmpty(taskString)) taskString = "Complete objective $OBJECTIVENAME$";
             GeneratorTools.ReplaceKey(ref taskString, "ObjectiveName", objectiveName);
             GeneratorTools.ReplaceKey(ref taskString, "UnitFamily", Database.Instance.Common.Names.UnitFamilies[(int)objectiveTargetUnitFamily].Get(mission.LangKey).Split(",")[pluralIndex]);
+            GeneratorTools.ReplaceKey(ref taskString, "UnitDisplayName", unitDisplayName.Get(mission.LangKey));
             foreach (KeyValuePair<string, object> extraSetting in extraSettings)
                 if (extraSetting.Value is not Array)
                     GeneratorTools.ReplaceKey(ref taskString, extraSetting.Key, extraSetting.Value);
