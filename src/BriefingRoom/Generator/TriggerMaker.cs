@@ -27,5 +27,29 @@ namespace BriefingRoom4DCS.Generator
             mission.SetValue("TrigRules", mission.GetValue("TrigRules") + template);
             mission.SetValue("NextTrigIndex", trigIndex + 1);
         }
+
+         internal static void AddCargoTrigger(ref DCSMission mission, int zoneId, int cargoUnitId, string cargoUnitName, int objectiveIndex)
+        {
+            var trigIndex = int.Parse(mission.GetValue("NextTrigIndex"));
+            var trigAction = $"[{trigIndex}] = \"a_do_script(\\\"briefingRoom.mission.objectivesTriggersCommon.fireCargoNearTrigger({objectiveIndex + 1}, \\\"{cargoUnitName}\\\")\\\");\",\n";
+            mission.SetValue("TrigActions",mission.GetValue("TrigActions") + trigAction);
+
+            var trigFunc = $"[{trigIndex}] = \"if mission.trig.conditions[{trigIndex}]() then mission.trig.actions[{trigIndex}]() end\",\n"; 
+            mission.SetValue("TrigFuncs",mission.GetValue("TrigFuncs") + trigFunc);
+            mission.SetValue("TrigFlags",mission.GetValue("TrigFlags") + $"[{trigIndex}] = true,\n");
+
+            var trigCondition = $"[{trigIndex}] = \"return(c_cargo_unhooked_in_zone({cargoUnitId}, {zoneId}) )\",\n";
+            mission.SetValue("TrigConditions",mission.GetValue("TrigConditions") + trigCondition);
+
+
+            string template = File.ReadAllText(Path.Combine(BRPaths.INCLUDE_LUA_MISSION,"TrigRules","CargoInZone.lua"));
+            GeneratorTools.ReplaceKey(ref template, "INDEX", trigIndex);
+            GeneratorTools.ReplaceKey(ref template, "OBJECTIVEINDEX", objectiveIndex + 1);
+            GeneratorTools.ReplaceKey(ref template, "CARGOUNITID", cargoUnitId);
+            GeneratorTools.ReplaceKey(ref template, "CARGOUNITNAME", cargoUnitName);
+            GeneratorTools.ReplaceKey(ref template, "ZONEID", zoneId);
+            mission.SetValue("TrigRules", mission.GetValue("TrigRules") + template);
+            mission.SetValue("NextTrigIndex", trigIndex + 1);
+        }
     }
 }

@@ -1340,26 +1340,13 @@ function briefingRoom.mission.objectivesTriggersCommon.registerDisableTrigger(ob
   end)
 end
 
-function briefingRoom.mission.objectivesTriggersCommon.registerCargoNearTrigger(objectiveIndex)
-  table.insert(briefingRoom.mission.objectiveTimers,  function ()
-    if briefingRoom.mission.objectivesTriggersCommon.isMissionOrObjectiveComplete(objectiveIndex) then return false end
-
-    for __,u in ipairs(briefingRoom.mission.objectives[objectiveIndex].unitNames) do
-      local unit = dcsExtensions.getUnitOrStatic(u)
-      if unit ~= nil then
-        local vec2p = briefingRoom.mission.objectives[objectiveIndex].waypoint
-        local vec2u = dcsExtensions.toVec2(unit:getPoint())
-        local distance = dcsExtensions.getDistance(vec2p, vec2u);
-        if distance < briefingRoom.mission.objectiveDropDistanceMeters and not unit:inAir() then
-          briefingRoom.radioManager.play("$LANG_PILOT$: $LANG_CARGODELIVERED$", "RadioPilotCargoDelivered")
-          table.removeValue(briefingRoom.mission.objectives[objectiveIndex].unitNames, u)
-          if table.count(briefingRoom.mission.objectives[objectiveIndex].unitNames) < 1 then -- all target units destroyed, objective complete
-            briefingRoom.mission.coreFunctions.completeObjective(objectiveIndex)
-          end
-        end
-      end
+function briefingRoom.mission.objectivesTriggersCommon.fireCargoNearTrigger(objectiveIndex, unitName)
+   if briefingRoom.mission.objectivesTriggersCommon.isMissionOrObjectiveComplete(objectiveIndex) then return false end
+   table.removeValue(briefingRoom.mission.objectives[objectiveIndex].unitNames, unitName)
+   briefingRoom.radioManager.play("$LANG_PILOT$: $LANG_CARGODELIVERED$", "RadioPilotCargoDelivered")
+    if table.count(briefingRoom.mission.objectives[objectiveIndex].unitNames) < 1 then
+      briefingRoom.mission.coreFunctions.completeObjective(objectiveIndex)
     end
-  end)
 end
 
 function briefingRoom.mission.objectivesTriggersCommon.registerKeepAliveTrigger(objectiveIndex)

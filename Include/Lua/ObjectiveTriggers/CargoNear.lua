@@ -1,1 +1,0 @@
-briefingRoom.mission.objectivesTriggersCommon.registerCargoNearTrigger($OBJECTIVEINDEX$)
