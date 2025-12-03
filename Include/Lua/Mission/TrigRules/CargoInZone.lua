@@ -9,7 +9,7 @@
 			["zone"] = $ZONEID$,
 		}, 
 	}, 
-	["comment"] = "BR -  Check for Cargo $CARGOUNITID$ in zone $ZONEID$",
+	["comment"] = "BR -  Check for Cargo $CARGOUNITNAME$ in zone $ZONEID$",
 	["eventlist"] = "",
 	["actions"] = 
 	{

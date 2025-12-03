@@ -776,6 +776,9 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                                 unitCoordinates = groupCoordinates.CreateNearRandom(SHIP_UNIT_SPACING, SHIP_UNIT_SPACING * 10);
                             break;
                         case UnitCategory.Cargo:
+                         if (posIndex > 0)
+                                unitCoordinates = groupCoordinates.CreateNearRandom(VEHICLE_UNIT_SPACING, VEHICLE_UNIT_SPACING * 2);
+                            break;
                         case UnitCategory.Static:
                             if (posIndex > 0)
                                 unitCoordinates = groupCoordinates.CreateNearRandom(STATIC_UNIT_SPACING, STATIC_UNIT_SPACING * 10);

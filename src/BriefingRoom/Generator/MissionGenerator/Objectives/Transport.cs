@@ -83,10 +83,12 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             mission.Briefing.AddItem(DCSMissionBriefingItemType.TargetGroupName, $"-TGT-{objectiveName}");
             var isStatic = objectiveTargetUnitFamily.GetUnitCategory() == UnitCategory.Cargo;
             ObjectiveUtils.AssignTargetSuffix(ref targetGroupInfo, objectiveName, isStatic);
-            if(isStatic)
+            if (isStatic)
             {
                 var zoneId = ZoneMaker.AddZone(ref mission, $"Cargo {objectiveName} DZ Trigger", objectiveCoordinates, Database.Instance.Common.DropOffDistanceMeters);
-                TriggerMaker.AddCargoTrigger(ref mission, zoneId, targetGroupInfo.Value.DCSGroups[0].Units[0].UnitId, targetGroupInfo.Value.DCSGroups[0].Units[0].Name, objectiveIndex);
+                foreach (var group in targetGroupInfo.Value.DCSGroups)
+                    TriggerMaker.AddCargoTrigger(ref mission, zoneId, group.Units[0].UnitId, group.Units[0].Name, objectiveIndex);
+
             }
             var length = isStatic ? targetGroupInfo.Value.DCSGroups.Count : targetGroupInfo.Value.UnitNames.Length;
             var pluralIndex = length == 1 ? 0 : 1;
