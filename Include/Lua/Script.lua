@@ -1464,30 +1464,33 @@ function briefingRoom.mission.objectivesTriggersCommon.registerHoldTrigger(objec
   
     for _,p in ipairs(players) do
       local vec2p = dcsExtensions.toVec2(p:getPoint())
-      local vec2u = briefingRoom.mission.objectives[objectiveIndex].waypoint
-      local distance = dcsExtensions.getDistance(vec2p, vec2u);
-      if distance < distanceInMeters then -- less than 2nm
-        if superiorityRequired then
-          for __,eu in ipairs(dcsExtensions.getCoalitionUnits(briefingRoom.enemyCoalition)) do
-            local evec2u = dcsExtensions.toVec2(eu:getPoint())
-            local edistance = dcsExtensions.getDistance(vec2p, evec2u);
-            if edistance < distanceInMeters then
-              return false
+      for _,id in ipairs(briefingRoom.mission.objectives[objectiveIndex].unitNames) do
+        local targetUnit = Unit.getByName(id)
+        if targetUnit ~= nil then
+          local targetPosition = dcsExtensions.toVec2(targetUnit:getPoint())
+          local distance = dcsExtensions.getDistance(vec2p, targetPosition);
+          if distance < distanceInMeters then -- less than 2nm
+            if superiorityRequired then
+              for __,eu in ipairs(dcsExtensions.getCoalitionUnits(briefingRoom.enemyCoalition)) do
+                local evec2u = dcsExtensions.toVec2(eu:getPoint())
+                local edistance = dcsExtensions.getDistance(vec2p, evec2u);
+                if edistance < distanceInMeters then
+                  return false
+                end
+              end
+            end
+            briefingRoom.mission.objectives[objectiveIndex].superiortyTimer = briefingRoom.mission.objectives[objectiveIndex].superiortyTimer + 1
+            briefingRoom.debugPrint("Player in zone "..tostring(objectiveIndex).." for "..tostring(briefingRoom.mission.objectives[objectiveIndex].superiortyTimer).." seconds")
+            if briefingRoom.mission.objectives[objectiveIndex].superiortyTimer > timeRequiredSeconds then
+              briefingRoom.mission.objectives[objectiveIndex].unitNames = { }
+              briefingRoom.mission.coreFunctions.completeObjective(objectiveIndex)
+              return nil
             end
           end
         end
-        briefingRoom.mission.objectives[objectiveIndex].superiortyTimer = briefingRoom.mission.objectives[objectiveIndex].superiortyTimer + 1
-        briefingRoom.debugPrint("Player in zone "..tostring(objectiveIndex).." for "..tostring(briefingRoom.mission.objectives[objectiveIndex].superiortyTimer).." seconds")
-        if briefingRoom.mission.objectives[objectiveIndex].superiortyTimer > timeRequiredSeconds then
-          local playername = p.getPlayerName and p:getPlayerName() or nil
-          briefingRoom.mission.objectives[objectiveIndex].unitNames = { }
-          briefingRoom.mission.coreFunctions.completeObjective(objectiveIndex)
-          return nil
-        end
-        end
+      end
     end
   end)
-  
   briefingRoom.mission.objectives[objectiveIndex].hideTargetCount = true
 end
 
@@ -1621,7 +1624,7 @@ function briefingRoom.mission.objectivesTriggersCommon.registerTransportTroopsTr
         unit = StaticObject.getByName(u)
       end
       if unit ~= nil then
-        local vec2p = briefingRoom.mission.objectives[objectiveIndex].waypoint
+        local vec2p = briefingRoom.mission.objectives[objectiveIndex].waypoint -- Trigger with zone like cargo
         local vec2u = dcsExtensions.toVec2(unit:getPoint())
         local distance = dcsExtensions.getDistance(vec2p, vec2u);
         if distance < briefingRoom.mission.objectiveDropDistanceMeters and not unit:inAir() then
@@ -1648,7 +1651,7 @@ function briefingRoom.mission.objectivesTriggersCommon.registerTransportTroopsTr
     local position = dcsExtensions.toVec2(event.initiator:getPoint()) -- get the landing unit position
    
     -- Drop off
-    local distanceToObjective = dcsExtensions.getDistance(briefingRoom.mission.objectives[objectiveIndex].waypoint, position);
+    local distanceToObjective = dcsExtensions.getDistance(briefingRoom.mission.objectives[objectiveIndex].waypoint, position);  -- Zone Pos?
     if distanceToObjective < briefingRoom.mission.objectiveDropDistanceMeters then
       local removed = briefingRoom.transportManager.removeTroopCargo(event.initiator:getName(), briefingRoom.mission.objectives[objectiveIndex].unitNames)
       for index, value in ipairs(removed) do
