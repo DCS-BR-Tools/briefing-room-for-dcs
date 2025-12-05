@@ -88,7 +88,12 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 var zoneId = ZoneMaker.AddZone(ref mission, $"Cargo {objectiveName} DZ Trigger", objectiveCoordinates, Database.Instance.Common.DropOffDistanceMeters);
                 foreach (var group in targetGroupInfo.Value.DCSGroups)
                     TriggerMaker.AddCargoTrigger(ref mission, zoneId, group.Units[0].UnitId, group.Units[0].Name, objectiveIndex);
-
+            } else
+            {
+                var zoneId = ZoneMaker.AddZone(ref mission, $"Troops {objectiveName} DZ Trigger", objectiveCoordinates, Database.Instance.Common.DropOffDistanceMeters);
+                foreach (var group in targetGroupInfo.Value.DCSGroups)
+                    foreach (var unit in group.Units)
+                        TriggerMaker.AddTransportTrigger(ref mission, zoneId, unit.UnitId, unit.Name, objectiveIndex);
             }
             var length = isStatic ? targetGroupInfo.Value.DCSGroups.Count : targetGroupInfo.Value.UnitNames.Length;
             var pluralIndex = length == 1 ? 0 : 1;

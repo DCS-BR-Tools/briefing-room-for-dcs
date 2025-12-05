@@ -1611,33 +1611,18 @@ function briefingRoom.mission.objectivesTriggersCommon.transportTroopsForceDrop(
   end
 end
 
+function briefingRoom.mission.objectivesTriggersCommon.fireTroopsNearTrigger(objectiveIndex, unitName)
+   if briefingRoom.mission.objectivesTriggersCommon.isMissionOrObjectiveComplete(objectiveIndex) then return false end
+   table.removeValue(briefingRoom.mission.objectives[objectiveIndex].unitNames, unitName)
+   briefingRoom.radioManager.play("$LANG_PILOT$: $LANG_TROOPSDELIVERED$", "RadioPilotTroopsDelivered")
+    if table.count(briefingRoom.mission.objectives[objectiveIndex].unitNames) < 1 then
+      briefingRoom.mission.coreFunctions.completeObjective(objectiveIndex)
+    end
+end
+
 function briefingRoom.mission.objectivesTriggersCommon.registerTransportTroopsTrigger(objectiveIndex)
   table.insert(briefingRoom.mission.objectives[objectiveIndex].f10Commands, {text = "$LANG_FORCEPICKUP$", func = briefingRoom.mission.objectivesTriggersCommon.transportTroopsForcePickup, args = {objectiveIndex}})
   table.insert(briefingRoom.mission.objectives[objectiveIndex].f10Commands, {text = "$LANG_FORCEDROP$", func =  briefingRoom.mission.objectivesTriggersCommon.transportTroopsForceDrop, args =  {objectiveIndex}})
-
-  table.insert(briefingRoom.mission.objectiveTimers,  function ()
-    if briefingRoom.mission.objectivesTriggersCommon.isMissionOrObjectiveComplete(objectiveIndex) then return false end
-
-    for __,u in ipairs(briefingRoom.mission.objectives[objectiveIndex].unitNames) do
-      local unit = Unit.getByName(u)
-      if unit == nil then
-        unit = StaticObject.getByName(u)
-      end
-      if unit ~= nil then
-        local vec2p = briefingRoom.mission.objectives[objectiveIndex].waypoint -- Trigger with zone like cargo
-        local vec2u = dcsExtensions.toVec2(unit:getPoint())
-        local distance = dcsExtensions.getDistance(vec2p, vec2u);
-        if distance < briefingRoom.mission.objectiveDropDistanceMeters and not unit:inAir() then
-          table.removeValue(briefingRoom.mission.objectives[objectiveIndex].unitNames, u)
-          if table.count(briefingRoom.mission.objectives[objectiveIndex].unitNames) < 1 then -- all target units destroyed, objective complete
-            briefingRoom.radioManager.play("$LANG_PILOT$: $LANG_TROOPSDELIVERED$", "RadioPilotTroopsDelivered")
-            briefingRoom.mission.coreFunctions.completeObjective(objectiveIndex)
-          end
-        end
-      end
-    end
-  end)
-  
 
   table.insert(briefingRoom.mission.objectiveTriggers, function(event)
     if briefingRoom.mission.objectivesTriggersCommon.isMissionOrObjectiveComplete(objectiveIndex) then return false end
