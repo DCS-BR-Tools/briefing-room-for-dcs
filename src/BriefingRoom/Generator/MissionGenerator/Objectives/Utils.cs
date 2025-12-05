@@ -161,8 +161,8 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
 
             Coordinates waypointCoordinates = objectiveCoordinates;
             bool onGround = !targetDB.UnitCategory.IsAircraft() || Constants.AIR_ON_GROUND_LOCATIONS.Contains(targetBehaviorLocation); // Ground targets = waypoint on the ground
-
-            if (objectiveOptions.Contains(ObjectiveOption.InaccurateWaypoint) && (!taskDB.UICategory.ContainsValue("Transport") || objectiveName.EndsWith("Pickup")))
+            bool isPickup = objectiveName.EndsWith("Pickup");
+            if (objectiveOptions.Contains(ObjectiveOption.InaccurateWaypoint) && (!taskDB.UICategory.ContainsValue("Transport") || isPickup))
             {
                 waypointCoordinates += Coordinates.CreateRandom(3.0, 6.0) * Toolbox.NM_TO_METERS;
                 if (mission.TemplateRecord.OptionsMission.Contains("MarkWaypoints"))
@@ -177,7 +177,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             }
             else if (targetBehaviorLocation == DBEntryObjectiveTargetBehaviorLocation.Patrolling)
                 DrawingMaker.AddDrawing(ref mission, $"Target Zone {objectiveName}", DrawingType.Circle, waypointCoordinates, "Radius".ToKeyValuePair(ObjectiveDestinationCoordinates.GetDistanceFrom(objectiveCoordinates)));
-            return new Waypoint(objectiveName, waypointCoordinates, onGround, groupIds, scriptIgnore, objectiveTemplate.Options.Contains(ObjectiveOption.NoAircraftWaypoint), hiddenMapMarker);
+            return new Waypoint(isPickup ?  $"P-{objectiveName}" : objectiveName, waypointCoordinates, onGround, groupIds, scriptIgnore, objectiveTemplate.Options.Contains(ObjectiveOption.NoAircraftWaypoint), hiddenMapMarker);
         }
 
         internal static Coordinates GetNearestSpawnCoordinates(ref DCSMission mission, Coordinates coreCoordinates, SpawnPointType[] validSpawnPoints, bool remove = true)
