@@ -32,9 +32,9 @@ namespace BriefingRoom4DCS.Generator.Mission
     internal class CombatAirPatrols
     {
 
-        internal static void GenerateCAP(ref DCSMission mission)
+        internal static void GenerateCAP(IBriefingRoom briefingRoom, ref DCSMission mission)
         {
-            var commonCAPDB = Database.Instance.Common.CAP;
+            var commonCAPDB = briefingRoom.Database.Common.CAP;
             foreach (Coalition coalition in Toolbox.GetEnumValues<Coalition>())
             {
                 if (coalition == Coalition.Neutral) // Skip Neutural
@@ -52,6 +52,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 Coordinates opposingPoint = mission.ObjectivesCenter;
 
                 CreateCAPGroups(
+                    briefingRoom,
                     mission,
                     side, coalition, capAmount,
                     centerPoint, opposingPoint, mission.ObjectivesCenter);
@@ -61,11 +62,12 @@ namespace BriefingRoom4DCS.Generator.Mission
         }
 
         private static void CreateCAPGroups(
+            IBriefingRoom briefingRoom,
             DCSMission mission, Side side,
             Coalition coalition, AmountNR capAmount, Coordinates centerPoint,
             Coordinates opposingPoint, Coordinates destination)
         {
-            var commonCAPDB = Database.Instance.Common.CAP;
+            var commonCAPDB = briefingRoom.Database.Common.CAP;
             DBCommonCAPLevel capLevelDB = commonCAPDB.CAPLevels[(int)capAmount];
 
             int unitsLeftToSpawn = capLevelDB.UnitCount.GetValue();
@@ -80,6 +82,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 // Find spawn point at the proper distance from the objective(s), but not to close from starting airbase
                 Coordinates? spawnPoint =
                     SpawnPointSelector.GetRandomSpawnPoint(
+                        briefingRoom.Database,
                         ref mission,
                         new SpawnPointType[] { SpawnPointType.Air },
                         centerPoint,
@@ -91,7 +94,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 // No spawn point found, stop here.
                 if (!spawnPoint.HasValue)
                 {
-                    throw new BriefingRoomException(mission.LangKey,"NoCAPSpawnPoint", coalition);
+                    throw new BriefingRoomException(briefingRoom.Database, mission.LangKey,"NoCAPSpawnPoint", coalition);
                 }
 
                 Coordinates groupDestination = destination + Coordinates.CreateRandom(10, 20) * Toolbox.NM_TO_METERS;
@@ -112,32 +115,32 @@ namespace BriefingRoom4DCS.Generator.Mission
                 if (mission.TemplateRecord.MissionFeatures.Contains("ContextScrambleStart"))
                     groupFlags |= GroupFlags.ScrambleStart;
 
-                var (units, unitDBs) = UnitGenerator.GetUnits(ref mission,commonCAPDB.UnitFamilies.ToList(), groupSize, side, groupFlags, ref extraSettings, false);
+                var (units, unitDBs) = UnitGenerator.GetUnits(briefingRoom, ref mission,commonCAPDB.UnitFamilies.ToList(), groupSize, side, groupFlags, ref extraSettings, false);
                 if(units.Count == 0)
                     return;
                 var unitDB = (DBEntryAircraft)unitDBs.First();
                 if (mission.TemplateRecord.MissionFeatures.Contains("ContextGroundStartAircraft"))
                 {
                     try {
-                        var (airbase, parkingSpotIDsList, parkingSpotCoordinatesList) = SpawnPointSelector.GetAirbaseAndParking(mission, spawnPoint.Value, groupSize, coalition, unitDB);
+                        var (airbase, parkingSpotIDsList, parkingSpotCoordinatesList) = SpawnPointSelector.GetAirbaseAndParking(briefingRoom, mission, spawnPoint.Value, groupSize, coalition, unitDB);
                         spawnpointCoordinates = airbase.Coordinates;
                         extraSettings.AddIfKeyUnused("ParkingID", parkingSpotIDsList);
                         extraSettings.AddIfKeyUnused("GroupAirbaseID", airbase.DCSID);
                         mission.PopulatedAirbaseIds[coalition].Add(airbase.DCSID);
                         extraSettings.AddIfKeyUnused("UnitCoords", parkingSpotCoordinatesList);
                         mission.MapData.AddIfKeyUnused($"AIRBASE_AI_{side}_NAME_{airbase.UIDisplayName.Get(mission.LangKey)}", new List<double[]> { airbase.Coordinates.ToArray() });
-                    } catch (BriefingRoomException e)
+                    } catch (BriefingRoomRawException e)
                     {
-                        BriefingRoom.PrintTranslatableWarning(mission.LangKey, "CAPCannotBeSpawnedAirport", e.Message);
+                        briefingRoom.PrintTranslatableWarning(mission.LangKey, "CAPCannotBeSpawnedAirport", e.Message);
                     }
 
                 }
 
 
-                GroupInfo? groupInfo = UnitGenerator.AddUnitGroup(ref mission,units, side, unitDB.Families.First(), commonCAPDB.LuaGroup, commonCAPDB.LuaUnit, spawnpointCoordinates, groupFlags, extraSettings);
+                GroupInfo? groupInfo = UnitGenerator.AddUnitGroup(briefingRoom, ref mission,units, side, unitDB.Families.First(), commonCAPDB.LuaGroup, commonCAPDB.LuaUnit, spawnpointCoordinates, groupFlags, extraSettings);
 
                 if (!groupInfo.HasValue) // Failed to generate a group
-                    BriefingRoom.PrintTranslatableWarning(mission.LangKey, "FailedToFindCAPUnits", mission.LangKey, coalition);
+                    briefingRoom.PrintTranslatableWarning(mission.LangKey, "FailedToFindCAPUnits", mission.LangKey, coalition);
 
                 SetCarrier(ref mission, side, ref groupInfo);
 

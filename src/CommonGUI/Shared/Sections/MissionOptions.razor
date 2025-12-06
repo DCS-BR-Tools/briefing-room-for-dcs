@@ -1,5 +1,5 @@
 @using BriefingRoom4DCS.Template
-@inject BriefingRoom4DCS.BriefingRoom briefingRoom
+@inject BriefingRoom4DCS.IBriefingRoom briefingRoom
 
 <div class="form-group">
         <h4>@briefingRoom.Translate("MissionOptions")</h4>
@@ -12,7 +12,7 @@
     <div class="form-group">
         <h4>@briefingRoom.Translate("RealismOptions")</h4>
         <CheckBoxList Data="Enum.GetValues(typeof(RealismOption)).Cast<RealismOption>()"
-            TextField="@(item => BriefingRoomGUITools.GetEnumName(briefingRoom.LanguageKey, item))"
+            TextField="@(item => BriefingRoomGUITools.GetEnumName(briefingRoom, item))"
             ValueField="@(item =>item)" SelectedValues="Template.OptionsRealism" TItem="RealismOption"
             TItemOutput="RealismOption">
         </CheckBoxList>

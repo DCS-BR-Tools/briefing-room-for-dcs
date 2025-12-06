@@ -29,19 +29,18 @@ namespace BriefingRoom4DCS.Template
 {
     public class MissionTemplateSubTask : MissionTemplateGroup
     {
-        public static readonly int MAX_TRANSPORT_DISTANCE = Database.Instance.Common.MaxTransportDistance;
         public List<ObjectiveOption> Options { get { return Options_; } set { Options_ = value.Distinct().ToList(); } }
         private List<ObjectiveOption> Options_;
-        public string Target { get { return Target_; } set { Target_ = Database.Instance.CheckID<DBEntryObjectiveTarget>(value); } }
+        public string Target { get { return Target_; } set { Target_ = Database.CheckID<DBEntryObjectiveTarget>(value); } }
         private string Target_;
-        public string TargetBehavior { get { return TargetBehavior_; } set { TargetBehavior_ = Database.Instance.CheckID<DBEntryObjectiveTargetBehavior>(value); } }
+        public string TargetBehavior { get { return TargetBehavior_; } set { TargetBehavior_ = Database.CheckID<DBEntryObjectiveTargetBehavior>(value); } }
         private string TargetBehavior_;
         public Amount TargetCount { get; set; }
-        public string Task { get { return Task_; } set { Task_ = Database.Instance.CheckID<DBEntryObjectiveTask>(value); } }
+        public string Task { get { return Task_; } set { Task_ = Database.CheckID<DBEntryObjectiveTask>(value); } }
         private string Task_;
-        public int TransportDistanceMax { get { return TransportDistanceMax_; } set { TransportDistanceMax_ = Toolbox.Clamp(value, 0, MAX_TRANSPORT_DISTANCE); } }
+        public int TransportDistanceMax { get { return TransportDistanceMax_; } set { TransportDistanceMax_ = Toolbox.Clamp(value, 0, Database.Common.MaxTransportDistance); } }
         private int TransportDistanceMax_;
-        public int TransportDistanceMin { get { return TransportDistanceMin_; } set { TransportDistanceMin_ = Toolbox.Clamp(value, 0, MAX_TRANSPORT_DISTANCE); } }
+        public int TransportDistanceMin { get { return TransportDistanceMin_; } set { TransportDistanceMin_ = Toolbox.Clamp(value, 0, Database.Common.MaxTransportDistance); } }
         private int TransportDistanceMin_;
         public string Preset { get { return Preset_; } set { setPresetValues(value); } }
         private string Preset_ = "Custom";
@@ -54,7 +53,7 @@ namespace BriefingRoom4DCS.Template
         private List<ObjectiveProgressionOption> ProgressionOptions_;
         public string ProgressionOverrideCondition { get; set; }
 
-        public MissionTemplateSubTask()
+        public MissionTemplateSubTask(IDatabase database): base(database)
         {
             Options = new List<ObjectiveOption>();
             Target = "VehicleAny";
@@ -70,9 +69,9 @@ namespace BriefingRoom4DCS.Template
             ProgressionOverrideCondition = "";
         }
 
-        public MissionTemplateSubTask(string presetID, Amount targetCount)
+        public MissionTemplateSubTask(IDatabase database, string presetID, Amount targetCount): base(database)
         {
-            DBEntryObjectivePreset preset = Database.Instance.GetEntry<DBEntryObjectivePreset>(presetID);
+            DBEntryObjectivePreset preset = Database.GetEntry<DBEntryObjectivePreset>(presetID);
 
             if (preset == null) // Preset doesn't exist.
             {
@@ -102,7 +101,7 @@ namespace BriefingRoom4DCS.Template
             ProgressionOverrideCondition = "";
         }
 
-        public MissionTemplateSubTask(string target, string targetBehavior, string task, Amount targetCount = Amount.Average, params ObjectiveOption[] options)
+        public MissionTemplateSubTask(IDatabase database, string target, string targetBehavior, string task, Amount targetCount = Amount.Average, params ObjectiveOption[] options): base(database)
         {
             Options = new List<ObjectiveOption>(options);
             Target = target;
@@ -114,7 +113,7 @@ namespace BriefingRoom4DCS.Template
             Preset = "Custom";
         }
 
-        internal MissionTemplateSubTask(INIFile ini, string section, string key)
+        internal MissionTemplateSubTask(IDatabase database, INIFile ini, string section, string key): base(database)
         {
             LoadFromFile(ini, section, key);
         }
@@ -153,11 +152,11 @@ namespace BriefingRoom4DCS.Template
         
         private void setPresetValues(string value)
         {
-            Preset_ = Database.Instance.CheckID<DBEntryObjectivePreset>(value);
+            Preset_ = Database.CheckID<DBEntryObjectivePreset>(value);
             if (Preset_ == "Custom")
                 return;
 
-            DBEntryObjectivePreset preset = Database.Instance.GetEntry<DBEntryObjectivePreset>(Preset_);
+            DBEntryObjectivePreset preset = Database.GetEntry<DBEntryObjectivePreset>(Preset_);
 
             if (preset == null) // Preset doesn't exist.
             {

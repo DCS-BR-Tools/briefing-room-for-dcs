@@ -2,7 +2,7 @@
  @using BriefingRoom4DCS.GUI.Utils
 @using BriefingRoom4DCS.Template
 
-@inject BriefingRoom4DCS.BriefingRoom briefingRoom
+@inject BriefingRoom4DCS.IBriefingRoom briefingRoom
  
  <div class="accordion" id="accordionExample">
                         <div class="accordion-item">
@@ -38,8 +38,8 @@
                                     <h6>@briefingRoom.Translate("Options")</h6>
                                     <CheckBoxList
                                         Data="Enum.GetValues(typeof(ObjectiveProgressionOption)).Cast<ObjectiveProgressionOption>()"
-                                        TextField="@(item =>BriefingRoomGUITools.GetEnumName(briefingRoom.LanguageKey, item))"
-                                        DescriptionField="@(item => BriefingRoomGUITools.GetEnumDescription(briefingRoom.LanguageKey, item))"
+                                        TextField="@(item =>BriefingRoomGUITools.GetEnumName(briefingRoom, item))"
+                                        DescriptionField="@(item => BriefingRoomGUITools.GetEnumDescription( briefingRoom, item))"
                                         ValueField="@(item =>item)" SelectedValues="objective.ProgressionOptions"
                                         TItem="ObjectiveProgressionOption" TItemOutput="ObjectiveProgressionOption">
                                     </CheckBoxList>

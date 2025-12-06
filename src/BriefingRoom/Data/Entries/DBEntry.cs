@@ -24,9 +24,9 @@ using System.Linq;
 
 namespace BriefingRoom4DCS.Data
 {
-    internal abstract class DBEntry
+    public abstract class DBEntry
     {
-        protected Database Database { get; set; }
+        protected IDatabase Database { get; set; }
 
         internal string ID { get; set; }
 
@@ -36,24 +36,30 @@ namespace BriefingRoom4DCS.Data
 
         internal LanguageString UIDescription { get; set; }
 
-        internal DBEntry() { }
+        internal DBEntry(IDatabase database)
+        {
+            Database = database;
+        }
+
+        internal DBEntry()
+        {
+        }
 
         internal virtual DatabaseEntryInfo GetDBEntryInfo()
         {
             return new DatabaseEntryInfo(ID, UIDisplayName, UICategory, UIDescription);
         }
 
-        internal bool Load(Database database, string id, string iniFilePath)
+        internal bool Load(IDatabase database, string id, string iniFilePath)
         {
             Database = database;
-
             ID = id;
             var ini = new INIFile(iniFilePath);
             var className = this.GetLanguageClassName();
-            UIDisplayName = ini.GetLangStrings(database.Language, className, ID, "GUI", "DisplayName");
-            if (UIDisplayName.Count == 0) UIDisplayName = new LanguageString(database.Language, className, ID, "DisplayName", ID);
-            UICategory = ini.GetLangStrings(database.Language, className, ID, "GUI", "Category");
-            UIDescription = ini.GetLangStrings(database.Language, className, ID, "GUI", "Description");
+            UIDisplayName = ini.GetLangStrings(Database.Language, className, ID, "GUI", "DisplayName");
+            if (UIDisplayName.Count == 0) UIDisplayName = new LanguageString(Database.Language, className, ID, "DisplayName", ID);
+            UICategory = ini.GetLangStrings(Database.Language, className, ID, "GUI", "Category");
+            UIDescription = ini.GetLangStrings(Database.Language, className, ID, "GUI", "Description");
 
             return OnLoad(iniFilePath);
         }
@@ -103,7 +109,8 @@ namespace BriefingRoom4DCS.Data
             return DBEntry.GetLanguageClassName(this.GetType());
         }
 
-        public static string GetLanguageClassName(Type type) {
+        public static string GetLanguageClassName(Type type)
+        {
             return type.Name.Replace("DBEntry", "");
         }
     }

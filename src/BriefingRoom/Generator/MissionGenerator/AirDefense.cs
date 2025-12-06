@@ -40,7 +40,7 @@ namespace BriefingRoom4DCS.Generator.Mission
 
         };
 
-        internal static void GenerateAirDefense(ref DCSMission mission)
+        internal static void GenerateAirDefense(IBriefingRoom briefingRoom, ref DCSMission mission)
         {
             foreach (Coalition coalition in Toolbox.GetEnumValues<Coalition>())
             {
@@ -53,17 +53,18 @@ namespace BriefingRoom4DCS.Generator.Mission
 
                 var knockDownCount = 0; // If failed to spawn unit at higher level air defense then we should add the count of groups to the next level down.
                 foreach (AirDefenseRange airDefenseRange in Toolbox.GetEnumValues<AirDefenseRange>().Reverse())
-                    knockDownCount = CreateAirDefenseGroups(ref mission, side, coalition, airDefenseAmount, knockDownCount, airDefenseRange, centerPoint, opposingPoint);
+                    knockDownCount = CreateAirDefenseGroups( briefingRoom, ref mission, side, coalition, airDefenseAmount, knockDownCount, airDefenseRange, centerPoint, opposingPoint);
             }
         }
 
         private static int CreateAirDefenseGroups(
+            IBriefingRoom briefingRoom,
            ref DCSMission mission, Side side, Coalition coalition,
             AmountNR airDefenseAmount, int knockDownCount, AirDefenseRange airDefenseRange,
             Coordinates centerPoint, Coordinates opposingPoint)
         {
             var airDefenseInt = (int)airDefenseAmount;
-            var commonAirDefenseDB = Database.Instance.Common.AirDefense;
+            var commonAirDefenseDB = briefingRoom.Database.Common.AirDefense;
             DBCommonAirDefenseLevel airDefenseLevelDB = commonAirDefenseDB.AirDefenseLevels[airDefenseInt];
 
             int groupCount = airDefenseLevelDB.GroupsInArea[(int)airDefenseRange].GetValue() + knockDownCount;
@@ -119,7 +120,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                     if (templateLocation.HasValue)
                     {
                         spawnPoint = templateLocation.Value.Coordinates;
-                        (units, _) = UnitGenerator.GetUnitsForTemplateLocation(ref mission, templateLocation.Value, side, unitFamilies, ref extraSetting);
+                        (units, _) = UnitGenerator.GetUnitsForTemplateLocation(briefingRoom, ref mission, templateLocation.Value, side, unitFamilies, ref extraSetting);
                         if (units.Count == 0)
                             SpawnPointSelector.RecoverTemplateLocation(ref mission, templateLocation.Value.Coordinates);
                     }
@@ -133,7 +134,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                         unitCount = Toolbox.RandomMinMax(2, 5);
                         forceTryTemplate = Toolbox.RandomChance(2);
                     }
-                    (units, _) = UnitGenerator.GetUnits(ref mission, unitFamilies, unitCount, side, 0, ref extraSetting, true, forceTryTemplate: forceTryTemplate, allowDefaults: false);
+                    (units, _) = UnitGenerator.GetUnits(briefingRoom, ref mission, unitFamilies, unitCount, side, 0, ref extraSetting, true, forceTryTemplate: forceTryTemplate, allowDefaults: false);
                     if (units.Count == 0)
                     {
                         return groupCount - i;
@@ -141,6 +142,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                     // Find spawn point at the proper distance
                     spawnPoint =
                         SpawnPointSelector.GetRandomSpawnPoint(
+                            briefingRoom.Database,
                             ref mission,
                             validSpawnPoints,
                             centerPoint,
@@ -155,10 +157,11 @@ namespace BriefingRoom4DCS.Generator.Mission
                 // No spawn point found, stop here.
                 if (!spawnPoint.HasValue)
                 {
-                    BriefingRoom.PrintTranslatableWarning(mission.LangKey, "NoSpawnPointForAirDefense", airDefenseRange);
+                    briefingRoom.PrintTranslatableWarning(mission.LangKey, "NoSpawnPointForAirDefense", airDefenseRange);
                     return groupCount - i;
                 }
                 GroupInfo? groupInfo = UnitGenerator.AddUnitGroup(
+                    briefingRoom,
                     ref mission,
                         units, side, unitFamilies.First(),
                         "Vehicle", "Vehicle",

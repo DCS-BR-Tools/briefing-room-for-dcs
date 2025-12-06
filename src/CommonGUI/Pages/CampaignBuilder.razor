@@ -1,7 +1,7 @@
 @page "/CampaignBuilder"
 @inject IJSRuntime JSRuntime
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
-@inject BriefingRoom4DCS.BriefingRoom briefingRoom
+@inject BriefingRoom4DCS.IBriefingRoom briefingRoom
 @using BriefingRoom4DCS
 @using BriefingRoom4DCS.Data
 @using BriefingRoom4DCS.GUI.Common.Shared.Sections
@@ -126,7 +126,7 @@
     protected override void OnInitialized()
     {
         builderUtils = new BuilderUtils(briefingRoom);
-        Template = new CampaignTemplate();
+        Template = new CampaignTemplate(briefingRoom);
         flightGroupUtil.Tab = Template.PlayerFlightGroups[0];
     }
 
@@ -151,7 +151,7 @@
             }
             catch (System.Exception)
             {
-                Template = new CampaignTemplate();
+                Template = new CampaignTemplate(briefingRoom);
             }
             flightGroupUtil.Tab = Template.PlayerFlightGroups[0];
         }
@@ -255,7 +255,7 @@
             StateHasChanged();
             await Task.Run(async () => {
                 Stopwatch stopwatch = Stopwatch.StartNew(); 
-                byte[] zipBytes = await campaign.ExportToCompressedByteArray(Template);
+                byte[] zipBytes = await campaign.ExportToCompressedByteArray(briefingRoom.Database, Template);
                 if (zipBytes == null) return; // Something went wrong during the .miz export
                 stopwatch.Stop();
                 Console.WriteLine($"Download Prep in {stopwatch.Elapsed.Seconds}s");
@@ -310,7 +310,7 @@
 
     async Task DownloadBriefing()
     {
-            byte[] zipBytes = campaign.ExportBriefingsToCompressedByteArray();
+            byte[] zipBytes = campaign.ExportBriefingsToCompressedByteArray(briefingRoom.Database);
             if (zipBytes == null) return; // Something went wrong during the .miz export
 
             try { await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", $"{Template.ContextTheater} - {campaign.Name} - Briefings.zip", "text/html", zipBytes); }

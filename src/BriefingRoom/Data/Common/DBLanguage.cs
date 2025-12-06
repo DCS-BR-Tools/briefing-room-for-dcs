@@ -27,13 +27,21 @@ namespace BriefingRoom4DCS.Data
 {
     public class DatabaseLanguage
     {
+        public Dictionary<string, string> AvailableLanguagesMap { get; private set; }
+
         public Dictionary<string, LanguageString> LangMap { get; private set; } = new Dictionary<string, LanguageString>();
 
         public DatabaseLanguage() { }
 
         public void Load()
         {
+            INIFile ini = new(Path.Combine(BRPaths.DATABASE, "Language.ini"));
+            AvailableLanguagesMap = new Dictionary<string, string> { { "en", "English" } };
+            foreach (var key in ini.GetKeysInSection("Languages"))
+                AvailableLanguagesMap.AddIfKeyUnused(key, ini.GetValue<string>("Languages", key));
+
             LangMap = new Dictionary<string, LanguageString>();
+
             BriefingRoom.PrintToLog("Loading language global settings...");
             string directory = Path.Combine(BRPaths.DATABASE, "Language");
             if (!Directory.Exists(directory))
@@ -56,12 +64,12 @@ namespace BriefingRoom4DCS.Data
             var lang = parts.Length > 0 ? parts[0].ToLower() : "en";
             foreach (var section in ini.GetSections())
             {
-                foreach (var key in ini.GetKeysInSection(section, true))
+                foreach (var key in ini.GetKeysInSection(section, true, this))
                 {
                     var upperKey = key.ToUpper();
                     if (LangMap.ContainsKey(upperKey))
                     {
-                         LangMap[upperKey] = ini.AddLangStrings(section, key, LangMap[upperKey], lang);
+                        LangMap[upperKey] = ini.AddLangStrings(section, key, LangMap[upperKey], lang);
                         continue;
                     }
                     LangMap.Add(upperKey, ini.GetLangStrings(section, key, lang));
@@ -88,6 +96,12 @@ namespace BriefingRoom4DCS.Data
                 return $"ERR_Missing_Translation_key:{langKey}:{key}";
             }
             return LangMap[searchKey].Get(langKey);
+        }
+
+        public string Translate(string langKey, string key, params object[] args)
+        {
+            var template = this.Translate(langKey, key);
+            return string.Format(template, args);
         }
 
     }

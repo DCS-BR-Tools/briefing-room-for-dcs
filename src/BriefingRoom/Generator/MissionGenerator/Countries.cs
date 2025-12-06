@@ -31,7 +31,7 @@ namespace BriefingRoom4DCS.Generator.Mission
     {
         private static readonly Country[] DEFAULT_COUNTRIES = new Country[] { Country.CombinedJointTaskForcesBlue, Country.CombinedJointTaskForcesRed };
 
-        internal static Country[][] GenerateCountries(ref DCSMission mission)
+        internal static Country[][] GenerateCountries(IDatabase database, ref DCSMission mission)
         {
             int i;
 
@@ -49,8 +49,8 @@ namespace BriefingRoom4DCS.Generator.Mission
             }
 
 
-            countries[(int)Coalition.Blue].AddRange(Database.Instance.GetEntry<DBEntryCoalition>(mission.TemplateRecord.ContextCoalitionBlue).Countries);
-            countries[(int)Coalition.Red].AddRange(Database.Instance.GetEntry<DBEntryCoalition>(mission.TemplateRecord.ContextCoalitionRed).Countries);
+            countries[(int)Coalition.Blue].AddRange(database.GetEntry<DBEntryCoalition>(mission.TemplateRecord.ContextCoalitionBlue).Countries);
+            countries[(int)Coalition.Red].AddRange(database.GetEntry<DBEntryCoalition>(mission.TemplateRecord.ContextCoalitionRed).Countries);
 
             // Add all non-aligned countries to the list of neutral countries
             List<Country> neutralCountries = new(Toolbox.GetEnumValues<Country>());
@@ -66,7 +66,7 @@ namespace BriefingRoom4DCS.Generator.Mission
 
             var intersect = countries[(int)Coalition.Blue].Intersect(countries[(int)Coalition.Red]).ToList();
             if (intersect.Count > 0)
-                throw new BriefingRoomException(mission.LangKey, "DuelSideCountry", string.Join(",", intersect));
+                throw new BriefingRoomException(database, mission.LangKey, "DuelSideCountry", string.Join(",", intersect));
 
 
             mission.SetValue("CoalitionNeutral", GetCountriesLuaTable(neutralCountries));

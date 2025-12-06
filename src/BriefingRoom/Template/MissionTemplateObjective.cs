@@ -28,14 +28,15 @@ namespace BriefingRoom4DCS.Template
 {
     public class MissionTemplateObjective : MissionTemplateSubTask
     {
-        public List<string> Features { get { return Features_; } set { Features_ = Database.Instance.CheckIDs<DBEntryFeatureObjective>(value.ToArray()).ToList(); } }
+        public List<string> Features { get { return Features_; } set { Features_ = Database.CheckIDs<DBEntryFeatureObjective>(value.ToArray()).ToList(); } }
         private List<string> Features_ = new();
         public double[] CoordinateHint { get { return CoordinateHint_.ToArray(); } set { CoordinateHint_ = new Coordinates(value[0], value[1]); } }
         internal Coordinates CoordinateHint_ { get; set; }
 
         public List<MissionTemplateSubTask> SubTasks { get; set; } = new List<MissionTemplateSubTask>();
 
-        public MissionTemplateObjective(bool setPreset = false)
+        public MissionTemplateObjective(IDatabase database, bool setPreset = false)
+            : base(database)
         {
             Features = new List<string>();
             Options = new List<ObjectiveOption>();
@@ -47,9 +48,9 @@ namespace BriefingRoom4DCS.Template
         }
 
 
-        public MissionTemplateObjective(string presetID, Amount targetCount)
+        public MissionTemplateObjective(IDatabase database, string presetID, Amount targetCount): base(database)
         {
-            DBEntryObjectivePreset preset = Database.Instance.GetEntry<DBEntryObjectivePreset>(presetID);
+            DBEntryObjectivePreset preset = Database.GetEntry<DBEntryObjectivePreset>(presetID);
 
             if (preset == null) // Preset doesn't exist.
             {
@@ -78,14 +79,14 @@ namespace BriefingRoom4DCS.Template
             ProgressionOverrideCondition = "";
         }
 
-        internal MissionTemplateObjective(INIFile ini, string section, string key)
+        internal MissionTemplateObjective(IDatabase database, INIFile ini, string section, string key): base(database)
         {
             LoadFromFile(ini, section, key);
         }
 
-        new internal void LoadFromFile(INIFile ini, string section, string key)
+        internal void LoadFromFile(IDatabase database, INIFile ini, string section, string key)
         {
-            Features = Database.Instance.CheckIDs<DBEntryFeatureObjective>(ini.GetValueArray<string>(section, $"{key}.Features")).ToList();
+            Features = database.CheckIDs<DBEntryFeatureObjective>(ini.GetValueArray<string>(section, $"{key}.Features")).ToList();
             Options = ini.GetValueArray<ObjectiveOption>(section, $"{key}.Options").ToList();
             Preset = ini.GetValue<string>(section, $"{key}.Preset", "Custom");
             Target = ini.GetValue<string>(section, $"{key}.Target");
@@ -103,7 +104,7 @@ namespace BriefingRoom4DCS.Template
                 .Where(x => x.Contains("subtask"))
                 .Distinct().ToList())
             {
-                SubTasks.Add(new MissionTemplateSubTask(ini, section, $"{key}.{subKey}"));
+                SubTasks.Add(new MissionTemplateSubTask(Database, ini, section, $"{key}.{subKey}"));
             }
         }
 

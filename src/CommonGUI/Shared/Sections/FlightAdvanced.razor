@@ -1,6 +1,6 @@
 @using BriefingRoom4DCS.GUI.Utils
 @using BriefingRoom4DCS.Template
-@inject BriefingRoom4DCS.BriefingRoom briefingRoom
+@inject BriefingRoom4DCS.IBriefingRoom briefingRoom
 
 <div class="accordion" id="accordionExample">
     <div class="accordion-item">
@@ -29,7 +29,7 @@
                         <label>@briefingRoom.Translate("OverrideCallsignName")</label>
                         <select class="form-control selectpicker" @bind=flight.OverrideCallsignName>
                             <option value=""></option>
-                            @foreach (var item in BriefingRoom.GetAircraftCallsigns(flight.Aircraft, flight.Country))
+                            @foreach (var item in briefingRoom.GetAircraftCallsigns(flight.Aircraft, flight.Country))
                             {
                                 <option value="@item">@item.Split(":")[1]</option>
                             }

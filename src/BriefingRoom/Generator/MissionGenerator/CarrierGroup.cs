@@ -32,31 +32,31 @@ namespace BriefingRoom4DCS.Generator.Mission
     {
 
 
-        internal static void GenerateCarrierGroup(ref DCSMission mission)
+        internal static void GenerateCarrierGroup(IBriefingRoom briefingRoom, ref DCSMission mission)
         {
-            DBEntryTheater theaterDB = Database.Instance.GetEntry<DBEntryTheater>(mission.TemplateRecord.ContextTheater);
+            DBEntryTheater theaterDB = briefingRoom.Database.GetEntry<DBEntryTheater>(mission.TemplateRecord.ContextTheater);
             double carrierSpeed = Math.Max(
-                    Database.Instance.Common.CarrierGroup.MinimumCarrierSpeed,
-                    Database.Instance.Common.CarrierGroup.IdealWindOfDeck - mission.WindSpeedAtSeaLevel);
+                    briefingRoom.Database.Common.CarrierGroup.MinimumCarrierSpeed,
+                    briefingRoom.Database.Common.CarrierGroup.IdealWindOfDeck - mission.WindSpeedAtSeaLevel);
             if (mission.WindSpeedAtSeaLevel == 0) // No wind? Pick a random direction so carriers don't always go to a 0 course when wind is calm.
                 mission.WindDirectionAtSeaLevel = Toolbox.RandomDouble(Toolbox.TWO_PI);
             var carrierPathDeg = ((mission.WindDirectionAtSeaLevel + Math.PI) % Toolbox.TWO_PI) * Toolbox.RADIANS_TO_DEGREES;
             var usedCoordinates = new List<Coordinates>();
-            var templatesDB = Database.Instance.GetAllEntries<DBEntryTemplate>();
+            var templatesDB = briefingRoom.Database.GetAllEntries<DBEntryTemplate>();
             foreach (MissionTemplateFlightGroupRecord flightGroup in mission.TemplateRecord.PlayerFlightGroups)
             {
                 if (string.IsNullOrEmpty(flightGroup.Carrier) || mission.CarrierDictionary.ContainsKey(flightGroup.Carrier)) continue;
                 if (templatesDB.Where(x => x.Type == "FOB").Any(x => x.ID == flightGroup.Carrier))
                 {
                     //It Carries therefore carrier not because I can't think of a name to rename this lot
-                    GenerateFOB(flightGroup, mission);
+                    GenerateFOB(briefingRoom, flightGroup, mission);
                     continue;
                 }
-                var initalUnitDB = Database.Instance.GetEntry<DBEntryJSONUnit>(flightGroup.Carrier);
+                var initalUnitDB = briefingRoom.Database.GetEntry<DBEntryJSONUnit>(flightGroup.Carrier);
                 var unitDB = (DBEntryShip)initalUnitDB;
                 if ((unitDB == null) || !unitDB.Families.Any(x => x.IsCarrier())) continue; // Unit doesn't exist or is not a carrier
 
-                var (shipCoordinates, shipDestination) = GetSpawnAndDestination(mission, usedCoordinates, carrierPathDeg, flightGroup);
+                var (shipCoordinates, shipDestination) = GetSpawnAndDestination(briefingRoom.Database, mission, usedCoordinates, carrierPathDeg, flightGroup);
                 usedCoordinates.Add(shipCoordinates);
                 string cvnID = mission.CarrierDictionary.Count > 0 ? (mission.CarrierDictionary.Count + 1).ToString() : "";
                 int ilsChannel = 11 + mission.CarrierDictionary.Count;
@@ -82,9 +82,9 @@ namespace BriefingRoom4DCS.Generator.Mission
                 var groupLua = "ShipCarrier";
                 var unitLua = "Ship";
                 if (templateOps.Count > 0)
-                    groupInfo = UnitGenerator.AddUnitGroupTemplate(ref mission,Toolbox.RandomFrom(templateOps), Side.Ally, groupLua, unitLua, shipCoordinates, 0, extraSettings);
+                    groupInfo = UnitGenerator.AddUnitGroupTemplate(briefingRoom, ref mission,Toolbox.RandomFrom(templateOps), Side.Ally, groupLua, unitLua, shipCoordinates, 0, extraSettings);
                 else
-                    groupInfo = UnitGenerator.AddUnitGroup(ref mission,unitDB.DCSID, Side.Ally, unitDB.Families[0], groupLua, unitLua, shipCoordinates, 0, extraSettings);
+                    groupInfo = UnitGenerator.AddUnitGroup(briefingRoom, ref mission,unitDB.DCSID, Side.Ally, unitDB.Families[0], groupLua, unitLua, shipCoordinates, 0, extraSettings);
 
                 if (!groupInfo.HasValue || (groupInfo.Value.UnitNames.Length == 0)) continue; // Couldn't generate group
 
@@ -98,11 +98,12 @@ namespace BriefingRoom4DCS.Generator.Mission
         }
 
         private static Tuple<Coordinates, Coordinates> GetSpawnAndDestination(
+            IDatabase database,
             DCSMission mission,
             List<Coordinates> usedCoordinates,
             double carrierPathDeg, MissionTemplateFlightGroupRecord flightGroup)
         {
-            var travelMinMax = new MinMaxD(Database.Instance.Common.CarrierGroup.CourseLength, Database.Instance.Common.CarrierGroup.CourseLength * 2);
+            var travelMinMax = new MinMaxD(database.Common.CarrierGroup.CourseLength, database.Common.CarrierGroup.CourseLength * 2);
             Coordinates? carrierGroupCoordinates = null;
             Coordinates? destinationPoint = null;
             var iteration = 0;
@@ -113,12 +114,13 @@ namespace BriefingRoom4DCS.Generator.Mission
             {
                 location = new Coordinates(mission.TemplateRecord.CarrierHints[flightGroup.Carrier]);
                 if (!SpawnPointSelector.CheckInSea(mission.TheaterDB, location))
-                    throw new BriefingRoomException(mission.LangKey, "CarrierHintonShore");
+                    throw new BriefingRoomException(database, mission.LangKey, "CarrierHintonShore");
             }
             while (iteration < 5)
             {
                 iteration++;
                 carrierGroupCoordinates = usingHint ? location : SpawnPointSelector.GetRandomSpawnPoint(
+                    database,
                     ref mission,
                     new SpawnPointType[] { SpawnPointType.Sea },
                     mission.PlayerAirbase.Coordinates,
@@ -129,7 +131,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 if (!carrierGroupCoordinates.HasValue)
                     continue;
                 var minDist = usedCoordinates.Aggregate(99999999.0, (acc, x) => x.GetDistanceFrom(carrierGroupCoordinates.Value) < acc ? x.GetDistanceFrom(carrierGroupCoordinates.Value) : acc);
-                if (minDist < Database.Instance.Common.CarrierGroup.ShipSpacing)
+                if (minDist < database.Common.CarrierGroup.ShipSpacing)
                     continue;
 
                 var destIteration = 0;
@@ -146,22 +148,23 @@ namespace BriefingRoom4DCS.Generator.Mission
             }
 
             if (!carrierGroupCoordinates.HasValue)
-                throw new BriefingRoomException(mission.LangKey, "CarrierSpawnPointNotFound");
+                throw new BriefingRoomException(database, mission.LangKey, "CarrierSpawnPointNotFound");
             if (!destinationPoint.HasValue)
-                throw new BriefingRoomException(mission.LangKey, "CarrierDestinationNotFound");
+                throw new BriefingRoomException(database, mission.LangKey, "CarrierDestinationNotFound");
             if (!SpawnPointSelector.CheckInSea(mission.TheaterDB ,destinationPoint.Value))
-                throw new BriefingRoomException(mission.LangKey, "CarrierWaypointOnShore");
+                throw new BriefingRoomException(database, mission.LangKey, "CarrierWaypointOnShore");
             if (!ShapeManager.IsLineClear(carrierGroupCoordinates.Value, destinationPoint.Value, mission.TheaterDB.WaterExclusionCoordinates))
-                throw new BriefingRoomException(mission.LangKey, "CarrierPassesThrougLand");
+                throw new BriefingRoomException(database, mission.LangKey, "CarrierPassesThrougLand");
 
             return new(carrierGroupCoordinates.Value, destinationPoint.Value);
         }
 
         private static void GenerateFOB(
+            IBriefingRoom briefingRoom,
             MissionTemplateFlightGroupRecord flightGroup,
             DCSMission mission)
         {
-            DBEntryTheater theaterDB = Database.Instance.GetEntry<DBEntryTheater>(mission.TemplateRecord.ContextTheater);
+            DBEntryTheater theaterDB = briefingRoom.Database.GetEntry<DBEntryTheater>(mission.TemplateRecord.ContextTheater);
             if (theaterDB == null) return; // Theater doesn't exist. Should never happen.
 
             var usingHint = mission.TemplateRecord.CarrierHints.ContainsKey(flightGroup.Carrier);
@@ -174,10 +177,10 @@ namespace BriefingRoom4DCS.Generator.Mission
 
             if (!spawnPoint.HasValue)
             {
-                throw new BriefingRoomException(mission.LangKey, "NoFOBAirDefenseSpawnPoint");
+                throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "NoFOBAirDefenseSpawnPoint");
             }
 
-            var fobTemplate = Database.Instance.GetEntry<DBEntryTemplate>(flightGroup.Carrier);
+            var fobTemplate = briefingRoom.Database.GetEntry<DBEntryTemplate>(flightGroup.Carrier);
             if (fobTemplate == null) return; // Unit doesn't exist or is not a carrier
 
             double radioFrequency = 127.5 + mission.CarrierDictionary.Count;
@@ -191,6 +194,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             var radioFrequencyValue = GeneratorTools.GetRadioFrequency(radioFrequency);
             var groupInfo =
                 UnitGenerator.AddUnitGroupTemplate(
+                    briefingRoom,
                     ref mission,
                     fobTemplate, Side.Ally,
                     "Static", "StaticFOB",
@@ -207,10 +211,10 @@ namespace BriefingRoom4DCS.Generator.Mission
                 SpawnPointSelector.RecoverSpawnPoint(ref mission,spawnPoint.Value);
                 return;
             }
-            var unitDB = (DBEntryStatic)Database.Instance.GetEntry<DBEntryJSONUnit>(fobTemplate.Units.First().DCSID);
+            var unitDB = (DBEntryStatic)briefingRoom.Database.GetEntry<DBEntryJSONUnit>(fobTemplate.Units.First().DCSID);
             groupInfo.Value.DCSGroup.Name = unitDB.UIDisplayName.Get(mission.LangKey);
             groupInfo.Value.DCSGroup.Units.First().Name = unitDB.UIDisplayName.Get(mission.LangKey);
-            ZoneMaker.AddCTLDPickupZone(ref mission,spawnPoint.Value, true);
+            ZoneMaker.AddCTLDPickupZone( briefingRoom, ref mission,spawnPoint.Value, true);
             mission.Briefing.AddItem(
                      DCSMissionBriefingItemType.Airbase,
                      $"{groupInfo.Value.Name}\t\t{GeneratorTools.FormatRadioFrequency(radioFrequency)}\t\t");

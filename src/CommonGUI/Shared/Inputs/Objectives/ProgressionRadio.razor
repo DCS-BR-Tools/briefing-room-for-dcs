@@ -1,7 +1,7 @@
 @using BriefingRoom4DCS.GUI.Utils
 @using BriefingRoom4DCS.Template
 
-@inject BriefingRoom4DCS.BriefingRoom briefingRoom
+@inject BriefingRoom4DCS.IBriefingRoom briefingRoom
 <div class="radio-wrapper">
     <label class="checkbox-wrapper">
         <input type="radio" name="all-any" checked=@(!objective.ProgressionDependentIsAny)

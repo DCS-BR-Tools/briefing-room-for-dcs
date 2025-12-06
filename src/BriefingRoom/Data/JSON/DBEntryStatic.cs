@@ -32,7 +32,7 @@ namespace BriefingRoom4DCS.Data
 
         internal int ParkingSpots { get; init; }
 
-        protected override bool OnLoad(string o)
+        protected override bool OnLoad(string iniFilePath)
         {
             throw new NotImplementedException();
         }

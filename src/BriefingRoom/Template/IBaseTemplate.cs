@@ -21,6 +21,7 @@ If not, see https://www.gnu.org/licenses/
 */
 
 using System.Collections.Generic;
+using BriefingRoom4DCS.Data;
 
 namespace BriefingRoom4DCS.Template
 {
@@ -61,7 +62,7 @@ namespace BriefingRoom4DCS.Template
         public DsAirbase AirbaseDynamicSpawn { get; set; }
         public bool DSAllowHotStart { get; set; }
 
-        public void Clear();
+        public void Clear(IDatabase database) {}
 
     }
 }

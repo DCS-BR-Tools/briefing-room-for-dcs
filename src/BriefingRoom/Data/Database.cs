@@ -22,45 +22,33 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
 
 namespace BriefingRoom4DCS.Data
 {
-    internal class Database
+    public class Database: IDatabase
     {
-        internal static Database Instance
-        {
-            get
-            {
-                _Instance ??= new Database();
 
-                return _Instance;
-            }
-        }
-
-        private static Database _Instance = null;
-
-        internal DatabaseCommon Common { get; set; }
-        internal DatabaseLanguage Language { get; set; }
+        public DatabaseCommon Common { get; set; }
+        public DatabaseLanguage Language { get; set; }
 
         private readonly Dictionary<Type, Dictionary<string, DBEntry>> DBEntries;
         private readonly Dictionary<Type, Tuple<string, string>> UnloadedEntries = new();
 
-        private static bool Initialized = false;
-        private static bool LoadingInProgress = false;
+        private bool Initialized = false;
+        private bool LoadingInProgress = false;
 
-        internal Database()
+        public Database()
         {
             Language = new DatabaseLanguage();
             Common = new DatabaseCommon();
             DBEntries = new Dictionary<Type, Dictionary<string, DBEntry>>();
+            this.Initialize();
         }
 
-        internal static void Reset()
+        public void Reset()
         {
-            _Instance = new Database();
-            _Instance.Initialize();
+            this.Initialize();
         }
 
         internal void Initialize()
@@ -116,8 +104,8 @@ namespace BriefingRoom4DCS.Data
 
 
             // Can't start without at least one player-controllable aircraft
-            if (!(GetAllEntries<DBEntryJSONUnit>()).Any(x => typeof(DBEntryAircraft).Equals(x.GetType()) && ((DBEntryAircraft)x).PlayerControllable))
-                throw new BriefingRoomException("en", "No player-controllable aircraft found.");
+            if (!GetAllEntries<DBEntryJSONUnit>().Any(x => typeof(DBEntryAircraft).Equals(x.GetType()) && ((DBEntryAircraft)x).PlayerControllable))
+                throw new BriefingRoomRawException("No player-controllable aircraft found.");
 
             Initialized = true;
             BriefingRoom.PrintToLog("---------------> Database initialized.", LogMessageErrorLevel.Warning);
@@ -158,7 +146,7 @@ namespace BriefingRoom4DCS.Data
                     LoadCustomUnitEntries<T>(subDirectory);
                     break;
                 default:
-                    throw new BriefingRoomException("en", $"Unknown database type {type}");
+                    throw new BriefingRoomRawException($"Unknown database type {type}");
             }
         }
 
@@ -197,7 +185,7 @@ namespace BriefingRoom4DCS.Data
 
             // If a required database type has no entries, raise an error.
             if ((DBEntries[dbType].Count == 0) && mustHaveAtLeastOneEntry)
-                throw new BriefingRoomException("en", $"No valid database entries found in the \"{subDirectory}\" directory");
+                throw new BriefingRoomRawException($"No valid database entries found in the \"{subDirectory}\" directory");
         }
 
         private void LoadJSONEntries<T>(string subDirectory, bool unitType = false) where T : DBEntry, new()
@@ -219,15 +207,15 @@ namespace BriefingRoom4DCS.Data
             {
                 DBEntryAirbase a => DBEntries[dbType].Concat(DBEntryAirbase.LoadJSON(filePath, Language)).ToDictionary(pair => pair.Key, pair => pair.Value),
                 DBEntryCar a => DBEntries[dbType].Concat(DBEntryCar.LoadJSON(filePath, Language)).ToDictionary(pair => pair.Key, pair => pair.Value),
-                DBEntryAircraft a => DBEntries[dbType].Concat(DBEntryAircraft.LoadJSON(filePath, Language)).ToDictionary(pair => pair.Key, pair => pair.Value),
+                DBEntryAircraft a => DBEntries[dbType].Concat(DBEntryAircraft.LoadJSON(this, filePath, Language)).ToDictionary(pair => pair.Key, pair => pair.Value),
                 DBEntryShip a => DBEntries[dbType].Concat(DBEntryShip.LoadJSON(filePath, Language)).ToDictionary(pair => pair.Key, pair => pair.Value),
                 DBEntryStatic a => DBEntries[dbType].Concat(DBEntryStatic.LoadJSON(filePath, Language)).ToDictionary(pair => pair.Key, pair => pair.Value),
                 DBEntryCargo a => DBEntries[dbType].Concat(DBEntryCargo.LoadJSON(filePath, Language)).ToDictionary(pair => pair.Key, pair => pair.Value),
-                DBEntryTemplate a => DBEntries[dbType].Concat(DBEntryTemplate.LoadJSON(filePath, Language)).ToDictionary(pair => pair.Key, pair => pair.Value),
+                DBEntryTemplate a => DBEntries[dbType].Concat(DBEntryTemplate.LoadJSON(this, filePath, Language)).ToDictionary(pair => pair.Key, pair => pair.Value),
                 DBEntryLayout a => DBEntries[dbType].Concat(DBEntryLayout.LoadJSON(filePath, Language)).ToDictionary(pair => pair.Key, pair => pair.Value),
                 DBEntrySituation a => DBEntries[dbType].Concat(DBEntrySituation.LoadJSON(filePath, Language)).ToDictionary(pair => pair.Key, pair => pair.Value),
                 DBEntryWeaponByDecade a => DBEntries[dbType].Concat(DBEntryWeaponByDecade.LoadJSON(filePath, Language)).ToDictionary(pair => pair.Key, pair => pair.Value),
-                _ => throw new BriefingRoomException("en", $"JSON type {dbType} not implemented."),
+                _ => throw new BriefingRoomRawException($"JSON type {dbType} not implemented."),
             };
             DBEntries[dbType] = entries;
             BriefingRoom.PrintToLog($"Found {DBEntries[dbType].Count} database entries of type \"{typeof(T).Name}\"");
@@ -240,7 +228,7 @@ namespace BriefingRoom4DCS.Data
 
             // If a required database type has no entries, raise an error.
             if ((DBEntries[dbType].Count == 0) && mustHaveAtLeastOneEntry)
-                throw new BriefingRoomException("en", $"No valid database entries found in the \"{subDirectory}\" directory");
+                throw new BriefingRoomRawException($"No valid database entries found in the \"{subDirectory}\" directory");
         }
 
         private void LoadJSONFolderEntries<T>(string subDirectory) where T : DBEntry, new()
@@ -295,7 +283,7 @@ namespace BriefingRoom4DCS.Data
                 if (!entry.Load(this, id, filePath)) continue;
                 if (DBEntries[dbType].ContainsKey(id))
                 {
-                    (GetEntry<T>(id)).Merge(entry);
+                    GetEntry<T>(id).Merge(entry);
                     BriefingRoom.PrintToLog($"Updated {shortTypeName} \"{id}\"");
 
                 }
@@ -314,11 +302,11 @@ namespace BriefingRoom4DCS.Data
 
             // If a required database type has no entries, raise an error.
             if ((DBEntries[dbType].Count == 0) && mustHaveAtLeastOneEntry)
-                throw new BriefingRoomException("en", $"No valid database entries found in the \"{subDirectory}\" directory");
+                throw new BriefingRoomRawException($"No valid database entries found in the \"{subDirectory}\" directory");
         }
 
 
-        internal string CheckID<T>(string id, string defaultID = null, bool allowEmptyStr = false, List<string> allowedValues = null) where T : DBEntry, new()
+        public string CheckID<T>(string id, string defaultID = null, bool allowEmptyStr = false, List<string> allowedValues = null) where T : DBEntry, new()
         {
 
             if (string.IsNullOrEmpty(id) && allowEmptyStr) return "";
@@ -326,34 +314,28 @@ namespace BriefingRoom4DCS.Data
             CheckAndLoadEntries<T>();
             if (EntryExists<T>(id)) return id;
             if (!string.IsNullOrEmpty(defaultID) && EntryExists<T>(defaultID)) return CheckID<T>(defaultID);
-            if (allowEmptyStr || (GetAllEntriesIDs<T>()).Length == 0) return "";
-            return (GetAllEntriesIDs<T>())[0];
+            if (allowEmptyStr || GetAllEntriesIDs<T>().Length == 0) return "";
+            return GetAllEntriesIDs<T>()[0];
         }
 
-        internal string[] CheckIDs<T>(params string[] ids) where T : DBEntry, new()
+        public string[] CheckIDs<T>(params string[] ids) where T : DBEntry, new()
         {
             return ids.Intersect(GetAllEntriesIDs<T>(), StringComparer.OrdinalIgnoreCase).Distinct(StringComparer.OrdinalIgnoreCase).OrderBy(x => x).ToArray();
         }
 
-        internal bool EntryExists<T>(string id) where T : DBEntry, new()
+        public bool EntryExists<T>(string id) where T : DBEntry, new()
         {
             CheckAndLoadEntries<T>();
             return DBEntries[typeof(T)].ContainsKey(id ?? "");
         }
 
-        internal T[] GetAllEntries<T>() where T : DBEntry, new()
+        public T[] GetAllEntries<T>() where T : DBEntry, new()
         {
             CheckAndLoadEntries<T>();
             return (from entry in DBEntries[typeof(T)].Values select (T)entry).ToArray();
         }
 
-        internal Dictionary<string, T> GetAllEntriesDict<T>() where T : DBEntry, new()
-        {
-            CheckAndLoadEntries<T>();
-            return DBEntries[typeof(T)].ToDictionary(x => x.Key, x => (T)x.Value);
-        }
-
-        internal ST[] GetAllEntries<T, ST>()
+        public ST[] GetAllEntries<T, ST>()
             where T : DBEntry, new()
             where ST : DBEntry
         {
@@ -361,14 +343,14 @@ namespace BriefingRoom4DCS.Data
             return (from entry in DBEntries[typeof(T)].Values where typeof(ST).Equals(entry.GetType()) select (ST)entry).ToArray();
         }
 
-        internal string[] GetAllEntriesIDs<T>() where T : DBEntry, new()
+        public string[] GetAllEntriesIDs<T>() where T : DBEntry, new()
         {
             CheckAndLoadEntries<T>();
             if (!DBEntries.ContainsKey(typeof(T))) return null;
             return DBEntries[typeof(T)].Keys.ToArray();
         }
 
-        internal T GetEntry<T>(string id) where T : DBEntry, new()
+        public T GetEntry<T>(string id) where T : DBEntry, new()
         {
             CheckAndLoadEntries<T>();
             id ??= "";
@@ -376,7 +358,7 @@ namespace BriefingRoom4DCS.Data
             return (T)DBEntries[typeof(T)][id];
         }
 
-        internal ST GetEntry<T, ST>(string id)
+        public ST GetEntry<T, ST>(string id)
             where T : DBEntry, new()
             where ST : DBEntry
         {
@@ -386,13 +368,13 @@ namespace BriefingRoom4DCS.Data
             return (ST)DBEntries[typeof(T)][id];
         }
 
-        internal T[] GetEntries<T>(params string[] ids) where T : DBEntry, new()
+        public T[] GetEntries<T>(params string[] ids) where T : DBEntry, new()
         {
             CheckAndLoadEntries<T>();
             return (from T entry in GetAllEntries<T>() where ids.Distinct().OrderBy(x => x).Contains(entry.ID) select entry).ToArray();
         }
 
-        internal List<T> GetEntries<T>(List<string> ids) where T : DBEntry, new()
+        public List<T> GetEntries<T>(List<string> ids) where T : DBEntry, new()
         {
             CheckAndLoadEntries<T>();
             return (from T entry in GetAllEntries<T>() where ids.Distinct().OrderBy(x => x).Contains(entry.ID) select entry).ToList();

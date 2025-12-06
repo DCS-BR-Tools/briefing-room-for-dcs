@@ -33,6 +33,7 @@ namespace BriefingRoom4DCS.Generator.Mission
     {
 
         internal static void GeneratePlayerFlightGroup(
+            IBriefingRoom briefingRoom,
             ref DCSMission mission,
             MissionTemplateFlightGroupRecord flightGroup
             )
@@ -50,13 +51,13 @@ namespace BriefingRoom4DCS.Generator.Mission
                 airbase = missionPackage.Airbase;
                 groupStartingCoords = missionPackage.Airbase.Coordinates;
             }
-            var unitDB = (DBEntryAircraft)Database.Instance.GetEntry<DBEntryJSONUnit>(flightGroup.Aircraft);
+            var unitDB = (DBEntryAircraft)briefingRoom.Database.GetEntry<DBEntryJSONUnit>(flightGroup.Aircraft);
 
             // Not an unit, or not a player-controllable unit, abort.
             if ((unitDB == null) || !unitDB.PlayerControllable)
-                throw new BriefingRoomException(mission.LangKey, "PlayerFlightNotFound", flightGroup.Aircraft);
+                throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "PlayerFlightNotFound", flightGroup.Aircraft);
             if (unitDB.MinimumRunwayLengthFt > 0 && airbase.RunwayLengthFt < unitDB.MinimumRunwayLengthFt)
-                BriefingRoom.PrintTranslatableWarning(mission.LangKey, "RunwayTooShort", airbase.UIDisplayName.Get(mission.LangKey), airbase.RunwayLengthFt, unitDB.UIDisplayName, unitDB.MinimumRunwayLengthFt);
+                briefingRoom.PrintTranslatableWarning(mission.LangKey, "RunwayTooShort", airbase.UIDisplayName.Get(mission.LangKey), airbase.RunwayLengthFt, unitDB.UIDisplayName, unitDB.MinimumRunwayLengthFt);
 
             List<int> parkingSpotIDsList = new();
             List<Coordinates> parkingSpotCoordinatesList = new();
@@ -110,7 +111,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             else if (flightGroup.Hostile)
             {
                 var coalition = GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, side, true);
-                var (hostileAirbase, hostileParkingSpotIDsList, hostileParkingSpotCoordinatesList) = SpawnPointSelector.GetAirbaseAndParking(mission, mission.ObjectivesCenter, flightGroup.Count, coalition.Value, unitDB);
+                var (hostileAirbase, hostileParkingSpotIDsList, hostileParkingSpotCoordinatesList) = SpawnPointSelector.GetAirbaseAndParking(briefingRoom, mission, mission.ObjectivesCenter, flightGroup.Count, coalition.Value, unitDB);
                 parkingSpotIDsList = hostileParkingSpotIDsList;
                 parkingSpotCoordinatesList = hostileParkingSpotCoordinatesList;
                 groupStartingCoords = hostileParkingSpotCoordinatesList.First();
@@ -124,7 +125,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             }
             else // Land airbase take off
             {
-                var parkingSpots = SpawnPointSelector.GetFreeParkingSpots(ref mission, airbase.DCSID, flightGroup.Count, unitDB);
+                var parkingSpots = SpawnPointSelector.GetFreeParkingSpots(briefingRoom, ref mission, airbase.DCSID, flightGroup.Count, unitDB);
                 parkingSpotIDsList = parkingSpots.Select(x => x.DCSID).ToList();
                 parkingSpotCoordinatesList = parkingSpots.Select(x => x.Coordinates).ToList();
                 groupStartingCoords = parkingSpotCoordinatesList.First();
@@ -150,8 +151,8 @@ namespace BriefingRoom4DCS.Generator.Mission
             extraSettings.AddIfKeyUnused("PlayerStartingAction", GeneratorTools.GetPlayerStartingAction(flightGroup.StartLocation));
             extraSettings.AddIfKeyUnused("PlayerStartingType", GeneratorTools.GetPlayerStartingType(flightGroup.StartLocation));
             extraSettings.AddIfKeyUnused("Country", country);
-            extraSettings.AddIfKeyUnused("InitialWPName", Database.Instance.Common.Names.WPInitialName.Get(mission.LangKey));
-            extraSettings.AddIfKeyUnused("FinalWPName", Database.Instance.Common.Names.WPFinalName.Get(mission.LangKey));
+            extraSettings.AddIfKeyUnused("InitialWPName", briefingRoom.Database.Common.Names.WPInitialName.Get(mission.LangKey));
+            extraSettings.AddIfKeyUnused("FinalWPName", briefingRoom.Database.Common.Names.WPFinalName.Get(mission.LangKey));
             extraSettings.AddIfKeyUnused("LinkUnit", carrierUnitID);
             extraSettings.AddIfKeyUnused("MissionAirbaseX", groupStartingCoords.X);
             extraSettings.AddIfKeyUnused("MissionAirbaseY", groupStartingCoords.Y);
@@ -175,6 +176,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             var task = GetTaskType(mission.TemplateRecord.Objectives, extraSettings, package);
 
             GroupInfo? groupInfo = UnitGenerator.AddUnitGroup(
+                briefingRoom,
                 ref mission,
                 Enumerable.Repeat(flightGroup.Aircraft, flightGroup.Count).ToList(), side, unitDB.Families[0],
                 groupLuaFile, "Aircraft", groupStartingCoords,
@@ -184,7 +186,7 @@ namespace BriefingRoom4DCS.Generator.Mission
 
             if (!groupInfo.HasValue)
             {
-                BriefingRoom.PrintTranslatableWarning(mission.LangKey, "FailedToSpawnPlayerFlightGroup");
+                briefingRoom.PrintTranslatableWarning(mission.LangKey, "FailedToSpawnPlayerFlightGroup");
                 return;
             }
 
@@ -193,6 +195,7 @@ namespace BriefingRoom4DCS.Generator.Mission
 
             SaveFlightGroup(ref mission, groupInfo, flightGroup, unitDB, carrierName ?? airbase.Name, task);
             SaveWaypointsToBriefing(
+                briefingRoom.Database,
                 ref mission,
                 groupStartingCoords,
                 flightWaypoints,
@@ -219,7 +222,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 mission.AppendValue("SCRIPTCLIENTPILOTNAMES", $"\"{groupInfo.Value.Name} {i + 1}\",");
         }
 
-        private static void SaveWaypointsToBriefing(ref DCSMission mission, Coordinates initialCoordinates, List<Waypoint> waypoints, bool useImperialSystem, GroupInfo? groupInfo, DBEntryTheater theaterDB)
+        private static void SaveWaypointsToBriefing(IDatabase database, ref DCSMission mission, Coordinates initialCoordinates, List<Waypoint> waypoints, bool useImperialSystem, GroupInfo? groupInfo, DBEntryTheater theaterDB)
         {
             double totalDistance = 0;
             Coordinates lastWP = initialCoordinates;
@@ -227,9 +230,9 @@ namespace BriefingRoom4DCS.Generator.Mission
             // Add first (takeoff) and last (landing) waypoints to get a complete list of all waypoints
             List<Waypoint> allWaypoints =
             [
-                new Waypoint(Database.Instance.Common.Names.WPInitialName.Get(mission.LangKey).ToUpper(), initialCoordinates),
+                new Waypoint(database.Common.Names.WPInitialName.Get(mission.LangKey).ToUpper(), initialCoordinates),
                 .. waypoints,
-                new Waypoint(Database.Instance.Common.Names.WPFinalName.Get(mission.LangKey).ToUpper(), initialCoordinates),
+                new Waypoint(database.Common.Names.WPFinalName.Get(mission.LangKey).ToUpper(), initialCoordinates),
             ];
             mission.Briefing.AddItem(DCSMissionBriefingItemType.Waypoint, $"\t{groupInfo.Value.Name}\t");
 

@@ -28,16 +28,16 @@ namespace BriefingRoom4DCS.Generator.Mission
     internal class Weather
     {
 
-        internal static int GenerateWeather(ref DCSMission mission)
+        internal static int GenerateWeather(IDatabase database, ref DCSMission mission)
         {
             var baseAlt = mission.TemplateRecord.OptionsMission.Contains("SeaLevelRefCloud") ? 0.0 : mission.PlayerAirbase.Elevation;
             if (mission.TemplateRecord.OptionsMission.Contains("HighCloud"))
                 baseAlt += 2000;
             DBEntryWeatherPreset weatherDB;
             if (string.IsNullOrEmpty(mission.TemplateRecord.EnvironmentWeatherPreset)) // Random weather
-                weatherDB = Toolbox.RandomFrom(Database.Instance.GetAllEntries<DBEntryWeatherPreset>());
+                weatherDB = Toolbox.RandomFrom(database.GetAllEntries<DBEntryWeatherPreset>());
             else
-                weatherDB = Database.Instance.GetEntry<DBEntryWeatherPreset>(mission.TemplateRecord.EnvironmentWeatherPreset);
+                weatherDB = database.GetEntry<DBEntryWeatherPreset>(mission.TemplateRecord.EnvironmentWeatherPreset);
 
             mission.SetValue("WeatherName", weatherDB.BriefingDescription.Get(mission.LangKey));
             mission.SetValue("WeatherCloudsBase", weatherDB.CloudsBase.GetValue() + baseAlt);
@@ -55,7 +55,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             return weatherDB.Turbulence.GetValue();
         }
 
-        internal static Tuple<double, double> GenerateWind(ref DCSMission mission, int turbulenceFromWeather)
+        internal static Tuple<double, double> GenerateWind(IBriefingRoom briefingRoom, ref DCSMission mission, int turbulenceFromWeather)
         {
             var windSpeedAtSeaLevel = 0.0;
             var windDirectionAtSeaLevel = 0.0;
@@ -66,7 +66,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             int windAverage = 0;
             for (int i = 0; i < 3; i++)
             {
-                int windSpeed = Database.Instance.Common.Wind[(int)windLevel].Wind.GetValue();
+                int windSpeed = briefingRoom.Database.Common.Wind[(int)windLevel].Wind.GetValue();
                 int windDirection = windSpeed > 0 ? Toolbox.RandomInt(0, 360) : 0;
                 if (i == 0)
                 {
@@ -84,7 +84,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             mission.SetValue($"WeatherWindSpeedAverage", windAverage);
             mission.SetValue($"WeatherWindDirectionCardinal", GetCardinalWindDirection(int.Parse(mission.GetValue("WeatherWindDirection1"))));
 
-            mission.SetValue("WeatherGroundTurbulence", Database.Instance.Common.Wind[(int)windLevel].Turbulence.GetValue() + turbulenceFromWeather);
+            mission.SetValue("WeatherGroundTurbulence", briefingRoom.Database.Common.Wind[(int)windLevel].Turbulence.GetValue() + turbulenceFromWeather);
             return new(windSpeedAtSeaLevel, windDirectionAtSeaLevel);
         }
 

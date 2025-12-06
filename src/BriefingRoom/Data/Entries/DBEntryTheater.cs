@@ -84,7 +84,7 @@ namespace BriefingRoom4DCS.Data
             // Water Coordinates
             var boundsJsonFilePath = Path.Combine(BRPaths.DATABASEJSON, "TheaterTerrainBounds", $"{DCSID}.json");
             if (!File.Exists(boundsJsonFilePath))
-                throw new BriefingRoomException("en", $"{DCSID} Missing Terrain Data. File not found: {boundsJsonFilePath}");
+                throw new BriefingRoomRawException($"{DCSID} Missing Terrain Data. File not found: {boundsJsonFilePath}");
 
             var terrainData = JsonConvert.DeserializeObject<TerrainBounds>(File.ReadAllText(boundsJsonFilePath));
             WaterCoordinates = terrainData.waters.Select(x => x.Select(y => new Coordinates(y)).ToList()).ToList();
@@ -127,7 +127,7 @@ namespace BriefingRoom4DCS.Data
             if (_SpawnPoints != null) return _SpawnPoints;
             var spawnPointsJsonFilePath = Path.Combine(BRPaths.DATABASEJSON, "TheaterSpawnPoints", $"{DCSID}.json.gz");
             if (!File.Exists(spawnPointsJsonFilePath))
-                throw new BriefingRoomException("en", $"{DCSID} Missing SpawnPoint JSON Data. File not found: {spawnPointsJsonFilePath}");
+                throw new BriefingRoomRawException($"{DCSID} Missing SpawnPoint JSON Data. File not found: {spawnPointsJsonFilePath}");
 
             _SpawnPoints = ReadSpawnPointsFromFile(spawnPointsJsonFilePath).Select(x =>
                 new DBEntryTheaterSpawnPoint

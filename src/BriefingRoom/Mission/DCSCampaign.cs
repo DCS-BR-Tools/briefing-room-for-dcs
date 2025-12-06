@@ -24,6 +24,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using BriefingRoom4DCS.Data;
 using BriefingRoom4DCS.Generator;
 using BriefingRoom4DCS.Template;
 
@@ -49,11 +50,11 @@ namespace BriefingRoom4DCS.Mission
             Name = "";
         }
 
-        public async Task ExportToDirectory(string exportPath)
+        public async Task ExportToDirectory(IDatabase database, string exportPath)
         {
             // Try to create the directory if it doesn't exist.
             if (!Toolbox.CreateMissingDirectory(exportPath))
-                throw new BriefingRoomException(Missions[0].LangKey, "FailedToCreateCampaignFolder");
+                throw new BriefingRoomException(database, Missions[0].LangKey, "FailedToCreateCampaignFolder");
 
 
 
@@ -67,12 +68,12 @@ namespace BriefingRoom4DCS.Mission
             // Write missions
             foreach (var mission in Missions)
             {
-                await mission.SaveToMizFile($"{exportPath}{Name}-{mission.Briefing.Name}.miz");
+                await mission.SaveToMizFile(database, $"{exportPath}{Name}-{mission.Briefing.Name}.miz");
             }
                 
         }
 
-        public async Task<byte[]> ExportToCompressedByteArray(CampaignTemplate template)
+        public async Task<byte[]> ExportToCompressedByteArray(IDatabase database, CampaignTemplate template)
         {
             Dictionary<string, byte[]> FileEntries = new()
             {
@@ -81,7 +82,7 @@ namespace BriefingRoom4DCS.Mission
             };
             
             string baseFileName = Toolbox.RemoveInvalidPathCharacters(this.Name);
-            await Imagery.GenerateCampaignImages(template, this, baseFileName);
+            await Imagery.GenerateCampaignImages(database, template, this, baseFileName);
 
             foreach (string key in MediaFiles.Keys)
             {
@@ -89,20 +90,20 @@ namespace BriefingRoom4DCS.Mission
             }
 
             for (int i = 0; i < Missions.Count; i++)
-                FileEntries.Add($"{i+1}_{Missions[i].Briefing.Name}.miz", await Missions[i].SaveToMizBytes());
+                FileEntries.Add($"{i+1}_{Missions[i].Briefing.Name}.miz", await Missions[i].SaveToMizBytes(database));
 
-            return Toolbox.ZipData(Missions[0].LangKey, FileEntries);
+            return Toolbox.ZipData(database, Missions[0].LangKey, FileEntries);
         }
 
-        public byte[] ExportBriefingsToCompressedByteArray()
+        public byte[] ExportBriefingsToCompressedByteArray(IDatabase database)
         {
             Dictionary<string, byte[]> FileEntries = new();
 
             foreach (var mission in Missions)
-                FileEntries.Add($"{mission.Briefing.Name}.html", Encoding.UTF8.GetBytes(mission.Briefing.GetBriefingAsHTML(mission)));
+                FileEntries.Add($"{mission.Briefing.Name}.html", Encoding.UTF8.GetBytes(mission.Briefing.GetBriefingAsHTML(database, mission)));
                 
 
-            return Toolbox.ZipData(Missions[0].LangKey, FileEntries);
+            return Toolbox.ZipData(database,  Missions[0].LangKey, FileEntries);
         }
 
         internal void AddMission(DCSMission mission)

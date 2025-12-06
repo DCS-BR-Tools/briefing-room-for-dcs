@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using Blazored.LocalStorage;
+using BriefingRoom4DCS.Data;
 using Microsoft.AspNetCore.Components.WebView.WindowsForms;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,7 +19,8 @@ namespace BriefingRoom4DCS.GUI.Desktop
             serviceCollection.AddWindowsFormsBlazorWebView();
             serviceCollection.AddBlazoredLocalStorage();
             serviceCollection.AddBlazorBootstrap();
-            serviceCollection.AddScoped<BriefingRoom>();
+            serviceCollection.AddSingleton<IDatabase, Database>();
+            serviceCollection.AddScoped<IBriefingRoom, BriefingRoom>();
             var blazor = new BlazorWebView()
             {
                 Dock = DockStyle.Fill,

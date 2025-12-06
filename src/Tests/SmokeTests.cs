@@ -2,9 +2,16 @@ using BriefingRoom4DCS.Mission;
 
 namespace BriefingRoom4DCS.Tests;
 
-[Collection("Sequential")]
+[Collection("Database collection")]
 public class SmokeTests
 {
+    DatabaseFixture fixture;
+
+    public SmokeTests(DatabaseFixture fixture)
+    {
+        this.fixture = fixture;
+    }
+
     [Theory]
     [InlineData("Afghanistan")]
     [InlineData("Caucasus")]
@@ -22,7 +29,7 @@ public class SmokeTests
     [InlineData("TheChannel")]
     public void SingleMission(string theaterID)
     {
-        var briefingRoom = new BriefingRoom();
+        var briefingRoom = new BriefingRoom(fixture.Db);
 
         DCSMission mission = briefingRoom.GenerateMission($"{BriefingRoom.GetBriefingRoomRootPath()}\\testTemplates\\{theaterID}.brt");
 
@@ -35,8 +42,8 @@ public class SmokeTests
     [Fact]
     public void Campaign()
     {
-        var briefingRoom = new BriefingRoom();
-        
+        var briefingRoom = new BriefingRoom(fixture.Db);
+
         DCSCampaign campaign = briefingRoom.GenerateCampaign($"{BriefingRoom.GetBriefingRoomRootPath()}\\testTemplates\\Test.cbrt");
 
         Assert.NotNull(campaign);

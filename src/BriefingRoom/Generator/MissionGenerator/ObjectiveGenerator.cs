@@ -34,19 +34,21 @@ namespace BriefingRoom4DCS.Generator.Mission
     {
 
         internal static Tuple<Coordinates, List<List<Waypoint>>> GenerateObjective(
+            IBriefingRoom briefingRoom,
             DCSMission mission,
             MissionTemplateObjectiveRecord task,
             Coordinates lastCoordinates,
             ref int objectiveIndex)
         {
             var waypointList = new List<List<Waypoint>>();
-            var (featuresID, targetDB, targetBehaviorDB, taskDB, objectiveOptions) = GetObjectiveData(mission.LangKey, task);
+            var (featuresID, targetDB, targetBehaviorDB, taskDB, objectiveOptions) = GetObjectiveData(briefingRoom.Database, mission.LangKey, task);
             var useHintCoordinates = task.CoordinatesHint.ToString() != "0,0";
             lastCoordinates = useHintCoordinates ? task.CoordinatesHint : lastCoordinates;
-            var objectiveCoordinates = GetSpawnCoordinates(ref mission, lastCoordinates, mission.PlayerAirbase, targetDB, useHintCoordinates);
+            var objectiveCoordinates = GetSpawnCoordinates(briefingRoom.Database, ref mission, lastCoordinates, mission.PlayerAirbase, targetDB, useHintCoordinates);
 
 
             waypointList.Add(CreateObjective(
+                briefingRoom,
                 task,
                 taskDB,
                 targetDB,
@@ -63,6 +65,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             {
                 objectiveIndex++;
                 waypointList.Add(GenerateSubTask(
+                    briefingRoom,
                     mission,
                     subTasks,
                     objectiveCoordinates,
@@ -74,6 +77,7 @@ namespace BriefingRoom4DCS.Generator.Mission
         }
 
         private static List<Waypoint> GenerateSubTask(
+            IBriefingRoom briefingRoom,
             DCSMission mission,
             MissionTemplateSubTaskRecord task,
             Coordinates coreCoordinates,
@@ -82,15 +86,16 @@ namespace BriefingRoom4DCS.Generator.Mission
             string[] featuresID,
             ref int objectiveIndex)
         {
-            var (targetDB, targetBehaviorDB, taskDB, objectiveOptions, _) = ObjectiveUtils.GetCustomObjectiveData(mission.LangKey, task);
+            var (targetDB, targetBehaviorDB, taskDB, objectiveOptions, _) = ObjectiveUtils.GetCustomObjectiveData(briefingRoom.Database, mission.LangKey, task);
 
             preValidSpawns.AddRange(targetDB.ValidSpawnPoints);
             if (preValidSpawns.Contains(SpawnPointType.Sea) && preValidSpawns.Any(x => Constants.LAND_SPAWNS.Contains(x)))
-                throw new BriefingRoomException(mission.LangKey, "LandSeaSubMix");
+                throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "LandSeaSubMix");
             if (Constants.AIRBASE_LOCATIONS.Contains(targetBehaviorDB.Location) && !Constants.AIRBASE_LOCATIONS.Contains(mainObjLocation))
-                throw new BriefingRoomException(mission.LangKey, "AirbaseSubMix");
-            var objectiveCoords = ObjectiveUtils.GetNearestSpawnCoordinates(ref mission, coreCoordinates, targetDB.ValidSpawnPoints);
+                throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "AirbaseSubMix");
+            var objectiveCoords = ObjectiveUtils.GetNearestSpawnCoordinates(briefingRoom.Database, ref mission, coreCoordinates, targetDB.ValidSpawnPoints);
             return CreateObjective(
+                briefingRoom,
                 task,
                 taskDB,
                 targetDB,
@@ -102,9 +107,10 @@ namespace BriefingRoom4DCS.Generator.Mission
                 featuresID);
         }
 
-        private static Coordinates GetSpawnCoordinates(ref DCSMission mission, Coordinates lastCoordinates, DBEntryAirbase playerAirbase, DBEntryObjectiveTarget targetDB, bool usingHint)
+        private static Coordinates GetSpawnCoordinates(IDatabase database, ref DCSMission mission, Coordinates lastCoordinates, DBEntryAirbase playerAirbase, DBEntryObjectiveTarget targetDB, bool usingHint)
         {
             Coordinates? spawnPoint = SpawnPointSelector.GetRandomSpawnPoint(
+                database,
                 ref mission,
                 targetDB.ValidSpawnPoints,
                 playerAirbase.Coordinates,
@@ -114,22 +120,23 @@ namespace BriefingRoom4DCS.Generator.Mission
                 GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, Side.Enemy));
 
             if (!spawnPoint.HasValue)
-                throw new BriefingRoomException(mission.LangKey, "FailedToSpawnObjectiveGroup", String.Join(", ", targetDB.ValidSpawnPoints.Select(x => x.ToString()).ToList()));
+                throw new BriefingRoomException(database, mission.LangKey, "FailedToSpawnObjectiveGroup", String.Join(", ", targetDB.ValidSpawnPoints.Select(x => x.ToString()).ToList()));
 
             Coordinates objectiveCoordinates = spawnPoint.Value;
             return objectiveCoordinates;
         }
 
-        internal static (string[] featuresID, DBEntryObjectiveTarget targetDB, DBEntryObjectiveTargetBehavior targetBehaviorDB, DBEntryObjectiveTask taskDB, ObjectiveOption[] objectiveOptions) GetObjectiveData(string langKey, MissionTemplateObjectiveRecord objectiveTemplate)
+        internal static (string[] featuresID, DBEntryObjectiveTarget targetDB, DBEntryObjectiveTargetBehavior targetBehaviorDB, DBEntryObjectiveTask taskDB, ObjectiveOption[] objectiveOptions) GetObjectiveData(IDatabase database, string langKey, MissionTemplateObjectiveRecord objectiveTemplate)
         {
-            var (targetDB, targetBehaviorDB, taskDB, objectiveOptions, presetDB) = ObjectiveUtils.GetCustomObjectiveData(langKey, objectiveTemplate);
+            var (targetDB, targetBehaviorDB, taskDB, objectiveOptions, presetDB) = ObjectiveUtils.GetCustomObjectiveData(database, langKey, objectiveTemplate);
             var featuresID = (objectiveTemplate.HasPreset ? presetDB.Features.Concat(objectiveTemplate.Features.ToArray()) : objectiveTemplate.Features).Distinct().ToArray();
 
-            ObjectiveUtils.ObjectiveNullCheck(langKey, targetDB, targetBehaviorDB, taskDB);
+            ObjectiveUtils.ObjectiveNullCheck(database, langKey, targetDB, targetBehaviorDB, taskDB);
             return (featuresID, targetDB, targetBehaviorDB, taskDB, objectiveOptions);
         }
 
         private static List<Waypoint> CreateObjective(
+            IBriefingRoom briefingRoom,
             MissionTemplateSubTaskRecord task,
             DBEntryObjectiveTask taskDB,
             DBEntryObjectiveTarget targetDB,
@@ -143,10 +150,10 @@ namespace BriefingRoom4DCS.Generator.Mission
         {
             return taskDB.ID switch
             {
-                "Escort" => Escort.CreateObjective(task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID),
-                "Hold" or "HoldSuperiority" => Hold.CreateObjective(task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID),
-                "TransportTroops" or "TransportCargo" or "ExtractTroops" => Transport.CreateObjective(task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID),
-                _ => Basic.CreateObjective(task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID)
+                "Escort" => Escort.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID),
+                "Hold" or "HoldSuperiority" => Hold.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID),
+                "TransportTroops" or "TransportCargo" or "ExtractTroops" => Transport.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID),
+                _ => Basic.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID)
             };
         }
     }

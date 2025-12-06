@@ -516,7 +516,7 @@ namespace BriefingRoom4DCS
             return $"{number}th";
         }
 
-        internal static byte[] ZipData(string langKey, Dictionary<string, byte[]> FileEntries)
+        internal static byte[] ZipData(IDatabase database, string langKey, Dictionary<string, byte[]> FileEntries)
         {
             byte[] mizBytes;
 
@@ -537,13 +537,13 @@ namespace BriefingRoom4DCS
             }
             catch (Exception ex)
             {
-                throw new BriefingRoomException(langKey, "FailedToZip", ex);
+                throw new BriefingRoomException(database, langKey, "FailedToZip", ex);
             }
 
             return mizBytes;
         }
 
-        internal static void SetMinMaxTheaterCoords(ref DCSMission mission)
+        internal static void SetMinMaxTheaterCoords(IDatabase database, ref DCSMission mission)
         {
             double minX = 123;
             double minY = 123;
@@ -569,7 +569,7 @@ namespace BriefingRoom4DCS
                 GetMinMaxCoords(sp.Coordinates, ref minX, ref minY, ref maxX, ref maxY);
             }
             var theaterDCSID = mission.TheaterDB.DCSID.ToLower();
-            var situations = Database.Instance.GetAllEntries<DBEntrySituation>()
+            var situations = database.GetAllEntries<DBEntrySituation>()
                     .Where(x => x.Theater == theaterDCSID)
                     .ToList();
             foreach (var situation in situations)
@@ -607,23 +607,23 @@ namespace BriefingRoom4DCS
                 maxY = coord.Y;
         }
 
-        internal static void CheckObjectiveProgressionLogic(MissionTemplateRecord template, string langKey)
+        internal static void CheckObjectiveProgressionLogic(IDatabase database, MissionTemplateRecord template, string langKey)
         {
             var tasks = new List<MissionTemplateSubTaskRecord>();
             template.Objectives.ForEach(x => { tasks.Add(x); tasks.AddRange(x.SubTasks);});
-            tasks.Select((value, i) => new { i, value }).ToList().ForEach(x => CheckProgressionLogic(x.value, x.i + 1, tasks, langKey));
+            tasks.Select((value, i) => new { i, value }).ToList().ForEach(x => CheckProgressionLogic(database, x.value, x.i + 1, tasks, langKey));
         }
 
-        internal static void CheckProgressionLogic(MissionTemplateSubTaskRecord task, int taskIndex,  List<MissionTemplateSubTaskRecord> tasks,  string langKey)
+        internal static void CheckProgressionLogic(IDatabase database, MissionTemplateSubTaskRecord task, int taskIndex,  List<MissionTemplateSubTaskRecord> tasks,  string langKey)
         {
             if(!task.ProgressionActivation)
                 return;
             if(!string.IsNullOrEmpty(task.ProgressionOverrideCondition) && !Regex.IsMatch(task.ProgressionOverrideCondition, @"^([\(\)\d+]| and | or )+$")) 
-                throw new BriefingRoomException(langKey, "InvalidProgressionOverrideCondition", taskIndex , task.ProgressionOverrideCondition);
-            CheckProgressionDeps(tasks, task, taskIndex, taskIndex, langKey);
+                throw new BriefingRoomException(database, langKey, "InvalidProgressionOverrideCondition", taskIndex , task.ProgressionOverrideCondition);
+            CheckProgressionDeps(database, tasks, task, taskIndex, taskIndex, langKey);
         }
 
-        internal static void CheckProgressionDeps(List<MissionTemplateSubTaskRecord> tasks, MissionTemplateSubTaskRecord task, int taskIndex, int searchIndex, string langKey, List<int> seenTaskIndexes = null)
+        internal static void CheckProgressionDeps(IDatabase database, List<MissionTemplateSubTaskRecord> tasks, MissionTemplateSubTaskRecord task, int taskIndex, int searchIndex, string langKey, List<int> seenTaskIndexes = null)
         {
             if(seenTaskIndexes is null)
                 seenTaskIndexes = new List<int>();
@@ -636,11 +636,11 @@ namespace BriefingRoom4DCS
                 return;
             if(dependentTasks.Contains(searchIndex))
             {
-                throw new BriefingRoomException(langKey, "InvalidProgressionDependentTasks", searchIndex , taskIndex);
+                throw new BriefingRoomException(database, langKey, "InvalidProgressionDependentTasks", searchIndex , taskIndex);
             }
 
             seenTaskIndexes.Add(taskIndex);
-            dependentTasks.ForEach(x => CheckProgressionDeps(tasks, tasks[x -1], x, searchIndex, langKey, seenTaskIndexes));
+            dependentTasks.ForEach(x => CheckProgressionDeps(database, tasks, tasks[x -1], x, searchIndex, langKey, seenTaskIndexes));
         }
 
         [GeneratedRegex("\\[\\\"(.*?)\\\"\\] ?= ?(.*)")]

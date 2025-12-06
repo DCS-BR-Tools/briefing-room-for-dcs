@@ -35,11 +35,11 @@ namespace BriefingRoom4DCS.Generator
         private static readonly string CAMPAIGN_LUA_TEMPLATE = Path.Combine(BRPaths.INCLUDE_LUA, "Campaign", "Campaign.lua");
         private static readonly string CAMPAIGN_STAGE_LUA_TEMPLATE = Path.Combine(BRPaths.INCLUDE_LUA, "Campaign", "CampaignStage.lua");
 
-        internal static DCSCampaign Generate(string langKey, CampaignTemplate campaignTemplate)
+        internal static DCSCampaign Generate(IBriefingRoom briefingRoom, CampaignTemplate campaignTemplate)
         {
             DCSCampaign campaign = new()
             {
-                Name = GeneratorTools.GenerateCampaignName(langKey, campaignTemplate.BriefingCampaignName)
+                Name = GeneratorTools.GenerateCampaignName(briefingRoom.Database, briefingRoom.LanguageKey, campaignTemplate.BriefingCampaignName)
             };
 
             DateTime date = GenerateCampaignDate(campaignTemplate);
@@ -55,7 +55,8 @@ namespace BriefingRoom4DCS.Generator
                 if (i > 0) date = IncrementDate(date);
 
                 var template = CreateMissionTemplate(
-                    langKey,
+                    briefingRoom.Database,
+                    briefingRoom.LanguageKey,
                     campaignTemplate,
                     i,
                     (int)campaignTemplate.MissionsObjectiveCount,
@@ -65,7 +66,7 @@ namespace BriefingRoom4DCS.Generator
 
                 try
                 {
-                    var mission = MissionGenerator.GenerateRetryable(langKey, template);
+                    var mission = MissionGenerator.GenerateRetryable(briefingRoom, template);
                     mission.SetValue("DateDay", date.Day);
                     mission.SetValue("DateMonth", date.Month);
                     mission.SetValue("DateYear", date.Year);
@@ -79,17 +80,17 @@ namespace BriefingRoom4DCS.Generator
                     i++;
                     failedTries = 0;
                 }
-                catch (BriefingRoomException err)
+                catch (BriefingRoomRawException err)
                 {
                     if (failedTries >= 3)
-                        throw new BriefingRoomException(langKey, "FailedToGenerateCampaignMission", err, i + 1);
+                        throw new BriefingRoomException(briefingRoom.Database, briefingRoom.LanguageKey, "FailedToGenerateCampaignMission", err, i + 1);
                     failedTries++;
                     continue;
                 }
             } while (campaign.Missions.Count < campaignTemplate.MissionsCount);
 
             if (campaign.MissionCount < 1) // No missions generated, something went very wrong.
-                throw new BriefingRoomException(langKey, "CampaignNoValidMissions");
+                throw new BriefingRoomException(briefingRoom.Database, briefingRoom.LanguageKey, "CampaignNoValidMissions");
 
             campaign.CMPFile = GetCMPFile(campaignTemplate, campaign);
 
@@ -133,13 +134,14 @@ namespace BriefingRoom4DCS.Generator
         }
 
         private static MissionTemplate CreateMissionTemplate(
+            IDatabase database,
             string langKey,
             CampaignTemplate campaignTemplate,
             int missionIndex, int missionCount,
             string previousSituationId, Coordinates previousObjectiveCenterCoords, string previousPlayerAirbaseId)
         {
-            string weatherPreset = GetWeatherForMission(campaignTemplate.EnvironmentBadWeatherChance);
-            MissionTemplate template = new()
+            string weatherPreset = GetWeatherForMission(database, campaignTemplate.EnvironmentBadWeatherChance);
+            MissionTemplate template = new(database)
             {
                 BriefingMissionName = "",
                 BriefingMissionDescription = "",
@@ -154,7 +156,7 @@ namespace BriefingRoom4DCS.Generator
                 EnvironmentSeason = Season.Random,
                 EnvironmentTimeOfDay = GetTimeOfDayForMission(campaignTemplate.EnvironmentNightMissionChance),
                 EnvironmentWeatherPreset = weatherPreset,
-                EnvironmentWind = GetWindForMission(campaignTemplate.EnvironmentBadWeatherChance, weatherPreset),
+                EnvironmentWind = GetWindForMission(database, campaignTemplate.EnvironmentBadWeatherChance, weatherPreset),
 
                 FlightPlanObjectiveDistanceMax = campaignTemplate.FlightPlanObjectiveDistanceMax,
                 FlightPlanObjectiveDistanceMin = campaignTemplate.FlightPlanObjectiveDistanceMin,
@@ -194,21 +196,21 @@ namespace BriefingRoom4DCS.Generator
                 if (!isNone)
                 {
                     var situationOptions = new List<string> { previousSituationId };
-                    var previousSituationDB = Database.Instance.GetEntry<DBEntrySituation>(previousSituationId);
+                    var previousSituationDB = database.GetEntry<DBEntrySituation>(previousSituationId);
                     if (!campaignTemplate.StaticSituation)
                         situationOptions.AddRange(previousSituationDB.RelatedSituations);
                     template.ContextSituation = Toolbox.RandomFrom(situationOptions.ToArray());
-                    nextSituationDB = Database.Instance.GetEntry<DBEntrySituation>(template.ContextSituation);
+                    nextSituationDB = database.GetEntry<DBEntrySituation>(template.ContextSituation);
                 }
                 else
                 {
                     template.ContextSituation = "None";
                     var searchTheater = template.ContextTheater.ToLower();
-                    var randomSituations = Database.Instance.GetAllEntries<DBEntrySituation>().Where(x => x.Theater == searchTheater).ToList();
+                    var randomSituations = database.GetAllEntries<DBEntrySituation>().Where(x => x.Theater == searchTheater).ToList();
                     nextSituationDB = Toolbox.RandomFrom(randomSituations);
                 }
 
-                var airbases = nextSituationDB.GetAirbases(template.OptionsMission.Contains("InvertCountriesCoalitions"));
+                var airbases = nextSituationDB.GetAirbases(database, template.OptionsMission.Contains("InvertCountriesCoalitions"));
                 var previousPlayerAirbase = airbases.First(x => x.ID == previousPlayerAirbaseId);
                 var airbaseOptions = airbases.Where(x =>
                     (x.Coalition == template.ContextPlayerCoalition || isNone) &&
@@ -221,10 +223,10 @@ namespace BriefingRoom4DCS.Generator
             int objectiveCount = GetObjectiveCountForMission(campaignTemplate.MissionsObjectiveCount);
             var i = 0;
             do {
-                var obj = new MissionTemplateObjective(Toolbox.RandomFrom(campaignTemplate.MissionsObjectives), campaignTemplate.MissionTargetCount);
+                var obj = new MissionTemplateObjective(database, Toolbox.RandomFrom(campaignTemplate.MissionsObjectives), campaignTemplate.MissionTargetCount);
                 i++;
                 while (i < Toolbox.RandomInt(i, Math.Min(i + 5, objectiveCount))) {
-                    obj.SubTasks.Add(new MissionTemplateSubTask(Toolbox.RandomFrom(campaignTemplate.MissionsObjectives), campaignTemplate.MissionTargetCount));
+                    obj.SubTasks.Add(new MissionTemplateSubTask(database, Toolbox.RandomFrom(campaignTemplate.MissionsObjectives), campaignTemplate.MissionTargetCount));
                     i++;
                 }
                 template.Objectives.Add(obj);
@@ -233,7 +235,7 @@ namespace BriefingRoom4DCS.Generator
             if (campaignTemplate.MissionsProgression != AmountNR.None) {
                 var progression = GetMissionProgressionChance(campaignTemplate.MissionsProgression);
                 if(progression > 0)
-                    ApplyProgression(langKey, progression, ref template);
+                    ApplyProgression(database, langKey, progression, ref template);
             }
 
             if (!String.IsNullOrEmpty(previousPlayerAirbaseId))
@@ -242,7 +244,7 @@ namespace BriefingRoom4DCS.Generator
             return template;
         }
 
-        private static void ApplyProgression(string langKey, int progressionChance, ref MissionTemplate template) {
+        private static void ApplyProgression(IDatabase database, string langKey, int progressionChance, ref MissionTemplate template) {
             var trys = 1;
             while (trys < 10)
             {
@@ -262,10 +264,10 @@ namespace BriefingRoom4DCS.Generator
                 }
                 try
                 {
-                   Toolbox.CheckObjectiveProgressionLogic(new MissionTemplateRecord(template), langKey);
+                   Toolbox.CheckObjectiveProgressionLogic(database, new MissionTemplateRecord(database, template), langKey);
                    break;
                 }
-                catch (BriefingRoomException)
+                catch (BriefingRoomRawException)
                 {
                     trys++;
                 }
@@ -329,7 +331,7 @@ namespace BriefingRoom4DCS.Generator
             };
         }
 
-        private static Wind GetWindForMission(Amount badWeatherChance, string weatherPreset)
+        private static Wind GetWindForMission(IDatabase database, Amount badWeatherChance, string weatherPreset)
         {
             // Pick a max wind force
             var maxWind = badWeatherChance switch
@@ -345,7 +347,7 @@ namespace BriefingRoom4DCS.Generator
             Wind wind = (Wind)Toolbox.RandomMinMax((int)Wind.Calm, (int)maxWind);
 
             // Makes the wind stronger if the weather preset is classified as "bad weather"
-            if (Database.Instance.GetEntry<DBEntryWeatherPreset>(weatherPreset).BadWeather)
+            if (database.GetEntry<DBEntryWeatherPreset>(weatherPreset).BadWeather)
                 wind += Toolbox.RandomMinMax(0, 2);
 
             return (Wind)Toolbox.Clamp((int)wind, (int)Wind.Calm, (int)Wind.Storm);
@@ -397,7 +399,7 @@ namespace BriefingRoom4DCS.Generator
             return (AmountNR)Toolbox.Clamp((int)amountDouble, (int)AmountNR.VeryLow, (int)AmountNR.VeryHigh);
         }
 
-        private static string GetWeatherForMission(Amount badWeatherChance)
+        private static string GetWeatherForMission(IDatabase database, Amount badWeatherChance)
         {
             // Chance to have bad weather
             var chance = badWeatherChance switch
@@ -412,13 +414,13 @@ namespace BriefingRoom4DCS.Generator
             // Pick a random weather preset matching the good/bad weather chance
             string weather =
                 (from DBEntryWeatherPreset weatherDB
-                 in Database.Instance.GetAllEntries<DBEntryWeatherPreset>()
+                 in database.GetAllEntries<DBEntryWeatherPreset>()
                  where weatherDB.BadWeather == (Toolbox.RandomInt(100) < chance)
                  select weatherDB.ID).OrderBy(x => Toolbox.RandomInt()).FirstOrDefault();
 
             // Just to make sure weather ID is not null
             if (weather == null)
-                return Toolbox.RandomFrom(Database.Instance.GetAllEntriesIDs<DBEntryWeatherPreset>());
+                return Toolbox.RandomFrom(database.GetAllEntriesIDs<DBEntryWeatherPreset>());
 
             return weather;
         }

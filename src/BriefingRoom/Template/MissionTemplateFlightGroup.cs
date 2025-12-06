@@ -26,7 +26,7 @@ namespace BriefingRoom4DCS.Template
 {
     public sealed class MissionTemplateFlightGroup : MissionTemplateGroup
     {
-        public string Aircraft { get { return Aircraft_; } set { Aircraft_ = Database.Instance.CheckID<DBEntryJSONUnit>(value, "Su-25T"); } }
+        public string Aircraft { get { return Aircraft_; } set { Aircraft_ = Database.CheckID<DBEntryJSONUnit>(value, "Su-25T"); } }
         private string Aircraft_;
         public bool AIWingmen { get; set; }
         public bool Hostile { get; set; }
@@ -35,9 +35,9 @@ namespace BriefingRoom4DCS.Template
             get { return Carrier_; }
             set
             {
-                Carrier_ = Database.Instance.CheckID<DBEntryJSONUnit>(value, allowEmptyStr: true);
+                Carrier_ = Database.CheckID<DBEntryJSONUnit>(value, allowEmptyStr: true);
                 if (string.IsNullOrEmpty(Carrier_) && !string.IsNullOrEmpty(value))
-                    Carrier_ = Database.Instance.CheckID<DBEntryTemplate>(value, allowEmptyStr: true);
+                    Carrier_ = Database.CheckID<DBEntryTemplate>(value, allowEmptyStr: true);
             }
         }
         private string Carrier_;
@@ -55,16 +55,16 @@ namespace BriefingRoom4DCS.Template
         public string OverrideCallsignName { get; set; } = "";
         public int OverrideCallsignNumber { get; set; } = 1;
 
-        public MissionTemplateFlightGroup()
+        public MissionTemplateFlightGroup(IDatabase database): base(database)
         {
             Clear();
         }
 
-        public MissionTemplateFlightGroup(string aircraft, int count, string payload, string carrier, Country country, PlayerStartLocation startLocation, bool aiWingmen, bool hostile, string livery,
+        public MissionTemplateFlightGroup(IDatabase database, string aircraft, int count, string payload, string carrier, Country country, PlayerStartLocation startLocation, bool aiWingmen, bool hostile, string livery,
             string overrideRadioFrequency,
             RadioModulation overrideRadioBand,
             string overrideCallsignName,
-            int overrideCallsignNumber)
+            int overrideCallsignNumber): base(database)
         {
             Aircraft = aircraft;
             AIWingmen = aiWingmen;
@@ -81,7 +81,7 @@ namespace BriefingRoom4DCS.Template
             OverrideCallsignNumber = overrideCallsignNumber;
         }
 
-        internal MissionTemplateFlightGroup(INIFile ini, string section, string key)
+        internal MissionTemplateFlightGroup(IDatabase database, INIFile ini, string section, string key): base(database)
         {
             Clear();
 

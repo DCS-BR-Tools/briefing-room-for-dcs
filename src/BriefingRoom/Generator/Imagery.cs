@@ -34,12 +34,12 @@ namespace BriefingRoom4DCS.Generator
     public class Imagery
     {
         private static string UNKOWN_IMAGE_PATH = Path.Combine(BRPaths.INCLUDE_JPG, "Flags", $"Unknown.png");
-        internal static async Task GenerateCampaignImages(CampaignTemplate campaignTemplate, DCSCampaign campaign, string baseFileName)
+        internal static async Task GenerateCampaignImages(IDatabase database, CampaignTemplate campaignTemplate, DCSCampaign campaign, string baseFileName)
         {
             string titleHTML = Toolbox.ReadAllTextIfFileExists(Path.Combine(BRPaths.INCLUDE_HTML, "CampaignTitleImage.html"));
             string winHTML = Toolbox.ReadAllTextIfFileExists(Path.Combine(BRPaths.INCLUDE_HTML, "CampaignWinImage.html"));
             string lossHTML = Toolbox.ReadAllTextIfFileExists(Path.Combine(BRPaths.INCLUDE_HTML, "CampaignLossImage.html"));
-            string[] theaterImages = Directory.GetFiles(Path.Combine(BRPaths.INCLUDE_JPG, "Theaters"), $"{Database.Instance.GetEntry<DBEntryTheater>(campaignTemplate.ContextTheater).DCSID}*.*")
+            string[] theaterImages = Directory.GetFiles(Path.Combine(BRPaths.INCLUDE_JPG, "Theaters"), $"{database.GetEntry<DBEntryTheater>(campaignTemplate.ContextTheater).DCSID}*.*")
                 .Where(x => x.EndsWith(".jpg") || x.EndsWith(".png")).ToArray();
             var backgroundImage = "_default.jpg";
             if (theaterImages.Length > 0)
@@ -75,16 +75,16 @@ namespace BriefingRoom4DCS.Generator
             GeneratorTools.ReplaceKey(ref lossHTML, "Watermark", GetInternalImageHTMLBase64(Path.Combine(BRPaths.INCLUDE_JPG, "IconSlim.png")));
 
             var langKey = campaign.Missions[0].LangKey;
-            await GenerateCampaignImageAsync(langKey, titleHTML, campaign, $"{baseFileName}_Title");
-            await GenerateCampaignImageAsync(langKey, winHTML, campaign, $"{baseFileName}_Success");
-            await GenerateCampaignImageAsync(langKey, lossHTML, campaign, $"{baseFileName}_Failure");
+            await GenerateCampaignImageAsync(database, langKey, titleHTML, campaign, $"{baseFileName}_Title");
+            await GenerateCampaignImageAsync(database, langKey, winHTML, campaign, $"{baseFileName}_Success");
+            await GenerateCampaignImageAsync(database, langKey, lossHTML, campaign, $"{baseFileName}_Failure");
 
         }
 
-        internal static async Task GenerateTitleImage(DCSMission mission)
+        internal static async Task GenerateTitleImage(IDatabase database, DCSMission mission)
         {
             string html = Toolbox.ReadAllTextIfFileExists(Path.Combine(BRPaths.INCLUDE_HTML, "MissionTitleImage.html"));
-            string[] theaterImages = Directory.GetFiles(Path.Combine(BRPaths.INCLUDE_JPG, "Theaters"), $"{Database.Instance.GetEntry<DBEntryTheater>(mission.TemplateRecord.ContextTheater).DCSID}*.*")
+            string[] theaterImages = Directory.GetFiles(Path.Combine(BRPaths.INCLUDE_JPG, "Theaters"), $"{database.GetEntry<DBEntryTheater>(mission.TemplateRecord.ContextTheater).DCSID}*.*")
                .Where(x => x.EndsWith(".jpg") || x.EndsWith(".png")).ToArray();
             var backgroundImage = "_default.jpg";
             if (theaterImages.Length > 0)
@@ -104,30 +104,30 @@ namespace BriefingRoom4DCS.Generator
             GeneratorTools.ReplaceKey(ref html, "MissionName", mission.Briefing.Name);
             GeneratorTools.ReplaceKey(ref html, "Watermark", GetInternalImageHTMLBase64(Path.Combine(BRPaths.INCLUDE_JPG, "IconSlim.png")));
 
-            await GenerateTitleImageAsync(html, mission);
+            await GenerateTitleImageAsync(database, html, mission);
         }
 
-        internal static async Task GenerateKneeboardImagesAsync(DCSMission mission)
+        internal static async Task GenerateKneeboardImagesAsync(IDatabase database, DCSMission mission)
         {
-            var html = mission.Briefing.GetBriefingKneeBoardTasksAndRemarksHTML(mission);
-            await GenerateKneeboardImageAsync(html, "Tasks", mission);
+            var html = mission.Briefing.GetBriefingKneeBoardTasksAndRemarksHTML(database, mission);
+            await GenerateKneeboardImageAsync(database, html, "Tasks", mission);
 
-            html = mission.Briefing.GetBriefingKneeBoardFlightsHTML(mission);
-            await GenerateKneeboardImageAsync(html, "Flights", mission);
+            html = mission.Briefing.GetBriefingKneeBoardFlightsHTML(database, mission);
+            await GenerateKneeboardImageAsync(database, html, "Flights", mission);
 
-            html = mission.Briefing.GetBriefingKneeBoardGroundHTML(mission);
-            await GenerateKneeboardImageAsync(html, "Ground", mission);
+            html = mission.Briefing.GetBriefingKneeBoardGroundHTML(database, mission);
+            await GenerateKneeboardImageAsync(database, html, "Ground", mission);
 
             foreach (var flight in mission.Briefing.FlightBriefings)
             {
-                html = flight.GetFlightBriefingKneeBoardHTML(mission.LangKey);
-                await GenerateKneeboardImageAsync(html, flight.Name, mission, flight.Type);
+                html = flight.GetFlightBriefingKneeBoardHTML(database, mission.LangKey);
+                await GenerateKneeboardImageAsync(database, html, flight.Name, mission, flight.Type);
             }
         }
 
 
 
-        public static async Task<List<byte[]>> GenerateKneeboardImageAsync(string langKey, string html)
+        public static async Task<List<byte[]>> GenerateKneeboardImageAsync(IDatabase database, string langKey, string html)
         {
             List<byte[]> output = new();
             try
@@ -145,12 +145,12 @@ namespace BriefingRoom4DCS.Generator
             }
             catch (Exception e)
             {
-                throw new BriefingRoomException(langKey, "FailedToCreateKneeboard", e);
+                throw new BriefingRoomException(database, langKey, "FailedToCreateKneeboard", e);
             }
 
         }
 
-        private static async Task<int> GenerateKneeboardImageAsync(string html, string name, DCSMission mission, string aircraftID = "")
+        private static async Task<int> GenerateKneeboardImageAsync(IDatabase database, string html, string name, DCSMission mission, string aircraftID = "")
         {
             try
             {
@@ -172,12 +172,12 @@ namespace BriefingRoom4DCS.Generator
             }
             catch (Exception e)
             {
-                throw new BriefingRoomException(mission.LangKey, "FailedToCreateKneeboard", e);
+                throw new BriefingRoomException(database, mission.LangKey, "FailedToCreateKneeboard", e);
             }
 
         }
 
-        private static async Task GenerateTitleImageAsync(string html, DCSMission mission)
+        private static async Task GenerateTitleImageAsync(IDatabase database, string html, DCSMission mission)
         {
             try
             {
@@ -189,12 +189,12 @@ namespace BriefingRoom4DCS.Generator
             }
             catch (Exception e)
             {
-                throw new BriefingRoomException(mission.LangKey, "FailedToCreateTitleImage", e);
+                throw new BriefingRoomException(database, mission.LangKey, "FailedToCreateTitleImage", e);
             }
 
         }
 
-        private static async Task GenerateCampaignImageAsync(string langKey, string html, DCSCampaign campaign, string fileName)
+        private static async Task GenerateCampaignImageAsync(IDatabase database, string langKey, string html, DCSCampaign campaign, string fileName)
         {
             try
             {
@@ -206,7 +206,7 @@ namespace BriefingRoom4DCS.Generator
             }
             catch (Exception e)
             {
-                throw new BriefingRoomException(langKey, "FailedToCreateTitleImage", e);
+                throw new BriefingRoomException(database, langKey, "FailedToCreateTitleImage", e);
             }
 
         }

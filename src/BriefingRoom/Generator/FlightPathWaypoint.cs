@@ -112,9 +112,9 @@ namespace BriefingRoom4DCS.Generator
     internal class WaypointNameGenerator
     {
         private readonly List<string> ObjectiveNames = new();
-        internal WaypointNameGenerator(string langKey)
+        internal WaypointNameGenerator(IDatabase database, string langKey)
         {
-            ObjectiveNames = new List<string>(Database.Instance.Common.Names.WPObjectivesNames.Get(langKey).Split(","));
+            ObjectiveNames = [.. database.Common.Names.WPObjectivesNames.Get(langKey).Split(",")];
         }
 
         internal string GetWaypointName()

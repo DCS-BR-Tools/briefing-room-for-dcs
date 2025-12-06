@@ -44,7 +44,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             );
         }
 
-        internal static Coordinates PlaceInAirbase(ref DCSMission mission, Dictionary<string, object> extraSettings, DBEntryObjectiveTargetBehavior targetBehaviorDB, Coordinates objectiveCoordinates, int unitCount, DBEntryJSONUnit unitDB)
+        internal static Coordinates PlaceInAirbase(IBriefingRoom briefingRoom, ref DCSMission mission, Dictionary<string, object> extraSettings, DBEntryObjectiveTargetBehavior targetBehaviorDB, Coordinates objectiveCoordinates, int unitCount, DBEntryJSONUnit unitDB)
         {
             int airbaseID = 0;
             var parkingSpotIDsList = new List<int>();
@@ -57,13 +57,14 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                  where airbaseDB.DCSID != playerAirbaseDCSID && (spawnAnywhere || airbaseDB.Coalition == enemyCoalition)
                  select airbaseDB).OrderBy(x => x.Coordinates.GetDistanceFrom(objectiveCoordinates));
 
-            BriefingRoomException exception = null;
+            BriefingRoomRawException exception = null;
             foreach (var targetAirbase in targetAirbaseOptions)
             {
                 try
                 {
                     airbaseID = targetAirbase.DCSID;
                     var parkingSpots = SpawnPointSelector.GetFreeParkingSpots(
+                        briefingRoom,
                         ref mission,
                         targetAirbase.DCSID,
                         unitCount, (DBEntryAircraft)unitDB,
@@ -77,7 +78,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                     extraSettings.Add("UnitCoords", parkingSpotCoordinatesList);
                     return Toolbox.RandomFrom(parkingSpotCoordinatesList);
                 }
-                catch (BriefingRoomException e)
+                catch (BriefingRoomRawException e)
                 {
                     exception = e;
                     throw;
@@ -86,13 +87,14 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             throw exception;
         }
 
-        internal static void AddEmbeddedAirDefenseUnits(ref DCSMission mission, DBEntryObjectiveTarget targetDB, DBEntryObjectiveTargetBehavior targetBehaviorDB, DBEntryObjectiveTask taskDB, Coordinates objectiveCoordinates, GroupFlags groupFlags, Dictionary<string, object> extraSettings)
+        internal static void AddEmbeddedAirDefenseUnits(IBriefingRoom briefingRoom, ref DCSMission mission, DBEntryObjectiveTarget targetDB, DBEntryObjectiveTargetBehavior targetBehaviorDB, DBEntryObjectiveTask taskDB, Coordinates objectiveCoordinates, GroupFlags groupFlags, Dictionary<string, object> extraSettings)
         {
             // Static targets (aka buildings) need to have their "embedded" air defenses spawned in another group
-            var airDefenseUnits = GeneratorTools.GetEmbeddedAirDefenseUnits(mission.LangKey, mission.TemplateRecord, taskDB.TargetSide, UnitCategory.Static);
+            var airDefenseUnits = GeneratorTools.GetEmbeddedAirDefenseUnits(briefingRoom, mission.TemplateRecord, taskDB.TargetSide, UnitCategory.Static);
 
             if (airDefenseUnits.Count > 0)
                 UnitGenerator.AddUnitGroup(
+                    briefingRoom,
                     ref mission,
                     airDefenseUnits,
                     taskDB.TargetSide, UnitFamily.VehicleAAA,
@@ -139,12 +141,12 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             }
         }
 
-        internal static void CreateTaskString(ref DCSMission mission, int pluralIndex, ref string taskString, string objectiveName, UnitFamily objectiveTargetUnitFamily, LanguageString unitDisplayName, MissionTemplateSubTaskRecord task, Dictionary<string, object> extraSettings)
+        internal static void CreateTaskString(IDatabase database, ref DCSMission mission, int pluralIndex, ref string taskString, string objectiveName, UnitFamily objectiveTargetUnitFamily, LanguageString unitDisplayName, MissionTemplateSubTaskRecord task, Dictionary<string, object> extraSettings)
         {
             // Get tasking string for the briefing
             if (string.IsNullOrEmpty(taskString)) taskString = "Complete objective $OBJECTIVENAME$";
             GeneratorTools.ReplaceKey(ref taskString, "ObjectiveName", objectiveName);
-            GeneratorTools.ReplaceKey(ref taskString, "UnitFamily", Database.Instance.Common.Names.UnitFamilies[(int)objectiveTargetUnitFamily].Get(mission.LangKey).Split(",")[pluralIndex]);
+            GeneratorTools.ReplaceKey(ref taskString, "UnitFamily", database.Common.Names.UnitFamilies[(int)objectiveTargetUnitFamily].Get(mission.LangKey).Split(",")[pluralIndex]);
             GeneratorTools.ReplaceKey(ref taskString, "UnitDisplayName", unitDisplayName.Get(mission.LangKey));
             foreach (KeyValuePair<string, object> extraSetting in extraSettings)
                 if (extraSetting.Value is not Array)
@@ -153,11 +155,11 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 mission.Briefing.AddItem(DCSMissionBriefingItemType.Task, taskString);
         }
 
-        internal static Waypoint GenerateObjectiveWaypoint(ref DCSMission mission, MissionTemplateSubTaskRecord objectiveTemplate, Coordinates objectiveCoordinates, Coordinates ObjectiveDestinationCoordinates, string objectiveName, List<int> groupIds = null, bool scriptIgnore = false, bool hiddenMapMarker = false)
+        internal static Waypoint GenerateObjectiveWaypoint(IDatabase database, ref DCSMission mission, MissionTemplateSubTaskRecord objectiveTemplate, Coordinates objectiveCoordinates, Coordinates ObjectiveDestinationCoordinates, string objectiveName, List<int> groupIds = null, bool scriptIgnore = false, bool hiddenMapMarker = false)
         {
-            var (targetDB, targetBehaviorDB, taskDB, objectiveOptions, presetDB) = GetCustomObjectiveData(mission.LangKey, objectiveTemplate);
+            var (targetDB, targetBehaviorDB, taskDB, objectiveOptions, presetDB) = GetCustomObjectiveData(database, mission.LangKey, objectiveTemplate);
             var targetBehaviorLocation = targetBehaviorDB.Location;
-            if (targetDB == null) throw new BriefingRoomException(mission.LangKey, "TargetNotFound", targetDB.UIDisplayName);
+            if (targetDB == null) throw new BriefingRoomException(database, mission.LangKey, "TargetNotFound", targetDB.UIDisplayName);
 
             Coordinates waypointCoordinates = objectiveCoordinates;
             bool onGround = !targetDB.UnitCategory.IsAircraft() || Constants.AIR_ON_GROUND_LOCATIONS.Contains(targetBehaviorLocation); // Ground targets = waypoint on the ground
@@ -170,7 +172,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             }
             else if (taskDB.UICategory.ContainsValue("Transport"))
             {
-                var dist = Database.Instance.Common.DropOffDistanceMeters;
+                var dist = database.Common.DropOffDistanceMeters;
                 if (taskDB.IsEscort() & !onGround)
                     dist = dist * 10;
                 DrawingMaker.AddDrawing(ref mission, $"Target Zone {objectiveName}", DrawingType.Circle, waypointCoordinates, "Radius".ToKeyValuePair(dist));
@@ -180,7 +182,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             return new Waypoint(isPickup ?  $"P-{objectiveName}" : objectiveName, waypointCoordinates, onGround, groupIds, scriptIgnore, objectiveTemplate.Options.Contains(ObjectiveOption.NoAircraftWaypoint), hiddenMapMarker);
         }
 
-        internal static Coordinates GetNearestSpawnCoordinates(ref DCSMission mission, Coordinates coreCoordinates, SpawnPointType[] validSpawnPoints, bool remove = true)
+        internal static Coordinates GetNearestSpawnCoordinates(IDatabase database, ref DCSMission mission, Coordinates coreCoordinates, SpawnPointType[] validSpawnPoints, bool remove = true)
         {
             Coordinates? spawnPoint = SpawnPointSelector.GetNearestSpawnPoint(
                 mission,
@@ -188,7 +190,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 coreCoordinates, remove);
 
             if (!spawnPoint.HasValue)
-                throw new BriefingRoomException(mission.LangKey, "FailedToLaunchNearbyObjective", String.Join(",", validSpawnPoints.Select(x => x.ToString()).ToList()));
+                throw new BriefingRoomException(database, mission.LangKey, "FailedToLaunchNearbyObjective", String.Join(",", validSpawnPoints.Select(x => x.ToString()).ToList()));
 
             Coordinates objectiveCoordinates = spawnPoint.Value;
             return objectiveCoordinates;
@@ -205,40 +207,41 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             });
         }
 
-        internal static (DBEntryObjectiveTarget targetDB, DBEntryObjectiveTargetBehavior targetBehaviorDB, DBEntryObjectiveTask taskDB, ObjectiveOption[] objectiveOptions, DBEntryObjectivePreset presetDB) GetCustomObjectiveData(string langKey, MissionTemplateSubTaskRecord objectiveTemplate)
+        internal static (DBEntryObjectiveTarget targetDB, DBEntryObjectiveTargetBehavior targetBehaviorDB, DBEntryObjectiveTask taskDB, ObjectiveOption[] objectiveOptions, DBEntryObjectivePreset presetDB) GetCustomObjectiveData(IDatabase database, string langKey, MissionTemplateSubTaskRecord objectiveTemplate)
         {
-            var targetDB = Database.Instance.GetEntry<DBEntryObjectiveTarget>(objectiveTemplate.Target);
-            var targetBehaviorDB = Database.Instance.GetEntry<DBEntryObjectiveTargetBehavior>(objectiveTemplate.TargetBehavior);
-            var taskDB = Database.Instance.GetEntry<DBEntryObjectiveTask>(objectiveTemplate.Task);
+            var targetDB = database.GetEntry<DBEntryObjectiveTarget>(objectiveTemplate.Target);
+            var targetBehaviorDB = database.GetEntry<DBEntryObjectiveTargetBehavior>(objectiveTemplate.TargetBehavior);
+            var taskDB = database.GetEntry<DBEntryObjectiveTask>(objectiveTemplate.Task);
             var objectiveOptions = objectiveTemplate.Options.ToArray();
             DBEntryObjectivePreset presetDB = null;
 
             if (objectiveTemplate.HasPreset)
             {
-                presetDB = Database.Instance.GetEntry<DBEntryObjectivePreset>(objectiveTemplate.Preset);
+                presetDB = database.GetEntry<DBEntryObjectivePreset>(objectiveTemplate.Preset);
                 if (presetDB != null)
                 {
-                    targetDB = Database.Instance.GetEntry<DBEntryObjectiveTarget>(Toolbox.RandomFrom(presetDB.Targets));
-                    targetBehaviorDB = Database.Instance.GetEntry<DBEntryObjectiveTargetBehavior>(Toolbox.RandomFrom(presetDB.TargetsBehaviors));
-                    taskDB = Database.Instance.GetEntry<DBEntryObjectiveTask>(presetDB.Task);
+                    targetDB = database.GetEntry<DBEntryObjectiveTarget>(Toolbox.RandomFrom(presetDB.Targets));
+                    targetBehaviorDB = database.GetEntry<DBEntryObjectiveTargetBehavior>(Toolbox.RandomFrom(presetDB.TargetsBehaviors));
+                    taskDB = database.GetEntry<DBEntryObjectiveTask>(presetDB.Task);
                     objectiveOptions = presetDB.Options.Concat(objectiveTemplate.Options).Distinct().ToArray();
                 }
             }
 
-            ObjectiveNullCheck(langKey, targetDB, targetBehaviorDB, taskDB);
+            ObjectiveNullCheck(database, langKey, targetDB, targetBehaviorDB, taskDB);
             return (targetDB, targetBehaviorDB, taskDB, objectiveOptions, presetDB);
         }
-
-        internal static void ObjectiveNullCheck(string langKey, DBEntryObjectiveTarget targetDB, DBEntryObjectiveTargetBehavior targetBehaviorDB, DBEntryObjectiveTask taskDB)
+    
+        internal static void ObjectiveNullCheck(IDatabase database, string langKey, DBEntryObjectiveTarget targetDB, DBEntryObjectiveTargetBehavior targetBehaviorDB, DBEntryObjectiveTask taskDB)
         {
-            if (targetDB == null) throw new BriefingRoomException(langKey, "TargetNotFound", targetDB.UIDisplayName);
-            if (targetBehaviorDB == null) throw new BriefingRoomException(langKey, "BehaviorNotFound", targetBehaviorDB.UIDisplayName);
-            if (taskDB == null) throw new BriefingRoomException(langKey, "TaskNotFound", taskDB.UIDisplayName);
+            if (targetDB == null) throw new BriefingRoomException(database, langKey, "TargetNotFound", targetDB.UIDisplayName);
+            if (targetBehaviorDB == null) throw new BriefingRoomException(database, langKey, "BehaviorNotFound", targetBehaviorDB.UIDisplayName);
+            if (taskDB == null) throw new BriefingRoomException(database, langKey, "TaskNotFound", taskDB.UIDisplayName);
             if (!taskDB.ValidUnitCategories.Contains(targetDB.UnitCategory))
-                throw new BriefingRoomException(langKey, "TaskTargetsInvalid", taskDB.UIDisplayName, targetDB.UnitCategory);
+                throw new BriefingRoomException(database, langKey, "TaskTargetsInvalid", taskDB.UIDisplayName, targetDB.UnitCategory);
         }
 
         internal static Tuple<int, Coordinates> GetTransportOrigin(
+            IBriefingRoom briefingRoom,
             ref DCSMission mission,
             DBEntryObjectiveTargetBehaviorLocation Location,
             Coordinates objectiveCoordinates,
@@ -248,12 +251,12 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             switch (Location)
             {
                 case DBEntryObjectiveTargetBehaviorLocation.PlayerAirbase:
-                    return GetAirbaseCargoSpot(ref mission, mission.PlayerAirbase.Coordinates);
+                    return GetAirbaseCargoSpot(briefingRoom, ref mission, mission.PlayerAirbase.Coordinates);
                 case DBEntryObjectiveTargetBehaviorLocation.Airbase:
-                    return GetAirbaseCargoSpot(ref mission, objectiveCoordinates, mission.PlayerAirbase.DCSID);
+                    return GetAirbaseCargoSpot(briefingRoom, ref mission, objectiveCoordinates, mission.PlayerAirbase.DCSID);
                 case DBEntryObjectiveTargetBehaviorLocation.NearAirbase:
-                    var (airbaseId, coords) = GetAirbaseCargoSpot(ref mission, objectiveCoordinates);
-                    coords = GetNearestSpawnCoordinates(ref mission, coords, GetSpawnPointTypes(isEscort, unitCategory), true);
+                    var (airbaseId, coords) = GetAirbaseCargoSpot(briefingRoom, ref mission, objectiveCoordinates);
+                    coords = GetNearestSpawnCoordinates(briefingRoom.Database, ref mission, coords, GetSpawnPointTypes(isEscort, unitCategory), true);
                     return new Tuple<int, Coordinates>(airbaseId, coords);
                 default:
                     return new Tuple<int, Coordinates>(-1, objectiveCoordinates);
@@ -262,6 +265,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
 
         // Likely will extend this in future for Escort setup
         internal static Tuple<int, Coordinates> GetTransportDestination(
+            IBriefingRoom briefingRoom,
             ref DCSMission mission,
             DBEntryObjectiveTargetBehaviorLocation destination,
             Coordinates originCoordinates,
@@ -283,12 +287,12 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             switch (destination)
             {
                 case DBEntryObjectiveTargetBehaviorLocation.PlayerAirbase:
-                    return GetAirbaseCargoSpot(ref mission, mission.PlayerAirbase.Coordinates);
+                    return GetAirbaseCargoSpot(briefingRoom, ref mission, mission.PlayerAirbase.Coordinates);
                 case DBEntryObjectiveTargetBehaviorLocation.Airbase:
-                    return GetAirbaseCargoSpot(ref mission, coordinates, originAirbaseId, enemyAllowed);
+                    return GetAirbaseCargoSpot(briefingRoom, ref mission, coordinates, originAirbaseId, enemyAllowed);
                 default:
                     var spawnTypes = GetSpawnPointTypes(isEscort, unitCategory);
-                    coordinates = GetNearestSpawnCoordinates(ref mission, coordinates, spawnTypes, false);
+                    coordinates = GetNearestSpawnCoordinates(briefingRoom.Database, ref mission, coordinates, spawnTypes, false);
 
                     return new Tuple<int, Coordinates>(-1, coordinates);
             }
@@ -319,13 +323,13 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             };
         }
 
-        internal static Tuple<int, Coordinates> GetAirbaseCargoSpot(ref DCSMission mission, Coordinates coords, int ignoreAirbaseId = -1, bool enemyAllowed = false)
+        internal static Tuple<int, Coordinates> GetAirbaseCargoSpot(IBriefingRoom briefingRoom, ref DCSMission mission, Coordinates coords, int ignoreAirbaseId = -1, bool enemyAllowed = false)
         {
             var side = enemyAllowed ? Toolbox.RandomFrom(new[] { Side.Enemy,  Side.Ally }) : Side.Ally;
             var targetCoalition = GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, side, true);
-            var (airbaseDB, _, spawnPoints) = SpawnPointSelector.GetAirbaseAndParking(mission, coords, 1, targetCoalition.Value, (DBEntryAircraft)Database.Instance.GetEntry<DBEntryJSONUnit>("Mi-8MT"), new[] { ignoreAirbaseId });
+            var (airbaseDB, _, spawnPoints) = SpawnPointSelector.GetAirbaseAndParking(briefingRoom, mission, coords, 1, targetCoalition.Value, (DBEntryAircraft)briefingRoom.Database.GetEntry<DBEntryJSONUnit>("Mi-8MT"), new[] { ignoreAirbaseId });
             if (spawnPoints.Count == 0) // Failed to generate target group
-                throw new BriefingRoomException(mission.LangKey, "FailedToFindCargoSpawn");
+                throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "FailedToFindCargoSpawn");
             var airbaseCoords = Toolbox.RandomFrom(spawnPoints);
             mission.PopulatedAirbaseIds[targetCoalition.Value].Add(airbaseDB.DCSID);
             return new Tuple<int, Coordinates>(airbaseDB.DCSID, airbaseCoords);

@@ -1,7 +1,7 @@
 @page "/QuickBuilder"
 @inject IJSRuntime JSRuntime
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
-@inject BriefingRoom4DCS.BriefingRoom briefingRoom
+@inject BriefingRoom4DCS.IBriefingRoom briefingRoom
 @using BriefingRoom4DCS
 @using BriefingRoom4DCS.GUI.Common.Shared.Inputs.Context
 @using BriefingRoom4DCS.GUI.Common.Shared.Inputs.FlightGroups
@@ -93,16 +93,16 @@
                         </div>
                         <div class="form-group flex-box">
                             <button type="button" class="btn btn-secondary row-button"
-                            @onclick="() => flightGroupUtil.CloneFlightGroup(flight, Template)"  title="Clone Flight Group"><span class="oi oi-layers"></span></button>
+                            @onclick="() => flightGroupUtil.CloneFlightGroup(briefingRoom.Database, flight, Template)"  title="Clone Flight Group"><span class="oi oi-layers"></span></button>
                             <button type="button" class="btn btn-secondary row-button"
                             @onclick="() => flightGroupUtil.RemoveFlightGroup(flight, Template)"><span class="oi oi-x"></span></button>
                         </div>
                     </div>
                 }
-                <button type="button" class="btn btn-secondary" @onclick="() => flightGroupUtil.AddFlightGroup(Template)">+</button>
+                <button type="button" class="btn btn-secondary" @onclick="() => flightGroupUtil.AddFlightGroup(briefingRoom.Database, Template)">+</button>
                 @if(Template.AircraftPackages.Count > 0)
                 {
-                   <p class="custom-warning"><span class="oi oi-info"></span>&nbsp;@briefingRoom.Translate("QuickBuilderStikePackageWarning")
+                   <p class="custom-warning"><span class="oi oi-info"></span>&nbsp;@briefingRoom.Translate("StrikePackageWarning")
                    <a @onclick="() => ClearStrikePackages()" >@briefingRoom.Translate("RemoveStrikePackages")</a></p>  
                 }
                 <hr />
@@ -119,14 +119,14 @@
                 {
                      @if (Template.Objectives.Count > 1) {
                         <ObjectiveTaskRow objective="objective" Template="Template" objectiveUtil="objectiveUtil"
-                            CloneCallback="() => { objectiveUtil.CloneObjective(objective, Template); StateHasChanged(); }"
-                            NearbyCallback="() => { objectiveUtil.AddSubTask(objective, true); StateHasChanged(); }"
+                            CloneCallback="() => { objectiveUtil.CloneObjective(briefingRoom.Database,objective, Template); StateHasChanged(); }"
+                            NearbyCallback="() => { objectiveUtil.AddSubTask(briefingRoom.Database, objective, true); StateHasChanged(); }"
                             DeleteCallback="() => { objectiveUtil.RemoveObjective(objective,  Template); StateHasChanged(); }"
                         />
                      } else {
                         <ObjectiveTaskRow objective="objective" Template="Template" objectiveUtil="objectiveUtil"
-                            CloneCallback="() => { objectiveUtil.CloneObjective(objective, Template); StateHasChanged(); }"
-                            NearbyCallback="() => { objectiveUtil.AddSubTask(objective, true); StateHasChanged(); }"
+                            CloneCallback="() => { objectiveUtil.CloneObjective(briefingRoom.Database,objective, Template); StateHasChanged(); }"
+                            NearbyCallback="() => { objectiveUtil.AddSubTask(briefingRoom.Database, objective, true); StateHasChanged(); }"
                            
                         />
                      }
@@ -149,7 +149,7 @@
                     @foreach (var subTask in objective.SubTasks)
                     {
                         <ObjectiveTaskRow Tabbed objective="subTask" Template="Template" objectiveUtil="objectiveUtil"
-                        CloneCallback="() => { objectiveUtil.CloneObjectiveSubTask(subTask, objective); StateHasChanged(); }"
+                        CloneCallback="() => { objectiveUtil.CloneObjectiveSubTask(briefingRoom.Database,subTask, objective); StateHasChanged(); }"
                         DeleteCallback="() => { objectiveUtil.RemoveSubTask(objective, subTask); StateHasChanged(); }" />
                         @if(!subTask.HasPreset){
                             <p class="custom-warning tabbed"><span class="oi oi-info"></span>&nbsp;@briefingRoom.Translate("QuickBuilderCustomObjective"):
@@ -158,7 +158,7 @@
                         }
                     }
                 }
-                <button type="button" class="btn btn-secondary form-control" @onclick="() => objectiveUtil.AddObjective( Template)">+ @briefingRoom.Translate("Task")</button> 
+                <button type="button" class="btn btn-secondary form-control" @onclick="() => objectiveUtil.AddObjective(briefingRoom.Database, Template)">+ @briefingRoom.Translate("Task")</button> 
                 <hr />
             </div>
             <div id="mission-features" class="generator-block row">
@@ -174,27 +174,27 @@
                         <b>@briefingRoom.Translate("Weather")</b>
                         <div class="generator-group flex-justify-spaced flex-margin-fix">
                            <div>
-                               @briefingRoom.Translate("Season"): @BriefingRoomGUITools.GetEnumName(briefingRoom.LanguageKey, Template.EnvironmentSeason)<br/>
+                               @briefingRoom.Translate("Season"): @BriefingRoomGUITools.GetEnumName(briefingRoom, Template.EnvironmentSeason)<br/>
                                @briefingRoom.Translate("Weather"): @(string.IsNullOrEmpty(Template.EnvironmentWeatherPreset)? briefingRoom.Translate("Random") : briefingRoom.GetSingleDatabaseEntryInfo(DatabaseEntryType.WeatherPreset, Template.EnvironmentWeatherPreset).Value.Name.Get(briefingRoom.LanguageKey))
                            </div>
                            <div>
-                                @briefingRoom.Translate("TimeOfDay"): @BriefingRoomGUITools.GetEnumName(briefingRoom.LanguageKey, Template.EnvironmentTimeOfDay)<br/>
-                                @briefingRoom.Translate("Wind"): @BriefingRoomGUITools.GetEnumName(briefingRoom.LanguageKey, Template.EnvironmentWind)
+                                @briefingRoom.Translate("TimeOfDay"): @BriefingRoomGUITools.GetEnumName(briefingRoom, Template.EnvironmentTimeOfDay)<br/>
+                                @briefingRoom.Translate("Wind"): @BriefingRoomGUITools.GetEnumName(briefingRoom, Template.EnvironmentWind)
                            </div>
                         </div> 
                         <b>@briefingRoom.Translate("Situation")</b>
                         <div class="generator-group flex-justify-spaced flex-margin-fix">
                            <div>
                                <b>@briefingRoom.Translate("Enemy")</b><br/>
-                               @briefingRoom.Translate("AA"): @BriefingRoomGUITools.GetEnumName(briefingRoom.LanguageKey, Template.SituationEnemyAirDefense)<br/>
-                               @briefingRoom.Translate("CAP"): @BriefingRoomGUITools.GetEnumName(briefingRoom.LanguageKey, Template.SituationEnemyAirForce)<br/>
-                               @briefingRoom.Translate("Skill"): @BriefingRoomGUITools.GetEnumName(briefingRoom.LanguageKey, Template.SituationEnemySkill)
+                               @briefingRoom.Translate("AA"): @BriefingRoomGUITools.GetEnumName(briefingRoom, Template.SituationEnemyAirDefense)<br/>
+                               @briefingRoom.Translate("CAP"): @BriefingRoomGUITools.GetEnumName(briefingRoom, Template.SituationEnemyAirForce)<br/>
+                               @briefingRoom.Translate("Skill"): @BriefingRoomGUITools.GetEnumName(briefingRoom, Template.SituationEnemySkill)
                            </div>
                            <div>
                                <b>@briefingRoom.Translate("Friendly")</b><br/>
-                                @briefingRoom.Translate("AA"): @BriefingRoomGUITools.GetEnumName(briefingRoom.LanguageKey, Template.SituationFriendlyAirDefense)<br/>
-                                @briefingRoom.Translate("CAP"): @BriefingRoomGUITools.GetEnumName(briefingRoom.LanguageKey, Template.SituationFriendlyAirForce)<br/>
-                                @briefingRoom.Translate("Skill"): @BriefingRoomGUITools.GetEnumName(briefingRoom.LanguageKey, Template.SituationFriendlySkill)
+                                @briefingRoom.Translate("AA"): @BriefingRoomGUITools.GetEnumName(briefingRoom, Template.SituationFriendlyAirDefense)<br/>
+                                @briefingRoom.Translate("CAP"): @BriefingRoomGUITools.GetEnumName(briefingRoom, Template.SituationFriendlyAirForce)<br/>
+                                @briefingRoom.Translate("Skill"): @BriefingRoomGUITools.GetEnumName(briefingRoom, Template.SituationFriendlySkill)
                            </div>
                         </div>
                         <br/>
@@ -204,7 +204,7 @@
                         }
                         @if(Template.OptionsRealism.Count > 0)
                         {
-                            <span><b>@briefingRoom.Translate("Realism")</b>:&nbsp;@string.Join(", ",Template.OptionsRealism.Select(x => BriefingRoomGUITools.GetEnumName(briefingRoom.LanguageKey, x)))</span><br/>
+                            <span><b>@briefingRoom.Translate("Realism")</b>:&nbsp;@string.Join(", ",Template.OptionsRealism.Select(x => BriefingRoomGUITools.GetEnumName(briefingRoom, x)))</span><br/>
                         }
                         @if(Template.Mods.Count > 0)
                         {
@@ -257,7 +257,7 @@
     protected override void OnInitialized()
     {
         builderUtils = new BuilderUtils(briefingRoom);
-        Template = new MissionTemplate();
+        Template = new MissionTemplate(briefingRoom.Database);
         Template.Objectives[0].Preset = "Interdiction";
         flightGroupUtil.Tab = Template.PlayerFlightGroups[0];
         objectiveUtil.Tab = Template.Objectives[0];
@@ -284,7 +284,8 @@
             }
             catch (System.Exception)
             {
-                Template = new MissionTemplate();
+                Template = new MissionTemplate(briefingRoom.Database);
+                Template.Clear();
             }
             flightGroupUtil.Tab = Template.PlayerFlightGroups[0];
             objectiveUtil.Tab = Template.Objectives[0];
@@ -390,7 +391,7 @@
             StateHasChanged();
             await Task.Run(async () => {
                 Stopwatch stopwatch = Stopwatch.StartNew(); 
-                byte[] zipBytes = await mission.SaveToMizBytes();
+                byte[] zipBytes = await mission.SaveToMizBytes(briefingRoom.Database);
                 if (zipBytes == null) return; // Something went wrong during the .miz export
                 stopwatch.Stop();
                 Console.WriteLine($"Download Prep in {stopwatch.Elapsed.Seconds}s");
@@ -448,7 +449,7 @@
 
     async Task DownloadBriefing()
     {
-        byte[] zipBytes = Encoding.ASCII.GetBytes(mission.Briefing.GetBriefingAsHTML(mission));
+        byte[] zipBytes = Encoding.ASCII.GetBytes(mission.Briefing.GetBriefingAsHTML(briefingRoom.Database, mission));
         if (zipBytes == null) return; // Something went wrong during the .miz export
 
         try

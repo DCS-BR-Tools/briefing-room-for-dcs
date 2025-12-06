@@ -91,9 +91,9 @@ namespace BriefingRoom4DCS.Mission.DCSLuaObjects
             {
                 return deserializer.Deserialize<DCSGroup>(yaml);
             }
-            catch (System.Exception e)
+            catch (Exception e)
             {
-                throw new BriefingRoomException("en", "FailedYAMLDeserializing", e.InnerException.Message, yaml, e);
+                throw new BriefingRoomRawException($"Failed Deserializing yaml: {e.InnerException.Message} - {yaml}");
             }
         }
 

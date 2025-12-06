@@ -1,5 +1,5 @@
 @using BriefingRoom4DCS.Mission
-@inject BriefingRoom4DCS.BriefingRoom briefingRoom
+@inject BriefingRoom4DCS.IBriefingRoom briefingRoom
 <div>
     <div id="map"></div>
     <p>@briefingRoom.Translate("MapWarning")</p>
@@ -31,26 +31,26 @@
 </ul>
 @if (briefingTab == "Description")
 {
-    <div>@((MarkupString)mission.Briefing.GetShortBriefingAsHTML(mission))</div>
+    <div>@((MarkupString)mission.Briefing.GetShortBriefingAsHTML(briefingRoom.Database, mission))</div>
 }
 @if (briefingTab == "Tasks")
 {
     <iframe width="768" height="1024"
-        srcdoc=@((MarkupString)mission.Briefing.GetBriefingKneeBoardTasksAndRemarksHTML(mission))></iframe>
+        srcdoc=@((MarkupString)mission.Briefing.GetBriefingKneeBoardTasksAndRemarksHTML(briefingRoom.Database, mission))></iframe>
 }
 @if (briefingTab == "Ground")
 {
-    <iframe width="768" height="1024" srcdoc=@((MarkupString)mission.Briefing.GetBriefingKneeBoardGroundHTML(mission))></iframe>
+    <iframe width="768" height="1024" srcdoc=@((MarkupString)mission.Briefing.GetBriefingKneeBoardGroundHTML(briefingRoom.Database, mission))></iframe>
 }
 @if (briefingTab == "Flights")
 {
-    <iframe width="768" height="1024" srcdoc=@((MarkupString)mission.Briefing.GetBriefingKneeBoardFlightsHTML(mission))></iframe>
+    <iframe width="768" height="1024" srcdoc=@((MarkupString)mission.Briefing.GetBriefingKneeBoardFlightsHTML(briefingRoom.Database, mission))></iframe>
 }
 @foreach (var flight in mission.Briefing.FlightBriefings)
 {
     @if (briefingTab == flight.Name)
     {
-        <iframe width="768" height="1024" srcdoc=@((MarkupString)flight.GetFlightBriefingKneeBoardHTML(briefingRoom.LanguageKey))></iframe>
+        <iframe width="768" height="1024" srcdoc=@((MarkupString)flight.GetFlightBriefingKneeBoardHTML(briefingRoom.Database, briefingRoom.LanguageKey))></iframe>
     }
 }
 
