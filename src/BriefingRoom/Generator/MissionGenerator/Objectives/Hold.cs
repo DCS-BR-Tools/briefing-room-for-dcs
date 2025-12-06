@@ -14,6 +14,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
     {
 
         internal static List<Waypoint> CreateObjective(
+            IBriefingRoom briefingRoom,
             MissionTemplateSubTaskRecord task,
             DBEntryObjectiveTask taskDB,
             DBEntryObjectiveTarget targetDB,
@@ -35,7 +36,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 if (templateLocation.HasValue)
                 {
                     objectiveCoordinates = templateLocation.Value.Coordinates;
-                    (units, unitDBs) = UnitGenerator.GetUnitsForTemplateLocation(ref mission, templateLocation.Value, taskDB.TargetSide, objectiveTargetUnitFamilies, ref extraSettings);
+                    (units, unitDBs) = UnitGenerator.GetUnitsForTemplateLocation(briefingRoom, ref mission, templateLocation.Value, taskDB.TargetSide, objectiveTargetUnitFamilies, ref extraSettings);
                     if (units.Count == 0)
                         SpawnPointSelector.RecoverTemplateLocation(ref mission, templateLocation.Value.Coordinates);
                 }
@@ -43,13 +44,13 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
 
             var isInverseTransportWayPoint = false;
             if (units.Count == 0)
-                (units, unitDBs) = UnitGenerator.GetUnits(ref mission, objectiveTargetUnitFamilies, unitCount, taskDB.TargetSide, groupFlags, ref extraSettings, targetBehaviorDB.IsStatic);
+                (units, unitDBs) = UnitGenerator.GetUnits(briefingRoom, ref mission, objectiveTargetUnitFamilies, unitCount, taskDB.TargetSide, groupFlags, ref extraSettings, targetBehaviorDB.IsStatic);
             var objectiveTargetUnitFamily = objectiveTargetUnitFamilies.First();
             if (units.Count == 0 || unitDBs.Count == 0)
-                throw new BriefingRoomException(mission.LangKey, "NoUnitsForTimePeriod", taskDB.TargetSide, objectiveTargetUnitFamily);
+                throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "NoUnitsForTimePeriod", taskDB.TargetSide, objectiveTargetUnitFamily);
             var unitDB = unitDBs.First();
             if (Constants.AIRBASE_LOCATIONS.Contains(targetBehaviorDB.Location) && targetDB.UnitCategory.IsAircraft())
-                objectiveCoordinates = ObjectiveUtils.PlaceInAirbase(ref mission, extraSettings, targetBehaviorDB, objectiveCoordinates, unitCount, unitDB);
+                objectiveCoordinates = ObjectiveUtils.PlaceInAirbase(briefingRoom, ref mission, extraSettings, targetBehaviorDB, objectiveCoordinates, unitCount, unitDB);
 
             // Set destination point for moving unit groups
             Coordinates destinationPoint = objectiveCoordinates +
@@ -62,7 +63,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                     } * Toolbox.NM_TO_METERS
                 );
             if (targetDB.DCSUnitCategory == DCSUnitCategory.Vehicle)
-                destinationPoint = ObjectiveUtils.GetNearestSpawnCoordinates(ref mission, destinationPoint, targetDB.ValidSpawnPoints, false);
+                destinationPoint = ObjectiveUtils.GetNearestSpawnCoordinates(briefingRoom.Database, ref mission, destinationPoint, targetDB.ValidSpawnPoints, false);
 
 
             var groupLua = targetBehaviorDB.GroupLua[(int)targetDB.DCSUnitCategory];
@@ -112,21 +113,22 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 if (targetBehaviorDB.ID.StartsWith("RelocateToNewPosition"))
                 {
                     Coordinates? spawnPoint = SpawnPointSelector.GetRandomSpawnPoint(
+                    briefingRoom.Database,
                     ref mission,
                     targetDB.ValidSpawnPoints,
                     objectiveCoordinates,
                     mission.TemplateRecord.FlightPlanObjectiveSeparation,
                     coalition: GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, Side.Ally));
                     if (!spawnPoint.HasValue) // Failed to generate target group
-                        throw new BriefingRoomException(mission.LangKey, "FailedToFindCargoSpawn");
+                        throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "FailedToFindCargoSpawn");
                     unitCoordinates = spawnPoint.Value;
                 }
                 else
                 {
                     var coords = targetBehaviorDB.Destination == DBEntryObjectiveTargetBehaviorLocation.PlayerAirbase ? mission.PlayerAirbase.Coordinates : unitCoordinates;
-                    var (_, _, spawnPoints) = SpawnPointSelector.GetAirbaseAndParking(mission, coords, 1, GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, Side.Ally, true).Value, (DBEntryAircraft)Database.Instance.GetEntry<DBEntryJSONUnit>("Mi-8MT"));
+                    var (_, _, spawnPoints) = SpawnPointSelector.GetAirbaseAndParking(briefingRoom, mission, coords, 1, GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, Side.Ally, true).Value, (DBEntryAircraft)briefingRoom.Database.GetEntry<DBEntryJSONUnit>("Mi-8MT"));
                     if (spawnPoints.Count == 0) // Failed to generate target group
-                        throw new BriefingRoomException(mission.LangKey, "FailedToFindCargoSpawn");
+                        throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "FailedToFindCargoSpawn");
                     unitCoordinates = spawnPoints.First();
                 }
                 if (targetBehaviorDB.ID.StartsWith("RecoverToBase") || (taskDB.IsEscort() & !targetBehaviorDB.ID.StartsWith("ToFrontLine")))
@@ -134,15 +136,15 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                     (unitCoordinates, objectiveCoordinates) = (objectiveCoordinates, unitCoordinates);
                     isInverseTransportWayPoint = true;
                 }
-                var cargoWaypoint = ObjectiveUtils.GenerateObjectiveWaypoint(ref mission, task, unitCoordinates, unitCoordinates, $"{objectiveName} Pickup", scriptIgnore: true);
+                var cargoWaypoint = ObjectiveUtils.GenerateObjectiveWaypoint(briefingRoom.Database, ref mission, task, unitCoordinates, unitCoordinates, $"{objectiveName} Pickup", scriptIgnore: true);
                 mission.Waypoints.Add(cargoWaypoint);
                 objectiveWaypoints.Add(cargoWaypoint);
-                
+
                 // Units shouldn't really move from pickup point if not escorted.
                 extraSettings.Remove("GroupX2");
                 extraSettings.Remove("GroupY2");
-                groupLua = Database.Instance.GetEntry<DBEntryObjectiveTargetBehavior>("Idle").GroupLua[(int)targetDB.DCSUnitCategory];
-    
+                groupLua = briefingRoom.Database.GetEntry<DBEntryObjectiveTargetBehavior>("Idle").GroupLua[(int)targetDB.DCSUnitCategory];
+
             }
 
             if (
@@ -158,6 +160,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             }
 
             GroupInfo? targetGroupInfo = UnitGenerator.AddUnitGroup(
+                briefingRoom,
                 ref mission,
                 units,
                 taskDB.TargetSide,
@@ -168,7 +171,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 extraSettings);
 
             if (!targetGroupInfo.HasValue) // Failed to generate target group
-                throw new BriefingRoomException(mission.LangKey, "FailedToGenerateGroupObjective");
+                throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "FailedToGenerateGroupObjective");
 
             if (mission.TemplateRecord.MissionFeatures.Contains("ContextScrambleStart") && !taskDB.UICategory.ContainsValue("Transport"))
                 targetGroupInfo.Value.DCSGroup.LateActivation = false;
@@ -192,13 +195,13 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 targetGroupInfo.Value.DCSGroup.Waypoints.First().Tasks.Add(new DCSWaypointTask("EmbarkToTransport", new Dictionary<string, object>{
                     {"x", pos.X},
                     { "y", pos.Y},
-                    {"zoneRadius", Database.Instance.Common.DropOffDistanceMeters}
+                    {"zoneRadius", briefingRoom.Database.Common.DropOffDistanceMeters}
                     }, _auto: false));
 
             }
 
             if (objectiveOptions.Contains(ObjectiveOption.EmbeddedAirDefense) && (targetDB.UnitCategory == UnitCategory.Static))
-                ObjectiveUtils.AddEmbeddedAirDefenseUnits(ref mission, targetDB, targetBehaviorDB, taskDB, objectiveCoordinates, groupFlags, extraSettings);
+                ObjectiveUtils.AddEmbeddedAirDefenseUnits(briefingRoom, ref mission, targetDB, targetBehaviorDB, taskDB, objectiveCoordinates, groupFlags, extraSettings);
 
             targetGroupInfo.Value.DCSGroup.Waypoints = taskDB.IsEscort() || targetBehaviorDB.ID.Contains("OnRoad") || targetBehaviorDB.ID.Contains("Idle") ? targetGroupInfo.Value.DCSGroup.Waypoints : DCSWaypoint.CreateExtraWaypoints(ref mission, targetGroupInfo.Value.DCSGroup.Waypoints, targetGroupInfo.Value.UnitDB.Families.First());
 
@@ -207,7 +210,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             var luaExtraSettings = new Dictionary<string, object>();
             if (task.Task.StartsWith("Hold"))
             {
-                var (holdSizeMeters, holdTimeSeconds) = GetHoldValues(task.TargetCount);
+                var (holdSizeMeters, holdTimeSeconds) = GetHoldValues(briefingRoom.Database, task.TargetCount);
                 luaExtraSettings.Add("HoldSize", holdSizeMeters);
                 luaExtraSettings.Add("HoldSizeNm", (int)Math.Floor(holdSizeMeters * Toolbox.METERS_TO_NM));
                 luaExtraSettings.Add("HoldTime", holdTimeSeconds);
@@ -218,7 +221,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             if (task.Task == "CaptureLocation")
             {
                 if (!extraSettings.ContainsKey("GroupAirbaseID"))
-                    throw new BriefingRoomException(mission.LangKey, "CaptureLocationNoAirbase");
+                    throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "CaptureLocationNoAirbase");
 
                 luaExtraSettings.Add("GroupAirbaseID", extraSettings.GetValueOrDefault("GroupAirbaseID"));
             }
@@ -228,7 +231,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             var pluralIndex = length == 1 ? 0 : 1;
             var taskString = GeneratorTools.ParseRandomString(taskDB.BriefingTask[pluralIndex].Get(mission.LangKey), mission).Replace("\"", "''");
             var unitDisplayName = targetGroupInfo.Value.UnitDB.UIDisplayName;
-            ObjectiveUtils.CreateTaskString(ref mission, pluralIndex, ref taskString, objectiveName, objectiveTargetUnitFamily, unitDisplayName, task, luaExtraSettings);
+            ObjectiveUtils.CreateTaskString(briefingRoom.Database, ref mission, pluralIndex, ref taskString, objectiveName, objectiveTargetUnitFamily, unitDisplayName, task, luaExtraSettings);
             ObjectiveUtils.CreateLua(ref mission, targetDB, taskDB, objectiveIndex, objectiveName, targetGroupInfo, taskString, task, luaExtraSettings);
 
             // Add briefing remarks for this objective task
@@ -237,8 +240,8 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             {
                 string remark = Toolbox.RandomFrom(remarksString.Split(";"));
                 GeneratorTools.ReplaceKey(ref remark, "ObjectiveName", objectiveName);
-                GeneratorTools.ReplaceKey(ref remark, "DropOffDistanceMeters", Database.Instance.Common.DropOffDistanceMeters.ToString());
-                GeneratorTools.ReplaceKey(ref remark, "UnitFamily", Database.Instance.Common.Names.UnitFamilies[(int)objectiveTargetUnitFamily].Get(mission.LangKey).Split(",")[pluralIndex]);
+                GeneratorTools.ReplaceKey(ref remark, "DropOffDistanceMeters", briefingRoom.Database.Common.DropOffDistanceMeters.ToString());
+                GeneratorTools.ReplaceKey(ref remark, "UnitFamily", briefingRoom.Database.Common.Names.UnitFamilies[(int)objectiveTargetUnitFamily].Get(mission.LangKey).Split(",")[pluralIndex]);
                 mission.Briefing.AddItem(DCSMissionBriefingItemType.Remark, remark);
             }
 
@@ -250,18 +253,18 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             // Add objective features Lua for this objective
             mission.AppendValue("ScriptObjectivesFeatures", ""); // Just in case there's no features
             var featureList = taskDB.RequiredFeatures.Concat(featuresID).ToHashSet();
-            var playerHasPlanes = mission.TemplateRecord.PlayerFlightGroups.Any(x => Database.Instance.GetEntry<DBEntryJSONUnit>(x.Aircraft).Category == UnitCategory.Plane) || mission.TemplateRecord.AirbaseDynamicSpawn != DsAirbase.None;
+            var playerHasPlanes = mission.TemplateRecord.PlayerFlightGroups.Any(x => briefingRoom.Database.GetEntry<DBEntryJSONUnit>(x.Aircraft).Category == UnitCategory.Plane) || mission.TemplateRecord.AirbaseDynamicSpawn != DsAirbase.None;
 
             if (taskDB.IsHoldSuperiority())
                 SetHoldSuperiorityFeatures(targetDB, ref featureList, playerHasPlanes);
 
             foreach (string featureID in featureList)
-                FeaturesObjectives.GenerateMissionFeature(ref mission, featureID, objectiveName, objectiveIndex, targetGroupInfo.Value, taskDB.TargetSide, objectiveOptions, overrideCoords: targetBehaviorDB.ID.StartsWith("ToFrontLine") ? objectiveCoordinates : null);
+                FeaturesObjectives.GenerateMissionFeature(briefingRoom, ref mission, featureID, objectiveName, objectiveIndex, targetGroupInfo.Value, taskDB.TargetSide, objectiveOptions, overrideCoords: targetBehaviorDB.ID.StartsWith("ToFrontLine") ? objectiveCoordinates : null);
 
             mission.ObjectiveCoordinates.Add(isInverseTransportWayPoint ? unitCoordinates : objectiveCoordinates);
             var objCoords = objectiveCoordinates;
             var furthestWaypoint = targetGroupInfo.Value.DCSGroup.Waypoints.Aggregate(objectiveCoordinates, (furthest, x) => objCoords.GetDistanceFrom(x.Coordinates) > objCoords.GetDistanceFrom(furthest) ? x.Coordinates : furthest);
-            var waypoint = ObjectiveUtils.GenerateObjectiveWaypoint(ref mission, task, objectiveCoordinates, furthestWaypoint, objectiveName, targetGroupInfo.Value.DCSGroups.Select(x => x.GroupId).ToList(), hiddenMapMarker: task.ProgressionOptions.Contains(ObjectiveProgressionOption.ProgressionHiddenBrief));
+            var waypoint = ObjectiveUtils.GenerateObjectiveWaypoint(briefingRoom.Database, ref mission, task, objectiveCoordinates, furthestWaypoint, objectiveName, targetGroupInfo.Value.DCSGroups.Select(x => x.GroupId).ToList(), hiddenMapMarker: task.ProgressionOptions.Contains(ObjectiveProgressionOption.ProgressionHiddenBrief));
             mission.Waypoints.Add(waypoint);
             objectiveWaypoints.Add(waypoint);
             mission.MapData.Add($"OBJECTIVE_AREA_{objectiveIndex}", new List<double[]> { waypoint.Coordinates.ToArray() });
@@ -299,10 +302,10 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             }
         }
 
-        private static Tuple<int, int> GetHoldValues(Amount targetAmount) =>
+        private static Tuple<int, int> GetHoldValues(IDatabase database, Amount targetAmount) =>
        new(
-           (int)Math.Floor(Database.Instance.Common.HoldSizesInNauticalMiles[targetAmount].GetValue() * Toolbox.NM_TO_METERS),
-           Database.Instance.Common.HoldTimesInMinutes[targetAmount].GetValue() * 60
+           (int)Math.Floor(database.Common.HoldSizesInNauticalMiles[targetAmount].GetValue() * Toolbox.NM_TO_METERS),
+           database.Common.HoldTimesInMinutes[targetAmount].GetValue() * 60
        );
     }
 }

@@ -73,7 +73,7 @@ namespace BriefingRoom4DCS.Template
         internal DsAirbase AirbaseDynamicCargo { get; init; }
         internal bool CarrierDynamicCargo { get; init; }
 
-        internal MissionTemplateRecord(MissionTemplate template)
+        internal MissionTemplateRecord(IDatabase database, MissionTemplate template)
         {
             BriefingMissionName = template.BriefingMissionName;
             BriefingMissionDescription = template.BriefingMissionDescription;
@@ -91,7 +91,7 @@ namespace BriefingRoom4DCS.Template
             FlightPlanObjectiveSeparation = new MinMaxD(template.FlightPlanObjectiveSeparationMin, template.FlightPlanObjectiveSeparationMax);
             BorderLimit = template.BorderLimit;
             FlightPlanTheaterStartingAirbase = template.FlightPlanTheaterStartingAirbase;
-            Mods = GetMods(template);
+            Mods = GetMods(database, template);
             MissionFeatures = template.MissionFeatures;
             Objectives = template.Objectives.Select(x => new MissionTemplateObjectiveRecord(x)).ToList();
             OptionsFogOfWar = template.OptionsFogOfWar;
@@ -145,11 +145,11 @@ namespace BriefingRoom4DCS.Template
             return PlayerFlightGroups.Aggregate(0, (acc, x) => acc + (x.AIWingmen ? 1 : x.Count));
         }
 
-        private static List<string> GetMods(MissionTemplate template)
+        private static List<string> GetMods(IDatabase database, MissionTemplate template)
         {   
-            var selectedMods = template.Mods.Select(x => Database.Instance.GetEntry<DBEntryDCSMod>(x).Module);
+            var selectedMods = template.Mods.Select(x => database.GetEntry<DBEntryDCSMod>(x).Module);
             return template.PlayerFlightGroups
-             .Select(x => Database.Instance.GetEntry<DBEntryJSONUnit>(x.Aircraft).Module)
+             .Select(x => database.GetEntry<DBEntryJSONUnit>(x.Aircraft).Module)
              .Where(x => !string.IsNullOrEmpty(x) && !DBEntryDCSMod.CORE_MODS.Contains(x)).Concat(selectedMods).Distinct().ToList();
         }
     }

@@ -33,7 +33,7 @@ namespace BriefingRoom4DCS.Data
         internal Decade StartDecade { get; private set; } = Decade.Decade1940;
         internal Decade StartDecadeGuess { get; private set; } = Decade.Decade1940;
 
-        protected override bool OnLoad(string o)
+        protected override bool OnLoad(IDatabase database, string iniFilePath)
         {
             throw new NotImplementedException();
         }

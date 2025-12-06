@@ -28,12 +28,12 @@ namespace BriefingRoom4DCS.Generator.Mission
 {
     internal class FrontLine
     {
-        internal static void GenerateFrontLine(ref DCSMission mission)
+        internal static void GenerateFrontLine(IDatabase database, ref DCSMission mission)
         {
             if (mission.TemplateRecord.OptionsMission.Contains("SpawnAnywhere") || mission.TemplateRecord.ContextSituation == "None" || mission.TemplateRecord.OptionsMission.Contains("NoFrontLine"))
                 return;
-            var frontLineDB = Database.Instance.Common.FrontLine;
-            var frontLineCenter = Coordinates.Lerp(mission.PlayerAirbase.Coordinates, mission.ObjectivesCenter, GetObjectiveLerpBias(mission.LangKey, mission.TemplateRecord, frontLineDB));
+            var frontLineDB = database.Common.FrontLine;
+            var frontLineCenter = Coordinates.Lerp(mission.PlayerAirbase.Coordinates, mission.ObjectivesCenter, GetObjectiveLerpBias(database, mission.LangKey, mission.TemplateRecord, frontLineDB));
 
             var objectiveHeading = mission.PlayerAirbase.Coordinates.GetHeadingFrom(mission.ObjectivesCenter);
             var angleVariance = frontLineDB.AngleVarianceRange + objectiveHeading;
@@ -68,12 +68,12 @@ namespace BriefingRoom4DCS.Generator.Mission
             return point;
         }
 
-        private static double GetObjectiveLerpBias(string langKey, MissionTemplateRecord template, DBCommonFrontLine frontLineDB) {
+        private static double GetObjectiveLerpBias(IDatabase database, string langKey, MissionTemplateRecord template, DBCommonFrontLine frontLineDB) {
             var friendlySideObjectivesCount = 0;
             var enemySideObjectivesCount = 0;
 
             template.Objectives.ForEach(x => {
-                if(ObjectiveGenerator.GetObjectiveData(langKey, x).taskDB.TargetSide == Side.Ally)
+                if(ObjectiveGenerator.GetObjectiveData(database, langKey, x).taskDB.TargetSide == Side.Ally)
                     friendlySideObjectivesCount++;
                 else
                     enemySideObjectivesCount++;

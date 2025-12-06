@@ -35,26 +35,26 @@ namespace BriefingRoom4DCS.Template
         public string BriefingMissionDescription { get; set; }
         public Season EnvironmentSeason { get; set; }
         public TimeOfDay EnvironmentTimeOfDay { get; set; }
-        public string EnvironmentWeatherPreset { get { return EnvironmentWeatherPreset_; } set { EnvironmentWeatherPreset_ = Database.Instance.CheckID<DBEntryWeatherPreset>(value, allowEmptyStr: true); } }
+        public string EnvironmentWeatherPreset { get { return EnvironmentWeatherPreset_; } set { EnvironmentWeatherPreset_ = Database.CheckID<DBEntryWeatherPreset>(value, allowEmptyStr: true); } }
         private string EnvironmentWeatherPreset_;
         public Wind EnvironmentWind { get; set; }
-        public int FlightPlanObjectiveSeparationMax { get { return FlightPlanObjectiveSeparationMax_; } set { FlightPlanObjectiveSeparationMax_ = Toolbox.Clamp(value, 0, MAX_OBJECTIVE_SEPARATION); } }
+        public int FlightPlanObjectiveSeparationMax { get { return FlightPlanObjectiveSeparationMax_; } set { FlightPlanObjectiveSeparationMax_ = Toolbox.Clamp(value, 0, Database.Common.MaxObjectiveSeparation); } }
         private int FlightPlanObjectiveSeparationMax_;
-        public int FlightPlanObjectiveSeparationMin { get { return FlightPlanObjectiveSeparationMin_; } set { FlightPlanObjectiveSeparationMin_ = Toolbox.Clamp(value, 0, MAX_OBJECTIVE_SEPARATION); } }
+        public int FlightPlanObjectiveSeparationMin { get { return FlightPlanObjectiveSeparationMin_; } set { FlightPlanObjectiveSeparationMin_ = Toolbox.Clamp(value, 0, Database.Common.MaxObjectiveSeparation); } }
         private int FlightPlanObjectiveSeparationMin_;
-        public int BorderLimit { get { return BorderLimit_; } set { BorderLimit_ = Toolbox.Clamp(value, MIN_BORDER_LIMIT, MAX_BORDER_LIMIT); } }
+        public int BorderLimit { get { return BorderLimit_; } set { BorderLimit_ = Toolbox.Clamp(value, Database.Common.MinBorderLimit, Database.Common.MaxBorderLimit); } }
         private int BorderLimit_;
         public List<MissionTemplateObjective> Objectives { get; set; } = new List<MissionTemplateObjective>();
-        public List<MissionTemplatePackage> AircraftPackages { get { return AircraftPackages_; } set { AircraftPackages_ = value.Take(MAX_PLAYER_FLIGHT_GROUPS).ToList(); } }
+        public List<MissionTemplatePackage> AircraftPackages { get { return AircraftPackages_; } set { AircraftPackages_ = value.Take(Database.Common.MaxPlayerFlightGroups).ToList(); } }
         private List<MissionTemplatePackage> AircraftPackages_ = new();
         public Dictionary<string, double[]> CarrierHints { get; set; } = new Dictionary<string, double[]>();
 
-        public MissionTemplate()
+        public MissionTemplate(IDatabase database): base(database)
         {
             Clear();
         }
 
-        public MissionTemplate(string filePath)
+        public MissionTemplate(IDatabase database, string filePath): base(database)
         {
             Clear();
             LoadFromFile(filePath);
@@ -75,7 +75,7 @@ namespace BriefingRoom4DCS.Template
             FlightPlanObjectiveSeparationMin = 10;
             BorderLimit = 100;
 
-            Objectives = new MissionTemplateObjective[] { new MissionTemplateObjective() }.ToList();
+            Objectives = new MissionTemplateObjective[] { new MissionTemplateObjective(Database) }.ToList();
             AircraftPackages = new();
             CarrierHints = new Dictionary<string, double[]>();
 
@@ -112,12 +112,12 @@ namespace BriefingRoom4DCS.Template
 
             Objectives.Clear();
             foreach (string key in ini.GetTopLevelKeysInSection("Objectives"))
-                Objectives.Add(new MissionTemplateObjective(ini, "Objectives", key));
+                Objectives.Add(new MissionTemplateObjective(Database, ini, "Objectives", key));
 
 
             AircraftPackages.Clear();
             foreach (string key in ini.GetTopLevelKeysInSection("AircraftPackages"))
-                AircraftPackages.Add(new MissionTemplatePackage(ini, "AircraftPackages", key));
+                AircraftPackages.Add(new MissionTemplatePackage(Database, ini, "AircraftPackages", key));
 
             CarrierHints.Clear();
             foreach (string key in ini.GetTopLevelKeysInSection("CarrierHints"))

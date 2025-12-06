@@ -4,7 +4,7 @@
     <label>@briefingRoom.Translate("Livery")</label>
     <select class="form-control selectpicker" value="@Livery" @onchange="OnLiveryChanged">
         <option value="default">@briefingRoom.Translate("Default")</option>
-        @foreach (Tuple<string, string> item in BriefingRoom.GetAircraftLiveries(Aircraft))
+        @foreach (Tuple<string, string> item in briefingRoom.GetAircraftLiveries(Aircraft))
         {
             <option value="@item.Item1">@item.Item2</option>
         }

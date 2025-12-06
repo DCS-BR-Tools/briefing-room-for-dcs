@@ -24,7 +24,7 @@ using System.Linq;
 
 namespace BriefingRoom4DCS.Data
 {
-    internal abstract class DBEntry
+    public abstract class DBEntry
     {
         protected Database Database { get; set; }
 
@@ -43,10 +43,8 @@ namespace BriefingRoom4DCS.Data
             return new DatabaseEntryInfo(ID, UIDisplayName, UICategory, UIDescription);
         }
 
-        internal bool Load(Database database, string id, string iniFilePath)
+        internal bool Load(IDatabase database, string id, string iniFilePath)
         {
-            Database = database;
-
             ID = id;
             var ini = new INIFile(iniFilePath);
             var className = this.GetLanguageClassName();
@@ -55,7 +53,7 @@ namespace BriefingRoom4DCS.Data
             UICategory = ini.GetLangStrings(database.Language, className, ID, "GUI", "Category");
             UIDescription = ini.GetLangStrings(database.Language, className, ID, "GUI", "Description");
 
-            return OnLoad(iniFilePath);
+            return OnLoad(database, iniFilePath);
         }
 
         protected static void missingDCSDataWarnings<T>(Dictionary<string, T> supportData, Dictionary<string, DBEntry> itemMap, string Name)
@@ -67,7 +65,7 @@ namespace BriefingRoom4DCS.Data
             }
         }
 
-        protected abstract bool OnLoad(string iniFilePath);
+        protected abstract bool OnLoad(IDatabase database, string iniFilePath);
 
         protected string[] GetValidDBEntryIDs<T>(string[] values, out string[] rejected) where T : DBEntry, new()
         {

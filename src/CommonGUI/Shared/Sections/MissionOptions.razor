@@ -12,7 +12,7 @@
     <div class="form-group">
         <h4>@briefingRoom.Translate("RealismOptions")</h4>
         <CheckBoxList Data="Enum.GetValues(typeof(RealismOption)).Cast<RealismOption>()"
-            TextField="@(item => BriefingRoomGUITools.GetEnumName(briefingRoom.LanguageKey, item))"
+            TextField="@(item => BriefingRoomGUITools.GetEnumName(briefingRoom, briefingRoom.LanguageKey, item))"
             ValueField="@(item =>item)" SelectedValues="Template.OptionsRealism" TItem="RealismOption"
             TItemOutput="RealismOption">
         </CheckBoxList>

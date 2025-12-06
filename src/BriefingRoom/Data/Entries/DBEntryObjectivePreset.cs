@@ -35,7 +35,7 @@ namespace BriefingRoom4DCS.Data
 
         internal string Task { get; private set; }
 
-        protected override bool OnLoad(string iniFilePath)
+        protected override bool OnLoad(IDatabase database, string iniFilePath)
         {
             var ini = new INIFile(iniFilePath);
             Features = Database.CheckIDs<DBEntryFeatureObjective>(ini.GetValueArray<string>("ObjectivePreset", "Features"));

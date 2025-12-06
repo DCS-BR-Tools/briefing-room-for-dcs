@@ -33,10 +33,10 @@ namespace BriefingRoom4DCS.Data
 
         internal UnitCategory[] ValidUnitCategories { get; private set; }
         internal string[] InvalidTasks { get; private set; }
-        internal bool IsStatic {get; set;}
+        internal bool IsStatic { get; set; }
 
 
-        protected override bool OnLoad(string iniFilePath)
+        protected override bool OnLoad(IDatabase database, string iniFilePath)
         {
             var ini = new INIFile(iniFilePath);
             Location = ini.GetValue<DBEntryObjectiveTargetBehaviorLocation>("Behavior", "Location");
@@ -54,7 +54,7 @@ namespace BriefingRoom4DCS.Data
             ValidUnitCategories = ini.GetValueArray<UnitCategory>("Behavior", "ValidUnitCategories").Distinct().ToArray();
             if (ValidUnitCategories.Length == 0) ValidUnitCategories = Toolbox.GetEnumValues<UnitCategory>(); // No category means all categories
 
-            InvalidTasks = Database.Instance.CheckIDs<DBEntryObjectiveTask>(ini.GetValueArray<string>("Behavior", "InvalidTasks").Distinct().ToArray());
+            InvalidTasks = database.CheckIDs<DBEntryObjectiveTask>(ini.GetValueArray<string>("Behavior", "InvalidTasks").Distinct().ToArray());
             return true;
         }
     }

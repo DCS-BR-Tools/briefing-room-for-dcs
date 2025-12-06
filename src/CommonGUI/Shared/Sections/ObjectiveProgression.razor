@@ -38,8 +38,8 @@
                                     <h6>@briefingRoom.Translate("Options")</h6>
                                     <CheckBoxList
                                         Data="Enum.GetValues(typeof(ObjectiveProgressionOption)).Cast<ObjectiveProgressionOption>()"
-                                        TextField="@(item =>BriefingRoomGUITools.GetEnumName(briefingRoom.LanguageKey, item))"
-                                        DescriptionField="@(item => BriefingRoomGUITools.GetEnumDescription(briefingRoom.LanguageKey, item))"
+                                        TextField="@(item =>BriefingRoomGUITools.GetEnumName(briefingRoom, briefingRoom.LanguageKey, item))"
+                                        DescriptionField="@(item => BriefingRoomGUITools.GetEnumDescription( briefingRoom, briefingRoom.LanguageKey, item))"
                                         ValueField="@(item =>item)" SelectedValues="objective.ProgressionOptions"
                                         TItem="ObjectiveProgressionOption" TItemOutput="ObjectiveProgressionOption">
                                     </CheckBoxList>

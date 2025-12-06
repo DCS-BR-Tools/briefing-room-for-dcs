@@ -21,6 +21,7 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 
 using System.Collections.Generic;
 using System.IO;
+using BriefingRoom4DCS.Data;
 using BriefingRoom4DCS.Generator;
 
 namespace BriefingRoom4DCS.Mission
@@ -31,12 +32,12 @@ namespace BriefingRoom4DCS.Mission
         public string Name { get; set; }
         internal List<string> Waypoints { get; set; }
 
-        public string GetFlightBriefingKneeBoardHTML(string langKey)
+        public string GetFlightBriefingKneeBoardHTML(IDatabase database, string langKey)
         {
             string html = Toolbox.ReadAllTextIfFileExists(Path.Combine(BRPaths.INCLUDE_HTML, "KneeboardHeader.html")) +
                 Toolbox.ReadAllTextIfFileExists(Path.Combine(BRPaths.INCLUDE_HTML, "KneeboardFlight.html")) +
                 Toolbox.ReadAllTextIfFileExists(Path.Combine(BRPaths.INCLUDE_HTML, "BriefingFooter.html"));
-            html = BriefingRoom.LanguageDB.ReplaceValues(langKey, html);
+            html = database.Language.ReplaceValues(langKey, html);
             GeneratorTools.ReplaceKey(ref html, "BriefingFlightName", Name);
             GeneratorTools.ReplaceKey(ref html, "BriefingWaypoints", GeneratorTools.MakeHTMLTable(Waypoints));
             return html;

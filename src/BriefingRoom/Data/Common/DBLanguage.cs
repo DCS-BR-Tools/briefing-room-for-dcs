@@ -61,7 +61,7 @@ namespace BriefingRoom4DCS.Data
                     var upperKey = key.ToUpper();
                     if (LangMap.ContainsKey(upperKey))
                     {
-                         LangMap[upperKey] = ini.AddLangStrings(section, key, LangMap[upperKey], lang);
+                        LangMap[upperKey] = ini.AddLangStrings(section, key, LangMap[upperKey], lang);
                         continue;
                     }
                     LangMap.Add(upperKey, ini.GetLangStrings(section, key, lang));
@@ -88,6 +88,12 @@ namespace BriefingRoom4DCS.Data
                 return $"ERR_Missing_Translation_key:{langKey}:{key}";
             }
             return LangMap[searchKey].Get(langKey);
+        }
+
+        public string Translate(string langKey, string key, params object[] args)
+        {
+            var template = this.Translate(langKey, key);
+            return string.Format(template, args);
         }
 
     }

@@ -29,7 +29,7 @@ namespace BriefingRoom4DCS.Data
     {
         internal Dictionary<UnitFamily, Dictionary<Decade, List<string>>> DefaultUnits { get; private set; }
 
-        protected override bool OnLoad(string iniFilePath)
+        protected override bool OnLoad(IDatabase database, string iniFilePath)
         {
             var ini = new INIFile(iniFilePath);
             DefaultUnits = new Dictionary<UnitFamily, Dictionary<Decade, List<string>>>();

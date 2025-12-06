@@ -21,7 +21,7 @@
             </li>
         }
         <li class="nav-item">
-            <a class="nav-link" @onclick="() => flightGroupUtil.AddFlightGroup(Template)">+</a>
+            <a class="nav-link" @onclick="() => flightGroupUtil.AddFlightGroup(briefingRoom.Database, Template)">+</a>
         </li>
     </ul>
 
@@ -50,7 +50,7 @@
                     </div>
                     <PayloadSelect @bind-Payload="flight.Payload" Aircraft="@flight.Aircraft" />
                     <button type="button" class="btn btn-secondary row-button"
-                        @onclick="() => flightGroupUtil.CloneFlightGroup(flight, Template)" title="Clone Flight Group"><span
+                        @onclick="() => flightGroupUtil.CloneFlightGroup(briefingRoom.Database, flight, Template)" title="Clone Flight Group"><span
                             class="oi oi-layers"></span></button>
                 </div>
                 <div class="generator-group flex-justify-spaced flex-margin-fix">

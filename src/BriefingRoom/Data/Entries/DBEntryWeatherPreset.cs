@@ -49,7 +49,7 @@ namespace BriefingRoom4DCS.Data
         internal MinMaxI Visibility { get; private set; }
 
 
-        protected override bool OnLoad(string iniFilePath)
+        protected override bool OnLoad(IDatabase database, string iniFilePath)
         {
             var ini = new INIFile(iniFilePath);
             var className = this.GetLanguageClassName();

@@ -50,7 +50,7 @@ namespace BriefingRoom4DCS.Data
         }
 
 
-        protected override bool OnLoad(string o)
+        protected override bool OnLoad(IDatabase database, string iniFilePath)
         {
             throw new NotImplementedException();
         }
@@ -74,7 +74,7 @@ namespace BriefingRoom4DCS.Data
 
         internal static Dictionary<Country, (Decade start, Decade end)> GetOperationalCountries(Unit unit)
         {
-            return unit.Operators.ToDictionary(x => (Country)Enum.Parse(typeof(Country), x.Key.Replace(" ", ""), true), x =>(start: (Decade)x.Value[0], end: (Decade)x.Value[1]));
+            return unit.Operators.ToDictionary(x => (Country)Enum.Parse(typeof(Country), x.Key.Replace(" ", ""), true), x => (start: (Decade)x.Value[0], end: (Decade)x.Value[1]));
         }
     }
 }

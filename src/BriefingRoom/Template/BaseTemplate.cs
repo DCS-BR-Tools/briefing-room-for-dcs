@@ -30,40 +30,34 @@ namespace BriefingRoom4DCS.Template
 {
     public class BaseTemplate : IBaseTemplate
     {
-        public static readonly int MAX_PLAYER_FLIGHT_GROUPS = Database.Instance.Common.MaxPlayerFlightGroups;
-        public static readonly int MAX_OBJECTIVE_DISTANCE = Database.Instance.Common.MaxObjectiveDistance;
-        public static readonly int MAX_OBJECTIVE_SEPARATION = Database.Instance.Common.MaxObjectiveSeparation;
-        public static readonly int MAX_BORDER_LIMIT = Database.Instance.Common.MaxBorderLimit;
-        public static readonly int MIN_BORDER_LIMIT = Database.Instance.Common.MinBorderLimit;
-        public static readonly int MAX_COMBINED_ARMS_SLOTS = Database.Instance.Common.MaxCombinedArmsSlots;
-        public string ContextCoalitionBlue { get { return ContextCoalitionBlue_; } set { ContextCoalitionBlue_ = Database.Instance.CheckID<DBEntryCoalition>(value); } }
+        public string ContextCoalitionBlue { get { return ContextCoalitionBlue_; } set { ContextCoalitionBlue_ = Database.CheckID<DBEntryCoalition>(value); } }
         private string ContextCoalitionBlue_;
-        public string ContextCoalitionRed { get { return ContextCoalitionRed_; } set { ContextCoalitionRed_ = Database.Instance.CheckID<DBEntryCoalition>(value); } }
+        public string ContextCoalitionRed { get { return ContextCoalitionRed_; } set { ContextCoalitionRed_ = Database.CheckID<DBEntryCoalition>(value); } }
         private string ContextCoalitionRed_;
         public Decade ContextDecade { get; set; }
         public Coalition ContextPlayerCoalition { get; set; }
-        public string ContextTheater { get { return ContextTheater_; } set { ContextTheater_ = Database.Instance.CheckID<DBEntryTheater>(value); } }
+        public string ContextTheater { get { return ContextTheater_; } set { ContextTheater_ = Database.CheckID<DBEntryTheater>(value); } }
         private string ContextTheater_;
-        public string ContextSituation { get { return ContextSituation_; } set { ContextSituation_ = Database.Instance.CheckID<DBEntrySituation>(value, allowEmptyStr: true, allowedValues: new List<string>{"None"}); } }
+        public string ContextSituation { get { return ContextSituation_; } set { ContextSituation_ = Database.CheckID<DBEntrySituation>(value, allowEmptyStr: true, allowedValues: new List<string>{"None"}); } }
         private string ContextSituation_;
-        public int FlightPlanObjectiveDistanceMax { get { return FlightPlanObjectiveDistanceMax_; } set { FlightPlanObjectiveDistanceMax_ = Toolbox.Clamp(value, 0, MAX_OBJECTIVE_DISTANCE); } }
+        public int FlightPlanObjectiveDistanceMax { get { return FlightPlanObjectiveDistanceMax_; } set { FlightPlanObjectiveDistanceMax_ = Toolbox.Clamp(value, 0, Database.Common.MaxObjectiveDistance); } }
         private int FlightPlanObjectiveDistanceMax_;
-        public int FlightPlanObjectiveDistanceMin { get { return FlightPlanObjectiveDistanceMin_; } set { FlightPlanObjectiveDistanceMin_ = Toolbox.Clamp(value, 0, MAX_OBJECTIVE_DISTANCE); } }
+        public int FlightPlanObjectiveDistanceMin { get { return FlightPlanObjectiveDistanceMin_; } set { FlightPlanObjectiveDistanceMin_ = Toolbox.Clamp(value, 0, Database.Common.MaxObjectiveDistance); } }
         private int FlightPlanObjectiveDistanceMin_;
-        public string FlightPlanTheaterStartingAirbase { get { return FlightPlanTheaterStartingAirbase_; } set { FlightPlanTheaterStartingAirbase_ = Database.Instance.CheckID<DBEntryAirbase>(value, allowEmptyStr: true); } }
+        public string FlightPlanTheaterStartingAirbase { get { return FlightPlanTheaterStartingAirbase_; } set { FlightPlanTheaterStartingAirbase_ = Database.CheckID<DBEntryAirbase>(value, allowEmptyStr: true); } }
         private string FlightPlanTheaterStartingAirbase_;
-        public List<string> MissionFeatures { get { return MissionFeatures_; } set { MissionFeatures_ = Database.Instance.CheckIDs<DBEntryFeatureMission>(value.ToArray()).ToList(); } }
+        public List<string> MissionFeatures { get { return MissionFeatures_; } set { MissionFeatures_ = Database.CheckIDs<DBEntryFeatureMission>(value.ToArray()).ToList(); } }
         private List<string> MissionFeatures_ = new();
-        public List<string> Mods { get { return Mods_; } set { Mods_ = Database.Instance.CheckIDs<DBEntryDCSMod>(value.ToArray()).ToList(); } }
+        public List<string> Mods { get { return Mods_; } set { Mods_ = Database.CheckIDs<DBEntryDCSMod>(value.ToArray()).ToList(); } }
         private List<string> Mods_ = new();
         public FogOfWar OptionsFogOfWar { get; set; }
-        public List<string> OptionsMission { get { return OptionsMission_; } set { OptionsMission_ = Database.Instance.CheckIDs<DBEntryOptionsMission>(value.ToArray()).ToList(); } }
+        public List<string> OptionsMission { get { return OptionsMission_; } set { OptionsMission_ = Database.CheckIDs<DBEntryOptionsMission>(value.ToArray()).ToList(); } }
         private List<string> OptionsMission_ = new();
         public List<RealismOption> OptionsRealism { get { return OptionsRealism_; } set { OptionsRealism_ = value.Distinct().ToList(); } }
         private List<RealismOption> OptionsRealism_ = new();
         public List<string> OptionsUnitBanList { get { return OptionsUnitBanList_; } set { OptionsUnitBanList_ = value.Distinct().ToList(); } }
         private List<string> OptionsUnitBanList_ = new();
-        public List<MissionTemplateFlightGroup> PlayerFlightGroups { get { return PlayerFlightGroups_; } set { PlayerFlightGroups_ = value.Take(MAX_PLAYER_FLIGHT_GROUPS).ToList(); } }
+        public List<MissionTemplateFlightGroup> PlayerFlightGroups { get { return PlayerFlightGroups_; } set { PlayerFlightGroups_ = value.Take(Database.Common.MaxPlayerFlightGroups).ToList(); } }
         private List<MissionTemplateFlightGroup> PlayerFlightGroups_ = new();
         public AmountR SituationEnemySkill { get; set; }
         public AmountNR SituationEnemyAirDefense { get; set; }
@@ -71,20 +65,25 @@ namespace BriefingRoom4DCS.Template
         public AmountR SituationFriendlySkill { get; set; }
         public AmountNR SituationFriendlyAirDefense { get; set; }
         public AmountNR SituationFriendlyAirForce { get; set; }
-        public int CombinedArmsCommanderBlue { get { return CombinedArmsCommanderBlue_; } set { CombinedArmsCommanderBlue_ = Toolbox.Clamp(value, 0, MAX_COMBINED_ARMS_SLOTS); } }
+        public int CombinedArmsCommanderBlue { get { return CombinedArmsCommanderBlue_; } set { CombinedArmsCommanderBlue_ = Toolbox.Clamp(value, 0, Database.Common.MaxCombinedArmsSlots); } }
         private int CombinedArmsCommanderBlue_;
-        public int CombinedArmsCommanderRed { get { return CombinedArmsCommanderRed_; } set { CombinedArmsCommanderRed_ = Toolbox.Clamp(value, 0, MAX_COMBINED_ARMS_SLOTS); } }
+        public int CombinedArmsCommanderRed { get { return CombinedArmsCommanderRed_; } set { CombinedArmsCommanderRed_ = Toolbox.Clamp(value, 0, Database.Common.MaxCombinedArmsSlots); } }
         private int CombinedArmsCommanderRed_;
-        public int CombinedArmsJTACBlue { get { return CombinedArmsJTACBlue_; } set { CombinedArmsJTACBlue_ = Toolbox.Clamp(value, 0, MAX_COMBINED_ARMS_SLOTS); } }
+        public int CombinedArmsJTACBlue { get { return CombinedArmsJTACBlue_; } set { CombinedArmsJTACBlue_ = Toolbox.Clamp(value, 0, Database.Common.MaxCombinedArmsSlots); } }
         private int CombinedArmsJTACBlue_;
-        public int CombinedArmsJTACRed { get { return CombinedArmsJTACRed_; } set { CombinedArmsJTACRed_ = Toolbox.Clamp(value, 0, MAX_COMBINED_ARMS_SLOTS); } }
+        public int CombinedArmsJTACRed { get { return CombinedArmsJTACRed_; } set { CombinedArmsJTACRed_ = Toolbox.Clamp(value, 0, Database.Common.MaxCombinedArmsSlots); } }
         private int CombinedArmsJTACRed_;
         public DsAirbase AirbaseDynamicSpawn { get; set; }
         public bool CarrierDynamicSpawn { get; set; }
         public DsAirbase AirbaseDynamicCargo { get; set; }
         public bool CarrierDynamicCargo { get; set; }
         public bool DSAllowHotStart { get; set; }
+        public IDatabase Database { get; private set; }
 
+        public BaseTemplate(IDatabase database)
+        {
+            Database = database;
+        }
         public void Clear()
         {
             ContextCoalitionBlue = "USA";
@@ -111,7 +110,7 @@ namespace BriefingRoom4DCS.Template
             OptionsRealism = new RealismOption[] { RealismOption.DisableDCSRadioAssists, RealismOption.NoBDA }.ToList();
             OptionsUnitBanList = new List<string>();
 
-            PlayerFlightGroups = new MissionTemplateFlightGroup[] { new MissionTemplateFlightGroup() }.ToList();
+            PlayerFlightGroups = new MissionTemplateFlightGroup[] { new MissionTemplateFlightGroup(Database) }.ToList();
 
             SituationEnemySkill = AmountR.Random;
             SituationEnemyAirDefense = AmountNR.Random;
@@ -162,7 +161,7 @@ namespace BriefingRoom4DCS.Template
 
             PlayerFlightGroups.Clear();
             foreach (string key in ini.GetTopLevelKeysInSection("PlayerFlightGroups"))
-                PlayerFlightGroups.Add(new MissionTemplateFlightGroup(ini, "PlayerFlightGroups", key));
+                PlayerFlightGroups.Add(new MissionTemplateFlightGroup(Database, ini, "PlayerFlightGroups", key));
 
             SituationEnemySkill = ini.GetValue("Situation", "EnemySkill", SituationEnemySkill);
             SituationEnemyAirDefense = ini.GetValue("Situation", "EnemyAirDefense", SituationEnemyAirDefense);

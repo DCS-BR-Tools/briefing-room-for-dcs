@@ -35,7 +35,7 @@ namespace BriefingRoom4DCS.Template
         {
             Features = objective.Features;
             Options = objective.Options;
-            Preset = SelectPreset(objective.Preset);
+            Preset = SelectPreset(objective.Database, objective.Preset);
             Target = objective.Target;
             TargetBehavior = objective.TargetBehavior;
             TargetCount = objective.TargetCount;
@@ -50,11 +50,11 @@ namespace BriefingRoom4DCS.Template
             SubTasks = objective.SubTasks.Select(x => new MissionTemplateSubTaskRecord(x)).ToList();
         }
 
-        private static string SelectPreset(string preset)
+        private static string SelectPreset(IDatabase database, string preset)
         {
             if (string.IsNullOrEmpty(preset))
                 return "";
-            var presets = Database.Instance.GetAllEntries<DBEntryObjectivePreset>().Where(x => !x.ID.Contains("Random")).ToList();
+            var presets = database.GetAllEntries<DBEntryObjectivePreset>().Where(x => !x.ID.Contains("Random")).ToList();
             var unsuitableFixedWingTasks = new List<string> { "TransportTroops", "TransportCargo", "LandNearAlly", "LandNearEnemy" };
             var unsuitableRotorTargets = new List<string> { "PlaneAny", "PlaneAttack", "PlaneBomber", "PlaneFighter", "PlaneTransport." };
             return preset switch

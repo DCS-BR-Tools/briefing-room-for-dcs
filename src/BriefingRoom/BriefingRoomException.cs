@@ -20,14 +20,22 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 
 using System;
 using System.Diagnostics.CodeAnalysis;
+using BriefingRoom4DCS.Data;
 
 namespace BriefingRoom4DCS
 {
-    public class BriefingRoomException : Exception
+    public class BriefingRoomException : BriefingRoomRawException
     {
-        public BriefingRoomException(string langKey, string message) : base(BriefingRoom.Translate(langKey, message)) { }
-        public BriefingRoomException(string langKey, [StringSyntax("CompositeFormat")] String message, params object[] args) : base(BriefingRoom.Translate(langKey, message, args)) { }
-        public BriefingRoomException(string langKey, string message, Exception innerException) : base(BriefingRoom.Translate(langKey, message), innerException: innerException) { }
-        public BriefingRoomException(string langKey, [StringSyntax("CompositeFormat")] String message, Exception innerException, params object[] args) : base(BriefingRoom.Translate(langKey, message, args),  innerException: innerException) { }
+        public BriefingRoomException(IDatabase database, string langKey, string message) : base(database.Language.Translate(langKey, message)) { }
+        public BriefingRoomException(IDatabase database, string langKey, [StringSyntax("CompositeFormat")] String message, params object[] args) : base(database.Language.Translate(langKey, message, args)) { }
+        public BriefingRoomException(IDatabase database, string langKey, string message, Exception innerException) : base(database.Language.Translate(langKey, message), innerException: innerException) { }
+        public BriefingRoomException(IDatabase database, string langKey, [StringSyntax("CompositeFormat")] String message, Exception innerException, params object[] args) : base(database.Language.Translate(langKey, message, args), innerException: innerException) { }
     }
+}
+
+public class BriefingRoomRawException : Exception
+{
+    public BriefingRoomRawException(string message) : base(message) { }
+    public BriefingRoomRawException(string message, Exception innerException) : base(message, innerException) { }
+
 }

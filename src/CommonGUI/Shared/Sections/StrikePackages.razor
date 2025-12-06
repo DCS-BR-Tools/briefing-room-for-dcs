@@ -70,7 +70,7 @@
 
     private void AddPackage()
     {
-        MissionTemplatePackage package = new();
+        MissionTemplatePackage package =  new(briefingRoom.Database);
         packageTab = package;
         package.Alias = BriefingRoom.GetAlias(Template.AircraftPackages.Count);
         Template.AircraftPackages.Add(package);

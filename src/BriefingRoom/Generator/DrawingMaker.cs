@@ -94,18 +94,18 @@ namespace BriefingRoom4DCS.Generator
             mission.LuaDrawings.Add(template);
         }
 
-        internal static Dictionary<string, List<double[]>> GetPreviewMapData(MissionTemplate template, string langKey)
+        internal static Dictionary<string, List<double[]>> GetPreviewMapData(IDatabase database, MissionTemplate template, string langKey)
         {
             var mapData = new Dictionary<string, List<double[]>>();
             List<DBEntryAirbase> airbases;
             if (!template.ContextSituation.StartsWith(template.ContextTheater))
             {
-                airbases = GetAirbasesForMap(template.ContextTheater);
+                airbases = GetAirbasesForMap(database, template.ContextTheater);
             }
             else
             {
-                var situationDB = Database.Instance.GetEntry<DBEntrySituation>(template.ContextSituation);
-                airbases = situationDB.GetAirbases(template.OptionsMission.Contains("InvertCountriesCoalitions"));
+                var situationDB = database.GetEntry<DBEntrySituation>(template.ContextSituation);
+                airbases = situationDB.GetAirbases(database, template.OptionsMission.Contains("InvertCountriesCoalitions"));
                 var invertCoalition = template.OptionsMission.Contains("InvertCountriesCoalitions");
                 var red = situationDB.GetRedZones(invertCoalition);
                 var blue = situationDB.GetBlueZones(invertCoalition);
@@ -133,10 +133,10 @@ namespace BriefingRoom4DCS.Generator
             return mapData;
         }
 
-        internal static Dictionary<string, List<double[]>> GetBasicAirbasesMapData(string mapID, string langKey)
+        internal static Dictionary<string, List<double[]>> GetBasicAirbasesMapData(IDatabase database, string mapID, string langKey)
         {
             var mapData = new Dictionary<string, List<double[]>>();
-            GetAirbasesForMap(mapID).ForEach(airbase => mapData.Add($"Neutral_AIRBASE_{airbase.ID}_NAME_{airbase.UIDisplayName.Get(langKey)}", new List<double[]> { airbase.Coordinates.ToArray() }));
+            GetAirbasesForMap(database, mapID).ForEach(airbase => mapData.Add($"Neutral_AIRBASE_{airbase.ID}_NAME_{airbase.UIDisplayName.Get(langKey)}", new List<double[]> { airbase.Coordinates.ToArray() }));
             return mapData;
         }
 
@@ -241,9 +241,9 @@ namespace BriefingRoom4DCS.Generator
             return luaDrawings;
         }
 
-        private static List<DBEntryAirbase> GetAirbasesForMap(string mapID)
+        private static List<DBEntryAirbase> GetAirbasesForMap(IDatabase database, string mapID)
         {
-            var airbases = (from DBEntryAirbase airbase in Database.Instance.GetAllEntries<DBEntryAirbase>()
+            var airbases = (from DBEntryAirbase airbase in database.GetAllEntries<DBEntryAirbase>()
                             where Toolbox.StringICompare(airbase.Theater, mapID)
                             select airbase).ToList();
             airbases.ForEach(airbase =>

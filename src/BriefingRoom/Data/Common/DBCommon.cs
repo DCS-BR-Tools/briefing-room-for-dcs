@@ -19,13 +19,12 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 */
 
 using BriefingRoom4DCS.Template;
-using System;
 using System.Collections.Generic;
 using System.IO;
 
 namespace BriefingRoom4DCS.Data
 {
-    internal class DatabaseCommon
+    public class DatabaseCommon
     {
         internal string[] CommonOGG { get; private set; }
         public int MaxCombinedArmsSlots { get; private set; }

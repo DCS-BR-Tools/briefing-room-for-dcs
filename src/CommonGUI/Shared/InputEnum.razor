@@ -6,7 +6,7 @@
         ValueChanged="@((EnumType s) => ValueChangedChild(s))">
         @foreach (var value in Enum.GetValues(typeof(EnumType)))
         {
-            <option value="@value">@BriefingRoomGUITools.GetEnumName(briefingRoom.LanguageKey, value)</option>
+            <option value="@value">@BriefingRoomGUITools.GetEnumName(briefingRoom, briefingRoom.LanguageKey, value)</option>
         }
     </InputSelect>
 </div>

@@ -84,7 +84,7 @@
   {
     var airbaseData = briefingRoom.GetAirbasesMapData(ContextTheater);
     await Policy.Handle<Exception>().RetryAsync(3).ExecuteAsync(async () => await
-    JSRuntime.InvokeVoidAsync("RenderEditorMap", ContextTheater, BriefingRoom.GetTheaterSpawnPoints(ContextTheater), airbaseData, BriefingRoom.GetTheaterWaterZones(ContextTheater)));
+    JSRuntime.InvokeVoidAsync("RenderEditorMap", ContextTheater, briefingRoom.GetTheaterSpawnPoints(ContextTheater), airbaseData, briefingRoom.GetTheaterWaterZones(ContextTheater)));
     MapLoaded = true;
   }
 

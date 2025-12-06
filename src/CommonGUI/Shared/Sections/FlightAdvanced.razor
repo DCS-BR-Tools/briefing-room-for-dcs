@@ -29,7 +29,7 @@
                         <label>@briefingRoom.Translate("OverrideCallsignName")</label>
                         <select class="form-control selectpicker" @bind=flight.OverrideCallsignName>
                             <option value=""></option>
-                            @foreach (var item in BriefingRoom.GetAircraftCallsigns(flight.Aircraft, flight.Country))
+                            @foreach (var item in briefingRoom.GetAircraftCallsigns(flight.Aircraft, flight.Country))
                             {
                                 <option value="@item">@item.Split(":")[1]</option>
                             }

@@ -30,7 +30,7 @@ namespace BriefingRoom4DCS.Data
     internal class DBEntryCargo : DBEntryJSONUnit
     {
 
-        protected override bool OnLoad(string o)
+        protected override bool OnLoad( IDatabase database, string iniFilePath)
         {
             throw new NotImplementedException();
         }

@@ -41,11 +41,11 @@ namespace BriefingRoom4DCS.Data
 
         internal string[] RequiredFeatures { get; private set; }
 
-        protected override bool OnLoad(string iniFilePath)
+        protected override bool OnLoad(IDatabase database, string iniFilePath)
         {
             var ini = new INIFile(iniFilePath);
             BriefingDescription = ini.GetValue<string>("Briefing", "Description");
-            if (!Database.Instance.EntryExists<DBEntryBriefingDescription>(BriefingDescription))
+            if (!database.EntryExists<DBEntryBriefingDescription>(BriefingDescription))
             {
                 BriefingRoom.PrintToLog($"Objective task \"{ID}\" references non-existing briefing description \"{BriefingDescription}\".", LogMessageErrorLevel.Warning);
                 return false;
@@ -53,7 +53,7 @@ namespace BriefingRoom4DCS.Data
 
             BriefingTask = new LanguageString[2];
             var className = this.GetLanguageClassName();
-            BriefingTask[0] = ini.GetLangStrings(Database.Language, className, ID, "Briefing", "Task.Singular");
+            BriefingTask[0] = ini.GetLangStrings(database.Language, className, ID, "Briefing", "Task.Singular");
             BriefingTask[1] = ini.GetLangStrings(Database.Language, className, ID, "Briefing", "Task.Plural");
 
             BriefingRemarks = ini.GetLangStrings(Database.Language, className, ID, "Briefing", "Remarks");

@@ -17,7 +17,7 @@ namespace BriefingRoom4DCS.Generator
             string UIName,
             Coordinates coordinates, int radius) => AddToList(ref mission, UIName, coordinates, radius);
 
-        internal static void AddCTLDPickupZone(ref DCSMission mission, Coordinates coordinates, bool onTop = false)
+        internal static void AddCTLDPickupZone(IBriefingRoom briefingRoom, ref DCSMission mission, Coordinates coordinates, bool onTop = false)
         {
             var coords = coordinates;
             if (!onTop)
@@ -25,25 +25,25 @@ namespace BriefingRoom4DCS.Generator
                 var spawnPoints = new List<SpawnPointType> { SpawnPointType.LandLarge }.ToArray();
                 Coordinates? newCoords = SpawnPointSelector.GetNearestSpawnPoint(mission, spawnPoints, coordinates);
                 if (!newCoords.HasValue)
-                    throw new BriefingRoomException(mission.LangKey, "Can't find suitable zone Coordinates!");
+                    throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "Can't find suitable zone Coordinates!");
                 coords = newCoords.Value;
                 DrawingMaker.AddDrawing(ref mission, $"Supply_{mission.CTLDZoneCount}", DrawingType.TextBox, coords, "Text".ToKeyValuePair($"Supply Base"));
                 DrawingMaker.AddDrawing(ref mission, $"Supply_zone_{mission.CTLDZoneCount}", DrawingType.Circle, coords, "Radius".ToKeyValuePair(500), "Colour".ToKeyValuePair(DrawingColour.White));
                 mission.MapData.Add($"SUPPLY_{mission.CTLDZoneCount}", new List<double[]> { coords.ToArray() });
-                var group = UnitGenerator.AddUnitGroup(ref mission, UnitFamily.StaticStructureMilitary, 1, Side.Ally, "Static", "Static", coords, GroupFlags.Inert, new Dictionary<string, object>(), true);
+                var group = UnitGenerator.AddUnitGroup( briefingRoom, ref mission, UnitFamily.StaticStructureMilitary, 1, Side.Ally, "Static", "Static", coords, GroupFlags.Inert, new Dictionary<string, object>(), true);
                 group.Value.DCSGroup.Units[0].Name = $"logistic{mission.CTLDZoneCount}";
             }
             AddToList(ref mission, $"pickzone{mission.CTLDZoneCount}", coords, 500);
             mission.CTLDZoneCount++;
         }
 
-        internal static void AddAirbaseZones(ref DCSMission mission, List<string> missionFeatures, DBEntryAirbase homeBase, List<DCSMissionStrikePackage> missionPackages)
+        internal static void AddAirbaseZones(IBriefingRoom briefingRoom,ref DCSMission mission, List<string> missionFeatures, DBEntryAirbase homeBase, List<DCSMissionStrikePackage> missionPackages)
         {
             if (!missionFeatures.Contains("CTLD"))
                 return;
-            AddCTLDPickupZone(ref mission, homeBase.Coordinates);
+            AddCTLDPickupZone(briefingRoom, ref mission, homeBase.Coordinates);
             foreach (var package in missionPackages)
-                AddCTLDPickupZone(ref mission, package.Airbase.Coordinates);
+                AddCTLDPickupZone(briefingRoom, ref mission, package.Airbase.Coordinates);
 
         }
 

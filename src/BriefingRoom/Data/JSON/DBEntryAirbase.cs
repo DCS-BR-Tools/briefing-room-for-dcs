@@ -54,7 +54,7 @@ namespace BriefingRoom4DCS.Data
 
         internal string Theater { get; private set; }
 
-        protected override bool OnLoad(string o)
+        protected override bool OnLoad( IDatabase database, string iniFilePath)
         {
             throw new NotImplementedException();
         }

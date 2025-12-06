@@ -25,9 +25,9 @@ namespace BriefingRoom4DCS.Data
         internal override string SourceLuaDirectory { get { return BRPaths.INCLUDE_LUA_MISSIONFEATURES; } }
 
 
-        protected override bool OnLoad(string iniFilePath)
+        protected override bool OnLoad(IDatabase database, string iniFilePath)
         {
-            return base.OnLoad(iniFilePath);
+            return base.OnLoad(database, iniFilePath);
         }
     }
 }

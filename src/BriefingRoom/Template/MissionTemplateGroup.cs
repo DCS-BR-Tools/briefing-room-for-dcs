@@ -21,11 +21,19 @@ If not, see https://www.gnu.org/licenses/
 */
 
 
+using BriefingRoom4DCS.Data;
+
 namespace BriefingRoom4DCS.Template
 {
 
     public class MissionTemplateGroup
     {
+        public IDatabase Database { get; set; }
+
+        public MissionTemplateGroup(IDatabase database)
+        {
+            Database = database;
+        }
         public string Alias { get; set; }
 
         public void AssignAlias(int index) => Alias = Toolbox.GetAlias(index);
