@@ -1,5 +1,5 @@
 @inject IJSRuntime JSRuntime
-@inject BriefingRoom4DCS.BriefingRoom briefingRoom
+@inject BriefingRoom4DCS.IBriefingRoom briefingRoom
 @if (showLogs)
 {
     <div class="alert alert-secondary" role="info">
@@ -52,7 +52,7 @@ else
 
     private void ReloadDatabase()
     {
-        BriefingRoom.ReloadDatabase();
+        briefingRoom.ReloadDatabase();
     }
 
     private List<Tuple<DateTime, LogMessageErrorLevel, string>> ReverseLogs()

@@ -4,7 +4,7 @@
 @using BriefingRoom4DCS.GUI.Utils
 @using BriefingRoom4DCS.Template
 
-@inject BriefingRoom4DCS.BriefingRoom briefingRoom
+@inject BriefingRoom4DCS.IBriefingRoom briefingRoom
 
 <div id="objectives" class="generator-block">
     <h3>@briefingRoom.Translate("Objectives")</h3>
@@ -25,7 +25,7 @@
             </li>
         }
         <li class="nav-item">
-            <a class="nav-link" @onclick="() => objectiveUtil.AddObjective(Template)">+
+            <a class="nav-link" @onclick="() => objectiveUtil.AddObjective(briefingRoom.Database, Template)">+
                 @briefingRoom.Translate("Task")</a>
         </li>
     </ul>
@@ -37,7 +37,7 @@
             <div class="flight-group">
                 <div class="form-group">
                     <button type="button" class="btn btn-secondary float-right"
-                        @onclick="() => objectiveUtil.CloneObjective(objective, Template)" title="Clone Objective"><span
+                        @onclick="() => objectiveUtil.CloneObjective(briefingRoom.Database, objective, Template)" title="Clone Objective"><span
                             class="oi oi-layers"></span></button>
                     <button type="button"
                         class="btn @(objective.CoordinateHint[0] != 0 && objective.CoordinateHint[1] != 0 ? "btn-warning" : "btn-secondary") float-right"
@@ -56,7 +56,7 @@
 
                 <h5>@briefingRoom.Translate("Base")</h5>
                 <ObjectiveTask Template="Template" objective="objective" objectiveUtil="objectiveUtil"
-                    CloneCallback="@(() => objectiveUtil.CloneObjectiveTask(objective))" />
+                    CloneCallback="@(() => objectiveUtil.CloneObjectiveTask(briefingRoom.Database, objective))" />
                 <hr />
                 <h5>@briefingRoom.Translate("Nearby")</h5>
                 @if (objective.SubTasks.Count == 0)
@@ -67,11 +67,11 @@
                 {
                     <hr />
                     <ObjectiveTask objective="subTask" Template="Template" objectiveUtil="objectiveUtil"
-                        CloneCallback="@(() => { objectiveUtil.CloneObjectiveSubTask(subTask,objective); StateHasChanged(); })"
+                        CloneCallback="@(() => { objectiveUtil.CloneObjectiveSubTask(briefingRoom.Database, subTask,objective); StateHasChanged(); })"
                         DeleteCallback="@(() =>  { objectiveUtil.RemoveSubTask(objective, subTask);  StateHasChanged(); })" />
                 }
                 <button type="button" class="btn btn-secondary form-control"
-                    @onclick="() => objectiveUtil.AddSubTask(objective)">+ @briefingRoom.Translate("Nearby")</button>
+                    @onclick="() => objectiveUtil.AddSubTask(briefingRoom.Database, objective)">+ @briefingRoom.Translate("Nearby")</button>
             </div>
         }
     }

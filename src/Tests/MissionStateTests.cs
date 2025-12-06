@@ -3,16 +3,22 @@ using BriefingRoom4DCS.Template;
 
 namespace BriefingRoom4DCS.Tests;
 
-[Collection("Sequential")]
+[Collection("Database collection")]
 public class DCSMissionStateTests
 {
+    DatabaseFixture fixture;
+
+    public DCSMissionStateTests(DatabaseFixture fixture)
+    {
+        this.fixture = fixture;
+    }
     [Fact]
     public void RevertOneState()
     {
-        new BriefingRoom();
-        var template = new MissionTemplate($"{BriefingRoom.GetBriefingRoomRootPath()}\\Default.brt");
-        var templateRecord = new MissionTemplateRecord(template);
-        var mission = new DCSMission("en",templateRecord);
+        var br = new BriefingRoom(fixture.Db);
+        var template = new MissionTemplate(fixture.Db, $"{BriefingRoom.GetBriefingRoomRootPath()}\\Default.brt");
+        var templateRecord = new MissionTemplateRecord(fixture.Db, template);
+        var mission = new DCSMission(fixture.Db, "en", templateRecord);
         mission.SaveStage(MissionStageName.Initialization);
 
         mission.GroupID++;
@@ -35,10 +41,10 @@ public class DCSMissionStateTests
     [Fact]
     public void RevertTwoStates()
     {
-        new BriefingRoom();
-        var template = new MissionTemplate($"{BriefingRoom.GetBriefingRoomRootPath()}\\Default.brt");
-        var templateRecord = new MissionTemplateRecord(template);
-        var mission = new DCSMission("en", templateRecord);
+        var br = new BriefingRoom(fixture.Db);
+        var template = new MissionTemplate(fixture.Db, $"{BriefingRoom.GetBriefingRoomRootPath()}\\Default.brt");
+        var templateRecord = new MissionTemplateRecord(fixture.Db, template);
+        var mission = new DCSMission(fixture.Db, "en", templateRecord);
         mission.SaveStage(MissionStageName.Initialization);
 
         mission.GroupID++;

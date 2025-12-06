@@ -28,7 +28,7 @@ namespace BriefingRoom4DCS.Generator.Mission
 {
     internal class Airbases
     {
-        internal static void SelectStartingAirbaseForPackages(ref DCSMission mission)
+        internal static void SelectStartingAirbaseForPackages(IDatabase database, ref DCSMission mission)
         {
             var missionPackages = new List<DCSMissionStrikePackage>();
             foreach (var package in mission.TemplateRecord.AircraftPackages)
@@ -40,8 +40,8 @@ namespace BriefingRoom4DCS.Generator.Mission
                 }
                 var flights = mission.TemplateRecord.PlayerFlightGroups.Where((v, i) => package.FlightGroupIndexes.Contains(i));
                 var requiredSpots = flights.Sum(x => x.Count);
-                var requiredRunway = flights.Select(x => ((DBEntryAircraft)Database.Instance.GetEntry<DBEntryJSONUnit>(x.Aircraft)).MinimumRunwayLengthFt).Max();
-                var airbase = SelectStartingAirbase(package.StartingAirbase, ref mission, requiredSpots, requiredRunway);
+                var requiredRunway = flights.Select(x => ((DBEntryAircraft)database.GetEntry<DBEntryJSONUnit>(x.Aircraft)).MinimumRunwayLengthFt).Max();
+                var airbase = SelectStartingAirbase(database, package.StartingAirbase, ref mission, requiredSpots, requiredRunway);
 
                 if (!missionPackages.Any(x => x.Airbase.ID == airbase.ID))
                     mission.Briefing.AddItem(DCSMissionBriefingItemType.Airbase, $"{airbase.UIDisplayName.Get(mission.LangKey)}\t{airbase.Runways}\t{airbase.ATC}\t{airbase.ILS}\t{airbase.TACAN}");
@@ -52,7 +52,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             mission.StrikePackages.AddRange(missionPackages);
         }
 
-        internal static DBEntryAirbase SelectStartingAirbase(string selectedAirbaseID, ref DCSMission mission, int requiredParkingSpots = 0, int requiredRunway = 0)
+        internal static DBEntryAirbase SelectStartingAirbase(IDatabase database, string selectedAirbaseID, ref DCSMission mission, int requiredParkingSpots = 0, int requiredRunway = 0)
         {
             // Get total number of required parking spots for flight groups
             if (requiredParkingSpots == 0)
@@ -62,7 +62,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             // If a particular airbase name has been specified and an airbase with this name exists, pick it
             if (!string.IsNullOrEmpty(selectedAirbaseID))
             {
-                var airbase = mission.AirbaseDB.FirstOrDefault(x => x.ID == selectedAirbaseID) ?? throw new BriefingRoomException(mission.LangKey, "AirbaseNotFoundForPlayer", selectedAirbaseID);
+                var airbase = mission.AirbaseDB.FirstOrDefault(x => x.ID == selectedAirbaseID) ?? throw new BriefingRoomException(database, mission.LangKey, "AirbaseNotFoundForPlayer", selectedAirbaseID);
                 return airbase;
             }
 
@@ -73,23 +73,23 @@ namespace BriefingRoom4DCS.Generator.Mission
                     x.ParkingSpots.Length >= requiredParkingSpots &&
                     (x.Coalition == templateRecord.ContextPlayerCoalition || templateRecord.SpawnAnywhere) &&
                     x.RunwayLengthFt > requiredRunway &&
-                    (!MissionPrefersShoreAirbase(templateRecord) || IsNearWater(x.Coordinates, theaterDB))
+                    (!MissionPrefersShoreAirbase(database, templateRecord) || IsNearWater(x.Coordinates, theaterDB))
                     ).ToList();
 
             if (opts.Count == 0)
                 if (!mission.TemplateRecord.PlayerFlightGroups.Any(x => string.IsNullOrEmpty(x.Carrier)))
                     return new DBEntryAirbase(Coordinates.GetCenter(mission.SituationDB.GetBlueZones(mission.TemplateRecord.OptionsMission.Contains("InvertCountriesCoalitions")).First().ToArray()));
                 else
-                    throw new BriefingRoomException(mission.LangKey, "NoPlayerAirbaseSpawnPoint");
+                    throw new BriefingRoomException(database, mission.LangKey, "NoPlayerAirbaseSpawnPoint");
             return Toolbox.RandomFrom(opts);
         }
 
-        private static bool MissionPrefersShoreAirbase(MissionTemplateRecord template)
+        private static bool MissionPrefersShoreAirbase(IDatabase database, MissionTemplateRecord template)
         {
             // If any objective target is a ship, return true
             foreach (var objective in template.Objectives)
-                if (Database.Instance.EntryExists<DBEntryObjectiveTarget>(objective.Target) &&
-                    (Database.Instance.GetEntry<DBEntryObjectiveTarget>(objective.Target).UnitCategory == UnitCategory.Ship))
+                if (database.EntryExists<DBEntryObjectiveTarget>(objective.Target) &&
+                    (database.GetEntry<DBEntryObjectiveTarget>(objective.Target).UnitCategory == UnitCategory.Ship))
                     return true;
 
             // If any flight group takes off from a carrier, return true

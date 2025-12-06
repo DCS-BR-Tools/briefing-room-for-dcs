@@ -32,22 +32,22 @@ namespace BriefingRoom4DCS.Template
     {
         public List<int> FlightGroupIndexes { get; set; }
         public List<int> ObjectiveIndexes { get; set; }
-        public string StartingAirbase { get { return StartingAirbase_; } set { StartingAirbase_ = Database.Instance.CheckID<DBEntryAirbase>(value, allowEmptyStr: true, allowedValues: new List<string>{"home"}); } }
+        public string StartingAirbase { get { return StartingAirbase_; } set { StartingAirbase_ = Database.CheckID<DBEntryAirbase>(value, allowEmptyStr: true, allowedValues: new List<string>{"home"}); } }
         private string StartingAirbase_;
 
-        public MissionTemplatePackage()
+        public MissionTemplatePackage(IDatabase database): base(database)
         {
             Clear();
         }
 
-        public MissionTemplatePackage(List<int> flightGroupIndexes, List<int> objectiveIndexes, string startingAirbase)
+        public MissionTemplatePackage(IDatabase database, List<int> flightGroupIndexes, List<int> objectiveIndexes, string startingAirbase): base(database)
         {
             FlightGroupIndexes = flightGroupIndexes;
             ObjectiveIndexes = objectiveIndexes;
             StartingAirbase = startingAirbase;
         }
 
-        internal MissionTemplatePackage(INIFile ini, string section, string key)
+        internal MissionTemplatePackage(IDatabase database, INIFile ini, string section, string key): base(database)
         {
             Clear();
 

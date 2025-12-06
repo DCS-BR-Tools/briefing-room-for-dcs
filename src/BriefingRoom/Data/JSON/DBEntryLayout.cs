@@ -34,7 +34,7 @@ namespace BriefingRoom4DCS.Data
         internal List<UnitCategory> Categories { get; init; }
         internal int MinUnits { get; init; }
 
-        protected override bool OnLoad(string o)
+        protected override bool OnLoad(string iniFilePath)
         {
             throw new NotImplementedException();
         }

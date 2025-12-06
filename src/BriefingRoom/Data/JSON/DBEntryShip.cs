@@ -32,7 +32,7 @@ namespace BriefingRoom4DCS.Data
         internal int PlaneStorage { get; init; }
         internal int HelicopterStorage { get; init; }
 
-        protected override bool OnLoad(string o)
+        protected override bool OnLoad(string iniFilePath)
         {
             throw new NotImplementedException();
         }
@@ -68,7 +68,7 @@ namespace BriefingRoom4DCS.Data
 
             }
 
-           missingDCSDataWarnings(supportData, itemMap, "Ship");
+            missingDCSDataWarnings(supportData, itemMap, "Ship");
 
             return itemMap;
         }

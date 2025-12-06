@@ -20,6 +20,7 @@ If not, see https://www.gnu.org/licenses/
 ==========================================================================
 */
 
+using BriefingRoom4DCS.Data;
 using BriefingRoom4DCS.Mission;
 using BriefingRoom4DCS.Template;
 using System.Collections.Generic;
@@ -33,11 +34,11 @@ namespace BriefingRoom4DCS
     internal partial class MizMaker
     {
 
-        internal static byte[] ExportToMizBytes(DCSMission mission, MissionTemplate template)
+        internal static byte[] ExportToMizBytes(IDatabase database, DCSMission mission, MissionTemplate template)
         {
             Dictionary<string, byte[]> MizFileEntries = new();
 
-            AddStringValueToEntries(MizFileEntries, "l10n/DEFAULT/briefing.html", mission.Briefing.GetBriefingAsHTML(mission, true));
+            AddStringValueToEntries(MizFileEntries, "l10n/DEFAULT/briefing.html", mission.Briefing.GetBriefingAsHTML(database, mission, true));
             mission.AppendValue("MapResourcesFiles", $"[\"ResKey_Snd_briefing_html\"] = \"briefing.html\",\n");
 
             AddStringValueToEntries(MizFileEntries, "l10n/DEFAULT/credits.txt", $"Generated with BriefingRoom for DCS World (https://akaagar.itch.io/briefing-room-for-dcs) {BriefingRoom.VERSION} ({BriefingRoom.BUILD_VERSION})");
@@ -49,14 +50,14 @@ namespace BriefingRoom4DCS
                 AddStringValueToEntries(MizFileEntries, "l10n/DEFAULT/template.brt", Encoding.ASCII.GetString(template.GetIniBytes()));
                 mission.AppendValue("MapResourcesFiles", $"[\"ResKey_Snd_template\"] = \"template.brt\",\n");
             }
-            AddLuaFileToEntries(MizFileEntries, "mission", "Mission.lua", mission);
-            AddLuaFileToEntries(MizFileEntries, "options", "Options.lua", null);
+            AddLuaFileToEntries(database, MizFileEntries, "mission", "Mission.lua", mission);
+            AddLuaFileToEntries(database, MizFileEntries, "options", "Options.lua", null);
             AddStringValueToEntries(MizFileEntries, "theatre", mission.GetValue("TheaterID"));
-            AddLuaFileToEntries(MizFileEntries, "warehouses", "Warehouses.lua", mission);
+            AddLuaFileToEntries(database, MizFileEntries, "warehouses", "Warehouses.lua", mission);
 
-            AddLuaFileToEntries(MizFileEntries, "l10n/DEFAULT/dictionary", "Dictionary.lua", mission);
-            AddLuaFileToEntries(MizFileEntries, "l10n/DEFAULT/mapResource", "MapResource.lua", mission);
-            AddLuaFileToEntries(MizFileEntries, "l10n/DEFAULT/script.lua", "Script.lua", mission);
+            AddLuaFileToEntries(database, MizFileEntries, "l10n/DEFAULT/dictionary", "Dictionary.lua", mission);
+            AddLuaFileToEntries(database, MizFileEntries, "l10n/DEFAULT/mapResource", "MapResource.lua", mission);
+            AddLuaFileToEntries(database, MizFileEntries, "l10n/DEFAULT/script.lua", "Script.lua", mission);
 
             foreach (string mediaFile in mission.GetMediaFileNames())
             {
@@ -65,10 +66,10 @@ namespace BriefingRoom4DCS
                 MizFileEntries.Add(mediaFile, fileBytes);
             }
 
-            return Toolbox.ZipData(mission.LangKey, MizFileEntries);
+            return Toolbox.ZipData(database, mission.LangKey, MizFileEntries);
         }
 
-        private static bool AddLuaFileToEntries(Dictionary<string, byte[]> mizFileEntries, string mizEntryKey, string sourceFile, DCSMission mission = null)
+        private static bool AddLuaFileToEntries(IDatabase database, Dictionary<string, byte[]> mizFileEntries, string mizEntryKey, string sourceFile, DCSMission mission = null)
         {
             if (string.IsNullOrEmpty(mizEntryKey) || mizFileEntries.ContainsKey(mizEntryKey) || string.IsNullOrEmpty(sourceFile)) return false;
             sourceFile = Path.Combine(BRPaths.INCLUDE_LUA, sourceFile);
@@ -77,7 +78,7 @@ namespace BriefingRoom4DCS
             string luaContent = File.ReadAllText(sourceFile);
             if (mission != null) // A mission was provided, do the required replacements in the file.
                 luaContent = mission.ReplaceValues(luaContent);
-            luaContent = BriefingRoom.LanguageDB.ReplaceValues(mission != null ? mission.LangKey : "en", luaContent);
+            luaContent = database.Language.ReplaceValues(mission != null ? mission.LangKey : "en", luaContent);
             luaContent = UnassignedRegex().Replace(luaContent, "0");
             mizFileEntries.Add(mizEntryKey, Encoding.UTF8.GetBytes(luaContent));
             return true;

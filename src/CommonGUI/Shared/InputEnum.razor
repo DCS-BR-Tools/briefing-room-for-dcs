@@ -1,4 +1,4 @@
-@inject BriefingRoom4DCS.BriefingRoom briefingRoom
+@inject BriefingRoom4DCS.IBriefingRoom briefingRoom
 @typeparam EnumType
 <div class="form-group inputEnum @ClassString">
     <label>@Label</label>
@@ -6,7 +6,7 @@
         ValueChanged="@((EnumType s) => ValueChangedChild(s))">
         @foreach (var value in Enum.GetValues(typeof(EnumType)))
         {
-            <option value="@value">@BriefingRoomGUITools.GetEnumName(briefingRoom.LanguageKey, value)</option>
+            <option value="@value">@BriefingRoomGUITools.GetEnumName(briefingRoom, value)</option>
         }
     </InputSelect>
 </div>

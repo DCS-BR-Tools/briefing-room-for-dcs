@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using BriefingRoom4DCS.Data;
 using BriefingRoom4DCS.Template;
 
 namespace BriefingRoom4DCS.GUI.Utils
@@ -17,17 +18,17 @@ namespace BriefingRoom4DCS.GUI.Utils
             Tab = var;
         }
 
-        internal void AddObjective(MissionTemplate Template)
+        internal void AddObjective(IDatabase database, MissionTemplate Template)
         {
-            MissionTemplateObjective obj = new(UsePreset);
+            MissionTemplateObjective obj = new(database, UsePreset);
             Tab = obj;
             obj.Alias = BriefingRoom.GetAlias(Template.Objectives.Count);
             Template.Objectives.Add(obj);
         }
 
-        internal void CloneObjective(MissionTemplateObjective obj, MissionTemplate Template)
+        internal void CloneObjective(IDatabase database, MissionTemplateObjective obj, MissionTemplate Template)
         {
-            MissionTemplateObjective newObj = new(UsePreset)
+            MissionTemplateObjective newObj = new(database, UsePreset)
             {
                 Target = obj.Target,
                 TargetBehavior = obj.TargetBehavior,
@@ -47,9 +48,9 @@ namespace BriefingRoom4DCS.GUI.Utils
             Tab = newObj;
         }
 
-        internal void CloneObjectiveTask(MissionTemplateObjective obj)
+        internal void CloneObjectiveTask(IDatabase database, MissionTemplateObjective obj)
         {
-            MissionTemplateSubTask newSubT = new()
+            MissionTemplateSubTask newSubT = new(database)
             {
                 Target = obj.Target,
                 TargetBehavior = obj.TargetBehavior,
@@ -64,9 +65,9 @@ namespace BriefingRoom4DCS.GUI.Utils
             };
             obj.SubTasks.Add(newSubT);
         }
-        internal void CloneObjectiveSubTask(MissionTemplateSubTask subTask, MissionTemplateObjective obj)
+        internal void CloneObjectiveSubTask(IDatabase database, MissionTemplateSubTask subTask, MissionTemplateObjective obj)
         {
-            MissionTemplateSubTask newSubT = new()
+            MissionTemplateSubTask newSubT = new(database)
             {
                 Target = subTask.Target,
                 TargetBehavior = subTask.TargetBehavior,
@@ -98,9 +99,9 @@ namespace BriefingRoom4DCS.GUI.Utils
             subTask.ProgressionOverrideCondition = obj.ProgressionOverrideCondition;
         }
 
-        internal void AddSubTask(MissionTemplateObjective obj, bool preset = false)
+        internal void AddSubTask(IDatabase database, MissionTemplateObjective obj, bool preset = false)
         {
-            obj.SubTasks.Add(new MissionTemplateSubTask{
+            obj.SubTasks.Add(new MissionTemplateSubTask(database){
                 Preset = preset ? "Interdiction" : "Custom",
                 Alias = $"{obj.Alias}{obj.SubTasks.Count + 2}",
             });

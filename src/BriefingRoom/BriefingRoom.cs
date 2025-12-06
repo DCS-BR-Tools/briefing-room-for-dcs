@@ -31,13 +31,9 @@ using System.Linq;
 
 namespace BriefingRoom4DCS
 {
-    public sealed class BriefingRoom
+    public sealed class BriefingRoom : IBriefingRoom
     {
-        public static string TARGETED_DCS_WORLD_VERSION { get; private set; }
-        public static Dictionary<string, string> AvailableLanguagesMap { get; private set; }
         public static bool RUNNING_IN_DOCKER = Environment.GetEnvironmentVariable("DOTNET_RUNNING_IN_CONTAINER") == "true";
-
-        public static DatabaseLanguage LanguageDB { get; private set; }
 
         public const string REPO_URL = "https://github.com/DCS-BR-Tools/briefing-room-for-dcs";
 
@@ -49,6 +45,8 @@ namespace BriefingRoom4DCS
 
         public const string BUILD_VERSION = "~BUILD_VERSION~";
 
+        public const string TARGETED_DCS_WORLD_VERSION = "2.9.22.17790";
+
         public const int MAXFILESIZE = 50000000;
 
         public static string DCSSaveGamePath { get; private set; } = string.Empty;
@@ -56,23 +54,18 @@ namespace BriefingRoom4DCS
 
         public delegate void LogHandler(string message, LogMessageErrorLevel errorLevel);
         public string LanguageKey { get; set; } = "en";
+        public IDatabase Database { get; }
 
         private static event LogHandler OnMessageLogged;
 
-        public BriefingRoom(LogHandler logHandler = null)
+        public BriefingRoom(IDatabase database, LogHandler logHandler = null)
         {
-            INIFile ini = new(Path.Combine(BRPaths.DATABASE, "Common.ini"));
-            TARGETED_DCS_WORLD_VERSION = ini.GetValue("Versions", "DCSVersion", "2.9.2");
-
-
-            AvailableLanguagesMap = new Dictionary<string, string> { { "en", "English" } };
-            foreach (var key in ini.GetKeysInSection("Languages"))
-                AvailableLanguagesMap.AddIfKeyUnused(key, ini.GetValue<string>("Languages", key));
+           
 
             getSaveGamePath();
             OnMessageLogged = logHandler;
-            Database.Instance.Initialize();
-            LanguageDB = Database.Instance.Language;
+            Database = database;
+
         }
 
         public void SetLogHandler(LogHandler logHandler)
@@ -82,15 +75,10 @@ namespace BriefingRoom4DCS
 
         public List<string> GetUnitIdsByFamily(UnitFamily family)
         {
-            return Database.Instance.GetAllEntries<DBEntryJSONUnit>().Where(x => x.Families.Contains(family)).Select(x => x.ID).ToList();
+            return Database.GetAllEntries<DBEntryJSONUnit>().Where(x => x.Families.Contains(family)).Select(x => x.ID).ToList();
         }
 
         public DatabaseEntryInfo[] GetDatabaseEntriesInfo(DatabaseEntryType entryType, string parameter = "")
-        {
-            return GetDatabaseEntriesInfo(LanguageKey, entryType, parameter);
-        }
-
-        public static DatabaseEntryInfo[] GetDatabaseEntriesInfo(string langKey, DatabaseEntryType entryType, string parameter = "")
         {
             switch (entryType)
             {
@@ -98,67 +86,67 @@ namespace BriefingRoom4DCS
                     if (string.IsNullOrEmpty(parameter)) // No parameter, return none
                         return Array.Empty<DatabaseEntryInfo>();
                     else // A parameter was provided, return all airbases from specified theater
-                        return (from DBEntryAirbase airbase in Database.Instance.GetAllEntries<DBEntryAirbase>() where airbase.Theater == parameter.ToLower() select airbase.GetDBEntryInfo()).OrderBy(x => x.Name.Get(langKey)).ToArray();
+                        return (from DBEntryAirbase airbase in Database.GetAllEntries<DBEntryAirbase>() where airbase.Theater == parameter.ToLower() select airbase.GetDBEntryInfo()).OrderBy(x => x.Name.Get(LanguageKey)).ToArray();
 
                 case DatabaseEntryType.Situation:
                     if (string.IsNullOrEmpty(parameter)) // No parameter, return none
                         return Array.Empty<DatabaseEntryInfo>();
                     else // A parameter was provided, return all airbases from specified theater
-                        return (from DBEntrySituation situation in Database.Instance.GetAllEntries<DBEntrySituation>() where situation.Theater == parameter.ToLower() select situation.GetDBEntryInfo()).OrderBy(x => x.Name.Get(langKey)).ToArray();
+                        return (from DBEntrySituation situation in Database.GetAllEntries<DBEntrySituation>() where situation.Theater == parameter.ToLower() select situation.GetDBEntryInfo()).OrderBy(x => x.Name.Get(LanguageKey)).ToArray();
                 case DatabaseEntryType.ObjectiveTarget:
                     if (string.IsNullOrEmpty(parameter)) // No parameter, return none
-                        return (from DBEntryObjectiveTarget objectiveTarget in Database.Instance.GetAllEntries<DBEntryObjectiveTarget>() select objectiveTarget.GetDBEntryInfo()).OrderBy(x => x.Name.Get(langKey)).ToArray();
+                        return (from DBEntryObjectiveTarget objectiveTarget in Database.GetAllEntries<DBEntryObjectiveTarget>() select objectiveTarget.GetDBEntryInfo()).OrderBy(x => x.Name.Get(LanguageKey)).ToArray();
                     else
-                        return (from DBEntryObjectiveTarget objectiveTarget in Database.Instance.GetAllEntries<DBEntryObjectiveTarget>() where Database.Instance.GetEntry<DBEntryObjectiveTask>(parameter).ValidUnitCategories.Contains(objectiveTarget.UnitCategory) select objectiveTarget.GetDBEntryInfo()).OrderBy(x => x.Name.Get(langKey)).ToArray();
+                        return (from DBEntryObjectiveTarget objectiveTarget in Database.GetAllEntries<DBEntryObjectiveTarget>() where Database.GetEntry<DBEntryObjectiveTask>(parameter).ValidUnitCategories.Contains(objectiveTarget.UnitCategory) select objectiveTarget.GetDBEntryInfo()).OrderBy(x => x.Name.Get(LanguageKey)).ToArray();
                 case DatabaseEntryType.ObjectiveTargetBehavior:
                     if (string.IsNullOrEmpty(parameter)) // No parameter, return none
-                        return (from DBEntryObjectiveTargetBehavior objectiveTargetBehavior in Database.Instance.GetAllEntries<DBEntryObjectiveTargetBehavior>() select objectiveTargetBehavior.GetDBEntryInfo()).OrderBy(x => x.Name.Get(langKey)).ToArray();
+                        return (from DBEntryObjectiveTargetBehavior objectiveTargetBehavior in Database.GetAllEntries<DBEntryObjectiveTargetBehavior>() select objectiveTargetBehavior.GetDBEntryInfo()).OrderBy(x => x.Name.Get(LanguageKey)).ToArray();
                     else
                     {
                         var paramList = parameter.Split(',');
                         var taskId = paramList[0];
                         var targetId = paramList[1];
-                        return (from DBEntryObjectiveTargetBehavior objectiveTargetBehavior in Database.Instance.GetAllEntries<DBEntryObjectiveTargetBehavior>() where objectiveTargetBehavior.ValidUnitCategories.Contains(Database.Instance.GetEntry<DBEntryObjectiveTarget>(targetId).UnitCategory) && !objectiveTargetBehavior.InvalidTasks.Contains(taskId) select objectiveTargetBehavior.GetDBEntryInfo()).OrderBy(x => x.Name.Get(langKey)).ToArray();
+                        return (from DBEntryObjectiveTargetBehavior objectiveTargetBehavior in Database.GetAllEntries<DBEntryObjectiveTargetBehavior>() where objectiveTargetBehavior.ValidUnitCategories.Contains(Database.GetEntry<DBEntryObjectiveTarget>(targetId).UnitCategory) && !objectiveTargetBehavior.InvalidTasks.Contains(taskId) select objectiveTargetBehavior.GetDBEntryInfo()).OrderBy(x => x.Name.Get(LanguageKey)).ToArray();
 
                     }
                 case DatabaseEntryType.Coalition:
-                    return (from DBEntryCoalition coalition in Database.Instance.GetAllEntries<DBEntryCoalition>() select coalition.GetDBEntryInfo()).OrderBy(x => x.Name.Get(langKey)).ToArray();
+                    return (from DBEntryCoalition coalition in Database.GetAllEntries<DBEntryCoalition>() select coalition.GetDBEntryInfo()).OrderBy(x => x.Name.Get(LanguageKey)).ToArray();
 
                 case DatabaseEntryType.DCSMod:
-                    return (from DBEntryDCSMod dcsMod in Database.Instance.GetAllEntries<DBEntryDCSMod>() select dcsMod.GetDBEntryInfo()).OrderBy(x => x.Name.Get(langKey)).ToArray();
+                    return (from DBEntryDCSMod dcsMod in Database.GetAllEntries<DBEntryDCSMod>() select dcsMod.GetDBEntryInfo()).OrderBy(x => x.Name.Get(LanguageKey)).ToArray();
 
                 case DatabaseEntryType.MissionFeature:
-                    return (from DBEntryFeatureMission missionFeature in Database.Instance.GetAllEntries<DBEntryFeatureMission>() select missionFeature.GetDBEntryInfo()).OrderBy(x => x.Name.Get(langKey)).ToArray();
+                    return (from DBEntryFeatureMission missionFeature in Database.GetAllEntries<DBEntryFeatureMission>() select missionFeature.GetDBEntryInfo()).OrderBy(x => x.Name.Get(LanguageKey)).ToArray();
 
                 case DatabaseEntryType.OptionsMission:
-                    return (from DBEntryOptionsMission missionFeature in Database.Instance.GetAllEntries<DBEntryOptionsMission>() select missionFeature.GetDBEntryInfo()).OrderBy(x => x.Name.Get(langKey)).ToArray();
+                    return (from DBEntryOptionsMission missionFeature in Database.GetAllEntries<DBEntryOptionsMission>() select missionFeature.GetDBEntryInfo()).OrderBy(x => x.Name.Get(LanguageKey)).ToArray();
 
                 case DatabaseEntryType.ObjectiveFeature:
-                    return (from DBEntryFeatureObjective objectiveFeature in Database.Instance.GetAllEntries<DBEntryFeatureObjective>() select objectiveFeature.GetDBEntryInfo()).OrderBy(x => x.Name.Get(langKey)).ToArray();
+                    return (from DBEntryFeatureObjective objectiveFeature in Database.GetAllEntries<DBEntryFeatureObjective>() select objectiveFeature.GetDBEntryInfo()).OrderBy(x => x.Name.Get(LanguageKey)).ToArray();
 
                 case DatabaseEntryType.ObjectivePreset:
-                    return (from DBEntryObjectivePreset objectivePreset in Database.Instance.GetAllEntries<DBEntryObjectivePreset>() select objectivePreset.GetDBEntryInfo()).OrderBy(x => x.Name.Get(langKey)).ToArray();
+                    return (from DBEntryObjectivePreset objectivePreset in Database.GetAllEntries<DBEntryObjectivePreset>() select objectivePreset.GetDBEntryInfo()).OrderBy(x => x.Name.Get(LanguageKey)).ToArray();
 
                 case DatabaseEntryType.ObjectiveTask:
-                    return (from DBEntryObjectiveTask objectiveTask in Database.Instance.GetAllEntries<DBEntryObjectiveTask>() select objectiveTask.GetDBEntryInfo()).OrderBy(x => x.Name.Get(langKey)).ToArray();
+                    return (from DBEntryObjectiveTask objectiveTask in Database.GetAllEntries<DBEntryObjectiveTask>() select objectiveTask.GetDBEntryInfo()).OrderBy(x => x.Name.Get(LanguageKey)).ToArray();
 
                 case DatabaseEntryType.Theater:
-                    return (from DBEntryTheater theater in Database.Instance.GetAllEntries<DBEntryTheater>() select theater.GetDBEntryInfo()).OrderBy(x => x.Name.Get(langKey)).ToArray();
+                    return (from DBEntryTheater theater in Database.GetAllEntries<DBEntryTheater>() select theater.GetDBEntryInfo()).OrderBy(x => x.Name.Get(LanguageKey)).ToArray();
 
                 case DatabaseEntryType.Unit:
-                    var ModList = parameter.Split(',').Where(x => !string.IsNullOrEmpty(x)).Select(x => Database.Instance.GetEntry<DBEntryDCSMod>(x).Module).ToList();
-                    return Database.Instance.GetAllEntries<DBEntryJSONUnit>().Where(x => DBEntryDCSMod.CORE_MODS.Contains(x.Module) || string.IsNullOrEmpty(x.Module) || ModList.Contains(x.Module)).Select(x => x.GetDBEntryInfo()).OrderBy(x => x.Category.Get(langKey)).ThenBy(x => x.Name.Get(langKey)).ToArray();
+                    var ModList = parameter.Split(',').Where(x => !string.IsNullOrEmpty(x)).Select(x => Database.GetEntry<DBEntryDCSMod>(x).Module).ToList();
+                    return Database.GetAllEntries<DBEntryJSONUnit>().Where(x => DBEntryDCSMod.CORE_MODS.Contains(x.Module) || string.IsNullOrEmpty(x.Module) || ModList.Contains(x.Module)).Select(x => x.GetDBEntryInfo()).OrderBy(x => x.Category.Get(LanguageKey)).ThenBy(x => x.Name.Get(LanguageKey)).ToArray();
 
                 case DatabaseEntryType.UnitCarrier:
-                    return Database.Instance.GetAllEntries<DBEntryJSONUnit>().Where(unitCarrier => Toolbox.CARRIER_FAMILIES.Intersect(unitCarrier.Families).Any()).Select(unitCarrier => unitCarrier.GetDBEntryInfo())
-                    .Concat(Database.Instance.GetAllEntries<DBEntryTemplate>().Where(template => template.Type == "FOB").Select(template => template.GetDBEntryInfo()))
-                    .OrderBy(x => x.Name.Get(langKey)).ToArray();
+                    return Database.GetAllEntries<DBEntryJSONUnit>().Where(unitCarrier => Toolbox.CARRIER_FAMILIES.Intersect(unitCarrier.Families).Any()).Select(unitCarrier => unitCarrier.GetDBEntryInfo())
+                    .Concat(Database.GetAllEntries<DBEntryTemplate>().Where(template => template.Type == "FOB").Select(template => template.GetDBEntryInfo()))
+                    .OrderBy(x => x.Name.Get(LanguageKey)).ToArray();
 
                 case DatabaseEntryType.UnitFlyableAircraft:
-                    return (from DBEntryAircraft unitFlyable in Database.Instance.GetAllEntries<DBEntryJSONUnit, DBEntryAircraft>() where unitFlyable.PlayerControllable select unitFlyable.GetDBEntryInfo()).OrderBy(x => x.Name.Get(langKey)).ToArray();
+                    return (from DBEntryAircraft unitFlyable in Database.GetAllEntries<DBEntryJSONUnit, DBEntryAircraft>() where unitFlyable.PlayerControllable select unitFlyable.GetDBEntryInfo()).OrderBy(x => x.Name.Get(LanguageKey)).ToArray();
 
                 case DatabaseEntryType.WeatherPreset:
-                    return (from DBEntryWeatherPreset weatherPreset in Database.Instance.GetAllEntries<DBEntryWeatherPreset>() select weatherPreset.GetDBEntryInfo()).OrderBy(x => x.Name.Get(langKey)).ToArray();
+                    return (from DBEntryWeatherPreset weatherPreset in Database.GetAllEntries<DBEntryWeatherPreset>() select weatherPreset.GetDBEntryInfo()).OrderBy(x => x.Name.Get(LanguageKey)).ToArray();
             }
 
             return null;
@@ -169,35 +157,35 @@ namespace BriefingRoom4DCS
             return GetSingleDatabaseEntryInfo(LanguageKey, entryType, id);
         }
 
-        public static DatabaseEntryInfo? GetSingleDatabaseEntryInfo(string langKey, DatabaseEntryType entryType, string id)
+        public DatabaseEntryInfo? GetSingleDatabaseEntryInfo(string LanguageKey, DatabaseEntryType entryType, string id)
         {
             // Database entry ID doesn't exist
             if (!GetDatabaseEntriesIDs(entryType).Contains(id)) return null;
 
-            DatabaseEntryInfo[] databaseEntryInfos = GetDatabaseEntriesInfo(langKey, entryType);
+            DatabaseEntryInfo[] databaseEntryInfos = GetDatabaseEntriesInfo(entryType);
             return
                 (from DatabaseEntryInfo databaseEntryInfo in databaseEntryInfos
                  where databaseEntryInfo.ID.ToLower() == id.ToLower()
                  select databaseEntryInfo).First();
         }
 
-        public static List<Tuple<string, string>> GetAircraftLiveries(string aircraftID) =>
-            Database.Instance.GetEntry<DBEntryJSONUnit, DBEntryAircraft>(aircraftID).Liveries
+        public List<Tuple<string, string>> GetAircraftLiveries(string aircraftID) =>
+            Database.GetEntry<DBEntryJSONUnit, DBEntryAircraft>(aircraftID).Liveries
             .Select(x => x.Value)
             .Aggregate(new List<Tuple<string, string>>(), (acc, x) => { acc.AddRange(x); return acc; })
             .Distinct().Order().ToList();
 
-        public static List<string> GetAircraftCallsigns(string aircraftID, Country country) => Database.Instance.GetEntry<DBEntryJSONUnit, DBEntryAircraft>(aircraftID).CallSigns[country].Select(x => x).Distinct().Order().ToList();
+        public List<string> GetAircraftCallsigns(string aircraftID, Country country) => Database.GetEntry<DBEntryJSONUnit, DBEntryAircraft>(aircraftID).CallSigns[country].Select(x => x).Distinct().Order().ToList();
 
-        public static List<Tuple<string, Decade>> GetAircraftPayloads(string aircraftID) =>
-            Database.Instance.GetEntry<DBEntryJSONUnit, DBEntryAircraft>(aircraftID).Payloads.Select(x => new Tuple<string, Decade>(x.name, x.decade)).Distinct().Order().ToList();
+        public List<Tuple<string, Decade>> GetAircraftPayloads(string aircraftID) =>
+            Database.GetEntry<DBEntryJSONUnit, DBEntryAircraft>(aircraftID).Payloads.Select(x => new Tuple<string, Decade>(x.name, x.decade)).Distinct().Order().ToList();
 
-        public static List<SpawnPoint> GetTheaterSpawnPoints(string theaterID) =>
-           Database.Instance.GetEntry<DBEntryTheater>(theaterID).SpawnPoints.Select(x => x.ToSpawnPoint()).ToList();
+        public List<SpawnPoint> GetTheaterSpawnPoints(string theaterID) =>
+           Database.GetEntry<DBEntryTheater>(theaterID).SpawnPoints.Select(x => x.ToSpawnPoint()).ToList();
 
-        public static Tuple<List<List<double[]>>, List<List<double[]>>> GetTheaterWaterZones(string theaterID)
+        public Tuple<List<List<double[]>>, List<List<double[]>>> GetTheaterWaterZones(string theaterID)
         {
-            var theater = Database.Instance.GetEntry<DBEntryTheater>(theaterID);
+            var theater = Database.GetEntry<DBEntryTheater>(theaterID);
             return new Tuple<List<List<double[]>>, List<List<double[]>>>(
                 theater.WaterCoordinates.Select(x => x.Select(y => y.ToArray()).ToList()).ToList(),
                 theater.WaterExclusionCoordinates.Select(x => x.Select(y => y.ToArray()).ToList()).ToList()
@@ -206,39 +194,39 @@ namespace BriefingRoom4DCS
 
         public static string GetAlias(int index) => Toolbox.GetAlias(index);
 
-        public static string[] GetDatabaseEntriesIDs(DatabaseEntryType entryType, string parameter = "")
+        public string[] GetDatabaseEntriesIDs(DatabaseEntryType entryType, string parameter = "")
         {
-            return (from DatabaseEntryInfo entryInfo in GetDatabaseEntriesInfo("en", entryType, parameter) select entryInfo.ID).ToArray();
+            return (from DatabaseEntryInfo entryInfo in GetDatabaseEntriesInfo(entryType, parameter) select entryInfo.ID).ToArray();
         }
 
         public DCSMission GenerateMission(string templateFilePath)
         {
-            return MissionGenerator.GenerateRetryable(LanguageKey, new MissionTemplate(templateFilePath));
+            return MissionGenerator.GenerateRetryable(this, new MissionTemplate(Database, templateFilePath));
         }
 
         public DCSMission GenerateMission(MissionTemplate template)
         {
-            return MissionGenerator.GenerateRetryable(LanguageKey, template);
+            return MissionGenerator.GenerateRetryable(this, template);
         }
 
         public DCSCampaign GenerateCampaign(string templateFilePath)
         {
-            return CampaignGenerator.Generate(LanguageKey, new CampaignTemplate(templateFilePath));
+            return CampaignGenerator.Generate(this, new CampaignTemplate(this, templateFilePath));
         }
 
         public DCSCampaign GenerateCampaign(CampaignTemplate template)
         {
-            return CampaignGenerator.Generate(LanguageKey, template);
+            return CampaignGenerator.Generate(this, template);
         }
 
         public Dictionary<string, List<double[]>> GetMapSupportingMapData(MissionTemplate template)
         {
-            return DrawingMaker.GetPreviewMapData(template, LanguageKey);
+            return DrawingMaker.GetPreviewMapData(Database, template, LanguageKey);
         }
 
         public Dictionary<string, List<double[]>> GetAirbasesMapData(string mapID)
         {
-            return DrawingMaker.GetBasicAirbasesMapData(mapID, LanguageKey);
+            return DrawingMaker.GetBasicAirbasesMapData(Database, mapID, LanguageKey);
         }
 
         public static string GetBriefingRoomRootPath() { return BRPaths.ROOT; }
@@ -269,53 +257,39 @@ namespace BriefingRoom4DCS
 
         public string Translate(string key)
         {
-            if (LanguageDB == null)
+            if (Database.Language == null)
                 return key;
-            return LanguageDB.Translate(LanguageKey, key);
+            return Database.Language.Translate(LanguageKey, key);
         }
         public string Translate(string key, params object[] args)
         {
-            if (LanguageDB == null)
+            if (Database.Language == null)
                 return key;
-            var template = LanguageDB.Translate(LanguageKey, key);
-            return string.Format(template, args);
+            return Database.Language.Translate(LanguageKey, key, args);
         }
 
-        public static string Translate(string langKey, string key)
+
+        public void PrintTranslatableWarning( string key, params object[] args)
         {
-            if (LanguageDB == null)
-                return key;
-            return LanguageDB.Translate(langKey, key);
-        }
-        public static string Translate(string langKey, string key, params object[] args)
-        {
-            if (LanguageDB == null)
-                return key;
-            var template = LanguageDB.Translate(langKey, key);
-            return string.Format(template, args);
-        }
-
-        internal static void PrintTranslatableWarning(string langKey, string key, params object[] args)
-        {
-            PrintToLog(Translate(langKey, key, args), LogMessageErrorLevel.Warning);
+            PrintToLog(Translate(this.LanguageKey, key, args), LogMessageErrorLevel.Warning);
         }
 
 
-        internal static void PrintToLog(string message, LogMessageErrorLevel errorLevel = LogMessageErrorLevel.Info)
+        public static void PrintToLog(string message, LogMessageErrorLevel errorLevel = LogMessageErrorLevel.Info)
         {
             OnMessageLogged?.Invoke(message, errorLevel);
             if (errorLevel == LogMessageErrorLevel.Warning || errorLevel == LogMessageErrorLevel.Error || System.Diagnostics.Debugger.IsAttached)
                 Console.WriteLine($"{errorLevel}: {message}");
         }
 
-        public static void ReloadDatabase()
+        public void ReloadDatabase()
         {
             Database.Reset();
         }
 
         private void getSaveGamePath()
         {
-            if(!string.IsNullOrEmpty(DCSSaveGamePath))
+            if (!string.IsNullOrEmpty(DCSSaveGamePath))
                 return;
             var userPath = Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile);
             if (Directory.Exists(Path.Join(userPath, "Saved Games", "DCS.openbeta")))

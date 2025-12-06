@@ -1,4 +1,4 @@
-/*
+﻿/*
 ==========================================================================
 This file is part of Briefing Room for DCS World, a mission
 generator for DCS World, by @akaAgar (https://github.com/akaAgar/briefing-room-for-dcs)
@@ -22,26 +22,32 @@ using System.Collections.Generic;
 
 namespace BriefingRoom4DCS.Data
 {
-    internal class DBEntryBriefingDescription : DBEntry
+    public interface IDatabase
     {
-        internal List<LanguageString> DescriptionText { get; private set; }
+        DatabaseCommon Common { get; set; }
+        DatabaseLanguage Language { get; set; }
 
+        void Reset();
 
-        protected override bool OnLoad(string iniFilePath)
-        {
-            var ini = new INIFile(iniFilePath);
-            var className = this.GetLanguageClassName();
-            LanguageString defaultTexts = ini.GetLangStrings(Database.Language, className, ID, "BriefingDescription", "Description");
-            DescriptionText = new List<LanguageString>();
-            for (int i = 0; i < Toolbox.EnumCount<UnitFamily>(); i++)
-            {
-                DescriptionText.Add(defaultTexts);
-                var data = ini.GetLangStrings(Database.Language, className, ID, "BriefingDescription", $"Description.{(UnitFamily)i}");
-                if (data.Count > 0)
-                    DescriptionText[i] = data;
-            }
+        bool EntryExists<T>(string id) where T : DBEntry, new();
 
-            return true;
-        }
+        string[] GetAllEntriesIDs<T>() where T : DBEntry, new();
+
+        T[] GetAllEntries<T>() where T : DBEntry, new();
+
+        ST[] GetAllEntries<T, ST>()
+            where T : DBEntry, new()
+            where ST : DBEntry;
+
+        T GetEntry<T>(string id) where T : DBEntry, new();
+
+        ST GetEntry<T, ST>(string id)
+            where T : DBEntry, new()
+            where ST : DBEntry;
+        T[] GetEntries<T>(params string[] ids) where T : DBEntry, new();
+        List<T> GetEntries<T>(List<string> ids) where T : DBEntry, new();
+
+        string CheckID<T>(string id, string defaultID = null, bool allowEmptyStr = false, List<string> allowedValues = null) where T : DBEntry, new();
+        string[] CheckIDs<T>(params string[] ids) where T : DBEntry, new();
     }
 }

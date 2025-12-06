@@ -33,7 +33,7 @@ namespace BriefingRoom4DCS.Data
         internal Decade StartDecade { get; private set; } = Decade.Decade1940;
         internal Decade StartDecadeGuess { get; private set; } = Decade.Decade1940;
 
-        protected override bool OnLoad(string o)
+        protected override bool OnLoad(string iniFilePath)
         {
             throw new NotImplementedException();
         }
@@ -45,7 +45,7 @@ namespace BriefingRoom4DCS.Data
             foreach (var weapon in data)
             {
                 var id = weapon.clsid;
-                itemMap.Add(id, new DBEntryWeaponByDecade
+                itemMap.Add(id, new DBEntryWeaponByDecade()
                 {
                     ID = id,
                    StartDecade = weapon.decade != null ? (Decade)weapon.decade : (Decade)weapon.decadeGuess

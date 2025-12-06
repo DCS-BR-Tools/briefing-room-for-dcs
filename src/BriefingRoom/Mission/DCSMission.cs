@@ -61,12 +61,12 @@ namespace BriefingRoom4DCS.Mission
         internal bool SinglePlayerMission { get { return TemplateRecord.GetPlayerSlotsCount() == 1; } }
         internal string LangKey { get; private set;}
 
-        internal DCSMission(string langKey, MissionTemplateRecord template)
+        internal DCSMission(IDatabase database, string langKey, MissionTemplateRecord template)
         {
             LangKey = langKey;
             Airbases = [];
             Briefing = new(langKey);
-            WaypointNameGenerator = new(langKey);
+            WaypointNameGenerator = new(database, langKey);
             ResetStrikePackages();
             MediaFiles = new(StringComparer.InvariantCultureIgnoreCase);
             Values = new(StringComparer.InvariantCultureIgnoreCase);
@@ -87,11 +87,11 @@ namespace BriefingRoom4DCS.Mission
 
             CoalitionsDB =
             [
-                Database.Instance.GetEntry<DBEntryCoalition>(template.ContextCoalitionBlue),
-                Database.Instance.GetEntry<DBEntryCoalition>(template.ContextCoalitionRed)
+                database.GetEntry<DBEntryCoalition>(template.ContextCoalitionBlue),
+                database.GetEntry<DBEntryCoalition>(template.ContextCoalitionRed)
             ];
             Waypoints = [];
-            TheaterDB = Database.Instance.GetEntry<DBEntryTheater>(template.ContextTheater);
+            TheaterDB = database.GetEntry<DBEntryTheater>(template.ContextTheater);
 
             LuaDrawings = [];
             LuaZones = [];
@@ -276,14 +276,14 @@ namespace BriefingRoom4DCS.Mission
             MediaFiles.Add(fileName, mediaFileBytes);
         }
 
-        public async Task<bool> SaveToMizFile(string mizFilePath)
+        public async Task<bool> SaveToMizFile(IDatabase database, string mizFilePath)
         {
             try
             {
                 if (string.IsNullOrEmpty(mizFilePath)) return false;
                 if (!Toolbox.IsFilePathValid(mizFilePath)) return false;
 
-                byte[] mizBytes = await SaveToMizBytes();
+                byte[] mizBytes = await SaveToMizBytes(database);
                 if (mizBytes == null) return false; // Something went wrong
 
                 if (File.Exists(mizFilePath)) File.Delete(mizFilePath);
@@ -297,15 +297,15 @@ namespace BriefingRoom4DCS.Mission
             }
         }
 
-        public async Task<byte[]> SaveToMizBytes()
+        public async Task<byte[]> SaveToMizBytes(IDatabase database)
         {
             // Generate image files
             BriefingRoom.PrintToLog("Generating images...");
-            await Imagery.GenerateTitleImage(this);
+            await Imagery.GenerateTitleImage(database, this);
             if (!TemplateRecord.OptionsMission.Contains("DisableKneeboardImages"))
-                await Imagery.GenerateKneeboardImagesAsync(this);
+                await Imagery.GenerateKneeboardImagesAsync(database, this);
 
-            return MizMaker.ExportToMizBytes(this, TemplateRecord.Template);
+            return MizMaker.ExportToMizBytes(database, this, TemplateRecord.Template);
         }
 
         internal string[] GetMediaFileNames()
@@ -325,7 +325,7 @@ namespace BriefingRoom4DCS.Mission
             return null;
         }
 
-        internal bool IsExtremeDistance(MissionTemplate template, out double distance)
+        internal bool IsExtremeDistance(IBriefingRoom briefingRoom, MissionTemplate template, out double distance)
         {
             var objCenter = new Coordinates(
                 double.Parse(GetValue("MissionCenterX"), CultureInfo.InvariantCulture),
@@ -337,7 +337,7 @@ namespace BriefingRoom4DCS.Mission
             var extremeLimit = template.FlightPlanObjectiveDistanceMax * 1.7;
             var isTooFar = distance > extremeLimit;
             if (isTooFar)
-                BriefingRoom.PrintTranslatableWarning(LangKey, "DistanceTooFar", distance, extremeLimit);
+                briefingRoom.PrintTranslatableWarning(LangKey, "DistanceTooFar", distance, extremeLimit);
             return isTooFar;
         }
 

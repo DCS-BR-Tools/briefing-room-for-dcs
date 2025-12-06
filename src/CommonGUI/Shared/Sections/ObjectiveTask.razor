@@ -1,6 +1,6 @@
 @using BriefingRoom4DCS.GUI.Utils
 @using BriefingRoom4DCS.Template
-@inject BriefingRoom4DCS.BriefingRoom briefingRoom
+@inject BriefingRoom4DCS.IBriefingRoom briefingRoom
 <ObjectiveTaskRow objective="objective" Template="Template" objectiveUtil="objectiveUtil"
     CloneCallback="CloneCallback"
     DeleteCallback="DeleteCallback" />
@@ -8,8 +8,8 @@
 <div class="form-group">
     <h6>@briefingRoom.Translate("Options")</h6>
     <CheckBoxList Data="Enum.GetValues(typeof(ObjectiveOption)).Cast<ObjectiveOption>()"
-        TextField="@(item =>BriefingRoomGUITools.GetEnumName(briefingRoom.LanguageKey, item))"
-        DescriptionField="@(item => BriefingRoomGUITools.GetEnumDescription(briefingRoom.LanguageKey, item))"
+        TextField="@(item =>BriefingRoomGUITools.GetEnumName( briefingRoom, item))"
+        DescriptionField="@(item => BriefingRoomGUITools.GetEnumDescription(briefingRoom, item))"
         ValueField="@(item =>item)" SelectedValues="objective.Options" TItem="ObjectiveOption"
         TItemOutput="ObjectiveOption">
     </CheckBoxList>

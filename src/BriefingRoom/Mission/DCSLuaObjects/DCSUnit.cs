@@ -56,7 +56,7 @@ namespace BriefingRoom4DCS.Mission.DCSLuaObjects
             "StaticSupply" => ToLuaStringStaticSupply(),
             "Static" => ToLuaStringStatic(),
             "Vehicle" => ToLuaStringVehicle(),
-            _ => throw new BriefingRoomException("en", "UnsupportedUnitType", UnitType),
+            _ => throw new BriefingRoomRawException($"Unsupported Unit Type: {UnitType}"),
         };
 
 

@@ -1,6 +1,6 @@
 @page "/SituationEditor"
 @inject IJSRuntime JSRuntime
-@inject BriefingRoom4DCS.BriefingRoom briefingRoom
+@inject BriefingRoom4DCS.IBriefingRoom briefingRoom
 @using BriefingRoom4DCS
 @using BriefingRoom4DCS.Data.JSON
 @using Newtonsoft.Json
@@ -84,7 +84,7 @@
   {
     var airbaseData = briefingRoom.GetAirbasesMapData(ContextTheater);
     await Policy.Handle<Exception>().RetryAsync(3).ExecuteAsync(async () => await
-    JSRuntime.InvokeVoidAsync("RenderEditorMap", ContextTheater, BriefingRoom.GetTheaterSpawnPoints(ContextTheater), airbaseData, BriefingRoom.GetTheaterWaterZones(ContextTheater)));
+    JSRuntime.InvokeVoidAsync("RenderEditorMap", ContextTheater, briefingRoom.GetTheaterSpawnPoints(ContextTheater), airbaseData, briefingRoom.GetTheaterWaterZones(ContextTheater)));
     MapLoaded = true;
   }
 

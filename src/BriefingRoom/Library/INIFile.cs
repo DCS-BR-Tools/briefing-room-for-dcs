@@ -124,7 +124,7 @@ namespace BriefingRoom4DCS
             }
             catch (Exception e)
             {
-                throw new BriefingRoomException("en", $"Failed to parse value {FilePath}: {typeof(T).FullName} => {string.Join(",", val)}", e);
+                throw new BriefingRoomRawException($"Failed to parse value {FilePath}: {typeof(T).FullName} => {string.Join(",", val)}", e);
             }
         }
 
@@ -140,7 +140,7 @@ namespace BriefingRoom4DCS
         internal LanguageString GetLangStrings(DatabaseLanguage langDB, string classId, string id, string section, string key)
         {
             var resultMap = new LanguageString();
-            foreach (var langKey in BriefingRoom.AvailableLanguagesMap.Keys)
+            foreach (var langKey in langDB.AvailableLanguagesMap.Keys)
             {
                 var value = GetValue<string>(section, $"{key}{(langKey != "en" ? $".{langKey}" : "")}", "");
                 if (!string.IsNullOrEmpty(value))
@@ -179,7 +179,7 @@ namespace BriefingRoom4DCS
             }
             catch (Exception)
             {
-                throw new BriefingRoomException("en", $"Failed to parse value {FilePath}: {typeof(T).FullName} => {string.Join(",", val)}");
+                throw new BriefingRoomRawException($"Failed to parse value {FilePath}: {typeof(T).FullName} => {string.Join(",", val)}");
             }
         }
 
@@ -237,7 +237,7 @@ namespace BriefingRoom4DCS
             }
         }
 
-        internal string[] GetKeysInSection(string section, bool ignoreLangs = false)
+        internal string[] GetKeysInSection(string section, bool ignoreLangs = false, DatabaseLanguage langDB = null)
         {
             if (!Sections.ContainsKey(section)) return Array.Empty<string>();
 
@@ -256,7 +256,7 @@ namespace BriefingRoom4DCS
                 keys.AddRange(Sections[section].Keys);
             }
             if (ignoreLangs)
-                keys = keys.Where(x => !BriefingRoom.AvailableLanguagesMap.Keys.Any(y => x.EndsWith($".{y}"))).ToList();
+                keys = keys.Where(x => !langDB.AvailableLanguagesMap.Keys.Any(y => x.EndsWith($".{y}"))).ToList();
             return keys.Distinct().OrderBy(x => x).ToArray();
         }
 
@@ -499,7 +499,7 @@ namespace BriefingRoom4DCS
             }
             catch (Exception e)
             {
-                throw new BriefingRoomException("en", $"Failed to parse value {FilePath}: {typeof(T).FullName} => {string.Join(",", sourceArray)}", e);
+                throw new BriefingRoomRawException($"Failed to parse value {FilePath}: {typeof(T).FullName} => {string.Join(",", sourceArray)}", e);
             }
         }
     }

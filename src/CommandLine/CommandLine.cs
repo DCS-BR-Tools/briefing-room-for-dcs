@@ -18,6 +18,7 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 ==========================================================================
 */
 
+using BriefingRoom4DCS.Data;
 using BriefingRoom4DCS.Mission;
 using System;
 using System.IO;
@@ -84,7 +85,7 @@ namespace BriefingRoom4DCS.CommandLineTool
                 return false;
             }
 
-            var briefingRoom = new BriefingRoom();
+            var briefingRoom = new BriefingRoom(new Database());
 
             foreach (string t in templateFiles)
             {
@@ -104,7 +105,7 @@ namespace BriefingRoom4DCS.CommandLineTool
                         campaignDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Path.GetFileNameWithoutExtension(t));
                     campaignDirectory = GetUnusedFileName(campaignDirectory);
 
-                    await campaign.ExportToDirectory(AppDomain.CurrentDomain.BaseDirectory);
+                    await campaign.ExportToDirectory(briefingRoom.Database, AppDomain.CurrentDomain.BaseDirectory);
                     WriteToDebugLog($"Campaign {Path.GetFileName(campaignDirectory)} exported to directory from template {Path.GetFileName(t)}");
                 }
                 else // Template file is a mission template
@@ -123,7 +124,7 @@ namespace BriefingRoom4DCS.CommandLineTool
                         mizFileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, Path.GetFileNameWithoutExtension(t) + ".miz");
                     mizFileName = GetUnusedFileName(mizFileName);
 
-                    var savedMission = await mission.SaveToMizFile(mizFileName);
+                    var savedMission = await mission.SaveToMizFile(briefingRoom.Database, mizFileName);
                     if (!savedMission)
                     {
                         WriteToDebugLog($"Failed to export .miz file from template {Path.GetFileName(t)}", LogMessageErrorLevel.Warning);

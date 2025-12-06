@@ -31,13 +31,13 @@ namespace BriefingRoom4DCS.Generator.Mission
     internal class FeaturesObjectives :Features<DBEntryFeatureObjective>
     {
 
-        internal static void GenerateMissionFeature(ref DCSMission mission, string featureID, string objectiveName, int objectiveIndex, GroupInfo objectiveTarget, Side objectiveTargetSide, ObjectiveOption[] objectiveOptions, Coordinates? overrideCoords = null)
+        internal static void GenerateMissionFeature(IBriefingRoom briefingRoom, ref DCSMission mission, string featureID, string objectiveName, int objectiveIndex, GroupInfo objectiveTarget, Side objectiveTargetSide, ObjectiveOption[] objectiveOptions, Coordinates? overrideCoords = null)
         {   
             var objCoords = overrideCoords.HasValue ? overrideCoords.Value : objectiveTarget.Coordinates;
-            DBEntryFeatureObjective featureDB = Database.Instance.GetEntry<DBEntryFeatureObjective>(featureID);
+            DBEntryFeatureObjective featureDB = briefingRoom.Database.GetEntry<DBEntryFeatureObjective>(featureID);
             if (featureDB == null) // Feature doesn't exist
             {
-                BriefingRoom.PrintTranslatableWarning(mission.LangKey, "ObjectiveFeatureNotFound", featureID);
+                briefingRoom.PrintTranslatableWarning(mission.LangKey, "ObjectiveFeatureNotFound", featureID);
                 return;
             }
 
@@ -58,7 +58,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                     !(featureDB.UnitGroupValidSpawnPoints.Contains(SpawnPointType.Sea) || featureDB.UnitGroupValidSpawnPoints.Contains(SpawnPointType.Air)) &&
                     SpawnPointSelector.CheckInSea(mission.TheaterDB,coordinates.Value))
                 {
-                    BriefingRoom.PrintTranslatableWarning(mission.LangKey, "CannotSpawnObjectiveFeature", $"{objectiveName}: {featureDB.UIDisplayName.Get(mission.LangKey)}");
+                    briefingRoom.PrintTranslatableWarning(mission.LangKey, "CannotSpawnObjectiveFeature", $"{objectiveName}: {featureDB.UIDisplayName.Get(mission.LangKey)}");
                     return;
                 }
             }
@@ -66,6 +66,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             {
                 Coordinates? spawnPoint =
                     SpawnPointSelector.GetRandomSpawnPoint(
+                        briefingRoom.Database,
                         ref mission,
                         featureDB.UnitGroupValidSpawnPoints, objCoords,
                         new MinMaxD(featureDB.UnitGroupSpawnDistance * .75, featureDB.UnitGroupSpawnDistance * 1.5),
@@ -73,7 +74,7 @@ namespace BriefingRoom4DCS.Generator.Mission
 
                 if (!spawnPoint.HasValue)
                 {
-                    BriefingRoom.PrintTranslatableWarning(mission.LangKey, "NoSpawnPointForObjectiveFeature", $"{objectiveName}: {featureDB.UIDisplayName.Get(mission.LangKey)}");
+                    briefingRoom.PrintTranslatableWarning(mission.LangKey, "NoSpawnPointForObjectiveFeature", $"{objectiveName}: {featureDB.UIDisplayName.Get(mission.LangKey)}");
                     return;
                 }
 
@@ -102,6 +103,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             }
 
             GroupInfo? groupInfo = AddMissionFeature(
+                briefingRoom,
                 featureDB, ref mission,
                 coordinates, coordinates2,
                 ref extraSettings, objectiveTargetSide, objectiveOptions.Contains(ObjectiveOption.HideTarget),

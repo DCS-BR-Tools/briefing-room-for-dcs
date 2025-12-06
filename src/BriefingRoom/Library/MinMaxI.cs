@@ -22,7 +22,7 @@ using System;
 
 namespace BriefingRoom4DCS
 {
-    internal readonly struct MinMaxI
+    public readonly struct MinMaxI
     {
         internal readonly int Min;
 

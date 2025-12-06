@@ -30,15 +30,13 @@ namespace BriefingRoom4DCS.Template
 {
     public sealed class CampaignTemplate : BaseTemplate, IBaseTemplate
     {
-        private static readonly int MIN_CAMPAIGN_MISSIONS = Database.Instance.Common.MinCampaignMissions;
-        private static readonly int MAX_CAMPAIGN_MISSIONS = Database.Instance.Common.MaxCampaignMissions;
         public string BriefingCampaignName { get; set; }
         public Amount EnvironmentBadWeatherChance { get; set; }
         public Amount EnvironmentNightMissionChance { get; set; }
-        public int MissionsCount { get { return MissionsCount_; } set { MissionsCount_ = Toolbox.Clamp(value, MIN_CAMPAIGN_MISSIONS, MAX_CAMPAIGN_MISSIONS); } }
-        private int MissionsCount_ = MIN_CAMPAIGN_MISSIONS;
+        public int MissionsCount { get { return MissionsCount_; } set { MissionsCount_ = Toolbox.Clamp(value, Database.Common.MinCampaignMissions, Database.Common.MaxCampaignMissions); } }
+        private int MissionsCount_ = 5;
         public CampaignDifficultyVariation MissionsDifficultyVariation { get; set; }
-        public List<string> MissionsObjectives { get { return MissionObjectives_; } set { MissionObjectives_ = Database.Instance.CheckIDs<DBEntryObjectivePreset>(value.ToArray()).Distinct().ToList(); } }
+        public List<string> MissionsObjectives { get { return MissionObjectives_; } set { MissionObjectives_ = Database.CheckIDs<DBEntryObjectivePreset>(value.ToArray()).Distinct().ToList(); } }
         private List<string> MissionObjectives_ = new();
         public Amount MissionsObjectiveCount { get; set; }
         public Amount MissionsObjectiveVariationDistance { get; set; }
@@ -46,18 +44,19 @@ namespace BriefingRoom4DCS.Template
         public Amount MissionTargetCount { get; set; }
         public AmountNR MissionsProgression { get; set; }
         public bool StaticSituation { get; set; }
+        
 
-        public CampaignTemplate()
+        public CampaignTemplate(IBriefingRoom briefingRoom): base(briefingRoom.Database)
         {
-            Clear();
+            Clear(briefingRoom);
         }
 
-        public CampaignTemplate(string filePath)
+        public CampaignTemplate(IBriefingRoom briefingRoom, string filePath): base(briefingRoom.Database)
         {
             LoadFromFile(filePath);
         }
 
-        public new void Clear()
+        public void Clear(IBriefingRoom briefingRoom)
         {
 
             base.Clear();
@@ -69,7 +68,7 @@ namespace BriefingRoom4DCS.Template
 
             MissionsCount = 5;
             MissionsDifficultyVariation = CampaignDifficultyVariation.Random;
-            MissionsObjectives = BriefingRoom.GetDatabaseEntriesIDs(DatabaseEntryType.ObjectivePreset).ToList();
+            MissionsObjectives = briefingRoom.GetDatabaseEntriesIDs(DatabaseEntryType.ObjectivePreset).ToList();
             MissionsObjectiveCount = Amount.Average;
             MissionsObjectiveVariationDistance = Amount.Average;
             MissionsAirbaseVariationDistance = AmountN.Average;
@@ -124,7 +123,7 @@ namespace BriefingRoom4DCS.Template
 
             PlayerFlightGroups.Clear();
             foreach (string key in ini.GetTopLevelKeysInSection("PlayerFlightGroups"))
-                PlayerFlightGroups.Add(new MissionTemplateFlightGroup(ini, "PlayerFlightGroups", key));
+                PlayerFlightGroups.Add(new MissionTemplateFlightGroup(Database, ini, "PlayerFlightGroups", key));
 
             AssignAliases();
             return true;

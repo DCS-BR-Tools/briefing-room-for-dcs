@@ -18,26 +18,24 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 ==========================================================================
 */
 
-using System;
-using BriefingRoom4DCS.Template;
 
 namespace BriefingRoom4DCS.GUI
 {
     public static class BriefingRoomGUITools
     {
-        public static string GetEnumName(string langKey, object enumValue)
+        public static string GetEnumName(IBriefingRoom briefingRoom,  object enumValue)
         {
             if (enumValue == null) return "";
             var enumStr = enumValue.ToString();
             if(enumStr.Equals("None"))
                 enumStr = "NNone";
-            return BriefingRoom.Translate(langKey, enumStr);
+            return briefingRoom.Translate(enumStr);
         }
 
-        public static string GetEnumDescription(string langKey, object enumValue)
+        public static string GetEnumDescription(IBriefingRoom briefingRoom,  object enumValue)
         {
             if (enumValue == null) return "";
-            return BriefingRoom.Translate(langKey, $"{enumValue}Description");
+            return briefingRoom.Translate($"{enumValue}Description");
         }
     }
 }

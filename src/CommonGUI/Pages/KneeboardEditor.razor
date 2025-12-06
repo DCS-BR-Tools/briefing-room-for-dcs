@@ -1,6 +1,6 @@
 @page "/KneeboardEditor"
 @inject IJSRuntime JSRuntime
-@inject BriefingRoom4DCS.BriefingRoom briefingRoom
+@inject BriefingRoom4DCS.IBriefingRoom briefingRoom
 @using System.Reflection
 @using BriefingRoom4DCS
 @using System.IO.Compression
@@ -31,11 +31,13 @@
     <ul class="nav nav-tabs">
       @foreach (var key in htmlStore.Keys)
       {
-        <a class="nav-link @(tab == key ? "active" : "")" aria-current="page" @onclick='() => SetTab(key)'>@key.Replace("KNEEBOARD_HTML/","").Replace(".html","")</a>
+        <a class="nav-link @(tab == key ? "active" : "")" aria-current="page"
+          @onclick='() => SetTab(key)'>@key.Replace("KNEEBOARD_HTML/", "").Replace(".html", "")</a>
       }
     </ul>
     <div class="full-width">
-      <StandaloneCodeEditor Id="my-editor-instance-id" @ref="_editor" ConstructionOptions="EditorConstructionOptions" OnKeyUp="GetValue" />
+      <StandaloneCodeEditor Id="my-editor-instance-id" @ref="_editor" ConstructionOptions="EditorConstructionOptions"
+        OnKeyUp="GetValue" />
     </div>
   </div>
   <div class="generator-preview kneeboard">
@@ -44,7 +46,7 @@
 </div>
 @code {
   [CascadingParameter]
-    public MainLayout Layout { get; set; }
+  public MainLayout Layout { get; set; }
   private string editorContent = "";
   private StandaloneCodeEditor _editor = null!;
   private string errorMessage = "";
@@ -56,13 +58,13 @@
   private StandaloneEditorConstructionOptions EditorConstructionOptions(StandaloneCodeEditor editor)
   {
     return new StandaloneEditorConstructionOptions
-      {
-        AutomaticLayout = true,
-        Language = "html",
-        GlyphMargin = true,
-        Value = "",
-        Theme = "vs-dark"
-      };
+    {
+      AutomaticLayout = true,
+      Language = "html",
+      GlyphMargin = true,
+      Value = "",
+      Theme = "vs-dark"
+    };
   }
 
   private async Task LoadTemplate(InputFileChangeEventArgs e)
@@ -131,12 +133,13 @@
               foundF.Delete();
             }
 
-            var imagesData = await Imagery.GenerateKneeboardImageAsync(briefingRoom.LanguageKey ,htmlStore[key]);
+            var imagesData = await Imagery.GenerateKneeboardImageAsync(briefingRoom.Database, briefingRoom.LanguageKey
+            , htmlStore[key]);
             var i = 0;
             var multiImage = imagesData.Count > 1;
             foreach (var imageData in imagesData)
             {
-              var outputKey = $"{replacedKey}{(multiImage? i : "")}.png";
+              var outputKey = $"{replacedKey}{(multiImage ? i : "")}.png";
               var newImageFile = zip.CreateEntry(outputKey);
               using (var newStream = newImageFile.Open())
               {

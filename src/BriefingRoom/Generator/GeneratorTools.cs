@@ -34,13 +34,13 @@ namespace BriefingRoom4DCS.Generator
     {
         private static readonly int[] DAYS_PER_MONTH = new int[] { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-        internal static List<string> GetEmbeddedAirDefenseUnits(string langKey, MissionTemplateRecord template, Side side, UnitCategory unitCategory, Country? country = null)
+        internal static List<string> GetEmbeddedAirDefenseUnits(IBriefingRoom briefingRoom, MissionTemplateRecord template, Side side, UnitCategory unitCategory, Country? country = null)
         {
             DBCommonAirDefenseLevel airDefenseInfo = (side == Side.Ally) ?
-                 Database.Instance.Common.AirDefense.AirDefenseLevels[(int)template.SituationFriendlyAirDefense.Get()] :
-                  Database.Instance.Common.AirDefense.AirDefenseLevels[(int)template.SituationEnemyAirDefense.Get()];
+                 briefingRoom.Database.Common.AirDefense.AirDefenseLevels[(int)template.SituationFriendlyAirDefense.Get()] :
+                  briefingRoom.Database.Common.AirDefense.AirDefenseLevels[(int)template.SituationEnemyAirDefense.Get()];
 
-            DBEntryCoalition unitsCoalitionDB = Database.Instance.GetEntry<DBEntryCoalition>(template.GetCoalitionID(side));
+            DBEntryCoalition unitsCoalitionDB = briefingRoom.Database.GetEntry<DBEntryCoalition>(template.GetCoalitionID(side));
             if (unitsCoalitionDB == null) return new List<string>();
 
             List<string> units = new();
@@ -62,15 +62,15 @@ namespace BriefingRoom4DCS.Generator
 
             var allowStatic = unitCategory == UnitCategory.Static;
             for (int i = 0; i < airDefenseUnitsCount; i++)
-                units.AddRange(unitsCoalitionDB.GetRandomUnits(langKey, families, template.ContextDecade, 1, template.Mods, template.OptionsUnitBanList, template.OptionsMission.Contains("AllowLowPoly"),  template.OptionsMission.Contains("BlockSuppliers"),  allowStatic, country).Item2);
+                units.AddRange(unitsCoalitionDB.GetRandomUnits(briefingRoom, families, template.ContextDecade, 1, template.Mods, template.OptionsUnitBanList, template.OptionsMission.Contains("AllowLowPoly"),  template.OptionsMission.Contains("BlockSuppliers"),  allowStatic, country).Item2);
 
             return units.ToList();
         }
         
-        internal static Tuple<Country, List<string>> GetNeutralRandomUnits(string langKey, List<UnitFamily> families, List<Country> IgnoreCountries, Decade decade, int count, List<string> unitMods, bool allowLowPolly, List<string> unitBanList, Country? requiredCountry = null)
+        internal static Tuple<Country, List<string>> GetNeutralRandomUnits(IDatabase database, string langKey, List<UnitFamily> families, List<Country> IgnoreCountries, Decade decade, int count, List<string> unitMods, bool allowLowPolly, List<string> unitBanList, Country? requiredCountry = null)
         {
             // Count is zero, return an empty array.
-            if (count < 1) throw new BriefingRoomException(langKey,"AskingForNoUnits");
+            if (count < 1) throw new BriefingRoomException(database, langKey,"AskingForNoUnits");
             if (families.Select(x => x.GetDCSUnitCategory()).Any(x => x != families.First().GetDCSUnitCategory())) {
                 families = Toolbox.RandomFrom(families.GroupBy(x => x.GetDCSUnitCategory()).ToList()).ToList();
             }
@@ -81,7 +81,7 @@ namespace BriefingRoom4DCS.Generator
             
             foreach (Country country in Enum.GetValues(typeof(Country)).Cast<Country>().Where(x => !IgnoreCountries.Contains(x)).ToList())
                 validUnits[country] = (
-                        from DBEntryJSONUnit unit in Database.Instance.GetAllEntries<DBEntryJSONUnit>()
+                        from DBEntryJSONUnit unit in database.GetAllEntries<DBEntryJSONUnit>()
                         where !unitBanList.Contains(unit.ID) && unit.Families.Intersect(families).ToList().Count > 0 && unit.Operators.ContainsKey(country) &&
                             (string.IsNullOrEmpty(unit.Module) || unitMods.Contains(unit.Module, StringComparer.InvariantCultureIgnoreCase) || DBEntryDCSMod.CORE_MODS.Contains(unit.Module, StringComparer.InvariantCultureIgnoreCase)) &&
                             (unit.Operators[country].start <= decade) && (unit.Operators[country].end >= decade) &&
@@ -146,7 +146,7 @@ namespace BriefingRoom4DCS.Generator
             return list;
         }
 
-        internal static string GenerateCampaignName(string langKey, string desiredName)
+        internal static string GenerateCampaignName(IDatabase database, string langKey, string desiredName)
         {
             // Try to get the provided custom mission name.
             string missionName = (desiredName ?? "").ReplaceAll("", "\r", "\n", "\t").Trim();
@@ -154,15 +154,15 @@ namespace BriefingRoom4DCS.Generator
             // No custom name found, generate one.
             if (string.IsNullOrEmpty(missionName))
             {
-                missionName = Database.Instance.Common.Names.CampaignNameTemplate.Get(langKey);
+                missionName = database.Common.Names.CampaignNameTemplate.Get(langKey);
                 for (int i = 0; i < DBCommonNames.MISSION_NAMES_PART_COUNT; i++)
-                    missionName = missionName.Replace($"$P{i + 1}$", Toolbox.RandomFrom(Database.Instance.Common.Names.MissionNameParts[i].Get(langKey).Split(",")));
+                    missionName = missionName.Replace($"$P{i + 1}$", Toolbox.RandomFrom(database.Common.Names.MissionNameParts[i].Get(langKey).Split(",")));
             }
 
             return missionName;
         }
 
-        internal static string GenerateMissionName(string langKey, string desiredName)
+        internal static string GenerateMissionName(IDatabase database, string langKey, string desiredName)
         {
             // Try to get the provided custom mission name.
             string missionName = (desiredName ?? "").ReplaceAll("", "\r", "\n", "\t").Trim();
@@ -170,9 +170,9 @@ namespace BriefingRoom4DCS.Generator
             // No custom name found, generate one.
             if (string.IsNullOrEmpty(missionName))
             {
-                missionName = Database.Instance.Common.Names.MissionNameTemplate.Get(langKey);
+                missionName = database.Common.Names.MissionNameTemplate.Get(langKey);
                 for (int i = 0; i < DBCommonNames.MISSION_NAMES_PART_COUNT; i++)
-                    missionName = missionName.Replace($"$P{i + 1}$", Toolbox.RandomFrom(Database.Instance.Common.Names.MissionNameParts[i].Get(langKey).Split(",")));
+                    missionName = missionName.Replace($"$P{i + 1}$", Toolbox.RandomFrom(database.Common.Names.MissionNameParts[i].Get(langKey).Split(",")));
             }
 
             return missionName;
@@ -314,10 +314,10 @@ namespace BriefingRoom4DCS.Generator
             return (int)(radioFrequency * 1000000.0);
         }
 
-        internal static void CheckDBForMissingEntry<T>(string id, bool allowEmpty = false) where T : DBEntry, new()
+        internal static void CheckDBForMissingEntry<T>(IDatabase database, string id, bool allowEmpty = false) where T : DBEntry, new()
         {
             if (string.IsNullOrEmpty(id) && allowEmpty) return;
-            if (!Database.Instance.EntryExists<T>(id)) throw new BriefingRoomException("en","DBNotFound", typeof(T).Name, id);
+            if (!database.EntryExists<T>(id)) throw new BriefingRoomRawException($"Database entry {typeof(T).Name} with ID \"{id}\" not found.");
         }
 
         internal static string ParseRandomString(string randomString, DCSMission mission = null)
@@ -368,15 +368,15 @@ namespace BriefingRoom4DCS.Generator
             return groupName;
         }
 
-        internal static string GetGroupName(string langKey, int groupID, UnitFamily family, Side side, bool isUsingSkynet)
+        internal static string GetGroupName(IDatabase database, string langKey, int groupID, UnitFamily family, Side side, bool isUsingSkynet)
         {
-            string name = ParseRandomString(Database.Instance.Common.Names.UnitGroups[(int)family].Get(langKey));
+            string name = ParseRandomString(database.Common.Names.UnitGroups[(int)family].Get(langKey));
 
             int fakeGroupNumber = groupID * 10 + Toolbox.RandomInt(1, 10);
             name = name.Replace("$N$", fakeGroupNumber.ToString(NumberFormatInfo.InvariantInfo));
             name = name.Replace("$NTH$", Toolbox.GetOrdinalAdjective(fakeGroupNumber));
             if (string.IsNullOrEmpty(name))
-                throw new BriefingRoomException(langKey, "NoEmptyGroupName", family);
+                throw new BriefingRoomException(database, langKey, "NoEmptyGroupName", family);
             if (isUsingSkynet)
                 return SetSkyNetPrefix(name, family, side);
             return name;

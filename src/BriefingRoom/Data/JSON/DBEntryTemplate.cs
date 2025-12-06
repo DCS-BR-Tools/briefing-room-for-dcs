@@ -37,16 +37,16 @@ namespace BriefingRoom4DCS.Data
         internal UnitFamily Family { get; init; }
         internal string Module { get; init; }
 
-        protected override bool OnLoad(string o)
+        protected override bool OnLoad(string iniFilePath)
         {
             throw new NotImplementedException();
         }
 
-        internal static Dictionary<string, DBEntry> LoadJSON(string filepath, DatabaseLanguage LangDB)
+        internal static Dictionary<string, DBEntry> LoadJSON(IDatabase database, string filepath, DatabaseLanguage LangDB)
         {
             var itemMap = new Dictionary<string, DBEntry>(StringComparer.InvariantCulture);
-            var data = JsonConvert.DeserializeObject<List<BriefingRoom4DCS.Data.JSON.Template>>(File.ReadAllText(filepath));
-            var supportData = JsonConvert.DeserializeObject<List<BriefingRoom4DCS.Data.JSON.TemplateBRInfo>>(File.ReadAllText($"{filepath.Replace(".json", "")}BRInfo.json"))
+            var data = JsonConvert.DeserializeObject<List<JSON.Template>>(File.ReadAllText(filepath));
+            var supportData = JsonConvert.DeserializeObject<List<JSON.TemplateBRInfo>>(File.ReadAllText($"{filepath.Replace(".json", "")}BRInfo.json"))
                 .ToDictionary(x => x.type, x => x);
             foreach (var template in data)
             {
@@ -75,13 +75,13 @@ namespace BriefingRoom4DCS.Data
                     Module = supportInfo.module
                 };
 
-                var units = entry.Units.Where(x => Database.Instance.GetEntry<DBEntryJSONUnit>(x.DCSID) == null).Select(x => x.DCSID).ToList();
+                var units = entry.Units.Where(x => database.GetEntry<DBEntryJSONUnit>(x.DCSID) == null).Select(x => x.DCSID).ToList();
                 if (units.Count > 0)
                 {
                     BriefingRoom.PrintToLog($"{id} has units not in data: {string.Join(',', units)}", LogMessageErrorLevel.Warning);
                     continue;
                 }
-                var missingModuleRefs = entry.Units.Select(x => Database.Instance.GetEntry<DBEntryJSONUnit>(x.DCSID).Module).Where(x => !String.IsNullOrEmpty(x) && x != entry.Module && !DBEntryDCSMod.CORE_MODS.Contains(x)).Distinct().ToList();
+                var missingModuleRefs = entry.Units.Select(x => database.GetEntry<DBEntryJSONUnit>(x.DCSID).Module).Where(x => !String.IsNullOrEmpty(x) && x != entry.Module && !DBEntryDCSMod.CORE_MODS.Contains(x)).Distinct().ToList();
                 if (missingModuleRefs.Count > 0)
                 {
                     BriefingRoom.PrintToLog($"{id} missing module refs in BRInfo data: {string.Join(',', missingModuleRefs)}", LogMessageErrorLevel.Warning);

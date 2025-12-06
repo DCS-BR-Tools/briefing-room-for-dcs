@@ -1,7 +1,7 @@
 @using BriefingRoom4DCS.GUI.Common.Shared.Inputs.FlightGroups
 @using BriefingRoom4DCS.GUI.Utils
 @using BriefingRoom4DCS.Template
-@inject BriefingRoom4DCS.BriefingRoom briefingRoom
+@inject BriefingRoom4DCS.IBriefingRoom briefingRoom
 
 <div id="flight-groups" class="generator-block">
     <h3>@briefingRoom.Translate("StrikePackages")</h3>
@@ -70,7 +70,7 @@
 
     private void AddPackage()
     {
-        MissionTemplatePackage package = new();
+        MissionTemplatePackage package =  new(briefingRoom.Database);
         packageTab = package;
         package.Alias = BriefingRoom.GetAlias(Template.AircraftPackages.Count);
         Template.AircraftPackages.Add(package);

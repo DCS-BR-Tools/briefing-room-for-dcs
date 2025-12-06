@@ -64,12 +64,12 @@ namespace BriefingRoom4DCS.Data
                 var familyOptions = unitLocation.UnitTypes.Intersect(familyMap.Keys).ToList();
                 if (familyOptions.Count == 0)
                 {
-                    throw new BriefingRoomException("en", $"Unit type {string.Join(",", unitLocation.UnitTypes)} not found in family map.");
+                    throw new BriefingRoomRawException($"Unit type {string.Join(",", unitLocation.UnitTypes)} not found in family map.");
                 }
                 var options = familyOptions.SelectMany(x => familyMap[x]).ToList();
                 if (options.Count == 0)
                 {
-                    throw new BriefingRoomException("en", $"Unit type {string.Join(",", unitLocation.UnitTypes)} has no DCSID in family map.");
+                    throw new BriefingRoomRawException($"Unit type {string.Join(",", unitLocation.UnitTypes)} has no DCSID in family map.");
                 }
 
                 var unitID = Toolbox.RandomFrom(options);

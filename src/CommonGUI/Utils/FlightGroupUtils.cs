@@ -1,3 +1,4 @@
+using BriefingRoom4DCS.Data;
 using BriefingRoom4DCS.Template;
 
 namespace BriefingRoom4DCS.GUI.Utils
@@ -11,17 +12,17 @@ namespace BriefingRoom4DCS.GUI.Utils
             Tab = var;
         }
 
-        internal void AddFlightGroup(IBaseTemplate Template)
+        internal void AddFlightGroup(IDatabase database, IBaseTemplate Template)
         {
-            MissionTemplateFlightGroup newflight = new();
+            MissionTemplateFlightGroup newflight = new(database);
             newflight.Alias = BriefingRoom.GetAlias(Template.PlayerFlightGroups.Count);
             Template.PlayerFlightGroups.Add(newflight);
             Tab = newflight;
         }
 
-        internal void CloneFlightGroup(MissionTemplateFlightGroup flight, IBaseTemplate Template)
+        internal void CloneFlightGroup(IDatabase database, MissionTemplateFlightGroup flight, IBaseTemplate Template)
         {
-            MissionTemplateFlightGroup newflight = new()
+            MissionTemplateFlightGroup newflight = new(database)
             {
                 Aircraft = flight.Aircraft,
                 AIWingmen = flight.AIWingmen,

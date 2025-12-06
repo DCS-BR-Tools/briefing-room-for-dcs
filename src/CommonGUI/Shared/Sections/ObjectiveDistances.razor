@@ -1,7 +1,7 @@
 @using BriefingRoom4DCS.GUI.Common.Shared.Inputs.Objectives
 @using BriefingRoom4DCS.GUI.Utils
 @using BriefingRoom4DCS.Template
-@inject BriefingRoom4DCS.BriefingRoom briefingRoom
+@inject BriefingRoom4DCS.IBriefingRoom briefingRoom
 <div class="generator-group flex-justify-spaced flex-margin-fix">
     <MinMax Label="ObjectiveDistance" @bind-MinValue="Template.FlightPlanObjectiveDistanceMin" @bind-MaxValue="Template.FlightPlanObjectiveDistanceMax"/>
     <MinMax Label="ObjectiveSeperation" @bind-MinValue="Template.FlightPlanObjectiveSeparationMin" @bind-MaxValue="Template.FlightPlanObjectiveSeparationMax"/>

@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Blazored.LocalStorage;
+using BriefingRoom4DCS.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -38,7 +39,8 @@ namespace BriefingRoom4DCS.GUI.Web
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
             });
             services.Configure<HostOptions>(opts => opts.ShutdownTimeout = TimeSpan.FromSeconds(2));
-            services.AddScoped<BriefingRoom>();
+            services.AddSingleton<IDatabase, Database>();
+            services.AddScoped<IBriefingRoom, BriefingRoom>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

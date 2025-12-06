@@ -70,12 +70,12 @@ namespace BriefingRoom4DCS.Data
         internal double Width { get; init; }
         internal double Length { get; init; }
 
-        protected override bool OnLoad(string o)
+        protected override bool OnLoad(string iniFilePath)
         {
             throw new NotImplementedException();
         }
 
-        internal static Dictionary<string, DBEntry> LoadJSON(string filepath, DatabaseLanguage LangDB)
+        internal static Dictionary<string, DBEntry> LoadJSON(IDatabase database, string filepath, DatabaseLanguage LangDB)
         {
             var itemMap = new Dictionary<string, DBEntry>(StringComparer.InvariantCulture);
             var data = new List<Aircraft>();
@@ -141,7 +141,7 @@ namespace BriefingRoom4DCS.Data
                     LowPolly = supportInfo.lowPolly
                 };
                 DBaircraft.GetDCSPayloads();
-                DBaircraft.ApplyPayloadDates(ref missingCSLIDcount);
+                DBaircraft.ApplyPayloadDates(database, ref missingCSLIDcount);
                 DBaircraft.GetDCSLiveries();
                 itemMap.Add(id, DBaircraft);
 
@@ -294,7 +294,7 @@ namespace BriefingRoom4DCS.Data
 
         }
 
-        private void ApplyPayloadDates(ref Dictionary<string, Tuple<int, Decade>> missingCLSIDMap)
+        private void ApplyPayloadDates(IDatabase database, ref Dictionary<string, Tuple<int, Decade>> missingCLSIDMap)
         {
             if (Payloads.Count == 0)
                 return;
@@ -306,7 +306,7 @@ namespace BriefingRoom4DCS.Data
                 {
                     if (pylon.CLSID == null || pylon.CLSID == "")
                         continue;
-                    var info = Database.Instance.GetEntry<DBEntryWeaponByDecade>(pylon.CLSID);
+                    var info = database.GetEntry<DBEntryWeaponByDecade>(pylon.CLSID);
                     if (info == null)
                     {
                         var youngestDecade = Operators.Values.Select(x => x.start).Min();

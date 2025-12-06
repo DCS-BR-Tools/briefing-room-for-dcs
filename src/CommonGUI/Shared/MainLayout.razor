@@ -4,7 +4,7 @@
 @inject IJSRuntime JSRuntime
 @inject NavigationManager navigationManager
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
-@inject BriefingRoom4DCS.BriefingRoom briefingRoom
+@inject BriefingRoom4DCS.IBriefingRoom briefingRoom
 <CascadingValue Value="this">
     <div class="page">
         <div class="sidebar">
@@ -39,9 +39,9 @@
                                 alt="poeditor.com" /></a></label>
                     <select class="form-control" value=@briefingRoom.LanguageKey
                         @onchange="eventArgs => SetLanguage((string)eventArgs.Value)">
-                        @foreach (var key in BriefingRoom.AvailableLanguagesMap.Keys)
+                        @foreach (var key in briefingRoom.Database.Language.AvailableLanguagesMap.Keys)
                         {
-                            <option value="@key">@BriefingRoom.AvailableLanguagesMap[key]</option>
+                            <option value="@key">@briefingRoom.Database.Language.AvailableLanguagesMap[key]</option>
                         }
                     </select>
                 </div>
@@ -195,7 +195,7 @@
 
     public void ReloadDatabase()
     {
-        BriefingRoom.ReloadDatabase();
+        briefingRoom.ReloadDatabase();
         navigationManager.NavigateTo(navigationManager.Uri, true);
     }
 }
