@@ -84,7 +84,11 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                         _ => groupLua
                     };
 
+            } else if (objectiveTargetUnitFamily == UnitFamily.HelicopterTransport || objectiveTargetUnitFamily == UnitFamily.HelicopterUtility)
+            {
+                groupLua = "HeloCombatDrop";
             }
+            
             GroupInfo? VIPGroupInfo = UnitGenerator.AddUnitGroup(
                 briefingRoom,
                 ref mission,

@@ -1,0 +1,61 @@
+lateActivation: true
+modulation: $RADIOBAND$
+task: Transport
+radioSet: true
+uncontrolled: false
+taskSelected: true
+routeRelativeTOT: true
+waypoints:
+  - alt: $ALTITUDE$
+    action: Turning Point
+    speed: $SPEED$
+    tasks:
+      - id: Option
+        parameters:
+          wrapped: true
+          value: 4
+          name: 18
+      - id: Option
+        parameters:
+          wrapped: true
+          value: 3
+          name: 0
+      - id: Option
+        parameters:
+          wrapped: true
+          value: 5
+          name: 1
+      - id: Option
+        parameters:
+          wrapped: true
+          value: 3
+          name: 1
+    type: Turning Point
+    etaLocked: true
+    speedLocked: true
+    y: $GROUPY$
+    x: $GROUPX$
+  - alt: $ALTITUDE$
+    action: Turning Point
+    speed: $SPEED$
+    tasks:
+      - id: Land
+        parameters:
+          direction: 0
+          directionEnabled: false
+          combatLandingFlag: true
+          duration: 30
+          durationFlag: true
+          y: $GROUPY2$
+          x: $GROUPX2$
+    type: Turning Point
+    etaLocked: false
+    speedLocked: true
+    y: $GROUPY2$
+    x: $GROUPX2$
+groupId: $GROUPID$
+hidden: $HIDDEN$
+y: $GROUPY$
+x: $GROUPX$
+name: $NAME$
+frequency: $RADIOFREQUENCY$
