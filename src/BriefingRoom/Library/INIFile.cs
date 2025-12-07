@@ -190,9 +190,9 @@ namespace BriefingRoom4DCS
         {
             T[] enumArray = GetValueArray<T>(section, key, separator).Distinct().ToArray();
 
-            int enumVal = 0;
+            long enumVal = 0;
             foreach (T e in enumArray)
-                enumVal |= Convert.ToInt32(e);
+                enumVal |= Convert.ToInt64(e);
 
             return (T)(object)enumVal;
         }

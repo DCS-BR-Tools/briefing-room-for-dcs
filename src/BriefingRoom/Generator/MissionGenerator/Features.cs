@@ -271,6 +271,15 @@ namespace BriefingRoom4DCS.Generator.Mission
                 {
                     coordinates = coordinates.CreateNearRandom(50 * Toolbox.NM_TO_METERS, 100 * Toolbox.NM_TO_METERS);
                     coordinates2 = coordinates.CreateNearRandom(50 * Toolbox.NM_TO_METERS, 100 * Toolbox.NM_TO_METERS);
+                    if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.DestinationSpawnPoint)) {
+                        var coordinates2Spawn = SpawnPointSelector.GetNearestSpawnPoint(mission, featureDB.UnitGroupValidSpawnPoints, coordinates);
+                        if (!coordinates2Spawn.HasValue)
+                        {
+                            briefingRoom.PrintTranslatableWarning("NoExtraGroupSpawnPoint", featureDB.UIDisplayName.Get(mission.LangKey));
+                            continue;
+                        }
+                        coordinates2 = coordinates2Spawn.Value;
+                    }
                     extraSettings["GroupX2"] = coordinates2.X;
                     extraSettings["GroupY2"] = coordinates2.Y;
                 }

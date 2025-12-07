@@ -25,7 +25,7 @@ using System;
 namespace BriefingRoom4DCS.Data
 {
     [Flags]
-    internal enum FeatureUnitGroupFlags
+    internal enum FeatureUnitGroupFlags: long
     {
         EmbeddedAirDefense = 2,
 
@@ -68,7 +68,8 @@ namespace BriefingRoom4DCS.Data
         TimedAircraftActivation = 536870912,
         Intercept = 1073741824,
         FireWithinThreatRange = 1073741825,
-        ObjectiveTargetable,
-        DestinationAirbase
+        ObjectiveTargetable = 2147483648,
+        DestinationAirbase = 4294967296,
+        DestinationSpawnPoint = 8589934592,
     }
 }
