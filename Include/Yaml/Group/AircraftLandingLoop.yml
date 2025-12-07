@@ -1,0 +1,70 @@
+lateActivation: true
+modulation: $RADIOBAND$
+task: Nothing
+radioSet: true
+taskSelected: true
+uncontrolled: false
+routeRelativeTOT: true
+waypoints:
+  - alt: $ALTITUDE$
+    action: From Parking Area Hot
+    speed: $SPEED$
+    tasks:
+      - id: Option
+        parameters:
+          wrapped: true
+          value: 4
+          name: 18
+      - id: Option
+        parameters:
+          wrapped: true
+          value: 3
+          name: 0
+      - id: Option
+        parameters:
+          wrapped: true
+          value: 5
+          name: 1
+      - id: Option
+        parameters:
+          wrapped: true
+          value: 3
+          name: 1
+    type: TakeOffParkingHot
+    etaLocked: true
+    speedLocked: true
+    airdromeId: $GROUPAIRBASEID$
+    y: $GROUPY$
+    x: $GROUPX$
+  - alt: $ALTITUDE$
+    action: LandingReFuAr
+    speed: $SPEED$
+    type: LandingReFuAr
+    etaLocked: false
+    speedLocked: true
+    airdromeId: $GROUPAIRBASEID$
+    timeReFuAr: 5
+    y: $GROUPY$
+    x: $GROUPX$
+  - alt: $ALTITUDE$
+    action: LandingReFuAr
+    speed: $SPEED$
+    tasks:
+      - id: SwitchWaypoint
+        parameters:
+          wrapped: true
+          goToWaypointIndex: 1
+          fromWaypointIndex: 3
+    type: LandingReFuAr
+    etaLocked: false
+    speedLocked: true
+    airdromeId: $ENDAIRBASEID$
+    timeReFuAr: 5
+    y: $GROUPY2$
+    x: $GROUPX2$
+groupId: $GROUPID$
+hidden: $HIDDEN$
+y: $GROUPY$
+x: $GROUPX$
+name: $NAME$
+frequency: $RADIOFREQUENCY$

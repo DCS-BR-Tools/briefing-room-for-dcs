@@ -93,7 +93,7 @@ namespace BriefingRoom4DCS.Mission.DCSLuaObjects
             }
             catch (Exception e)
             {
-                throw new BriefingRoomRawException($"Failed Deserializing yaml: {e.InnerException.Message} - {yaml}");
+                throw new BriefingRoomRawException($"Failed Deserializing yaml: {e.Message} - {yaml}");
             }
         }
 

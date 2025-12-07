@@ -129,6 +129,20 @@ namespace BriefingRoom4DCS.Generator.Mission
                     throw;
                 }
 
+                if(flags.HasFlag(FeatureUnitGroupFlags.DestinationAirbase))
+                {
+                     var coalition = GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, groupSide, true).Value;
+                     var (airbase, _, _) = SpawnPointSelector.GetAirbaseAndParking(
+                    briefingRoom,
+                    mission, coordinates2.Value, unitCount,
+                    coalition,
+                    (DBEntryAircraft)unitDB, [(int)extraSettings.GetValueOrDefault("GroupAirbaseID", -1)]);
+                    extraSettings["ENDAIRBASEID"] = airbase.DCSID;
+                    extraSettings["GroupX2"] = airbase.Coordinates.X;
+                    extraSettings["GroupY2"] = airbase.Coordinates.Y;
+                    coordinates2 = airbase.Coordinates;
+                }
+
                 if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.FireWithinThreatRange))
                     SetFiringCoordinates(ref mission, coordinatesValue, unitDB, ref extraSettings);
 
@@ -322,6 +336,20 @@ namespace BriefingRoom4DCS.Generator.Mission
                 {
                     SpawnPointSelector.RecoverSpawnPoint(ref mission, spawnCoords.Value);
                     continue;
+                }
+
+                if(flags.HasFlag(FeatureUnitGroupFlags.DestinationAirbase))
+                {
+                     var coalition = GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, groupSide, true).Value;
+                     var (airbase, _, _) = SpawnPointSelector.GetAirbaseAndParking(
+                    briefingRoom,
+                    mission, coordinates2, unitCount,
+                    coalition,
+                    (DBEntryAircraft)unitDB, [(int)extraSettings.GetValueOrDefault("GroupAirbaseID", -1)]);
+                    extraSettings["ENDAIRBASEID"] = airbase.DCSID;
+                    extraSettings["GroupX2"] = airbase.Coordinates.X;
+                    extraSettings["GroupY2"] = airbase.Coordinates.Y;
+                    coordinates2 = airbase.Coordinates;
                 }
 
                 if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.FireWithinThreatRange))

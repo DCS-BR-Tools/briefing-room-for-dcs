@@ -34,6 +34,7 @@ namespace BriefingRoom4DCS.Mission.DCSLuaObjects
         public int LinkUnit { get; set; }
 
         public int HelipadId { get; set; }
+        public int TimeReFuAr { get; set; }
 
         internal Coordinates Coordinates { get { return new Coordinates(X, Y); } }
 
@@ -68,6 +69,8 @@ namespace BriefingRoom4DCS.Mission.DCSLuaObjects
                 obj.Add("linkUnit", LinkUnit);
             if (HelipadId != default)
                 obj.Add("helipadId", HelipadId);
+            if (TimeReFuAr != default)
+                obj.Add("timeReFuAr", TimeReFuAr);
             return LuaSerializer.Serialize(obj);
         }
 
