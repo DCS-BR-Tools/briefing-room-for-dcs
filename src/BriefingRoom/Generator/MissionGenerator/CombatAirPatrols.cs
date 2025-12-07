@@ -131,7 +131,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                         mission.MapData.AddIfKeyUnused($"AIRBASE_AI_{side}_NAME_{airbase.UIDisplayName.Get(mission.LangKey)}", new List<double[]> { airbase.Coordinates.ToArray() });
                     } catch (BriefingRoomRawException e)
                     {
-                        briefingRoom.PrintTranslatableWarning(mission.LangKey, "CAPCannotBeSpawnedAirport", e.Message);
+                        briefingRoom.PrintTranslatableWarning("CAPCannotBeSpawnedAirport", e.Message);
                     }
 
                 }
@@ -140,7 +140,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 GroupInfo? groupInfo = UnitGenerator.AddUnitGroup(briefingRoom, ref mission,units, side, unitDB.Families.First(), commonCAPDB.LuaGroup, commonCAPDB.LuaUnit, spawnpointCoordinates, groupFlags, extraSettings);
 
                 if (!groupInfo.HasValue) // Failed to generate a group
-                    briefingRoom.PrintTranslatableWarning(mission.LangKey, "FailedToFindCAPUnits", mission.LangKey, coalition);
+                    briefingRoom.PrintTranslatableWarning("FailedToFindCAPUnits", mission.LangKey, coalition);
 
                 SetCarrier(ref mission, side, ref groupInfo);
 

@@ -132,7 +132,7 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                         var unitDB = briefingRoom.Database.GetEntry<DBEntryJSONUnit>(unit.DCSID);
                         if (unitDB == null)
                         {
-                            briefingRoom.PrintTranslatableWarning(mission.LangKey, "UnitNotFoundInTemplate", unit.DCSID);
+                            briefingRoom.PrintTranslatableWarning("UnitNotFoundInTemplate", unit.DCSID);
                             continue;
                         }
                         var matchingFamilies = unitDB.Families.Intersect(unitMap.Keys).ToList();
@@ -449,7 +449,7 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                 DBEntryJSONUnit unitDB = briefingRoom.Database.GetEntry<DBEntryJSONUnit>(unitSet);
                 if (unitDB == null)
                 {
-                    briefingRoom.PrintTranslatableWarning(mission.LangKey, "UnitNotFound", unitSet);
+                    briefingRoom.PrintTranslatableWarning("UnitNotFound", unitSet);
                     continue;
                 }
                 dCSUnits.Add(AddUnit(
@@ -500,7 +500,7 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                 var unitDB = briefingRoom.Database.GetEntry<DBEntryJSONUnit>(unitSet);
                 if (unitDB == null)
                 {
-                    briefingRoom.PrintTranslatableWarning(mission.LangKey, "UnitNotFound", unitSet);
+                    briefingRoom.PrintTranslatableWarning("UnitNotFound", unitSet);
                     continue;
                 }
                 var groupHeading = GetGroupHeading(coordinates, extraSettings);

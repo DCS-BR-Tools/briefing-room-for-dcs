@@ -337,7 +337,7 @@ namespace BriefingRoom4DCS.Mission
             var extremeLimit = template.FlightPlanObjectiveDistanceMax * 1.7;
             var isTooFar = distance > extremeLimit;
             if (isTooFar)
-                briefingRoom.PrintTranslatableWarning(LangKey, "DistanceTooFar", distance, extremeLimit);
+                briefingRoom.PrintTranslatableWarning("DistanceTooFar", distance, extremeLimit);
             return isTooFar;
         }
 

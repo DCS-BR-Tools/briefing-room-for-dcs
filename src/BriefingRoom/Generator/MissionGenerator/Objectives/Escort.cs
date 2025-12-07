@@ -140,7 +140,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             var objectiveName = mission.WaypointNameGenerator.GetWaypointName();
             if (targetBehaviorDB.ID.EndsWith("OnRoads") && targetDB.UnitCategory.IsGroundMoving())
             {
-                briefingRoom.PrintTranslatableWarning(mission.LangKey, "EscortOnRoadsImperfect", objectiveName);
+                briefingRoom.PrintTranslatableWarning("EscortOnRoadsImperfect", objectiveName);
             }
 
             var objectiveWaypoints = new List<Waypoint>();

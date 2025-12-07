@@ -307,7 +307,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                             );
                     if (!spawnCoords.HasValue)
                     {
-                        briefingRoom.PrintTranslatableWarning(mission.LangKey, "NoExtraGroupSpawnPoint", featureDB.UIDisplayName.Get(mission.LangKey));
+                        briefingRoom.PrintTranslatableWarning("NoExtraGroupSpawnPoint", featureDB.UIDisplayName.Get(mission.LangKey));
                         continue;
                     }
                 }

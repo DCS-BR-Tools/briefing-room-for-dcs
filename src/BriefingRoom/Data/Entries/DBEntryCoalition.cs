@@ -193,10 +193,10 @@ namespace BriefingRoom4DCS.Data
                     return SelectValidUnits(briefingRoom, families, decade, unitMods, unitBanList, allowLowPolly, false, allowStatic, GetAllyCountries(decade), allowDefaults);
 
                 var blockSupplierString = !blockSuppliers ? briefingRoom.Translate("IncludeSupplierAllies", countryList.Where(x => x != Country.ALL).Count()) : briefingRoom.Translate( "NoBlockSuppliers");
-                briefingRoom.PrintTranslatableWarning(briefingRoom.LanguageKey, "NoUnitsOrSuppliersFound", UIDisplayName.Get(briefingRoom.LanguageKey), string.Join(", ", families), decade, string.Join(", ", Countries.Where(x => x != Country.ALL)), blockSupplierString);
+                briefingRoom.PrintTranslatableWarning("NoUnitsOrSuppliersFound", UIDisplayName.Get(briefingRoom.LanguageKey), string.Join(", ", families), decade, string.Join(", ", Countries.Where(x => x != Country.ALL)), blockSupplierString);
                 if (!allowLowPolly)
                 {
-                    briefingRoom.PrintTranslatableWarning(briefingRoom.LanguageKey, "NoUnitsHighQualityUnits", UIDisplayName.Get(briefingRoom.LanguageKey), string.Join(", ", families), decade);
+                    briefingRoom.PrintTranslatableWarning("NoUnitsHighQualityUnits", UIDisplayName.Get(briefingRoom.LanguageKey), string.Join(", ", families), decade);
                     return SelectValidUnits(briefingRoom, families, decade, unitMods, unitBanList, true, blockSuppliers, allowStatic, allyCountries, allowDefaults);
                 }
                 if (allowDefaults)

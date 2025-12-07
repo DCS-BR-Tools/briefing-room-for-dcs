@@ -430,13 +430,13 @@ namespace BriefingRoom4DCS.Generator.Mission
                 .HandleResult<DCSMission>(x => x.IsExtremeDistance(briefingRoom, template, out double distance))
                 .Or<BriefingRoomException>(x =>
                 {
-                    briefingRoom.PrintTranslatableWarning(briefingRoom.LanguageKey, "RecoverableError", x.Message);
+                    briefingRoom.PrintTranslatableWarning("RecoverableError", x.Message);
                     return true;
                 })
                 .Retry(3)
                 .Execute(() => Generate(briefingRoom, templateRecord));
             if (mission.IsExtremeDistance(briefingRoom, template, out double distance))
-                briefingRoom.PrintTranslatableWarning(briefingRoom.LanguageKey, "ExcessDistance", Math.Round(distance, 2));
+                briefingRoom.PrintTranslatableWarning("ExcessDistance", Math.Round(distance, 2));
 
             return mission;
         }

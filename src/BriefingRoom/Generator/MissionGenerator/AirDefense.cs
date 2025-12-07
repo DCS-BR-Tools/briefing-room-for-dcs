@@ -157,7 +157,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 // No spawn point found, stop here.
                 if (!spawnPoint.HasValue)
                 {
-                    briefingRoom.PrintTranslatableWarning(mission.LangKey, "NoSpawnPointForAirDefense", airDefenseRange);
+                    briefingRoom.PrintTranslatableWarning("NoSpawnPointForAirDefense", airDefenseRange);
                     return groupCount - i;
                 }
                 GroupInfo? groupInfo = UnitGenerator.AddUnitGroup(
