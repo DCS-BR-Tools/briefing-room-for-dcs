@@ -269,9 +269,9 @@ namespace BriefingRoom4DCS
         }
 
 
-        public void PrintTranslatableWarning( string key, params object[] args)
+        public void PrintTranslatableWarning(string key, params object[] args)
         {
-            PrintToLog(Translate(this.LanguageKey, key, args), LogMessageErrorLevel.Warning);
+            PrintToLog(Translate(key, args), LogMessageErrorLevel.Warning);
         }
 
 
