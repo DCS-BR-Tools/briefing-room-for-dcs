@@ -65,18 +65,25 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                     groupFlags |= GroupFlags.ImmediateAircraftSpawn;
             }
             var groupLua = targetBehaviorDB.GroupLua[(int)targetDB.DCSUnitCategory];
-            if (airbaseId > 0 && mission.AirbaseDB.Find(x => x.DCSID == airbaseId).Coalition == GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, Side.Enemy, true) && objectiveTargetUnitFamily.GetUnitCategory().IsAircraft())
+            if (originAirbaseId > 0)
             {
-                groupLua = objectiveTargetUnitFamily switch
-                {
-                    UnitFamily.PlaneAttack => "AircraftBomb",
-                    UnitFamily.PlaneBomber => "AircraftBomb",
-                    UnitFamily.PlaneStrike => "AircraftBomb",
-                    UnitFamily.PlaneFighter => "AircraftCAP",
-                    UnitFamily.PlaneInterceptor => "AircraftCAP",
-                    UnitFamily.HelicopterAttack => "AircraftBomb",
-                    _ => groupLua
-                };
+                extraSettings["HotStart"] = true;
+            }
+            if (airbaseId > 0 && objectiveTargetUnitFamily.GetUnitCategory().IsAircraft())
+            {
+                groupLua = "AircraftLanding";
+                if (mission.AirbaseDB.Find(x => x.DCSID == airbaseId).Coalition == GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, Side.Enemy, true))
+                    groupLua = objectiveTargetUnitFamily switch
+                    {
+                        UnitFamily.PlaneAttack => "AircraftBomb",
+                        UnitFamily.PlaneBomber => "AircraftBomb",
+                        UnitFamily.PlaneStrike => "AircraftBomb",
+                        UnitFamily.PlaneFighter => "AircraftCAP",
+                        UnitFamily.PlaneInterceptor => "AircraftCAP",
+                        UnitFamily.HelicopterAttack => "AircraftBomb",
+                        _ => groupLua
+                    };
+
             }
             GroupInfo? VIPGroupInfo = UnitGenerator.AddUnitGroup(
                 briefingRoom,
