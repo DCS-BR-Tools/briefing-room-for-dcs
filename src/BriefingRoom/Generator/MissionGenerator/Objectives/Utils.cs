@@ -44,17 +44,18 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             );
         }
 
-        internal static Coordinates PlaceInAirbase(IBriefingRoom briefingRoom, ref DCSMission mission, Dictionary<string, object> extraSettings, DBEntryObjectiveTargetBehavior targetBehaviorDB, Coordinates objectiveCoordinates, int unitCount, DBEntryJSONUnit unitDB)
+        internal static Coordinates PlaceInAirbase(IBriefingRoom briefingRoom, ref DCSMission mission, Dictionary<string, object> extraSettings, DBEntryObjectiveTargetBehavior targetBehaviorDB, Coordinates objectiveCoordinates, int unitCount, DBEntryJSONUnit unitDB, bool Friendly = false)
         {
             int airbaseID = 0;
             var parkingSpotIDsList = new List<int>();
             var parkingSpotCoordinatesList = new List<Coordinates>();
             var enemyCoalition = mission.TemplateRecord.ContextPlayerCoalition.GetEnemy();
+            var allyCoalition = mission.TemplateRecord.ContextPlayerCoalition;
             var playerAirbaseDCSID = mission.PlayerAirbase.DCSID;
             var spawnAnywhere = mission.TemplateRecord.SpawnAnywhere;
             var targetAirbaseOptions =
                 (from DBEntryAirbase airbaseDB in mission.AirbaseDB
-                 where airbaseDB.DCSID != playerAirbaseDCSID && (spawnAnywhere || airbaseDB.Coalition == enemyCoalition)
+                 where airbaseDB.DCSID != playerAirbaseDCSID && (spawnAnywhere ||  (airbaseDB.Coalition == (Friendly ? allyCoalition : enemyCoalition)))
                  select airbaseDB).OrderBy(x => x.Coordinates.GetDistanceFrom(objectiveCoordinates));
 
             BriefingRoomRawException exception = null;
