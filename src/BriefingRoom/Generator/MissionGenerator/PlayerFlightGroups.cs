@@ -247,8 +247,8 @@ namespace BriefingRoom4DCS.Generator.Mission
 
                 string waypointText =
                     allWaypoints.IndexOf(waypoint) + ": " + waypoint.Name + "\t" +
-                    (useImperialSystem ? $"{distanceFromLast * Toolbox.METERS_TO_NM:F0} nm" : $"{distanceFromLast / 1000.0:F0} Km") + "\t" +
-                    (useImperialSystem ? $"{totalDistance * Toolbox.METERS_TO_NM:F0} nm" : $"{totalDistance / 1000.0:F0} Km") + '\t' +
+                    (useImperialSystem ? $"{distanceFromLast * Toolbox.METERS_TO_NM:F0}nm" : $"{distanceFromLast / 1000.0:F0}Km") + "\t" +
+                    (useImperialSystem ? $"{totalDistance * Toolbox.METERS_TO_NM:F0}nm" : $"{totalDistance / 1000.0:F0}Km") + '\t' +
                     $"{heading} ({magHeading})";
 
                 mission.Briefing.AddItem(DCSMissionBriefingItemType.Waypoint, waypointText);
