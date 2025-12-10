@@ -30,7 +30,7 @@ namespace BriefingRoom4DCS.Generator.Mission
 
         internal static int GenerateWeather(IDatabase database, ref DCSMission mission)
         {
-            var baseAlt = mission.TemplateRecord.OptionsMission.Contains("SeaLevelRefCloud") ? 0.0 : mission.PlayerAirbase.Elevation;
+            var baseAlt = Math.Round(mission.TemplateRecord.OptionsMission.Contains("SeaLevelRefCloud") ? 0.0 : mission.PlayerAirbase.Elevation);
             if (mission.TemplateRecord.OptionsMission.Contains("HighCloud"))
                 baseAlt += 2000;
             DBEntryWeatherPreset weatherDB;
@@ -40,7 +40,10 @@ namespace BriefingRoom4DCS.Generator.Mission
                 weatherDB = database.GetEntry<DBEntryWeatherPreset>(mission.TemplateRecord.EnvironmentWeatherPreset);
 
             mission.SetValue("WeatherName", weatherDB.BriefingDescription.Get(mission.LangKey));
-            mission.SetValue("WeatherCloudsBase", weatherDB.CloudsBase.GetValue() + baseAlt);
+            var cloudBaseMeter = weatherDB.CloudsBase.GetValue() + baseAlt;
+            mission.SetValue("WeatherCloudsBase", cloudBaseMeter);
+            mission.SetValue("WeatherCloudsBaseFt", Math.Round(cloudBaseMeter * Toolbox.METERS_TO_FEET));
+            
             mission.SetValue("WeatherCloudsPreset", Toolbox.RandomFrom(weatherDB.CloudsPresets));
             mission.SetValue("WeatherCloudsThickness", weatherDB.CloudsThickness.GetValue());
             mission.SetValue("WeatherDust", weatherDB.Dust);
@@ -48,9 +51,13 @@ namespace BriefingRoom4DCS.Generator.Mission
             mission.SetValue("WeatherFog", weatherDB.Fog);
             mission.SetValue("WeatherFogThickness", weatherDB.FogThickness.GetValue());
             mission.SetValue("WeatherFogVisibility", weatherDB.FogVisibility.GetValue());
-            mission.SetValue("WeatherQNH", weatherDB.QNH.GetValue());
+            var QNH = weatherDB.QNH.GetValue();
+            mission.SetValue("WeatherQNH", QNH);
+            mission.SetValue("WeatherQNHhPa", Math.Round(QNH * 1.33322));
             mission.SetValue("WeatherTemperature", mission.TheaterDB.Temperature[int.Parse(mission.GetValue("DateMonth")) - 1].GetValue());
-            mission.SetValue("WeatherVisibility", weatherDB.Visibility.GetValue());
+            var visibilityMeter = weatherDB.Visibility.GetValue();
+            mission.SetValue("WeatherVisibility", visibilityMeter);
+            mission.SetValue("WeatherVisibilityKm", Math.Round(visibilityMeter / 1000.0));
 
             return weatherDB.Turbulence.GetValue();
         }
@@ -76,12 +83,13 @@ namespace BriefingRoom4DCS.Generator.Mission
                 windAverage += windSpeed;
 
                 mission.SetValue($"WeatherWindSpeed{i + 1}", windSpeed);
+                mission.SetValue($"WeatherWindSpeedKts{i + 1}", Math.Round(windSpeed * Toolbox.METERS_PER_SECOND_TO_KNOTS));
                 mission.SetValue($"WeatherWindDirection{i + 1}", windDirection);
             }
             windAverage /= 3;
 
             mission.SetValue($"WeatherWindName", windLevel.ToString()); // TODO: get name from attribute
-            mission.SetValue($"WeatherWindSpeedAverage", windAverage);
+            mission.SetValue($"WeatherWindSpeedAverage", Math.Round(windAverage * Toolbox.METERS_PER_SECOND_TO_KNOTS));
             mission.SetValue($"WeatherWindDirectionCardinal", GetCardinalWindDirection(int.Parse(mission.GetValue("WeatherWindDirection1"))));
 
             mission.SetValue("WeatherGroundTurbulence", briefingRoom.Database.Common.Wind[(int)windLevel].Turbulence.GetValue() + turbulenceFromWeather);

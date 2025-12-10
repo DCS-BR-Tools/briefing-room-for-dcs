@@ -16,7 +16,7 @@
     </li>
     <li class="nav-item">
         <a class="nav-link @(briefingTab == "Ground" ? "active" : "")" aria-current="page"
-            @onclick='() => briefingTab = "Ground"'>@briefingRoom.Translate("airbases") &
+            @onclick='() => briefingTab = "Ground"'>@briefingRoom.Translate("weather"), @briefingRoom.Translate("airbases") &
             @briefingRoom.Translate("JTAC")</a>
     </li>
     <li class="nav-item">
