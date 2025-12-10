@@ -66,14 +66,14 @@ namespace BriefingRoom4DCS.Data
 
             // Load entries into the database
             DBEntries.Clear();
-            PrepLoadEntries<DBEntryBriefingDescription>("LoadEntries", "BriefingDescriptions");
-            PrepLoadEntries<DBEntryFeatureMission>("LoadEntries", "MissionFeatures");
-            PrepLoadEntries<DBEntryOptionsMission>("LoadEntries", "OptionsMission");
-            PrepLoadEntries<DBEntryFeatureObjective>("LoadEntries", "ObjectiveFeatures");
-            PrepLoadEntries<DBEntryObjectiveTarget>("LoadEntries", "ObjectiveTargets");
-            PrepLoadEntries<DBEntryObjectiveTask>("LoadEntries", "ObjectiveTasks");
-            PrepLoadEntries<DBEntryObjectiveTargetBehavior>("LoadEntries", "ObjectiveTargetsBehaviors");
-            PrepLoadEntries<DBEntryObjectivePreset>("LoadEntries", "ObjectivePresets"); // Must be loaded after other DBEntryObjective*, as it depends on them
+            LoadEntries<DBEntryBriefingDescription>("BriefingDescriptions");
+            LoadEntries<DBEntryFeatureMission>("MissionFeatures");
+            LoadEntries<DBEntryOptionsMission>("OptionsMission");
+            LoadEntries<DBEntryFeatureObjective>("ObjectiveFeatures");
+            LoadEntries<DBEntryObjectiveTarget>("ObjectiveTargets");
+            LoadEntries<DBEntryObjectiveTask>("ObjectiveTasks");
+            LoadEntries<DBEntryObjectiveTargetBehavior>("ObjectiveTargetsBehaviors");
+            LoadEntries<DBEntryObjectivePreset>("ObjectivePresets"); // Must be loaded after other DBEntryObjective*, as it depends on them
             PrepLoadEntries<DBEntryTheater>("LoadEntries", "Theaters");
             PrepLoadEntries<DBEntryAirbase>("LoadJSONEntries", "TheatersAirbases");
             PrepLoadEntries<DBEntrySituation>("LoadJSONFolderEntries", "Situations");
