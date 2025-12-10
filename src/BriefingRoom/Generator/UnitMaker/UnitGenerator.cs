@@ -412,15 +412,22 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
 
             var dCSGroup = DCSGroup.YamlToGroup(groupYml);
 
-            if (unitFamily.GetUnitCategory().IsAircraft() && extraSettings.ContainsKey("GroupAirbaseID") && dCSGroup.Waypoints[0].AirdromeId == default)
-            {
-                dCSGroup.Waypoints[0].AirdromeId = (int)extraSettings.GetValueOrDefault("GroupAirbaseID", 0);
-                var isHotStart = extraSettings.ContainsKey("HotStart") || new List<UnitFamily> { UnitFamily.PlaneAWACS, UnitFamily.PlaneTankerBasket, UnitFamily.PlaneTankerBoom, UnitFamily.PlaneSEAD, UnitFamily.PlaneDrone }.Contains(unitFamily);
-                dCSGroup.Waypoints[0].Type = isHotStart ? "TakeOffParkingHot" : "TakeOffParking";
-                dCSGroup.Waypoints[0].Action = isHotStart ? "From Parking Area Hot" : "From Parking Area";
-                dCSGroup.LateActivation = false;
-                if (!isHotStart)
-                    dCSGroup.Uncontrolled = true;
+            if(unitFamily.GetUnitCategory().IsAircraft()) {
+
+                if (unitFamily.GetUnitCategory().IsAircraft() && extraSettings.ContainsKey("GroupAirbaseID") && dCSGroup.Waypoints[0].AirdromeId == default)
+                {
+                    dCSGroup.Waypoints[0].AirdromeId = (int)extraSettings.GetValueOrDefault("GroupAirbaseID", 0);
+                    var isHotStart = extraSettings.ContainsKey("HotStart") || new List<UnitFamily> { UnitFamily.PlaneAWACS, UnitFamily.PlaneTankerBasket, UnitFamily.PlaneTankerBoom, UnitFamily.PlaneSEAD, UnitFamily.PlaneDrone }.Contains(unitFamily);
+                    dCSGroup.Waypoints[0].Type = isHotStart ? "TakeOffParkingHot" : "TakeOffParking";
+                    dCSGroup.Waypoints[0].Action = isHotStart ? "From Parking Area Hot" : "From Parking Area";
+                    dCSGroup.LateActivation = false;
+                    if (!isHotStart)
+                        dCSGroup.Uncontrolled = true;
+                }
+                if(mission.TemplateRecord.OptionsMission.Contains("SilenceAI") && unitFamily != UnitFamily.PlaneAWACS && unitFamily != UnitFamily.PlaneTankerBasket && unitFamily != UnitFamily.PlaneTankerBoom)
+                {
+                   dCSGroup.Waypoints.First().Tasks.Insert(0, new DCSWrappedWaypointTask("Option", new Dictionary<string, object> { { "value", true }, { "name", 7 } }));
+                }
             }
 
             return dCSGroup;
