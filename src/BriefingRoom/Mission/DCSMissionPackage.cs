@@ -31,13 +31,15 @@ namespace BriefingRoom4DCS.Template
     internal sealed class DCSMissionStrikePackage
     {
         internal List<Waypoint> Waypoints { get; set; }
-        internal DBEntryAirbase Airbase { get; }
+        internal DBEntryAirbase StartAirbase { get; }
+        internal DBEntryAirbase DestinationAirbase { get; }
         internal int RecordIndex { get; }
 
-        internal DCSMissionStrikePackage(int recordIndex, DBEntryAirbase airbase)
+        internal DCSMissionStrikePackage(int recordIndex, DBEntryAirbase startAirbase, DBEntryAirbase destinationAirbase)
         {
             RecordIndex = recordIndex;
-            Airbase = airbase;
+            StartAirbase = startAirbase;
+            DestinationAirbase = destinationAirbase;
         }
     }
 }

@@ -45,7 +45,7 @@ namespace BriefingRoom4DCS.Generator
             if (mission.PlayerAirbaseDestination != null && mission.PlayerAirbaseDestination.DCSID != mission.PlayerAirbase.DCSID)
                 AddCTLDPickupZone(briefingRoom, ref mission, mission.PlayerAirbaseDestination.Coordinates);
             foreach (var package in mission.StrikePackages)
-                AddCTLDPickupZone(briefingRoom, ref mission, package.Airbase.Coordinates);
+                AddCTLDPickupZone(briefingRoom, ref mission, package.StartAirbase.Coordinates);
 
         }
 

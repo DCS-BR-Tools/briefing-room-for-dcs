@@ -18,7 +18,7 @@
         <InputDataBase ClassString="flex-block" Label=@briefingRoom.Translate("Situation")
             @bind-Value="Template.ContextSituation" DataBaseType="DatabaseEntryType.Situation"
             Grouping="@Template.ContextTheater" EmptOpt=@briefingRoom.Translate("Random")
-            CustomOpt="None (Spawn Anywhere),None" />
+            CustomOpt=@(new List<string>{briefingRoom.Translate("SpawnAnywhere")+",None"}) />
             @if (CampaignTemplate != null)
             {
                 <CheckboxWrapped row @bind-Value="@CampaignTemplate.StaticSituation" Label="StaticSituation" />
@@ -30,7 +30,7 @@
         EmptOpt=@briefingRoom.Translate("Random") />
     <InputDataBase ClassString="flex-block" Label=@briefingRoom.Translate("DestinationAirbase") @bind-Value="Template.FlightPlanTheaterDestinationAirbase"
         DataBaseType="DatabaseEntryType.Airbase" Grouping="@Template.ContextTheater"
-        EmptOpt=@briefingRoom.Translate("Random") CustomOpt=@(briefingRoom.Translate("HomeBase")+",home") />
+        EmptOpt=@briefingRoom.Translate("Random") CustomOpt=@(new List<string>{briefingRoom.Translate("HomeAirbase")+",home"}) />
     </div>
     @if (CampaignTemplate != null)
     {

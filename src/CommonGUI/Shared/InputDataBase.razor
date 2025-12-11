@@ -4,9 +4,9 @@
     <label>@Label</label>
     <InputSelect class="form-control" Value="Value" ValueExpression="@(()=>Value)"
         ValueChanged="@((string s) => ValueChangedChild(s))" disabled="@IsDisabled">
-        @if (!String.IsNullOrEmpty(CustomOpt))
+        @foreach (var opt in CustomOpt)
         {
-            <option value="@CustomOpt.Split(",")[1]">@CustomOpt.Split(",")[0]</option>
+            <option value="@opt.Split(",")[1]">@opt.Split(",")[0]</option>
         }
         @if (!String.IsNullOrEmpty(EmptOpt))
         {
@@ -33,7 +33,7 @@
     public string EmptOpt { get; set; } = "";
 
     [Parameter]
-    public string CustomOpt { get; set; } = "";
+    public List<string> CustomOpt { get; set; } = new List<string>();
 
     [Parameter]
     public bool HasDescription { get; set; } = false;
@@ -74,10 +74,9 @@
             litems = briefingRoom.GetDatabaseEntriesInfo(DataBaseType);
         if(litems.Count() == 0)
             return litems;
-        if (!litems.Select(x => x.ID).Contains(Value) && Value != "" && (string.IsNullOrEmpty(CustomOpt) || Value !=
-        CustomOpt.Split(",")[1]))
-            if (!string.IsNullOrEmpty(CustomOpt))
-                _ = ValueChangedChild(CustomOpt.Split(",")[1]);
+        if (!litems.Select(x => x.ID).Contains(Value) && Value != "" && (CustomOpt.Count() == 0 || !CustomOpt.Select(x => x.Split(",")[1]).Contains(Value)))
+            if (CustomOpt.Count() > 0)
+                _ = ValueChangedChild(CustomOpt[0].Split(",")[1]);
             else if (!string.IsNullOrEmpty(EmptOpt))
                 _ = ValueChangedChild("");
             else

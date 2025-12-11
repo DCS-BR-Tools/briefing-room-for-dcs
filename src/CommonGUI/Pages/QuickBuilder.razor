@@ -45,7 +45,7 @@
                     <InputEnum ClassString="flex-block" Label=@briefingRoom.Translate("PlayerSide")
                         @bind-Value="Template.ContextPlayerCoalition" EnumType="Coalition" />
                     <InputDataBase ClassString="flex-block" Label=@briefingRoom.Translate("Theater") @bind-Value="Template.ContextTheater" DataBaseType="DatabaseEntryType.Theater" />
-                    <InputDataBase ClassString="flex-block" Label=@briefingRoom.Translate("Situation") @bind-Value="Template.ContextSituation" Grouping="@Template.ContextTheater" DataBaseType="DatabaseEntryType.Situation" EmptOpt=@briefingRoom.Translate("Random") CustomOpt="None (Spawn Anywhere),None" />
+                    <InputDataBase ClassString="flex-block" Label=@briefingRoom.Translate("Situation") @bind-Value="Template.ContextSituation" Grouping="@Template.ContextTheater" DataBaseType="DatabaseEntryType.Situation" EmptOpt=@briefingRoom.Translate("Random") CustomOpt=@(new List<string>{briefingRoom.Translate("SpawnAnywhere")+ ",None"}) />
                 </div>
                 <InputDataBase Label=@briefingRoom.Translate("HomeAirbase") @bind-Value="Template.FlightPlanTheaterStartingAirbase" DataBaseType="DatabaseEntryType.Airbase" Grouping="@Template.ContextTheater" EmptOpt=@briefingRoom.Translate("Random")/>
                 <hr />

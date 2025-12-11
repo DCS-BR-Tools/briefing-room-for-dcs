@@ -77,7 +77,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             {
                 DsAirbase.All => true,
                 DsAirbase.Friendly => mission.Airbases[airbaseID] == mission.TemplateRecord.ContextPlayerCoalition,
-                DsAirbase.StrikePackages => mission.StrikePackages.Select(sp => sp.Airbase.DCSID).Contains(airbaseID),
+                DsAirbase.StrikePackages => mission.StrikePackages.Select(sp => sp.StartAirbase.DCSID).Contains(airbaseID),
                 DsAirbase.HomeAirbase => airbaseID == mission.PlayerAirbase.DCSID,
                 _ => false,
             };

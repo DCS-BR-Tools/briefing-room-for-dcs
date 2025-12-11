@@ -265,8 +265,7 @@ namespace BriefingRoom4DCS.Generator.Mission
         private static void AirbaseStage(IBriefingRoom briefingRoom, ref DCSMission mission)
         {
             BriefingRoom.PrintToLog("Setting up airbases...");
-            var requiredRunway = mission.TemplateRecord.PlayerFlightGroups.Select(x => ((DBEntryAircraft)briefingRoom.Database.GetEntry<DBEntryJSONUnit>(x.Aircraft)).MinimumRunwayLengthFt).Max();
-            mission.PlayerAirbase = Airbases.SelectStartingAirbase(briefingRoom.Database, mission.TemplateRecord.FlightPlanTheaterStartingAirbase, ref mission, requiredRunway: requiredRunway);
+            mission.PlayerAirbase = Airbases.SelectStartingAirbase(briefingRoom.Database, mission.TemplateRecord.FlightPlanTheaterStartingAirbase, ref mission);
             mission.PopulatedAirbaseIds[mission.TemplateRecord.ContextPlayerCoalition].Add(mission.PlayerAirbase.DCSID);
             if (mission.PlayerAirbase.DCSID > 0)
             {
@@ -277,7 +276,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 mission.PlayerAirbaseDestination = mission.PlayerAirbase;
             else
             {
-                mission.PlayerAirbaseDestination = Airbases.SelectStartingAirbase(briefingRoom.Database, mission.TemplateRecord.FlightPlanTheaterDestinationAirbase, ref mission, requiredRunway: requiredRunway);
+                mission.PlayerAirbaseDestination = Airbases.SelectStartingAirbase(briefingRoom.Database, mission.TemplateRecord.FlightPlanTheaterDestinationAirbase, ref mission);
                 mission.PopulatedAirbaseIds[mission.TemplateRecord.ContextPlayerCoalition].Add(mission.PlayerAirbaseDestination.DCSID);
                 if (mission.PlayerAirbaseDestination.DCSID > 0)
                 {

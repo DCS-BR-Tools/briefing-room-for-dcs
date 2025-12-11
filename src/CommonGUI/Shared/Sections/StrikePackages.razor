@@ -51,9 +51,14 @@
                         SelectedValues="package.FlightGroupIndexes" TItem="MissionTemplateFlightGroup" TItemOutput="int">
                     </CheckBoxList>
                 </div>
-                <InputDataBase Label=@briefingRoom.Translate("StartingAirbase") @bind-Value="package.StartingAirbase"
+                <div class="generator-group flex-justify-spaced flex-margin-fix">
+                <InputDataBase ClassString="flex-block" Label=@briefingRoom.Translate("StartingAirbase") @bind-Value="package.StartingAirbase"
                     DataBaseType="DatabaseEntryType.Airbase" Grouping="@Template.ContextTheater"
-                    EmptOpt=@briefingRoom.Translate("Random") CustomOpt=@(briefingRoom.Translate("HomeBase")+",home") />
+                    EmptOpt=@briefingRoom.Translate("Random") CustomOpt=@(new List<string>{briefingRoom.Translate("HomeAirbase")+",home", briefingRoom.Translate("DestinationAirbase")+",homeDest",}) />
+                <InputDataBase ClassString="flex-block" Label=@briefingRoom.Translate("DestinationAirbase") @bind-Value="package.DestinationAirbase"
+                    DataBaseType="DatabaseEntryType.Airbase" Grouping="@Template.ContextTheater"
+                    EmptOpt=@briefingRoom.Translate("Random") CustomOpt=@(new List<string>{briefingRoom.Translate("HomeAirbase")+",home",  briefingRoom.Translate("DestinationAirbase")+",homeDest", briefingRoom.Translate("StrikeBase")+",strike"}) />
+                </div>
             </div>
         }
     }

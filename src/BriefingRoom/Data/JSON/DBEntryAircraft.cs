@@ -48,7 +48,6 @@ namespace BriefingRoom4DCS.Data
         internal bool EPLRS { get; init; }
         internal Dictionary<Country, List<string>> CallSigns { get; init; }
         internal List<Payload> Payloads { get; init; }
-        internal int MinimumRunwayLengthFt { get; init; }
 
         internal Dictionary<string, object> PayloadCommon
         {

@@ -30,6 +30,7 @@ namespace BriefingRoom4DCS.Template
         internal List<int> FlightGroupIndexes { get; init; }
         internal List<int> ObjectiveIndexes { get; init; }
         internal string StartingAirbase { get; init; }
+        internal string DestinationAirbase { get; init; }
 
 
         internal MissionTemplatePackageRecord(MissionTemplatePackage package)
@@ -37,6 +38,7 @@ namespace BriefingRoom4DCS.Template
             FlightGroupIndexes = package.FlightGroupIndexes;
             ObjectiveIndexes = package.ObjectiveIndexes;
             StartingAirbase = package.StartingAirbase;
+            DestinationAirbase = package.DestinationAirbase;
         }
     }
 }

@@ -23,7 +23,6 @@ If not, see https://www.gnu.org/licenses/
 using System.Collections.Generic;
 using System.Linq;
 using BriefingRoom4DCS.Data;
-using BriefingRoom4DCS.Generator;
 
 namespace BriefingRoom4DCS.Template
 {
@@ -32,19 +31,22 @@ namespace BriefingRoom4DCS.Template
     {
         public List<int> FlightGroupIndexes { get; set; }
         public List<int> ObjectiveIndexes { get; set; }
-        public string StartingAirbase { get { return StartingAirbase_; } set { StartingAirbase_ = Database.CheckID<DBEntryAirbase>(value, allowEmptyStr: true, allowedValues: new List<string>{"home"}); } }
+        public string StartingAirbase { get { return StartingAirbase_; } set { StartingAirbase_ = Database.CheckID<DBEntryAirbase>(value, allowEmptyStr: true, allowedValues: new List<string>{"home", "homeDest"}); } }
         private string StartingAirbase_;
+        public string DestinationAirbase { get { return DestinationAirbase_; } set { DestinationAirbase_ = Database.CheckID<DBEntryAirbase>(value, allowEmptyStr: true, allowedValues: new List<string>{"home", "homeDest", "strike"}); } }
+        private string DestinationAirbase_;
 
         public MissionTemplatePackage(IDatabase database): base(database)
         {
             Clear();
         }
 
-        public MissionTemplatePackage(IDatabase database, List<int> flightGroupIndexes, List<int> objectiveIndexes, string startingAirbase): base(database)
+        public MissionTemplatePackage(IDatabase database, List<int> flightGroupIndexes, List<int> objectiveIndexes, string startingAirbase, string destinationAirbase): base(database)
         {
             FlightGroupIndexes = flightGroupIndexes;
             ObjectiveIndexes = objectiveIndexes;
             StartingAirbase = startingAirbase;
+            DestinationAirbase = destinationAirbase;
         }
 
         internal MissionTemplatePackage(IDatabase database, INIFile ini, string section, string key): base(database)
@@ -54,6 +56,7 @@ namespace BriefingRoom4DCS.Template
             FlightGroupIndexes = ini.GetValueArray<int>(section, $"{key}.FlightGroupIndexes").ToList();
             ObjectiveIndexes = ini.GetValueArray<int>(section, $"{key}.ObjectiveIndexes").ToList();
             StartingAirbase = ini.GetValue(section, $"{key}.StartingAirbase", StartingAirbase);
+            DestinationAirbase = ini.GetValue(section, $"{key}.DestinationAirbase", DestinationAirbase);
         }
 
         private void Clear()
@@ -61,6 +64,7 @@ namespace BriefingRoom4DCS.Template
             FlightGroupIndexes = new();
             ObjectiveIndexes = new();
             StartingAirbase = "home";
+            DestinationAirbase = "home";
         }
 
         internal void SaveToFile(INIFile ini, string section, string key)
@@ -68,6 +72,7 @@ namespace BriefingRoom4DCS.Template
             ini.SetValueArray(section, $"{key}.FlightGroupIndexes", FlightGroupIndexes.Select(x => x.ToString()).ToArray());
             ini.SetValueArray(section, $"{key}.ObjectiveIndexes", ObjectiveIndexes.Select(x => x.ToString()).ToArray());
             ini.SetValue(section, $"{key}.StartingAirbase", StartingAirbase);
+            ini.SetValue(section, $"{key}.DestinationAirbase", DestinationAirbase);
         }
 
 

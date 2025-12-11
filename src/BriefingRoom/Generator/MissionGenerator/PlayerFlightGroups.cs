@@ -49,16 +49,15 @@ namespace BriefingRoom4DCS.Generator.Mission
                 var aircraftPackages = mission.TemplateRecord.AircraftPackages;
                 var missionPackage = mission.StrikePackages.First(x => x.RecordIndex == aircraftPackages.IndexOf(package));
                 flightWaypoints = missionPackage.Waypoints;
-                airbase = missionPackage.Airbase;
-                groupStartingCoords = missionPackage.Airbase.Coordinates;
+                airbase = missionPackage.StartAirbase;
+                destinationAirbase = missionPackage.DestinationAirbase;
+                groupStartingCoords = missionPackage.StartAirbase.Coordinates;
             }
             var unitDB = (DBEntryAircraft)briefingRoom.Database.GetEntry<DBEntryJSONUnit>(flightGroup.Aircraft);
 
             // Not an unit, or not a player-controllable unit, abort.
             if ((unitDB == null) || !unitDB.PlayerControllable)
                 throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "PlayerFlightNotFound", flightGroup.Aircraft);
-            if (unitDB.MinimumRunwayLengthFt > 0 && airbase.RunwayLengthFt < unitDB.MinimumRunwayLengthFt)
-                briefingRoom.PrintTranslatableWarning("RunwayTooShort", airbase.UIDisplayName.Get(mission.LangKey), airbase.RunwayLengthFt, unitDB.UIDisplayName, unitDB.MinimumRunwayLengthFt);
 
             List<int> parkingSpotIDsList = new();
             List<Coordinates> parkingSpotCoordinatesList = new();
@@ -217,14 +216,14 @@ namespace BriefingRoom4DCS.Generator.Mission
             mission.MapData.Add($"ROUTE_{groupInfo.Value.DCSGroup.GroupId}", mapWaypoints);
         }
 
-        private static void SaveFlightGroup(ref DCSMission mission, GroupInfo? groupInfo, MissionTemplateFlightGroupRecord flightGroup, DBEntryJSONUnit unitDB, string homeBase, string destBase, DCSTask task)
+        private static void SaveFlightGroup(ref DCSMission mission, GroupInfo? groupInfo, MissionTemplateFlightGroupRecord flightGroup, DBEntryJSONUnit unitDB, string HomeAirbase, string destBase, DCSTask task)
         {
             mission.Briefing.AddItem(DCSMissionBriefingItemType.FlightGroup,
                 $"{groupInfo.Value.Name}(P)\t" +
                 $"{flightGroup.Count}× {unitDB.UIDisplayName.Get(mission.LangKey)}\t" +
                 $"{GeneratorTools.FormatRadioFrequency(groupInfo.Value.Frequency)}\t" +
                 $"{(flightGroup.Payload == "default" ? task : flightGroup.Payload)}\t" +
-                $"{homeBase}\t" +
+                $"{HomeAirbase}\t" +
                 $"{destBase}");
             for (int i = 0; i < flightGroup.Count; i++)
                 mission.AppendValue("SCRIPTCLIENTPILOTNAMES", $"\"{groupInfo.Value.Name} {i + 1}\",");
