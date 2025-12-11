@@ -53,12 +53,13 @@ namespace BriefingRoom4DCS.Mission
         internal DBEntrySituation SituationDB { get; set; }
         internal double WindSpeedAtSeaLevel { get; set; }
         internal double WindDirectionAtSeaLevel { get; set; }
-        internal DBEntryAirbase PlayerAirbase { get; set; }
+        internal DBEntryAirbase PlayerAirbase { get; set; } 
+        internal DBEntryAirbase PlayerAirbaseDestination { get; set; } 
         internal Coordinates AverageInitialPosition { get; set; }
         internal List<List<List<Waypoint>>> ObjectiveGroupedWaypoints { get; set; }
         internal Country[][] CoalitionsCountries { get; set; }
         internal bool InvertedCoalition { get { return TemplateRecord.OptionsMission.Contains("InvertCountriesCoalitions"); } }
-        internal bool SinglePlayerMission { get { return TemplateRecord.GetPlayerSlotsCount() == 1; } }
+        internal bool IsSinglePlayerMission { get { return TemplateRecord.GetPlayerSlotsCount() == 1 && TemplateRecord.AirbaseDynamicSpawn == DsAirbase.None; } }
         internal string LangKey { get; private set;}
 
         internal DCSMission(IDatabase database, string langKey, MissionTemplateRecord template)

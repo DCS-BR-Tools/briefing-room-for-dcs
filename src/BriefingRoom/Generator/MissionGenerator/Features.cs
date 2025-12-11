@@ -183,7 +183,8 @@ namespace BriefingRoom4DCS.Generator.Mission
                             $"{unitCount}× {groupInfo.Value.UnitDB.UIDisplayName.Get(mission.LangKey)}\t" +
                             $"{GeneratorTools.FormatRadioFrequency(groupInfo.Value.Frequency)}{TACANStr}\t" +
                             $"{featureDB.UnitGroupTask}" +
-                             (airbaseName != null ? $"\t{airbaseName}" : ""));
+                            (airbaseName != null ? $"\t{airbaseName}" : "") +
+                            (airbaseName != null ? $"\t{airbaseName}" : ""));
                 if (!groupInfo.Value.UnitDB.IsAircraft)
                     mission.MapData.Add($"UNIT-{groupInfo.Value.UnitDB.Families[0]}-{groupSide}-{groupInfo.Value.GroupID}", new List<double[]> { groupInfo.Value.Coordinates.ToArray() });
 
@@ -397,7 +398,8 @@ namespace BriefingRoom4DCS.Generator.Mission
                             $"{unitCount}× {groupInfo.Value.UnitDB.UIDisplayName.Get(mission.LangKey)}\t" +
                             $"{GeneratorTools.FormatRadioFrequency(groupInfo.Value.Frequency)}\t" +
                             $"{featureDB.UnitGroupTask}" +
-                            (airbaseName != null ? $"\t{airbaseName}" : ""));
+                            (airbaseName != null ? $"\t{airbaseName}" : "") +
+                            (airbaseName != null ? $"{airbaseName}" : ""));
                 if (!groupInfo.Value.UnitDB.IsAircraft)
                     mission.MapData.Add($"UNIT-{groupInfo.Value.UnitDB.Families[0]}-{groupSide}-{groupInfo.Value.GroupID}", new List<double[]> { groupInfo.Value.Coordinates.ToArray() });
             }

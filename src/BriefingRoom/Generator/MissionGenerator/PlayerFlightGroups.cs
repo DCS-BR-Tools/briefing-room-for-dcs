@@ -39,6 +39,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             )
         {
             var airbase = mission.PlayerAirbase;
+            var destinationAirbase = mission.PlayerAirbaseDestination;
             var flightWaypoints = new List<Waypoint>(mission.Waypoints);
             var groupStartingCoords = mission.PlayerAirbase.Coordinates;
 
@@ -68,8 +69,9 @@ namespace BriefingRoom4DCS.Generator.Mission
             var country = flightGroup.Country;
             var payload = flightGroup.Payload;
             var extraSettings = new Dictionary<string, object>();
+            var clientOrPLayer = mission.IsSinglePlayerMission ? DCSSkillLevel.Player : DCSSkillLevel.Client;
             GroupFlags GroupFlags = flightGroup.AIWingmen ? GroupFlags.FirstUnitIsClient : 0;
-            DCSSkillLevel skillLevel = flightGroup.AIWingmen ? Toolbox.RandomFrom(DCSSkillLevel.High, DCSSkillLevel.Excellent) : DCSSkillLevel.Client;
+            DCSSkillLevel skillLevel = flightGroup.AIWingmen ? Toolbox.RandomFrom(DCSSkillLevel.High, DCSSkillLevel.Excellent) : clientOrPLayer;
             var atcRadioFrequency = 0d;
             if (airbase.ATC != null)
                 _ = double.TryParse(airbase.ATC.Split("/")[0], out atcRadioFrequency);
@@ -84,7 +86,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 {
                     extraSettings.AddIfKeyUnused("Speed", 0);
                     GroupFlags = 0;
-                    skillLevel = DCSSkillLevel.Client;
+                    skillLevel = clientOrPLayer;
                     if (flightGroup.Aircraft == "AV8BNA")
                         payload = "EMPTY";
                 }
@@ -157,6 +159,10 @@ namespace BriefingRoom4DCS.Generator.Mission
             extraSettings.AddIfKeyUnused("MissionAirbaseX", groupStartingCoords.X);
             extraSettings.AddIfKeyUnused("MissionAirbaseY", groupStartingCoords.Y);
             extraSettings.AddIfKeyUnused("MissionAirbaseID", airbase.DCSID);
+            
+            extraSettings.AddIfKeyUnused("MissionAirbase2X", destinationAirbase.Coordinates.X);
+            extraSettings.AddIfKeyUnused("MissionAirbase2Y", destinationAirbase.Coordinates.Y);
+            extraSettings.AddIfKeyUnused("MissionAirbase2ID", destinationAirbase.DCSID);
             extraSettings.AddIfKeyUnused("Livery", flightGroup.Livery);
             if (atcRadioFrequency > 0)
                 extraSettings.AddIfKeyUnused("AirbaseRadioFrequency", atcRadioFrequency);
@@ -193,11 +199,12 @@ namespace BriefingRoom4DCS.Generator.Mission
             groupInfo.Value.DCSGroup.Waypoints.InsertRange(1, flightWaypoints.Where(x => !x.AircraftIgnore).Select(x => x.ToDCSWaypoint(unitDB, task)).ToList());
 
 
-            SaveFlightGroup(ref mission, groupInfo, flightGroup, unitDB, carrierName ?? airbase.Name, task);
+            SaveFlightGroup(ref mission, groupInfo, flightGroup, unitDB, carrierName ?? airbase.Name, carrierName ?? destinationAirbase.Name, task);
             SaveWaypointsToBriefing(
                 briefingRoom.Database,
                 ref mission,
                 groupStartingCoords,
+                destinationAirbase.Coordinates,
                 flightWaypoints,
                 mission.TemplateRecord.OptionsMission.Contains("ImperialUnitsForBriefing"),
                 groupInfo,
@@ -205,24 +212,25 @@ namespace BriefingRoom4DCS.Generator.Mission
 
             var mapWaypoints = flightWaypoints.Select(x => x.Coordinates.ToArray()).ToList();
             mapWaypoints = mapWaypoints.Prepend(groupStartingCoords.ToArray()).ToList();
-            mapWaypoints.Add(groupStartingCoords.ToArray());
+            mapWaypoints.Add(destinationAirbase.Coordinates.ToArray());
             mission.MapData.Add($"UNIT_{side}_PLAYER_{groupInfo.Value.DCSGroup.GroupId}", new List<double[]> { mapWaypoints.First() });
             mission.MapData.Add($"ROUTE_{groupInfo.Value.DCSGroup.GroupId}", mapWaypoints);
         }
 
-        private static void SaveFlightGroup(ref DCSMission mission, GroupInfo? groupInfo, MissionTemplateFlightGroupRecord flightGroup, DBEntryJSONUnit unitDB, string homeBase, DCSTask task)
+        private static void SaveFlightGroup(ref DCSMission mission, GroupInfo? groupInfo, MissionTemplateFlightGroupRecord flightGroup, DBEntryJSONUnit unitDB, string homeBase, string destBase, DCSTask task)
         {
             mission.Briefing.AddItem(DCSMissionBriefingItemType.FlightGroup,
                 $"{groupInfo.Value.Name}(P)\t" +
                 $"{flightGroup.Count}× {unitDB.UIDisplayName.Get(mission.LangKey)}\t" +
                 $"{GeneratorTools.FormatRadioFrequency(groupInfo.Value.Frequency)}\t" +
                 $"{(flightGroup.Payload == "default" ? task : flightGroup.Payload)}\t" +
-                $"{homeBase}");
+                $"{homeBase}\t" +
+                $"{destBase}");
             for (int i = 0; i < flightGroup.Count; i++)
                 mission.AppendValue("SCRIPTCLIENTPILOTNAMES", $"\"{groupInfo.Value.Name} {i + 1}\",");
         }
 
-        private static void SaveWaypointsToBriefing(IDatabase database, ref DCSMission mission, Coordinates initialCoordinates, List<Waypoint> waypoints, bool useImperialSystem, GroupInfo? groupInfo, DBEntryTheater theaterDB)
+        private static void SaveWaypointsToBriefing(IDatabase database, ref DCSMission mission, Coordinates initialCoordinates, Coordinates destinationCoordinates, List<Waypoint> waypoints, bool useImperialSystem, GroupInfo? groupInfo, DBEntryTheater theaterDB)
         {
             double totalDistance = 0;
             Coordinates lastWP = initialCoordinates;
@@ -232,7 +240,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             [
                 new Waypoint(database.Common.Names.WPInitialName.Get(mission.LangKey).ToUpper(), initialCoordinates),
                 .. waypoints,
-                new Waypoint(database.Common.Names.WPFinalName.Get(mission.LangKey).ToUpper(), initialCoordinates),
+                new Waypoint(database.Common.Names.WPFinalName.Get(mission.LangKey).ToUpper(), destinationCoordinates),
             ];
             mission.Briefing.AddItem(DCSMissionBriefingItemType.Waypoint, $"\t{groupInfo.Value.Name}\t");
 

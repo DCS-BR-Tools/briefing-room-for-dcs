@@ -27,9 +27,10 @@ waypoints:
     type: Land
     etaLocked: false
     speedLocked: true
-    y: $MISSIONAIRBASEY$
-    x: $MISSIONAIRBASEX$
+    y: $MISSIONAIRBASE2Y$
+    x: $MISSIONAIRBASE2X$
     name: $FINALWPNAME$
+    airdromeId: $MISSIONAIRBASE2ID$
 groupId: $GROUPID$
 hidden: $HIDDEN$
 y: $GROUPY$

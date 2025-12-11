@@ -44,6 +44,7 @@ namespace BriefingRoom4DCS.Template
         internal MinMaxD FlightPlanObjectiveSeparation { get; init; }
         internal int BorderLimit { get; init; }
         internal string FlightPlanTheaterStartingAirbase { get; init; }
+        internal string FlightPlanTheaterDestinationAirbase { get; init; }
         internal List<string> MissionFeatures { get; init; }
         internal List<string> Mods { get; init; }
         internal List<MissionTemplateObjectiveRecord> Objectives { get; init; }
@@ -91,6 +92,7 @@ namespace BriefingRoom4DCS.Template
             FlightPlanObjectiveSeparation = new MinMaxD(template.FlightPlanObjectiveSeparationMin, template.FlightPlanObjectiveSeparationMax);
             BorderLimit = template.BorderLimit;
             FlightPlanTheaterStartingAirbase = template.FlightPlanTheaterStartingAirbase;
+            FlightPlanTheaterDestinationAirbase = template.FlightPlanTheaterDestinationAirbase;
             Mods = GetMods(database, template);
             MissionFeatures = template.MissionFeatures;
             Objectives = template.Objectives.Select(x => new MissionTemplateObjectiveRecord(x)).ToList();

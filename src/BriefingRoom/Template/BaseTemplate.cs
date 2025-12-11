@@ -46,6 +46,8 @@ namespace BriefingRoom4DCS.Template
         private int FlightPlanObjectiveDistanceMin_;
         public string FlightPlanTheaterStartingAirbase { get { return FlightPlanTheaterStartingAirbase_; } set { FlightPlanTheaterStartingAirbase_ = Database.CheckID<DBEntryAirbase>(value, allowEmptyStr: true); } }
         private string FlightPlanTheaterStartingAirbase_;
+        public string FlightPlanTheaterDestinationAirbase { get { return FlightPlanTheaterDestinationAirbase_; } set { FlightPlanTheaterDestinationAirbase_ = Database.CheckID<DBEntryAirbase>(value, allowEmptyStr: true, allowedValues: new List<string>{"home"}); } }
+        private string FlightPlanTheaterDestinationAirbase_;
         public List<string> MissionFeatures { get { return MissionFeatures_; } set { MissionFeatures_ = Database.CheckIDs<DBEntryFeatureMission>(value.ToArray()).ToList(); } }
         private List<string> MissionFeatures_ = new();
         public List<string> Mods { get { return Mods_; } set { Mods_ = Database.CheckIDs<DBEntryDCSMod>(value.ToArray()).ToList(); } }
@@ -96,6 +98,7 @@ namespace BriefingRoom4DCS.Template
             FlightPlanObjectiveDistanceMax = 160;
             FlightPlanObjectiveDistanceMin = 40;
             FlightPlanTheaterStartingAirbase = "";
+            FlightPlanTheaterDestinationAirbase = "home";
 
             MissionFeatures = new List<string>{
                 "FriendlyAWACS",
@@ -148,6 +151,7 @@ namespace BriefingRoom4DCS.Template
             FlightPlanObjectiveDistanceMax = ini.GetValue("FlightPlan", "ObjectiveDistanceMax", FlightPlanObjectiveDistanceMax);
             FlightPlanObjectiveDistanceMin = ini.GetValue("FlightPlan", "ObjectiveDistanceMin", FlightPlanObjectiveDistanceMin);
             FlightPlanTheaterStartingAirbase = ini.GetValue("FlightPlan", "TheaterStartingAirbase", FlightPlanTheaterStartingAirbase);
+            FlightPlanTheaterDestinationAirbase = ini.GetValue("FlightPlan", "TheaterDestinationAirbase", FlightPlanTheaterDestinationAirbase);
 
             MissionFeatures = ini.GetValueDistinctList<string>("MissionFeatures", "MissionFeatures");
 
@@ -203,6 +207,7 @@ namespace BriefingRoom4DCS.Template
             ini.SetValue("FlightPlan", "ObjectiveDistanceMax", FlightPlanObjectiveDistanceMax);
             ini.SetValue("FlightPlan", "ObjectiveDistanceMin", FlightPlanObjectiveDistanceMin);
             ini.SetValue("FlightPlan", "TheaterStartingAirbase", FlightPlanTheaterStartingAirbase);
+            ini.SetValue("FlightPlan", "TheaterDestinationAirbase", FlightPlanTheaterDestinationAirbase);
 
             ini.SetValueArray("MissionFeatures", "MissionFeatures", MissionFeatures.ToArray());
 

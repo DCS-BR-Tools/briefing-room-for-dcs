@@ -107,7 +107,7 @@ namespace BriefingRoom4DCS.Generator.Mission
 
             foreach (DBEntryAirbase airbase in situationAirbases)
             {
-                var coalition = airbase.DCSID == mission.PlayerAirbase.DCSID || mission.StrikePackages.Any(x => x.Airbase.DCSID == airbase.DCSID) ? mission.TemplateRecord.ContextPlayerCoalition : airbase.Coalition;
+                var coalition = airbase.DCSID == mission.PlayerAirbase.DCSID || airbase.DCSID == mission.PlayerAirbaseDestination.DCSID || mission.StrikePackages.Any(x => x.Airbase.DCSID == airbase.DCSID) ? mission.TemplateRecord.ContextPlayerCoalition : airbase.Coalition;
                 airbase.Coalition = coalition;
                 mission.SetAirbase(airbase.DCSID, coalition);
             }

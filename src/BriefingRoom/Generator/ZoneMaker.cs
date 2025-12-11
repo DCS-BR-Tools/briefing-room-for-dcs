@@ -37,12 +37,14 @@ namespace BriefingRoom4DCS.Generator
             mission.CTLDZoneCount++;
         }
 
-        internal static void AddAirbaseZones(IBriefingRoom briefingRoom,ref DCSMission mission, List<string> missionFeatures, DBEntryAirbase homeBase, List<DCSMissionStrikePackage> missionPackages)
-        {
-            if (!missionFeatures.Contains("CTLD"))
+        internal static void AddAirbaseZones(IBriefingRoom briefingRoom,ref DCSMission mission)
+        {   
+            if (!mission.TemplateRecord.MissionFeatures.Contains("CTLD"))
                 return;
-            AddCTLDPickupZone(briefingRoom, ref mission, homeBase.Coordinates);
-            foreach (var package in missionPackages)
+            AddCTLDPickupZone(briefingRoom, ref mission, mission.PlayerAirbase.Coordinates);
+            if (mission.PlayerAirbaseDestination != null && mission.PlayerAirbaseDestination.DCSID != mission.PlayerAirbase.DCSID)
+                AddCTLDPickupZone(briefingRoom, ref mission, mission.PlayerAirbaseDestination.Coordinates);
+            foreach (var package in mission.StrikePackages)
                 AddCTLDPickupZone(briefingRoom, ref mission, package.Airbase.Coordinates);
 
         }

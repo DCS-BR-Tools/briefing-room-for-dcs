@@ -630,7 +630,7 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
             unit.PlayerCanDrive = true;
 
             if (Toolbox.IsAircraft(unitDB.Category) && (unitLuaIndex == 1) && GroupFlags.HasFlag(GroupFlags.FirstUnitIsClient))
-                unit.Skill = mission.SinglePlayerMission ? "Player" : "Client";
+                unit.Skill = mission.IsSinglePlayerMission ? "Player" : "Client";
             else
                 unit.Skill = extraSettings.GetValueOrDefault("Skill", GeneratorTools.GetDefaultSkillLevel(mission.TemplateRecord, side)).ToString(); ;
 

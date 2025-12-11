@@ -76,7 +76,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             mission.SetValue("AircraftActivatorCurrentQueue", ""); // Just to make sure aircraft groups spawning queues are empty
             mission.SetValue("AircraftActivatorReserveQueue", "");
             mission.SetValue("AircraftActivatorIsResponsive", template.MissionFeatures.Contains("ImprovementsResponsiveAircraftActivator"));
-            mission.SetValue("MissionPlayerSlots", template.GetPlayerSlotsCount() == 1 ? briefingRoom.Translate("SinglePlayerMission") : $"{template.GetPlayerSlotsCount()}{briefingRoom.Translate("XPlayerMission")}");
+            mission.SetValue("MissionPlayerSlots", mission.IsSinglePlayerMission ? briefingRoom.Translate("SinglePlayerMission") : $"{template.GetPlayerSlotsCount()}{briefingRoom.Translate("XPlayerMission")}");
             mission.SetValue("CaCmdBlu", template.CombinedArmsCommanderBlue);
             mission.SetValue("CaCmdRed", template.CombinedArmsCommanderRed);
             mission.SetValue("CaJTACBlu", template.CombinedArmsJTACBlue);
@@ -273,13 +273,30 @@ namespace BriefingRoom4DCS.Generator.Mission
                 mission.MapData.Add($"AIRBASE_HOME_NAME_{mission.PlayerAirbase.UIDisplayName.Get(mission.LangKey)}", new List<double[]> { mission.PlayerAirbase.Coordinates.ToArray() });
                 mission.Briefing.AddItem(DCSMissionBriefingItemType.Airbase, $"{mission.PlayerAirbase.UIDisplayName.Get(mission.LangKey)}\t{mission.PlayerAirbase.Runways}\t{mission.PlayerAirbase.ATC}\t{mission.PlayerAirbase.ILS}\t{mission.PlayerAirbase.TACAN}");
             }
+            if (mission.TemplateRecord.FlightPlanTheaterDestinationAirbase == "home")
+                mission.PlayerAirbaseDestination = mission.PlayerAirbase;
+            else
+            {
+                mission.PlayerAirbaseDestination = Airbases.SelectStartingAirbase(briefingRoom.Database, mission.TemplateRecord.FlightPlanTheaterDestinationAirbase, ref mission, requiredRunway: requiredRunway);
+                mission.PopulatedAirbaseIds[mission.TemplateRecord.ContextPlayerCoalition].Add(mission.PlayerAirbaseDestination.DCSID);
+                if (mission.PlayerAirbaseDestination.DCSID > 0)
+                {
+                    mission.MapData.Add($"AIRBASE_DEST_NAME_{mission.PlayerAirbaseDestination.UIDisplayName.Get(mission.LangKey)}", new List<double[]> { mission.PlayerAirbaseDestination.Coordinates.ToArray() });
+                    mission.Briefing.AddItem(DCSMissionBriefingItemType.Airbase, $"{mission.PlayerAirbaseDestination.UIDisplayName.Get(mission.LangKey)}\t{mission.PlayerAirbaseDestination.Runways}\t{mission.PlayerAirbaseDestination.ATC}\t{mission.PlayerAirbaseDestination.ILS}\t{mission.PlayerAirbaseDestination.TACAN}");
+                }
+            }
+
             Airbases.SelectStartingAirbaseForPackages(briefingRoom.Database, ref mission);
             Airbases.SetupAirbasesCoalitions(ref mission);
-            ZoneMaker.AddAirbaseZones(briefingRoom, ref mission, mission.TemplateRecord.MissionFeatures, mission.PlayerAirbase, mission.StrikePackages);
+            ZoneMaker.AddAirbaseZones(briefingRoom, ref mission);
             mission.SetValue("PlayerAirbaseName", mission.PlayerAirbase.Name);
             mission.SetValue("PlayerAirbaseId", mission.PlayerAirbase.ID);
             mission.SetValue("MissionAirbaseX", mission.PlayerAirbase.Coordinates.X);
             mission.SetValue("MissionAirbaseY", mission.PlayerAirbase.Coordinates.Y);
+
+            mission.SetValue("PlayerAirbaseDestinationId", mission.PlayerAirbaseDestination.ID);
+            mission.SetValue("MissionAirbase2X", mission.PlayerAirbaseDestination.Coordinates.X);
+            mission.SetValue("MissionAirbase2Y", mission.PlayerAirbaseDestination.Coordinates.Y);
             mission.SaveStage(MissionStageName.Airbase);
         }
 
@@ -425,7 +442,7 @@ namespace BriefingRoom4DCS.Generator.Mission
 
         internal static DCSMission GenerateRetryable(IBriefingRoom briefingRoom, MissionTemplate template)
         {
-            var templateRecord = new MissionTemplateRecord( briefingRoom.Database, template);
+            var templateRecord = new MissionTemplateRecord(briefingRoom.Database, template);
             var mission = Policy
                 .HandleResult<DCSMission>(x => x.IsExtremeDistance(briefingRoom, template, out double distance))
                 .Or<BriefingRoomException>(x =>

@@ -42,6 +42,7 @@ namespace BriefingRoom4DCS.Template
         public int FlightPlanObjectiveDistanceMax { get; set; }
         public int FlightPlanObjectiveDistanceMin { get; set; }
         public string FlightPlanTheaterStartingAirbase { get; set; }
+        public string FlightPlanTheaterDestinationAirbase { get; set; }
         public List<string> MissionFeatures { get; set; }
         public List<string> Mods { get; set; }
         public FogOfWar OptionsFogOfWar { get; set; }

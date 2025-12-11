@@ -24,9 +24,14 @@
                 <CheckboxWrapped row @bind-Value="@CampaignTemplate.StaticSituation" Label="StaticSituation" />
             }
     </div>
-    <InputDataBase Label=@briefingRoom.Translate("HomeAirbase") @bind-Value="Template.FlightPlanTheaterStartingAirbase"
+    <div class="generator-group flex-justify-spaced flex-margin-fix">
+    <InputDataBase ClassString="flex-block" Label=@briefingRoom.Translate("HomeAirbase") @bind-Value="Template.FlightPlanTheaterStartingAirbase"
         DataBaseType="DatabaseEntryType.Airbase" Grouping="@Template.ContextTheater"
         EmptOpt=@briefingRoom.Translate("Random") />
+    <InputDataBase ClassString="flex-block" Label=@briefingRoom.Translate("DestinationAirbase") @bind-Value="Template.FlightPlanTheaterDestinationAirbase"
+        DataBaseType="DatabaseEntryType.Airbase" Grouping="@Template.ContextTheater"
+        EmptOpt=@briefingRoom.Translate("Random") CustomOpt=@(briefingRoom.Translate("HomeBase")+",home") />
+    </div>
     @if (CampaignTemplate != null)
     {
         <InputEnum ClassString="flex-block" Label=@briefingRoom.Translate("AirbaseVariationDistance")
