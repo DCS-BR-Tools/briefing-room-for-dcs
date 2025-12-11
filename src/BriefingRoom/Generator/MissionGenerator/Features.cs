@@ -129,14 +129,14 @@ namespace BriefingRoom4DCS.Generator.Mission
                     throw;
                 }
 
-                if(flags.HasFlag(FeatureUnitGroupFlags.DestinationAirbase))
+                if (flags.HasFlag(FeatureUnitGroupFlags.DestinationAirbase))
                 {
-                     var coalition = GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, groupSide, true).Value;
-                     var (airbase, _, _) = SpawnPointSelector.GetAirbaseAndParking(
-                    briefingRoom,
-                    mission, coordinates2.Value, unitCount,
-                    coalition,
-                    (DBEntryAircraft)unitDB, [(int)extraSettings.GetValueOrDefault("GroupAirbaseID", -1)]);
+                    var coalition = GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, groupSide, true).Value;
+                    var (airbase, _, _) = SpawnPointSelector.GetAirbaseAndParking(
+                   briefingRoom,
+                   mission, coordinates2.Value, unitCount,
+                   coalition,
+                   (DBEntryAircraft)unitDB, [(int)extraSettings.GetValueOrDefault("GroupAirbaseID", -1)]);
                     extraSettings["ENDAIRBASEID"] = airbase.DCSID;
                     extraSettings["GroupX2"] = airbase.Coordinates.X;
                     extraSettings["GroupY2"] = airbase.Coordinates.Y;
@@ -271,7 +271,8 @@ namespace BriefingRoom4DCS.Generator.Mission
                 {
                     coordinates = coordinates.CreateNearRandom(50 * Toolbox.NM_TO_METERS, 100 * Toolbox.NM_TO_METERS);
                     coordinates2 = coordinates.CreateNearRandom(50 * Toolbox.NM_TO_METERS, 100 * Toolbox.NM_TO_METERS);
-                    if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.DestinationSpawnPoint)) {
+                    if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.DestinationSpawnPoint))
+                    {
                         var coordinates2Spawn = SpawnPointSelector.GetNearestSpawnPoint(mission, featureDB.UnitGroupValidSpawnPoints, coordinates);
                         if (!coordinates2Spawn.HasValue)
                         {
@@ -320,14 +321,21 @@ namespace BriefingRoom4DCS.Generator.Mission
                     if (flags.HasFlag(FeatureUnitGroupFlags.ExtraGroupsNearby))
                         spawnCoords = SpawnPointSelector.GetNearestSpawnPoint(mission, featureDB.UnitGroupValidSpawnPoints, coordinates);
                     else
+                    {
+                        var spawnDistance = new MinMaxD(0, 5);
+                        if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.SpawnAnywhere))
+                            spawnDistance = new MinMaxD(0, 100);
+                        else if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.AwayFromMissionArea))
+                            spawnDistance = new MinMaxD(50, 100);
                         spawnCoords = SpawnPointSelector.GetRandomSpawnPoint(
                             briefingRoom.Database,
                             ref mission,
                             featureDB.UnitGroupValidSpawnPoints, coordinates,
-                            new MinMaxD(0, 5),
+                            spawnDistance,
                             coalition: GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, groupSide),
                             nearFrontLineFamily: featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.UseFrontLine) ? unitFamily : null
                             );
+                    }
                     if (!spawnCoords.HasValue)
                     {
                         briefingRoom.PrintTranslatableWarning("NoExtraGroupSpawnPoint", featureDB.UIDisplayName.Get(mission.LangKey));
@@ -347,14 +355,14 @@ namespace BriefingRoom4DCS.Generator.Mission
                     continue;
                 }
 
-                if(flags.HasFlag(FeatureUnitGroupFlags.DestinationAirbase))
+                if (flags.HasFlag(FeatureUnitGroupFlags.DestinationAirbase))
                 {
-                     var coalition = GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, groupSide, true).Value;
-                     var (airbase, _, _) = SpawnPointSelector.GetAirbaseAndParking(
-                    briefingRoom,
-                    mission, coordinates2, unitCount,
-                    coalition,
-                    (DBEntryAircraft)unitDB, [(int)extraSettings.GetValueOrDefault("GroupAirbaseID", -1)]);
+                    var coalition = GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, groupSide, true).Value;
+                    var (airbase, _, _) = SpawnPointSelector.GetAirbaseAndParking(
+                   briefingRoom,
+                   mission, coordinates2, unitCount,
+                   coalition,
+                   (DBEntryAircraft)unitDB, [(int)extraSettings.GetValueOrDefault("GroupAirbaseID", -1)]);
                     extraSettings["ENDAIRBASEID"] = airbase.DCSID;
                     extraSettings["GroupX2"] = airbase.Coordinates.X;
                     extraSettings["GroupY2"] = airbase.Coordinates.Y;

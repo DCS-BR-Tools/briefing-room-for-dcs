@@ -64,12 +64,17 @@ namespace BriefingRoom4DCS.Generator.Mission
                 var unitFamily = Toolbox.RandomFrom(featureDB.UnitGroupFamilies);
                 var useFrontLine = mission.FrontLine.Count > 0 && featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.UseFrontLine);
                 Coordinates pointSearchCenter = useFrontLine ? mission.FrontLine[(int)Math.Floor((double)mission.FrontLine.Count / 2)] : Coordinates.Lerp(mission.AverageInitialPosition, mission.ObjectivesCenter, featureDB.UnitGroupSpawnDistance);
+                var spawnDistance = new MinMaxD(0, 25);
+                if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.SpawnAnywhere))
+                    spawnDistance = new MinMaxD(0, 100);
+                else if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.AwayFromMissionArea))
+                    spawnDistance = new MinMaxD(50, 100);
                 spawnPoint =
                     SpawnPointSelector.GetRandomSpawnPoint(
                         briefingRoom.Database,
                         ref mission,
                         featureDB.UnitGroupValidSpawnPoints, pointSearchCenter,
-                        featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.AwayFromMissionArea) ? new MinMaxD(50, 100) : new MinMaxD(0, 25),
+                        spawnDistance,
                         coalition: (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.IgnoreBorders) || featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.Neutral)) ? null : coalition,
                         nearFrontLineFamily: useFrontLine ? unitFamily : null
                         );
@@ -89,7 +94,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                     goPoint = mission.AverageInitialPosition;
 
                 coordinates2 = goPoint + Coordinates.CreateRandom(5, 20) * Toolbox.NM_TO_METERS;
-                
+
                 if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.DestinationSpawnPoint))
                     coordinates2 = SpawnPointSelector.GetNearestSpawnPoint(mission, featureDB.UnitGroupValidSpawnPoints, goPoint);
             }

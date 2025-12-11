@@ -71,5 +71,6 @@ namespace BriefingRoom4DCS.Data
         ObjectiveTargetable = 2147483648,
         DestinationAirbase = 4294967296,
         DestinationSpawnPoint = 8589934592,
+        SpawnAnywhere = 17179869184
     }
 }
