@@ -18,6 +18,7 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 ==========================================================================
 */
 
+using BriefingRoom4DCS.Generator;
 using BriefingRoom4DCS.Template;
 using System;
 using System.Collections.Generic;
@@ -77,10 +78,11 @@ namespace BriefingRoom4DCS.Data
 
             var validTemplates = new Dictionary<Country, List<DBEntryTemplate>>();
             var countryList = allyCountries is null ? Countries : allyCountries;
+            var allUnits = Database.GetAllEntries<DBEntryTemplate>();
             foreach (var country in countryList)
             {
                 validTemplates[country] = (
-                        from template in Database.GetAllEntries<DBEntryTemplate>()
+                        from template in allUnits
                         where families.Contains(template.Family) && template.Countries.ContainsKey(country)
                             && !template.Units.Any(x => unitBanList.Contains(x.DCSID))
                             && (string.IsNullOrEmpty(template.Module) || unitMods.Contains(template.Module, StringComparer.InvariantCultureIgnoreCase) || DBEntryDCSMod.CORE_MODS.Contains(template.Module, StringComparer.InvariantCultureIgnoreCase))
@@ -173,18 +175,21 @@ namespace BriefingRoom4DCS.Data
         {
             var validUnits = new Dictionary<Country, List<string>>();
             var countryList = allyCountries is null ? Countries : allyCountries;
+            var allUnits = Database.GetAllEntries<DBEntryJSONUnit>();
             foreach (Country country in countryList)
-                validUnits[country] = (
-                        from unit in Database.GetAllEntries<DBEntryJSONUnit>()
-                        where !unitBanList.Contains(unit.ID)
-                            && unit.Families.Intersect(families).ToList().Count > 0 && unit.Operators.ContainsKey(country)
-                            && (string.IsNullOrEmpty(unit.Module) || unitMods.Contains(unit.Module, StringComparer.InvariantCultureIgnoreCase) || DBEntryDCSMod.CORE_MODS.Contains(unit.Module, StringComparer.InvariantCultureIgnoreCase))
-                            && (unit.Operators[country].start <= decade) && (unit.Operators[country].end >= decade)
-                            && (!unit.LowPolly || allowLowPolly)
-                            && (allowStatic || !unit.Immovable)
-                        select unit.ID
-                    ).Distinct().ToList();
-
+                validUnits[country] = allUnits
+                    .Where(unit =>
+                        !unitBanList.Contains(unit.ID)
+                        && unit.Families.Intersect(families).ToList().Count > 0
+                        && (unit.Operators.ContainsKey(Country.ALL) || unit.Operators.ContainsKey(country))
+                        && (string.IsNullOrEmpty(unit.Module) || unitMods.Contains(unit.Module, StringComparer.InvariantCultureIgnoreCase) || DBEntryDCSMod.CORE_MODS.Contains(unit.Module, StringComparer.InvariantCultureIgnoreCase))
+                        && GeneratorTools.IsOperational(unit, country, decade)
+                        && (!unit.LowPolly || allowLowPolly)
+                        && (allowStatic || !unit.Immovable)
+                    )
+                    .Select(unit => unit.ID)
+                    .Distinct()
+                    .ToList();
 
             validUnits = validUnits.Where(x => x.Value.Count > 0).ToDictionary(x => x.Key, x => x.Value);
             if (validUnits.Count == 0)
@@ -192,7 +197,7 @@ namespace BriefingRoom4DCS.Data
                 if (allyCountries is null && !blockSuppliers)
                     return SelectValidUnits(briefingRoom, families, decade, unitMods, unitBanList, allowLowPolly, false, allowStatic, GetAllyCountries(decade), allowDefaults);
 
-                var blockSupplierString = !blockSuppliers ? briefingRoom.Translate("IncludeSupplierAllies", countryList.Where(x => x != Country.ALL).Count()) : briefingRoom.Translate( "NoBlockSuppliers");
+                var blockSupplierString = !blockSuppliers ? briefingRoom.Translate("IncludeSupplierAllies", countryList.Where(x => x != Country.ALL).Count()) : briefingRoom.Translate("NoBlockSuppliers");
                 briefingRoom.PrintTranslatableWarning("NoUnitsOrSuppliersFound", UIDisplayName.Get(briefingRoom.LanguageKey), string.Join(", ", families), decade, string.Join(", ", Countries.Where(x => x != Country.ALL)), blockSupplierString);
                 if (!allowLowPolly)
                 {

@@ -56,36 +56,38 @@ namespace BriefingRoom4DCS.Generator
                 UnitCategory.Vehicle => new List<UnitFamily> { UnitFamily.VehicleAAA, UnitFamily.VehicleAAA, UnitFamily.VehicleSAMShortIR, UnitFamily.VehicleSAMShortIR, UnitFamily.VehicleSAMShort },
                 _ => new List<UnitFamily>()
             };
-            
+
             if (families.Count == 0)
                 return units.ToList();
 
             var allowStatic = unitCategory == UnitCategory.Static;
             for (int i = 0; i < airDefenseUnitsCount; i++)
-                units.AddRange(unitsCoalitionDB.GetRandomUnits(briefingRoom, families, template.ContextDecade, 1, template.Mods, template.OptionsUnitBanList, template.OptionsMission.Contains("AllowLowPoly"),  template.OptionsMission.Contains("BlockSuppliers"),  allowStatic, country).Item2);
+                units.AddRange(unitsCoalitionDB.GetRandomUnits(briefingRoom, families, template.ContextDecade, 1, template.Mods, template.OptionsUnitBanList, template.OptionsMission.Contains("AllowLowPoly"), template.OptionsMission.Contains("BlockSuppliers"), allowStatic, country).Item2);
 
             return units.ToList();
         }
-        
+
         internal static Tuple<Country, List<string>> GetNeutralRandomUnits(IDatabase database, string langKey, List<UnitFamily> families, List<Country> IgnoreCountries, Decade decade, int count, List<string> unitMods, bool allowLowPolly, List<string> unitBanList, Country? requiredCountry = null)
         {
             // Count is zero, return an empty array.
-            if (count < 1) throw new BriefingRoomException(database, langKey,"AskingForNoUnits");
-            if (families.Select(x => x.GetDCSUnitCategory()).Any(x => x != families.First().GetDCSUnitCategory())) {
+            if (count < 1) throw new BriefingRoomException(database, langKey, "AskingForNoUnits");
+            if (families.Select(x => x.GetDCSUnitCategory()).Any(x => x != families.First().GetDCSUnitCategory()))
+            {
                 families = Toolbox.RandomFrom(families.GroupBy(x => x.GetDCSUnitCategory()).ToList()).ToList();
             }
 
             var category = families.First().GetDCSUnitCategory();
             bool allowDifferentUnitTypes = false;
             var validUnits = new Dictionary<Country, List<string>>();
-            
+            var allUnits = database.GetAllEntries<DBEntryJSONUnit>();
             foreach (Country country in Enum.GetValues(typeof(Country)).Cast<Country>().Where(x => !IgnoreCountries.Contains(x)).ToList())
                 validUnits[country] = (
-                        from DBEntryJSONUnit unit in database.GetAllEntries<DBEntryJSONUnit>()
-                        where !unitBanList.Contains(unit.ID) && unit.Families.Intersect(families).ToList().Count > 0 && unit.Operators.ContainsKey(country) &&
-                            (string.IsNullOrEmpty(unit.Module) || unitMods.Contains(unit.Module, StringComparer.InvariantCultureIgnoreCase) || DBEntryDCSMod.CORE_MODS.Contains(unit.Module, StringComparer.InvariantCultureIgnoreCase)) &&
-                            (unit.Operators[country].start <= decade) && (unit.Operators[country].end >= decade) &&
-                            (!unit.LowPolly || allowLowPolly)
+                        from unit in allUnits
+                        where !unitBanList.Contains(unit.ID) && unit.Families.Intersect(families).ToList().Count > 0 
+                            && (unit.Operators.ContainsKey(Country.ALL) || unit.Operators.ContainsKey(country)) 
+                            && (string.IsNullOrEmpty(unit.Module) || unitMods.Contains(unit.Module, StringComparer.InvariantCultureIgnoreCase) || DBEntryDCSMod.CORE_MODS.Contains(unit.Module, StringComparer.InvariantCultureIgnoreCase)) 
+                            && IsOperational(unit, country, decade) 
+                            &&(!unit.LowPolly || allowLowPolly)
                         select unit.ID
                     ).Distinct().ToList();
 
@@ -129,6 +131,21 @@ namespace BriefingRoom4DCS.Generator
             // Different unit types NOT allowed in the group, pick a random type and fill the whole array with it.
             string unitString = Toolbox.RandomFrom(selectableUnits);
             return new(selectedCountry, Enumerable.Repeat(unitString, count).ToList());
+        }
+
+        internal static bool IsOperational(DBEntryJSONUnit unit, Country country, Decade decade)
+        {
+            if(unit.Operators.ContainsKey(country))
+            {
+                var ops = unit.Operators[country];
+                return ops.start <= decade && ops.end >= decade;
+            }
+            else if(unit.Operators.ContainsKey(Country.ALL))
+            {
+                var ops = unit.Operators[Country.ALL];
+                return ops.start <= decade && ops.end >= decade;
+            }
+            return false;
         }
 
         internal static object LowercaseFirstCharacter(string str)
