@@ -353,6 +353,8 @@ function GetTitle(id) {
             return 'Supply Base'
         case id.includes("EWR"):
             return 'Early Warning Radar'
+        case id.includes("Cargo"):
+            return 'Cargo Storage'
         case id.includes("SAM"):
             switch (true) {
                 case id.includes("Long"):
@@ -464,6 +466,8 @@ function GetNatoIcon(id, invert = false) {
             return prefix + 'SUPPLY'
         case id.includes("EWR"):
             return prefix + 'EWR'
+        case id.includes("Cargo"):
+            return prefix + 'CARGO'
         case id.includes("SAM"):
             switch (true) {
                 case id.includes("Long"):
