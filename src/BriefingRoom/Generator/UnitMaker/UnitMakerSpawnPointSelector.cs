@@ -59,7 +59,7 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
             Coordinates origin, bool remove = true)
         {
             if (validTypes.Contains(SpawnPointType.Air) || validTypes.Contains(SpawnPointType.Sea))
-                return GetAirOrSeaCoordinates(mission, validTypes, origin, new MinMaxD(1, 3));
+                return GetAirOrSeaCoordinates(mission, validTypes, origin, new MinMaxD(1, 30));
 
             var sp = mission.SpawnPoints.Where(x => validTypes.Contains(x.PointType)).Aggregate((acc, x) => origin.GetDistanceFrom(x.Coordinates) < origin.GetDistanceFrom(acc.Coordinates) ? x : acc);
             if (remove)
