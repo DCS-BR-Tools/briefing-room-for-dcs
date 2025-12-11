@@ -194,7 +194,7 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                         excludeIds = [];
                     var targetAirbaseOptions =
                         (from DBEntryAirbase airbaseDB in mission.AirbaseDB
-                         where !excludeIds.Contains(airbaseDB.DCSID) && (coalition == Coalition.Neutral || airbaseDB.Coalition == coalition) && mission.AirbaseParkingSpots.ContainsKey(airbaseDB.DCSID) && ValidateAirfieldParking(mission.AirbaseParkingSpots[airbaseDB.DCSID], aircraftDB.Families.First(), unitCount) && ValidateAirfieldRunway(airbaseDB, aircraftDB.Families.First())
+                         where !excludeIds.Contains(airbaseDB.DCSID) && (coalition == Coalition.Neutral || airbaseDB.Coalition == coalition) && mission.AirbaseParkingSpots.ContainsKey(airbaseDB.DCSID) && ValidateAirfieldParking(mission.AirbaseParkingSpots[airbaseDB.DCSID], aircraftDB.Families.First(), unitCount)
                          select airbaseDB).OrderBy(x => x.Coordinates.GetDistanceFrom(coordinates));
 
             if (!targetAirbaseOptions.Any()) throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "No airbase found for aircraft.");
@@ -376,13 +376,6 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
 
             // Bunkerable aircraft
             return parkingSpots.Count(X => X.ParkingType == ParkingSpotType.HardenedAirShelter) + openSpots > unitCount;
-        }
-
-        private static bool ValidateAirfieldRunway(DBEntryAirbase airbaseDB, UnitFamily unitFamily)
-        {
-            if (airbaseDB.RunwayLengthFt == -1 || !Constants.LARGE_AIRCRAFT.Contains(unitFamily)) //TODO implement runway distances on all relavant airbases
-                return true;
-            return airbaseDB.RunwayLengthFt > 7000; //TODO This is a guess based on most runways I know work so far. Place holder for per aircraft data
         }
 
         private static bool CheckNotInHostileCoords(ref DCSMission mission, Coordinates coordinates, Coalition? coalition = null)

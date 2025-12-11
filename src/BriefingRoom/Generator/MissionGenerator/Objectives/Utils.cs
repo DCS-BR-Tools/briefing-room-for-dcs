@@ -328,7 +328,8 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
         {
             var side = enemyAllowed ? Toolbox.RandomFrom(new[] { Side.Enemy,  Side.Ally }) : Side.Ally;
             var targetCoalition = GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, side, true);
-            var (airbaseDB, _, spawnPoints) = SpawnPointSelector.GetAirbaseAndParking(briefingRoom, mission, coords, 1, targetCoalition.Value, (DBEntryAircraft)briefingRoom.Database.GetEntry<DBEntryJSONUnit>("Mi-8MT"), new[] { ignoreAirbaseId });
+            var playerHasPlaneTransport = mission.TemplateRecord.PlayerFlightGroups.Any(x => briefingRoom.Database.GetEntry<DBEntryJSONUnit>(x.Aircraft).Families.Contains(UnitFamily.PlaneTransport));
+            var (airbaseDB, _, spawnPoints) = SpawnPointSelector.GetAirbaseAndParking(briefingRoom, mission, coords, 1, targetCoalition.Value, (DBEntryAircraft)briefingRoom.Database.GetEntry<DBEntryJSONUnit>(playerHasPlaneTransport ? "An-26B" : "Mi-8MT"), new[] { ignoreAirbaseId });
             if (spawnPoints.Count == 0) // Failed to generate target group
                 throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "FailedToFindCargoSpawn");
             var airbaseCoords = Toolbox.RandomFrom(spawnPoints);
