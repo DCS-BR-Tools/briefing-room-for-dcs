@@ -53,6 +53,26 @@ namespace BriefingRoom4DCS.Generator.Mission
                 destinationAirbase = missionPackage.DestinationAirbase;
                 groupStartingCoords = missionPackage.StartAirbase.Coordinates;
             }
+
+
+            // Skip waypoints that are not relevant for player flights
+            var landingWaypointName = briefingRoom.Database.Common.Names.WPFinalName.Get(mission.LangKey);
+            flightWaypoints = flightWaypoints.Where((w) =>
+            {
+                var startsWith_P = w.Name.StartsWith("P-");
+                var distanceFromStart = w.Coordinates.GetDistanceFrom(groupStartingCoords);
+                var isClosePickup = startsWith_P && distanceFromStart < 5 * Toolbox.NM_TO_METERS;
+                var distanceFromDestination = w.Coordinates.GetDistanceFrom(destinationAirbase.Coordinates);
+                var isCloseDropoff = !startsWith_P 
+                    && flightWaypoints.Any(x => x.Name.StartsWith("P-") && x.Name.Contains(w.Name))
+                    && distanceFromDestination < 5 * Toolbox.NM_TO_METERS;
+                return !isClosePickup && !isCloseDropoff;
+            }
+
+            )
+            .ToList();
+
+
             var unitDB = (DBEntryAircraft)briefingRoom.Database.GetEntry<DBEntryJSONUnit>(flightGroup.Aircraft);
 
             // Not an unit, or not a player-controllable unit, abort.
@@ -158,7 +178,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             extraSettings.AddIfKeyUnused("MissionAirbaseX", groupStartingCoords.X);
             extraSettings.AddIfKeyUnused("MissionAirbaseY", groupStartingCoords.Y);
             extraSettings.AddIfKeyUnused("MissionAirbaseID", airbase.DCSID);
-            
+
             extraSettings.AddIfKeyUnused("MissionAirbase2X", destinationAirbase.Coordinates.X);
             extraSettings.AddIfKeyUnused("MissionAirbase2Y", destinationAirbase.Coordinates.Y);
             extraSettings.AddIfKeyUnused("MissionAirbase2ID", destinationAirbase.DCSID);
