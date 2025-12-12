@@ -59,6 +59,7 @@
                     <InputDataBase ClassString="flex-block" Label=@briefingRoom.Translate("StartOn")
                         @bind-Value="flight.Carrier" DataBaseType="DatabaseEntryType.UnitCarrier"
                         EmptOpt=@briefingRoom.Translate("Airbase") />
+                    <CheckboxWrapped row @bind-Value="flight.ReturnToCarrier" Label="ReturnToCarrier" />
                     @if (MissionTemplate != null & !string.IsNullOrEmpty(flight.Carrier))
                     {
                         <button type="button"

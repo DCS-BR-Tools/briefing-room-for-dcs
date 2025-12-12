@@ -41,6 +41,7 @@ namespace BriefingRoom4DCS.Template
             }
         }
         private string Carrier_;
+        public bool ReturnToCarrier { get; set; }
         public int Count { get { return _Count; } set { _Count = Toolbox.Clamp(value, 1, Toolbox.MAXIMUM_FLIGHT_GROUP_SIZE); } }
         private int _Count = 1;
         public Country Country { get; set; }
@@ -60,7 +61,7 @@ namespace BriefingRoom4DCS.Template
             Clear();
         }
 
-        public MissionTemplateFlightGroup(IDatabase database, string aircraft, int count, string payload, string carrier, Country country, PlayerStartLocation startLocation, bool aiWingmen, bool hostile, string livery,
+        public MissionTemplateFlightGroup(IDatabase database, string aircraft, int count, string payload, string carrier, bool returnToCarrier, Country country, PlayerStartLocation startLocation, bool aiWingmen, bool hostile, string livery,
             string overrideRadioFrequency,
             RadioModulation overrideRadioBand,
             string overrideCallsignName,
@@ -72,6 +73,7 @@ namespace BriefingRoom4DCS.Template
             Count = count;
             Payload = payload;
             Carrier = carrier;
+            ReturnToCarrier = returnToCarrier;
             Country = country;
             StartLocation = startLocation;
             Livery = livery;
@@ -89,6 +91,7 @@ namespace BriefingRoom4DCS.Template
             AIWingmen = ini.GetValue(section, $"{key}.AIWingmen", AIWingmen);
             Hostile = ini.GetValue(section, $"{key}.Hostile", Hostile);
             Carrier = ini.GetValue(section, $"{key}.Carrier", Carrier);
+            ReturnToCarrier = ini.GetValue(section, $"{key}.ReturnToCarrier", ReturnToCarrier);
             Count = ini.GetValue(section, $"{key}.Count", Count);
             Payload = ini.GetValue(section, $"{key}.Payload", Payload);
             Country = ini.GetValue(section, $"{key}.Country", Country);
@@ -106,6 +109,7 @@ namespace BriefingRoom4DCS.Template
             AIWingmen = false;
             Hostile = false;
             Carrier = "";
+            ReturnToCarrier = true;
             Count = 2;
             Payload = "default";
             Country = Country.CombinedJointTaskForcesBlue;
@@ -123,6 +127,7 @@ namespace BriefingRoom4DCS.Template
             ini.SetValue(section, $"{key}.AIWingmen", AIWingmen);
             ini.SetValue(section, $"{key}.Hostile", Hostile);
             ini.SetValue(section, $"{key}.Carrier", Carrier);
+            ini.SetValue(section, $"{key}.ReturnToCarrier", ReturnToCarrier);
             ini.SetValue(section, $"{key}.Count", Count);
             ini.SetValue(section, $"{key}.Payload", Payload);
             ini.SetValue(section, $"{key}.Country", Country);

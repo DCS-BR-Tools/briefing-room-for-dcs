@@ -30,6 +30,7 @@ namespace BriefingRoom4DCS.Template
         internal bool AIWingmen { get; init; }
         internal bool Hostile { get; init; }
         internal string Carrier { get; init; }
+        internal bool ReturnToCarrier { get; init; }
         internal int Count { get; init; }
         internal Country Country { get; init; }
         internal string Payload { get; init; }
@@ -50,6 +51,7 @@ namespace BriefingRoom4DCS.Template
             AIWingmen = flightGroup.AIWingmen;
             Hostile = flightGroup.Hostile;
             Carrier = flightGroup.Carrier;
+            ReturnToCarrier = flightGroup.ReturnToCarrier;
             Count = flightGroup.Count;
             Country = flightGroup.Country;
             Payload = flightGroup.Payload;
