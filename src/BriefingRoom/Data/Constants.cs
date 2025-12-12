@@ -84,5 +84,7 @@ namespace BriefingRoom4DCS.Data
             UnitFamily.PlaneTransport,
             UnitFamily.PlaneBomber,
         };
+
+        internal static readonly string HTML_SLASH_BREAK = "/&#8203;";
     }
 }

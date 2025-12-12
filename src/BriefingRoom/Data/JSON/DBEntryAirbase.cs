@@ -37,6 +37,7 @@ namespace BriefingRoom4DCS.Data
         internal Coordinates Coordinates { get; private set; }
 
         internal int DCSID { get; private set; }
+        internal string ICAO { get; private set; }
 
         internal double Elevation { get; private set; }
 
@@ -72,15 +73,16 @@ namespace BriefingRoom4DCS.Data
                 {
                     ID = id,
                     UIDisplayName = new LanguageString(LangDB, GetLanguageClassName(typeof(DBEntryAirbase)), id, "displayName", (isH ? $"{airbase.typeName}{airbase.ID}" : airbase.displayName)),
-                    ATC = String.Join("/", airbase.airdromeData.ATC.Select(x => GeneratorTools.FormatRadioFrequency(x))),
+                    ATC = string.Join(Constants.HTML_SLASH_BREAK, airbase.airdromeData.ATC.Select(x => GeneratorTools.FormatRadioFrequency(x))),
                     Coordinates = new Coordinates(airbase.pos.DCS.x, airbase.pos.DCS.z),
                     DCSID = airbase.ID,
+                    ICAO = airbase.code,
                     Elevation = airbase.pos.World.alt,
-                    ILS = String.Join("/", airbase.airdromeData.ILS.Select(x => GeneratorTools.FormatRadioFrequency(x))),
+                    ILS = string.Join(Constants.HTML_SLASH_BREAK, airbase.airdromeData.ILS.Select(x => GeneratorTools.FormatRadioFrequency(x))),
                     Name = airbase.displayName,
-                    Runways = String.Join("/", airbase.airdromeData.runways),
+                    Runways = string.Join(Constants.HTML_SLASH_BREAK, airbase.airdromeData.runways),
                     RunwayLengthFt = (int)(airbase.runways.Select(x => x.length).DefaultIfEmpty().Max() * Toolbox.METERS_TO_FEET),
-                    TACAN = String.Join("/", airbase.airdromeData.TACAN.Select(x => $"{x}X")),
+                    TACAN = string.Join(Constants.HTML_SLASH_BREAK, airbase.airdromeData.TACAN.Select(x => $"{x}X")),
                     Theater = airbase.theatre.ToLower(),
                     ParkingSpots = airbase.stands.Count > 0 ? DBEntryAirbaseParkingSpot.LoadJSON(airbase.stands, id) : DBEntryAirbaseParkingSpot.LoadJSON(airbase.parking, id)
                 });

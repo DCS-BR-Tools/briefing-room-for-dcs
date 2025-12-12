@@ -136,6 +136,7 @@ namespace BriefingRoom4DCS.Mission
 
             html = database.Language.ReplaceValues(mission.LangKey, html);
             html = mission.ReplaceValues(html, true);
+
             GeneratorTools.ReplaceKey(ref html, "BriefingAirbases", GeneratorTools.MakeHTMLTable(GetItems(DCSMissionBriefingItemType.Airbase)));
             GeneratorTools.ReplaceKey(ref html, "BriefingJTAC", GeneratorTools.MakeHTMLTable(GetItems(DCSMissionBriefingItemType.JTAC)));
 
@@ -148,7 +149,7 @@ namespace BriefingRoom4DCS.Mission
             text = database.Language.ReplaceValues(mission.LangKey, text);
             text = mission.ReplaceValues(text);
 
-            GeneratorTools.ReplaceKey(ref text, "BriefingAirbases", GeneratorTools.MakeRawTextList(GetItems(DCSMissionBriefingItemType.Airbase)).Replace("\t", "    "));
+            GeneratorTools.ReplaceKey(ref text, "BriefingAirbases", GeneratorTools.MakeRawTextList(GetItems(DCSMissionBriefingItemType.Airbase)).Replace("\t", "    ").Replace(Constants.HTML_SLASH_BREAK, "/").Replace("<br />", " "));
             GeneratorTools.ReplaceKey(ref text, "BriefingFlightGroups", GeneratorTools.MakeRawTextList(GetItems(DCSMissionBriefingItemType.FlightGroup)).Replace("\t", "    "));
             GeneratorTools.ReplaceKey(ref text, "BriefingRemarks", GeneratorTools.MakeRawTextList(GetItems(DCSMissionBriefingItemType.Remark).Distinct().ToList()).Replace("\t", "    "));
             GeneratorTools.ReplaceKey(ref text, "BriefingTasks", GeneratorTools.MakeRawTextList(GetItems(DCSMissionBriefingItemType.Task)).Replace("\t", "    "));

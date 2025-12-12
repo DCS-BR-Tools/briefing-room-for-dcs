@@ -37,6 +37,7 @@ namespace BriefingRoom4DCS.Data.JSON
     public class Airbase : MongoBase
     {
         public int ID { get; set; }
+        public string code { get; set; }
         public string displayName { get; set; }
         public List<Parking> parking { get; set; }
         public Pos pos { get; set; }

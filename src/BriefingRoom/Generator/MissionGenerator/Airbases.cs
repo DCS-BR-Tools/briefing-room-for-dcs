@@ -144,7 +144,7 @@ namespace BriefingRoom4DCS.Generator.Mission
         {
             var airbase = SelectStartingAirbase(database, airbaseId, ref mission, requiredSpots);
             if (!missionPackages.Any(x => x.StartAirbase.ID == airbase.ID))
-                mission.Briefing.AddItem(DCSMissionBriefingItemType.Airbase, $"{airbase.UIDisplayName.Get(mission.LangKey)}\t{airbase.Runways}\t{airbase.ATC}\t{airbase.ILS}\t{airbase.TACAN}");
+                mission.Briefing.AddItem(DCSMissionBriefingItemType.Airbase, $"{airbase.UIDisplayName.Get(mission.LangKey)}{(string.IsNullOrEmpty(airbase.ICAO) ? "" : $"<br />{airbase.ICAO}")}\t{airbase.Runways}\t{airbase.ATC}\t{airbase.ILS}\t{airbase.TACAN}");
             mission.MapData.AddIfKeyUnused($"AIRBASE_NAME_{airbase.UIDisplayName.Get(mission.LangKey)}", new List<double[]> { airbase.Coordinates.ToArray() });
             mission.PopulatedAirbaseIds[mission.TemplateRecord.ContextPlayerCoalition].Add(airbase.DCSID);
             return airbase;

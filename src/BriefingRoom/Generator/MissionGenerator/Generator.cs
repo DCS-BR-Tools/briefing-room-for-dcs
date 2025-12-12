@@ -270,7 +270,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             if (mission.PlayerAirbase.DCSID > 0)
             {
                 mission.MapData.Add($"AIRBASE_HOME_NAME_{mission.PlayerAirbase.UIDisplayName.Get(mission.LangKey)}", new List<double[]> { mission.PlayerAirbase.Coordinates.ToArray() });
-                mission.Briefing.AddItem(DCSMissionBriefingItemType.Airbase, $"{mission.PlayerAirbase.UIDisplayName.Get(mission.LangKey)}\t{mission.PlayerAirbase.Runways}\t{mission.PlayerAirbase.ATC}\t{mission.PlayerAirbase.ILS}\t{mission.PlayerAirbase.TACAN}");
+                mission.Briefing.AddItem(DCSMissionBriefingItemType.Airbase, $"{mission.PlayerAirbase.UIDisplayName.Get(mission.LangKey)}{(string.IsNullOrEmpty(mission.PlayerAirbase.ICAO) ? "" : $"<br />{mission.PlayerAirbase.ICAO}")}\t{mission.PlayerAirbase.Runways}\t{mission.PlayerAirbase.ATC}\t{mission.PlayerAirbase.ILS}\t{mission.PlayerAirbase.TACAN}");
             }
             if (mission.TemplateRecord.FlightPlanTheaterDestinationAirbase == "home")
                 mission.PlayerAirbaseDestination = mission.PlayerAirbase;
@@ -281,7 +281,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 if (mission.PlayerAirbaseDestination.DCSID > 0)
                 {
                     mission.MapData.Add($"AIRBASE_DEST_NAME_{mission.PlayerAirbaseDestination.UIDisplayName.Get(mission.LangKey)}", new List<double[]> { mission.PlayerAirbaseDestination.Coordinates.ToArray() });
-                    mission.Briefing.AddItem(DCSMissionBriefingItemType.Airbase, $"{mission.PlayerAirbaseDestination.UIDisplayName.Get(mission.LangKey)}\t{mission.PlayerAirbaseDestination.Runways}\t{mission.PlayerAirbaseDestination.ATC}\t{mission.PlayerAirbaseDestination.ILS}\t{mission.PlayerAirbaseDestination.TACAN}");
+                    mission.Briefing.AddItem(DCSMissionBriefingItemType.Airbase, $"{mission.PlayerAirbaseDestination.UIDisplayName.Get(mission.LangKey)}{(string.IsNullOrEmpty(mission.PlayerAirbaseDestination.ICAO) ? "" : $"<br />{mission.PlayerAirbaseDestination.ICAO}")}\t{mission.PlayerAirbaseDestination.Runways}\t{mission.PlayerAirbaseDestination.ATC}\t{mission.PlayerAirbaseDestination.ILS}\t{mission.PlayerAirbaseDestination.TACAN}");
                 }
             }
 
