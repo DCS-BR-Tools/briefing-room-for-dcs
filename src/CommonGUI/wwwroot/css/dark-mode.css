@@ -79,3 +79,12 @@ html[data-bs-theme="dark"] .offcanvas {
 html[data-bs-theme="dark"] .custom-warning a {
     color: #0378ff;
 }
+
+
+html[data-bs-theme="dark"] .inputEnum select:disabled,
+html[data-bs-theme="dark"] .checkbox-wrapper>input:disabled+span
+ {
+    color: black;
+    border-color: grey;
+    background-color: #2f3741;
+}

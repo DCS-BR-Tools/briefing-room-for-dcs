@@ -17,25 +17,31 @@
             @bind-Value="Template.ContextTheater" DataBaseType="DatabaseEntryType.Theater" />
         <InputDataBase ClassString="flex-block" Label=@briefingRoom.Translate("Situation")
             @bind-Value="Template.ContextSituation" DataBaseType="DatabaseEntryType.Situation"
-            Grouping="@Template.ContextTheater" EmptOpt=@briefingRoom.Translate("Random")
-            CustomOpt=@(new List<string>{briefingRoom.Translate("SpawnAnywhere")+",None"}) />
-            @if (CampaignTemplate != null)
-            {
-                <CheckboxWrapped row @bind-Value="@CampaignTemplate.StaticSituation" Label="StaticSituation" />
-            }
+            Grouping="@Template.ContextTheater" EmptOpt=@briefingRoom.Translate("Random") CustomOpt=@(new
+                                                                                                      List<string> { briefingRoom.Translate("SpawnAnywhere") + ",None" }) />
+        @if (CampaignTemplate != null)
+        {
+            <CheckboxWrapped row @bind-Value="@CampaignTemplate.StaticSituation" Label="StaticSituation" />
+        }
     </div>
     <div class="generator-group flex-justify-spaced flex-margin-fix">
-    <InputDataBase ClassString="flex-block" Label=@briefingRoom.Translate("HomeAirbase") @bind-Value="Template.FlightPlanTheaterStartingAirbase"
-        DataBaseType="DatabaseEntryType.Airbase" Grouping="@Template.ContextTheater"
-        EmptOpt=@briefingRoom.Translate("Random") />
-    <InputDataBase ClassString="flex-block" Label=@briefingRoom.Translate("DestinationAirbase") @bind-Value="Template.FlightPlanTheaterDestinationAirbase"
-        DataBaseType="DatabaseEntryType.Airbase" Grouping="@Template.ContextTheater"
-        EmptOpt=@briefingRoom.Translate("Random") CustomOpt=@(new List<string>{briefingRoom.Translate("HomeAirbase")+",home"}) />
+        <InputDataBase ClassString="flex-block" Label=@briefingRoom.Translate("HomeAirbase")
+            @bind-Value="Template.FlightPlanTheaterStartingAirbase" DataBaseType="DatabaseEntryType.Airbase"
+            Grouping="@Template.ContextTheater" EmptOpt=@briefingRoom.Translate("Random") />
+        <InputDataBase ClassString="flex-block" Label=@briefingRoom.Translate("DestinationAirbase")
+            @bind-Value="Template.FlightPlanTheaterDestinationAirbase" DataBaseType="DatabaseEntryType.Airbase"
+            Grouping="@Template.ContextTheater" EmptOpt=@briefingRoom.Translate("Random") CustomOpt=@(new
+                                                                                                      List<string> { briefingRoom.Translate("HomeAirbase") + ",home" }) />
     </div>
     @if (CampaignTemplate != null)
     {
-        <InputEnum ClassString="flex-block" Label=@briefingRoom.Translate("AirbaseVariationDistance")
-            @bind-Value="CampaignTemplate.MissionsAirbaseVariationDistance" EnumType="AmountN" />
+        <p class="custom-warning"><span class="oi oi-info"></span>&nbsp;@briefingRoom.Translate("PersistentAirbasesWarning")
+        </p>
+        <div class="generator-group flex-justify-spaced flex-margin-fix">
+            <CheckboxWrapped row @bind-Value=@CampaignTemplate.MissionsPersistentAirbases Label="PersistentAirbases" />
+            <InputEnum ClassString="flex-block" Label=@briefingRoom.Translate("AirbaseVariationDistance")
+                @bind-Value="CampaignTemplate.MissionsAirbaseVariationDistance" EnumType="AmountN" />
+        </div>
     }
     <InputEnum Label=@briefingRoom.Translate("TimePeriod") @bind-Value="Template.ContextDecade" EnumType="Decade" />
     <InputEnum Label=@briefingRoom.Translate("PlayerSide") @bind-Value="Template.ContextPlayerCoalition"

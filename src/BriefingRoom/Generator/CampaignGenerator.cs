@@ -47,6 +47,7 @@ namespace BriefingRoom4DCS.Generator
             string previousSituationId = "";
             Coordinates previousObjectiveCenterCoords = new();
             string previousPlayerAirbaseId = "";
+            string previousDestinationAirbaseId = "";
 
             var i = 0;
             var failedTries = 0;
@@ -62,7 +63,9 @@ namespace BriefingRoom4DCS.Generator
                     (int)campaignTemplate.MissionsObjectiveCount,
                     previousSituationId,
                     failedTries > 1 ? new() : previousObjectiveCenterCoords,
-                    failedTries > 2 ? "" : previousPlayerAirbaseId);
+                    failedTries > 2 ? "" : previousPlayerAirbaseId,
+                    failedTries > 2 ? "" : previousDestinationAirbaseId
+                    );
 
                 try
                 {
@@ -77,6 +80,7 @@ namespace BriefingRoom4DCS.Generator
                     previousSituationId = mission.GetValue("BriefingSituationId");
                     previousObjectiveCenterCoords = new Coordinates(double.Parse(mission.GetValue("MissionCenterX"), CultureInfo.InvariantCulture), double.Parse(mission.GetValue("MissionCenterY"), CultureInfo.InvariantCulture));
                     previousPlayerAirbaseId = mission.GetValue("PlayerAirbaseId");
+                    previousDestinationAirbaseId = mission.GetValue("PlayerAirbaseDestinationId");
                     i++;
                     failedTries = 0;
                 }
@@ -138,7 +142,7 @@ namespace BriefingRoom4DCS.Generator
             string langKey,
             CampaignTemplate campaignTemplate,
             int missionIndex, int missionCount,
-            string previousSituationId, Coordinates previousObjectiveCenterCoords, string previousPlayerAirbaseId)
+            string previousSituationId, Coordinates previousObjectiveCenterCoords, string previousPlayerAirbaseId, string previousDestinationAirbaseId)
         {
             string weatherPreset = GetWeatherForMission(database, campaignTemplate.EnvironmentBadWeatherChance);
             MissionTemplate template = new(database)
@@ -212,29 +216,45 @@ namespace BriefingRoom4DCS.Generator
 
                 var airbases = nextSituationDB.GetAirbases(database, template.OptionsMission.Contains("InvertCountriesCoalitions"));
                 var previousPlayerAirbase = airbases.First(x => x.ID == previousPlayerAirbaseId);
-                var airbaseOptions = airbases.Where(x =>
+                if (campaignTemplate.MissionsPersistentAirbases)
+                {
+                    template.FlightPlanTheaterStartingAirbase = previousPlayerAirbaseId;
+                    var airbaseOptions = airbases.Where(x =>
+                        (x.Coalition == template.ContextPlayerCoalition || isNone)
+                        && x.Coordinates.GetDistanceFrom(previousPlayerAirbase.Coordinates) < (GetAirbaseVariationDistance(campaignTemplate.MissionsAirbaseVariationDistance) * Toolbox.NM_TO_METERS)
+                     ).ToList();
+                    if (airbaseOptions.Count > 0)
+                        template.FlightPlanTheaterDestinationAirbase = Toolbox.RandomFrom(airbaseOptions).ID;
+                }
+                else
+                {
+                    var airbaseOptions = airbases.Where(x =>
                     (x.Coalition == template.ContextPlayerCoalition || isNone) &&
                     x.Coordinates.GetDistanceFrom(previousPlayerAirbase.Coordinates) < (GetAirbaseVariationDistance(campaignTemplate.MissionsAirbaseVariationDistance) * Toolbox.NM_TO_METERS)).ToList();
-                if (airbaseOptions.Count > 0)
-                    template.FlightPlanTheaterStartingAirbase = Toolbox.RandomFrom(airbaseOptions).ID;
+                    if (airbaseOptions.Count > 0)
+                        template.FlightPlanTheaterStartingAirbase = Toolbox.RandomFrom(airbaseOptions).ID;
+                }
             }
 
 
             int objectiveCount = GetObjectiveCountForMission(campaignTemplate.MissionsObjectiveCount);
             var i = 0;
-            do {
+            do
+            {
                 var obj = new MissionTemplateObjective(database, Toolbox.RandomFrom(campaignTemplate.MissionsObjectives), campaignTemplate.MissionTargetCount);
                 i++;
-                while (i < Toolbox.RandomInt(i, Math.Min(i + 5, objectiveCount))) {
+                while (i < Toolbox.RandomInt(i, Math.Min(i + 5, objectiveCount)))
+                {
                     obj.SubTasks.Add(new MissionTemplateSubTask(database, Toolbox.RandomFrom(campaignTemplate.MissionsObjectives), campaignTemplate.MissionTargetCount));
                     i++;
                 }
                 template.Objectives.Add(obj);
             } while (i < objectiveCount);
 
-            if (campaignTemplate.MissionsProgression != AmountNR.None) {
+            if (campaignTemplate.MissionsProgression != AmountNR.None)
+            {
                 var progression = GetMissionProgressionChance(campaignTemplate.MissionsProgression);
-                if(progression > 0)
+                if (progression > 0)
                     ApplyProgression(database, langKey, progression, ref template);
             }
 
@@ -244,18 +264,21 @@ namespace BriefingRoom4DCS.Generator
             return template;
         }
 
-        private static void ApplyProgression(IDatabase database, string langKey, int progressionChance, ref MissionTemplate template) {
+        private static void ApplyProgression(IDatabase database, string langKey, int progressionChance, ref MissionTemplate template)
+        {
             var trys = 1;
             while (trys < 10)
             {
                 var taskIndex = 0;
                 List<int> indexesSoFar = new();
-                foreach (var objective in template.Objectives) {
-                    if(taskIndex > 0 && Toolbox.RandomInt(100) < progressionChance)
+                foreach (var objective in template.Objectives)
+                {
+                    if (taskIndex > 0 && Toolbox.RandomInt(100) < progressionChance)
                         ApplyProgressionToTask(objective, indexesSoFar);
                     indexesSoFar.Add(taskIndex);
                     taskIndex++;
-                    foreach (var subTask in objective.SubTasks) {
+                    foreach (var subTask in objective.SubTasks)
+                    {
                         if (Toolbox.RandomInt(100) < progressionChance)
                             ApplyProgressionToTask(subTask, indexesSoFar);
                         indexesSoFar.Add(taskIndex);
@@ -264,8 +287,8 @@ namespace BriefingRoom4DCS.Generator
                 }
                 try
                 {
-                   Toolbox.CheckObjectiveProgressionLogic(database, new MissionTemplateRecord(database, template), langKey);
-                   break;
+                    Toolbox.CheckObjectiveProgressionLogic(database, new MissionTemplateRecord(database, template), langKey);
+                    break;
                 }
                 catch (BriefingRoomRawException)
                 {
@@ -280,11 +303,11 @@ namespace BriefingRoom4DCS.Generator
             for (var i = 0; i < Toolbox.RandomMinMax(0, 3); i++)
                 task.ProgressionDependentTasks.Add(Toolbox.RandomFrom(indexesSoFar));
             task.ProgressionDependentTasks = task.ProgressionDependentTasks.Distinct().ToList();
-            if(!task.ProgressionActivation) return;
+            if (!task.ProgressionActivation) return;
 
             foreach (var val in Enum.GetValues<ObjectiveProgressionOption>())
             {
-                if(Toolbox.RandomInt(100) < 50)
+                if (Toolbox.RandomInt(100) < 50)
                     task.ProgressionOptions.Add(val);
             }
 
@@ -294,7 +317,7 @@ namespace BriefingRoom4DCS.Generator
 
         private static int GetMissionProgressionChance(AmountNR missionsProgression)
         {
-             return missionsProgression switch
+            return missionsProgression switch
             {
                 AmountNR.VeryLow => 10,
                 AmountNR.Low => 25,

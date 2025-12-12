@@ -41,6 +41,7 @@ namespace BriefingRoom4DCS.Template
         public Amount MissionsObjectiveCount { get; set; }
         public Amount MissionsObjectiveVariationDistance { get; set; }
         public AmountN MissionsAirbaseVariationDistance { get; set; }
+        public bool MissionsPersistentAirbases { get; set; }
         public Amount MissionTargetCount { get; set; }
         public AmountNR MissionsProgression { get; set; }
         public bool StaticSituation { get; set; }
@@ -72,6 +73,7 @@ namespace BriefingRoom4DCS.Template
             MissionsObjectiveCount = Amount.Average;
             MissionsObjectiveVariationDistance = Amount.Average;
             MissionsAirbaseVariationDistance = AmountN.Average;
+            MissionsPersistentAirbases = false;
             MissionTargetCount = Amount.Average;
             StaticSituation = false;
             MissionsProgression = AmountNR.None;
@@ -117,6 +119,7 @@ namespace BriefingRoom4DCS.Template
             MissionsObjectiveCount = ini.GetValue("Missions", "ObjectiveCount", MissionsObjectiveCount);
             MissionsObjectiveVariationDistance = ini.GetValue("Missions", "ObjectiveVariationDistance", MissionsObjectiveVariationDistance);
             MissionsAirbaseVariationDistance = ini.GetValue("Missions", "AirbaseVariationDistance", MissionsAirbaseVariationDistance);
+            MissionsPersistentAirbases = ini.GetValue("Missions", "PersistentAirbases", MissionsPersistentAirbases);
             MissionTargetCount = ini.GetValue("Missions", "TargetCount", MissionTargetCount);
             StaticSituation = ini.GetValue("CampaignOptions", "StaticSituation", false);
             MissionsProgression = ini.GetValue("Missions", "Progression", MissionsProgression);
@@ -155,6 +158,7 @@ namespace BriefingRoom4DCS.Template
             ini.SetValue("Missions", "ObjectiveCount", MissionsObjectiveCount);
             ini.SetValue("Missions", "ObjectiveVariationDistance", MissionsObjectiveVariationDistance);
             ini.SetValue("Missions", "AirbaseVariationDistance", MissionsAirbaseVariationDistance);
+            ini.SetValue("Missions", "PersistentAirbases", MissionsPersistentAirbases);
             ini.SetValue("Missions", "TargetCount", MissionTargetCount);
             ini.SetValue("CampaignOptions", "StaticSituation", StaticSituation);
             ini.SetValue("Missions", "Progression", MissionsProgression);
