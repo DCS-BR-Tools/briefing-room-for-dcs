@@ -346,13 +346,14 @@ namespace BriefingRoom4DCS.Generator.Mission
 
                 var unitDB = unitDBs.First();
                 string airbaseName = null;
+                coordinates = spawnCoords.Value;
                 try
                 {
                     airbaseName = SetAirbase(briefingRoom, featureDB, ref mission, unitDB, groupSide, ref coordinates, coordinates2, unitCount, ref extraSettings);
                 }
                 catch (BriefingRoomRawException)
                 {
-                    SpawnPointSelector.RecoverSpawnPoint(ref mission, spawnCoords.Value);
+                    SpawnPointSelector.RecoverSpawnPoint(ref mission, coordinates);
                     continue;
                 }
 
@@ -371,7 +372,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 }
 
                 if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.FireWithinThreatRange))
-                    SetFiringCoordinates(ref mission, spawnCoords.Value, unitDB, ref extraSettings);
+                    SetFiringCoordinates(ref mission, coordinates, unitDB, ref extraSettings);
 
                 var groupInfo = UnitGenerator.AddUnitGroup(
                     briefingRoom,
@@ -380,7 +381,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                     groupSide,
                     unitFamily,
                     groupLua, luaUnit,
-                    spawnCoords.Value, groupFlags,
+                    coordinates, groupFlags,
                     extraSettings);
 
                 SetCarrier(ref mission, featureDB, groupSide, ref groupInfo);
