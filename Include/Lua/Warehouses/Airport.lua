@@ -4,7 +4,7 @@
     {
     ["InitFuel"] = 100,
     }, -- end of ["gasoline"]
-    ["unlimitedMunitions"] = true,
+    ["unlimitedMunitions"] = $UNLIMITEDMUNITIONS$,
     ["methanol_mixture"] = 
     {
         ["InitFuel"] = 100,

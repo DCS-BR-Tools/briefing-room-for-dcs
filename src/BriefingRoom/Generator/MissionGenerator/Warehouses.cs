@@ -49,6 +49,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 GeneratorTools.ReplaceKey(ref airportLua, "dynamicCargo", AllowDynamicSwitch(mission.TemplateRecord.AirbaseDynamicCargo, mission, airbaseID));
 
                 GeneratorTools.ReplaceKey(ref airportLua, "allowHotStart", mission.TemplateRecord.DsAllowHotStart);
+                GeneratorTools.ReplaceKey(ref airportLua, "unlimitedMunitions", !mission.Values.ContainsKey($"Airbase{airbaseID}LimitedMunitions"));
 
                 warehousesAirportLua += airportLua + "\r\n";
             }
@@ -65,6 +66,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 GeneratorTools.ReplaceKey(ref carrierLua, "dynamicSpawn", mission.TemplateRecord.CarrierDynamicSpawn);
                 GeneratorTools.ReplaceKey(ref carrierLua, "dynamicCargo", mission.TemplateRecord.CarrierDynamicCargo);
                 GeneratorTools.ReplaceKey(ref carrierLua, "allowHotStart", mission.TemplateRecord.DsAllowHotStart);
+                GeneratorTools.ReplaceKey(ref carrierLua, "unlimitedMunitions", carrier.UnlimitedMunitions);
 
                 warehousesCarriersLua += carrierLua + "\r\n";
             }

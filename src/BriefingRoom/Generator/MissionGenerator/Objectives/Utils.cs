@@ -241,7 +241,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 throw new BriefingRoomException(database, langKey, "TaskTargetsInvalid", taskDB.UIDisplayName, targetDB.UnitCategory);
         }
 
-        internal static Tuple<int, Coordinates> GetTransportOrigin(
+        internal static Tuple<DBEntryAirbase?, Coordinates> GetTransportOrigin(
             IBriefingRoom briefingRoom,
             ref DCSMission mission,
             DBEntryObjectiveTargetBehaviorLocation Location,
@@ -256,16 +256,16 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 case DBEntryObjectiveTargetBehaviorLocation.Airbase:
                     return GetAirbaseCargoSpot(briefingRoom, ref mission, objectiveCoordinates, mission.PlayerAirbase.DCSID);
                 case DBEntryObjectiveTargetBehaviorLocation.NearAirbase:
-                    var (airbaseId, coords) = GetAirbaseCargoSpot(briefingRoom, ref mission, objectiveCoordinates);
+                    var (airbaseDB, coords) = GetAirbaseCargoSpot(briefingRoom, ref mission, objectiveCoordinates);
                     coords = GetNearestSpawnCoordinates(briefingRoom.Database, ref mission, coords, GetSpawnPointTypes(isEscort, unitCategory), true);
-                    return new Tuple<int, Coordinates>(airbaseId, coords);
+                    return new Tuple<DBEntryAirbase?, Coordinates>(airbaseDB, coords);
                 default:
-                    return new Tuple<int, Coordinates>(-1, objectiveCoordinates);
+                    return new Tuple<DBEntryAirbase?, Coordinates>(null, objectiveCoordinates);
             }
         }
 
         // Likely will extend this in future for Escort setup
-        internal static Tuple<int, Coordinates> GetTransportDestination(
+        internal static Tuple<DBEntryAirbase?, Coordinates> GetTransportDestination(
             IBriefingRoom briefingRoom,
             ref DCSMission mission,
             DBEntryObjectiveTargetBehaviorLocation destination,
@@ -295,7 +295,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                     var spawnTypes = GetSpawnPointTypes(isEscort, unitCategory);
                     coordinates = GetNearestSpawnCoordinates(briefingRoom.Database, ref mission, coordinates, spawnTypes, false);
 
-                    return new Tuple<int, Coordinates>(-1, coordinates);
+                    return new Tuple<DBEntryAirbase?, Coordinates>(null, coordinates);
             }
         }
 
@@ -324,7 +324,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             };
         }
 
-        internal static Tuple<int, Coordinates> GetAirbaseCargoSpot(IBriefingRoom briefingRoom, ref DCSMission mission, Coordinates coords, int ignoreAirbaseId = -1, bool enemyAllowed = false)
+        internal static Tuple<DBEntryAirbase?, Coordinates> GetAirbaseCargoSpot(IBriefingRoom briefingRoom, ref DCSMission mission, Coordinates coords, int ignoreAirbaseId = -1, bool enemyAllowed = false)
         {
             var side = enemyAllowed ? Toolbox.RandomFrom(new[] { Side.Enemy,  Side.Ally }) : Side.Ally;
             var targetCoalition = GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, side, true);
@@ -334,7 +334,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "FailedToFindCargoSpawn");
             var airbaseCoords = Toolbox.RandomFrom(spawnPoints);
             mission.PopulatedAirbaseIds[targetCoalition.Value].Add(airbaseDB.DCSID);
-            return new Tuple<int, Coordinates>(airbaseDB.DCSID, airbaseCoords);
+            return new Tuple<DBEntryAirbase?, Coordinates>(airbaseDB, airbaseCoords);
         }
 
 

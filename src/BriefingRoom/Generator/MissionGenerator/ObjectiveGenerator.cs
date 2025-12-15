@@ -153,6 +153,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 "Escort" => Escort.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID),
                 "Hold" or "HoldSuperiority" => Hold.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID),
                 "TransportTroops" or "TransportCargo" or "ExtractTroops" => Transport.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID),
+                "TransportDynamicCargo" => TransportDynamicCargo.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID),
                 _ => Basic.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID)
             };
         }

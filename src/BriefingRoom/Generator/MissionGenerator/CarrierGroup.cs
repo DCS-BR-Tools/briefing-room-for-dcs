@@ -82,9 +82,9 @@ namespace BriefingRoom4DCS.Generator.Mission
                 var groupLua = "ShipCarrier";
                 var unitLua = "Ship";
                 if (templateOps.Count > 0)
-                    groupInfo = UnitGenerator.AddUnitGroupTemplate(briefingRoom, ref mission,Toolbox.RandomFrom(templateOps), Side.Ally, groupLua, unitLua, shipCoordinates, 0, extraSettings);
+                    groupInfo = UnitGenerator.AddUnitGroupTemplate(briefingRoom, ref mission, Toolbox.RandomFrom(templateOps), Side.Ally, groupLua, unitLua, shipCoordinates, 0, extraSettings);
                 else
-                    groupInfo = UnitGenerator.AddUnitGroup(briefingRoom, ref mission,unitDB.DCSID, Side.Ally, unitDB.Families[0], groupLua, unitLua, shipCoordinates, 0, extraSettings);
+                    groupInfo = UnitGenerator.AddUnitGroup(briefingRoom, ref mission, unitDB.DCSID, Side.Ally, unitDB.Families[0], groupLua, unitLua, shipCoordinates, 0, extraSettings);
 
                 if (!groupInfo.HasValue || (groupInfo.Value.UnitNames.Length == 0)) continue; // Couldn't generate group
 
@@ -140,10 +140,10 @@ namespace BriefingRoom4DCS.Generator.Mission
                     destIteration++;
                     var distance = travelMinMax.Min + ((travelMinMax.Max - travelMinMax.Min) / destIteration);
                     destinationPoint = Coordinates.FromAngleAndDistance(carrierGroupCoordinates.Value, distance, carrierPathDeg);
-                    if (SpawnPointSelector.CheckInSea(mission.TheaterDB ,destinationPoint.Value))
+                    if (SpawnPointSelector.CheckInSea(mission.TheaterDB, destinationPoint.Value))
                         break;
                 }
-                if (SpawnPointSelector.CheckInSea(mission.TheaterDB ,destinationPoint.Value))
+                if (SpawnPointSelector.CheckInSea(mission.TheaterDB, destinationPoint.Value))
                     break;
             }
 
@@ -151,7 +151,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 throw new BriefingRoomException(database, mission.LangKey, "CarrierSpawnPointNotFound");
             if (!destinationPoint.HasValue)
                 throw new BriefingRoomException(database, mission.LangKey, "CarrierDestinationNotFound");
-            if (!SpawnPointSelector.CheckInSea(mission.TheaterDB ,destinationPoint.Value))
+            if (!SpawnPointSelector.CheckInSea(mission.TheaterDB, destinationPoint.Value))
                 throw new BriefingRoomException(database, mission.LangKey, "CarrierWaypointOnShore");
             if (!ShapeManager.IsLineClear(carrierGroupCoordinates.Value, destinationPoint.Value, mission.TheaterDB.WaterExclusionCoordinates))
                 throw new BriefingRoomException(database, mission.LangKey, "CarrierPassesThrougLand");
@@ -173,7 +173,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             if (usingHint)
                 location = new Coordinates(mission.TemplateRecord.CarrierHints[flightGroup.Carrier]);
 
-            Coordinates? spawnPoint = SpawnPointSelector.GetNearestSpawnPoint(mission,new SpawnPointType[] { SpawnPointType.LandLarge }, location);
+            Coordinates? spawnPoint = SpawnPointSelector.GetNearestSpawnPoint(mission, new SpawnPointType[] { SpawnPointType.LandLarge }, location);
 
             if (!spawnPoint.HasValue)
             {
@@ -208,19 +208,18 @@ namespace BriefingRoom4DCS.Generator.Mission
                     {"playerCanDrive", false}});
             if (!groupInfo.HasValue || (groupInfo.Value.UnitNames.Length == 0))
             {
-                SpawnPointSelector.RecoverSpawnPoint(ref mission,spawnPoint.Value);
+                SpawnPointSelector.RecoverSpawnPoint(ref mission, spawnPoint.Value);
                 return;
             }
             var unitDB = (DBEntryStatic)briefingRoom.Database.GetEntry<DBEntryJSONUnit>(fobTemplate.Units.First().DCSID);
             groupInfo.Value.DCSGroup.Name = unitDB.UIDisplayName.Get(mission.LangKey);
             groupInfo.Value.DCSGroup.Units.First().Name = unitDB.UIDisplayName.Get(mission.LangKey);
-            ZoneMaker.AddCTLDPickupZone( briefingRoom, ref mission,spawnPoint.Value, true);
+            ZoneMaker.AddCTLDPickupZone(briefingRoom, ref mission, spawnPoint.Value, true);
             mission.Briefing.AddItem(
                      DCSMissionBriefingItemType.Airbase,
                      $"{groupInfo.Value.Name}\t\t{GeneratorTools.FormatRadioFrequency(radioFrequency)}\t\t");
             mission.CarrierDictionary.Add(flightGroup.Carrier, new CarrierGroupInfo(groupInfo.Value, 4, 4, mission.TemplateRecord.ContextPlayerCoalition));
-            mission.MapData.Add($"FOB_{flightGroup.Carrier}", new List<double[]> { groupInfo.Value.Coordinates.ToArray()
-});
+            mission.MapData.Add($"FOB_{flightGroup.Carrier}", new List<double[]> { groupInfo.Value.Coordinates.ToArray()});
 
             foreach (var group in groupInfo.Value.DCSGroups)
             {
@@ -228,6 +227,11 @@ namespace BriefingRoom4DCS.Generator.Mission
                 if (unit.DCSID != "FARP")
                     unit.UnitType = "StaticSupply";
             }
+        }
+
+        internal static void CreateFOB()
+        {
+            
         }
     }
 }

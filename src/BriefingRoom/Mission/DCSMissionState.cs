@@ -39,8 +39,9 @@ namespace BriefingRoom4DCS.Mission
         internal int TotalHelicopterSpotCount { get; init; }
 
         internal Coalition Coalition { get; init; }
+        internal bool UnlimitedMunitions { get; init; }
 
-        internal CarrierGroupInfo(GroupInfo GroupInfo, int remainingPlaneSpotCount, int remainingHelicopterSpotCount, Coalition coalition)
+        internal CarrierGroupInfo(GroupInfo GroupInfo, int remainingPlaneSpotCount, int remainingHelicopterSpotCount, Coalition coalition, bool unlimitedMunitions = true)
         {
             this.GroupInfo = GroupInfo;
             RemainingPlaneSpotCount = remainingPlaneSpotCount;
@@ -48,6 +49,7 @@ namespace BriefingRoom4DCS.Mission
             RemainingHelicopterSpotCount = remainingHelicopterSpotCount;
             TotalHelicopterSpotCount = remainingHelicopterSpotCount;
             Coalition = coalition;
+            UnlimitedMunitions = unlimitedMunitions;
         }
     }
 

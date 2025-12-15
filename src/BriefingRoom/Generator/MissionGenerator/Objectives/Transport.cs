@@ -34,8 +34,8 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "NoUnitsForTimePeriod", taskDB.TargetSide, objectiveTargetUnitFamily);
             var unitDB = unitDBs.First();
 
-            var (originAirbaseId, unitCoordinates) = ObjectiveUtils.GetTransportOrigin(briefingRoom, ref mission, targetBehaviorDB.Location, objectiveCoordinates);
-            var (airbaseId, destinationPoint) = ObjectiveUtils.GetTransportDestination(briefingRoom, ref mission, targetBehaviorDB.Destination, unitCoordinates, task.TransportDistance, originAirbaseId);
+            var (originAirbase, unitCoordinates) = ObjectiveUtils.GetTransportOrigin(briefingRoom, ref mission, targetBehaviorDB.Location, objectiveCoordinates);
+            var (_, destinationPoint) = ObjectiveUtils.GetTransportDestination(briefingRoom, ref mission, targetBehaviorDB.Destination, unitCoordinates, task.TransportDistance, originAirbase.DCSID);
             objectiveCoordinates = destinationPoint;
 
             extraSettings.Add("playerCanDrive", false);

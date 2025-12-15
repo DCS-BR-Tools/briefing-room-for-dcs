@@ -1684,6 +1684,23 @@ function briefingRoom.mission.objectivesTriggersCommon.registerCaptureLocation(o
   end)
 end
 
+
+function briefingRoom.mission.objectivesTriggersCommon.registerDynamicCargoTask(objectiveIndex, airbaseName, itemName, requiredCount)
+  table.insert(briefingRoom.mission.objectiveTimers,  function ()
+    if briefingRoom.mission.objectivesTriggersCommon.isMissionOrObjectiveComplete(objectiveIndex) then return false end
+
+    local w = Airbase.getByName(airbaseName):getWarehouse()
+    local count = w:getItemCount(itemName)
+    if count > requiredCount then
+      briefingRoom.radioManager.play("$LANG_PILOT$: $LANG_CARGODELIVERED$", "RadioPilotCargoDelivered")
+      briefingRoom.mission.coreFunctions.completeObjective(objectiveIndex)
+      return nil
+    end
+  end)
+  
+  briefingRoom.mission.objectives[objectiveIndex].hideTargetCount = true
+end
+
 ------END OF TRIGGERS TODO MOVE TO INDEPENDENT FILES---------------
 
 for objIndex,obj in ipairs(briefingRoom.mission.objectives) do
