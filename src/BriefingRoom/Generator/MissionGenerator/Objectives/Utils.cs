@@ -295,6 +295,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                     return GetAirbaseCargoSpot(briefingRoom, ref mission, mission.PlayerAirbase.Coordinates);
                 case DBEntryObjectiveTargetBehaviorLocation.Airbase when originBehavior == DBEntryObjectiveTargetBehaviorLocation.Default:
                     return GetAirbaseCargoSpotWithin(briefingRoom, mission, objectiveCoordinates, transportDistanceRange, originAirbaseId, enemyAllowed);
+                case DBEntryObjectiveTargetBehaviorLocation.Airbase when originBehavior == DBEntryObjectiveTargetBehaviorLocation.PlayerAirbase:
                 case DBEntryObjectiveTargetBehaviorLocation.Airbase when originBehavior == DBEntryObjectiveTargetBehaviorLocation.Airbase:
                     return GetAirbaseCargoSpotWithin(briefingRoom, mission, originCoordinates, transportDistanceRange, originAirbaseId, enemyAllowed);
                 case DBEntryObjectiveTargetBehaviorLocation.Default when originBehavior == DBEntryObjectiveTargetBehaviorLocation.Default: // Relocate
@@ -302,7 +303,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 case DBEntryObjectiveTargetBehaviorLocation.Default:
                     return new Tuple<DBEntryAirbase?, Coordinates>(null, GetNearestSpawnCoordinates(briefingRoom.Database, ref mission, objectiveCoordinates, spawnTypes, false));
                 default:
-                    throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "TransportDestinationNotImplemented", destinationBehavior.ToString());
+                    throw new BriefingRoomRawException($"Unsupported transport destination behavior: {destinationBehavior} origin: {originBehavior}");
             }
         }
 
