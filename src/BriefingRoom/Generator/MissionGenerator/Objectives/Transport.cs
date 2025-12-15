@@ -35,7 +35,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             var unitDB = unitDBs.First();
 
             var (originAirbase, unitCoordinates) = ObjectiveUtils.GetTransportOrigin(briefingRoom, ref mission, targetBehaviorDB.Location, objectiveCoordinates);
-            var (_, destinationPoint) = ObjectiveUtils.GetTransportDestination(briefingRoom, ref mission, targetBehaviorDB.Destination, unitCoordinates, task.TransportDistance, originAirbase.DCSID);
+            var (_, destinationPoint) = ObjectiveUtils.GetTransportDestination(briefingRoom, ref mission, targetBehaviorDB.Location, targetBehaviorDB.Destination, unitCoordinates, objectiveCoordinates, task.TransportDistance, originAirbase?.DCSID ?? -1);
             objectiveCoordinates = destinationPoint;
 
             extraSettings.Add("playerCanDrive", false);

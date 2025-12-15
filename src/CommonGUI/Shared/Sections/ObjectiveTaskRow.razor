@@ -40,6 +40,7 @@
     [Parameter] public MissionTemplateSubTask objective { get; set; }
     [Parameter] public ObjectiveUtils objectiveUtil { get; set; }
     [Parameter] public Action CloneCallback { get; set; }
+    # nullable enable
     [Parameter] public Action? DeleteCallback { get; set; }
     [Parameter] public Action? NearbyCallback { get; set; }
     [Parameter] public bool Tabbed { get; set; }
