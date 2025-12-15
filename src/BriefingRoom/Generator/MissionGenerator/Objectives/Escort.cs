@@ -43,7 +43,8 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             if (Constants.AIRBASE_LOCATIONS.Contains(targetBehaviorDB.Location) && targetDB.UnitCategory.IsAircraft())
                 unitCoordinates = ObjectiveUtils.PlaceInAirbase(briefingRoom, ref mission, extraSettings, targetBehaviorDB, unitCoordinates, unitCount, unitDB, true);
             var (airbase, destinationPoint) = ObjectiveUtils.GetTransportDestination(briefingRoom, ref mission, targetBehaviorDB.Location, targetBehaviorDB.Destination, unitCoordinates, objectiveCoordinates, task.TransportDistance, originAirbase?.DCSID ?? -1, true, objectiveTargetUnitFamily.GetUnitCategory(), targetBehaviorDB.ID.StartsWith("ToFrontLine"));
-            extraSettings.Add("EndAirbaseId", airbase.DCSID);
+            if(airbase != null)
+                extraSettings.Add("EndAirbaseId", airbase.DCSID);
             objectiveCoordinates = destinationPoint;
 
             extraSettings.Add("playerCanDrive", false);
@@ -65,11 +66,11 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                     groupFlags |= GroupFlags.ImmediateAircraftSpawn;
             }
             var groupLua = targetBehaviorDB.GroupLua[(int)targetDB.DCSUnitCategory];
-            if (originAirbase.DCSID > 0)
+            if (originAirbase != null)
             {
                 extraSettings["HotStart"] = true;
             }
-            if (airbase.DCSID > 0 && objectiveTargetUnitFamily.GetUnitCategory().IsAircraft())
+            if (airbase != null && objectiveTargetUnitFamily.GetUnitCategory().IsAircraft())
             {
                 groupLua = "AircraftLanding";
                 if (mission.AirbaseDB.Find(x => x.DCSID == airbase.DCSID).Coalition == GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, Side.Enemy, true))
