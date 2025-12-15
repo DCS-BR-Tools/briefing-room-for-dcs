@@ -241,6 +241,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 throw new BriefingRoomException(database, langKey, "TaskTargetsInvalid", taskDB.UIDisplayName, targetDB.UnitCategory);
         }
 
+        #nullable enable
         internal static Tuple<DBEntryAirbase?, Coordinates> GetTransportOrigin(
             IBriefingRoom briefingRoom,
             ref DCSMission mission,
@@ -329,11 +330,12 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             var side = enemyAllowed ? Toolbox.RandomFrom(new[] { Side.Enemy,  Side.Ally }) : Side.Ally;
             var targetCoalition = GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, side, true);
             var playerHasPlaneTransport = mission.TemplateRecord.PlayerFlightGroups.Any(x => briefingRoom.Database.GetEntry<DBEntryJSONUnit>(x.Aircraft).Families.Contains(UnitFamily.PlaneTransport));
-            var (airbaseDB, _, spawnPoints) = SpawnPointSelector.GetAirbaseAndParking(briefingRoom, mission, coords, 1, targetCoalition.Value, (DBEntryAircraft)briefingRoom.Database.GetEntry<DBEntryJSONUnit>(playerHasPlaneTransport ? "An-26B" : "Mi-8MT"), new[] { ignoreAirbaseId });
+            var (airbaseDB, _, spawnPoints) = SpawnPointSelector.GetAirbaseAndParking(briefingRoom, mission, coords, 1, targetCoalition, (DBEntryAircraft)briefingRoom.Database.GetEntry<DBEntryJSONUnit>(playerHasPlaneTransport ? "An-26B" : "Mi-8MT"), new[] { ignoreAirbaseId });
             if (spawnPoints.Count == 0) // Failed to generate target group
                 throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "FailedToFindCargoSpawn");
             var airbaseCoords = Toolbox.RandomFrom(spawnPoints);
-            mission.PopulatedAirbaseIds[targetCoalition.Value].Add(airbaseDB.DCSID);
+            if(targetCoalition.HasValue)
+                mission.PopulatedAirbaseIds[targetCoalition.Value].Add(airbaseDB.DCSID);
             return new Tuple<DBEntryAirbase?, Coordinates>(airbaseDB, airbaseCoords);
         }
 

@@ -81,7 +81,7 @@ namespace BriefingRoom4DCS.Template
 
         internal MissionTemplateObjective(IDatabase database, INIFile ini, string section, string key): base(database)
         {
-            LoadFromFile(ini, section, key);
+            LoadFromFile(database, ini, section, key);
         }
 
         internal void LoadFromFile(IDatabase database, INIFile ini, string section, string key)

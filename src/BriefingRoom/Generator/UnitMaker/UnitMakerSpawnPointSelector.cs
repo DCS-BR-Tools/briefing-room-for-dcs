@@ -188,7 +188,7 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
         internal static Tuple<DBEntryAirbase, List<int>, List<Coordinates>> GetAirbaseAndParking(
             IBriefingRoom briefingRoom,
                     DCSMission mission, Coordinates coordinates,
-                    int unitCount, Coalition coalition, DBEntryAircraft aircraftDB, int[] excludeIds = null)
+                    int unitCount, Coalition? coalition, DBEntryAircraft aircraftDB, int[] excludeIds = null)
         {
                     if (excludeIds == null)
                         excludeIds = [];
