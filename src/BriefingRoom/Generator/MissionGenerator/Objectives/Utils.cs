@@ -287,7 +287,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 if (isEscort)
                     transportDistanceRange = GetStandardMoveDistanceRange(unitCategory.HasValue ? unitCategory.Value : UnitCategory.Plane); // Escort default distance
                 else
-                    transportDistanceRange = new MinMaxD(10, 50); // Default transport distance range if none set //
+                    transportDistanceRange = new MinMaxD(1, 100); // Default transport distance range if none set //
             }
             switch (destinationBehavior)
             {
