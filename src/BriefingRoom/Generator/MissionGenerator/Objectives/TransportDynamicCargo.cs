@@ -93,7 +93,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             var objectiveWaypoints = new List<Waypoint>();
 
             // Choose item and count based on settings
-            var requiredCount =  task.TargetCount switch
+            var requiredOverallCount =  task.TargetCount switch
             {
                 Amount.VeryLow => Toolbox.RandomInt(1, 2),
                 Amount.Low => Toolbox.RandomInt(3, 5),
@@ -102,30 +102,39 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 Amount.VeryHigh => Toolbox.RandomInt(31, 100),
                 _ => 1,
             };
-            var pluralIndex = requiredCount == 1 ? 0 : 1;
-            var taskString = GeneratorTools.ParseRandomString(taskDB.BriefingTask[pluralIndex].Get(mission.LangKey), mission).Replace("\"", "''");
-            var itemName = Toolbox.RandomFrom(TRANSPORT_CARGO_DICT.Keys.ToList());
-            var luaExtraSettings = new Dictionary<string, object>
+            var luaExtraSettingsBase = new Dictionary<string, object>
             {
                 { "AirbaseName", airbase != null ? airbase.Name : targetGroupInfo.Value.UnitNames[0] },
-                { "ItemName", itemName },
-                { "RequiredCount", requiredCount  }
             };
-            var unitDisplayName = new LanguageString(TRANSPORT_CARGO_DICT[itemName]);
-            ObjectiveUtils.CreateTaskString(briefingRoom.Database, ref mission, pluralIndex, ref taskString, objectiveName, objectiveTargetUnitFamily, unitDisplayName, task, luaExtraSettings);
-            ObjectiveUtils.CreateLua(ref mission, targetDB, taskDB, objectiveIndex, objectiveName, targetGroupInfo.Value, taskString, task, luaExtraSettings);
-
-
-
-            // Add briefing remarks for this objective task
-            var remarksString = taskDB.BriefingRemarks.Get(mission.LangKey);
-            if (!string.IsNullOrEmpty(remarksString))
+            var itemKeys = TRANSPORT_CARGO_DICT.Keys.ToList();
+            int i = 0;
+            do
             {
-                string remark = Toolbox.RandomFrom(remarksString.Split(";"));
-                GeneratorTools.ReplaceKey(ref remark, "ObjectiveName", objectiveName);
-                GeneratorTools.ReplaceKey(ref remark, "UnitFamily", briefingRoom.Database.Common.Names.UnitFamilies[(int)objectiveTargetUnitFamily].Get(mission.LangKey).Split(",")[pluralIndex]);
-                mission.Briefing.AddItem(DCSMissionBriefingItemType.Remark, remark);
-            }
+                if(i > 0)
+                    objectiveIndex++;
+                var itemKey = Toolbox.RandomFrom(itemKeys);
+                itemKeys.Remove(itemKey);
+                var luaExtraSettings = luaExtraSettingsBase.ToDictionary(entry => entry.Key, entry => entry.Value, StringComparer.InvariantCultureIgnoreCase);
+                var requiredCount = new MinMaxI(1, requiredOverallCount).GetValue();
+                requiredOverallCount -= requiredCount;
+                luaExtraSettings.Add("ItemName", itemKey);
+                luaExtraSettings.Add("RequiredCount",requiredCount);
+                var unitDisplayName = new LanguageString(TRANSPORT_CARGO_DICT[itemKey]);
+                var pluralIndex = requiredOverallCount == 1 ? 0 : 1;
+                var taskString = GeneratorTools.ParseRandomString(taskDB.BriefingTask[pluralIndex].Get(mission.LangKey), mission).Replace("\"", "''");
+                ObjectiveUtils.CreateTaskString(briefingRoom.Database, ref mission, pluralIndex, ref taskString, objectiveName, objectiveTargetUnitFamily, unitDisplayName, task, luaExtraSettings);
+                ObjectiveUtils.CreateLua(ref mission, targetDB, taskDB, objectiveIndex, objectiveName, targetGroupInfo.Value, taskString, task, luaExtraSettings);
+                // Add briefing remarks for this objective task
+                var remarksString = taskDB.BriefingRemarks.Get(mission.LangKey);
+                if (!string.IsNullOrEmpty(remarksString))
+                {
+                    string remark = Toolbox.RandomFrom(remarksString.Split(";"));
+                    GeneratorTools.ReplaceKey(ref remark, "ObjectiveName", objectiveName);
+                    GeneratorTools.ReplaceKey(ref remark, "UnitFamily", briefingRoom.Database.Common.Names.UnitFamilies[(int)objectiveTargetUnitFamily].Get(mission.LangKey).Split(",")[pluralIndex]);
+                    mission.Briefing.AddItem(DCSMissionBriefingItemType.Remark, remark);
+                }
+                i++;
+            } while (requiredOverallCount > 0 && itemKeys.Count > 0);
 
             // Add feature ogg files
             foreach (string oggFile in taskDB.IncludeOgg)
