@@ -45,14 +45,13 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             unitCount = 1;
             if (airbase == null)
             {
-                if (targetDB.UnitCategory == UnitCategory.Static)
-                {
-                    throw new NotImplementedException("TransportDynamicCargo FOB is not implemented.");
-                }
-                else if (targetDB.UnitCategory == UnitCategory.Ship)
+
+                objectiveCoordinates = ObjectiveUtils.GetNearestSpawnCoordinates(briefingRoom.Database, ref mission, objectiveCoordinates, [SpawnPointType.LandLarge]);
+
+                if (targetDB.UnitCategory == UnitCategory.Ship)
                 {
                     objectiveCoordinates = ObjectiveUtils.GetNearestSpawnCoordinates(briefingRoom.Database, ref mission, objectiveCoordinates, targetDB.ValidSpawnPoints);
-                    var shipDest = SpawnPointSelector.GetRandomSpawnPoint(briefingRoom.Database, ref mission, targetDB.ValidSpawnPoints, objectiveCoordinates, new MinMaxD(5,50));
+                    var shipDest = SpawnPointSelector.GetRandomSpawnPoint(briefingRoom.Database, ref mission, targetDB.ValidSpawnPoints, objectiveCoordinates, new MinMaxD(5, 50));
                     if (shipDest == null)
                         throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "NoValidSpawnPointsForObjectiveTarget", targetDB.ID);
                     extraSettings.Add("GroupX2", shipDest.Value.X);
@@ -61,39 +60,63 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                     unitCount = new MinMaxI(1, 3).GetValue();
                 }
             }
-
+            GroupInfo? targetGroupInfo = null;
             var objectiveTargetUnitFamily = objectiveTargetUnitFamilies.First();
-            (units, unitDBs) = UnitGenerator.GetUnits(briefingRoom, ref mission, objectiveTargetUnitFamilies, unitCount, taskDB.TargetSide, groupFlags, ref extraSettings, targetBehaviorDB.IsStatic, forceTryTemplate: targetDB.UnitCategory == UnitCategory.Ship);
-            extraSettings.Add("playerCanDrive", false);
-            GroupInfo? targetGroupInfo = UnitGenerator.AddUnitGroup(
-            briefingRoom,
-            ref mission,
-            units,
-            taskDB.TargetSide,
-            objectiveTargetUnitFamily,
-            groupLua, luaUnit,
-            objectiveCoordinates,
-            groupFlags,
-            extraSettings);
+            if (targetDB.UnitCategory == UnitCategory.Static)
+            {
+                var fobTemplate = briefingRoom.Database.GetEntry<DBEntryTemplate>("FOB_Berlin");
+                var radioFrequency = 127.5;
+                targetGroupInfo =
+                UnitGenerator.AddUnitGroupTemplate(
+                    briefingRoom,
+                    ref mission,
+                    fobTemplate, Side.Ally,
+                    "Static", "StaticFOB",
+                    objectiveCoordinates, 0,
+                    new Dictionary<string, object>{
+                    {"HeliportCallsignId", 6},
+                    {"HeliportModulation", (int)RadioModulation.AM},
+                    {"HeliportFrequency", GeneratorTools.FormatRadioFrequency(radioFrequency)},
+                    {"RadioBand", (int)RadioModulation.AM},
+                    {"RadioFrequency", GeneratorTools.GetRadioFrequency(radioFrequency)},
+                    {"playerCanDrive", false}});
+                mission.Briefing.AddItem(DCSMissionBriefingItemType.Airbase, $"{targetGroupInfo.Value.Name}\t\t{GeneratorTools.FormatRadioFrequency(radioFrequency)}\t\t");
+                mission.MapData.Add($"FOB_ROME", new List<double[]> { targetGroupInfo.Value.Coordinates.ToArray() });
+            }
+            else
+            {
+                (units, unitDBs) = UnitGenerator.GetUnits(briefingRoom, ref mission, objectiveTargetUnitFamilies, unitCount, taskDB.TargetSide, groupFlags, ref extraSettings, targetBehaviorDB.IsStatic, forceTryTemplate: targetDB.UnitCategory == UnitCategory.Ship);
+                extraSettings.Add("playerCanDrive", false);
+                targetGroupInfo = UnitGenerator.AddUnitGroup(
+                 briefingRoom,
+                 ref mission,
+                 units,
+                 taskDB.TargetSide,
+                 objectiveTargetUnitFamily,
+                 groupLua, luaUnit,
+                 objectiveCoordinates,
+                 groupFlags,
+                 extraSettings);
+            }
 
 
             mission.ObjectiveCoordinates.Add(objectiveCoordinates);
             var objectiveName = mission.WaypointNameGenerator.GetWaypointName();
-            var isStatic = objectiveTargetUnitFamily.GetUnitCategory() == UnitCategory.Cargo;
+            var isStatic = objectiveTargetUnitFamily.GetUnitCategory() != UnitCategory.Ship;
             ObjectiveUtils.AssignTargetSuffix(ref targetGroupInfo, objectiveName, isStatic);
 
             if (airbase != null)
             {
                 mission.SetValue($"Airbase{airbase.DCSID}LimitedMunitions", true);
             }
-            else if (targetDB.UnitCategory == UnitCategory.Ship)
+            else if (targetDB.UnitCategory != UnitCategory.Cargo)
             {
                 mission.CarrierDictionary.Add(objectiveName, new CarrierGroupInfo(targetGroupInfo.Value, 1, 1, mission.TemplateRecord.ContextPlayerCoalition, false));
             }
             var objectiveWaypoints = new List<Waypoint>();
 
             // Choose item and count based on settings
-            var requiredOverallCount =  task.TargetCount switch
+            var requiredOverallCount = task.TargetCount switch
             {
                 Amount.VeryLow => Toolbox.RandomInt(1, 2),
                 Amount.Low => Toolbox.RandomInt(3, 5),
@@ -110,7 +133,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             int i = 0;
             do
             {
-                if(i > 0)
+                if (i > 0)
                     objectiveIndex++;
                 var itemKey = Toolbox.RandomFrom(itemKeys);
                 itemKeys.Remove(itemKey);
@@ -118,7 +141,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 var requiredCount = new MinMaxI(1, requiredOverallCount).GetValue();
                 requiredOverallCount -= requiredCount;
                 luaExtraSettings.Add("ItemName", itemKey);
-                luaExtraSettings.Add("RequiredCount",requiredCount);
+                luaExtraSettings.Add("RequiredCount", requiredCount);
                 var unitDisplayName = new LanguageString(TRANSPORT_CARGO_DICT[itemKey]);
                 var pluralIndex = requiredOverallCount == 1 ? 0 : 1;
                 var taskString = GeneratorTools.ParseRandomString(taskDB.BriefingTask[pluralIndex].Get(mission.LangKey), mission).Replace("\"", "''");
