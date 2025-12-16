@@ -41,6 +41,8 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             var (originAirbase, unitCoordinates) = ObjectiveUtils.GetTransportOrigin(briefingRoom, ref mission, targetBehaviorDB.Location, objectiveCoordinates);
             var (airbase, destinationPoint) = ObjectiveUtils.GetTransportDestination(briefingRoom, ref mission, targetBehaviorDB.Location, targetBehaviorDB.Destination, unitCoordinates, objectiveCoordinates, task.TransportDistance, originAirbase?.DCSID ?? -1);
             objectiveCoordinates = destinationPoint;
+            var groupLua = targetBehaviorDB.GroupLua[(int)targetDB.DCSUnitCategory];
+            unitCount = 1;
             if (airbase == null)
             {
                 if (targetDB.UnitCategory == UnitCategory.Static)
@@ -48,20 +50,28 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                     throw new NotImplementedException("TransportDynamicCargo FOB is not implemented.");
                 }
                 else if (targetDB.UnitCategory == UnitCategory.Ship)
+                {
                     objectiveCoordinates = ObjectiveUtils.GetNearestSpawnCoordinates(briefingRoom.Database, ref mission, objectiveCoordinates, targetDB.ValidSpawnPoints);
+                    var shipDest = SpawnPointSelector.GetRandomSpawnPoint(briefingRoom.Database, ref mission, targetDB.ValidSpawnPoints, objectiveCoordinates, new MinMaxD(5,50));
+                    if (shipDest == null)
+                        throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "NoValidSpawnPointsForObjectiveTarget", targetDB.ID);
+                    extraSettings.Add("GroupX2", shipDest.Value.X);
+                    extraSettings.Add("GroupY2", shipDest.Value.Y);
+                    groupLua = "ShipPatrolling";
+                    unitCount = new MinMaxI(1, 3).GetValue();
+                }
             }
 
             var objectiveTargetUnitFamily = objectiveTargetUnitFamilies.First();
-            (units, unitDBs) = UnitGenerator.GetUnits(briefingRoom, ref mission, objectiveTargetUnitFamilies, 1, taskDB.TargetSide, groupFlags, ref extraSettings, targetBehaviorDB.IsStatic);
+            (units, unitDBs) = UnitGenerator.GetUnits(briefingRoom, ref mission, objectiveTargetUnitFamilies, unitCount, taskDB.TargetSide, groupFlags, ref extraSettings, targetBehaviorDB.IsStatic, forceTryTemplate: targetDB.UnitCategory == UnitCategory.Ship);
             extraSettings.Add("playerCanDrive", false);
-
             GroupInfo? targetGroupInfo = UnitGenerator.AddUnitGroup(
             briefingRoom,
             ref mission,
             units,
             taskDB.TargetSide,
             objectiveTargetUnitFamily,
-            briefingRoom.Database.GetEntry<DBEntryObjectiveTargetBehavior>("Idle").GroupLua[(int)targetDB.DCSUnitCategory], luaUnit,
+            groupLua, luaUnit,
             objectiveCoordinates,
             groupFlags,
             extraSettings);
@@ -83,7 +93,15 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             var objectiveWaypoints = new List<Waypoint>();
 
             // Choose item and count based on settings
-            var requiredCount = unitCountMinMax.GetValue();
+            var requiredCount =  task.TargetCount switch
+            {
+                Amount.VeryLow => Toolbox.RandomInt(1, 2),
+                Amount.Low => Toolbox.RandomInt(3, 5),
+                Amount.Average => Toolbox.RandomInt(6, 15),
+                Amount.High => Toolbox.RandomInt(17, 30),
+                Amount.VeryHigh => Toolbox.RandomInt(31, 100),
+                _ => 1,
+            };
             var pluralIndex = requiredCount == 1 ? 0 : 1;
             var taskString = GeneratorTools.ParseRandomString(taskDB.BriefingTask[pluralIndex].Get(mission.LangKey), mission).Replace("\"", "''");
             var itemName = Toolbox.RandomFrom(TRANSPORT_CARGO_DICT.Keys.ToList());
@@ -120,11 +138,6 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             foreach (string featureID in taskDB.RequiredFeatures.Concat(featuresID).ToHashSet())
                 FeaturesObjectives.GenerateMissionFeature(briefingRoom, ref mission, featureID, objectiveName, objectiveIndex, targetGroupInfo.Value, taskDB.TargetSide, objectiveOptions, overrideCoords: targetBehaviorDB.ID.StartsWith("ToFrontLine") ? objectiveCoordinates : null);
 
-            var cargoWaypoint = ObjectiveUtils.GenerateObjectiveWaypoint(briefingRoom.Database, ref mission, task, unitCoordinates, unitCoordinates, $"{objectiveName} Pickup", scriptIgnore: true);
-            mission.Waypoints.Add(cargoWaypoint);
-            objectiveWaypoints.Add(cargoWaypoint);
-
-            var objCoords = objectiveCoordinates;
             mission.ObjectiveTargetUnitFamilies.Add(objectiveTargetUnitFamily);
             var waypoint = ObjectiveUtils.GenerateObjectiveWaypoint(briefingRoom.Database, ref mission, task, objectiveCoordinates, objectiveCoordinates, objectiveName, hiddenMapMarker: task.ProgressionOptions.Contains(ObjectiveProgressionOption.ProgressionHiddenBrief));
             mission.Waypoints.Add(waypoint);
