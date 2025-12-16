@@ -91,7 +91,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             {
                 { "AirbaseName", airbase != null ? airbase.Name : targetGroupInfo.Value.UnitNames[0] },
                 { "ItemName", itemName },
-                { "RequiredCount", requiredCount + 100  }
+                { "RequiredCount", requiredCount  }
             };
             var unitDisplayName = new LanguageString(TRANSPORT_CARGO_DICT[itemName]);
             ObjectiveUtils.CreateTaskString(briefingRoom.Database, ref mission, pluralIndex, ref taskString, objectiveName, objectiveTargetUnitFamily, unitDisplayName, task, luaExtraSettings);
