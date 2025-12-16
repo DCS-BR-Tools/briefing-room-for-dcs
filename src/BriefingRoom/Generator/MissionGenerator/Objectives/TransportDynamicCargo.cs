@@ -43,12 +43,12 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             objectiveCoordinates = destinationPoint;
             var groupLua = targetBehaviorDB.GroupLua[(int)targetDB.DCSUnitCategory];
             unitCount = 1;
+            var objectiveTargetUnitFamily = objectiveTargetUnitFamilies.First();
             if (airbase == null)
             {
-
-                objectiveCoordinates = ObjectiveUtils.GetNearestSpawnCoordinates(briefingRoom.Database, ref mission, objectiveCoordinates, [SpawnPointType.LandLarge]);
-
-                if (targetDB.UnitCategory == UnitCategory.Ship)
+                if (objectiveTargetUnitFamily == UnitFamily.StaticStructureOffshore)
+                    objectiveCoordinates = ObjectiveUtils.GetNearestSpawnCoordinates(briefingRoom.Database, ref mission, objectiveCoordinates, [SpawnPointType.Sea]);
+                else if (targetDB.UnitCategory == UnitCategory.Ship)
                 {
                     objectiveCoordinates = ObjectiveUtils.GetNearestSpawnCoordinates(briefingRoom.Database, ref mission, objectiveCoordinates, targetDB.ValidSpawnPoints);
                     var shipDest = SpawnPointSelector.GetRandomSpawnPoint(briefingRoom.Database, ref mission, targetDB.ValidSpawnPoints, objectiveCoordinates, new MinMaxD(5, 50));
@@ -59,29 +59,49 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                     groupLua = "ShipPatrolling";
                     unitCount = new MinMaxI(1, 3).GetValue();
                 }
+                else
+                    objectiveCoordinates = ObjectiveUtils.GetNearestSpawnCoordinates(briefingRoom.Database, ref mission, objectiveCoordinates, [SpawnPointType.LandLarge]);
             }
             GroupInfo? targetGroupInfo = null;
-            var objectiveTargetUnitFamily = objectiveTargetUnitFamilies.First();
+            var objectiveName = mission.WaypointNameGenerator.GetWaypointName();
             if (targetDB.UnitCategory == UnitCategory.Static)
             {
-                var fobTemplate = briefingRoom.Database.GetEntry<DBEntryTemplate>("FOB_Berlin");
                 var radioFrequency = 127.5;
-                targetGroupInfo =
-                UnitGenerator.AddUnitGroupTemplate(
-                    briefingRoom,
-                    ref mission,
-                    fobTemplate, Side.Ally,
-                    "Static", "StaticFOB",
-                    objectiveCoordinates, 0,
-                    new Dictionary<string, object>{
+                extraSettings = new Dictionary<string, object>{
                     {"HeliportCallsignId", 6},
                     {"HeliportModulation", (int)RadioModulation.AM},
                     {"HeliportFrequency", GeneratorTools.FormatRadioFrequency(radioFrequency)},
                     {"RadioBand", (int)RadioModulation.AM},
                     {"RadioFrequency", GeneratorTools.GetRadioFrequency(radioFrequency)},
-                    {"playerCanDrive", false}});
+                    {"playerCanDrive", false}};
+                if (objectiveTargetUnitFamily == UnitFamily.StaticStructureOffshore)
+                {
+                    targetGroupInfo = UnitGenerator.AddUnitGroup(
+                         briefingRoom,
+                         ref mission,
+                         [Toolbox.RandomFrom(new List<string> { "Oil rig", "Gas platform" })],
+                         taskDB.TargetSide,
+                         objectiveTargetUnitFamily,
+                         "Static", "StaticFOB",
+                         objectiveCoordinates,
+                         0,
+                         extraSettings);
+                }
+                else
+                {
+                    var fobTemplate = briefingRoom.Database.GetEntry<DBEntryTemplate>("FOB_Berlin");
+                    targetGroupInfo =
+                    UnitGenerator.AddUnitGroupTemplate(
+                        briefingRoom,
+                        ref mission,
+                        fobTemplate, Side.Ally,
+                        "Static", "StaticFOB",
+                        objectiveCoordinates, 0,
+                        extraSettings
+                        );
+                }
                 mission.Briefing.AddItem(DCSMissionBriefingItemType.Airbase, $"{targetGroupInfo.Value.Name}\t\t{GeneratorTools.FormatRadioFrequency(radioFrequency)}\t\t");
-                mission.MapData.Add($"FOB_ROME", new List<double[]> { targetGroupInfo.Value.Coordinates.ToArray() });
+                mission.MapData.Add($"FOB_{objectiveName}", new List<double[]> { targetGroupInfo.Value.Coordinates.ToArray() });
             }
             else
             {
@@ -101,7 +121,6 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
 
 
             mission.ObjectiveCoordinates.Add(objectiveCoordinates);
-            var objectiveName = mission.WaypointNameGenerator.GetWaypointName();
             var isStatic = objectiveTargetUnitFamily.GetUnitCategory() != UnitCategory.Ship;
             ObjectiveUtils.AssignTargetSuffix(ref targetGroupInfo, objectiveName, isStatic);
 

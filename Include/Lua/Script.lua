@@ -436,6 +436,11 @@ function dcsExtensions.getUnitNamesByGroupNameSuffix(suffix)
           table.insert(unitNames, u:getName())
       end
     end
+        for _,u in pairs(coalition.getAirbases(i)) do
+      if string.endsWith(u:getName(), suffix) then
+          table.insert(unitNames, u:getName())
+      end
+    end
   end
   return unitNames
 end
