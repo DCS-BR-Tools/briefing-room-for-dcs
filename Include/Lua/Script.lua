@@ -1721,7 +1721,7 @@ for objIndex,obj in ipairs(briefingRoom.mission.objectives) do
   end
 end
 
-timer.scheduleFunction(briefingRoom.mission.objectiveTimerSchedule, nil, timer.getTime() + 1)
+timer.scheduleFunction(briefingRoom.mission.objectiveTimerSchedule, nil, timer.getTime() + 2)
 $SCRIPTOBJECTIVESTRIGGERS$
 
 -- ===================================================================================
