@@ -470,5 +470,13 @@
         "families": ["ShipFrigate"],
         "lowPolly": false,
         "immovable": false
+    },
+    {
+        "type": "Type_021_1",
+        "families": [
+            "ShipFrigate"
+        ],
+        "lowPolly": false,
+        "immovable": false
     }
 ]

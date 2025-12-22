@@ -250,7 +250,7 @@
     "lowPolly": false,
     "playerControllable": false
   },
-    {
+  {
     "type": "C-130J-30",
     "families": ["PlaneTransport"],
     "lowPolly": false,
@@ -858,5 +858,11 @@
     "families": ["PlaneAttack", "PlaneStrike", "PlaneSTOVL", "PlaneFighter"],
     "lowPolly": false,
     "playerControllable": true
+  },
+  {
+    "type": "A6E",
+    "families": ["PlaneAttack", "PlaneStrike"],
+    "lowPolly": false,
+    "playerControllable": false
   }
 ]

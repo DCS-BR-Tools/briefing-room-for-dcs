@@ -1,13 +1,14 @@
 [
   {
     "type": "ALBATROS",
-    "displayName": "Corvette 1124.4 Grisha",
+    "displayName": "Corvette 1124M Grisha [CH]",
     "categories": [
       {
         "name": "Armed Ship"
       }
     ],
-    "shape": "albatros",
+    "module": "Currenthill Assets Pack",
+    "shape": "CHAP_Project1124M",
     "detectionRange": 30000,
     "threatRange": 16000,
     "operators": {
@@ -78,7 +79,7 @@
   },
   {
     "type": "CHAP_Project22160",
-    "displayName": "Project 22160 Patrol Ship [CH]",
+    "displayName": "Patrol Ship 22160 Vasily Bykov [CH]",
     "categories": [
       {
         "name": "Armed Ship"
@@ -102,7 +103,7 @@
   },
   {
     "type": "CHAP_Project22160_TorM2KM",
-    "displayName": "Project 22160 Patrol Ship with Tor M2KM [CH]",
+    "displayName": "Patrol ship 22160 Vasily Bykov with Tor M2KM [CH]",
     "categories": [
       {
         "name": "Armed Ship"
@@ -1145,6 +1146,73 @@
       ],
       "UnitedNationsPeacekeepers": [
         1990,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "Type_021_1",
+    "displayName": "Type 021-1 Missile Boat",
+    "categories": [
+      {
+        "name": "Armed Ship"
+      }
+    ],
+    "module": "China Asset Pack by Deka Ironwork Simulations and Eagle Dynamics",
+    "shape": "021",
+    "detectionRange": 30000,
+    "threatRange": 4000,
+    "operators": {
+      "China": [
+        1960,
+        2020
+      ],
+      "Cuba": [
+        1960,
+        2020
+      ],
+      "Egypt": [
+        1960,
+        2020
+      ],
+      "GDR": [
+        1960,
+        2020
+      ],
+      "India": [
+        1960,
+        2020
+      ],
+      "Iraq": [
+        1960,
+        2020
+      ],
+      "Iran": [
+        1960,
+        2020
+      ],
+      "NorthKorea": [
+        1960,
+        2020
+      ],
+      "Poland": [
+        1960,
+        2020
+      ],
+      "Romania": [
+        1960,
+        2020
+      ],
+      "Syria": [
+        1960,
+        2020
+      ],
+      "USSR": [
+        1960,
+        2020
+      ],
+      "Yugoslavia": [
+        1960,
         2020
       ]
     }

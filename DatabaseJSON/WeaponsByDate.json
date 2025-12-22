@@ -1745,6 +1745,76 @@
   { "decade": 1980, "clsid": "{PTB_1500_MIG29A}" },
   { "decade": 1980, "clsid": "{R_60}" },
   { "decade": 1980, "clsid": "B-8M1 - 20 S-8OFP2" },
-  { "decade": 1980, "clsid": "{CHAP_8x9M120_Ataka_V}"},
-  { "decade": 1980, "clsid": "{CHAP_8x9M120F_Ataka_V}"}
+  { "decade": 1980, "clsid": "{CHAP_8x9M120_Ataka_V}" },
+  { "decade": 1980, "clsid": "{CHAP_8x9M120F_Ataka_V}" },
+  { "decade": 1960, "clsid": "{HB_A6E_MK82_MER_5x_LEFT}" },
+  {
+    "decade": 1960,
+    "clsid": "{HB_A6E_MK82_MER_5x_RIGHT}"
+  },
+  { "decade": 1960, "clsid": "{HB_A6E_MK81_MER_5x_LEFT}" },
+  {
+    "decade": 1960,
+    "clsid": "{HB_A6E_MK81_MER_5x_RIGHT}"
+  },
+  {
+    "decade": 1960,
+    "clsid": "{HB_A6E_LAU61MK151_TER_2x_LEFT}"
+  },
+  {
+    "decade": 1960,
+    "clsid": "{HB_A6E_LAU61MK151_TER_2x_RIGHT}"
+  },
+  { "decade": 1980, "clsid": "{HB_A6E_TALD_MER_4x}" },
+  { "decade": 1960, "clsid": "{F14-ALQ167-POD}" },
+  {
+    "decade": 1960,
+    "clsid": "{HB_A6E_MK82SE_MER_5x_LEFT}"
+  },
+  { "decade": 1960, "clsid": "{HB_A6E_MK82SE_MER_5x}" },
+  {
+    "decade": 1960,
+    "clsid": "{HB_A6E_MK82SE_MER_5x_RIGHT}"
+  },
+  {
+    "decade": 1960,
+    "clsid": "{HB_A6E_MK20_MER_3x_RIGHT}"
+  },
+  { "decade": 1960, "clsid": "{HB_A6E_MK83_MER_2x_LEFT}" },
+  { "decade": 1960, "clsid": "{HB_A6E_MK20_MER_5x_LEFT}" },
+  {
+    "decade": 1960,
+    "clsid": "{HB_A6E_MK20_MER_5x_RIGHT}"
+  },
+  { "decade": 1960, "clsid": "{HB_A6E_MK83_MER_3x_AFT}" },
+  {
+    "decade": 1960,
+    "clsid": "{HB_A6E_GBU12_MER_2x_LEFT}"
+  },
+  {
+    "decade": 1960,
+    "clsid": "{HB_A6E_GBU12_MER_2x_RIGHT}"
+  },
+  {
+    "decade": 1960,
+    "clsid": "{HB_A6E_LAU61MK151_TER_3x}"
+  },
+  {
+    "decade": 1960,
+    "clsid": "{HB_A6E_LAU10_TER_2x_LEFT}"
+  },
+  {
+    "decade": 1960,
+    "clsid": "{HB_A6E_LAU10_TER_2x_RIGHT}"
+  },
+  { "decade": 1960, "clsid": "{HB_A6E_LAU7_AIM9M}" },
+  { "decade": 1960, "clsid": "{HB_A6E_MK82SE_MER_6x}" },
+  { "decade": 1960, "clsid": "{HB_A6E_LAU7_AIM9L}" },
+  { "decade": 1960, "clsid": "{HB_A6E_MK81_MER_6x}" },
+  { "decade": 1960, "clsid": "{HB_A6E_MK83_MER_3x_FWD}" },
+  { "decade": 1960, "clsid": "{HB_A6E_MK20_MER_6x}" },
+  { "decade": 1960, "clsid": "{HB_A6E_LAU10_TER_3x}" },
+  { "decade": 1960, "clsid": "{HB_A6E_D704}" },
+  { "decade": 1960, "clsid": "{HB_A6E_MK82_MER_6x}" },
+  { "decade": 1960, "clsid": "{HB_A6E_AERO1D}" }
 ]

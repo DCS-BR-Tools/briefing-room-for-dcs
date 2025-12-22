@@ -2067,5 +2067,47 @@
     "families": ["VehicleAirfield", "VehicleStatic"],
     "lowPolly": false,
     "immovable": true
+  },
+  {
+    "type": "BTR-60",
+    "families": ["VehicleAPC"],
+    "lowPolly": false,
+    "immovable": false
+  },
+    {
+    "type": "BTR-70",
+    "families": ["VehicleAPC"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "BRDM-2_malyutka",
+    "families": ["VehicleAPC"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "T-34-85",
+    "families": ["VehicleMBT"],
+    "lowPolly": false,
+    "immovable": false
+  },
+    {
+    "type": "T-80B",
+    "families": ["VehicleMBT"],
+    "lowPolly": false,
+    "immovable": false
+  },
+      {
+    "type": "T62M",
+    "families": ["VehicleMBT"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "P14_SR",
+    "families": ["VehicleEWR"],
+    "lowPolly": false,
+    "immovable": true
   }
 ]

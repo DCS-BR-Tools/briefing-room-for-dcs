@@ -78,7 +78,9 @@ namespace BriefingRoom4DCS.Data
             "Currenthill Assets Pack",
             "MiG-29 Fulcrum AI",
             "C-130J AI",
-            "C-130-Assets"
+            "C-130-Assets",
+            "ColdWarAssetsPack",
+            "A-6E AI by Heatblur Simulations"
         };
 
         internal string Module { get; private set; }
