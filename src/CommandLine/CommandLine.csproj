@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net9.0-windows</TargetFramework>
+    <TargetFramework>net10.0-windows</TargetFramework>
     <RootNamespace>BriefingRoom4DCS.CommandLineTool</RootNamespace>
     <OutputType>Exe</OutputType>
     <PublishSingleFile>true</PublishSingleFile>
@@ -11,7 +11,7 @@
     <PublishReadyToRunShowWarnings>true</PublishReadyToRunShowWarnings>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="9.0.11" />
+    <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="10.0.0" />
       <ProjectReference Include="../BriefingRoom/BriefingRoom.csproj" />
   </ItemGroup>
 </Project>

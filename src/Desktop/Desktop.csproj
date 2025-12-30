@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net9.0-windows</TargetFramework>
+    <TargetFramework>net10.0-windows</TargetFramework>
     <RootNamespace>BriefingRoom4DCS.GUI.Desktop</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <PublishSingleFile>true</PublishSingleFile>
@@ -10,16 +10,17 @@
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <PublishTrimmed>false</PublishTrimmed>
     <PublishReadyToRun>false</PublishReadyToRun>
+    <UseWPF>true</UseWPF>
     <PublishReadyToRunShowWarnings>true</PublishReadyToRunShowWarnings>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="9.0.120" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="10.0.0" />
     <ProjectReference Include="../CommonGUI/CommonGUI.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="9.0.11" />
+    <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="10.0.0" />
     <Content Include="..\..\Database\**" LinkBase="Database" CopyToPublishDirectory="PreserveNewest" />
     <Content Include="..\..\DatabaseJSON\**" LinkBase="DatabaseJSON" CopyToPublishDirectory="PreserveNewest" />
     <Content Include="..\..\CustomConfigs\**" LinkBase="CustomConfigs" CopyToPublishDirectory="PreserveNewest" />
