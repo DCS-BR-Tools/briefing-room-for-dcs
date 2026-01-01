@@ -81,6 +81,7 @@ namespace BriefingRoom4DCS.Data
             LoadJSONEntries<DBEntryWeaponByDecade>("WeaponsByDate");
             LoadJSONEntries<DBEntryWeaponByDecade>("WeaponsByDate_custom");
             LoadJSONModEntries<DBEntryWeaponByDecade>("WeaponsByDate", false);
+            LoadJSONEntries<DBEntryDynamicCargo>("DynamicCargo");
             LoadJSONEntries<DBEntryCar>("UnitCars", true);
             LoadJSONModEntries<DBEntryCar>("UnitCars", true);
             LoadJSONEntries<DBEntryAircraft>("UnitPlanes", true);
@@ -215,6 +216,7 @@ namespace BriefingRoom4DCS.Data
                 DBEntryLayout a => DBEntries[dbType].Concat(DBEntryLayout.LoadJSON(filePath, Language)).ToDictionary(pair => pair.Key, pair => pair.Value),
                 DBEntrySituation a => DBEntries[dbType].Concat(DBEntrySituation.LoadJSON(filePath, Language)).ToDictionary(pair => pair.Key, pair => pair.Value),
                 DBEntryWeaponByDecade a => DBEntries[dbType].Concat(DBEntryWeaponByDecade.LoadJSON(filePath, Language)).ToDictionary(pair => pair.Key, pair => pair.Value),
+                DBEntryDynamicCargo a => DBEntries[dbType].Concat(DBEntryDynamicCargo.LoadJSON(filePath, Language)).ToDictionary(pair => pair.Key, pair => pair.Value),
                 _ => throw new BriefingRoomRawException($"JSON type {dbType} not implemented."),
             };
             DBEntries[dbType] = entries;

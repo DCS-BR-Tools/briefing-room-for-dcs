@@ -11,15 +11,6 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
 {
     internal class TransportDynamicCargo
     {
-        private static readonly Dictionary<string, string> TRANSPORT_CARGO_DICT = new Dictionary<string, string>
-        {
-            { "weapons.bombs.BEER_BOMB", "Beer Bomb" },
-            { "weapons.bombs.CBU_87", "CBU-87 Bombs"},
-            { "weapons.bombs.Mk_83", "Mk-83 Bombs"},
-            { "weapons.bombs.Mk_84", "Mk-84 Bombs"},
-            { "weapons.bombs.RN-24", "RN-24 470kg Nuclear Bomb"},
-            { "weapons.bombs.RN-28", "RN-28 260kg Nuclear Bomb"},
-        };
         internal static List<Waypoint> CreateObjective(
             IBriefingRoom briefingRoom,
     MissionTemplateSubTaskRecord task,
@@ -148,7 +139,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             {
                 { "AirbaseName", airbase != null ? airbase.Name : targetGroupInfo.Value.UnitNames[0] },
             };
-            var itemKeys = TRANSPORT_CARGO_DICT.Keys.ToList();
+            var itemKeys = briefingRoom.Database.GetAllEntriesIDs<DBEntryDynamicCargo>().ToList();
             int i = 0;
             do
             {
@@ -161,7 +152,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 requiredOverallCount -= requiredCount;
                 luaExtraSettings.Add("ItemName", itemKey);
                 luaExtraSettings.Add("RequiredCount", requiredCount);
-                var unitDisplayName = new LanguageString(TRANSPORT_CARGO_DICT[itemKey]);
+                var unitDisplayName = briefingRoom.Database.GetEntry<DBEntryDynamicCargo>(itemKey).UIDisplayName;
                 var pluralIndex = requiredOverallCount == 1 ? 0 : 1;
                 var taskString = GeneratorTools.ParseRandomString(taskDB.BriefingTask[pluralIndex].Get(mission.LangKey), mission).Replace("\"", "''");
                 ObjectiveUtils.CreateTaskString(briefingRoom.Database, ref mission, pluralIndex, ref taskString, objectiveName, objectiveTargetUnitFamily, unitDisplayName, task, luaExtraSettings);
