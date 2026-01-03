@@ -1410,7 +1410,7 @@ function briefingRoom.mission.objectivesTriggersCommon.registerLandNearTrigger(o
     -- check if any target unit is close enough from the landing unit
     -- if so, clean the target unit ID table and mark the objective as completed
     for _,id in ipairs(briefingRoom.mission.objectives[objectiveIndex].unitNames) do
-      local targetUnit = Unit.getByName(id)
+      local targetUnit = dcsExtensions.getUnitOrStatic(id)
       if targetUnit ~= nil then
         local targetPosition = dcsExtensions.toVec2(targetUnit:getPoint())
         if dcsExtensions.getDistance(position, targetPosition) < 650 then
@@ -1434,7 +1434,7 @@ function briefingRoom.mission.objectivesTriggersCommon.registerFlyNearTrigger(ob
   
     for _,p in ipairs(players) do
       for __,u in ipairs(briefingRoom.mission.objectives[objectiveIndex].unitNames) do
-        local unit = Unit.getByName(u)
+        local unit = dcsExtensions.getUnitOrStatic(u)
         if unit ~= nil then
           local vec2p = dcsExtensions.toVec2(p:getPoint())
           local vec2u = dcsExtensions.toVec2(unit:getPoint())
@@ -1470,7 +1470,7 @@ function briefingRoom.mission.objectivesTriggersCommon.registerHoldTrigger(objec
     for _,p in ipairs(players) do
       local vec2p = dcsExtensions.toVec2(p:getPoint())
       for _,id in ipairs(briefingRoom.mission.objectives[objectiveIndex].unitNames) do
-        local targetUnit = Unit.getByName(id)
+        local targetUnit = dcsExtensions.getUnitOrStatic(id)
         if targetUnit ~= nil then
           local targetPosition = dcsExtensions.toVec2(targetUnit:getPoint())
           local distance = dcsExtensions.getDistance(vec2p, targetPosition);
@@ -1503,10 +1503,7 @@ function briefingRoom.mission.objectivesTriggersCommon.escortNearTriggerlaunchMi
   local objectiveIndex = args[1]
   local objective = briefingRoom.mission.objectives[objectiveIndex]
   briefingRoom.radioManager.play("$LANG_PILOT$: $LANG_ESCORTSTARTREQUEST$", "RadioPilotBeginEscort")
-  local unit = Unit.getByName(briefingRoom.mission.objectives[objectiveIndex].unitNames[1])
-  if unit == nil then
-    unit = StaticObject.getByName(briefingRoom.mission.objectives[objectiveIndex].unitNames[1])
-  end
+  local unit = dcsExtensions.getUnitOrStatic(briefingRoom.mission.objectives[objectiveIndex].unitNames[1])
   if unit ~= nil then
     local group = unit:getGroup()
     if group ~= nil then
@@ -1523,10 +1520,7 @@ function briefingRoom.mission.objectivesTriggersCommon.fireEscortNearTrigger(obj
 end
 
 function briefingRoom.mission.objectivesTriggersCommon.registerEscortNearTrigger(objectiveIndex)
-  local unit = Unit.getByName(briefingRoom.mission.objectives[objectiveIndex].unitNames[1])
-  if unit == nil then
-    unit = StaticObject.getByName(briefingRoom.mission.objectives[objectiveIndex].unitNames[1])
-  end
+  local unit = dcsExtensions.getUnitOrStatic(briefingRoom.mission.objectives[objectiveIndex].unitNames[1])
   if unit ~= nil and not unit:isActive() then
     table.insert(briefingRoom.mission.objectives[objectiveIndex].f10Commands, {text = "$LANG_ESCORTMENU$", func = briefingRoom.mission.objectivesTriggersCommon.escortNearTriggerlaunchMission, args =  {objectiveIndex}})
   end
@@ -1550,7 +1544,7 @@ function briefingRoom.mission.objectivesTriggersCommon.registerFlyNearAndReportT
   
     for _,p in ipairs(players) do
       for __,u in ipairs(briefingRoom.mission.objectives[objectiveIndex].unitNames) do
-        local unit = Unit.getByName(u)
+        local unit = dcsExtensions.getUnitOrStatic(u)
         if unit ~= nil then
           local vec2p = dcsExtensions.toVec2(p:getPoint())
           local vec2u = dcsExtensions.toVec2(unit:getPoint())
@@ -1715,10 +1709,7 @@ end
 for objIndex,obj in ipairs(briefingRoom.mission.objectives) do
   if obj.unitsCount > 0 then
     obj.unitNames = table.filter(obj.unitNames, function(o, k, i)
-      local u = Unit.getByName(o)
-      if u == nil then
-        u = StaticObject.getByName(o)
-      end
+      local u = dcsExtensions.getUnitOrStatic(o)
       if u == nil then
         return false
       end
@@ -2049,10 +2040,7 @@ end
 function briefingRoom.mission.objectiveFeaturesCommon.targetDesignationLaser.setRandomTarget(objectiveIndex)
   local objective = briefingRoom.mission.objectives[objectiveIndex]
   local randomUnitName = math.randomFromHashTable(table.filter(objective.unitNames, function(o, k, i)
-    local u = Unit.getByName(o)
-    if u == nil then
-      u = StaticObject.getByName(o)
-    end
+    local u = dcsExtensions.getUnitOrStatic(o)
     if u == nil then
       return false
     end
