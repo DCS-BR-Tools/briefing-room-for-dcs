@@ -9,11 +9,11 @@ campaign =
     ["necessaryUnits"] = 
     {
 $UNITS$
-    }, -- end of ["necessaryUnits"]
+    }, 
     ["name"] = "$NAME$",
     ["version"] = 1,
     ["stages"] = 
     {
 $STAGES$
-    }, -- end of ["stages"]
-} -- end of campaign
+    }, 
+} 

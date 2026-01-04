@@ -2,81 +2,81 @@ mission =
 {
     ["requiredModules"] = 
     {
-    }, -- end of ["requiredModules"]
+    },
     ["date"] = 
     {
         ["Day"] = 21,
         ["Year"] = 2016,
         ["Month"] = 6,
-    }, -- end of ["date"]
+    },
     ["result"] = 
     {
         ["offline"] = 
         {
             ["conditions"] = 
             {
-            }, -- end of ["conditions"]
+            },
             ["actions"] = 
             {
-            }, -- end of ["actions"]
+            },
             ["func"] = 
             {
-            }, -- end of ["func"]
-        }, -- end of ["offline"]
+            },
+        },
         ["total"] = 0,
         ["blue"] = 
         {
             ["conditions"] = 
             {
-            }, -- end of ["conditions"]
+            },
             ["actions"] = 
             {
-            }, -- end of ["actions"]
+            },
             ["func"] = 
             {
-            }, -- end of ["func"]
-        }, -- end of ["blue"]
+            },
+        },
         ["red"] = 
         {
             ["conditions"] = 
             {
-            }, -- end of ["conditions"]
+            },
             ["actions"] = 
             {
-            }, -- end of ["actions"]
+            },
             ["func"] = 
             {
-            }, -- end of ["func"]
-        }, -- end of ["red"]
-    }, -- end of ["result"]
+            },
+        },
+    },
     ["maxDictId"] = 5,
     ["trig"] = 
     {
         ["actions"] = 
         {
-        }, -- end of ["actions"]
+        },
         ["events"] = 
         {
-        }, -- end of ["events"]
+        },
         ["custom"] = 
         {
-        }, -- end of ["custom"]
+        },
         ["func"] = 
         {
-        }, -- end of ["func"]
+        },
         ["flag"] = 
         {
-        }, -- end of ["flag"]
+        },
         ["conditions"] = 
         {
-        }, -- end of ["conditions"]
+        },
         ["customStartup"] = 
         {
-        }, -- end of ["customStartup"]
+        },
         ["funcStartup"] = 
         {
-        }, -- end of ["funcStartup"]
-    }, -- end of ["trig"]
+        },
+    },
     ["pictureFileNameN"] = 
     {
     },
@@ -91,39 +91,39 @@ mission =
                     ["Neutral"] = false,
                     ["Blue"] = false,
                     ["Red"] = false,
-                }, -- end of ["Observer"]
+                },
                 ["Instructor"] = 
                 {
                     ["Neutral"] = false,
                     ["Blue"] = false,
                     ["Red"] = false,
-                }, -- end of ["Instructor"]
+                },
                 ["ForwardObserver"] = 
                 {
                     ["Neutral"] = false,
                     ["Blue"] = false,
                     ["Red"] = false,
-                }, -- end of ["ForwardObserver"]
+                },
                 ["Spectrator"] = 
                 {
                     ["Neutral"] = false,
                     ["Blue"] = false,
                     ["Red"] = false,
-                }, -- end of ["Spectrator"]
+                },
                 ["ArtilleryCommander"] = 
                 {
                     ["Neutral"] = false,
                     ["Blue"] = false,
                     ["Red"] = false,
-                }, -- end of ["ArtilleryCommander"]
+                },
                 ["Pilot"] = 
                 {
                     ["Neutral"] = false,
                     ["Blue"] = false,
                     ["Red"] = false,
-                }, -- end of ["Pilot"]
-            }, -- end of ["hiddenOnF10Map"]
-        }, -- end of ["options"]
+                },
+            },
+        },
         ["layers"] = 
         {
             [1] = 
@@ -132,32 +132,32 @@ mission =
                 ["name"] = "Red",
                 ["objects"] = 
                 {
-                }, -- end of ["objects"]
-            }, -- end of [1]
+                },
+            },
             [2] = 
             {
                 ["visible"] = true,
                 ["name"] = "Blue",
                 ["objects"] = 
                 {
-                }, -- end of ["objects"]
-            }, -- end of [2]
+                },
+            },
             [3] = 
             {
                 ["visible"] = true,
                 ["name"] = "Neutral",
                 ["objects"] = 
                 {
-                }, -- end of ["objects"]
-            }, -- end of [3]
+                },
+            },
             [4] = 
             {
                 ["visible"] = true,
                 ["name"] = "Common",
                 ["objects"] = 
                 {
-                }, -- end of ["objects"]
-            }, -- end of [4]
+                },
+            },
             [5] = 
             {
                 ["visible"] = true,
@@ -178,7 +178,7 @@ mission =
                         ["layerName"] = "Author",
                         ["name"] = "Small (Red)",
                         ["fillColorString"] = "0xff000080",
-                    }, -- end of [1]
+                    },
                     [2] = 
                     {
                         ["visible"] = true,
@@ -193,7 +193,7 @@ mission =
                         ["layerName"] = "Author",
                         ["name"] = "Large (Blue)",
                         ["fillColorString"] = "0x0000ff80",
-                    }, -- end of [2]
+                    },
                     [3] = 
                     {
                         ["visible"] = true,
@@ -208,28 +208,28 @@ mission =
                         ["layerName"] = "Author",
                         ["name"] = "Medium (Neutural)",
                         ["fillColorString"] = "0x80808080",
-                    }, -- end of [3]
-                }, -- end of ["objects"]
-            }, -- end of [5]
-        }, -- end of ["layers"]
-    }, -- end of ["drawings"] -- end of ["pictureFileNameN"]
+                    },
+                },
+            },
+        },
+    },
     ["groundControl"] = 
     {
         ["passwords"] = 
         {
             ["artillery_commander"] = 
             {
-            }, -- end of ["artillery_commander"]
+            },
             ["instructor"] = 
             {
-            }, -- end of ["instructor"]
+            },
             ["observer"] = 
             {
-            }, -- end of ["observer"]
+            },
             ["forward_observer"] = 
             {
-            }, -- end of ["forward_observer"]
-        }, -- end of ["passwords"]
+            },
+        },
         ["roles"] = 
         {
             ["artillery_commander"] = 
@@ -237,28 +237,28 @@ mission =
                 ["neutrals"] = 0,
                 ["blue"] = 0,
                 ["red"] = 0,
-            }, -- end of ["artillery_commander"]
+            },
             ["instructor"] = 
             {
                 ["neutrals"] = 0,
                 ["blue"] = 0,
                 ["red"] = 0,
-            }, -- end of ["instructor"]
+            },
             ["observer"] = 
             {
                 ["neutrals"] = 0,
                 ["blue"] = 0,
                 ["red"] = 0,
-            }, -- end of ["observer"]
+            },
             ["forward_observer"] = 
             {
                 ["neutrals"] = 0,
                 ["blue"] = 0,
                 ["red"] = 0,
-            }, -- end of ["forward_observer"]
-        }, -- end of ["roles"]
+            },
+        },
         ["isPilotControlVehicles"] = false,
-    }, -- end of ["groundControl"]
+    },
     ["descriptionBlueTask"] = "DictKey_descriptionBlueTask_3",
     ["weather"] = 
     {
@@ -268,27 +268,27 @@ mission =
             {
                 ["speed"] = 0,
                 ["dir"] = 0,
-            }, -- end of ["at8000"]
+            },
             ["atGround"] = 
             {
                 ["speed"] = 0,
                 ["dir"] = 0,
-            }, -- end of ["atGround"]
+            },
             ["at2000"] = 
             {
                 ["speed"] = 0,
                 ["dir"] = 0,
-            }, -- end of ["at2000"]
-        }, -- end of ["wind"]
+            },
+        },
         ["enable_fog"] = false,
         ["season"] = 
         {
             ["temperature"] = 20,
-        }, -- end of ["season"]
+        },
         ["qnh"] = 760,
         ["cyclones"] = 
         {
-        }, -- end of ["cyclones"]
+        },
         ["dust_density"] = 0,
         ["enable_dust"] = false,
         ["clouds"] = 
@@ -298,13 +298,13 @@ mission =
             ["preset"] = "Preset2",
             ["base"] = 2500,
             ["iprecptns"] = 0,
-        }, -- end of ["clouds"]
+        },
         ["atmosphere_type"] = 0,
         ["groundTurbulence"] = 0,
         ["halo"] = 
         {
             ["preset"] = "auto",
-        }, -- end of ["halo"]
+        },
         ["type_weather"] = 0,
         ["modifiedTime"] = false,
         ["name"] = "Winter, clean sky",
@@ -312,25 +312,25 @@ mission =
         {
             ["thickness"] = 0,
             ["visibility"] = 0,
-        }, -- end of ["fog"]
+        },
         ["visibility"] = 
         {
             ["distance"] = 80000,
-        }, -- end of ["visibility"]
-    }, -- end of ["weather"]
+        },
+    },
     ["theatre"] = "$THEATER$",
     ["triggers"] = 
     {
         ["zones"] = 
         {
-        }, -- end of ["zones"]
-    }, -- end of ["triggers"]
+        },
+    },
     ["map"] = 
     {
         ["centerY"] = 638709.05049212,
         ["zoom"] = 30144.823662376,
         ["centerX"] = -286944.93926642,
-    }, -- end of ["map"]
+    },
     ["coalitions"] = 
     {
         ["neutrals"] = 
@@ -392,7 +392,7 @@ mission =
             [55] = 49,
             [56] = 48,
             [57] = 67,
-        }, -- end of ["neutrals"]
+        },
         ["blue"] = 
         {
             [1] = 21,
@@ -417,7 +417,7 @@ mission =
             [20] = 4,
             [21] = 1,
             [22] = 2,
-        }, -- end of ["blue"]
+        },
         ["red"] = 
         {
             [1] = 18,
@@ -431,20 +431,20 @@ mission =
             [9] = 43,
             [10] = 19,
             [11] = 47,
-        }, -- end of ["red"]
-    }, -- end of ["coalitions"]
+        },
+    },
     ["descriptionText"] = "DictKey_descriptionText_1",
     ["pictureFileNameR"] = 
     {
-    }, -- end of ["pictureFileNameR"]
+    },
     ["goals"] = 
     {
-    }, -- end of ["goals"]
+    },
     ["descriptionNeutralsTask"] = "DictKey_descriptionNeutralsTask_4",
     ["descriptionRedTask"] = "DictKey_descriptionRedTask_2",
     ["pictureFileNameB"] = 
     {
-    }, -- end of ["pictureFileNameB"]
+    },
     ["coalition"] = 
     {
         ["neutrals"] = 
@@ -453,10 +453,10 @@ mission =
             {
                 ["y"] = 0,
                 ["x"] = 0,
-            }, -- end of ["bullseye"]
+            },
             ["nav_points"] = 
             {
-            }, -- end of ["nav_points"]
+            },
             ["name"] = "neutrals",
             ["country"] = 
             {
@@ -468,22 +468,22 @@ mission =
                         ["group"] = 
                         {
                             $LandMedium$
-                        }, -- end of ["group"]
-                    }, -- end of ["vehicle"]
+                        },
+                    },
                     ["name"] = "Algeria",
-                }, -- end of [1]
-            }, -- end of ["country"]
-        }, -- end of ["neutrals"]
+                },
+            },
+        },
         ["blue"] = 
         {
             ["bullseye"] = 
             {
                 ["y"] = 617414,
                 ["x"] = -291014,
-            }, -- end of ["bullseye"]
+            },
             ["nav_points"] = 
             {
-            }, -- end of ["nav_points"]
+            },
             ["name"] = "blue",
             ["country"] = 
             {
@@ -495,22 +495,22 @@ mission =
                         ["group"] = 
                         {
                             $LandLarge$
-                        }, -- end of ["group"]
-                    }, -- end of ["vehicle"]
+                        },
+                    },
                     ["name"] = "USA",
-                }, -- end of [1]
-            }, -- end of ["country"]
-        }, -- end of ["blue"]
+                },
+            },
+        },
         ["red"] = 
         {
             ["bullseye"] = 
             {
                 ["y"] = 371700,
                 ["x"] = 11557,
-            }, -- end of ["bullseye"]
+            },
             ["nav_points"] = 
             {
-            }, -- end of ["nav_points"]
+            },
             ["name"] = "red",
             ["country"] = 
             {
@@ -522,18 +522,18 @@ mission =
                         ["group"] = 
                         {
                             $LandSmall$
-                        }, -- end of ["group"]
-                    }, -- end of ["vehicle"]
+                        },
+                    },
                     ["name"] = "Russia",
-                }, -- end of [1]
-            }, -- end of ["country"]
-        }, -- end of ["red"]
-    }, -- end of ["coalition"]
+                },
+            },
+        },
+    },
     ["sortie"] = "DictKey_sortie_5",
     ["version"] = 22,
     ["trigrules"] = 
     {
-    }, -- end of ["trigrules"]
+    },
     ["currentKey"] = 156,
     ["failures"] = 
     {
@@ -544,7 +544,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["CADC_FAILURE_TAS"]
+        },
         ["sas_pitch_left"] = 
         {
             ["hh"] = 0,
@@ -552,7 +552,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["sas_pitch_left"]
+        },
         ["AN_ALR69V_FAILURE_SENSOR_TAIL_LEFT"] = 
         {
             ["hh"] = 0,
@@ -560,7 +560,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["AN_ALR69V_FAILURE_SENSOR_TAIL_LEFT"]
+        },
         ["rws"] = 
         {
             ["hh"] = 0,
@@ -568,7 +568,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["rws"]
+        },
         ["AN_ALR69V_FAILURE_SENSOR_TAIL_RIGHT"] = 
         {
             ["hh"] = 0,
@@ -576,7 +576,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["AN_ALR69V_FAILURE_SENSOR_TAIL_RIGHT"]
+        },
         ["eos"] = 
         {
             ["hh"] = 0,
@@ -584,7 +584,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["eos"]
+        },
         ["ecm"] = 
         {
             ["hh"] = 0,
@@ -592,7 +592,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["ecm"]
+        },
         ["AAR_47_FAILURE_SENSOR_BOTTOM"] = 
         {
             ["hh"] = 0,
@@ -600,7 +600,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["AAR_47_FAILURE_SENSOR_BOTTOM"]
+        },
         ["AAR_47_FAILURE_SENSOR_LEFT"] = 
         {
             ["hh"] = 0,
@@ -608,7 +608,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["AAR_47_FAILURE_SENSOR_LEFT"]
+        },
         ["l_gen"] = 
         {
             ["hh"] = 0,
@@ -616,7 +616,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["l_gen"]
+        },
         ["hud"] = 
         {
             ["hh"] = 0,
@@ -624,7 +624,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["hud"]
+        },
         ["AAR_47_FAILURE_TOTAL"] = 
         {
             ["hh"] = 0,
@@ -632,7 +632,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["AAR_47_FAILURE_TOTAL"]
+        },
         ["CADC_FAILURE_TEMPERATURE"] = 
         {
             ["hh"] = 0,
@@ -640,7 +640,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["CADC_FAILURE_TEMPERATURE"]
+        },
         ["RADAR_ALTIMETR_LEFT_ANT_FAILURE"] = 
         {
             ["hh"] = 0,
@@ -648,7 +648,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["RADAR_ALTIMETR_LEFT_ANT_FAILURE"]
+        },
         ["hydro"] = 
         {
             ["hh"] = 0,
@@ -656,7 +656,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["hydro"]
+        },
         ["AN_ALE_40V_FAILURE_TOTAL"] = 
         {
             ["hh"] = 0,
@@ -664,7 +664,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["AN_ALE_40V_FAILURE_TOTAL"]
+        },
         ["ILS_FAILURE_ANT_MARKER"] = 
         {
             ["hh"] = 0,
@@ -672,7 +672,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["ILS_FAILURE_ANT_MARKER"]
+        },
         ["AN_ALE_40V_FAILURE_CONTAINER_LEFT_WING"] = 
         {
             ["hh"] = 0,
@@ -680,7 +680,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["AN_ALE_40V_FAILURE_CONTAINER_LEFT_WING"]
+        },
         ["sas_pitch_right"] = 
         {
             ["hh"] = 0,
@@ -688,7 +688,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["sas_pitch_right"]
+        },
         ["AAR_47_FAILURE_SENSOR_RIGHT"] = 
         {
             ["hh"] = 0,
@@ -696,7 +696,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["AAR_47_FAILURE_SENSOR_RIGHT"]
+        },
         ["CADC_FAILURE_IAS"] = 
         {
             ["hh"] = 0,
@@ -704,7 +704,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["CADC_FAILURE_IAS"]
+        },
         ["autopilot"] = 
         {
             ["hh"] = 0,
@@ -712,7 +712,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["autopilot"]
+        },
         ["asc"] = 
         {
             ["hh"] = 0,
@@ -720,7 +720,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["asc"]
+        },
         ["AN_ALE_40V_FAILURE_CONTAINER_RIGHT_WING"] = 
         {
             ["hh"] = 0,
@@ -728,7 +728,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["AN_ALE_40V_FAILURE_CONTAINER_RIGHT_WING"]
+        },
         ["CADC_FAILURE_BARO_ALT"] = 
         {
             ["hh"] = 0,
@@ -736,7 +736,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["CADC_FAILURE_BARO_ALT"]
+        },
         ["CADC_FAILURE_PRESSURE_ALT"] = 
         {
             ["hh"] = 0,
@@ -744,7 +744,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["CADC_FAILURE_PRESSURE_ALT"]
+        },
         ["RADAR_ALTIMETR_RIGHT_ANT_FAILURE"] = 
         {
             ["hh"] = 0,
@@ -752,7 +752,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["RADAR_ALTIMETR_RIGHT_ANT_FAILURE"]
+        },
         ["TGP_FAILURE_LEFT"] = 
         {
             ["hh"] = 0,
@@ -760,7 +760,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["TGP_FAILURE_LEFT"]
+        },
         ["CADC_FAILURE_TOTAL"] = 
         {
             ["hh"] = 0,
@@ -768,7 +768,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["CADC_FAILURE_TOTAL"]
+        },
         ["hydro_right"] = 
         {
             ["hh"] = 0,
@@ -776,7 +776,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["hydro_right"]
+        },
         ["AN_ALR69V_FAILURE_SENSOR_NOSE_LEFT"] = 
         {
             ["hh"] = 0,
@@ -784,7 +784,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["AN_ALR69V_FAILURE_SENSOR_NOSE_LEFT"]
+        },
         ["sas_yaw_right"] = 
         {
             ["hh"] = 0,
@@ -792,7 +792,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["sas_yaw_right"]
+        },
         ["SADL_FAILURE_TOTAL"] = 
         {
             ["hh"] = 0,
@@ -800,7 +800,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["SADL_FAILURE_TOTAL"]
+        },
         ["AAR_47_FAILURE_SENSOR_TAIL"] = 
         {
             ["hh"] = 0,
@@ -808,7 +808,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["AAR_47_FAILURE_SENSOR_TAIL"]
+        },
         ["hydro_left"] = 
         {
             ["hh"] = 0,
@@ -816,7 +816,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["hydro_left"]
+        },
         ["TACAN_FAILURE_TRANSMITTER"] = 
         {
             ["hh"] = 0,
@@ -824,7 +824,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["TACAN_FAILURE_TRANSMITTER"]
+        },
         ["ILS_FAILURE_TOTAL"] = 
         {
             ["hh"] = 0,
@@ -832,7 +832,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["ILS_FAILURE_TOTAL"]
+        },
         ["l_conv"] = 
         {
             ["hh"] = 0,
@@ -840,7 +840,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["l_conv"]
+        },
         ["AN_ALR69V_FAILURE_SENSOR_NOSE_RIGHT"] = 
         {
             ["hh"] = 0,
@@ -848,7 +848,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["AN_ALR69V_FAILURE_SENSOR_NOSE_RIGHT"]
+        },
         ["TACAN_FAILURE_RECEIVER"] = 
         {
             ["hh"] = 0,
@@ -856,7 +856,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["TACAN_FAILURE_RECEIVER"]
+        },
         ["sas_yaw_left"] = 
         {
             ["hh"] = 0,
@@ -864,7 +864,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["sas_yaw_left"]
+        },
         ["IFFCC_FAILURE_TOTAL"] = 
         {
             ["hh"] = 0,
@@ -872,7 +872,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["IFFCC_FAILURE_TOTAL"]
+        },
         ["CADC_FAILURE_STATIC"] = 
         {
             ["hh"] = 0,
@@ -880,7 +880,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["CADC_FAILURE_STATIC"]
+        },
         ["HUD_FAILURE"] = 
         {
             ["hh"] = 0,
@@ -888,7 +888,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["HUD_FAILURE"]
+        },
         ["CDU_FAILURE_TOTAL"] = 
         {
             ["hh"] = 0,
@@ -896,7 +896,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["CDU_FAILURE_TOTAL"]
+        },
         ["TACAN_FAILURE_TOTAL"] = 
         {
             ["hh"] = 0,
@@ -904,7 +904,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["TACAN_FAILURE_TOTAL"]
+        },
         ["mfd"] = 
         {
             ["hh"] = 0,
@@ -912,7 +912,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["mfd"]
+        },
         ["VHF_FM_RADIO_FAILURE_TOTAL"] = 
         {
             ["hh"] = 0,
@@ -920,7 +920,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["VHF_FM_RADIO_FAILURE_TOTAL"]
+        },
         ["RIGHT_MFCD_FAILURE"] = 
         {
             ["hh"] = 0,
@@ -928,7 +928,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["RIGHT_MFCD_FAILURE"]
+        },
         ["r_engine"] = 
         {
             ["hh"] = 0,
@@ -936,7 +936,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["r_engine"]
+        },
         ["AN_ALE_40V_FAILURE_CONTAINER_LEFT_GEAR"] = 
         {
             ["hh"] = 0,
@@ -944,7 +944,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["AN_ALE_40V_FAILURE_CONTAINER_LEFT_GEAR"]
+        },
         ["CADC_FAILURE_DYNAMIC"] = 
         {
             ["hh"] = 0,
@@ -952,7 +952,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["CADC_FAILURE_DYNAMIC"]
+        },
         ["CLOCK_FAILURE"] = 
         {
             ["hh"] = 0,
@@ -960,7 +960,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["CLOCK_FAILURE"]
+        },
         ["CICU_FAILURE_TOTAL"] = 
         {
             ["hh"] = 0,
@@ -968,7 +968,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["CICU_FAILURE_TOTAL"]
+        },
         ["LEFT_MFCD_FAILURE"] = 
         {
             ["hh"] = 0,
@@ -976,7 +976,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["LEFT_MFCD_FAILURE"]
+        },
         ["AN_ALR69V_FAILURE_TOTAL"] = 
         {
             ["hh"] = 0,
@@ -984,7 +984,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["AN_ALR69V_FAILURE_TOTAL"]
+        },
         ["r_conv"] = 
         {
             ["hh"] = 0,
@@ -992,7 +992,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["r_conv"]
+        },
         ["ILS_FAILURE_ANT_GLIDESLOPE"] = 
         {
             ["hh"] = 0,
@@ -1000,7 +1000,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["ILS_FAILURE_ANT_GLIDESLOPE"]
+        },
         ["EGI_FAILURE_TOTAL"] = 
         {
             ["hh"] = 0,
@@ -1008,7 +1008,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["EGI_FAILURE_TOTAL"]
+        },
         ["l_engine"] = 
         {
             ["hh"] = 0,
@@ -1016,7 +1016,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["l_engine"]
+        },
         ["UHF_RADIO_FAILURE_TOTAL"] = 
         {
             ["hh"] = 0,
@@ -1024,7 +1024,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["UHF_RADIO_FAILURE_TOTAL"]
+        },
         ["TGP_FAILURE_RIGHT"] = 
         {
             ["hh"] = 0,
@@ -1032,7 +1032,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["TGP_FAILURE_RIGHT"]
+        },
         ["AN_ALE_40V_FAILURE_CONTAINER_RIGHT_GEAR"] = 
         {
             ["hh"] = 0,
@@ -1040,7 +1040,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["AN_ALE_40V_FAILURE_CONTAINER_RIGHT_GEAR"]
+        },
         ["CADC_FAILURE_MACH"] = 
         {
             ["hh"] = 0,
@@ -1048,7 +1048,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["CADC_FAILURE_MACH"]
+        },
         ["IFFCC_FAILURE_GUN"] = 
         {
             ["hh"] = 0,
@@ -1056,7 +1056,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["IFFCC_FAILURE_GUN"]
+        },
         ["ILS_FAILURE_ANT_LOCALIZER"] = 
         {
             ["hh"] = 0,
@@ -1064,7 +1064,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["ILS_FAILURE_ANT_LOCALIZER"]
+        },
         ["AIRSPEED_INDICATOR_FAILURE"] = 
         {
             ["hh"] = 0,
@@ -1072,7 +1072,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["AIRSPEED_INDICATOR_FAILURE"]
+        },
         ["r_gen"] = 
         {
             ["hh"] = 0,
@@ -1080,7 +1080,7 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["r_gen"]
+        },
         ["VHF_AM_RADIO_FAILURE_TOTAL"] = 
         {
             ["hh"] = 0,
@@ -1088,10 +1088,10 @@ mission =
             ["enable"] = false,
             ["mmint"] = 1,
             ["mm"] = 0,
-        }, -- end of ["VHF_AM_RADIO_FAILURE_TOTAL"]
-    }, -- end of ["failures"]
+        },
+    },
     ["forcedOptions"] = 
     {
-    }, -- end of ["forcedOptions"]
+    },
     ["start_time"] = 28800,
-} -- end of mission
+} 

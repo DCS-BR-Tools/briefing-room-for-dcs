@@ -4,4 +4,4 @@ dictionary = {
     ["DictKey_briefing"] = "$DESCRIPTIONTEXT$",
     ["DictKey_descriptionBlueTask_3"] = "",
     ["DictKey_descriptionRedTask_2"] = "",
-} -- end of dictionary
+} 

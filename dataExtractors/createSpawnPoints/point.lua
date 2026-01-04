@@ -17,8 +17,8 @@
                     {
                         ["tasks"] = 
                         {
-                        }, -- end of ["tasks"]
-                    }, -- end of ["params"]
-                }, -- end of ["task"]
+                        },
+                    },
+                },
                 ["speed_locked"] = true,
-            }, -- end of [$IDX$]
+            }, 

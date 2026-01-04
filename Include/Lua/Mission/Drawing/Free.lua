@@ -14,5 +14,5 @@
         ["points"] = 
         { 
            $POINTS$
-        }, -- end of ["points"]
-    }, -- end of [$INDEX$]
+        },
+    }, 

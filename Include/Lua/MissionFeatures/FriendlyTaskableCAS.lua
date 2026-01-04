@@ -70,8 +70,8 @@ function briefingRoom.mission.missionFeatures.friendlyTaskableCAS.launchBombingR
                             {
                               value = 2,
                               name = 13,
-                            }, -- end of ["params"]
-                          }, -- end of ["action"]
+                            },
+                          },
                         },
                       },
                       [2] = {
@@ -87,8 +87,8 @@ function briefingRoom.mission.missionFeatures.friendlyTaskableCAS.launchBombingR
                             {
                               value = 2,
                               name = 1,
-                            }, -- end of ["params"]
-                          }, -- end of ["action"]
+                            },
+                          },
                         },
                       },
                       [3] = {
@@ -104,8 +104,8 @@ function briefingRoom.mission.missionFeatures.friendlyTaskableCAS.launchBombingR
                             {
                               value = 1,
                               name = 4,
-                            }, -- end of ["params"]
-                          }, -- end of ["action"]
+                            },
+                          },
                         },
                       },
                     },
@@ -142,10 +142,10 @@ function briefingRoom.mission.missionFeatures.friendlyTaskableCAS.launchBombingR
                             [1] = "Helicopters",
                             [2] = "Ground Units",
                             [3] = "Light armed ships",
-                          }, -- end of ["targetTypes"]
+                          },
                           ["priority"] = 0,
-                        }, -- end of ["params"]
-                      },   -- end of [1]
+                        },
+                      },
                       [2] = {
                         enabled = true,
                         auto = false,

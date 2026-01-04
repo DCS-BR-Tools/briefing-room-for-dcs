@@ -70,8 +70,8 @@ function briefingRoom.mission.missionFeatures.friendlyTaskableBomber.launchBombi
                             {
                               value = 2,
                               name = 13,
-                            }, -- end of ["params"]
-                          }, -- end of ["action"]
+                            },
+                          },
                         },
                       },
                       [2] = {
@@ -87,8 +87,8 @@ function briefingRoom.mission.missionFeatures.friendlyTaskableBomber.launchBombi
                             {
                               value = 2,
                               name = 1,
-                            }, -- end of ["params"]
-                          }, -- end of ["action"]
+                            },
+                          },
                         },
                       },
                       [3] = {
@@ -104,8 +104,8 @@ function briefingRoom.mission.missionFeatures.friendlyTaskableBomber.launchBombi
                             {
                               value = 1,
                               name = 4,
-                            }, -- end of ["params"]
-                          }, -- end of ["action"]
+                            },
+                          },
                         },
                       },
                     },

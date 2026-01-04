@@ -14,5 +14,4 @@
     ["name"] = "$UINAME$",
     ["r1"] = $RADIUS$,
     ["r2"] = $RADIUS$,
-}, -- end of [$INDEX$]
-
+},

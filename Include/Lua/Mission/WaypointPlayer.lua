@@ -11,9 +11,9 @@
         {
             ["tasks"] = 
             {
-            }, -- end of ["tasks"]
-        }, -- end of ["params"]
-    }, -- end of ["task"]
+            },
+        },
+    },
     ["type"] = "Turning Point",
     ["ETA"] = 0,
     ["ETA_locked"] = false,
@@ -22,4 +22,4 @@
     ["name"] = "$NAME$",
     ["formation_template"] = "",
     ["speed_locked"] = true,
-}, -- end of [$INDEX$]
+},

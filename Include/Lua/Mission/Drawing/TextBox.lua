@@ -13,4 +13,4 @@
     ["name"] = "$UINAME$",
     ["colorString"] = "$COLOUR$",
     ["angle"] = 0,
-}, -- end of [$INDEX$]
+}, 

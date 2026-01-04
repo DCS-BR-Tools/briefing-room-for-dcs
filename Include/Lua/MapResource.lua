@@ -12,4 +12,4 @@ mapResource =
 ["ResKey_Start"] = "start.lua",
 ["ResKey_TitleImage_$MISSIONID$"] = "resources/title_$MISSIONID$.png",
 $MAPRESOURCESFILES$
-} -- end of mapResource
+} 

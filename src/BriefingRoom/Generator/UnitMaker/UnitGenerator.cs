@@ -731,11 +731,11 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                             unitsLuaTable += $"[{groupIndex + 1}] = {mission.UnitLuaTables[country][unitCategory][groupIndex].ToLuaString()},";
                         }
 
-                        unitsLuaTable += $"}}, -- end of [\"group\"]\n";
-                        unitsLuaTable += $"}}, -- end of [\"{unitCategory.ToString().ToLower()}\"]\n";
+                        unitsLuaTable += $"}},\n";
+                        unitsLuaTable += $"}},\n";
                     }
                 }
-                unitsLuaTable += $"}}, -- end of [{countryIndex + 1}]\n";
+                unitsLuaTable += $"}},\n";
             }
 
             return unitsLuaTable;

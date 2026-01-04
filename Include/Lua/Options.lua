@@ -17,7 +17,7 @@ options = {
         ["chat_window_at_start"] = true,
         ["synchronize_controls"] = false,
         ["show_pilot_body"] = true,
-    }, -- end of ["miscellaneous"]
+    },
     ["difficulty"] =
     {
         ["fuel"] = false,
@@ -53,7 +53,7 @@ options = {
         ["tips"] = true,
         ["userMarks"] = true,
         ["labels"] = 1,
-    }, -- end of ["difficulty"]
+    },
     ["VR"] =
     {
         ["mirror_crop"] = false,
@@ -70,7 +70,7 @@ options = {
         ["mirror_source"] = 0,
         ["custom_IPD"] = 63.5,
         ["hand_controllers"] = false,
-    }, -- end of ["VR"]
+    },
     ["graphics"] =
     {
         ["messagesFontScale"] = 2,
@@ -112,13 +112,13 @@ options = {
         ["scaleGui"] = 1,
         ["height"] = 1440,
         ["clutterMaxDistance"] = 1000,
-    }, -- end of ["graphics"]
+    },
     ["plugins"] =
     {
         ["Su-25T"] =
         {
             ["CPLocalList"] = "default",
-        }, -- end of ["Su-25T"]
+        },
         ["M-2000C"] =
         {
             ["FUEL_DETOT_AUTO"] = false,
@@ -130,13 +130,13 @@ options = {
             ["UNI_ALIGNED"] = false,
             ["UNI_NODRIFT"] = false,
             ["TDC_KBPrecission"] = 100,
-        }, -- end of ["M-2000C"]
+        },
         ["A-10C_2"] =
         {
             ["hmdEye"] = 1,
             ["CPLocalList"] = "aged",
             ["defaultGunMode"] = 0,
-        }, -- end of ["A-10C_2"]
+        },
         ["FC3"] =
         {
             ["CPLocalList_Su-25"] = "default",
@@ -148,7 +148,7 @@ options = {
             ["CPLocalList_J-11A"] = "default",
             ["CPLocalList_MiG-29G"] = "default",
             ["CPLocalList_F-15C"] = "default",
-        }, -- end of ["FC3"]
+        },
         ["F/A-18C"] =
         {
             ["abDetent"] = 0,
@@ -157,14 +157,14 @@ options = {
             ["CPLocalList"] = "default",
             ["F18RealisticTDC"] = false,
             ["mfdReflections"] = 1,
-        }, -- end of ["F/A-18C"]
+        },
         ["Ka-50"] =
         {
             ["Ka50TrimmingMethod"] = 0,
             ["CPLocalList"] = "default",
             ["Ka50RudderTrimmer"] = false,
             ["helmetCircleDisplacement"] = 11,
-        }, -- end of ["Ka-50"]
+        },
         ["AV8BNA"] =
         {
             ["INS_Alignment"] = 0,
@@ -172,7 +172,7 @@ options = {
             ["CPLocalList"] = "default",
             ["USE_REAL_TDC"] = false,
             ["MPCD_EXPORT"] = false,
-        }, -- end of ["AV8BNA"]
+        },
         ["F-16C"] =
         {
             ["abDetent"] = 0,
@@ -181,24 +181,24 @@ options = {
             ["CPLocalList"] = "default",
             ["canopyTint"] = 1,
             ["mfdReflections"] = 0,
-        }, -- end of ["F-16C"]
+        },
         ["TF-51D"] =
         {
             ["assistance"] = 100,
             ["CPLocalList"] = "default",
             ["autoRudder"] = false,
-        }, -- end of ["TF-51D"]
+        },
         ["VRFree"] =
         {
             ["enable"] = false,
             ["set_debug"] = false,
             ["mouseClickSrc"] = 0,
-        }, -- end of ["VRFree"]
+        },
         ["Supercarrier"] =
         {
             ["enable_FLOLS_overlay"] = true,
             ["Use_native_ATC_text"] = false,
-        }, -- end of ["Supercarrier"]
+        },
         ["CaptoGlove"] =
         {
             ["shoulderJointZ_Right"] = 23,
@@ -226,12 +226,12 @@ options = {
             ["enable"] = false,
             ["shoulderJointY_Right"] = -23,
             ["yawOffsetGlove_Right"] = 0,
-        }, -- end of ["CaptoGlove"]
+        },
         ["A-10C"] =
         {
             ["CPLocalList"] = "default",
-        }, -- end of ["A-10C"]
-    },     -- end of ["plugins"]
+        },
+    },
     ["format"] = 1,
     ["sound"] =
     {
@@ -256,7 +256,7 @@ options = {
         ["music"] = 0,
         ["voice_chat_input"] = "",
         ["gui"] = 100,
-    }, -- end of ["sound"]
+    },
     ["views"] =
     {
         ["cockpit"] =
@@ -264,6 +264,6 @@ options = {
             ["mirrors"] = false,
             ["reflections"] = false,
             ["avionics"] = 3,
-        }, -- end of ["cockpit"]
-    },     -- end of ["views"]
-}          -- end of options
+        },
+    },
+}          

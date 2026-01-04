@@ -48,9 +48,9 @@ function briefingRoom.mission.missionFeatures.friendlyTaskableCAP.launchBombingR
                           targetTypes =
                           {
                             [1] = "Air",
-                          }, -- end of ["targetTypes"]
+                          },
                           priority = 0,
-                        }, -- end of ["params"]
+                        },
                       },
                     },
                   },
@@ -83,9 +83,9 @@ function briefingRoom.mission.missionFeatures.friendlyTaskableCAP.launchBombingR
                           targetTypes =
                           {
                             [1] = "Air",
-                          }, -- end of ["targetTypes"]
+                          },
                           priority = 0,
-                        }, -- end of ["params"]
+                        },
                       },
                       [2] =
                       {
@@ -100,15 +100,15 @@ function briefingRoom.mission.missionFeatures.friendlyTaskableCAP.launchBombingR
                           targetTypes =
                           {
                             [1] = "Air",
-                          }, -- end of ["targetTypes"]
+                          },
                           value = "Air;",
                           noTargetTypes =
                           {
-                          }, -- end of ["noTargetTypes"]
+                          },
                           priority = 0,
                           zoneRadius = 36576,
-                        }, -- end of ["params"]
-                      }, -- end of [2]
+                        },
+                      },
                       [3] = {
                         enabled = true,
                         auto = false,
