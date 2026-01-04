@@ -4,7 +4,18 @@ mission =
     {
         ["actions"] = 
         {
-            [1] = "a_do_script_file(getValueResourceByKey(\"ResKey_Script\"));",
+            [1] = [[
+                a_do_script_file(getValueResourceByKey(\"ResKey_MIST\"));
+                a_do_script_file(getValueResourceByKey(\"ResKey_LuaExtensions\"));
+                a_do_script_file(getValueResourceByKey(\"ResKey_DCSExtensions\"));
+                a_do_script_file(getValueResourceByKey(\"ResKey_Init\"));
+                a_do_script_file(getValueResourceByKey(\"ResKey_RadioManager\"));
+                a_do_script_file(getValueResourceByKey(\"ResKey_AircraftActivator\"));
+                a_do_script_file(getValueResourceByKey(\"ResKey_TransportManager\"));
+                a_do_script_file(getValueResourceByKey(\"ResKey_EventHandler\"));
+                a_do_script_file(getValueResourceByKey(\"ResKey_Script\"));
+                a_do_script_file(getValueResourceByKey(\"ResKey_Start\"));
+                ]],
             [2] = "a_end_mission(\"$LUAPLAYERCOALITION$\", \"\", 0); mission.trig.func[2]=nil;",
             [3] = "a_end_mission(\"$LUAPLAYERCOALITION$\", getValueDictByKey(\"\"), 0); mission.trig.func[3]=nil;",
             $TRIGACTIONS$
@@ -397,17 +408,54 @@ mission =
             {
                 [1] = 
                 {
-                    ["density"] = 1,
-                    ["zone"] = "",
-                    ["preset"] = 1,
+                    ["file"] = "ResKey_MIST",
+                    ["predicate"] = "a_do_script_file",
+                },
+                [2] = 
+                {
+                    ["file"] = "ResKey_LuaExtensions",
+                    ["predicate"] = "a_do_script_file",
+                },
+                [3] = 
+                {
+                    ["file"] = "ResKey_DCSExtensions",
+                    ["predicate"] = "a_do_script_file",
+                },
+                [4] = 
+                {
+                    ["file"] = "ResKey_Init",
+                    ["predicate"] = "a_do_script_file",
+                },
+                [5] = 
+                {
+                    ["file"] = "ResKey_RadioManager",
+                    ["predicate"] = "a_do_script_file",
+                },
+                [6] = 
+                {
+                    ["file"] = "ResKey_AircraftActivator",
+                    ["predicate"] = "a_do_script_file",
+                },
+                [7] = 
+                {
+                    ["file"] = "ResKey_TransportManager",
+                    ["predicate"] = "a_do_script_file",
+                },
+                [8] = 
+                {
+                    ["file"] = "ResKey_EventHandler",
+                    ["predicate"] = "a_do_script_file",
+                },
+                [9] = 
+                {
                     ["file"] = "ResKey_Script",
                     ["predicate"] = "a_do_script_file",
-                    ["ai_task"] = 
-                    {
-                        [1] = "",
-                        [2] = "",
-                    }, -- end of ["ai_task"]
-                }, -- end of [1]
+                },
+                [10] = 
+                {
+                    ["file"] = "ResKey_Start",
+                    ["predicate"] = "a_do_script_file",
+                },
             }, -- end of ["actions"]
             ["comment"] = "Run main mission script",
         }, -- end of [1]
