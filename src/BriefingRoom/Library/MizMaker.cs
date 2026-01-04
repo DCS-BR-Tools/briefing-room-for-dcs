@@ -23,6 +23,7 @@ If not, see https://www.gnu.org/licenses/
 using BriefingRoom4DCS.Data;
 using BriefingRoom4DCS.Mission;
 using BriefingRoom4DCS.Template;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -37,6 +38,7 @@ namespace BriefingRoom4DCS
         internal static byte[] ExportToMizBytes(IDatabase database, DCSMission mission, MissionTemplate template)
         {
             Dictionary<string, byte[]> MizFileEntries = new();
+            mission.SetValue("TrigScriptRules", ""); // Reset these so we can append to them properly.
 
             AddStringValueToEntries(MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}briefing.html", mission.Briefing.GetBriefingAsHTML(database, mission, true));
             mission.AppendValue("MapResourcesFiles", $"[\"ResKey_Snd_briefing_html\"] = \"briefing.html\",\n");
@@ -50,28 +52,57 @@ namespace BriefingRoom4DCS
                 AddStringValueToEntries(MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}template.brt", Encoding.ASCII.GetString(template.GetIniBytes()));
                 mission.AppendValue("MapResourcesFiles", $"[\"ResKey_Snd_template\"] = \"template.brt\",\n");
             }
-            AddLuaFileToEntries(database, MizFileEntries, "mission", "Mission.lua", mission);
             AddLuaFileToEntries(database, MizFileEntries, "options", "Options.lua", null);
             AddStringValueToEntries(MizFileEntries, "theatre", mission.GetValue("TheaterID"));
             AddLuaFileToEntries(database, MizFileEntries, "warehouses", "Warehouses.lua", mission);
 
             AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}dictionary", "Dictionary.lua", mission);
-            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}mapResource", "MapResource.lua", mission);
 
             // Standard scripting components
-            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}MIST.lua", "MIST.lua", mission);
-            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}LuaExtensions.lua", "LuaExtensions.lua", mission);
-            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}DCSExtensions.lua", "DCSExtensions.lua", mission);
-            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}Init.lua", "Init.lua", mission);
-            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}RadioManager.lua", "RadioManager.lua", mission);
-            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}AircraftActivator.lua", "AircraftActivator.lua", mission);
-            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}EventHandler.lua", "EventHandler.lua", mission);
-            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}TransportManager.lua", "TransportManager.lua", mission);
-            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}script.lua", "Script.lua", mission);
-            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}start.lua", "Start.lua", mission);
+            new List<string> {
+            "MIST.lua",
+            "LuaExtensions.lua",
+            "DCSExtensions.lua",
+            "Init.lua",
+            "RadioManager.lua",
+            "AircraftActivator.lua",
+            "TransportManager.lua",
+            "EventHandler.lua",
+            "MissionInit.lua",
+            "F10Menu.lua",
+            "ObjectiveTables.lua",
+            "MissionTriggers.lua",
+            }.ForEach(fileName =>
+            {
+                AddScriptFileToEntries(database, MizFileEntries, fileName, $"Mission/Script/{fileName}", mission);
+            });
+
+
+
+            // TODO: Only add mission triggers sub files that are needed.
+            Directory.EnumerateFiles(Path.Combine(BRPaths.INCLUDE_LUA, "Mission/Script/MissionTriggers")).ToList().ForEach(fileName =>
+            {
+                var fileNameOnly = Path.GetFileName(fileName);
+                Console.WriteLine(fileNameOnly);
+                AddScriptFileToEntries(database, MizFileEntries, $"triggers/{fileNameOnly}", $"Mission/Script/MissionTriggers/{fileNameOnly}", mission);
+            });
+
+            new List<string> {
+            "MissionTriggersInit.lua",
+            "Script.lua", // TODO: Break this file down more!
+            "Start.lua",
+            }.ForEach(fileName =>
+            {
+                AddScriptFileToEntries(database, MizFileEntries, fileName, $"Mission/Script/{fileName}", mission);
+            });
 
             // TODO: Extra ones as needed
-            // AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}{sourceFileName}.lua", sourceFile, mission);
+            // AddLuaFileToEntries(database, MizFileEntries, "{sourceFileName}.lua", sourceFile, mission);
+
+            // After all scripts
+            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}mapResource", "MapResource.lua", mission);
+            AddLuaFileToEntries(database, MizFileEntries, "mission", "Mission.lua", mission);
+
 
             foreach (string mediaFile in mission.GetMediaFileNames())
             {
@@ -81,6 +112,26 @@ namespace BriefingRoom4DCS
             }
 
             return Toolbox.ZipData(database, mission.LangKey, MizFileEntries);
+        }
+
+        private static bool AddScriptFileToEntries(IDatabase database, Dictionary<string, byte[]> mizFileEntries, string mizPath, string originPath, DCSMission mission = null)
+        {
+            if (AddLuaFileToEntries(database, mizFileEntries, $"{BRPaths.MIZ_SCRIPTS}{mizPath}", originPath, mission))
+            {
+                var resKey = $"ResKey_Script_{Path.GetFileNameWithoutExtension(mizPath)}";
+                mission.AppendValue("MapResourcesFiles", $"[\"{resKey}\"] = \"{mizPath}\",\n");
+                mission.AppendValue("TrigScriptActions", $"a_do_script_file(getValueResourceByKey(\"{resKey}\"));\n");
+                var rulesIndex = Regex.Matches(mission.GetValue("TrigScriptRules"), "predicate").Count + 1;
+                mission.AppendValue("TrigScriptRules", $@"
+                [{rulesIndex}] = 
+                {{
+                    [""file""] = ""{resKey}"",
+                    [""predicate""] = ""a_do_script_file"",
+                }},");
+
+                return true;
+            }
+            return false;
         }
 
         private static bool AddLuaFileToEntries(IDatabase database, Dictionary<string, byte[]> mizFileEntries, string mizEntryKey, string sourceFile, DCSMission mission = null)
