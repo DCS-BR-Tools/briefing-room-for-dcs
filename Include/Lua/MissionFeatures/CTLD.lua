@@ -1,4 +1,3 @@
--- BR SINGLETON FLAG
 --[[
     Combat Troop and Logistics Drop
 

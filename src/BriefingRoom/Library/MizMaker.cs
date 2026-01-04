@@ -72,24 +72,34 @@ namespace BriefingRoom4DCS
             "F10Menu.lua",
             "ObjectiveTables.lua",
             "MissionTriggers.lua",
+            "ObjectiveFeatures.lua",
+            "MissionFeatures.lua",
             }.ForEach(fileName =>
             {
                 AddScriptFileToEntries(database, MizFileEntries, fileName, $"Mission/Script/{fileName}", mission);
             });
 
-
-
-            // TODO: Only add mission triggers sub files that are needed.
             Directory.EnumerateFiles(Path.Combine(BRPaths.INCLUDE_LUA, "Mission/Script/MissionTriggers")).ToList().ForEach(fileName =>
             {
                 var fileNameOnly = Path.GetFileName(fileName);
-                Console.WriteLine(fileNameOnly);
                 AddScriptFileToEntries(database, MizFileEntries, $"triggers/{fileNameOnly}", $"Mission/Script/MissionTriggers/{fileNameOnly}", mission);
+            });
+
+            Directory.EnumerateFiles(Path.Combine(BRPaths.INCLUDE_LUA, "Mission/Script/ObjectiveFeatures")).ToList().ForEach(fileName =>
+            {
+                var fileNameOnly = Path.GetFileName(fileName);
+                AddScriptFileToEntries(database, MizFileEntries, $"objectiveFeatures/{fileNameOnly}", $"Mission/Script/ObjectiveFeatures/{fileNameOnly}", mission);
+            });
+
+            mission.ScriptFileSet.ToList().ForEach(fileName =>
+            {
+                var fileNameOnly = Path.GetFileName(fileName);
+                AddScriptFileToEntries(database, MizFileEntries,  $"missionFeatures/{fileNameOnly}", $"MissionFeatures/{fileNameOnly}", mission);
             });
 
             new List<string> {
             "MissionTriggersInit.lua",
-            "Script.lua", // TODO: Break this file down more!
+            "ObjectiveFeaturesInit.lua",
             "Start.lua",
             }.ForEach(fileName =>
             {

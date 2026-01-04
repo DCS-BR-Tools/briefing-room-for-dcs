@@ -204,13 +204,12 @@ namespace BriefingRoom4DCS.Generator.Mission
 
             foreach (string luaFile in featureDB.IncludeLua)
             {
-                var fileLua = Toolbox.ReadAllTextIfFileExists(Path.Combine(featureDB.SourceLuaDirectory, luaFile));
-                if (fileLua.StartsWith("-- BR SINGLETON FLAG"))
-                { // Script should be used only once in the app and should be ordered infront of all feature scripts
-                    mission.AppendSingletonValue(luaFile, "ScriptSingletons", fileLua);
-                    continue;
-                }
-                featureLua += fileLua + "\n";
+                if (featureDB is DBEntryFeatureObjective)
+                {
+                    var fileLua = Toolbox.ReadAllTextIfFileExists(Path.Combine(featureDB.SourceLuaDirectory, luaFile));
+                    featureLua += fileLua + "\n";   
+                } else
+                    mission.AppendScriptFile(luaFile);
             }
             foreach (KeyValuePair<string, object> extraSetting in extraSettings)
                 GeneratorTools.ReplaceKey(ref featureLua, extraSetting.Key, extraSetting.Value);

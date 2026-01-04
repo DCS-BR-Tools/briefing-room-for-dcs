@@ -60,7 +60,7 @@ namespace BriefingRoom4DCS.Mission
         protected internal Dictionary<string, List<double[]>> MapData { get; protected set; }
         protected internal Dictionary<string, string> Values { get; protected set; }
         protected internal Dictionary<string, object> MediaFiles { get; protected set; }
-        protected internal HashSet<string> SingletonSet { get; protected set; }
+        protected internal HashSet<string> ScriptFileSet { get; protected set; }
         protected internal Dictionary<int, Coalition> Airbases { get; protected set; }
         protected internal Dictionary<Coalition, List<int>> PopulatedAirbaseIds { get; protected set; }
         protected internal List<string> LuaDrawings { get; protected set; }
@@ -99,7 +99,7 @@ namespace BriefingRoom4DCS.Mission
             MapData = mission.MapData.ToDictionary(x => x.Key, x => x.Value, StringComparer.InvariantCultureIgnoreCase);
             Values = mission.Values.ToDictionary(x => x.Key, x => x.Value, StringComparer.InvariantCultureIgnoreCase);
             MediaFiles = mission.MediaFiles.ToDictionary(x => x.Key, x => x.Value, StringComparer.InvariantCultureIgnoreCase);
-            SingletonSet = mission.SingletonSet.ToHashSet(StringComparer.InvariantCultureIgnoreCase);
+            ScriptFileSet = mission.ScriptFileSet.ToHashSet(StringComparer.InvariantCultureIgnoreCase);
             Airbases = mission.Airbases.ToDictionary(x => x.Key, x => x.Value);
             PopulatedAirbaseIds = mission.PopulatedAirbaseIds.ToDictionary(x => x.Key, x => x.Value.ToList());
             LuaDrawings = mission.LuaDrawings.ToList();

@@ -1,4 +1,3 @@
--- BR SINGLETON FLAG
 --[[
     04 April 2025 (Stevey666) - 3.1
 	  - Set default cluster munitions option to false, set this to true in the options if you want it

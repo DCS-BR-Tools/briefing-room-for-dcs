@@ -71,7 +71,7 @@ namespace BriefingRoom4DCS.Mission
             ResetStrikePackages();
             MediaFiles = new(StringComparer.InvariantCultureIgnoreCase);
             Values = new(StringComparer.InvariantCultureIgnoreCase);
-            SingletonSet = new(StringComparer.InvariantCultureIgnoreCase);
+            ScriptFileSet = new(StringComparer.InvariantCultureIgnoreCase);
             MapData = new(StringComparer.InvariantCultureIgnoreCase);
             PopulatedAirbaseIds = new Dictionary<Coalition, List<int>>{
                     {Coalition.Blue, new List<int>()},
@@ -82,7 +82,6 @@ namespace BriefingRoom4DCS.Mission
             UniqueID = Path.GetFileNameWithoutExtension(Path.GetRandomFileName()).ToLower();
             SetValue("MissionID", UniqueID);
             SetValue("ScriptMIST", Toolbox.ReadAllTextIfFileExists(Path.Combine(BRPaths.INCLUDE_LUA, "MIST.lua")));
-            SetValue("ScriptSingletons", "");
             TemplateRecord = template;
             PreviousStates = [];
 
@@ -157,7 +156,7 @@ namespace BriefingRoom4DCS.Mission
             MapData = prevState.MapData.ToDictionary(x => x.Key, x => x.Value, StringComparer.InvariantCultureIgnoreCase);
             Values = prevState.Values.ToDictionary(x => x.Key, x => x.Value, StringComparer.InvariantCultureIgnoreCase);
             MediaFiles = prevState.MediaFiles.ToDictionary(x => x.Key, x => x.Value, StringComparer.InvariantCultureIgnoreCase);
-            SingletonSet = prevState.SingletonSet.ToHashSet(StringComparer.InvariantCultureIgnoreCase);
+            ScriptFileSet = prevState.ScriptFileSet.ToHashSet(StringComparer.InvariantCultureIgnoreCase);
             Airbases = prevState.Airbases.ToDictionary(x => x.Key, x => x.Value);
             PopulatedAirbaseIds = prevState.PopulatedAirbaseIds.ToDictionary(x => x.Key, x => x.Value.ToList());
             LuaDrawings = prevState.LuaDrawings.ToList();
@@ -218,12 +217,11 @@ namespace BriefingRoom4DCS.Mission
             SetValue(key, value, true);
         }
 
-        internal void AppendSingletonValue(string id, string key, string value)
+        internal void AppendScriptFile(string id)
         {
-            if (SingletonSet.Contains(id))
+            if (ScriptFileSet.Contains(id))
                 return;
-            AppendValue(key, value);
-            SingletonSet.Add(id);
+            ScriptFileSet.Add(id);
         }
 
         private void SetValue(string key, string value, bool append)

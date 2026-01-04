@@ -1,4 +1,3 @@
--- BR SINGLETON FLAG
 briefingRoom.taskables = {}
 function briefingRoom.taskables.markerManager(dataObj)
     local table = {}
