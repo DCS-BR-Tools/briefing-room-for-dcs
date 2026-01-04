@@ -148,6 +148,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             string[] featuresID
         )
         {
+            BriefingRoom.PrintToLog($"Generating objective {objectiveIndex} ...");
             return taskDB.ID switch
             {
                 "Escort" => Escort.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID),

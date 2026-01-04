@@ -55,7 +55,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             }
             GroupInfo? targetGroupInfo = null;
             var objectiveName = mission.WaypointNameGenerator.GetWaypointName();
-            if (targetDB.UnitCategory == UnitCategory.Static)
+            if (targetDB.UnitCategory == UnitCategory.Static || (targetDB.UnitCategory == UnitCategory.Cargo && airbase == null))
             {
                 var radioFrequency = 127.5;
                 extraSettings = new Dictionary<string, object>{
