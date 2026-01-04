@@ -32,8 +32,6 @@ namespace BriefingRoom4DCS.Data
 
         internal string[] IncludeLua { get; private set; }
 
-        internal string IncludeLuaSettings { get; private set; }
-
         internal string[] IncludeOgg { get; private set; }
 
         internal string IncludeOggFolder { get; private set; }
@@ -71,7 +69,6 @@ namespace BriefingRoom4DCS.Data
 
             // Included files
             IncludeLua = Toolbox.AddMissingFileExtensions(ini.GetValueArray<string>("Include", "Lua"), ".lua");
-            IncludeLuaSettings = ini.GetValue<string>("Lua", "LuaSettings");
             IncludeOgg = Toolbox.AddMissingFileExtensions(ini.GetValueArray<string>("Include", "Ogg"), ".ogg");
             IncludeOggFolder = ini.GetValue<string>("Include", "OggFolder");
 

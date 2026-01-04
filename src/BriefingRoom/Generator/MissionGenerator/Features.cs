@@ -202,7 +202,6 @@ namespace BriefingRoom4DCS.Generator.Mission
                 featureLua += $"briefingRoom.mission.missionFeatures.unitNames.{GeneratorTools.LowercaseFirstCharacter(featureDB.ID)} = {{{(groupInfo.HasValue ? string.Join(",", groupInfo.Value.UnitNames.Select(x => $"\"{x}\"")) : "")}}}\n";
             }
 
-            if (!string.IsNullOrEmpty(featureDB.IncludeLuaSettings)) featureLua = featureDB.IncludeLuaSettings + "\n";
             foreach (string luaFile in featureDB.IncludeLua)
             {
                 var fileLua = Toolbox.ReadAllTextIfFileExists(Path.Combine(featureDB.SourceLuaDirectory, luaFile));
