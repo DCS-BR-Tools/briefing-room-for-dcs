@@ -97,7 +97,7 @@ namespace BriefingRoom4DCS.Generator.Mission
 
 
             foreach (string oggFile in briefingRoom.Database.Common.CommonOGG)
-                mission.AddMediaFile($"l10n/DEFAULT/{Toolbox.AddMissingFileExtension(oggFile, ".ogg")}", Path.Combine(BRPaths.INCLUDE_OGG, Toolbox.AddMissingFileExtension(oggFile, ".ogg")));
+                mission.AddMediaFile($"{BRPaths.MIZ_RESOURCES_OGG}{Toolbox.AddMissingFileExtension(oggFile, ".ogg")}", Path.Combine(BRPaths.INCLUDE_OGG, Toolbox.AddMissingFileExtension(oggFile, ".ogg")));
 
 
             mission.CoalitionsCountries = Countries.GenerateCountries(briefingRoom.Database, ref mission);
@@ -187,7 +187,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             foreach (string mediaFile in mission.GetMediaFileNames())
             {
                 if (!mediaFile.ToLower().EndsWith(".ogg")) continue;
-                mission.AppendValue("MapResourcesFiles", $"[\"ResKey_Snd_{Path.GetFileNameWithoutExtension(mediaFile)}\"] = \"{Path.GetFileName(mediaFile)}\",\n");
+                mission.AppendValue("MapResourcesFiles", $"[\"ResKey_Snd_{Path.GetFileNameWithoutExtension(mediaFile)}\"] = \"resources/ogg/{Path.GetFileName(mediaFile)}\",\n");
             }
 
             BriefingRoom.PrintToLog("Generating unitLua...");

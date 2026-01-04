@@ -183,9 +183,9 @@ namespace BriefingRoom4DCS.Generator
             {
                 var imagePath = await GenerateTitleImagePath(html);
                 var imgData = await File.ReadAllBytesAsync(imagePath);
-                mission.AddMediaFile($"l10n/DEFAULT/title_{mission.UniqueID}.png", imgData);
+                mission.AddMediaFile($"{BRPaths.MIZ_RESOURCES}title_{mission.UniqueID}.png", imgData);
                 File.Delete(imagePath);
-                mission.AddMediaFile($"l10n/DEFAULT/title_{mission.UniqueID}.html", Encoding.UTF8.GetBytes(html));
+                mission.AddMediaFile($"{BRPaths.MIZ_RESOURCES}title_{mission.UniqueID}.html", Encoding.UTF8.GetBytes(html));
             }
             catch (Exception e)
             {

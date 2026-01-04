@@ -36,9 +36,9 @@ function briefingRoom.radioManager.doRadioMessage(args, time)
   end
 
   if args.oggFile ~= nil and briefingRoom.radioManager.enableAudioMessages then -- a sound was provided and radio sounds are enabled, play it
-    trigger.action.outSoundForCoalition(briefingRoom.playerCoalition, args.oggFile..".ogg")
+    trigger.action.outSoundForCoalition(briefingRoom.playerCoalition, "resources/ogg/"..args.oggFile..".ogg")
   else -- else play the default sound
-    trigger.action.outSoundForCoalition(briefingRoom.playerCoalition, "Radio0.ogg")
+    trigger.action.outSoundForCoalition(briefingRoom.playerCoalition, "resources/ogg/Radio0.ogg")
   end
 
   if args.functionToRun ~= nil then -- a function was provided, run it

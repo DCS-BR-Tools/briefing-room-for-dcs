@@ -10,6 +10,6 @@ mapResource =
 ["ResKey_EventHandler"] = "EventHandler.lua",
 ["ResKey_Script"] = "script.lua",
 ["ResKey_Start"] = "start.lua",
-["ResKey_TitleImage_$MISSIONID$"] = "title_$MISSIONID$.png",
+["ResKey_TitleImage_$MISSIONID$"] = "resources/title_$MISSIONID$.png",
 $MAPRESOURCESFILES$
 } -- end of mapResource

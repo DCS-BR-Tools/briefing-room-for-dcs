@@ -802,12 +802,12 @@ $SCRIPTSINGLETONS$
 briefingRoom.mission.objectiveFeatures = { } -- Objective features
 briefingRoom.mission.objectiveFeaturesCommon = { } -- Common objective features functions
 --- START OF OBJECTIVE REGISTER FEATURES-----
-function briefingRoom.mission.objectiveFeaturesCommon.resgiterEmitRadioTransmisison(objectiveIndex)
+function briefingRoom.mission.objectiveFeaturesCommon.registerEmitRadioTransmission(objectiveIndex)
     local unit = dcsExtensions.getUnitOrStatic(briefingRoom.mission.objectives[objectiveIndex].unitNames[1])
-    trigger.action.radioTransmission('l10n/DEFAULT/FXRadioSignal.ogg', unit:getPoint(), 0, true, 124000000, 100, "-- Morse Code --")
+    trigger.action.radioTransmission('l10n/DEFAULT/resources/ogg/FXRadioSignal.ogg', unit:getPoint(), 0, true, 124000000, 100, "-- Morse Code --")
 end
 
-function briefingRoom.mission.objectiveFeaturesCommon.resgiterFireNearby(objectiveIndex)
+function briefingRoom.mission.objectiveFeaturesCommon.registerFireNearby(objectiveIndex)
   local unit = dcsExtensions.getUnitOrStatic(briefingRoom.mission.objectives[objectiveIndex].unitNames[1])
   if unit == nil then -- no unit nor static found with the ID
     briefingRoom.radioManager.play(objective.name.." $LANG_JTAC$: $LANG_NOTARGET$", "RadioSupportNoTarget", briefingRoom.radioManager.getAnswerDelay())

@@ -119,7 +119,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
 
             // Add feature ogg files
             foreach (string oggFile in taskDB.IncludeOgg)
-                mission.AddMediaFile($"l10n/DEFAULT/{oggFile}", Path.Combine(BRPaths.INCLUDE_OGG, oggFile));
+                mission.AddMediaFile($"{BRPaths.MIZ_RESOURCES_OGG}{oggFile}", Path.Combine(BRPaths.INCLUDE_OGG, oggFile));
 
 
             // Add objective features Lua for this objective

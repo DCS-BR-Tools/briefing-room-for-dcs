@@ -223,7 +223,7 @@ namespace BriefingRoom4DCS.Generator.Mission
 
             // Add feature ogg files
             foreach (string oggFile in featureDB.IncludeOgg)
-                mission.AddMediaFile($"l10n/DEFAULT/{oggFile}", Path.Combine(BRPaths.INCLUDE_OGG, oggFile));
+                mission.AddMediaFile($"{BRPaths.MIZ_RESOURCES_OGG}{oggFile}", Path.Combine(BRPaths.INCLUDE_OGG, oggFile));
 
             if (!String.IsNullOrEmpty(featureDB.IncludeOggFolder))
                 mission.AddMediaFolder(featureDB.IncludeOggFolder, Path.Combine(BRPaths.INCLUDE_OGG, featureDB.IncludeOggFolder));

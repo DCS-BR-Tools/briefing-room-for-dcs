@@ -74,6 +74,10 @@ namespace BriefingRoom4DCS
 
         internal static string MEDIA_ICONS16 { get; } = Path.Combine(MEDIA, "Icons16");
 
+        internal static string MIZ_SCRIPTS = "l10n/DEFAULT/";
+        internal static string MIZ_RESOURCES = $"{MIZ_SCRIPTS}resources/";
+        internal static string MIZ_RESOURCES_OGG = $"{MIZ_RESOURCES}ogg/";
+
         private static string FindRoot(string path = "", int loop = 0)
         {
             if (string.IsNullOrEmpty(path))

@@ -1,1 +1,1 @@
-briefingRoom.mission.objectiveFeaturesCommon.resgiterFireNearby($OBJECTIVEINDEX$)
+briefingRoom.mission.objectiveFeaturesCommon.registerFireNearby($OBJECTIVEINDEX$)

@@ -38,16 +38,16 @@ namespace BriefingRoom4DCS
         {
             Dictionary<string, byte[]> MizFileEntries = new();
 
-            AddStringValueToEntries(MizFileEntries, "l10n/DEFAULT/briefing.html", mission.Briefing.GetBriefingAsHTML(database, mission, true));
+            AddStringValueToEntries(MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}briefing.html", mission.Briefing.GetBriefingAsHTML(database, mission, true));
             mission.AppendValue("MapResourcesFiles", $"[\"ResKey_Snd_briefing_html\"] = \"briefing.html\",\n");
 
-            AddStringValueToEntries(MizFileEntries, "l10n/DEFAULT/credits.txt", $"Generated with BriefingRoom for DCS World (https://akaagar.itch.io/briefing-room-for-dcs) {BriefingRoom.VERSION} ({BriefingRoom.BUILD_VERSION})");
+            AddStringValueToEntries(MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}credits.txt", $"Generated with BriefingRoom for DCS World (https://akaagar.itch.io/briefing-room-for-dcs) {BriefingRoom.VERSION} ({BriefingRoom.BUILD_VERSION})");
             mission.AppendValue("MapResourcesFiles", $"[\"ResKey_Snd_credits_txt\"] = \"credits.txt\",\n");
 
             AddStringValueToEntries(MizFileEntries, "BR_purity_seal.txt", "The Omnissiah has blessed this Miz!\nFor it has not been corrupted by the forces of ED\n :D");
             if (template != null)
             {
-                AddStringValueToEntries(MizFileEntries, "l10n/DEFAULT/template.brt", Encoding.ASCII.GetString(template.GetIniBytes()));
+                AddStringValueToEntries(MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}template.brt", Encoding.ASCII.GetString(template.GetIniBytes()));
                 mission.AppendValue("MapResourcesFiles", $"[\"ResKey_Snd_template\"] = \"template.brt\",\n");
             }
             AddLuaFileToEntries(database, MizFileEntries, "mission", "Mission.lua", mission);
@@ -55,23 +55,23 @@ namespace BriefingRoom4DCS
             AddStringValueToEntries(MizFileEntries, "theatre", mission.GetValue("TheaterID"));
             AddLuaFileToEntries(database, MizFileEntries, "warehouses", "Warehouses.lua", mission);
 
-            AddLuaFileToEntries(database, MizFileEntries, "l10n/DEFAULT/dictionary", "Dictionary.lua", mission);
-            AddLuaFileToEntries(database, MizFileEntries, "l10n/DEFAULT/mapResource", "MapResource.lua", mission);
+            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}dictionary", "Dictionary.lua", mission);
+            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}mapResource", "MapResource.lua", mission);
 
             // Standard scripting components
-            AddLuaFileToEntries(database, MizFileEntries, "l10n/DEFAULT/MIST.lua", "MIST.lua", mission);
-            AddLuaFileToEntries(database, MizFileEntries, "l10n/DEFAULT/LuaExtensions.lua", "LuaExtensions.lua", mission);
-            AddLuaFileToEntries(database, MizFileEntries, "l10n/DEFAULT/DCSExtensions.lua", "DCSExtensions.lua", mission);
-            AddLuaFileToEntries(database, MizFileEntries, "l10n/DEFAULT/Init.lua", "Init.lua", mission);
-            AddLuaFileToEntries(database, MizFileEntries, "l10n/DEFAULT/RadioManager.lua", "RadioManager.lua", mission);
-            AddLuaFileToEntries(database, MizFileEntries, "l10n/DEFAULT/AircraftActivator.lua", "AircraftActivator.lua", mission);
-            AddLuaFileToEntries(database, MizFileEntries, "l10n/DEFAULT/EventHandler.lua", "EventHandler.lua", mission);
-            AddLuaFileToEntries(database, MizFileEntries, "l10n/DEFAULT/TransportManager.lua", "TransportManager.lua", mission);
-            AddLuaFileToEntries(database, MizFileEntries, "l10n/DEFAULT/script.lua", "Script.lua", mission);
-            AddLuaFileToEntries(database, MizFileEntries, "l10n/DEFAULT/start.lua", "Start.lua", mission);
+            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}MIST.lua", "MIST.lua", mission);
+            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}LuaExtensions.lua", "LuaExtensions.lua", mission);
+            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}DCSExtensions.lua", "DCSExtensions.lua", mission);
+            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}Init.lua", "Init.lua", mission);
+            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}RadioManager.lua", "RadioManager.lua", mission);
+            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}AircraftActivator.lua", "AircraftActivator.lua", mission);
+            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}EventHandler.lua", "EventHandler.lua", mission);
+            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}TransportManager.lua", "TransportManager.lua", mission);
+            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}script.lua", "Script.lua", mission);
+            AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}start.lua", "Start.lua", mission);
 
             // TODO: Extra ones as needed
-            // AddLuaFileToEntries(database, MizFileEntries, $"l10n/DEFAULT/{sourceFileName}.lua", sourceFile, mission);
+            // AddLuaFileToEntries(database, MizFileEntries, $"{BRPaths.MIZ_SCRIPTS}{sourceFileName}.lua", sourceFile, mission);
 
             foreach (string mediaFile in mission.GetMediaFileNames())
             {

@@ -1,1 +1,1 @@
-briefingRoom.mission.objectiveFeaturesCommon.resgiterEmitRadioTransmisison($OBJECTIVEINDEX$)
+briefingRoom.mission.objectiveFeaturesCommon.registerEmitRadioTransmission($OBJECTIVEINDEX$)
