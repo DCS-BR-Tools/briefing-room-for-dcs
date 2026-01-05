@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="10.0.0" />
+    <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="10.0.1" />
     <Content Include="..\..\Database\**" LinkBase="Database" CopyToPublishDirectory="PreserveNewest" />
     <Content Include="..\..\DatabaseJSON\**" LinkBase="DatabaseJSON" CopyToPublishDirectory="PreserveNewest" />
     <Content Include="..\..\CustomConfigs\**" LinkBase="CustomConfigs" CopyToPublishDirectory="PreserveNewest" />
