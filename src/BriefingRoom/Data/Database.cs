@@ -26,14 +26,14 @@ using System.Linq;
 
 namespace BriefingRoom4DCS.Data
 {
-    public class Database: IDatabase
+    public class Database : IDatabase
     {
 
         public DatabaseCommon Common { get; set; }
         public DatabaseLanguage Language { get; set; }
 
         private readonly Dictionary<Type, Dictionary<string, DBEntry>> DBEntries;
-        private readonly Dictionary<Type, Tuple<string, string>> UnloadedEntries = new();
+        private readonly Dictionary<Type, Tuple<string, string>[]> UnloadedEntries = new();
 
         private bool Initialized = false;
         private bool LoadingInProgress = false;
@@ -98,7 +98,7 @@ namespace BriefingRoom4DCS.Data
             PrepLoadEntries<DBEntryTemplate>("LoadJSONEntries", "Templates");
             PrepLoadEntries<DBEntryTemplate>("LoadJSONEntries", "TemplatesCustom");
             PrepLoadEntries<DBEntryLayout>("LoadJSONEntries", "Layouts");
-            PrepLoadEntries<DBEntryDefaultUnitList>("LoadEntries", "DefaultUnitLists");
+            LoadEntries<DBEntryDefaultUnitList>("DefaultUnitLists");
             LoadEntries<DBEntryCoalition>("Coalitions");
             LoadCustomUnitEntries<DBEntryCoalition>("Coalitions");
             PrepLoadEntries<DBEntryWeatherPreset>("LoadEntries", "WeatherPresets");
@@ -119,7 +119,9 @@ namespace BriefingRoom4DCS.Data
             if (!DBEntries.ContainsKey(dbType))
                 DBEntries.TryAdd(dbType, new Dictionary<string, DBEntry>(StringComparer.InvariantCultureIgnoreCase));
             DBEntries[dbType].Clear();
-            UnloadedEntries[dbType] = new(subDirectory, type);
+            if (!UnloadedEntries.ContainsKey(dbType))
+                UnloadedEntries[dbType] = Array.Empty<Tuple<string, string>>();
+            UnloadedEntries[dbType] = UnloadedEntries[dbType].Append(new(subDirectory, type)).ToArray();
         }
 
         private void CheckAndLoadEntries<T>() where T : DBEntry, new()
@@ -127,27 +129,30 @@ namespace BriefingRoom4DCS.Data
             Type dbType = typeof(T);
             if (!UnloadedEntries.ContainsKey(dbType)) return;
 
-            var entry = UnloadedEntries[dbType];
+            var entries = UnloadedEntries[dbType];
             UnloadedEntries.Remove(dbType);
 
-            string subDirectory = entry.Item1;
-            string type = entry.Item2;
-            switch (type)
+            foreach (var entry in entries)
             {
-                case "LoadEntries":
-                    LoadEntries<T>(subDirectory);
-                    break;
-                case "LoadJSONEntries":
-                    LoadJSONEntries<T>(subDirectory);
-                    break;
-                case "LoadJSONFolderEntries":
-                    LoadJSONFolderEntries<T>(subDirectory);
-                    break;
-                case "LoadCustomUnitEntries":
-                    LoadCustomUnitEntries<T>(subDirectory);
-                    break;
-                default:
-                    throw new BriefingRoomRawException($"Unknown database type {type}");
+                string subDirectory = entry.Item1;
+                string type = entry.Item2;
+                switch (type)
+                {
+                    case "LoadEntries":
+                        LoadEntries<T>(subDirectory);
+                        break;
+                    case "LoadJSONEntries":
+                        LoadJSONEntries<T>(subDirectory);
+                        break;
+                    case "LoadJSONFolderEntries":
+                        LoadJSONFolderEntries<T>(subDirectory);
+                        break;
+                    case "LoadCustomUnitEntries":
+                        LoadCustomUnitEntries<T>(subDirectory);
+                        break;
+                    default:
+                        throw new BriefingRoomRawException($"Unknown database type {type}");
+                }
             }
         }
 
