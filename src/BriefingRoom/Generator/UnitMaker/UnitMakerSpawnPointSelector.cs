@@ -194,7 +194,7 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                         excludeIds = [];
                     var targetAirbaseOptions =
                         (from DBEntryAirbase airbaseDB in mission.AirbaseDB
-                         where !excludeIds.Contains(airbaseDB.DCSID) && (coalition == Coalition.Neutral || airbaseDB.Coalition == coalition) && mission.AirbaseParkingSpots.ContainsKey(airbaseDB.DCSID) && ValidateAirfieldParking(mission.AirbaseParkingSpots[airbaseDB.DCSID], aircraftDB.Families.First(), unitCount)
+                         where !excludeIds.Contains(airbaseDB.DCSID) && (coalition == null || coalition == Coalition.Neutral || airbaseDB.Coalition == coalition) && mission.AirbaseParkingSpots.ContainsKey(airbaseDB.DCSID) && ValidateAirfieldParking(mission.AirbaseParkingSpots[airbaseDB.DCSID], aircraftDB.Families.First(), unitCount)
                          select airbaseDB).OrderBy(x => x.Coordinates.GetDistanceFrom(coordinates));
 
             if (!targetAirbaseOptions.Any()) throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "No airbase found for aircraft.");
@@ -210,7 +210,6 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                 {
                     continue;
                 }
-
                 return Tuple.Create(airbase, parkingSpots.Select(x => x.DCSID).ToList(), parkingSpots.Select(x => x.Coordinates).ToList());
             }
             throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "No airbase found with sufficient parking spots.");

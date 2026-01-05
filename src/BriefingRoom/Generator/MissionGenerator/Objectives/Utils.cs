@@ -349,14 +349,14 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
         internal static Tuple<DBEntryAirbase?, Coordinates> GetAirbaseCargoSpotWithin(IBriefingRoom briefingRoom, DCSMission mission, Coordinates searchCenterCoords, MinMaxD distanceRange, int ignoreAirbaseId = -1, bool enemyAllowed = false)
         {
             var side = enemyAllowed ? Toolbox.RandomFrom(new[] { Side.Enemy, Side.Ally }) : Side.Ally;
-            var coalition = GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, side, true);
+            var coalition = GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, side, false);
             var airbaseOps = (from DBEntryAirbase airbaseDB in mission.AirbaseDB
-                              where airbaseDB.DCSID != ignoreAirbaseId && (coalition == Coalition.Neutral || airbaseDB.Coalition == coalition) && distanceRange.Contains(searchCenterCoords.GetDistanceFrom(airbaseDB.Coordinates) * Toolbox.METERS_TO_NM)
-                              select airbaseDB.Coordinates).ToList();
+                              where airbaseDB.DCSID != ignoreAirbaseId && (coalition == null || coalition == Coalition.Neutral || airbaseDB.Coalition == coalition) && distanceRange.Contains(searchCenterCoords.GetDistanceFrom(airbaseDB.Coordinates) * Toolbox.METERS_TO_NM)
+                              select airbaseDB).ToList();
             if (airbaseOps.Count() == 0)
                 throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "FailedToFindCargoSpawn");
-            var coords = Toolbox.RandomFrom(airbaseOps);
-            return GetAirbaseCargoSpot(briefingRoom, ref mission, coords, ignoreAirbaseId, enemyAllowed);
+            var airbase = Toolbox.RandomFrom(airbaseOps);
+            return GetAirbaseCargoSpot(briefingRoom, ref mission, airbase.Coordinates, ignoreAirbaseId, enemyAllowed);
         }
 
 
