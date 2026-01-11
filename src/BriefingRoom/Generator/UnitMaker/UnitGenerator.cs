@@ -787,7 +787,7 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                 var hasTemplatePosition = templatePositionMap.Count > posIndex;
                 if (hasTemplatePosition) // Unit has a fixed set of coordinates (for SAM sites, etc.)
                 {
-                    unitCoordinates = TransformFromOffset(unitHeading, groupCoordinates, templatePositionMap[posIndex].DCoordinates);
+                    unitCoordinates = TransformFromOffset(groupHeading, groupCoordinates, templatePositionMap[posIndex].DCoordinates);
                 }
                 else if (!singleUnit) // No fixed coordinates, generate random coordinates
                 {
@@ -824,7 +824,7 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                 }
 
                 if (hasTemplatePosition) // Unit has a fixed heading (for SAM sites, etc.)
-                    unitHeading = Toolbox.ClampAngle(unitHeading + templatePositionMap[posIndex].Heading);
+                    unitHeading = Toolbox.ClampAngle(templatePositionMap[posIndex].Heading + (Toolbox.TWO_PI / 2 - groupHeading));
                 else if (unitDB.Category != UnitCategory.Ship)
                     unitHeading = Toolbox.RandomDouble(Toolbox.TWO_PI);
             }
