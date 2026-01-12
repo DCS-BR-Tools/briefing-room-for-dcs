@@ -56,7 +56,7 @@
 
                 <h5>@briefingRoom.Translate("Base")</h5>
                 <ObjectiveTask Template="Template" objective="objective" objectiveUtil="objectiveUtil"
-                    CloneCallback="@(() => objectiveUtil.CloneObjectiveTask(briefingRoom.Database, objective))" />
+                    CloneCallback="@(() => { objectiveUtil.CloneObjectiveTask(briefingRoom.Database, objective); StateHasChanged(); })" />
                 <hr />
                 <h5>@briefingRoom.Translate("Nearby")</h5>
                 @if (objective.SubTasks.Count == 0)
