@@ -761,8 +761,7 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
         private static double GetGroupHeading(Coordinates groupCoordinates, Dictionary<string, object> extraSettings)
         {
             if (!extraSettings.ContainsKey("GroupX2"))
-                // return random heading
-                return Toolbox.RandomDouble(Toolbox.TWO_PI);
+                return 0.0;
             // return 3.141593;
             var waypointCoor = new Coordinates((double)extraSettings["GroupX2"], (double)extraSettings["GroupY2"]);
             return Coordinates.ToAngleInRadians(groupCoordinates, waypointCoor);
