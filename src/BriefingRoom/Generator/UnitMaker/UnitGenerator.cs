@@ -75,6 +75,7 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                 {
                     (country, var unitTemplate) = response;
                     extraSettings["TemplatePositionMap"] = unitTemplate.Units;
+                    extraSettings["groupHeading"] = Toolbox.RandomDouble(Toolbox.TWO_PI);
                     units = unitTemplate.Units.Select(x => x.DCSID).ToList();
                 }
             }
@@ -760,11 +761,19 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
 
         private static double GetGroupHeading(Coordinates groupCoordinates, Dictionary<string, object> extraSettings)
         {
-            if (!extraSettings.ContainsKey("GroupX2"))
+            if (extraSettings.ContainsKey("GroupX2"))
+            {
+                var waypointCoor = new Coordinates((double)extraSettings["GroupX2"], (double)extraSettings["GroupY2"]);
+                return Coordinates.ToAngleInRadians(groupCoordinates, waypointCoor);
+            }
+            else if (extraSettings.ContainsKey("groupHeading"))
+            {
+                return (double)extraSettings["groupHeading"];
+            }
+            else
+            {
                 return 0.0;
-            // return 3.141593;
-            var waypointCoor = new Coordinates((double)extraSettings["GroupX2"], (double)extraSettings["GroupY2"]);
-            return Coordinates.ToAngleInRadians(groupCoordinates, waypointCoor);
+            }
         }
 
         private static (Coordinates unitCoordinates, double unitHeading) SetUnitCoordinatesAndHeading(
@@ -824,7 +833,7 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                 }
 
                 if (hasTemplatePosition) // Unit has a fixed heading (for SAM sites, etc.)
-                    unitHeading = Toolbox.ClampAngle(templatePositionMap[posIndex].Heading + (Toolbox.TWO_PI - groupHeading));
+                    unitHeading = Toolbox.ClampAngle(templatePositionMap[posIndex].Heading + groupHeading);
                 else if (unitDB.Category != UnitCategory.Ship)
                     unitHeading = Toolbox.RandomDouble(Toolbox.TWO_PI);
             }
@@ -833,14 +842,13 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
 
         private static Coordinates TransformFromOffset(double groupHeading, Coordinates groupCoordinates, Coordinates offsetCoordinates)
         {
-            // it seems that for some reason X&Y are reversed when it comes to this stuff and needs to rotated backawards from heading.
-            // Why don't know Maybe ED will announce its a bug and poof or soviet russia x is y and y is x
-            // Its late my head hurts, be ware all who venture here.
-            double sinTheta = Math.Sin(Toolbox.TWO_PI - groupHeading);
-            double cosTheta = Math.Cos(Toolbox.TWO_PI - groupHeading);
+            // Standard 2D rotation matrix to transform template offsets into world coordinates
+            // Rotate by groupHeading to align the template with the group's facing direction
+            double sinTheta = Math.Sin(groupHeading);
+            double cosTheta = Math.Cos(groupHeading);
             return groupCoordinates + new Coordinates(
-                (offsetCoordinates.X * cosTheta) + (offsetCoordinates.Y * sinTheta),
-                (-offsetCoordinates.X * sinTheta) + (offsetCoordinates.Y * cosTheta));
+                (offsetCoordinates.X * cosTheta) - (offsetCoordinates.Y * sinTheta),
+                (offsetCoordinates.X * sinTheta) + (offsetCoordinates.Y * cosTheta));
         }
 
         private static void GetLayout(IDatabase database, int unitCount, UnitFamily family, Dictionary<string, object> extraSettings)
