@@ -5,7 +5,7 @@ WORKDIR /source
 # copy csproj and restore as distinct layers
 COPY src src
 
-RUN cd src/BriefingRoom && dotnet remove package IronPdf && dotnet add package IronPdf.Linux --version 2025.12.2 && cd ../../
+RUN cd src/BriefingRoom && dotnet remove package IronPdf && dotnet add package IronPdf.Linux --version 2025.9.4 && cd ../../
 
 RUN dotnet publish -c Release -o /app --use-current-runtime --self-contained false src/Web/Web.csproj
 
