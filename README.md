@@ -1,7 +1,7 @@
 ![BriefingRoom logo](Media/SplashScreen.png)
 
 ----
-**Try the <a href="https://dcs-briefingroom.azurewebsites.net/">Web version</a> now!**
+**Try the <a href="https://dcs-briefingroom.co.uk/">Web version</a> now!**
 ## Installation
  App is generally standalone .exe with caveats on desktop:
  1. Desktop version requires [WebView2 Runtime](https://go.microsoft.com/fwlink/p/?linkid=2124703) this may not be installed on windows by default. If Web Exe works and Desktop doesn't this is likely the issue.
