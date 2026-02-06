@@ -1,0 +1,10793 @@
+[
+  {
+    "type": "bhd_sedan",
+    "category": "Unarmed",
+    "paintSchemes": {
+      "0": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "1": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "2": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "3": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "4": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "5": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "6": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "7": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "8": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "9": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "10": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "11": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "12": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "13": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "15": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "16": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "17": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "18": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "19": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "20": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "21": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "22": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "23": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "24": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "25": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "26": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "27": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "28": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "29": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "30": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "31": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "32": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "33": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "34": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "35": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "36": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "37": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "38": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "39": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "40": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "41": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "42": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "43": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "44": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "45": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "46": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "47": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "48": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "49": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "50": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "51": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "52": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "53": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "54": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "55": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "56": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "57": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "58": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "59": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "60": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "61": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "62": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "63": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "64": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "65": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "66": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "67": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "68": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "69": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "70": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "71": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "72": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "73": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "74": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "75": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "76": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "77": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "78": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "79": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "80": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "81": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "82": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "83": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "84": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "85": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "86": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "87": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "88": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "89": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "90": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "91": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ],
+      "92": [
+        [
+          "abdi taxi",
+          "Abdi Taxi"
+        ],
+        [
+          "baghdad taxi",
+          "Baghdad Taxi"
+        ],
+        [
+          "beige",
+          "beige"
+        ],
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "green",
+          "green"
+        ],
+        [
+          "red 1",
+          "red 1"
+        ],
+        [
+          "red 2",
+          "red 2"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "yellow",
+          "yellow"
+        ]
+      ]
+    },
+    "displayName": "BHD - Sedan",
+    "module": "Black Hawk Down Assets Pack",
+    "shape": "bhd_sedan",
+    "detectionRange": 0,
+    "threatRange": 0,
+    "operators": {
+      "Russia": [
+        1980,
+        2020
+      ],
+      "Ukraine": [
+        1980,
+        2020
+      ],
+      "USAFAggressors": [
+        1980,
+        2020
+      ],
+      "Georgia": [
+        1980,
+        2020
+      ],
+      "Insurgents": [
+        1980,
+        2020
+      ],
+      "Abkhazia": [
+        1980,
+        2020
+      ],
+      "SouthOssetia": [
+        1980,
+        2020
+      ],
+      "Belarus": [
+        1980,
+        2020
+      ],
+      "Bulgaria": [
+        1980,
+        2020
+      ],
+      "CzechRepublic": [
+        1980,
+        2020
+      ],
+      "Finland": [
+        1980,
+        2020
+      ],
+      "Hungary": [
+        1980,
+        2020
+      ],
+      "Kazakhstan": [
+        1980,
+        2020
+      ],
+      "Poland": [
+        1980,
+        2020
+      ],
+      "Romania": [
+        1980,
+        2020
+      ],
+      "Serbia": [
+        1980,
+        2020
+      ],
+      "Slovakia": [
+        1980,
+        2020
+      ],
+      "Yugoslavia": [
+        1980,
+        2020
+      ],
+      "USSR": [
+        1980,
+        2020
+      ],
+      "Algeria": [
+        1980,
+        2020
+      ],
+      "Cuba": [
+        1980,
+        2020
+      ],
+      "UnitedNationsPeacekeepers": [
+        1980,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "bhd_somali_pickup_pkm",
+    "category": "Armor",
+    "paintSchemes": {
+      "0": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "1": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "2": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "3": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "4": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "5": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "6": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "7": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "8": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "9": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "10": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "11": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "12": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "13": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "15": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "16": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "17": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "18": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "19": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "20": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "21": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "22": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "23": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "24": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "25": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "26": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "27": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "28": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "29": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "30": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "31": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "32": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "33": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "34": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "35": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "36": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "37": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "38": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "39": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "40": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "41": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "42": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "43": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "44": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "45": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "46": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "47": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "48": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "49": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "50": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "51": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "52": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "53": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "54": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "55": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "56": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "57": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "58": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "59": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "60": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "61": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "62": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "63": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "64": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "65": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "66": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "67": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "68": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "69": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "70": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "71": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "72": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "73": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "74": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "75": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "76": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "77": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "78": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "79": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "80": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "81": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "82": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "83": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "84": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "85": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "86": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "87": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "88": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "89": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "90": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "91": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ],
+      "92": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "camo desert",
+          "camo desert"
+        ],
+        [
+          "camo woodland",
+          "camo woodland"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "white",
+          "white"
+        ]
+      ]
+    },
+    "displayName": "BHD - Somali Pickup PKM",
+    "module": "Black Hawk Down Assets Pack",
+    "shape": "bhd_somali_pickup_pkm",
+    "detectionRange": 5000,
+    "threatRange": 500,
+    "operators": {
+      "Ukraine": [
+        2010,
+        2020
+      ],
+      "Insurgents": [
+        2010,
+        2020
+      ],
+      "Iran": [
+        2010,
+        2020
+      ],
+      "Iraq": [
+        2010,
+        2020
+      ],
+      "Kazakhstan": [
+        2010,
+        2020
+      ],
+      "NorthKorea": [
+        1980,
+        2020
+      ],
+      "Pakistan": [
+        1980,
+        2020
+      ],
+      "Syria": [
+        1980,
+        2020
+      ],
+      "Yemen": [
+        2000,
+        2020
+      ],
+      "Vietnam": [
+        1980,
+        2020
+      ],
+      "Venezuela": [
+        1980,
+        2020
+      ],
+      "Tunisia": [
+        1980,
+        2020
+      ],
+      "Sudan": [
+        2000,
+        2020
+      ],
+      "Mexico": [
+        2010,
+        2020
+      ],
+      "Libya": [
+        1980,
+        2020
+      ],
+      "Honduras": [
+        2000,
+        2020
+      ],
+      "Ethiopia": [
+        2000,
+        2020
+      ],
+      "Lebanon": [
+        2010,
+        2020
+      ],
+      "Bolivia": [
+        1980,
+        2020
+      ],
+      "Ghana": [
+        1980,
+        2020
+      ],
+      "Nigeria": [
+        1980,
+        2020
+      ],
+      "Afghanistan": [
+        1980,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "bhd_somali_truck",
+    "category": "Unarmed",
+    "paintSchemes": {
+      "0": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "1": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "2": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "3": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "4": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "5": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "6": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "7": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "8": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "9": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "10": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "11": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "12": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "13": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "15": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "16": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "17": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "18": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "19": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "20": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "21": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "22": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "23": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "24": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "25": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "26": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "27": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "28": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "29": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "30": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "31": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "32": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "33": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "34": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "35": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "36": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "37": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "38": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "39": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "40": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "41": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "42": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "43": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "44": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "45": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "46": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "47": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "48": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "49": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "50": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "51": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "52": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "53": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "54": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "55": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "56": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "57": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "58": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "59": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "60": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "61": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "62": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "63": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "64": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "65": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "66": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "67": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "68": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "69": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "70": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "71": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "72": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "73": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "74": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "75": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "76": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "77": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "78": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "79": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "80": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "81": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "82": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "83": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "84": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "85": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "86": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "87": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "88": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "89": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "90": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "91": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ],
+      "92": [
+        [
+          "black",
+          "black"
+        ],
+        [
+          "blue",
+          "blue"
+        ],
+        [
+          "blue dark",
+          "blue dark"
+        ],
+        [
+          "gray",
+          "gray"
+        ],
+        [
+          "orange",
+          "orange"
+        ],
+        [
+          "red",
+          "red"
+        ],
+        [
+          "tan",
+          "tan"
+        ],
+        [
+          "un",
+          "un"
+        ],
+        [
+          "white",
+          "white"
+        ],
+        [
+          "white clean",
+          "white clean"
+        ]
+      ]
+    },
+    "displayName": "BHD - Somali Truck",
+    "module": "Black Hawk Down Assets Pack",
+    "shape": "bhd_somali_truck",
+    "detectionRange": 0,
+    "threatRange": 0,
+    "operators": {
+      "Ukraine": [
+        2010,
+        2020
+      ],
+      "Insurgents": [
+        2010,
+        2020
+      ],
+      "Iran": [
+        2010,
+        2020
+      ],
+      "Iraq": [
+        2010,
+        2020
+      ],
+      "Kazakhstan": [
+        2010,
+        2020
+      ],
+      "NorthKorea": [
+        1980,
+        2020
+      ],
+      "Pakistan": [
+        1980,
+        2020
+      ],
+      "Syria": [
+        1980,
+        2020
+      ],
+      "Yemen": [
+        2000,
+        2020
+      ],
+      "Vietnam": [
+        1980,
+        2020
+      ],
+      "Venezuela": [
+        1980,
+        2020
+      ],
+      "Tunisia": [
+        1980,
+        2020
+      ],
+      "Sudan": [
+        2000,
+        2020
+      ],
+      "Mexico": [
+        2010,
+        2020
+      ],
+      "Libya": [
+        1980,
+        2020
+      ],
+      "Honduras": [
+        2000,
+        2020
+      ],
+      "Ethiopia": [
+        2000,
+        2020
+      ],
+      "Lebanon": [
+        2010,
+        2020
+      ],
+      "Bolivia": [
+        1980,
+        2020
+      ],
+      "Ghana": [
+        1980,
+        2020
+      ],
+      "Nigeria": [
+        1980,
+        2020
+      ],
+      "Afghanistan": [
+        1980,
+        2020
+      ]
+    }
+  }
+]

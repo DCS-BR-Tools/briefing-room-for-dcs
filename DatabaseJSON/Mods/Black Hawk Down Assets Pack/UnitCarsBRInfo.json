@@ -1,0 +1,20 @@
+[
+  {
+    "type": "bhd_sedan",
+    "families": ["VehicleCivilian"],
+    "lowPolly": false,
+    "immovable": false
+  },
+    {
+    "type": "bhd_somali_truck",
+    "families": ["VehicleTransport", "VehicleSupply", "VehicleCivilian"],
+    "lowPolly": false,
+    "immovable": false
+  },
+    {
+    "type": "bhd_somali_pickup_pkm",
+    "families": ["VehicleTransport"],
+    "lowPolly": false,
+    "immovable": false
+  }
+]
