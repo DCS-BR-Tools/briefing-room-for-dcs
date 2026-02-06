@@ -767,13 +767,9 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                 return Coordinates.ToAngleInRadians(groupCoordinates, waypointCoor);
             }
             else if (extraSettings.ContainsKey("groupHeading"))
-            {
                 return (double)extraSettings["groupHeading"];
-            }
             else
-            {
-                return 0.0;
-            }
+                return Math.PI; // For DBEntryTheaterTemplateLocation for some reason the entire group is rotated 180 degrees for unknown reasons, so we default to that to avoid weird placements until we can figure out why and fix it
         }
 
         private static (Coordinates unitCoordinates, double unitHeading) SetUnitCoordinatesAndHeading(
