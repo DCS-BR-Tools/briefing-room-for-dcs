@@ -18,5 +18,13 @@
         ],
         "lowPolly": false,
         "playerControllable": true
+    },
+        {
+        "type": "JAS39Gripen_BVR",
+        "families": [
+            "PlaneFighter"
+        ],
+        "lowPolly": false,
+        "playerControllable": true
     }
 ]
