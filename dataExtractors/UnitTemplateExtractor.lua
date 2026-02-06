@@ -58,7 +58,7 @@ if mission.coalition.red.country[1].static ~= nil then
     local originY = mission.coalition.red.country[1].static.group[1].y
     for _, value in orderedPairs(mission.coalition.red.country[1].static.group) do --actualcode
         ids = ids .. value.units[1].type .. ","
-        coordinates = coordinates .. (originX - value.units[1].x) .. "," .. (originY - value.units[1].y) .. ";"
+        coordinates = coordinates .. (value.units[1].x - originX) .. "," .. (value.units[1].y - originY) .. ";"
         headings = headings .. value.units[1].heading .. ","
         if value.units[1].shape_name == nil then
             shape = shape .. ","
@@ -86,7 +86,7 @@ for _, groupValue in orderedPairs(mission.coalition.red.country[1].vehicle.group
     local originY = groupValue.y
     for _, value in orderedPairs(groupValue.units) do --actualcode
         ids = ids .. value.type .. ","
-        coordinates = coordinates .. (originX - value.x) .. "," .. (originY - value.y) .. ";"
+        coordinates = coordinates .. (value.x - originX) .. "," .. (value.y - originY) .. ";"
         headings = headings .. value.heading .. ","
     end
     local file = io.open(groupValue.name .. ".ini", "w")
