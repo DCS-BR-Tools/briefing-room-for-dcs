@@ -10,67 +10,67 @@
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-71.706218629959, -54.882836570032],
+        "coords": [71.706218629959, 54.882836570032],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [30.337246350013, 79.428426790051],
+        "coords": [-30.337246350013, -79.428426790051],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-101.21608551999, 25.097176520037],
+        "coords": [101.21608551999, -25.097176520037],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-53.779663969995, 87.426428099978],
+        "coords": [53.779663969995, -87.426428099978],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 6.2641478001644,
-        "coords": [14.864717710007, -17.750514440006],
+        "coords": [-14.864717710007, 17.750514440006],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "p-19 s-125 sr"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [20.643884650024, 23.229032939998],
+        "coords": [-20.643884650024, -23.229032939998],
         "unitTypes": ["VehicleSupply"],
         "originalType": "ZIL-131 KUNG"
       },
       {
         "heading": 3.1241393610699,
-        "coords": [-21.91179916996, 12.196077879984],
+        "coords": [21.91179916996, -12.196077879984],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 1.6057029118348,
-        "coords": [17.650761510013, -48.263800999965],
+        "coords": [-17.650761510013, 48.263800999965],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [16.547588920046, -60.674492690014],
+        "coords": [-16.547588920046, 60.674492690014],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [-19.029727249988, -93.769670519978],
+        "coords": [19.029727249988, 93.769670519978],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [57.364974910044, -3.3095177799696],
+        "coords": [-57.364974910044, 3.3095177799696],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       }
@@ -88,85 +88,85 @@
       },
       {
         "heading": 5.4803338512622,
-        "coords": [-53.421390920004, 58.847000940004],
+        "coords": [53.421390920004, -58.847000940004],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S_75M_Volhov"
       },
       {
         "heading": 1.535889741755,
-        "coords": [-101.83452645002, -8.7644469399238],
+        "coords": [101.83452645002, 8.7644469399238],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S_75M_Volhov"
       },
       {
         "heading": 4.6774823953448,
-        "coords": [72.202348669991, -73.454412519932],
+        "coords": [-72.202348669991, 73.454412519932],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S_75M_Volhov"
       },
       {
         "heading": 3.8048177693476,
-        "coords": [-72.202348670049, -82.218859469984],
+        "coords": [72.202348670049, 82.218859469984],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S_75M_Volhov"
       },
       {
         "heading": 2.3561944901923,
-        "coords": [12.937993119995, -96.408916429966],
+        "coords": [-12.937993119995, 96.408916429966],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S_75M_Volhov"
       },
       {
         "heading": 0.92502450355699,
-        "coords": [7.095028479991, 83.053568709991],
+        "coords": [-7.095028479991, -83.053568709991],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S_75M_Volhov"
       },
       {
         "heading": 4.1713369122664,
-        "coords": [56.342873239948, -23.371858529979],
+        "coords": [-56.342873239948, 23.371858529979],
         "unitTypes": ["VehicleSupply"],
         "originalType": "ZIL-131 KUNG"
       },
       {
         "heading": 4.1713369122664,
-        "coords": [-33.38836933003, -7.5123830999946],
+        "coords": [33.38836933003, 7.5123830999946],
         "unitTypes": ["VehicleSupply"],
         "originalType": "ZIL-131 KUNG"
       },
       {
         "heading": 2.2165681500328,
-        "coords": [20.867730829981, -16.276830039918],
+        "coords": [-20.867730829981, 16.276830039918],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "p-19 s-125 sr"
       },
       {
         "heading": 0.68067840827779,
-        "coords": [36.727206259966, 1.6694184700027],
+        "coords": [-36.727206259966, -1.6694184700027],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Ural-4320 APA-5D"
       },
       {
         "heading": 0.87266462599716,
-        "coords": [-25.041276990029, 59.264355560066],
+        "coords": [25.041276990029, -59.264355560066],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATMZ-5"
       },
       {
         "heading": 1.0297442586767,
-        "coords": [-79.29737715004, -15.024766189978],
+        "coords": [79.29737715004, 15.024766189978],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATMZ-5"
       },
       {
         "heading": 5.4279739737024,
-        "coords": [30.884241629974, 31.301596250036],
+        "coords": [-30.884241629974, -31.301596250036],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320T"
       },
       {
         "heading": 5.3407075111026,
-        "coords": [-10.851220030047, -45.074298589956],
+        "coords": [10.851220030047, 45.074298589956],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320T"
       }
@@ -184,67 +184,67 @@
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-79.220950019982, 13.203491670021],
+        "coords": [79.220950019982, -13.203491670021],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-42.011109860003, 90.423912660044],
+        "coords": [42.011109860003, -90.423912660044],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [88.423383610003, 36.809734360024],
+        "coords": [-88.423383610003, -36.809734360024],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [35.609416930005, 101.22676948004],
+        "coords": [-35.609416930005, -101.22676948004],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 6.2641478001644,
-        "coords": [22.405925260013, -14.003703289956],
+        "coords": [-22.405925260013, 14.003703289956],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "p-19 s-125 sr"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [-14.003703289985, 29.607829810004],
+        "coords": [14.003703289985, -29.607829810004],
         "unitTypes": ["VehicleSupply"],
         "originalType": "ZIL-131 KUNG"
       },
       {
         "heading": 3.1241393610699,
-        "coords": [24.80656011001, 77.620526790037],
+        "coords": [-24.80656011001, -77.620526790037],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 1.6057029118348,
-        "coords": [40.810792439996, -39.21036919998],
+        "coords": [-40.810792439996, 39.21036919998],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [-70.818728049984, -48.412802790001],
+        "coords": [70.818728049984, 48.412802790001],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [96.425499780016, -27.207194959978],
+        "coords": [-96.425499780016, 27.207194959978],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [35.609416930005, 15.204020710022],
+        "coords": [-35.609416930005, -15.204020710022],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       }
@@ -262,67 +262,67 @@
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-85.540093930031, -66.618782839971],
+        "coords": [85.540093930031, 66.618782839971],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-3.1535518500023, -92.241391620017],
+        "coords": [3.1535518500023, 92.241391620017],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-105.249793, 9.4606555500068],
+        "coords": [105.249793, -9.4606555500068],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-48.091665710032, 69.772334679961],
+        "coords": [48.091665710032, -69.772334679961],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 6.2641478001644,
-        "coords": [34.689070349967, 40.207786089974],
+        "coords": [-34.689070349967, -40.207786089974],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "p-19 s-125 sr"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [9.3007319799508, -6.3600673400797],
+        "coords": [-9.3007319799508, 6.3600673400797],
         "unitTypes": ["VehicleSupply"],
         "originalType": "ZIL-131 KUNG"
       },
       {
         "heading": 3.1241393610699,
-        "coords": [-4.1625898400089, -15.036430290085],
+        "coords": [4.1625898400089, 15.036430290085],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 1.6057029118348,
-        "coords": [22.863250909955, -42.178756000008],
+        "coords": [-22.863250909955, 42.178756000008],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [30.747130539967, -55.581351360073],
+        "coords": [-30.747130539967, 55.581351360073],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [47.303277749976, -80.021378200036],
+        "coords": [-47.303277749976, 80.021378200036],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [49.274247659952, -24.83422081999],
+        "coords": [-49.274247659952, 24.83422081999],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       }
@@ -340,67 +340,67 @@
       },
       {
         "heading": 3.1590459461097,
-        "coords": [106.35023573, 27.026297530043],
+        "coords": [-106.35023573, -27.026297530043],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [80.025919959997, -51.244668039959],
+        "coords": [-80.025919959997, 51.244668039959],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [56.860522080038, 88.449701000005],
+        "coords": [-56.860522080038, -88.449701000005],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-28.07927016, 79.323938200017],
+        "coords": [28.07927016, -79.323938200017],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 6.2641478001644,
-        "coords": [17.198552980029, 82.833846969996],
+        "coords": [-17.198552980029, -82.833846969996],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "p-19 s-125 sr"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [-43.522868739965, 29.483233670006],
+        "coords": [43.522868739965, -29.483233670006],
         "unitTypes": ["VehicleSupply"],
         "originalType": "ZIL-131 KUNG"
       },
       {
         "heading": 3.1241393610699,
-        "coords": [-50.191695410002, -4.2118905199459],
+        "coords": [50.191695410002, 4.2118905199459],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 1.6057029118348,
-        "coords": [22.863250920025, -42.178756000008],
+        "coords": [-22.863250920025, 42.178756000008],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [30.747130540025, -55.581351359957],
+        "coords": [-30.747130540025, 55.581351359957],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [-20.357470860006, -77.919974689954],
+        "coords": [20.357470860006, 77.919974689954],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [40.012959979998, -27.026297529927],
+        "coords": [-40.012959979998, 27.026297529927],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       }
@@ -418,67 +418,67 @@
       },
       {
         "heading": 3.1590459461097,
-        "coords": [113.64487632, 6.4393526299973],
+        "coords": [-113.64487632, -6.4393526299973],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [67.384706200013, -63.697034329991],
+        "coords": [-67.384706200013, 63.697034329991],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [80.81507817001, 78.814134930028],
+        "coords": [-80.81507817001, -78.814134930028],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-1.2594172199897, 91.87144101999],
+        "coords": [1.2594172199897, -91.87144101999],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 6.2641478001644,
-        "coords": [-58.338498099998, 65.756828850019],
+        "coords": [58.338498099998, -65.756828850019],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "p-19 s-125 sr"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [-17.301250409975, -40.19388337998],
+        "coords": [17.301250409975, 40.19388337998],
         "unitTypes": ["VehicleSupply"],
         "originalType": "ZIL-131 KUNG"
       },
       {
         "heading": 3.1241393610699,
-        "coords": [-45.281192019989, 16.8851975],
+        "coords": [45.281192019989, -16.8851975],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 1.6057029118348,
-        "coords": [13.663218310016, -42.43227871001],
+        "coords": [-13.663218310016, 42.43227871001],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [21.49760196, -58.101046009979],
+        "coords": [-21.49760196, 58.101046009979],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [-20.357470869989, -77.919974690012],
+        "coords": [20.357470869989, 77.919974690012],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [40.012959970016, -27.026297529985],
+        "coords": [-40.012959970016, 27.026297529985],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       }
@@ -496,67 +496,67 @@
       },
       {
         "heading": 0,
-        "coords": [21.616608200013, 67.651378280018],
+        "coords": [-21.616608200013, -67.651378280018],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "RLS_19J6"
       },
       {
         "heading": 0,
-        "coords": [27.307430999994, -41.268015199923],
+        "coords": [-27.307430999994, 41.268015199923],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "p-19 s-125 sr"
       },
       {
         "heading": 0,
-        "coords": [35.497134450008, -224.46717371],
+        "coords": [-35.497134450008, 224.46717371],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 0,
-        "coords": [112.23358686001, -185.31592247996],
+        "coords": [-112.23358686001, 185.31592247996],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 0,
-        "coords": [229.68734055001, -9.3963002898963],
+        "coords": [-229.68734055001, 9.3963002898963],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 0,
-        "coords": [57.502583760011, 139.07601652003],
+        "coords": [-57.502583760011, -139.07601652003],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 0,
-        "coords": [-85.08871933, 109.10148676008],
+        "coords": [85.08871933, -109.10148676008],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 0,
-        "coords": [-64.730068689998, -89.264852799941],
+        "coords": [64.730068689998, 89.264852799941],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 5.4628805587423,
-        "coords": [-46.961911449995, 62.29186864011],
+        "coords": [46.961911449995, -62.29186864011],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-375"
       },
       {
         "heading": 0.78539816339745,
-        "coords": [-51.662707279989, 10.876359430025],
+        "coords": [51.662707279989, -10.876359430025],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-375"
       },
       {
         "heading": 5.8643062867009,
-        "coords": [45.937468110002, -77.780485769967],
+        "coords": [-45.937468110002, 77.780485769967],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -580,67 +580,67 @@
       },
       {
         "heading": 0,
-        "coords": [117.679706283, -66.863469480071],
+        "coords": [-117.679706283, 66.863469480071],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "RLS_19J6"
       },
       {
         "heading": 0,
-        "coords": [27.307430993002, -41.268015200039],
+        "coords": [-27.307430993002, 41.268015200039],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "p-19 s-125 sr"
       },
       {
         "heading": 0,
-        "coords": [179.194098203, -102.3011083001],
+        "coords": [-179.194098203, 102.3011083001],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 0,
-        "coords": [184.543175762, 112.33062873001],
+        "coords": [-184.543175762, -112.33062873001],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 0,
-        "coords": [-44.798524550999, 166.49003899994],
+        "coords": [44.798524550999, -166.49003899994],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 0,
-        "coords": [51.021075258002, 145.6526762899],
+        "coords": [-51.021075258002, -145.6526762899],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 0,
-        "coords": [-143.75645938, 38.780812299927],
+        "coords": [143.75645938, -38.780812299927],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 0,
-        "coords": [-22.064944928003, -114.33653281],
+        "coords": [22.064944928003, 114.33653281],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 5.4628805587423,
-        "coords": [-46.961911459002, 62.291868639993],
+        "coords": [46.961911459002, -62.291868639993],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-375"
       },
       {
         "heading": 0.78539816339745,
-        "coords": [-51.662707281001, 10.876359429909],
+        "coords": [51.662707281001, -10.876359429909],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-375"
       },
       {
         "heading": 5.8643062867009,
-        "coords": [61.288285376002, -51.336416500038],
+        "coords": [-61.288285376002, 51.336416500038],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -664,67 +664,67 @@
       },
       {
         "heading": 0,
-        "coords": [144.32792082001, -133.99497499003],
+        "coords": [-144.32792082001, 133.99497499003],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "RLS_19J6"
       },
       {
         "heading": 0,
-        "coords": [73.789083730022, 71.920948409999],
+        "coords": [-73.789083730022, -71.920948409999],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "p-19 s-125 sr"
       },
       {
         "heading": 0,
-        "coords": [-61.399682619987, -88.444673220045],
+        "coords": [61.399682619987, 88.444673220045],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 0,
-        "coords": [106.08113723001, -202.28784488002],
+        "coords": [-106.08113723001, 202.28784488002],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 0,
-        "coords": [2.6371014400211, -194.62532371003],
+        "coords": [-2.6371014400211, 194.62532371003],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 0,
-        "coords": [100.60790783001, 198.89987064997],
+        "coords": [-100.60790783001, -198.89987064997],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 0,
-        "coords": [-62.494328499975, 108.59158542997],
+        "coords": [62.494328499975, -108.59158542997],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 0,
-        "coords": [-100.66289166, -6.3330958300503],
+        "coords": [100.66289166, 6.3330958300503],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 5.4628805587423,
-        "coords": [8.3330208300031, 69.664054159948],
+        "coords": [-8.3330208300031, -69.664054159948],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-375"
       },
       {
         "heading": 0.78539816339745,
-        "coords": [-40.998462499992, -89.329983330041],
+        "coords": [40.998462499992, 89.329983330041],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-375"
       },
       {
         "heading": 5.8643062867009,
-        "coords": [46.422936700023, -79.140183220035],
+        "coords": [-46.422936700023, 79.140183220035],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -748,67 +748,67 @@
       },
       {
         "heading": 0,
-        "coords": [144.32792082999, -133.99497499003],
+        "coords": [-144.32792082999, 133.99497499003],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "RLS_19J6"
       },
       {
         "heading": 0,
-        "coords": [-9.6663041599677, -49.99812499003],
+        "coords": [9.6663041599677, 49.99812499003],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "p-19 s-125 sr"
       },
       {
         "heading": 0,
-        "coords": [-123.99534998997, -132.66169166006],
+        "coords": [123.99534998997, 132.66169166006],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 0,
-        "coords": [-42.998387489992, -198.32589582005],
+        "coords": [42.998387489992, 198.32589582005],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 0,
-        "coords": [169.66030416003, 85.330133329961],
+        "coords": [-169.66030416003, -85.330133329961],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 0,
-        "coords": [20.999212499999, 149.66105415998],
+        "coords": [-20.999212499999, -149.66105415998],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 0,
-        "coords": [-85.088719339983, 109.10148675996],
+        "coords": [85.088719339983, -109.10148675996],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 0,
-        "coords": [-100.66289166, -6.3330958300503],
+        "coords": [100.66289166, 6.3330958300503],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S-200_Launcher"
       },
       {
         "heading": 5.4628805587423,
-        "coords": [8.3330208400148, 69.664054160006],
+        "coords": [-8.3330208400148, -69.664054160006],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-375"
       },
       {
         "heading": 0.78539816339745,
-        "coords": [-40.998462489981, -89.329983319971],
+        "coords": [40.998462489981, 89.329983319971],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-375"
       },
       {
         "heading": 5.8643062867009,
-        "coords": [27.66562917002, -137.66150415002],
+        "coords": [-27.66562917002, 137.66150415002],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -832,67 +832,67 @@
       },
       {
         "heading": 3.1590459461097,
-        "coords": [66.678259579989, -76.258469289984],
+        "coords": [-66.678259579989, 76.258469289984],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [1.5328335599916, 80.473761560046],
+        "coords": [-1.5328335599916, -80.473761560046],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [116.11214169, -8.0473761600442],
+        "coords": [-116.11214169, 8.0473761600442],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [82.389803509999, 65.528634420014],
+        "coords": [-82.389803509999, -65.528634420014],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 6.2641478001644,
-        "coords": [-57.481258259999, 55.565216319985],
+        "coords": [57.481258259999, -55.565216319985],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "p-19 s-125 sr"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [11.113043270001, -11.879460040014],
+        "coords": [-11.113043270001, 11.879460040014],
         "unitTypes": ["VehicleSupply"],
         "originalType": "ZIL-131 KUNG"
       },
       {
         "heading": 3.1241393610699,
-        "coords": [-4.1625898300117, -15.036430279957],
+        "coords": [4.1625898300117, 15.036430279957],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 1.6057029118348,
-        "coords": [11.87946004, -49.817090490018],
+        "coords": [-11.87946004, 49.817090490018],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [-21.459669750009, -57.48125825997],
+        "coords": [21.459669750009, 57.48125825997],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [9.1970013199898, -98.101347430027],
+        "coords": [-9.1970013199898, 98.101347430027],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [53.826822459989, 9.5979904000415],
+        "coords": [-53.826822459989, -9.5979904000415],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       }
@@ -910,67 +910,67 @@
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-83.578985319997, -10.784385200008],
+        "coords": [83.578985319997, 10.784385200008],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-67.402407520014, 72.120576040004],
+        "coords": [67.402407520014, -72.120576040004],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [72.120576040004, 54.595950089977],
+        "coords": [-72.120576040004, -54.595950089977],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [4.7181685199903, 102.45165942004],
+        "coords": [-4.7181685199903, -102.45165942004],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 6.2641478001644,
-        "coords": [14.828529649996, -16.176577799954],
+        "coords": [-14.828529649996, 16.176577799954],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "p-19 s-125 sr"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [-8.1275516999885, 30.816966859973],
+        "coords": [8.1275516999885, -30.816966859973],
         "unitTypes": ["VehicleSupply"],
         "originalType": "ZIL-131 KUNG"
       },
       {
         "heading": 3.1241393610699,
-        "coords": [94.363370520005, -4.0441444499884],
+        "coords": [-94.363370520005, 4.0441444499884],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 1.6057029118348,
-        "coords": [-11.458409279992, -57.292046390008],
+        "coords": [11.458409279992, 57.292046390008],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [-60.662166769995, -68.076431590016],
+        "coords": [60.662166769995, 68.076431590016],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [52.573877860006, -32.353155600023],
+        "coords": [-52.573877860006, 32.353155600023],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [31.679131529992, 8.0882888999768],
+        "coords": [-31.679131529992, -8.0882888999768],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       }
@@ -988,67 +988,67 @@
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-57.651230926, -75.086365679977],
+        "coords": [57.651230926, 75.086365679977],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [3.7269438809999, 80.637513070018],
+        "coords": [-3.7269438809999, -80.637513070018],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-107.166661943, -6.901181979978],
+        "coords": [107.166661943, 6.901181979978],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-78.442439866998, 65.184366450005],
+        "coords": [78.442439866998, -65.184366450005],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 6.2641478001644,
-        "coords": [62.281636825002, 57.42829191999],
+        "coords": [-62.281636825002, -57.42829191999],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "p-19 s-125 sr"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [9.300731981999, -6.3600673300098],
+        "coords": [-9.300731981999, 6.3600673300098],
         "unitTypes": ["VehicleSupply"],
         "originalType": "ZIL-131 KUNG"
       },
       {
         "heading": 3.1241393610699,
-        "coords": [-4.1625898339989, -15.036430280015],
+        "coords": [4.1625898339989, 15.036430280015],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 1.6057029118348,
-        "coords": [24.333335185001, -50.12571807002],
+        "coords": [-24.333335185001, 50.12571807002],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [25.145063562002, -58.64886602998],
+        "coords": [-25.145063562002, 58.64886602998],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [29.812501732002, -68.592538659985],
+        "coords": [-29.812501732002, 68.592538659985],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [53.826822457002, 9.5979903999832],
+        "coords": [-53.826822457002, -9.5979903999832],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       }
@@ -1066,67 +1066,67 @@
       },
       {
         "heading": 3.1590459461097,
-        "coords": [84.197136342002, 42.312266490073],
+        "coords": [-84.197136342002, -42.312266490073],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [28.208177658002, 101.29300159006],
+        "coords": [-28.208177658002, -101.29300159006],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-79.495773397997, 5.9835528400727],
+        "coords": [79.495773397997, -5.9835528400727],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-48.295819323001, 85.051929609966],
+        "coords": [48.295819323001, -85.051929609966],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 6.2641478001644,
-        "coords": [21.79722819, -13.67669220001],
+        "coords": [-21.79722819, 13.67669220001],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "p-19 s-125 sr"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [96.591638646001, -21.369831559947],
+        "coords": [-96.591638646001, 21.369831559947],
         "unitTypes": ["VehicleSupply"],
         "originalType": "ZIL-131 KUNG"
       },
       {
         "heading": 3.1241393610699,
-        "coords": [-19.232848403, -15.813675349928],
+        "coords": [19.232848403, 15.813675349928],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 1.6057029118348,
-        "coords": [-11.539709040997, -52.142388999928],
+        "coords": [11.539709040997, 52.142388999928],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [12.394502304, -65.391684570001],
+        "coords": [-12.394502304, 65.391684570001],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [53.851975527999, -40.175283330027],
+        "coords": [-53.851975527999, 40.175283330027],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [41.884869856003, -35.47392039001],
+        "coords": [-41.884869856003, 35.47392039001],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       }
@@ -1144,67 +1144,67 @@
       },
       {
         "heading": 3.1590459461097,
-        "coords": [96.022046257, 22.676793209976],
+        "coords": [-96.022046257, -22.676793209976],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [54.920358559997, 95.667721359991],
+        "coords": [-54.920358559997, -95.667721359991],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-72.99092815, 30.11761597998],
+        "coords": [72.99092815, -30.11761597998],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-23.385442999002, 99.210970300017],
+        "coords": [23.385442999002, -99.210970300017],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 6.2641478001644,
-        "coords": [19.842194060999, -8.5037974599982],
+        "coords": [-19.842194060999, 8.5037974599982],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "p-19 s-125 sr"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [-18.779219378001, 13.464345959947],
+        "coords": [18.779219378001, -13.464345959947],
         "unitTypes": ["VehicleSupply"],
         "originalType": "ZIL-131 KUNG"
       },
       {
         "heading": 3.1241393610699,
-        "coords": [-18.424894484, -37.912763659959],
+        "coords": [18.424894484, 37.912763659959],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 1.6057029118348,
-        "coords": [-74.762552620003, -36.849788969965],
+        "coords": [74.762552620003, 36.849788969965],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [42.164662378997, -46.062236219994],
+        "coords": [-42.164662378997, 46.062236219994],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [91.415822634997, -35.078164499952],
+        "coords": [-91.415822634997, 35.078164499952],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [40.747362802998, 34.723839599988],
+        "coords": [-40.747362802998, -34.723839599988],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       }
@@ -1222,67 +1222,67 @@
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-23.209897961999, -85.454624320031],
+        "coords": [23.209897961999, 85.454624320031],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-98.114568658999, -44.837302890024],
+        "coords": [98.114568658999, 44.837302890024],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-103.389545468, 33.232353899977],
+        "coords": [103.389545468, -33.232353899977],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-36.924837667, 83.344633589964],
+        "coords": [36.924837667, -83.344633589964],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 6.2641478001644,
-        "coords": [29.012372452999, 88.619610399939],
+        "coords": [-29.012372452999, -88.619610399939],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "p-19 s-125 sr"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [-33.232353899999, -23.737395650009],
+        "coords": [33.232353899999, 23.737395650009],
         "unitTypes": ["VehicleSupply"],
         "originalType": "ZIL-131 KUNG"
       },
       {
         "heading": 3.1241393610699,
-        "coords": [-24.792391005001, 29.012372449972],
+        "coords": [24.792391005001, -29.012372449972],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 1.6057029118348,
-        "coords": [-0.52749768099966, -39.034828389995],
+        "coords": [0.52749768099966, 39.034828389995],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [0, -80.179647510056],
+        "coords": [0, 80.179647510056],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [37.452335349, -80.707145190099],
+        "coords": [-37.452335349, 80.707145190099],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [40.089823753002, -28.484874780057],
+        "coords": [-40.089823753002, 28.484874780057],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       }
@@ -1300,67 +1300,67 @@
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-72.71888494998, -61.162783079897],
+        "coords": [72.71888494998, 61.162783079897],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-12.401670310006, -117.81586785999],
+        "coords": [12.401670310006, 117.81586785999],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [62.572063789994, -97.804081689916],
+        "coords": [-62.572063789994, 97.804081689916],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [89.630253540003, -18.320649309899],
+        "coords": [-89.630253540003, 18.320649309899],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 6.2641478001644,
-        "coords": [6.7900968600297, -19.904988149996],
+        "coords": [-6.7900968600297, 19.904988149996],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "p-19 s-125 sr"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [21.398232790001, 32.909041770035],
+        "coords": [-21.398232790001, -32.909041770035],
         "unitTypes": ["VehicleSupply"],
         "originalType": "ZIL-131 KUNG"
       },
       {
         "heading": 3.1241393610699,
-        "coords": [-41.529121999978, 21.672014130047],
+        "coords": [41.529121999978, -21.672014130047],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 1.6057029118348,
-        "coords": [49.888537340041, 17.756937019993],
+        "coords": [-49.888537340041, -17.756937019993],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [18.320649300003, -64.545056789997],
+        "coords": [-18.320649300003, 64.545056789997],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [30.158607319987, -84.274986819946],
+        "coords": [-30.158607319987, 84.274986819946],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [49.274247660011, -24.83422081999],
+        "coords": [-49.274247660011, 24.83422081999],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       }
@@ -1378,67 +1378,67 @@
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-71.204224729998, 28.581977530033],
+        "coords": [71.204224729998, -28.581977530033],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-23.066157310008, 96.27613483998],
+        "coords": [23.066157310008, -96.27613483998],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [97.279011239996, 22.063280900009],
+        "coords": [-97.279011239996, -22.063280900009],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [55.659640450001, 93.768943820032],
+        "coords": [-55.659640450001, -93.768943820032],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 6.2641478001644,
-        "coords": [21.561842689989, -13.037393259932],
+        "coords": [-21.561842689989, 13.037393259932],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "p-19 s-125 sr"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [-8.1275516999885, 30.816966859973],
+        "coords": [8.1275516999885, -30.816966859973],
         "unitTypes": ["VehicleSupply"],
         "originalType": "ZIL-131 KUNG"
       },
       {
         "heading": 3.1241393610699,
-        "coords": [40.115056179988, 69.699910109979],
+        "coords": [-40.115056179988, -69.699910109979],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 1.6057029118348,
-        "coords": [41.117932580004, -46.633752809954],
+        "coords": [-41.117932580004, 46.633752809954],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [-24.570471910003, -42.120808989974],
+        "coords": [24.570471910003, 42.120808989974],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [94.270382020011, -41.619370789966],
+        "coords": [-94.270382020011, 41.619370789966],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [40.115056179988, -5.5158202300081],
+        "coords": [-40.115056179988, 5.5158202300081],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       }
@@ -1456,61 +1456,61 @@
       },
       {
         "heading": 4.7123889803847,
-        "coords": [-2.6563550500141, -100.87754993001],
+        "coords": [2.6563550500141, 100.87754993001],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 1.553343034275,
-        "coords": [3.9905785699957, 102.25274143007],
+        "coords": [-3.9905785699957, -102.25274143007],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 0.034906585039887,
-        "coords": [105.82160159, -4.8958284899127],
+        "coords": [-105.82160159, 4.8958284899127],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 3.1415926535898,
-        "coords": [-99.169831180014, 3.3463692000369],
+        "coords": [99.169831180014, -3.3463692000369],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 2.3212879051525,
-        "coords": [-129.64229953001, 104.56906484999],
+        "coords": [129.64229953001, -104.56906484999],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATZ-10"
       },
       {
         "heading": 2.4958208303519,
-        "coords": [-120.44134814001, 112.00060251006],
+        "coords": [120.44134814001, -112.00060251006],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATZ-10"
       },
       {
         "heading": 1.5882496193148,
-        "coords": [-25.605996860017, -20.019633919932],
+        "coords": [25.605996860017, 20.019633919932],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 0.05235987755983,
-        "coords": [-42.17249146002, 20.017069270019],
+        "coords": [42.17249146002, -20.017069270019],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320-31"
       },
       {
         "heading": 0.034906585039887,
-        "coords": [-42.17249146002, 28.818736970075],
+        "coords": [42.17249146002, -28.818736970075],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320-31"
       },
       {
         "heading": 1.5882496193148,
-        "coords": [-22.038305520022, -20.113878989941],
+        "coords": [22.038305520022, 20.113878989941],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Ural-375 PBU"
       }
@@ -1528,61 +1528,61 @@
       },
       {
         "heading": 4.7123889803847,
-        "coords": [-2.6563550500432, -100.87754992],
+        "coords": [2.6563550500432, 100.87754992],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 1.553343034275,
-        "coords": [3.9905785699957, 102.25274143001],
+        "coords": [-3.9905785699957, -102.25274143001],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 0.034906585039887,
-        "coords": [105.82160158997, -4.8958284899709],
+        "coords": [-105.82160158997, 4.8958284899709],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 3.1415926535898,
-        "coords": [-99.169831180014, 3.3463692000369],
+        "coords": [99.169831180014, -3.3463692000369],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 2.3212879051525,
-        "coords": [-129.64229953004, 104.56906484999],
+        "coords": [129.64229953004, -104.56906484999],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATZ-10"
       },
       {
         "heading": 2.4958208303519,
-        "coords": [-120.44134814001, 112.00060252001],
+        "coords": [120.44134814001, -112.00060252001],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATZ-10"
       },
       {
         "heading": 1.5882496193148,
-        "coords": [-25.605996860017, -20.01963391999],
+        "coords": [25.605996860017, 20.01963391999],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 0.05235987755983,
-        "coords": [-42.172491459991, 20.017069270019],
+        "coords": [42.172491459991, -20.017069270019],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320-31"
       },
       {
         "heading": 0.034906585039887,
-        "coords": [-42.172491459991, 28.818736970017],
+        "coords": [42.172491459991, -28.818736970017],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320-31"
       },
       {
         "heading": 1.5882496193148,
-        "coords": [-22.038305520022, -20.11387899],
+        "coords": [22.038305520022, 20.11387899],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Ural-375 PBU"
       }
@@ -1600,61 +1600,61 @@
       },
       {
         "heading": 4.7123889803847,
-        "coords": [-2.656355049985, -100.87754992],
+        "coords": [2.656355049985, 100.87754992],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 1.553343034275,
-        "coords": [3.9905785699957, 102.25274142995],
+        "coords": [-3.9905785699957, -102.25274142995],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 0.034906585039887,
-        "coords": [105.82160158997, -4.8958284800174],
+        "coords": [-105.82160158997, 4.8958284800174],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 3.1415926535898,
-        "coords": [-99.169831180014, 3.3463692000369],
+        "coords": [99.169831180014, -3.3463692000369],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 2.3212879051525,
-        "coords": [-129.64229953004, 104.56906486],
+        "coords": [129.64229953004, -104.56906486],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATZ-10"
       },
       {
         "heading": 2.4958208303519,
-        "coords": [-120.44134814001, 112.00060251995],
+        "coords": [120.44134814001, -112.00060251995],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATZ-10"
       },
       {
         "heading": 1.5882496193148,
-        "coords": [-25.605996860017, -20.019633910037],
+        "coords": [25.605996860017, 20.019633910037],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 0.05235987755983,
-        "coords": [-42.172491459991, 20.017069270019],
+        "coords": [42.172491459991, -20.017069270019],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320-31"
       },
       {
         "heading": 0.034906585039887,
-        "coords": [-42.172491459991, 28.818736969959],
+        "coords": [42.172491459991, -28.818736969959],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320-31"
       },
       {
         "heading": 1.5882496193148,
-        "coords": [-22.038305520022, -20.113878980046],
+        "coords": [22.038305520022, 20.113878980046],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Ural-375 PBU"
       }
@@ -1672,61 +1672,61 @@
       },
       {
         "heading": 4.7123889803847,
-        "coords": [-2.656355049985, -100.87754993001],
+        "coords": [2.656355049985, 100.87754993001],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 1.553343034275,
-        "coords": [3.9905785699957, 102.25274142006],
+        "coords": [-3.9905785699957, -102.25274142006],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 0.034906585039887,
-        "coords": [105.82160159, -4.8958284900291],
+        "coords": [-105.82160159, 4.8958284900291],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 3.1415926535898,
-        "coords": [-99.169831179985, 3.3463692000369],
+        "coords": [99.169831179985, -3.3463692000369],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 2.3212879051525,
-        "coords": [-129.64229953001, 104.56906484999],
+        "coords": [129.64229953001, -104.56906484999],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATZ-10"
       },
       {
         "heading": 2.4958208303519,
-        "coords": [-120.44134814001, 112.00060251006],
+        "coords": [120.44134814001, -112.00060251006],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATZ-10"
       },
       {
         "heading": 1.5882496193148,
-        "coords": [-25.605996859987, -20.019633919932],
+        "coords": [25.605996859987, 20.019633919932],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 0.05235987755983,
-        "coords": [-42.172491459991, 20.017069260008],
+        "coords": [42.172491459991, -20.017069260008],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320-31"
       },
       {
         "heading": 0.034906585039887,
-        "coords": [-42.172491459991, 28.818736960064],
+        "coords": [42.172491459991, -28.818736960064],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320-31"
       },
       {
         "heading": 1.5882496193148,
-        "coords": [-22.038305519993, -20.113878989941],
+        "coords": [22.038305519993, 20.113878989941],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Ural-375 PBU"
       }
@@ -1744,61 +1744,61 @@
       },
       {
         "heading": 4.7123889803847,
-        "coords": [-2.6563550500141, -100.87754993001],
+        "coords": [2.6563550500141, 100.87754993001],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 1.553343034275,
-        "coords": [3.9905785699957, 102.25274143007],
+        "coords": [-3.9905785699957, -102.25274143007],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 0.034906585039887,
-        "coords": [105.82160159, -4.8958284900291],
+        "coords": [-105.82160159, 4.8958284900291],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 3.1415926535898,
-        "coords": [-99.169831180014, 3.3463692000369],
+        "coords": [99.169831180014, -3.3463692000369],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 2.3212879051525,
-        "coords": [-129.64229953001, 104.56906484999],
+        "coords": [129.64229953001, -104.56906484999],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATZ-10"
       },
       {
         "heading": 2.4958208303519,
-        "coords": [-120.44134814001, 112.00060251006],
+        "coords": [120.44134814001, -112.00060251006],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATZ-10"
       },
       {
         "heading": 1.5882496193148,
-        "coords": [-25.605996860017, -20.019633919932],
+        "coords": [25.605996860017, 20.019633919932],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 0.05235987755983,
-        "coords": [-42.172491459991, 20.017069270019],
+        "coords": [42.172491459991, -20.017069270019],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320-31"
       },
       {
         "heading": 0.034906585039887,
-        "coords": [-42.172491459991, 28.818736970075],
+        "coords": [42.172491459991, -28.818736970075],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320-31"
       },
       {
         "heading": 1.5882496193148,
-        "coords": [-22.038305519993, -20.113878989941],
+        "coords": [22.038305519993, 20.113878989941],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Ural-375 PBU"
       }
@@ -1816,61 +1816,61 @@
       },
       {
         "heading": 4.7123889803847,
-        "coords": [-2.6563550500432, -100.87754993001],
+        "coords": [2.6563550500432, 100.87754993001],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 1.553343034275,
-        "coords": [3.9905785699957, 102.25274141994],
+        "coords": [-3.9905785699957, -102.25274141994],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 0.034906585039887,
-        "coords": [105.82160158997, -4.8958284900291],
+        "coords": [-105.82160158997, 4.8958284900291],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 3.1415926535898,
-        "coords": [-99.169831180014, 3.3463691900251],
+        "coords": [99.169831180014, -3.3463691900251],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 2.3212879051525,
-        "coords": [-129.64229953004, 104.56906484999],
+        "coords": [129.64229953004, -104.56906484999],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATZ-10"
       },
       {
         "heading": 2.4958208303519,
-        "coords": [-120.44134814001, 112.00060250994],
+        "coords": [120.44134814001, -112.00060250994],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATZ-10"
       },
       {
         "heading": 1.5882496193148,
-        "coords": [-25.605996860017, -20.019633920048],
+        "coords": [25.605996860017, 20.019633920048],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 0.05235987755983,
-        "coords": [-42.172491460049, 20.017069260008],
+        "coords": [42.172491460049, -20.017069260008],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320-31"
       },
       {
         "heading": 0.034906585039887,
-        "coords": [-42.172491460049, 28.818736959947],
+        "coords": [42.172491460049, -28.818736959947],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320-31"
       },
       {
         "heading": 1.5882496193148,
-        "coords": [-22.038305520022, -20.113878990058],
+        "coords": [22.038305520022, 20.113878990058],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Ural-375 PBU"
       }
@@ -1888,61 +1888,61 @@
       },
       {
         "heading": 4.7123889803847,
-        "coords": [-6.1103932100232, -87.324122049962],
+        "coords": [6.1103932100232, 87.324122049962],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 1.553343034275,
-        "coords": [3.9905785699957, 102.25274141994],
+        "coords": [-3.9905785699957, -102.25274141994],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 0.034906585039887,
-        "coords": [105.82160158997, -4.8958284900291],
+        "coords": [-105.82160158997, 4.8958284900291],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 3.1415926535898,
-        "coords": [-99.169831180014, 3.3463691900251],
+        "coords": [99.169831180014, -3.3463691900251],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 2.3212879051525,
-        "coords": [-129.64229953004, 104.56906484999],
+        "coords": [129.64229953004, -104.56906484999],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATZ-10"
       },
       {
         "heading": 2.4958208303519,
-        "coords": [-120.44134814001, 112.00060250994],
+        "coords": [120.44134814001, -112.00060250994],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATZ-10"
       },
       {
         "heading": 1.5882496193148,
-        "coords": [-25.605996860017, -20.019633920048],
+        "coords": [25.605996860017, 20.019633920048],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 0.05235987755983,
-        "coords": [-42.172491460049, 20.017069260008],
+        "coords": [42.172491460049, -20.017069260008],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320-31"
       },
       {
         "heading": 0.034906585039887,
-        "coords": [-42.172491460049, 28.818736959947],
+        "coords": [42.172491460049, -28.818736959947],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320-31"
       },
       {
         "heading": 1.5882496193148,
-        "coords": [-22.038305520022, -20.113878990058],
+        "coords": [22.038305520022, 20.113878990058],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Ural-375 PBU"
       }
@@ -1960,61 +1960,61 @@
       },
       {
         "heading": 4.7123889803847,
-        "coords": [-6.1103932000115, -87.32412203995],
+        "coords": [6.1103932000115, 87.32412203995],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 1.553343034275,
-        "coords": [3.9905785699957, 102.25274142995],
+        "coords": [-3.9905785699957, -102.25274142995],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 0.034906585039887,
-        "coords": [105.82160159003, -4.8958284900291],
+        "coords": [-105.82160159003, 4.8958284900291],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 3.1415926535898,
-        "coords": [-99.169831180014, 3.3463692000369],
+        "coords": [99.169831180014, -3.3463692000369],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 2.3212879051525,
-        "coords": [-129.64229952998, 104.56906486],
+        "coords": [129.64229952998, -104.56906486],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATZ-10"
       },
       {
         "heading": 2.4958208303519,
-        "coords": [-120.44134814001, 112.00060251995],
+        "coords": [120.44134814001, -112.00060251995],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATZ-10"
       },
       {
         "heading": 1.5882496193148,
-        "coords": [-25.605996860017, -20.019633910037],
+        "coords": [25.605996860017, 20.019633910037],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 0.05235987755983,
-        "coords": [-42.172491459991, 20.017069270019],
+        "coords": [42.172491459991, -20.017069270019],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320-31"
       },
       {
         "heading": 0.034906585039887,
-        "coords": [-42.172491459991, 28.818736969959],
+        "coords": [42.172491459991, -28.818736969959],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320-31"
       },
       {
         "heading": 1.5882496193148,
-        "coords": [-22.038305520022, -20.113878990058],
+        "coords": [22.038305520022, 20.113878990058],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Ural-375 PBU"
       }
@@ -2032,61 +2032,61 @@
       },
       {
         "heading": 4.7123889803847,
-        "coords": [-6.1103932100013, -87.324122049962],
+        "coords": [6.1103932100013, 87.324122049962],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 1.553343034275,
-        "coords": [3.9905785699993, 102.25274143001],
+        "coords": [-3.9905785699993, -102.25274143001],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 0.034906585039887,
-        "coords": [105.82160159, -4.8958284899709],
+        "coords": [-105.82160159, 4.8958284899709],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 3.1415926535898,
-        "coords": [-99.169831180001, 3.3463692000369],
+        "coords": [99.169831180001, -3.3463692000369],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 2.3212879051525,
-        "coords": [-129.64229953, 104.56906486],
+        "coords": [129.64229953, -104.56906486],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATZ-10"
       },
       {
         "heading": 2.4958208303519,
-        "coords": [-120.44134814, 112.00060252001],
+        "coords": [120.44134814, -112.00060252001],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATZ-10"
       },
       {
         "heading": 1.5882496193148,
-        "coords": [-25.60599686, -20.01963391999],
+        "coords": [25.60599686, 20.01963391999],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 0.05235987755983,
-        "coords": [-42.17249146, 20.017069270019],
+        "coords": [42.17249146, -20.017069270019],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320-31"
       },
       {
         "heading": 0.034906585039887,
-        "coords": [-42.17249146, 28.818736970017],
+        "coords": [42.17249146, -28.818736970017],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320-31"
       },
       {
         "heading": 1.5882496193148,
-        "coords": [-22.03830552, -20.11387899],
+        "coords": [22.03830552, 20.11387899],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Ural-375 PBU"
       }
@@ -2104,61 +2104,61 @@
       },
       {
         "heading": 4.7123889803847,
-        "coords": [-2.656355049985, -100.87754993001],
+        "coords": [2.656355049985, 100.87754993001],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 1.553343034275,
-        "coords": [3.9905785700248, 102.25274142006],
+        "coords": [-3.9905785700248, -102.25274142006],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 0.034906585039887,
-        "coords": [105.82160159, -4.8958284899127],
+        "coords": [-105.82160159, 4.8958284899127],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 3.1415926535898,
-        "coords": [-99.169831179985, 3.3463691900251],
+        "coords": [99.169831179985, -3.3463691900251],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Kub 2P25 ln"
       },
       {
         "heading": 2.3212879051525,
-        "coords": [-129.64229952998, 104.56906484999],
+        "coords": [129.64229952998, -104.56906484999],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATZ-10"
       },
       {
         "heading": 2.4958208303519,
-        "coords": [-120.44134813998, 112.00060251006],
+        "coords": [120.44134813998, -112.00060251006],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATZ-10"
       },
       {
         "heading": 1.5882496193148,
-        "coords": [-25.605996859987, -20.019633919932],
+        "coords": [25.605996859987, 20.019633919932],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 0.05235987755983,
-        "coords": [-42.172491459991, 20.017069260008],
+        "coords": [42.172491459991, -20.017069260008],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320-31"
       },
       {
         "heading": 0.034906585039887,
-        "coords": [-52.800487759989, 44.677335790009],
+        "coords": [52.800487759989, -44.677335790009],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320-31"
       },
       {
         "heading": 1.5882496193148,
-        "coords": [-22.038305519993, -20.113878989941],
+        "coords": [22.038305519993, 20.113878989941],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Ural-375 PBU"
       }
@@ -2176,67 +2176,67 @@
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-30.510850610037, -29.975572530064],
+        "coords": [30.510850610037, 29.975572530064],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [-13.917230100022, 51.921973839984],
+        "coords": [13.917230100022, -51.921973839984],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [126.86090515996, 28.369738279958],
+        "coords": [-126.86090515996, -28.369738279958],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 3.1590459461097,
-        "coords": [62.09225738002, 78.685877879965],
+        "coords": [-62.09225738002, -78.685877879965],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "5p73 s-125 ln"
       },
       {
         "heading": 6.2641478001644,
-        "coords": [109.19672849, 74.403653229936],
+        "coords": [-109.19672849, -74.403653229936],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "p-19 s-125 sr"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [2.6763903999818, 25.693347879918],
+        "coords": [-2.6763903999818, -25.693347879918],
         "unitTypes": ["VehicleSupply"],
         "originalType": "ZIL-131 KUNG"
       },
       {
         "heading": 3.1241393610699,
-        "coords": [74.502557259984, 44.701534349937],
+        "coords": [-74.502557259984, -44.701534349937],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       },
       {
         "heading": 1.6057029118348,
-        "coords": [17.66417667002, -57.274754650076],
+        "coords": [-17.66417667002, 57.274754650076],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [0, -59.602045809967],
+        "coords": [0, 59.602045809967],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [68.068245499977, -63.327173670055],
+        "coords": [-68.068245499977, 63.327173670055],
         "unitTypes": ["VehicleSupply"],
         "originalType": "GAZ-66"
       },
       {
         "heading": 1.6406094968747,
-        "coords": [40.540648509981, 19.470841909992],
+        "coords": [-40.540648509981, -19.470841909992],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ZiL-131 APA-80"
       }
@@ -2254,85 +2254,85 @@
       },
       {
         "heading": 5.4803338512622,
-        "coords": [-85.817907519988, 42.258818099974],
+        "coords": [85.817907519988, -42.258818099974],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S_75M_Volhov"
       },
       {
         "heading": 1.535889741755,
-        "coords": [-22.104612539988, -140.42930321],
+        "coords": [22.104612539988, 140.42930321],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S_75M_Volhov"
       },
       {
         "heading": 4.6774823953448,
-        "coords": [47.459903399984, 114.42387669999],
+        "coords": [-47.459903399984, -114.42387669999],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S_75M_Volhov"
       },
       {
         "heading": 3.8048177693476,
-        "coords": [160.58350876998, -108.57265571994],
+        "coords": [-160.58350876998, 108.57265571994],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S_75M_Volhov"
       },
       {
         "heading": 2.3561944901923,
-        "coords": [172.28595071001, -191.79002058995],
+        "coords": [-172.28595071001, 191.79002058995],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S_75M_Volhov"
       },
       {
         "heading": 0.92502450355699,
-        "coords": [213.24449747999, 20.154205559986],
+        "coords": [-213.24449747999, -20.154205559986],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "S_75M_Volhov"
       },
       {
         "heading": 4.1713369122664,
-        "coords": [-46.809767740022, -72.81519425998],
+        "coords": [46.809767740022, 72.81519425998],
         "unitTypes": ["VehicleSupply"],
         "originalType": "ZIL-131 KUNG"
       },
       {
         "heading": 4.1713369122664,
-        "coords": [-44.859360750008, 83.867500529974],
+        "coords": [44.859360750008, -83.867500529974],
         "unitTypes": ["VehicleSupply"],
         "originalType": "ZIL-131 KUNG"
       },
       {
         "heading": 2.2165681500328,
-        "coords": [71.514922939998, -94.269671140006],
+        "coords": [-71.514922939998, 94.269671140006],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "p-19 s-125 sr"
       },
       {
         "heading": 0.68067840827779,
-        "coords": [49.410310389998, -48.110039060004],
+        "coords": [-49.410310389998, 48.110039060004],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Ural-4320 APA-5D"
       },
       {
         "heading": 0.87266462599716,
-        "coords": [-32.50678315002, 42.258818099974],
+        "coords": [32.50678315002, -42.258818099974],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATMZ-5"
       },
       {
         "heading": 1.0297442586767,
-        "coords": [143.02984586998, -4.55094963999],
+        "coords": [-143.02984586998, 4.55094963999],
         "unitTypes": ["VehicleTransport"],
         "originalType": "ATMZ-5"
       },
       {
         "heading": 5.4279739737024,
-        "coords": [52.010853039974, -167.73500105995],
+        "coords": [-52.010853039974, 167.73500105995],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320T"
       },
       {
         "heading": 5.3407075111026,
-        "coords": [45.50949640997, 42.258818099974],
+        "coords": [-45.50949640997, -42.258818099974],
         "unitTypes": ["VehicleSupply"],
         "originalType": "Ural-4320T"
       }
@@ -2350,61 +2350,61 @@
       },
       {
         "heading": 0,
-        "coords": [72.49247738003, -186.86949724006],
+        "coords": [-72.49247738003, 186.86949724006],
         "unitTypes": ["VehicleMBT"],
         "originalType": "Leopard1A3"
       },
       {
         "heading": 0,
-        "coords": [109.54418804002, 204.58988058998],
+        "coords": [-109.54418804002, -204.58988058998],
         "unitTypes": ["VehicleMBT"],
         "originalType": "Leopard1A3"
       },
       {
         "heading": 0,
-        "coords": [20.942271239997, 115.98796379997],
+        "coords": [-20.942271239997, -115.98796379997],
         "unitTypes": ["VehicleMBT"],
         "originalType": "Leopard1A3"
       },
       {
         "heading": 0,
-        "coords": [162.70533810998, -360.85144294007],
+        "coords": [-162.70533810998, 360.85144294007],
         "unitTypes": ["VehicleMBT"],
         "originalType": "Leopard1A3"
       },
       {
         "heading": 0,
-        "coords": [172.37100176001, -64.437757670064],
+        "coords": [-172.37100176001, 64.437757670064],
         "unitTypes": ["VehicleMBT"],
         "originalType": "Leopard1A3"
       },
       {
         "heading": 0,
-        "coords": [251.30725489999, -199.75704877009],
+        "coords": [-251.30725489999, 199.75704877009],
         "unitTypes": ["VehicleMBT"],
         "originalType": "Leopard1A3"
       },
       {
         "heading": 0,
-        "coords": [422.06731272, -88.601916790009],
+        "coords": [-422.06731272, 88.601916790009],
         "unitTypes": ["VehicleMBT"],
         "originalType": "Leopard1A3"
       },
       {
         "heading": 0,
-        "coords": [410.79070513003, -296.41368527],
+        "coords": [-410.79070513003, 296.41368527],
         "unitTypes": ["VehicleMBT"],
         "originalType": "Leopard1A3"
       },
       {
         "heading": 0,
-        "coords": [587.99453872, -80.547197090113],
+        "coords": [-587.99453872, 80.547197090113],
         "unitTypes": ["VehicleMBT"],
         "originalType": "Leopard1A3"
       },
       {
         "heading": 0,
-        "coords": [258.46655091003, 6.8794433398871],
+        "coords": [-258.46655091003, -6.8794433398871],
         "unitTypes": ["VehicleMBT"],
         "originalType": "Leopard1A3"
       }
@@ -2422,61 +2422,61 @@
       },
       {
         "heading": 0,
-        "coords": [-22.85563251999, -43.074076670106],
+        "coords": [22.85563251999, 43.074076670106],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "Hawk sr"
       },
       {
         "heading": 0,
-        "coords": [16.227466350014, -47.05965242011],
+        "coords": [-16.227466350014, 47.05965242011],
         "unitTypes": ["VehicleSAMcmd"],
         "originalType": "Hawk cwar"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [83.950496370031, -44.832202250022],
+        "coords": [-83.950496370031, 44.832202250022],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 4.7123889803847,
-        "coords": [-116.03628817998, 79.994713819935],
+        "coords": [116.03628817998, -79.994713819935],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [135.81520093005, 67.687834769953],
+        "coords": [-135.81520093005, -67.687834769953],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 2.6179938779915,
-        "coords": [151.63833114004, -3.9557825500378],
+        "coords": [-151.63833114004, 3.9557825500378],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [-93.620187059976, -38.678762720083],
+        "coords": [93.620187059976, 38.678762720083],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 5.7595865315813,
-        "coords": [-146.36395440999, 5.7139081299538],
+        "coords": [146.36395440999, -5.7139081299538],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [113.83863120002, -91.422530080075],
+        "coords": [-113.83863120002, 91.422530080075],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [-123.94785327997, -67.687834770069],
+        "coords": [123.94785327997, 67.687834770069],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       }
@@ -2494,61 +2494,61 @@
       },
       {
         "heading": 0,
-        "coords": [-25.896231170045, -1.0160348799545],
+        "coords": [25.896231170045, 1.0160348799545],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "Hawk sr"
       },
       {
         "heading": 0,
-        "coords": [61.99727604998, 123.72242529003],
+        "coords": [-61.99727604998, -123.72242529003],
         "unitTypes": ["VehicleSAMcmd"],
         "originalType": "Hawk cwar"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [67.592477769998, 31.731422489975],
+        "coords": [-67.592477769998, -31.731422489975],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 4.7123889803847,
-        "coords": [126.74917494995, 89.303565280046],
+        "coords": [-126.74917494995, -89.303565280046],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [-162.65703446005, 13.087599160033],
+        "coords": [162.65703446005, -13.087599160033],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 2.6179938779915,
-        "coords": [117.24184861995, -4.7133284499869],
+        "coords": [-117.24184861995, 4.7133284499869],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [-94.29371598002, 72.773648730014],
+        "coords": [94.29371598002, -72.773648730014],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 5.7595865315813,
-        "coords": [-153.43570119003, 92.127598589985],
+        "coords": [153.43570119003, -92.127598589985],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [-119.18503477005, -50.144400389981],
+        "coords": [119.18503477005, 50.144400389981],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [90.304424009984, 154.27029521996],
+        "coords": [-90.304424009984, -154.27029521996],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       }
@@ -2566,61 +2566,61 @@
       },
       {
         "heading": 0,
-        "coords": [-71.842818839999, -63.904385820031],
+        "coords": [71.842818839999, 63.904385820031],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "Hawk sr"
       },
       {
         "heading": 0,
-        "coords": [-52.790579590015, -30.959888780024],
+        "coords": [52.790579590015, 30.959888780024],
         "unitTypes": ["VehicleSAMcmd"],
         "originalType": "Hawk cwar"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [34.135261989984, 111.53498394997],
+        "coords": [-34.135261989984, -111.53498394997],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 4.7123889803847,
-        "coords": [-18.258395950019, 197.66698223003],
+        "coords": [18.258395950019, -197.66698223003],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [72.239740499994, 105.18423752999],
+        "coords": [-72.239740499994, -105.18423752999],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 2.6179938779915,
-        "coords": [6.3507464200084, -117.48880871001],
+        "coords": [-6.3507464200084, 117.48880871001],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [15.08302274, 54.378266199958],
+        "coords": [-15.08302274, -54.378266199958],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 5.7595865315813,
-        "coords": [48.027519780007, 201.63619873999],
+        "coords": [-48.027519780007, -201.63619873999],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [43.26445997, -58.347482710029],
+        "coords": [-43.26445997, 58.347482710029],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [-59.141326000012, -130.98414485005],
+        "coords": [59.141326000012, 130.98414485005],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       }
@@ -2638,61 +2638,61 @@
       },
       {
         "heading": 0,
-        "coords": [48.103349509998, -25.012545010075],
+        "coords": [-48.103349509998, 25.012545010075],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "Hawk sr"
       },
       {
         "heading": 0,
-        "coords": [-23.464178770024, -55.367812420009],
+        "coords": [23.464178770024, 55.367812420009],
         "unitTypes": ["VehicleSAMcmd"],
         "originalType": "Hawk cwar"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [48.768063399999, -87.052507600049],
+        "coords": [-48.768063399999, 87.052507600049],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 4.7123889803847,
-        "coords": [188.60539589997, -83.517197609995],
+        "coords": [-188.60539589997, 83.517197609995],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [194.12938751996, -18.807581430068],
+        "coords": [-194.12938751996, 18.807581430068],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 2.6179938779915,
-        "coords": [89.284417790012, -90.469470420037],
+        "coords": [-89.284417790012, 90.469470420037],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [-32.991744450002, 64.280686869984],
+        "coords": [32.991744450002, -64.280686869984],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 5.7595865315813,
-        "coords": [-121.76372868998, 74.724219819997],
+        "coords": [121.76372868998, -74.724219819997],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [-118.33376449998, 7.594920709962],
+        "coords": [118.33376449998, -7.594920709962],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [-66.63930422999, -36.749616300105],
+        "coords": [66.63930422999, 36.749616300105],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       }
@@ -2710,73 +2710,73 @@
       },
       {
         "heading": 1.6057029118348,
-        "coords": [115.60382918999, -19.737239130074],
+        "coords": [-115.60382918999, 19.737239130074],
         "unitTypes": ["VehicleSAMCmd"],
         "originalType": "Patriot EPP"
       },
       {
         "heading": 0,
-        "coords": [-47.369373919995, -6.2031323000556],
+        "coords": [47.369373919995, 6.2031323000556],
         "unitTypes": ["VehicleSAMCmd"],
         "originalType": "Patriot ECS"
       },
       {
         "heading": 4.7123889803847,
-        "coords": [-86.735579319997, 58.21526877],
+        "coords": [86.735579319997, -58.21526877],
         "unitTypes": ["VehicleSAMCmd"],
         "originalType": "Patriot AMG"
       },
       {
         "heading": 1.4311699866353,
-        "coords": [-65.769556070009, 61.092958239955],
+        "coords": [65.769556070009, -61.092958239955],
         "unitTypes": ["VehicleSAMCmd"],
         "originalType": "Patriot cp"
       },
       {
         "heading": 0.59341194567807,
-        "coords": [6.7670534100034, -153.95046522003],
+        "coords": [-6.7670534100034, 153.95046522003],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Patriot ln"
       },
       {
         "heading": 5.9341194567807,
-        "coords": [-0.56392111998866, 146.05556955992],
+        "coords": [0.56392111998866, -146.05556955992],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Patriot ln"
       },
       {
         "heading": 0,
-        "coords": [-71.054060869996, 125.75440930994],
+        "coords": [71.054060869996, -125.75440930994],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Patriot ln"
       },
       {
         "heading": 0,
-        "coords": [-67.670534159988, -125.75440932007],
+        "coords": [67.670534159988, 125.75440932007],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Patriot ln"
       },
       {
         "heading": 0,
-        "coords": [79.512877630012, -126.88225155009],
+        "coords": [-79.512877630012, 126.88225155009],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Patriot ln"
       },
       {
         "heading": 0.3490658503988,
-        "coords": [-32.143503730011, -72.181903110002],
+        "coords": [32.143503730011, 72.181903110002],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Patriot ln"
       },
       {
         "heading": 0.3490658503988,
-        "coords": [88.535615519999, 112.78422359994],
+        "coords": [-88.535615519999, -112.78422359994],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Patriot ln"
       },
       {
         "heading": 5.9341194567807,
-        "coords": [56.956032910006, -23.120765840053],
+        "coords": [-56.956032910006, 23.120765840053],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -2788,7 +2788,7 @@
       },
       {
         "heading": 0,
-        "coords": [43.421926079987, 80.076798749971],
+        "coords": [-43.421926079987, -80.076798749971],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -2800,37 +2800,37 @@
       },
       {
         "heading": 5.9341194567807,
-        "coords": [-78.10251093001, 42.593525959994],
+        "coords": [78.10251093001, -42.593525959994],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Hummer"
       },
       {
         "heading": 5.9341194567807,
-        "coords": [104.01412236999, 37.249245529994],
+        "coords": [-104.01412236999, -37.249245529994],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Hummer"
       },
       {
         "heading": 5.9341194567807,
-        "coords": [79.963061310002, 52.871750919963],
+        "coords": [-79.963061310002, -52.871750919963],
         "unitTypes": ["VehicleTransport"],
         "originalType": "M978 HEMTT Tanker"
       },
       {
         "heading": 5.9341194567807,
-        "coords": [-51.880742859998, 59.775638509891],
+        "coords": [51.880742859998, -59.775638509891],
         "unitTypes": ["VehicleSupply"],
         "originalType": "M 818"
       },
       {
         "heading": 5.9341194567807,
-        "coords": [-75.635919960012, 8.4723508699099],
+        "coords": [75.635919960012, -8.4723508699099],
         "unitTypes": ["VehicleSupply"],
         "originalType": "M 818"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [-70.291639520001, -12.082573880092],
+        "coords": [70.291639520001, 12.082573880092],
         "unitTypes": ["VehicleSupply"],
         "originalType": "M 818"
       }
@@ -2848,73 +2848,73 @@
       },
       {
         "heading": 0,
-        "coords": [71.223928919993, -0.87391324003693],
+        "coords": [-71.223928919993, 0.87391324003693],
         "unitTypes": ["VehicleSAMCmd"],
         "originalType": "Patriot EPP"
       },
       {
         "heading": 0,
-        "coords": [25.780440529983, 22.284787580022],
+        "coords": [-25.780440529983, -22.284787580022],
         "unitTypes": ["VehicleSAMCmd"],
         "originalType": "Patriot ECS"
       },
       {
         "heading": 4.7123889803847,
-        "coords": [52.779034579988, 20.804649360012],
+        "coords": [-52.779034579988, -20.804649360012],
         "unitTypes": ["VehicleSAMCmd"],
         "originalType": "Patriot AMG"
       },
       {
         "heading": 0,
-        "coords": [131.08698575001, 37.578269249992],
+        "coords": [-131.08698575001, -37.578269249992],
         "unitTypes": ["VehicleSAMCmd"],
         "originalType": "Patriot cp"
       },
       {
         "heading": 0.59341194567807,
-        "coords": [-118.41524379997, 16.167394910008],
+        "coords": [118.41524379997, -16.167394910008],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Patriot ln"
       },
       {
         "heading": 5.9341194567807,
-        "coords": [-24.469570679998, 129.77611590002],
+        "coords": [24.469570679998, -129.77611590002],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Patriot ln"
       },
       {
         "heading": 0,
-        "coords": [-93.945673129987, 88.265237070038],
+        "coords": [93.945673129987, -88.265237070038],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Patriot ln"
       },
       {
         "heading": 0,
-        "coords": [-79.089148079976, 20.973917720024],
+        "coords": [79.089148079976, -20.973917720024],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Patriot ln"
       },
       {
         "heading": 0,
-        "coords": [58.552186970017, -145.94351081003],
+        "coords": [-58.552186970017, 145.94351081003],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Patriot ln"
       },
       {
         "heading": 0.3490658503988,
-        "coords": [170.85003810003, -29.276093489956],
+        "coords": [-170.85003810003, 29.276093489956],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Patriot ln"
       },
       {
         "heading": 0.3490658503988,
-        "coords": [139.82611814002, -96.56741283997],
+        "coords": [-139.82611814002, 96.56741283997],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Patriot ln"
       },
       {
         "heading": 5.9341194567807,
-        "coords": [55.493490630004, -76.467408359982],
+        "coords": [-55.493490630004, 76.467408359982],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -2926,7 +2926,7 @@
       },
       {
         "heading": 0,
-        "coords": [-5.6804360499955, 84.332627500058],
+        "coords": [5.6804360499955, -84.332627500058],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -2938,37 +2938,37 @@
       },
       {
         "heading": 5.9341194567807,
-        "coords": [55.930447250023, 66.417406109977],
+        "coords": [-55.930447250023, -66.417406109977],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Hummer"
       },
       {
         "heading": 5.9341194567807,
-        "coords": [112.29785113002, 33.645659680013],
+        "coords": [-112.29785113002, -33.645659680013],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Hummer"
       },
       {
         "heading": 5.9341194567807,
-        "coords": [79.963061310002, 52.871750919963],
+        "coords": [-79.963061310002, -52.871750919963],
         "unitTypes": ["VehicleTransport"],
         "originalType": "M978 HEMTT Tanker"
       },
       {
         "heading": 5.9341194567807,
-        "coords": [24.032614050026, 94.382629740052],
+        "coords": [-24.032614050026, -94.382629740052],
         "unitTypes": ["VehicleSupply"],
         "originalType": "M 818"
       },
       {
         "heading": 5.9341194567807,
-        "coords": [82.584801019984, 16.604351529968],
+        "coords": [-82.584801019984, -16.604351529968],
         "unitTypes": ["VehicleSupply"],
         "originalType": "M 818"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [52.434794300003, 38.88913910999],
+        "coords": [-52.434794300003, -38.88913910999],
         "unitTypes": ["VehicleSupply"],
         "originalType": "M 818"
       }
@@ -2986,61 +2986,61 @@
       },
       {
         "heading": 0,
-        "coords": [94.254759780015, 28.562048420077],
+        "coords": [-94.254759780015, -28.562048420077],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "Hawk sr"
       },
       {
         "heading": 0,
-        "coords": [-76.546289759979, -19.993433889933],
+        "coords": [76.546289759979, 19.993433889933],
         "unitTypes": ["VehicleSAMcmd"],
         "originalType": "Hawk cwar"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [50.840446190035, 103.39461527998],
+        "coords": [-50.840446190035, -103.39461527998],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 4.7123889803847,
-        "coords": [48.55548231001, 145.66644693003],
+        "coords": [-48.55548231001, -145.66644693003],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [114.81943464, 108.53578399005],
+        "coords": [-114.81943464, -108.53578399005],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 2.6179938779915,
-        "coords": [145.66644693998, 34.845699070022],
+        "coords": [-145.66644693998, -34.845699070022],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [-25.13460260001, 78.260012670071],
+        "coords": [25.13460260001, -78.260012670071],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 5.7595865315813,
-        "coords": [-138.24031433999, -4.5699277499225],
+        "coords": [138.24031433999, 4.5699277499225],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [-105.10833818, -91.969795909943],
+        "coords": [105.10833818, 91.969795909943],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [-42.271831660008, -134.81286852993],
+        "coords": [42.271831660008, 134.81286852993],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       }
@@ -3058,61 +3058,61 @@
       },
       {
         "heading": 0,
-        "coords": [38.009526279988, 48.951662639971],
+        "coords": [-38.009526279988, -48.951662639971],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "Hawk sr"
       },
       {
         "heading": 0,
-        "coords": [-14.973449750018, 31.674605239998],
+        "coords": [14.973449750018, -31.674605239998],
         "unitTypes": ["VehicleSAMcmd"],
         "originalType": "Hawk cwar"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [-92.720208060025, -40.889035850065],
+        "coords": [92.720208060025, 40.889035850065],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 4.7123889803847,
-        "coords": [-165.28384914002, -9.2144306100672],
+        "coords": [165.28384914002, 9.2144306100672],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [78.898562129994, 135.33694964997],
+        "coords": [-78.898562129994, -135.33694964997],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 2.6179938779915,
-        "coords": [115.18038266999, -8.6385287001031],
+        "coords": [-115.18038266999, 8.6385287001031],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [-93.112474380003, 50.872709519928],
+        "coords": [93.112474380003, -50.872709519928],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 5.7595865315813,
-        "coords": [-155.49351661, 84.657581269974],
+        "coords": [155.49351661, -84.657581269974],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [122.09120562999, 71.98773916997],
+        "coords": [-122.09120562999, -71.98773916997],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [-128.42612668002, -73.715444910107],
+        "coords": [128.42612668002, 73.715444910107],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       }
@@ -3130,61 +3130,61 @@
       },
       {
         "heading": 0,
-        "coords": [-71.842818850011, -63.904385820031],
+        "coords": [71.842818850011, 63.904385820031],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "Hawk sr"
       },
       {
         "heading": 0,
-        "coords": [-52.790579590015, -30.959888780024],
+        "coords": [52.790579590015, 30.959888780024],
         "unitTypes": ["VehicleSAMcmd"],
         "originalType": "Hawk cwar"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [34.135261989984, 111.53498394997],
+        "coords": [-34.135261989984, -111.53498394997],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 4.7123889803847,
-        "coords": [14.564618179982, 197.02691814001],
+        "coords": [-14.564618179982, -197.02691814001],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [86.578563609975, 92.242581799976],
+        "coords": [-86.578563609975, -92.242581799976],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 2.6179938779915,
-        "coords": [-6.4731636400102, -116.92151815002],
+        "coords": [6.4731636400102, 116.92151815002],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [23.060645449994, 49.762445449946],
+        "coords": [-23.060645449994, -49.762445449946],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 5.7595865315813,
-        "coords": [78.891681799985, 191.36289996002],
+        "coords": [-78.891681799985, -191.36289996002],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [36.411545440002, -64.731636350043],
+        "coords": [-36.411545440002, 64.731636350043],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [-75.25052726001, -119.34895452007],
+        "coords": [75.25052726001, 119.34895452007],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       }
@@ -3202,61 +3202,61 @@
       },
       {
         "heading": 0,
-        "coords": [84.479529729986, 28.365389539977],
+        "coords": [-84.479529729986, -28.365389539977],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "Hawk sr"
       },
       {
         "heading": 0,
-        "coords": [28.673708999995, -7.0913473899709],
+        "coords": [-28.673708999995, 7.0913473899709],
         "unitTypes": ["VehicleSAMcmd"],
         "originalType": "Hawk cwar"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [-15.107653129991, 94.654071629979],
+        "coords": [15.107653129991, -94.654071629979],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 4.7123889803847,
-        "coords": [-133.50232254001, 47.172876090044],
+        "coords": [133.50232254001, -47.172876090044],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [0.92495834999136, 139.66871156998],
+        "coords": [-0.92495834999136, -139.66871156998],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 2.6179938779915,
-        "coords": [100.51214122001, -119.31962776999],
+        "coords": [-100.51214122001, 119.31962776999],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [-93.112474380003, 50.872709510033],
+        "coords": [93.112474380003, -50.872709510033],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 5.7595865315813,
-        "coords": [-90.029279859998, 109.45340531005],
+        "coords": [90.029279859998, -109.45340531005],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [141.82694773001, -53.339265129995],
+        "coords": [-141.82694773001, 53.339265129995],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [25.898833929998, -146.14342005993],
+        "coords": [-25.898833929998, 146.14342005993],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       }
@@ -3274,61 +3274,61 @@
       },
       {
         "heading": 0,
-        "coords": [26.95681398001, -13.478406999959],
+        "coords": [-26.95681398001, 13.478406999959],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "Hawk sr"
       },
       {
         "heading": 0,
-        "coords": [-79.681170750002, -28.542508929968],
+        "coords": [79.681170750002, 28.542508929968],
         "unitTypes": ["VehicleSAMcmd"],
         "originalType": "Hawk cwar"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [11.892712050001, -128.04486642999],
+        "coords": [-11.892712050001, 128.04486642999],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 4.7123889803847,
-        "coords": [104.25944232004, -133.99122245994],
+        "coords": [-104.25944232004, 133.99122245994],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [124.47705281002, -60.256407739944],
+        "coords": [-124.47705281002, 60.256407739944],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 2.6179938779915,
-        "coords": [40.831644710037, -181.95849439991],
+        "coords": [-40.831644710037, 181.95849439991],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [-55.499322909978, 33.299593740026],
+        "coords": [55.499322909978, -33.299593740026],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 5.7595865315813,
-        "coords": [-68.977729899983, 83.24898436002],
+        "coords": [68.977729899983, -83.24898436002],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [-146.28035824001, 27.749661450041],
+        "coords": [146.28035824001, -27.749661450041],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [-168.87651113997, -42.020915919915],
+        "coords": [168.87651113997, 42.020915919915],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       }
@@ -3346,61 +3346,61 @@
       },
       {
         "heading": 0,
-        "coords": [-32.279602998002, 40.996889929986],
+        "coords": [32.279602998002, -40.996889929986],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "Hawk sr"
       },
       {
         "heading": 0,
-        "coords": [34.076534004002, -41.931256089942],
+        "coords": [-34.076534004002, 41.931256089942],
         "unitTypes": ["VehicleSAMcmd"],
         "originalType": "Hawk cwar"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [73.507952767999, 58.130136440042],
+        "coords": [-73.507952767999, -58.130136440042],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 4.7123889803847,
-        "coords": [53.646780669005, 135.33353400009],
+        "coords": [-53.646780669005, -135.33353400009],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [137.082638857, 113.84790528007],
+        "coords": [-137.082638857, -113.84790528007],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 2.6179938779915,
-        "coords": [143.064683709, 28.566666170023],
+        "coords": [-143.064683709, -28.566666170023],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [-71.695053443, -58.889218889992],
+        "coords": [71.695053443, 58.889218889992],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 5.7595865315813,
-        "coords": [-142.588628289, -26.524869009969],
+        "coords": [142.588628289, 26.524869009969],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [-139.592136435, -111.20097057999],
+        "coords": [139.592136435, 111.20097057999],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [-51.990893860995, -137.17585690995],
+        "coords": [51.990893860995, 137.17585690995],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       }
@@ -3418,61 +3418,61 @@
       },
       {
         "heading": 0,
-        "coords": [-18.391128530988, 65.991696489975],
+        "coords": [18.391128530988, -65.991696489975],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "Hawk sr"
       },
       {
         "heading": 0,
-        "coords": [16.227466351003, -47.059652419994],
+        "coords": [-16.227466351003, 47.059652419994],
         "unitTypes": ["VehicleSAMcmd"],
         "originalType": "Hawk cwar"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [62.205287677003, 23.800283979974],
+        "coords": [-62.205287677003, -23.800283979974],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 4.7123889803847,
-        "coords": [-49.764230141998, 149.83360597002],
+        "coords": [49.764230141998, -149.83360597002],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [22.718452891, 81.137331750011],
+        "coords": [-22.718452891, -81.137331750011],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 2.6179938779915,
-        "coords": [86.546487203013, -71.400851939921],
+        "coords": [-86.546487203013, 71.400851939921],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [-10.277395354991, -116.29684217996],
+        "coords": [10.277395354991, 116.29684217996],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 5.7595865315813,
-        "coords": [-102.233038009, 110.34677118005],
+        "coords": [102.233038009, -110.34677118005],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [91.955642654008, -136.85163288994],
+        "coords": [-91.955642654008, 136.85163288994],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [42.732328057013, -186.07494749001],
+        "coords": [-42.732328057013, 186.07494749001],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       }
@@ -3490,61 +3490,61 @@
       },
       {
         "heading": 0,
-        "coords": [-71.842818850011, -63.904385820031],
+        "coords": [71.842818850011, 63.904385820031],
         "unitTypes": ["VehicleSAMsr"],
         "originalType": "Hawk sr"
       },
       {
         "heading": 0,
-        "coords": [-52.790579589986, -30.959888780024],
+        "coords": [52.790579589986, 30.959888780024],
         "unitTypes": ["VehicleSAMcmd"],
         "originalType": "Hawk cwar"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [34.135261990014, 111.53498394997],
+        "coords": [-34.135261990014, -111.53498394997],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 4.7123889803847,
-        "coords": [14.564618180011, 197.02691814001],
+        "coords": [-14.564618180011, -197.02691814001],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 3.8397243543875,
-        "coords": [86.578563610004, 92.242581799976],
+        "coords": [-86.578563610004, -92.242581799976],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 2.6179938779915,
-        "coords": [-6.4731636400102, -116.92151815002],
+        "coords": [6.4731636400102, 116.92151815002],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [23.060645449994, 49.762445449946],
+        "coords": [-23.060645449994, -49.762445449946],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "Hawk tr"
       },
       {
         "heading": 5.7595865315813,
-        "coords": [78.891681800014, 191.36289996002],
+        "coords": [-78.891681800014, -191.36289996002],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 0.69813170079773,
-        "coords": [36.411545440002, -64.731636350043],
+        "coords": [-36.411545440002, 64.731636350043],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       },
       {
         "heading": 1.5707963267949,
-        "coords": [-75.25052726001, -119.34895452007],
+        "coords": [75.25052726001, 119.34895452007],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "Hawk ln"
       }
@@ -3568,7 +3568,7 @@
       },
       {
         "heading": 0,
-        "coords": [-107.40666275, -663.86458573001],
+        "coords": [107.40666275, 663.86458573001],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -3579,7 +3579,7 @@
         "originalType": "Vulcan"
       }
     ],
-    "locationType": "AAA"
+    "locationType": "SAM"
   },
   {
     "coords": [-452697.40053285, -926068.10415953],
@@ -3592,7 +3592,7 @@
       },
       {
         "heading": 1.6057029118348,
-        "coords": [-45.758442909981, 19.871196329943],
+        "coords": [45.758442909981, -19.871196329943],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -3604,7 +3604,7 @@
       },
       {
         "heading": 1.6057029118348,
-        "coords": [50.316056750016, 19.871196329943],
+        "coords": [-50.316056750016, -19.871196329943],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -3616,7 +3616,7 @@
       },
       {
         "heading": 1.6057029118348,
-        "coords": [11.120577759983, 69.822643970023],
+        "coords": [-11.120577759983, -69.822643970023],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -3628,7 +3628,7 @@
       },
       {
         "heading": 1.6057029118348,
-        "coords": [-30.444860420015, -66.72346655],
+        "coords": [30.444860420015, 66.72346655],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -3639,7 +3639,7 @@
         "originalType": "Roland ADS"
       }
     ],
-    "locationType": "AAA"
+    "locationType": "SAM"
   },
   {
     "coords": [-520789.3173895, -953893.98458385],
@@ -3652,7 +3652,7 @@
       },
       {
         "heading": 1.6057029118348,
-        "coords": [-45.758442909981, 19.871196319931],
+        "coords": [45.758442909981, -19.871196319931],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -3664,7 +3664,7 @@
       },
       {
         "heading": 1.6057029118348,
-        "coords": [50.316056750016, 19.871196319931],
+        "coords": [-50.316056750016, -19.871196319931],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -3676,7 +3676,7 @@
       },
       {
         "heading": 1.6057029118348,
-        "coords": [11.120577760041, 69.822643960011],
+        "coords": [-11.120577760041, -69.822643960011],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -3688,7 +3688,7 @@
       },
       {
         "heading": 1.6057029118348,
-        "coords": [-30.444860419957, -66.723466560012],
+        "coords": [30.444860419957, 66.723466560012],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -3699,7 +3699,7 @@
         "originalType": "Roland ADS"
       }
     ],
-    "locationType": "AAA"
+    "locationType": "SAM"
   },
   {
     "coords": [-498882.87570691, -936155.19396239],
@@ -3712,7 +3712,7 @@
       },
       {
         "heading": 1.6057029118348,
-        "coords": [-45.758442919992, 19.871196330059],
+        "coords": [45.758442919992, -19.871196330059],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -3724,7 +3724,7 @@
       },
       {
         "heading": 1.6057029118348,
-        "coords": [50.316056740005, 19.871196330059],
+        "coords": [-50.316056740005, -19.871196330059],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -3736,7 +3736,7 @@
       },
       {
         "heading": 1.6057029118348,
-        "coords": [11.120577750029, 69.822643970023],
+        "coords": [-11.120577750029, -69.822643970023],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -3748,7 +3748,7 @@
       },
       {
         "heading": 1.6057029118348,
-        "coords": [-30.444860429969, -66.72346655],
+        "coords": [30.444860429969, 66.72346655],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -3759,7 +3759,7 @@
         "originalType": "Roland ADS"
       }
     ],
-    "locationType": "AAA"
+    "locationType": "SAM"
   },
   {
     "coords": [-448692.94581807, -857938.6508741],
@@ -3772,7 +3772,7 @@
       },
       {
         "heading": 1.6057029118348,
-        "coords": [-45.758442909981, 19.871196319931],
+        "coords": [45.758442909981, -19.871196319931],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -3784,7 +3784,7 @@
       },
       {
         "heading": 1.6057029118348,
-        "coords": [50.316056750016, 19.871196319931],
+        "coords": [-50.316056750016, -19.871196319931],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -3796,7 +3796,7 @@
       },
       {
         "heading": 1.6057029118348,
-        "coords": [11.120577760041, 69.822643960011],
+        "coords": [-11.120577760041, -69.822643960011],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -3808,7 +3808,7 @@
       },
       {
         "heading": 1.6057029118348,
-        "coords": [-30.444860419957, -66.723466560012],
+        "coords": [30.444860419957, 66.723466560012],
         "unitTypes": [
           "VehicleSAMShort",
           "VehicleSAMShortIR",
@@ -3819,7 +3819,7 @@
         "originalType": "Roland ADS"
       }
     ],
-    "locationType": "AAA"
+    "locationType": "SAM"
   },
   {
     "coords": [-439846.66435751, -871758.63925423],
@@ -3832,61 +3832,61 @@
       },
       {
         "heading": 3.1590459461097,
-        "coords": [17.619204999995, -22.76192669],
+        "coords": [-17.619204999995, 22.76192669],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "rapier_fsa_optical_tracker_unit"
       },
       {
         "heading": 0.017453292519943,
-        "coords": [66.224154610012, -1.2103631399805],
+        "coords": [-66.224154610012, 1.2103631399805],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 5.7595865315813,
-        "coords": [50.662342820026, -58.961975769955],
+        "coords": [-50.662342820026, 58.961975769955],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 0.80285145591739,
-        "coords": [54.812159300025, 56.368340480025],
+        "coords": [-54.812159300025, -56.368340480025],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-49.050959150016, -45.906522839912],
+        "coords": [49.050959150016, 45.906522839912],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-36.182838890003, -58.774643099983],
+        "coords": [36.182838890003, 58.774643099983],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-32.038867959986, -61.828095359961],
+        "coords": [32.038867959986, 61.828095359961],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-22.442303699965, -69.897933489992],
+        "coords": [22.442303699965, 69.897933489992],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-52.758722610015, -42.63496683992],
+        "coords": [52.758722610015, 42.63496683992],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-39.890602350002, -55.066879629972],
+        "coords": [39.890602350002, 55.066879629972],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       }
@@ -3904,61 +3904,61 @@
       },
       {
         "heading": 3.1590459461097,
-        "coords": [17.619204990013, -22.76192669],
+        "coords": [-17.619204990013, 22.76192669],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "rapier_fsa_optical_tracker_unit"
       },
       {
         "heading": 0.017453292519943,
-        "coords": [66.2241546, -1.2103631400969],
+        "coords": [-66.2241546, 1.2103631400969],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 5.7595865315813,
-        "coords": [50.662342819996, -58.961975770071],
+        "coords": [-50.662342819996, 58.961975770071],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 0.80285145591739,
-        "coords": [54.812159290013, 56.368340479909],
+        "coords": [-54.812159290013, -56.368340479909],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-49.050959159998, -45.906522840029],
+        "coords": [49.050959159998, 45.906522840029],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-36.182838899986, -58.7746431001],
+        "coords": [36.182838899986, 58.7746431001],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-32.038867969997, -61.828095360077],
+        "coords": [32.038867969997, 61.828095360077],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-22.442303709977, -69.897933490109],
+        "coords": [22.442303709977, 69.897933490109],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-52.758722619998, -42.634966840036],
+        "coords": [52.758722619998, 42.634966840036],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-39.890602359985, -55.066879630089],
+        "coords": [39.890602359985, 55.066879630089],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       }
@@ -3976,61 +3976,61 @@
       },
       {
         "heading": 3.1590459461097,
-        "coords": [17.619204999995, -22.76192669],
+        "coords": [-17.619204999995, 22.76192669],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "rapier_fsa_optical_tracker_unit"
       },
       {
         "heading": 0.017453292519943,
-        "coords": [66.224154609954, -1.2103631399805],
+        "coords": [-66.224154609954, 1.2103631399805],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 5.7595865315813,
-        "coords": [50.662342819967, -58.961975769955],
+        "coords": [-50.662342819967, 58.961975769955],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 0.80285145591739,
-        "coords": [54.812159299967, 56.368340480025],
+        "coords": [-54.812159299967, -56.368340480025],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-49.050959150016, -45.906522839912],
+        "coords": [49.050959150016, 45.906522839912],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-36.182838890003, -58.774643099983],
+        "coords": [36.182838890003, 58.774643099983],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-32.038867960044, -61.828095359961],
+        "coords": [32.038867960044, 61.828095359961],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-22.442303700023, -69.897933489992],
+        "coords": [22.442303700023, 69.897933489992],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-52.758722620027, -42.63496683992],
+        "coords": [52.758722620027, 42.63496683992],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-39.890602360014, -55.066879639984],
+        "coords": [39.890602360014, 55.066879639984],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       }
@@ -4048,61 +4048,61 @@
       },
       {
         "heading": 3.1590459461097,
-        "coords": [17.619204999995, -22.76192669],
+        "coords": [-17.619204999995, 22.76192669],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "rapier_fsa_optical_tracker_unit"
       },
       {
         "heading": 0.017453292519943,
-        "coords": [66.224154610012, -1.2103631399805],
+        "coords": [-66.224154610012, 1.2103631399805],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 5.7595865315813,
-        "coords": [50.662342820026, -58.961975769955],
+        "coords": [-50.662342820026, 58.961975769955],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 0.80285145591739,
-        "coords": [54.812159300025, 56.368340480025],
+        "coords": [-54.812159300025, -56.368340480025],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-49.050959150016, -45.906522840029],
+        "coords": [49.050959150016, 45.906522840029],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-36.182838890003, -58.774643099983],
+        "coords": [36.182838890003, 58.774643099983],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-32.038867959986, -61.828095359961],
+        "coords": [32.038867959986, 61.828095359961],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-22.442303700023, -69.897933489992],
+        "coords": [22.442303700023, 69.897933489992],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-52.758722610015, -42.63496683992],
+        "coords": [52.758722610015, 42.63496683992],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-39.890602360014, -55.066879629972],
+        "coords": [39.890602360014, 55.066879629972],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       }
@@ -4120,61 +4120,61 @@
       },
       {
         "heading": 3.1590459461097,
-        "coords": [17.619204999995, -22.76192669],
+        "coords": [-17.619204999995, 22.76192669],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "rapier_fsa_optical_tracker_unit"
       },
       {
         "heading": 0.017453292519943,
-        "coords": [66.224154609983, -1.2103631399805],
+        "coords": [-66.224154609983, 1.2103631399805],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 5.7595865315813,
-        "coords": [50.662342819996, -58.961975770071],
+        "coords": [-50.662342819996, 58.961975770071],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 0.80285145591739,
-        "coords": [54.812159299996, 56.368340479909],
+        "coords": [-54.812159299996, -56.368340479909],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-49.050959150016, -45.906522840029],
+        "coords": [49.050959150016, 45.906522840029],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-36.182838890003, -58.774643099983],
+        "coords": [36.182838890003, 58.774643099983],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-32.038867960015, -61.828095360077],
+        "coords": [32.038867960015, 61.828095360077],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-22.442303700023, -69.897933489992],
+        "coords": [22.442303700023, 69.897933489992],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-52.758722610015, -42.634966840036],
+        "coords": [52.758722610015, 42.634966840036],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-39.890602350002, -55.066879639984],
+        "coords": [39.890602350002, 55.066879639984],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       }
@@ -4192,61 +4192,61 @@
       },
       {
         "heading": 3.1590459461097,
-        "coords": [17.619204994997, -22.76192669],
+        "coords": [-17.619204994997, 22.76192669],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "rapier_fsa_optical_tracker_unit"
       },
       {
         "heading": 0.017453292519943,
-        "coords": [66.224154607, -1.2103631399805],
+        "coords": [-66.224154607, 1.2103631399805],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 5.7595865315813,
-        "coords": [50.662342819996, -58.961975769955],
+        "coords": [-50.662342819996, 58.961975769955],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 0.80285145591739,
-        "coords": [54.812159296001, 56.368340480025],
+        "coords": [-54.812159296001, -56.368340480025],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-49.050959152002, -45.906522839912],
+        "coords": [49.050959152002, 45.906522839912],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-36.182838894005, -58.774643099983],
+        "coords": [36.182838894005, 58.774643099983],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-32.038867964002, -61.828095359961],
+        "coords": [32.038867964002, 61.828095359961],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-22.442303705, -69.897933489992],
+        "coords": [22.442303705, 69.897933489992],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-52.758722616003, -42.63496683992],
+        "coords": [52.758722616003, 42.63496683992],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-39.890602357998, -55.066879639984],
+        "coords": [39.890602357998, 55.066879639984],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       }
@@ -4264,61 +4264,61 @@
       },
       {
         "heading": 3.1590459461097,
-        "coords": [17.619204989984, -22.761926700012],
+        "coords": [-17.619204989984, 22.761926700012],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "rapier_fsa_optical_tracker_unit"
       },
       {
         "heading": 0.017453292519943,
-        "coords": [66.2241546, -1.2103631399805],
+        "coords": [-66.2241546, 1.2103631399805],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 5.7595865315813,
-        "coords": [50.662342819996, -58.961975779966],
+        "coords": [-50.662342819996, 58.961975779966],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 0.80285145591739,
-        "coords": [54.812159289984, 56.368340470013],
+        "coords": [-54.812159289984, -56.368340470013],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-49.050959150016, -45.90652285004],
+        "coords": [49.050959150016, 45.90652285004],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-36.182838900015, -58.774643099983],
+        "coords": [36.182838900015, 58.774643099983],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-32.038867969997, -61.828095369972],
+        "coords": [32.038867969997, 61.828095369972],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-22.442303710006, -69.897933500004],
+        "coords": [22.442303710006, 69.897933500004],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-52.758722619998, -42.634966850048],
+        "coords": [52.758722619998, 42.634966850048],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-39.890602360014, -55.066879639984],
+        "coords": [39.890602360014, 55.066879639984],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       }
@@ -4336,61 +4336,61 @@
       },
       {
         "heading": 3.1590459461097,
-        "coords": [17.619204989998, -22.761926700012],
+        "coords": [-17.619204989998, 22.761926700012],
         "unitTypes": ["VehicleSAMtr"],
         "originalType": "rapier_fsa_optical_tracker_unit"
       },
       {
         "heading": 0.017453292519943,
-        "coords": [66.224154609998, -1.2103631399805],
+        "coords": [-66.224154609998, 1.2103631399805],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 5.7595865315813,
-        "coords": [50.662342820011, -58.961975779966],
+        "coords": [-50.662342820011, 58.961975779966],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 0.80285145591739,
-        "coords": [54.812159289999, 56.368340470013],
+        "coords": [-54.812159289999, -56.368340470013],
         "unitTypes": ["VehicleSAMLauncher"],
         "originalType": "rapier_fsa_launcher"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-49.050959150001, -45.90652285004],
+        "coords": [49.050959150001, 45.90652285004],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-36.1828389, -58.774643099983],
+        "coords": [36.1828389, 58.774643099983],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-32.038867969997, -61.828095369972],
+        "coords": [32.038867969997, 61.828095369972],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-22.442303709991, -69.897933500004],
+        "coords": [22.442303709991, 69.897933500004],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_109_S3"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-52.758722619998, -42.634966850048],
+        "coords": [52.758722619998, 42.634966850048],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       },
       {
         "heading": 4.1364303272266,
-        "coords": [-39.890602359999, -55.066879639984],
+        "coords": [39.890602359999, 55.066879639984],
         "unitTypes": ["VehicleTransport"],
         "originalType": "Land_Rover_101_FC"
       }

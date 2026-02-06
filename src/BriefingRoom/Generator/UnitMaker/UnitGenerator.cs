@@ -769,7 +769,7 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
             else if (extraSettings.ContainsKey("groupHeading"))
                 return (double)extraSettings["groupHeading"];
             else
-                return Math.PI; // For DBEntryTheaterTemplateLocation for some reason the entire group is rotated 180 degrees for unknown reasons, so we default to that to avoid weird placements until we can figure out why and fix it
+                return 0;
         }
 
         private static (Coordinates unitCoordinates, double unitHeading) SetUnitCoordinatesAndHeading(
