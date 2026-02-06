@@ -1,601 +1,601 @@
 [
-    {
-        "type": "AG-90",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] Ag 90 Sniper AMR",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "Ag90-lod0",
-        "detectionRange": 5000,
-        "threatRange": 1800,
-        "operators": {
-            "Sweden": [
-                1990,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "Artillerisystem08",
-        "category": "Artillery",
-        "paintSchemes": {},
-        "displayName": "[CH] Artillerisystem 08 SPG",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "Artillerisystem08-lod0",
-        "detectionRange": 10000,
-        "threatRangeMin": 50,
-        "threatRange": 50000,
-        "operators": {
-            "Sweden": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "BV410",
-        "category": "Armor",
-        "paintSchemes": {},
-        "displayName": "[CH] Bv 410 ATV",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "BV410-lod0",
-        "detectionRange": 0,
-        "threatRange": 1800,
-        "operators": {
-            "Sweden": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "BV410_RBS70",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] RBS 70 Mobile SAM LN",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "BV410_RBS70-lod0",
-        "detectionRange": 0,
-        "threatRangeMin": 250,
-        "threatRange": 8000,
-        "operators": {
-            "Sweden": [
-                1970,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "BV410_RBS90",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] RBS 90 Mobile SAM LN",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "BV410_RBS90-lod0",
-        "detectionRange": 20000,
-        "threatRangeMin": 250,
-        "threatRange": 8000,
-        "operators": {
-            "Sweden": [
-                1990,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_CV9050",
-        "category": "Armor",
-        "paintSchemes": {},
-        "displayName": "[CH] CV 9050 IFV",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "CV9050",
-        "detectionRange": 6000,
-        "threatRangeMin": 1000,
-        "threatRange": 5500,
-        "operators": {
-            "Sweden": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_Strf9040C",
-        "category": "Armor",
-        "paintSchemes": {},
-        "displayName": "[CH] Strf 9040C IFV",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "Strf9040C",
-        "detectionRange": 3500,
-        "threatRangeMin": 10,
-        "threatRange": 3500,
-        "operators": {
-            "Sweden": [
-                2000,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CV9040",
-        "category": "Armor",
-        "paintSchemes": {},
-        "displayName": "[CH] Strf 9040B IFV",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "CV9040-lod0",
-        "detectionRange": 0,
-        "threatRange": 4000,
-        "operators": {
-            "Sweden": [
-                1990,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "Grkpbv90",
-        "category": "Artillery",
-        "paintSchemes": {},
-        "displayName": "[CH] Grkpbv 90 SPM",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "Grkpbv90-lod0",
-        "detectionRange": 0,
-        "threatRange": 7500,
-        "operators": {
-            "Sweden": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "LvKv9040",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] Lvkv 9040B SPAAG",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "LvKv9040-lod0",
-        "detectionRange": 15000,
-        "threatRange": 4000,
-        "operators": {
-            "Sweden": [
-                1990,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "LvS-103_Elverk103",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] LvS-103 Elverk 103 Mobile SAM EPP",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "LvS103_Elverk103-lod0",
-        "detectionRange": 0,
-        "threatRange": 0,
-        "operators": {
-            "Sweden": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "LvS-103_Lavett103_HX_Rb103A",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] LvS-103 Lavett 103 Rb103A Mobile SAM LN",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "LvS103_Lavett103A_HX-lod0",
-        "detectionRange": 0,
-        "threatRange": 160000,
-        "operators": {
-            "Sweden": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "LvS-103_Lavett103_HX_Rb103B",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] LvS-103 Lavett 103 Rb103B Mobile SAM LN",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "LvS103_Lavett103B_HX-lod0",
-        "detectionRange": 0,
-        "threatRangeMin": 1000,
-        "threatRange": 120000,
-        "operators": {
-            "Sweden": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "LvS-103_Lavett103_Rb103A",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] LvS-103 Lavett 103 Rb103A Stationary SAM LN",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "LvS103_Lavett103A-lod0",
-        "detectionRange": 0,
-        "threatRangeMin": 3000,
-        "threatRange": 160000,
-        "operators": {
-            "Sweden": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "LvS-103_Lavett103_Rb103B",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] LvS-103 Lavett 103 Rb103B Stationary SAM LN",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "LvS103_Lavett103B-lod0",
-        "detectionRange": 0,
-        "threatRangeMin": 1000,
-        "threatRange": 120000,
-        "operators": {
-            "Sweden": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "LvS-103_PM103",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] LvS-103 PM 103 Stationary SAM STR",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "lvs103_pm103-lod0",
-        "detectionRange": 200000,
-        "threatRange": 0,
-        "operators": {
-            "Sweden": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "LvS-103_PM103_HX",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] LvS-103 PM 103 Mobile SAM STR",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "LvS103_PM103_HX-lod0",
-        "detectionRange": 200000,
-        "threatRange": 0,
-        "operators": {
-            "Sweden": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "LvS-103_StriE103",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] LvS-103 StriE 103 Mobile SAM ECS",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "LvS103_StriE103-lod0",
-        "detectionRange": 0,
-        "threatRange": 0,
-        "operators": {
-            "Sweden": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "RBS-15KA",
-        "category": "MissilesSS",
-        "paintSchemes": {},
-        "displayName": "[CH] RBS 15KA LBASM",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "RBS-15KA-lod0",
-        "detectionRange": 300000,
-        "threatRangeMin": 4500,
-        "threatRange": 300000,
-        "operators": {
-            "Sweden": [
-                1980,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "RBS-57",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] RBS 57 ATGM Soldier",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "Swedish_infantry_RBS57-lod0",
-        "detectionRange": 0,
-        "threatRangeMin": 20,
-        "threatRange": 1000,
-        "operators": {
-            "Sweden": [
-                2000,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "RBS-58",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] RBS 58 ATGM",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "RBS-58-lod0",
-        "detectionRange": 5000,
-        "threatRangeMin": 150,
-        "threatRange": 5000,
-        "operators": {
-            "Sweden": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "RBS-70",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] RBS 70 Stationary SAM LN",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "RBS-70-lod0",
-        "detectionRange": 0,
-        "threatRangeMin": 250,
-        "threatRange": 8000,
-        "operators": {
-            "Sweden": [
-                1970,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "RBS-90",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] RBS 90 Stationary SAM LN",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "RBS-90-lod0",
-        "detectionRange": 20000,
-        "threatRangeMin": 250,
-        "threatRange": 8000,
-        "operators": {
-            "Sweden": [
-                1990,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "RBS-98",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] RBS 98 Mobile SAM LN",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "RBS-98-lod0",
-        "detectionRange": 0,
-        "threatRangeMin": 250,
-        "threatRange": 20000,
-        "operators": {
-            "Sweden": [
-                1990,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "Strv103",
-        "category": "Armor",
-        "paintSchemes": {},
-        "displayName": "[CH] Strv 103 MBT",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "strv103-lod0",
-        "detectionRange": 6000,
-        "threatRange": 6000,
-        "operators": {
-            "Sweden": [
-                1960,
-                1990
-            ]
-        }
-    },
-    {
-        "type": "Strv121",
-        "category": "Armor",
-        "paintSchemes": {
-            "46": [
-                "SWE_summer"
-            ]
-        },
-        "displayName": "[CH] Strv 121 MBT",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "leopard-2a4",
-        "detectionRange": 0,
-        "threatRange": 8000,
-        "operators": {
-            "Sweden": [
-                1990,
-                2000
-            ]
-        }
-    },
-    {
-        "type": "Strv122",
-        "category": "Armor",
-        "paintSchemes": {
-            "46": [
-                "SWE_summer"
-            ]
-        },
-        "displayName": "[CH] Strv 122 MBT",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "leopard-2a5",
-        "detectionRange": 0,
-        "threatRange": 8000,
-        "operators": {
-            "Sweden": [
-                1990,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "Strv2000",
-        "category": "Armor",
-        "paintSchemes": {},
-        "displayName": "[CH] Strv 2000 T140/40 MBT",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "strv2000-lod0",
-        "detectionRange": 8000,
-        "threatRange": 8000,
-        "operators": {
-            "Sweden": [
-                1990,
-                2000
-            ]
-        }
-    },
-    {
-        "type": "SwedishinfantryAK4",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] Ak 4 Soldier",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "Swedish_infantry_AK4-lod0",
-        "detectionRange": 0,
-        "threatRange": 600,
-        "operators": {
-            "Sweden": [
-                1960,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "SwedishinfantryAK5",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] Ak 5 Soldier",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "Swedish_infantry_AK5-lod0",
-        "detectionRange": 0,
-        "threatRange": 500,
-        "operators": {
-            "Sweden": [
-                1980,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "SwedishinfantryAK5GT",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] Ak 5 Granattillsats Soldier",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "Swedish_infantry_AK5GT-lod0",
-        "detectionRange": 0,
-        "threatRange": 500,
-        "operators": {
-            "Sweden": [
-                1980,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "SwedishinfantryKSP58",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] Ksp 58 Soldier",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "Swedish_infantry_KSP58-lod0",
-        "detectionRange": 0,
-        "threatRange": 1200,
-        "operators": {
-            "Sweden": [
-                1950,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "SwedishinfantryKSP90",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] Ksp 90 Soldier",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "Swedish_infantry_ksp90-lod0",
-        "detectionRange": 0,
-        "threatRange": 700,
-        "operators": {
-            "Sweden": [
-                1990,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "SwedishinfantryPskott86",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] Pskott 86 Soldier",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "Swedish_infantry_pskott86-lod0",
-        "detectionRange": 0,
-        "threatRangeMin": 30,
-        "threatRange": 400,
-        "operators": {
-            "Sweden": [
-                1980,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "UndE23",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] UndE 23 (RBS 15/70/90/98) STR",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "UndE23-lod0",
-        "detectionRange": 300000,
-        "threatRange": 0,
-        "operators": {
-            "Sweden": [
-                2000,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "Volvo740",
-        "category": "Armor",
-        "paintSchemes": {},
-        "displayName": "[CH] Volvo 740 Improvised fighting vehicle",
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "Volvo740-lod0",
-        "detectionRange": 0,
-        "threatRange": 1200,
-        "operators": {
-            "Sweden": [
-                1980,
-                2020
-            ]
-        }
+  {
+    "type": "AG-90",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] Ag 90 Sniper AMR",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "Ag90-lod0",
+    "detectionRange": 5000,
+    "threatRange": 1800,
+    "operators": {
+      "Sweden": [
+        1990,
+        2020
+      ]
     }
+  },
+  {
+    "type": "Artillerisystem08",
+    "category": "Artillery",
+    "paintSchemes": {},
+    "displayName": "[CH] Artillerisystem 08 SPG",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "Artillerisystem08-lod0",
+    "detectionRange": 10000,
+    "threatRangeMin": 50,
+    "threatRange": 50000,
+    "operators": {
+      "Sweden": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "BV410",
+    "category": "Armor",
+    "paintSchemes": {},
+    "displayName": "[CH] Bv 410 ATV",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "BV410-lod0",
+    "detectionRange": 0,
+    "threatRange": 1800,
+    "operators": {
+      "Sweden": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "BV410_RBS70",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] RBS 70 Mobile SAM LN",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "BV410_RBS70-lod0",
+    "detectionRange": 0,
+    "threatRangeMin": 250,
+    "threatRange": 8000,
+    "operators": {
+      "Sweden": [
+        1970,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "BV410_RBS90",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] RBS 90 Mobile SAM LN",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "BV410_RBS90-lod0",
+    "detectionRange": 20000,
+    "threatRangeMin": 250,
+    "threatRange": 8000,
+    "operators": {
+      "Sweden": [
+        1990,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_CV9050",
+    "category": "Armor",
+    "paintSchemes": {},
+    "displayName": "[CH] CV 9050 IFV",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "CV9050",
+    "detectionRange": 6000,
+    "threatRangeMin": 1000,
+    "threatRange": 5500,
+    "operators": {
+      "Sweden": [
+        2020,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_Strf9040C",
+    "category": "Armor",
+    "paintSchemes": {},
+    "displayName": "[CH] Strf 9040C IFV",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "Strf9040C",
+    "detectionRange": 3500,
+    "threatRangeMin": 10,
+    "threatRange": 3500,
+    "operators": {
+      "Sweden": [
+        2000,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CV9040",
+    "category": "Armor",
+    "paintSchemes": {},
+    "displayName": "[CH] Strf 9040B IFV",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "CV9040-lod0",
+    "detectionRange": 0,
+    "threatRange": 4000,
+    "operators": {
+      "Sweden": [
+        1990,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "Grkpbv90",
+    "category": "Artillery",
+    "paintSchemes": {},
+    "displayName": "[CH] Grkpbv 90 SPM",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "Grkpbv90-lod0",
+    "detectionRange": 0,
+    "threatRange": 7500,
+    "operators": {
+      "Sweden": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "LvKv9040",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] Lvkv 9040B SPAAG",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "LvKv9040-lod0",
+    "detectionRange": 15000,
+    "threatRange": 4000,
+    "operators": {
+      "Sweden": [
+        1990,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "LvS-103_Elverk103",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] LvS-103 Elverk 103 Mobile SAM EPP",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "LvS103_Elverk103-lod0",
+    "detectionRange": 0,
+    "threatRange": 0,
+    "operators": {
+      "Sweden": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "LvS-103_Lavett103_HX_Rb103A",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] LvS-103 Lavett 103 Rb103A Mobile SAM LN",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "LvS103_Lavett103A_HX-lod0",
+    "detectionRange": 0,
+    "threatRange": 160000,
+    "operators": {
+      "Sweden": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "LvS-103_Lavett103_HX_Rb103B",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] LvS-103 Lavett 103 Rb103B Mobile SAM LN",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "LvS103_Lavett103B_HX-lod0",
+    "detectionRange": 0,
+    "threatRangeMin": 1000,
+    "threatRange": 120000,
+    "operators": {
+      "Sweden": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "LvS-103_Lavett103_Rb103A",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] LvS-103 Lavett 103 Rb103A Stationary SAM LN",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "LvS103_Lavett103A-lod0",
+    "detectionRange": 0,
+    "threatRangeMin": 3000,
+    "threatRange": 160000,
+    "operators": {
+      "Sweden": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "LvS-103_Lavett103_Rb103B",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] LvS-103 Lavett 103 Rb103B Stationary SAM LN",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "LvS103_Lavett103B-lod0",
+    "detectionRange": 0,
+    "threatRangeMin": 1000,
+    "threatRange": 120000,
+    "operators": {
+      "Sweden": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "LvS-103_PM103",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] LvS-103 PM 103 Stationary SAM STR",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "lvs103_pm103-lod0",
+    "detectionRange": 200000,
+    "threatRange": 0,
+    "operators": {
+      "Sweden": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "LvS-103_PM103_HX",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] LvS-103 PM 103 Mobile SAM STR",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "LvS103_PM103_HX-lod0",
+    "detectionRange": 200000,
+    "threatRange": 0,
+    "operators": {
+      "Sweden": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "LvS-103_StriE103",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] LvS-103 StriE 103 Mobile SAM ECS",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "LvS103_StriE103-lod0",
+    "detectionRange": 0,
+    "threatRange": 0,
+    "operators": {
+      "Sweden": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "RBS-15KA",
+    "category": "MissilesSS",
+    "paintSchemes": {},
+    "displayName": "[CH] RBS 15KA LBASM",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "RBS-15KA-lod0",
+    "detectionRange": 300000,
+    "threatRangeMin": 4500,
+    "threatRange": 300000,
+    "operators": {
+      "Sweden": [
+        1980,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "RBS-57",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] RBS 57 ATGM Soldier",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "Swedish_infantry_RBS57-lod0",
+    "detectionRange": 0,
+    "threatRangeMin": 20,
+    "threatRange": 1000,
+    "operators": {
+      "Sweden": [
+        2000,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "RBS-58",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] RBS 58 ATGM",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "RBS-58-lod0",
+    "detectionRange": 5000,
+    "threatRangeMin": 150,
+    "threatRange": 5000,
+    "operators": {
+      "Sweden": [
+        2020,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "RBS-70",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] RBS 70 Stationary SAM LN",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "RBS-70-lod0",
+    "detectionRange": 0,
+    "threatRangeMin": 250,
+    "threatRange": 8000,
+    "operators": {
+      "Sweden": [
+        1970,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "RBS-90",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] RBS 90 Stationary SAM LN",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "RBS-90-lod0",
+    "detectionRange": 20000,
+    "threatRangeMin": 250,
+    "threatRange": 8000,
+    "operators": {
+      "Sweden": [
+        1990,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "RBS-98",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] RBS 98 Mobile SAM LN",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "RBS-98-lod0",
+    "detectionRange": 0,
+    "threatRangeMin": 250,
+    "threatRange": 20000,
+    "operators": {
+      "Sweden": [
+        1990,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "Strv103",
+    "category": "Armor",
+    "paintSchemes": {},
+    "displayName": "[CH] Strv 103 MBT",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "strv103-lod0",
+    "detectionRange": 6000,
+    "threatRange": 6000,
+    "operators": {
+      "Sweden": [
+        1960,
+        1990
+      ]
+    }
+  },
+  {
+    "type": "Strv121",
+    "category": "Armor",
+    "paintSchemes": {
+      "46": [
+        "SWE_summer"
+      ]
+    },
+    "displayName": "[CH] Strv 121 MBT",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "leopard-2a4",
+    "detectionRange": 0,
+    "threatRange": 8000,
+    "operators": {
+      "Sweden": [
+        1990,
+        2000
+      ]
+    }
+  },
+  {
+    "type": "Strv122",
+    "category": "Armor",
+    "paintSchemes": {
+      "46": [
+        "SWE_summer"
+      ]
+    },
+    "displayName": "[CH] Strv 122 MBT",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "leopard-2a5",
+    "detectionRange": 0,
+    "threatRange": 8000,
+    "operators": {
+      "Sweden": [
+        1990,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "Strv2000",
+    "category": "Armor",
+    "paintSchemes": {},
+    "displayName": "[CH] Strv 2000 T140/40 MBT",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "strv2000-lod0",
+    "detectionRange": 8000,
+    "threatRange": 8000,
+    "operators": {
+      "Sweden": [
+        1990,
+        2000
+      ]
+    }
+  },
+  {
+    "type": "SwedishinfantryAK4",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] Ak 4 Soldier",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "Swedish_infantry_AK4-lod0",
+    "detectionRange": 0,
+    "threatRange": 600,
+    "operators": {
+      "Sweden": [
+        1960,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "SwedishinfantryAK5",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] Ak 5 Soldier",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "Swedish_infantry_AK5-lod0",
+    "detectionRange": 0,
+    "threatRange": 500,
+    "operators": {
+      "Sweden": [
+        1980,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "SwedishinfantryAK5GT",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] Ak 5 Granattillsats Soldier",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "Swedish_infantry_AK5GT-lod0",
+    "detectionRange": 0,
+    "threatRange": 500,
+    "operators": {
+      "Sweden": [
+        1980,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "SwedishinfantryKSP58",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] Ksp 58 Soldier",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "Swedish_infantry_KSP58-lod0",
+    "detectionRange": 0,
+    "threatRange": 1200,
+    "operators": {
+      "Sweden": [
+        1950,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "SwedishinfantryKSP90",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] Ksp 90 Soldier",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "Swedish_infantry_ksp90-lod0",
+    "detectionRange": 0,
+    "threatRange": 700,
+    "operators": {
+      "Sweden": [
+        1990,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "SwedishinfantryPskott86",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] Pskott 86 Soldier",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "Swedish_infantry_pskott86-lod0",
+    "detectionRange": 0,
+    "threatRangeMin": 30,
+    "threatRange": 400,
+    "operators": {
+      "Sweden": [
+        1980,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "UndE23",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] UndE 23 (RBS 15/70/90/98) STR",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "UndE23-lod0",
+    "detectionRange": 300000,
+    "threatRange": 0,
+    "operators": {
+      "Sweden": [
+        2000,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "Volvo740",
+    "category": "Armor",
+    "paintSchemes": {},
+    "displayName": "[CH] Volvo 740 Improvised fighting vehicle",
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "Volvo740-lod0",
+    "detectionRange": 0,
+    "threatRange": 1200,
+    "operators": {
+      "Sweden": [
+        1980,
+        2020
+      ]
+    }
+  }
 ]

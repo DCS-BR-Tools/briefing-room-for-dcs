@@ -1,52 +1,52 @@
 [
-    {
-        "type": "CH_Type26",
-        "displayName": "[CH] Type 26 Frigate",
-        "categories": [
-            {
-                "name": "Armed Ship"
-            },
-            {
-                "name": "HelicopterCarrier"
-            }
-        ],
-        "module": "Military Asset Pack UK by Currenthill",
-        "shape": "Type26",
-        "helicopterStorage": 1,
-        "planeStorage": 0,
-        "detectionRange": 200000,
-        "threatRangeMin": 500,
-        "threatRange": 30000,
-        "operators": {
-            "UK": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "Type45",
-        "displayName": "[CH] Type 45 Destroyer",
-        "categories": [
-            {
-                "name": "Armed Ship"
-            },
-            {
-                "name": "HelicopterCarrier"
-            }
-        ],
-        "module": "Military Asset Pack UK by Currenthill",
-        "shape": "Type45",
-        "helicopterStorage": 1,
-        "planeStorage": 0,
-        "detectionRange": 400000,
-        "threatRangeMin": 1500,
-        "threatRange": 120000,
-        "operators": {
-            "UK": [
-                2010,
-                2020
-            ]
-        }
+  {
+    "type": "CH_Type26",
+    "displayName": "[CH] Type 26 Frigate",
+    "categories": [
+      {
+        "name": "Armed Ship"
+      },
+      {
+        "name": "HelicopterCarrier"
+      }
+    ],
+    "module": "Military Asset Pack UK by Currenthill",
+    "shape": "Type26",
+    "helicopterStorage": 1,
+    "planeStorage": 0,
+    "detectionRange": 200000,
+    "threatRangeMin": 500,
+    "threatRange": 30000,
+    "operators": {
+      "UK": [
+        2020,
+        2020
+      ]
     }
+  },
+  {
+    "type": "Type45",
+    "displayName": "[CH] Type 45 Destroyer",
+    "categories": [
+      {
+        "name": "Armed Ship"
+      },
+      {
+        "name": "HelicopterCarrier"
+      }
+    ],
+    "module": "Military Asset Pack UK by Currenthill",
+    "shape": "Type45",
+    "helicopterStorage": 1,
+    "planeStorage": 0,
+    "detectionRange": 400000,
+    "threatRangeMin": 1500,
+    "threatRange": 120000,
+    "operators": {
+      "UK": [
+        2010,
+        2020
+      ]
+    }
+  }
 ]

@@ -1,18 +1,18 @@
 [
-    {
-        "type": "CH_Challenger3",
-        "category": "Armor",
-        "paintSchemes": {},
-        "displayName": "[CH] Challenger 3 MBT",
-        "module": "Military Asset Pack UK by Currenthill",
-        "shape": "Challenger3",
-        "detectionRange": 0,
-        "threatRange": 8000,
-        "operators": {
-            "UK": [
-                1990,
-                2020
-            ]
-        }
+  {
+    "type": "CH_Challenger3",
+    "category": "Armor",
+    "paintSchemes": {},
+    "displayName": "[CH] Challenger 3 MBT",
+    "module": "Military Asset Pack UK by Currenthill",
+    "shape": "Challenger3",
+    "detectionRange": 0,
+    "threatRange": 8000,
+    "operators": {
+      "UK": [
+        1990,
+        2020
+      ]
     }
+  }
 ]

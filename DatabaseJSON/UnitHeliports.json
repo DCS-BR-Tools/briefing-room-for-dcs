@@ -38,5 +38,12 @@
     "numParking": 1,
     "displayName": "Helipad Single",
     "shapeName": "FARP"
+  },
+  {
+    "type": "bhd_farp_large",
+    "numParking": 3,
+    "displayName": "BHD - FARP",
+    "module": "Black Hawk Down Assets Pack",
+    "shapeName": "bhd_farp_large"
   }
 ]

@@ -1,2195 +1,2195 @@
 [
-    {
-        "type": "VSN_E2D",
-        "callsigns": {
-            "0": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "2": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "3": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "4": [
-                {
-                    "WorldID": 1,
-                    "Name": "Solex"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Image"
-                }
-            ],
-            "5": [
-                {
-                    "WorldID": 1,
-                    "Name": "Cyrano"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Roxanne"
-                }
-            ],
-            "6": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "7": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "8": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "9": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "10": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "11": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "12": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "13": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "15": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "16": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "20": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "21": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "22": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "23": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "25": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "26": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "28": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "29": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "30": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "31": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "32": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "33": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "34": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "35": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "36": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "37": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "38": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "39": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "40": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "41": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "42": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "43": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "44": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "45": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "46": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "47": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "48": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "49": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "50": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "51": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "52": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "53": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "54": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "55": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "56": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "57": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "58": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "59": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "60": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "61": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "62": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "63": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "64": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "65": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "66": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "69": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "70": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "71": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "72": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "73": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "74": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "75": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "76": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "77": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "78": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "79": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "80": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "81": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "82": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "83": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "84": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "85": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "86": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "87": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "88": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "89": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ],
-            "90": [
-                {
-                    "WorldID": 1,
-                    "Name": "Overlord"
-                },
-                {
-                    "WorldID": 2,
-                    "Name": "Magic"
-                },
-                {
-                    "WorldID": 3,
-                    "Name": "Wizard"
-                },
-                {
-                    "WorldID": 4,
-                    "Name": "Focus"
-                },
-                {
-                    "WorldID": 5,
-                    "Name": "Darkstar"
-                }
-            ]
+  {
+    "type": "VSN_E2D",
+    "callsigns": {
+      "0": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
         },
-        "height": 5.59,
-        "length": 17.55,
-        "paintSchemes": {
-            "0": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "1": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "2": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "3": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "4": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "5": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "6": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "7": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "8": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "9": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "10": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "11": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "12": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "13": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "15": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "16": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "17": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "18": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "19": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "20": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "21": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "22": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "23": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "24": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "25": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "26": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "27": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "28": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "29": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "30": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "31": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "32": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "33": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "34": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "35": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "36": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "37": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "38": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "39": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "40": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "41": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "42": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "43": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "44": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "45": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "46": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "47": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "48": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "49": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "50": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "51": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "52": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "53": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "54": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "55": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "56": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "57": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "58": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "59": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "60": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "61": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "62": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "63": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "64": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "65": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "66": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "67": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "68": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "69": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "70": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "71": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "72": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "73": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "74": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "75": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "76": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "77": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "78": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "79": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "80": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "81": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "82": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "83": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "84": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "85": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "86": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "87": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "88": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "89": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ],
-            "90": [
-                "e-2d demo",
-                "vaw-125 tigertails"
-            ]
+        {
+          "WorldID": 2,
+          "Name": "Magic"
         },
-        "payloadPresets": [],
-        "displayName": "E-2D Hawkeye",
-        "categories": [],
-        "module": "VSN_E2D",
-        "tasks": [
-            {
-                "OldID": "AWACS",
-                "Name": "AWACS",
-                "WorldID": 14
-            }
-        ],
-        "fuel": 5624,
-        "flares": 60,
-        "chaff": 120,
-        "radio": {
-            "frequency": 127.5,
-            "modulation": 0
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
         },
-        "maxAlt": 11275,
-        "cruiseSpeed": 133.3,
-        "shape": "VSN_E2D",
-        "width": 24.56,
-        "operators": {
-            "USA": [
-                1960,
-                2020
-            ],
-            "Egypt": [
-                1960,
-                2020
-            ],
-            "France": [
-                1960,
-                2020
-            ],
-            "Japan": [
-                1960,
-                2020
-            ],
-            "Israel": [
-                1960,
-                2020
-            ]
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
         }
+      ],
+      "2": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "3": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "4": [
+        {
+          "WorldID": 1,
+          "Name": "Solex"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Image"
+        }
+      ],
+      "5": [
+        {
+          "WorldID": 1,
+          "Name": "Cyrano"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Roxanne"
+        }
+      ],
+      "6": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "7": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "8": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "9": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "10": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "11": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "12": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "13": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "15": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "16": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "20": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "21": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "22": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "23": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "25": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "26": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "28": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "29": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "30": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "31": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "32": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "33": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "34": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "35": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "36": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "37": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "38": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "39": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "40": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "41": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "42": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "43": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "44": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "45": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "46": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "47": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "48": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "49": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "50": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "51": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "52": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "53": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "54": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "55": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "56": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "57": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "58": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "59": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "60": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "61": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "62": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "63": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "64": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "65": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "66": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "69": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "70": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "71": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "72": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "73": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "74": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "75": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "76": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "77": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "78": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "79": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "80": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "81": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "82": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "83": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "84": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "85": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "86": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "87": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "88": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "89": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ],
+      "90": [
+        {
+          "WorldID": 1,
+          "Name": "Overlord"
+        },
+        {
+          "WorldID": 2,
+          "Name": "Magic"
+        },
+        {
+          "WorldID": 3,
+          "Name": "Wizard"
+        },
+        {
+          "WorldID": 4,
+          "Name": "Focus"
+        },
+        {
+          "WorldID": 5,
+          "Name": "Darkstar"
+        }
+      ]
+    },
+    "height": 5.59,
+    "length": 17.55,
+    "paintSchemes": {
+      "0": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "1": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "2": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "3": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "4": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "5": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "6": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "7": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "8": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "9": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "10": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "11": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "12": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "13": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "15": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "16": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "17": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "18": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "19": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "20": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "21": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "22": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "23": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "24": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "25": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "26": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "27": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "28": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "29": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "30": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "31": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "32": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "33": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "34": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "35": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "36": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "37": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "38": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "39": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "40": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "41": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "42": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "43": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "44": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "45": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "46": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "47": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "48": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "49": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "50": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "51": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "52": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "53": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "54": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "55": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "56": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "57": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "58": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "59": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "60": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "61": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "62": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "63": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "64": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "65": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "66": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "67": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "68": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "69": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "70": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "71": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "72": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "73": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "74": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "75": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "76": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "77": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "78": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "79": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "80": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "81": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "82": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "83": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "84": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "85": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "86": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "87": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "88": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "89": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ],
+      "90": [
+        "e-2d demo",
+        "vaw-125 tigertails"
+      ]
+    },
+    "payloadPresets": [],
+    "displayName": "E-2D Hawkeye",
+    "categories": [],
+    "module": "VSN_E2D",
+    "tasks": [
+      {
+        "OldID": "AWACS",
+        "Name": "AWACS",
+        "WorldID": 14
+      }
+    ],
+    "fuel": 5624,
+    "flares": 60,
+    "chaff": 120,
+    "radio": {
+      "frequency": 127.5,
+      "modulation": 0
+    },
+    "maxAlt": 11275,
+    "cruiseSpeed": 133.3,
+    "shape": "VSN_E2D",
+    "width": 24.56,
+    "operators": {
+      "USA": [
+        1960,
+        2020
+      ],
+      "Egypt": [
+        1960,
+        2020
+      ],
+      "France": [
+        1960,
+        2020
+      ],
+      "Japan": [
+        1960,
+        2020
+      ],
+      "Israel": [
+        1960,
+        2020
+      ]
     }
+  }
 ]

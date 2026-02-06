@@ -1,8 +1,8 @@
 [
-    {
-        "type": "vap_oh6_cargo",
-        "displayName": "VAP OH-6 Cargo",
-        "module": "Vietnam Assets Pack by EightBall & Tobi",
-        "shapeName": "vap_oh6_cargo"
-    }
+  {
+    "type": "vap_oh6_cargo",
+    "displayName": "VAP OH-6 Cargo",
+    "module": "Vietnam Assets Pack by EightBall & Tobi",
+    "shapeName": "vap_oh6_cargo"
+  }
 ]

@@ -1,3914 +1,3914 @@
 [
-    {
-        "type": "VSN_F84G",
-        "callsigns": {
-            "0": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "2": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "3": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "4": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "5": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "6": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "7": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "8": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "9": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "10": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "11": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "12": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "13": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "15": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "16": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "20": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "21": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "22": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "23": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "25": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "26": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "28": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "29": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "30": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "31": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "32": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "33": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "34": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "35": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "36": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "37": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "38": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "39": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "40": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "41": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "42": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "43": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "44": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "45": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "46": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "47": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "48": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "49": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "50": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "51": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "52": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "53": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "54": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "55": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "56": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "57": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "58": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "59": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "60": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "61": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "62": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "63": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "64": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "65": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "66": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "69": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "70": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "71": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "72": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "73": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "74": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "75": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "76": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "77": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "78": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "79": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "80": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "81": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "82": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "83": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "84": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "85": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "86": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "87": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "88": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "89": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ],
-            "90": [
-                {
-                    "soundFile": "Enfield",
-                    "Name": "Enfield",
-                    "WorldID": 1
-                },
-                {
-                    "soundFile": "Springfield",
-                    "Name": "Springfield",
-                    "WorldID": 2
-                },
-                {
-                    "soundFile": "Uzi",
-                    "Name": "Uzi",
-                    "WorldID": 3
-                },
-                {
-                    "soundFile": "Colt",
-                    "Name": "Colt",
-                    "WorldID": 4
-                },
-                {
-                    "soundFile": "Dodge",
-                    "Name": "Dodge",
-                    "WorldID": 5
-                },
-                {
-                    "soundFile": "Ford",
-                    "Name": "Ford",
-                    "WorldID": 6
-                },
-                {
-                    "soundFile": "Chevy",
-                    "Name": "Chevy",
-                    "WorldID": 7
-                },
-                {
-                    "soundFile": "Pontiac",
-                    "Name": "Pontiac",
-                    "WorldID": 8
-                }
-            ]
+  {
+    "type": "VSN_F84G",
+    "callsigns": {
+      "0": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
         },
-        "height": 4.496,
-        "length": 11.43,
-        "paintSchemes": {
-            "0": [
-                "fs-390",
-                "fs-391"
-            ],
-            "1": [
-                "fs-390",
-                "fs-391"
-            ],
-            "2": [
-                "fs-390",
-                "fs-391"
-            ],
-            "3": [
-                "fs-390",
-                "fs-391"
-            ],
-            "4": [
-                "fs-390",
-                "fs-391"
-            ],
-            "5": [
-                "fs-390",
-                "fs-391"
-            ],
-            "6": [
-                "fs-390",
-                "fs-391"
-            ],
-            "7": [
-                "fs-390",
-                "fs-391"
-            ],
-            "8": [
-                "fs-390",
-                "fs-391"
-            ],
-            "9": [
-                "fs-390",
-                "fs-391"
-            ],
-            "10": [
-                "fs-390",
-                "fs-391"
-            ],
-            "11": [
-                "fs-390",
-                "fs-391"
-            ],
-            "12": [
-                "fs-390",
-                "fs-391"
-            ],
-            "13": [
-                "fs-390",
-                "fs-391"
-            ],
-            "15": [
-                "fs-390",
-                "fs-391"
-            ],
-            "16": [
-                "fs-390",
-                "fs-391"
-            ],
-            "17": [
-                "fs-390",
-                "fs-391"
-            ],
-            "18": [
-                "fs-390",
-                "fs-391"
-            ],
-            "19": [
-                "fs-390",
-                "fs-391"
-            ],
-            "20": [
-                "fs-390",
-                "fs-391"
-            ],
-            "21": [
-                "fs-390",
-                "fs-391"
-            ],
-            "22": [
-                "fs-390",
-                "fs-391"
-            ],
-            "23": [
-                "fs-390",
-                "fs-391"
-            ],
-            "24": [
-                "fs-390",
-                "fs-391"
-            ],
-            "25": [
-                "fs-390",
-                "fs-391"
-            ],
-            "26": [
-                "fs-390",
-                "fs-391"
-            ],
-            "27": [
-                "fs-390",
-                "fs-391"
-            ],
-            "28": [
-                "fs-390",
-                "fs-391"
-            ],
-            "29": [
-                "fs-390",
-                "fs-391"
-            ],
-            "30": [
-                "fs-390",
-                "fs-391"
-            ],
-            "31": [
-                "fs-390",
-                "fs-391"
-            ],
-            "32": [
-                "fs-390",
-                "fs-391"
-            ],
-            "33": [
-                "fs-390",
-                "fs-391"
-            ],
-            "34": [
-                "fs-390",
-                "fs-391"
-            ],
-            "35": [
-                "fs-390",
-                "fs-391"
-            ],
-            "36": [
-                "fs-390",
-                "fs-391"
-            ],
-            "37": [
-                "fs-390",
-                "fs-391"
-            ],
-            "38": [
-                "fs-390",
-                "fs-391"
-            ],
-            "39": [
-                "fs-390",
-                "fs-391"
-            ],
-            "40": [
-                "fs-390",
-                "fs-391"
-            ],
-            "41": [
-                "fs-390",
-                "fs-391"
-            ],
-            "42": [
-                "fs-390",
-                "fs-391"
-            ],
-            "43": [
-                "fs-390",
-                "fs-391"
-            ],
-            "44": [
-                "fs-390",
-                "fs-391"
-            ],
-            "45": [
-                "fs-390",
-                "fs-391"
-            ],
-            "46": [
-                "fs-390",
-                "fs-391"
-            ],
-            "47": [
-                "fs-390",
-                "fs-391"
-            ],
-            "48": [
-                "fs-390",
-                "fs-391"
-            ],
-            "49": [
-                "fs-390",
-                "fs-391"
-            ],
-            "50": [
-                "fs-390",
-                "fs-391"
-            ],
-            "51": [
-                "fs-390",
-                "fs-391"
-            ],
-            "52": [
-                "fs-390",
-                "fs-391"
-            ],
-            "53": [
-                "fs-390",
-                "fs-391"
-            ],
-            "54": [
-                "fs-390",
-                "fs-391"
-            ],
-            "55": [
-                "fs-390",
-                "fs-391"
-            ],
-            "56": [
-                "fs-390",
-                "fs-391"
-            ],
-            "57": [
-                "fs-390",
-                "fs-391"
-            ],
-            "58": [
-                "fs-390",
-                "fs-391"
-            ],
-            "59": [
-                "fs-390",
-                "fs-391"
-            ],
-            "60": [
-                "fs-390",
-                "fs-391"
-            ],
-            "61": [
-                "fs-390",
-                "fs-391"
-            ],
-            "62": [
-                "fs-390",
-                "fs-391"
-            ],
-            "63": [
-                "fs-390",
-                "fs-391"
-            ],
-            "64": [
-                "fs-390",
-                "fs-391"
-            ],
-            "65": [
-                "fs-390",
-                "fs-391"
-            ],
-            "66": [
-                "fs-390",
-                "fs-391"
-            ],
-            "67": [
-                "fs-390",
-                "fs-391"
-            ],
-            "68": [
-                "fs-390",
-                "fs-391"
-            ],
-            "69": [
-                "fs-390",
-                "fs-391"
-            ],
-            "70": [
-                "fs-390",
-                "fs-391"
-            ],
-            "71": [
-                "fs-390",
-                "fs-391"
-            ],
-            "72": [
-                "fs-390",
-                "fs-391"
-            ],
-            "73": [
-                "fs-390",
-                "fs-391"
-            ],
-            "74": [
-                "fs-390",
-                "fs-391"
-            ],
-            "75": [
-                "fs-390",
-                "fs-391"
-            ],
-            "76": [
-                "fs-390",
-                "fs-391"
-            ],
-            "77": [
-                "fs-390",
-                "fs-391"
-            ],
-            "78": [
-                "fs-390",
-                "fs-391"
-            ],
-            "79": [
-                "fs-390",
-                "fs-391"
-            ],
-            "80": [
-                "fs-390",
-                "fs-391"
-            ],
-            "81": [
-                "fs-390",
-                "fs-391"
-            ],
-            "82": [
-                "fs-390",
-                "fs-391"
-            ],
-            "83": [
-                "fs-390",
-                "fs-391"
-            ],
-            "84": [
-                "fs-390",
-                "fs-391"
-            ],
-            "85": [
-                "fs-390",
-                "fs-391"
-            ],
-            "86": [
-                "fs-390",
-                "fs-391"
-            ],
-            "87": [
-                "fs-390",
-                "fs-391"
-            ],
-            "88": [
-                "fs-390",
-                "fs-391"
-            ],
-            "89": [
-                "fs-390",
-                "fs-391"
-            ],
-            "90": [
-                "fs-390",
-                "fs-391"
-            ]
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
         },
-        "payloadPresets": [],
-        "displayName": "F-84G Thunderjet",
-        "categories": [
-            "{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}",
-            "Interceptor"
-        ],
-        "module": "VSN_F84G",
-        "tasks": [
-            {
-                "OldID": "CAP",
-                "Name": "CAP",
-                "WorldID": 11
-            },
-            {
-                "OldID": "CAS",
-                "Name": "CAS",
-                "WorldID": 31
-            },
-            {
-                "OldID": "Escort",
-                "Name": "Escort",
-                "WorldID": 18
-            },
-            {
-                "OldID": "Fighter Sweep",
-                "Name": "Fighter Sweep",
-                "WorldID": 19
-            },
-            {
-                "OldID": "Ground Attack",
-                "Name": "Ground Attack",
-                "WorldID": 32
-            },
-            {
-                "OldID": "Intercept",
-                "Name": "Intercept",
-                "WorldID": 10
-            },
-            {
-                "OldID": "Antiship Strike",
-                "Name": "Anti-ship Strike",
-                "WorldID": 30
-            }
-        ],
-        "fuel": 1282,
-        "radio": {
-            "frequency": 127.5,
-            "modulation": 0
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
         },
-        "maxAlt": 15100,
-        "cruiseSpeed": 237,
-        "shape": "VSN_F84G",
-        "width": 11.9,
-        "operators": {
-            "USA": [
-                1940,
-                1960
-            ],
-            "Belgium": [
-                1950,
-                1960
-            ],
-            "Denmark": [
-                1950,
-                1960
-            ],
-            "France": [
-                1950,
-                1960
-            ],
-            "Greece": [
-                1950,
-                1960
-            ],
-            "Iran": [
-                1950,
-                1960
-            ],
-            "TheNetherlands": [
-                1950,
-                1960
-            ],
-            "Norway": [
-                1950,
-                1960
-            ],
-            "Portugal": [
-                1950,
-                1960
-            ],
-            "Thailand": [
-                1950,
-                1960
-            ],
-            "Turkey": [
-                1950,
-                1960
-            ]
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
         }
+      ],
+      "2": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "3": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "4": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "5": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "6": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "7": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "8": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "9": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "10": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "11": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "12": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "13": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "15": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "16": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "20": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "21": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "22": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "23": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "25": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "26": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "28": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "29": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "30": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "31": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "32": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "33": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "34": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "35": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "36": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "37": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "38": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "39": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "40": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "41": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "42": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "43": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "44": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "45": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "46": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "47": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "48": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "49": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "50": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "51": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "52": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "53": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "54": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "55": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "56": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "57": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "58": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "59": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "60": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "61": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "62": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "63": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "64": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "65": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "66": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "69": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "70": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "71": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "72": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "73": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "74": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "75": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "76": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "77": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "78": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "79": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "80": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "81": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "82": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "83": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "84": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "85": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "86": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "87": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "88": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "89": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ],
+      "90": [
+        {
+          "soundFile": "Enfield",
+          "Name": "Enfield",
+          "WorldID": 1
+        },
+        {
+          "soundFile": "Springfield",
+          "Name": "Springfield",
+          "WorldID": 2
+        },
+        {
+          "soundFile": "Uzi",
+          "Name": "Uzi",
+          "WorldID": 3
+        },
+        {
+          "soundFile": "Colt",
+          "Name": "Colt",
+          "WorldID": 4
+        },
+        {
+          "soundFile": "Dodge",
+          "Name": "Dodge",
+          "WorldID": 5
+        },
+        {
+          "soundFile": "Ford",
+          "Name": "Ford",
+          "WorldID": 6
+        },
+        {
+          "soundFile": "Chevy",
+          "Name": "Chevy",
+          "WorldID": 7
+        },
+        {
+          "soundFile": "Pontiac",
+          "Name": "Pontiac",
+          "WorldID": 8
+        }
+      ]
+    },
+    "height": 4.496,
+    "length": 11.43,
+    "paintSchemes": {
+      "0": [
+        "fs-390",
+        "fs-391"
+      ],
+      "1": [
+        "fs-390",
+        "fs-391"
+      ],
+      "2": [
+        "fs-390",
+        "fs-391"
+      ],
+      "3": [
+        "fs-390",
+        "fs-391"
+      ],
+      "4": [
+        "fs-390",
+        "fs-391"
+      ],
+      "5": [
+        "fs-390",
+        "fs-391"
+      ],
+      "6": [
+        "fs-390",
+        "fs-391"
+      ],
+      "7": [
+        "fs-390",
+        "fs-391"
+      ],
+      "8": [
+        "fs-390",
+        "fs-391"
+      ],
+      "9": [
+        "fs-390",
+        "fs-391"
+      ],
+      "10": [
+        "fs-390",
+        "fs-391"
+      ],
+      "11": [
+        "fs-390",
+        "fs-391"
+      ],
+      "12": [
+        "fs-390",
+        "fs-391"
+      ],
+      "13": [
+        "fs-390",
+        "fs-391"
+      ],
+      "15": [
+        "fs-390",
+        "fs-391"
+      ],
+      "16": [
+        "fs-390",
+        "fs-391"
+      ],
+      "17": [
+        "fs-390",
+        "fs-391"
+      ],
+      "18": [
+        "fs-390",
+        "fs-391"
+      ],
+      "19": [
+        "fs-390",
+        "fs-391"
+      ],
+      "20": [
+        "fs-390",
+        "fs-391"
+      ],
+      "21": [
+        "fs-390",
+        "fs-391"
+      ],
+      "22": [
+        "fs-390",
+        "fs-391"
+      ],
+      "23": [
+        "fs-390",
+        "fs-391"
+      ],
+      "24": [
+        "fs-390",
+        "fs-391"
+      ],
+      "25": [
+        "fs-390",
+        "fs-391"
+      ],
+      "26": [
+        "fs-390",
+        "fs-391"
+      ],
+      "27": [
+        "fs-390",
+        "fs-391"
+      ],
+      "28": [
+        "fs-390",
+        "fs-391"
+      ],
+      "29": [
+        "fs-390",
+        "fs-391"
+      ],
+      "30": [
+        "fs-390",
+        "fs-391"
+      ],
+      "31": [
+        "fs-390",
+        "fs-391"
+      ],
+      "32": [
+        "fs-390",
+        "fs-391"
+      ],
+      "33": [
+        "fs-390",
+        "fs-391"
+      ],
+      "34": [
+        "fs-390",
+        "fs-391"
+      ],
+      "35": [
+        "fs-390",
+        "fs-391"
+      ],
+      "36": [
+        "fs-390",
+        "fs-391"
+      ],
+      "37": [
+        "fs-390",
+        "fs-391"
+      ],
+      "38": [
+        "fs-390",
+        "fs-391"
+      ],
+      "39": [
+        "fs-390",
+        "fs-391"
+      ],
+      "40": [
+        "fs-390",
+        "fs-391"
+      ],
+      "41": [
+        "fs-390",
+        "fs-391"
+      ],
+      "42": [
+        "fs-390",
+        "fs-391"
+      ],
+      "43": [
+        "fs-390",
+        "fs-391"
+      ],
+      "44": [
+        "fs-390",
+        "fs-391"
+      ],
+      "45": [
+        "fs-390",
+        "fs-391"
+      ],
+      "46": [
+        "fs-390",
+        "fs-391"
+      ],
+      "47": [
+        "fs-390",
+        "fs-391"
+      ],
+      "48": [
+        "fs-390",
+        "fs-391"
+      ],
+      "49": [
+        "fs-390",
+        "fs-391"
+      ],
+      "50": [
+        "fs-390",
+        "fs-391"
+      ],
+      "51": [
+        "fs-390",
+        "fs-391"
+      ],
+      "52": [
+        "fs-390",
+        "fs-391"
+      ],
+      "53": [
+        "fs-390",
+        "fs-391"
+      ],
+      "54": [
+        "fs-390",
+        "fs-391"
+      ],
+      "55": [
+        "fs-390",
+        "fs-391"
+      ],
+      "56": [
+        "fs-390",
+        "fs-391"
+      ],
+      "57": [
+        "fs-390",
+        "fs-391"
+      ],
+      "58": [
+        "fs-390",
+        "fs-391"
+      ],
+      "59": [
+        "fs-390",
+        "fs-391"
+      ],
+      "60": [
+        "fs-390",
+        "fs-391"
+      ],
+      "61": [
+        "fs-390",
+        "fs-391"
+      ],
+      "62": [
+        "fs-390",
+        "fs-391"
+      ],
+      "63": [
+        "fs-390",
+        "fs-391"
+      ],
+      "64": [
+        "fs-390",
+        "fs-391"
+      ],
+      "65": [
+        "fs-390",
+        "fs-391"
+      ],
+      "66": [
+        "fs-390",
+        "fs-391"
+      ],
+      "67": [
+        "fs-390",
+        "fs-391"
+      ],
+      "68": [
+        "fs-390",
+        "fs-391"
+      ],
+      "69": [
+        "fs-390",
+        "fs-391"
+      ],
+      "70": [
+        "fs-390",
+        "fs-391"
+      ],
+      "71": [
+        "fs-390",
+        "fs-391"
+      ],
+      "72": [
+        "fs-390",
+        "fs-391"
+      ],
+      "73": [
+        "fs-390",
+        "fs-391"
+      ],
+      "74": [
+        "fs-390",
+        "fs-391"
+      ],
+      "75": [
+        "fs-390",
+        "fs-391"
+      ],
+      "76": [
+        "fs-390",
+        "fs-391"
+      ],
+      "77": [
+        "fs-390",
+        "fs-391"
+      ],
+      "78": [
+        "fs-390",
+        "fs-391"
+      ],
+      "79": [
+        "fs-390",
+        "fs-391"
+      ],
+      "80": [
+        "fs-390",
+        "fs-391"
+      ],
+      "81": [
+        "fs-390",
+        "fs-391"
+      ],
+      "82": [
+        "fs-390",
+        "fs-391"
+      ],
+      "83": [
+        "fs-390",
+        "fs-391"
+      ],
+      "84": [
+        "fs-390",
+        "fs-391"
+      ],
+      "85": [
+        "fs-390",
+        "fs-391"
+      ],
+      "86": [
+        "fs-390",
+        "fs-391"
+      ],
+      "87": [
+        "fs-390",
+        "fs-391"
+      ],
+      "88": [
+        "fs-390",
+        "fs-391"
+      ],
+      "89": [
+        "fs-390",
+        "fs-391"
+      ],
+      "90": [
+        "fs-390",
+        "fs-391"
+      ]
+    },
+    "payloadPresets": [],
+    "displayName": "F-84G Thunderjet",
+    "categories": [
+      "{78EFB7A2-FD52-4b57-A6A6-3BF0E1D6555F}",
+      "Interceptor"
+    ],
+    "module": "VSN_F84G",
+    "tasks": [
+      {
+        "OldID": "CAP",
+        "Name": "CAP",
+        "WorldID": 11
+      },
+      {
+        "OldID": "CAS",
+        "Name": "CAS",
+        "WorldID": 31
+      },
+      {
+        "OldID": "Escort",
+        "Name": "Escort",
+        "WorldID": 18
+      },
+      {
+        "OldID": "Fighter Sweep",
+        "Name": "Fighter Sweep",
+        "WorldID": 19
+      },
+      {
+        "OldID": "Ground Attack",
+        "Name": "Ground Attack",
+        "WorldID": 32
+      },
+      {
+        "OldID": "Intercept",
+        "Name": "Intercept",
+        "WorldID": 10
+      },
+      {
+        "OldID": "Antiship Strike",
+        "Name": "Anti-ship Strike",
+        "WorldID": 30
+      }
+    ],
+    "fuel": 1282,
+    "radio": {
+      "frequency": 127.5,
+      "modulation": 0
+    },
+    "maxAlt": 15100,
+    "cruiseSpeed": 237,
+    "shape": "VSN_F84G",
+    "width": 11.9,
+    "operators": {
+      "USA": [
+        1940,
+        1960
+      ],
+      "Belgium": [
+        1950,
+        1960
+      ],
+      "Denmark": [
+        1950,
+        1960
+      ],
+      "France": [
+        1950,
+        1960
+      ],
+      "Greece": [
+        1950,
+        1960
+      ],
+      "Iran": [
+        1950,
+        1960
+      ],
+      "TheNetherlands": [
+        1950,
+        1960
+      ],
+      "Norway": [
+        1950,
+        1960
+      ],
+      "Portugal": [
+        1950,
+        1960
+      ],
+      "Thailand": [
+        1950,
+        1960
+      ],
+      "Turkey": [
+        1950,
+        1960
+      ]
     }
+  }
 ]

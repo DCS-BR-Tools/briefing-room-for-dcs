@@ -1,85 +1,85 @@
 [
-    {
-        "type": "BTR-4",
-        "category": "Armor",
-        "paintSchemes": {},
-        "displayName": "[CH] BTR-4 IFV",
-        "module": "Military Asset Pack Ukraine by Currenthill",
-        "shape": "BTR-4",
-        "detectionRange": 0,
-        "threatRangeMin": 150,
-        "threatRange": 5000,
-        "operators": {
-            "Ukraine": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_Alligator_Sniper",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] Alligator Sniper AMR",
-        "module": "Military Asset Pack Ukraine by Currenthill",
-        "shape": "Alligator_Sniper",
-        "detectionRange": 5000,
-        "threatRange": 3000,
-        "operators": {
-            "Ukraine": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_Stugna_P",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] Stugna-P ATGM",
-        "module": "Military Asset Pack Ukraine by Currenthill",
-        "shape": "Stugna-P",
-        "detectionRange": 5500,
-        "threatRange": 5500,
-        "operators": {
-            "Ukraine": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_T64BV",
-        "category": "Armor",
-        "paintSchemes": {},
-        "displayName": "[CH] T-64BV MBT",
-        "module": "Military Asset Pack Ukraine by Currenthill",
-        "shape": "T-64BV",
-        "detectionRange": 5000,
-        "threatRangeMin": 100,
-        "threatRange": 4000,
-        "operators": {
-            "Ukraine": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "T84_OplotM",
-        "category": "Armor",
-        "paintSchemes": {},
-        "displayName": "[CH] T-84 Oplot-M MBT",
-        "module": "Military Asset Pack Ukraine by Currenthill",
-        "shape": "T-84_OplotM",
-        "detectionRange": 8000,
-        "threatRangeMin": 100,
-        "threatRange": 5000,
-        "operators": {
-            "Ukraine": [
-                2010,
-                2020
-            ]
-        }
+  {
+    "type": "BTR-4",
+    "category": "Armor",
+    "paintSchemes": {},
+    "displayName": "[CH] BTR-4 IFV",
+    "module": "Military Asset Pack Ukraine by Currenthill",
+    "shape": "BTR-4",
+    "detectionRange": 0,
+    "threatRangeMin": 150,
+    "threatRange": 5000,
+    "operators": {
+      "Ukraine": [
+        2010,
+        2020
+      ]
     }
+  },
+  {
+    "type": "CH_Alligator_Sniper",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] Alligator Sniper AMR",
+    "module": "Military Asset Pack Ukraine by Currenthill",
+    "shape": "Alligator_Sniper",
+    "detectionRange": 5000,
+    "threatRange": 3000,
+    "operators": {
+      "Ukraine": [
+        2020,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_Stugna_P",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] Stugna-P ATGM",
+    "module": "Military Asset Pack Ukraine by Currenthill",
+    "shape": "Stugna-P",
+    "detectionRange": 5500,
+    "threatRange": 5500,
+    "operators": {
+      "Ukraine": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_T64BV",
+    "category": "Armor",
+    "paintSchemes": {},
+    "displayName": "[CH] T-64BV MBT",
+    "module": "Military Asset Pack Ukraine by Currenthill",
+    "shape": "T-64BV",
+    "detectionRange": 5000,
+    "threatRangeMin": 100,
+    "threatRange": 4000,
+    "operators": {
+      "Ukraine": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "T84_OplotM",
+    "category": "Armor",
+    "paintSchemes": {},
+    "displayName": "[CH] T-84 Oplot-M MBT",
+    "module": "Military Asset Pack Ukraine by Currenthill",
+    "shape": "T-84_OplotM",
+    "detectionRange": 8000,
+    "threatRangeMin": 100,
+    "threatRange": 5000,
+    "operators": {
+      "Ukraine": [
+        2010,
+        2020
+      ]
+    }
+  }
 ]

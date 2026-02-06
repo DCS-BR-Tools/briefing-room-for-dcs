@@ -1,8 +1,8 @@
 [
-    {
-        "type": "VSN_Edwards_ATC_tower",
-        "displayName": "VSN Edwards ATC tower",
-        "module": "VSN_F104G",
-        "shapeName": "VSN_Edwards_ATC_tower"
-    }
+  {
+    "type": "VSN_Edwards_ATC_tower",
+    "displayName": "VSN Edwards ATC tower",
+    "module": "VSN_F104G",
+    "shapeName": "VSN_Edwards_ATC_tower"
+  }
 ]

@@ -1,25 +1,25 @@
 [
-    {
-        "type": "vap_us_seafloat",
-        "displayName": "VAP - US Sea Float Barge",
-        "categories": [
-            {
-                "name": "HelicopterCarrier"
-            },
-            {
-                "name": "AircraftCarrier"
-            }
-        ],
-        "module": "Vietnam Assets Pack by EightBall & Tobi",
-        "shape": "vap_us_seafloat",
-        "helicopterStorage": 4,
-        "detectionRange": 0,
-        "threatRange": 0,
-        "operators": {
-            "USA": [
-                1950,
-                1970
-            ]
-        }
+  {
+    "type": "vap_us_seafloat",
+    "displayName": "VAP - US Sea Float Barge",
+    "categories": [
+      {
+        "name": "HelicopterCarrier"
+      },
+      {
+        "name": "AircraftCarrier"
+      }
+    ],
+    "module": "Vietnam Assets Pack by EightBall & Tobi",
+    "shape": "vap_us_seafloat",
+    "helicopterStorage": 4,
+    "detectionRange": 0,
+    "threatRange": 0,
+    "operators": {
+      "USA": [
+        1950,
+        1970
+      ]
     }
+  }
 ]

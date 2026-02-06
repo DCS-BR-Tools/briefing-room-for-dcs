@@ -1,60 +1,60 @@
 [
-    {
-        "type": "CH_Marder1A5",
-        "category": "Armor",
-        "paintSchemes": {},
-        "displayName": "[CH] Marder 1A5 IFV",
-        "module": "Military Asset Pack Germany by Currenthill",
-        "shape": "Marder1A5",
-        "detectionRange": 6000,
-        "threatRangeMin": 200,
-        "threatRange": 3000,
-        "operators": {
-            "Germany": [
-                2000,
-                2020
-            ],
-            "Ukraine": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_PZH2000",
-        "category": "Artillery",
-        "paintSchemes": {},
-        "displayName": "[CH] PzH 2000 SPG",
-        "module": "Military Asset Pack Germany by Currenthill",
-        "shape": "PzH2000",
-        "detectionRange": 0,
-        "threatRangeMin": 50,
-        "threatRange": 50000,
-        "operators": {
-            "Germany": [
-                1990,
-                2020
-            ],
-            "Ukraine": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_PumaA1",
-        "category": "Armor",
-        "paintSchemes": {},
-        "displayName": "[CH] Puma A1 IFV",
-        "module": "Military Asset Pack Germany by Currenthill",
-        "shape": "PumaA1",
-        "detectionRange": 0,
-        "threatRange": 3000,
-        "operators": {
-            "Germany": [
-                2020,
-                2020
-            ]
-        }
+  {
+    "type": "CH_Marder1A5",
+    "category": "Armor",
+    "paintSchemes": {},
+    "displayName": "[CH] Marder 1A5 IFV",
+    "module": "Military Asset Pack Germany by Currenthill",
+    "shape": "Marder1A5",
+    "detectionRange": 6000,
+    "threatRangeMin": 200,
+    "threatRange": 3000,
+    "operators": {
+      "Germany": [
+        2000,
+        2020
+      ],
+      "Ukraine": [
+        2020,
+        2020
+      ]
     }
+  },
+  {
+    "type": "CH_PZH2000",
+    "category": "Artillery",
+    "paintSchemes": {},
+    "displayName": "[CH] PzH 2000 SPG",
+    "module": "Military Asset Pack Germany by Currenthill",
+    "shape": "PzH2000",
+    "detectionRange": 0,
+    "threatRangeMin": 50,
+    "threatRange": 50000,
+    "operators": {
+      "Germany": [
+        1990,
+        2020
+      ],
+      "Ukraine": [
+        2020,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_PumaA1",
+    "category": "Armor",
+    "paintSchemes": {},
+    "displayName": "[CH] Puma A1 IFV",
+    "module": "Military Asset Pack Germany by Currenthill",
+    "shape": "PumaA1",
+    "detectionRange": 0,
+    "threatRange": 3000,
+    "operators": {
+      "Germany": [
+        2020,
+        2020
+      ]
+    }
+  }
 ]

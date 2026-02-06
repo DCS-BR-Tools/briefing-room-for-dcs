@@ -1,4773 +1,4773 @@
 [
-    {
-        "type": "CH_Centurion_C_RAM",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] Centurion C-RAM",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "Centurion_C-RAM",
-        "detectionRange": 20000,
-        "threatRange": 2000,
-        "operators": {
-            "USA": [
-                2000,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_LAVAD",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] LAV-AD SPAAGM",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "LAV-AD",
-        "detectionRange": 10000,
-        "threatRangeMin": 160,
-        "threatRange": 8000,
-        "operators": {
-            "USA": [
-                1980,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_M10",
-        "category": "Armor",
-        "paintSchemes": {
-            "0": [
-                "CARC",
-                "Desert"
-            ],
-            "1": [
-                "CARC",
-                "Desert"
-            ],
-            "2": [
-                "CARC",
-                "Desert"
-            ],
-            "3": [
-                "CARC",
-                "Desert"
-            ],
-            "4": [
-                "CARC",
-                "Desert"
-            ],
-            "5": [
-                "CARC",
-                "Desert"
-            ],
-            "6": [
-                "CARC",
-                "Desert"
-            ],
-            "7": [
-                "CARC",
-                "Desert"
-            ],
-            "8": [
-                "CARC",
-                "Desert"
-            ],
-            "9": [
-                "CARC",
-                "Desert"
-            ],
-            "10": [
-                "CARC",
-                "Desert"
-            ],
-            "11": [
-                "CARC",
-                "Desert"
-            ],
-            "12": [
-                "CARC",
-                "Desert"
-            ],
-            "13": [
-                "CARC",
-                "Desert"
-            ],
-            "15": [
-                "CARC",
-                "Desert"
-            ],
-            "16": [
-                "CARC",
-                "Desert"
-            ],
-            "17": [
-                "CARC",
-                "Desert"
-            ],
-            "18": [
-                "CARC",
-                "Desert"
-            ],
-            "19": [
-                "CARC",
-                "Desert"
-            ],
-            "20": [
-                "CARC",
-                "Desert"
-            ],
-            "21": [
-                "CARC",
-                "Desert"
-            ],
-            "22": [
-                "CARC",
-                "Desert"
-            ],
-            "23": [
-                "CARC",
-                "Desert"
-            ],
-            "24": [
-                "CARC",
-                "Desert"
-            ],
-            "25": [
-                "CARC",
-                "Desert"
-            ],
-            "26": [
-                "CARC",
-                "Desert"
-            ],
-            "27": [
-                "CARC",
-                "Desert"
-            ],
-            "28": [
-                "CARC",
-                "Desert"
-            ],
-            "29": [
-                "CARC",
-                "Desert"
-            ],
-            "30": [
-                "CARC",
-                "Desert"
-            ],
-            "31": [
-                "CARC",
-                "Desert"
-            ],
-            "32": [
-                "CARC",
-                "Desert"
-            ],
-            "33": [
-                "CARC",
-                "Desert"
-            ],
-            "34": [
-                "CARC",
-                "Desert"
-            ],
-            "35": [
-                "CARC",
-                "Desert"
-            ],
-            "36": [
-                "CARC",
-                "Desert"
-            ],
-            "37": [
-                "CARC",
-                "Desert"
-            ],
-            "38": [
-                "CARC",
-                "Desert"
-            ],
-            "39": [
-                "CARC",
-                "Desert"
-            ],
-            "40": [
-                "CARC",
-                "Desert"
-            ],
-            "41": [
-                "CARC",
-                "Desert"
-            ],
-            "42": [
-                "CARC",
-                "Desert"
-            ],
-            "43": [
-                "CARC",
-                "Desert"
-            ],
-            "44": [
-                "CARC",
-                "Desert"
-            ],
-            "45": [
-                "CARC",
-                "Desert"
-            ],
-            "46": [
-                "CARC",
-                "Desert"
-            ],
-            "47": [
-                "CARC",
-                "Desert"
-            ],
-            "48": [
-                "CARC",
-                "Desert"
-            ],
-            "49": [
-                "CARC",
-                "Desert"
-            ],
-            "50": [
-                "CARC",
-                "Desert"
-            ],
-            "51": [
-                "CARC",
-                "Desert"
-            ],
-            "52": [
-                "CARC",
-                "Desert"
-            ],
-            "53": [
-                "CARC",
-                "Desert"
-            ],
-            "54": [
-                "CARC",
-                "Desert"
-            ],
-            "55": [
-                "CARC",
-                "Desert"
-            ],
-            "56": [
-                "CARC",
-                "Desert"
-            ],
-            "57": [
-                "CARC",
-                "Desert"
-            ],
-            "58": [
-                "CARC",
-                "Desert"
-            ],
-            "59": [
-                "CARC",
-                "Desert"
-            ],
-            "60": [
-                "CARC",
-                "Desert"
-            ],
-            "61": [
-                "CARC",
-                "Desert"
-            ],
-            "62": [
-                "CARC",
-                "Desert"
-            ],
-            "63": [
-                "CARC",
-                "Desert"
-            ],
-            "64": [
-                "CARC",
-                "Desert"
-            ],
-            "65": [
-                "CARC",
-                "Desert"
-            ],
-            "66": [
-                "CARC",
-                "Desert"
-            ],
-            "67": [
-                "CARC",
-                "Desert"
-            ],
-            "68": [
-                "CARC",
-                "Desert"
-            ],
-            "69": [
-                "CARC",
-                "Desert"
-            ],
-            "70": [
-                "CARC",
-                "Desert"
-            ],
-            "71": [
-                "CARC",
-                "Desert"
-            ],
-            "72": [
-                "CARC",
-                "Desert"
-            ],
-            "73": [
-                "CARC",
-                "Desert"
-            ],
-            "74": [
-                "CARC",
-                "Desert"
-            ],
-            "75": [
-                "CARC",
-                "Desert"
-            ],
-            "76": [
-                "CARC",
-                "Desert"
-            ],
-            "77": [
-                "CARC",
-                "Desert"
-            ],
-            "78": [
-                "CARC",
-                "Desert"
-            ],
-            "79": [
-                "CARC",
-                "Desert"
-            ],
-            "80": [
-                "CARC",
-                "Desert"
-            ],
-            "81": [
-                "CARC",
-                "Desert"
-            ],
-            "82": [
-                "CARC",
-                "Desert"
-            ],
-            "83": [
-                "CARC",
-                "Desert"
-            ],
-            "84": [
-                "CARC",
-                "Desert"
-            ],
-            "85": [
-                "CARC",
-                "Desert"
-            ],
-            "86": [
-                "CARC",
-                "Desert"
-            ],
-            "87": [
-                "CARC",
-                "Desert"
-            ],
-            "88": [
-                "CARC",
-                "Desert"
-            ],
-            "89": [
-                "CARC",
-                "Desert"
-            ],
-            "90": [
-                "CARC",
-                "Desert"
-            ]
-        },
-        "displayName": "[CH] M10 LT",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "M10",
-        "detectionRange": 0,
-        "threatRange": 4000,
-        "operators": {
-            "USA": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_M1A2SEPV3",
-        "category": "Armor",
-        "paintSchemes": {
-            "0": [
-                "CARC",
-                "Desert"
-            ],
-            "1": [
-                "CARC",
-                "Desert"
-            ],
-            "2": [
-                "CARC",
-                "Desert"
-            ],
-            "3": [
-                "CARC",
-                "Desert"
-            ],
-            "4": [
-                "CARC",
-                "Desert"
-            ],
-            "5": [
-                "CARC",
-                "Desert"
-            ],
-            "6": [
-                "CARC",
-                "Desert"
-            ],
-            "7": [
-                "CARC",
-                "Desert"
-            ],
-            "8": [
-                "CARC",
-                "Desert"
-            ],
-            "9": [
-                "CARC",
-                "Desert"
-            ],
-            "10": [
-                "CARC",
-                "Desert"
-            ],
-            "11": [
-                "CARC",
-                "Desert"
-            ],
-            "12": [
-                "CARC",
-                "Desert"
-            ],
-            "13": [
-                "CARC",
-                "Desert"
-            ],
-            "15": [
-                "CARC",
-                "Desert"
-            ],
-            "16": [
-                "CARC",
-                "Desert"
-            ],
-            "17": [
-                "CARC",
-                "Desert"
-            ],
-            "18": [
-                "CARC",
-                "Desert"
-            ],
-            "19": [
-                "CARC",
-                "Desert"
-            ],
-            "20": [
-                "CARC",
-                "Desert"
-            ],
-            "21": [
-                "CARC",
-                "Desert"
-            ],
-            "22": [
-                "CARC",
-                "Desert"
-            ],
-            "23": [
-                "CARC",
-                "Desert"
-            ],
-            "24": [
-                "CARC",
-                "Desert"
-            ],
-            "25": [
-                "CARC",
-                "Desert"
-            ],
-            "26": [
-                "CARC",
-                "Desert"
-            ],
-            "27": [
-                "CARC",
-                "Desert"
-            ],
-            "28": [
-                "CARC",
-                "Desert"
-            ],
-            "29": [
-                "CARC",
-                "Desert"
-            ],
-            "30": [
-                "CARC",
-                "Desert"
-            ],
-            "31": [
-                "CARC",
-                "Desert"
-            ],
-            "32": [
-                "CARC",
-                "Desert"
-            ],
-            "33": [
-                "CARC",
-                "Desert"
-            ],
-            "34": [
-                "CARC",
-                "Desert"
-            ],
-            "35": [
-                "CARC",
-                "Desert"
-            ],
-            "36": [
-                "CARC",
-                "Desert"
-            ],
-            "37": [
-                "CARC",
-                "Desert"
-            ],
-            "38": [
-                "CARC",
-                "Desert"
-            ],
-            "39": [
-                "CARC",
-                "Desert"
-            ],
-            "40": [
-                "CARC",
-                "Desert"
-            ],
-            "41": [
-                "CARC",
-                "Desert"
-            ],
-            "42": [
-                "CARC",
-                "Desert"
-            ],
-            "43": [
-                "CARC",
-                "Desert"
-            ],
-            "44": [
-                "CARC",
-                "Desert"
-            ],
-            "45": [
-                "CARC",
-                "Desert"
-            ],
-            "46": [
-                "CARC",
-                "Desert"
-            ],
-            "47": [
-                "CARC",
-                "Desert"
-            ],
-            "48": [
-                "CARC",
-                "Desert"
-            ],
-            "49": [
-                "CARC",
-                "Desert"
-            ],
-            "50": [
-                "CARC",
-                "Desert"
-            ],
-            "51": [
-                "CARC",
-                "Desert"
-            ],
-            "52": [
-                "CARC",
-                "Desert"
-            ],
-            "53": [
-                "CARC",
-                "Desert"
-            ],
-            "54": [
-                "CARC",
-                "Desert"
-            ],
-            "55": [
-                "CARC",
-                "Desert"
-            ],
-            "56": [
-                "CARC",
-                "Desert"
-            ],
-            "57": [
-                "CARC",
-                "Desert"
-            ],
-            "58": [
-                "CARC",
-                "Desert"
-            ],
-            "59": [
-                "CARC",
-                "Desert"
-            ],
-            "60": [
-                "CARC",
-                "Desert"
-            ],
-            "61": [
-                "CARC",
-                "Desert"
-            ],
-            "62": [
-                "CARC",
-                "Desert"
-            ],
-            "63": [
-                "CARC",
-                "Desert"
-            ],
-            "64": [
-                "CARC",
-                "Desert"
-            ],
-            "65": [
-                "CARC",
-                "Desert"
-            ],
-            "66": [
-                "CARC",
-                "Desert"
-            ],
-            "67": [
-                "CARC",
-                "Desert"
-            ],
-            "68": [
-                "CARC",
-                "Desert"
-            ],
-            "69": [
-                "CARC",
-                "Desert"
-            ],
-            "70": [
-                "CARC",
-                "Desert"
-            ],
-            "71": [
-                "CARC",
-                "Desert"
-            ],
-            "72": [
-                "CARC",
-                "Desert"
-            ],
-            "73": [
-                "CARC",
-                "Desert"
-            ],
-            "74": [
-                "CARC",
-                "Desert"
-            ],
-            "75": [
-                "CARC",
-                "Desert"
-            ],
-            "76": [
-                "CARC",
-                "Desert"
-            ],
-            "77": [
-                "CARC",
-                "Desert"
-            ],
-            "78": [
-                "CARC",
-                "Desert"
-            ],
-            "79": [
-                "CARC",
-                "Desert"
-            ],
-            "80": [
-                "CARC",
-                "Desert"
-            ],
-            "81": [
-                "CARC",
-                "Desert"
-            ],
-            "82": [
-                "CARC",
-                "Desert"
-            ],
-            "83": [
-                "CARC",
-                "Desert"
-            ],
-            "84": [
-                "CARC",
-                "Desert"
-            ],
-            "85": [
-                "CARC",
-                "Desert"
-            ],
-            "86": [
-                "CARC",
-                "Desert"
-            ],
-            "87": [
-                "CARC",
-                "Desert"
-            ],
-            "88": [
-                "CARC",
-                "Desert"
-            ],
-            "89": [
-                "CARC",
-                "Desert"
-            ],
-            "90": [
-                "CARC",
-                "Desert"
-            ]
-        },
-        "displayName": "[CH] M1A2 SEPv3 MBT",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "M1A2SEPV3",
-        "detectionRange": 0,
-        "threatRange": 5000,
-        "operators": {
-            "USA": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_M270A1_ATACMS",
-        "category": "Artillery",
-        "paintSchemes": {},
-        "displayName": "[CH] M270A1 MLRS (ATACMS)",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "M270A1_ATACMS",
-        "detectionRange": 0,
-        "threatRangeMin": 74000,
-        "threatRange": 296000,
-        "operators": {
-            "USA": [
-                1990,
-                2020
-            ],
-            "Ukraine": [
-                1990,
-                2020
-            ],
-            "Finland": [
-                1990,
-                2020
-            ],
-            "France": [
-                1990,
-                2020
-            ],
-            "Germany": [
-                1990,
-                2020
-            ],
-            "Italy": [
-                1990,
-                2020
-            ],
-            "South Korea": [
-                1990,
-                2020
-            ],
-            "UK": [
-                1990,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_M270A1_GLSDB",
-        "category": "Artillery",
-        "paintSchemes": {},
-        "displayName": "[CH] M270A1 MLRS (GLSDB)",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "M270A1",
-        "detectionRange": 0,
-        "threatRangeMin": 55000,
-        "threatRange": 150000,
-        "operators": {
-            "USA": [
-                2020,
-                2020
-            ],
-            "Ukraine": [
-                2020,
-                2020
-            ],
-            "Finland": [
-                2020,
-                2020
-            ],
-            "France": [
-                2020,
-                2020
-            ],
-            "Germany": [
-                2020,
-                2020
-            ],
-            "Italy": [
-                2020,
-                2020
-            ],
-            "South Korea": [
-                2020,
-                2020
-            ],
-            "UK": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_M270A1_GMLRS",
-        "category": "Artillery",
-        "paintSchemes": {},
-        "displayName": "[CH] M270A1 MLRS (GMLRS)",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "M270A1",
-        "detectionRange": 0,
-        "threatRangeMin": 15000,
-        "threatRange": 92000,
-        "operators": {
-            "USA": [
-                2000,
-                2020
-            ],
-            "Ukraine": [
-                2000,
-                2020
-            ],
-            "Finland": [
-                2000,
-                2020
-            ],
-            "France": [
-                2000,
-                2020
-            ],
-            "Germany": [
-                2000,
-                2020
-            ],
-            "Italy": [
-                2000,
-                2020
-            ],
-            "South Korea": [
-                2000,
-                2020
-            ],
-            "UK": [
-                2000,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_M551",
-        "category": "Armor",
-        "paintSchemes": {
-            "0": [
-                "CARC",
-                "ODS"
-            ],
-            "1": [
-                "CARC",
-                "ODS"
-            ],
-            "2": [
-                "CARC",
-                "ODS"
-            ],
-            "3": [
-                "CARC",
-                "ODS"
-            ],
-            "4": [
-                "CARC",
-                "ODS"
-            ],
-            "5": [
-                "CARC",
-                "ODS"
-            ],
-            "6": [
-                "CARC",
-                "ODS"
-            ],
-            "7": [
-                "CARC",
-                "ODS"
-            ],
-            "8": [
-                "CARC",
-                "ODS"
-            ],
-            "9": [
-                "CARC",
-                "ODS"
-            ],
-            "10": [
-                "CARC",
-                "ODS"
-            ],
-            "11": [
-                "CARC",
-                "ODS"
-            ],
-            "12": [
-                "CARC",
-                "ODS"
-            ],
-            "13": [
-                "CARC",
-                "ODS"
-            ],
-            "15": [
-                "CARC",
-                "ODS"
-            ],
-            "16": [
-                "CARC",
-                "ODS"
-            ],
-            "17": [
-                "CARC",
-                "ODS"
-            ],
-            "18": [
-                "CARC",
-                "ODS"
-            ],
-            "19": [
-                "CARC",
-                "ODS"
-            ],
-            "20": [
-                "CARC",
-                "ODS"
-            ],
-            "21": [
-                "CARC",
-                "ODS"
-            ],
-            "22": [
-                "CARC",
-                "ODS"
-            ],
-            "23": [
-                "CARC",
-                "ODS"
-            ],
-            "24": [
-                "CARC",
-                "ODS"
-            ],
-            "25": [
-                "CARC",
-                "ODS"
-            ],
-            "26": [
-                "CARC",
-                "ODS"
-            ],
-            "27": [
-                "CARC",
-                "ODS"
-            ],
-            "28": [
-                "CARC",
-                "ODS"
-            ],
-            "29": [
-                "CARC",
-                "ODS"
-            ],
-            "30": [
-                "CARC",
-                "ODS"
-            ],
-            "31": [
-                "CARC",
-                "ODS"
-            ],
-            "32": [
-                "CARC",
-                "ODS"
-            ],
-            "33": [
-                "CARC",
-                "ODS"
-            ],
-            "34": [
-                "CARC",
-                "ODS"
-            ],
-            "35": [
-                "CARC",
-                "ODS"
-            ],
-            "36": [
-                "CARC",
-                "ODS"
-            ],
-            "37": [
-                "CARC",
-                "ODS"
-            ],
-            "38": [
-                "CARC",
-                "ODS"
-            ],
-            "39": [
-                "CARC",
-                "ODS"
-            ],
-            "40": [
-                "CARC",
-                "ODS"
-            ],
-            "41": [
-                "CARC",
-                "ODS"
-            ],
-            "42": [
-                "CARC",
-                "ODS"
-            ],
-            "43": [
-                "CARC",
-                "ODS"
-            ],
-            "44": [
-                "CARC",
-                "ODS"
-            ],
-            "45": [
-                "CARC",
-                "ODS"
-            ],
-            "46": [
-                "CARC",
-                "ODS"
-            ],
-            "47": [
-                "CARC",
-                "ODS"
-            ],
-            "48": [
-                "CARC",
-                "ODS"
-            ],
-            "49": [
-                "CARC",
-                "ODS"
-            ],
-            "50": [
-                "CARC",
-                "ODS"
-            ],
-            "51": [
-                "CARC",
-                "ODS"
-            ],
-            "52": [
-                "CARC",
-                "ODS"
-            ],
-            "53": [
-                "CARC",
-                "ODS"
-            ],
-            "54": [
-                "CARC",
-                "ODS"
-            ],
-            "55": [
-                "CARC",
-                "ODS"
-            ],
-            "56": [
-                "CARC",
-                "ODS"
-            ],
-            "57": [
-                "CARC",
-                "ODS"
-            ],
-            "58": [
-                "CARC",
-                "ODS"
-            ],
-            "59": [
-                "CARC",
-                "ODS"
-            ],
-            "60": [
-                "CARC",
-                "ODS"
-            ],
-            "61": [
-                "CARC",
-                "ODS"
-            ],
-            "62": [
-                "CARC",
-                "ODS"
-            ],
-            "63": [
-                "CARC",
-                "ODS"
-            ],
-            "64": [
-                "CARC",
-                "ODS"
-            ],
-            "65": [
-                "CARC",
-                "ODS"
-            ],
-            "66": [
-                "CARC",
-                "ODS"
-            ],
-            "67": [
-                "CARC",
-                "ODS"
-            ],
-            "68": [
-                "CARC",
-                "ODS"
-            ],
-            "69": [
-                "CARC",
-                "ODS"
-            ],
-            "70": [
-                "CARC",
-                "ODS"
-            ],
-            "71": [
-                "CARC",
-                "ODS"
-            ],
-            "72": [
-                "CARC",
-                "ODS"
-            ],
-            "73": [
-                "CARC",
-                "ODS"
-            ],
-            "74": [
-                "CARC",
-                "ODS"
-            ],
-            "75": [
-                "CARC",
-                "ODS"
-            ],
-            "76": [
-                "CARC",
-                "ODS"
-            ],
-            "77": [
-                "CARC",
-                "ODS"
-            ],
-            "78": [
-                "CARC",
-                "ODS"
-            ],
-            "79": [
-                "CARC",
-                "ODS"
-            ],
-            "80": [
-                "CARC",
-                "ODS"
-            ],
-            "81": [
-                "CARC",
-                "ODS"
-            ],
-            "82": [
-                "CARC",
-                "ODS"
-            ],
-            "83": [
-                "CARC",
-                "ODS"
-            ],
-            "84": [
-                "CARC",
-                "ODS"
-            ],
-            "85": [
-                "CARC",
-                "ODS"
-            ],
-            "86": [
-                "CARC",
-                "ODS"
-            ],
-            "87": [
-                "CARC",
-                "ODS"
-            ],
-            "88": [
-                "CARC",
-                "ODS"
-            ],
-            "89": [
-                "CARC",
-                "ODS"
-            ],
-            "90": [
-                "CARC",
-                "ODS"
-            ]
-        },
-        "displayName": "[CH] M551 LT",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "M551",
-        "detectionRange": 0,
-        "threatRange": 3000,
-        "operators": {
-            "USA": [
-                1970,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_M777LTH",
-        "category": "Artillery",
-        "paintSchemes": {
-            "0": [
-                "CARC",
-                "Desert"
-            ],
-            "1": [
-                "CARC",
-                "Desert"
-            ],
-            "2": [
-                "CARC",
-                "Desert"
-            ],
-            "3": [
-                "CARC",
-                "Desert"
-            ],
-            "4": [
-                "CARC",
-                "Desert"
-            ],
-            "5": [
-                "CARC",
-                "Desert"
-            ],
-            "6": [
-                "CARC",
-                "Desert"
-            ],
-            "7": [
-                "CARC",
-                "Desert"
-            ],
-            "8": [
-                "CARC",
-                "Desert"
-            ],
-            "9": [
-                "CARC",
-                "Desert"
-            ],
-            "10": [
-                "CARC",
-                "Desert"
-            ],
-            "11": [
-                "CARC",
-                "Desert"
-            ],
-            "12": [
-                "CARC",
-                "Desert"
-            ],
-            "13": [
-                "CARC",
-                "Desert"
-            ],
-            "15": [
-                "CARC",
-                "Desert"
-            ],
-            "16": [
-                "CARC",
-                "Desert"
-            ],
-            "17": [
-                "CARC",
-                "Desert"
-            ],
-            "18": [
-                "CARC",
-                "Desert"
-            ],
-            "19": [
-                "CARC",
-                "Desert"
-            ],
-            "20": [
-                "CARC",
-                "Desert"
-            ],
-            "21": [
-                "CARC",
-                "Desert"
-            ],
-            "22": [
-                "CARC",
-                "Desert"
-            ],
-            "23": [
-                "CARC",
-                "Desert"
-            ],
-            "24": [
-                "CARC",
-                "Desert"
-            ],
-            "25": [
-                "CARC",
-                "Desert"
-            ],
-            "26": [
-                "CARC",
-                "Desert"
-            ],
-            "27": [
-                "CARC",
-                "Desert"
-            ],
-            "28": [
-                "CARC",
-                "Desert"
-            ],
-            "29": [
-                "CARC",
-                "Desert"
-            ],
-            "30": [
-                "CARC",
-                "Desert"
-            ],
-            "31": [
-                "CARC",
-                "Desert"
-            ],
-            "32": [
-                "CARC",
-                "Desert"
-            ],
-            "33": [
-                "CARC",
-                "Desert"
-            ],
-            "34": [
-                "CARC",
-                "Desert"
-            ],
-            "35": [
-                "CARC",
-                "Desert"
-            ],
-            "36": [
-                "CARC",
-                "Desert"
-            ],
-            "37": [
-                "CARC",
-                "Desert"
-            ],
-            "38": [
-                "CARC",
-                "Desert"
-            ],
-            "39": [
-                "CARC",
-                "Desert"
-            ],
-            "40": [
-                "CARC",
-                "Desert"
-            ],
-            "41": [
-                "CARC",
-                "Desert"
-            ],
-            "42": [
-                "CARC",
-                "Desert"
-            ],
-            "43": [
-                "CARC",
-                "Desert"
-            ],
-            "44": [
-                "CARC",
-                "Desert"
-            ],
-            "45": [
-                "CARC",
-                "Desert"
-            ],
-            "46": [
-                "CARC",
-                "Desert"
-            ],
-            "47": [
-                "CARC",
-                "Desert"
-            ],
-            "48": [
-                "CARC",
-                "Desert"
-            ],
-            "49": [
-                "CARC",
-                "Desert"
-            ],
-            "50": [
-                "CARC",
-                "Desert"
-            ],
-            "51": [
-                "CARC",
-                "Desert"
-            ],
-            "52": [
-                "CARC",
-                "Desert"
-            ],
-            "53": [
-                "CARC",
-                "Desert"
-            ],
-            "54": [
-                "CARC",
-                "Desert"
-            ],
-            "55": [
-                "CARC",
-                "Desert"
-            ],
-            "56": [
-                "CARC",
-                "Desert"
-            ],
-            "57": [
-                "CARC",
-                "Desert"
-            ],
-            "58": [
-                "CARC",
-                "Desert"
-            ],
-            "59": [
-                "CARC",
-                "Desert"
-            ],
-            "60": [
-                "CARC",
-                "Desert"
-            ],
-            "61": [
-                "CARC",
-                "Desert"
-            ],
-            "62": [
-                "CARC",
-                "Desert"
-            ],
-            "63": [
-                "CARC",
-                "Desert"
-            ],
-            "64": [
-                "CARC",
-                "Desert"
-            ],
-            "65": [
-                "CARC",
-                "Desert"
-            ],
-            "66": [
-                "CARC",
-                "Desert"
-            ],
-            "67": [
-                "CARC",
-                "Desert"
-            ],
-            "68": [
-                "CARC",
-                "Desert"
-            ],
-            "69": [
-                "CARC",
-                "Desert"
-            ],
-            "70": [
-                "CARC",
-                "Desert"
-            ],
-            "71": [
-                "CARC",
-                "Desert"
-            ],
-            "72": [
-                "CARC",
-                "Desert"
-            ],
-            "73": [
-                "CARC",
-                "Desert"
-            ],
-            "74": [
-                "CARC",
-                "Desert"
-            ],
-            "75": [
-                "CARC",
-                "Desert"
-            ],
-            "76": [
-                "CARC",
-                "Desert"
-            ],
-            "77": [
-                "CARC",
-                "Desert"
-            ],
-            "78": [
-                "CARC",
-                "Desert"
-            ],
-            "79": [
-                "CARC",
-                "Desert"
-            ],
-            "80": [
-                "CARC",
-                "Desert"
-            ],
-            "81": [
-                "CARC",
-                "Desert"
-            ],
-            "82": [
-                "CARC",
-                "Desert"
-            ],
-            "83": [
-                "CARC",
-                "Desert"
-            ],
-            "84": [
-                "CARC",
-                "Desert"
-            ],
-            "85": [
-                "CARC",
-                "Desert"
-            ],
-            "86": [
-                "CARC",
-                "Desert"
-            ],
-            "87": [
-                "CARC",
-                "Desert"
-            ],
-            "88": [
-                "CARC",
-                "Desert"
-            ],
-            "89": [
-                "CARC",
-                "Desert"
-            ],
-            "90": [
-                "CARC",
-                "Desert"
-            ]
-        },
-        "displayName": "[CH] M777 LTH Stationary",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "M777",
-        "detectionRange": 0,
-        "threatRangeMin": 50,
-        "threatRange": 50000,
-        "operators": {
-            "USA": [
-                2000,
-                2020
-            ],
-            "Ukraine": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_M777LTH_MTVR",
-        "category": "Artillery",
-        "paintSchemes": {
-            "0": [
-                "CARC",
-                "Desert"
-            ],
-            "1": [
-                "CARC",
-                "Desert"
-            ],
-            "2": [
-                "CARC",
-                "Desert"
-            ],
-            "3": [
-                "CARC",
-                "Desert"
-            ],
-            "4": [
-                "CARC",
-                "Desert"
-            ],
-            "5": [
-                "CARC",
-                "Desert"
-            ],
-            "6": [
-                "CARC",
-                "Desert"
-            ],
-            "7": [
-                "CARC",
-                "Desert"
-            ],
-            "8": [
-                "CARC",
-                "Desert"
-            ],
-            "9": [
-                "CARC",
-                "Desert"
-            ],
-            "10": [
-                "CARC",
-                "Desert"
-            ],
-            "11": [
-                "CARC",
-                "Desert"
-            ],
-            "12": [
-                "CARC",
-                "Desert"
-            ],
-            "13": [
-                "CARC",
-                "Desert"
-            ],
-            "15": [
-                "CARC",
-                "Desert"
-            ],
-            "16": [
-                "CARC",
-                "Desert"
-            ],
-            "17": [
-                "CARC",
-                "Desert"
-            ],
-            "18": [
-                "CARC",
-                "Desert"
-            ],
-            "19": [
-                "CARC",
-                "Desert"
-            ],
-            "20": [
-                "CARC",
-                "Desert"
-            ],
-            "21": [
-                "CARC",
-                "Desert"
-            ],
-            "22": [
-                "CARC",
-                "Desert"
-            ],
-            "23": [
-                "CARC",
-                "Desert"
-            ],
-            "24": [
-                "CARC",
-                "Desert"
-            ],
-            "25": [
-                "CARC",
-                "Desert"
-            ],
-            "26": [
-                "CARC",
-                "Desert"
-            ],
-            "27": [
-                "CARC",
-                "Desert"
-            ],
-            "28": [
-                "CARC",
-                "Desert"
-            ],
-            "29": [
-                "CARC",
-                "Desert"
-            ],
-            "30": [
-                "CARC",
-                "Desert"
-            ],
-            "31": [
-                "CARC",
-                "Desert"
-            ],
-            "32": [
-                "CARC",
-                "Desert"
-            ],
-            "33": [
-                "CARC",
-                "Desert"
-            ],
-            "34": [
-                "CARC",
-                "Desert"
-            ],
-            "35": [
-                "CARC",
-                "Desert"
-            ],
-            "36": [
-                "CARC",
-                "Desert"
-            ],
-            "37": [
-                "CARC",
-                "Desert"
-            ],
-            "38": [
-                "CARC",
-                "Desert"
-            ],
-            "39": [
-                "CARC",
-                "Desert"
-            ],
-            "40": [
-                "CARC",
-                "Desert"
-            ],
-            "41": [
-                "CARC",
-                "Desert"
-            ],
-            "42": [
-                "CARC",
-                "Desert"
-            ],
-            "43": [
-                "CARC",
-                "Desert"
-            ],
-            "44": [
-                "CARC",
-                "Desert"
-            ],
-            "45": [
-                "CARC",
-                "Desert"
-            ],
-            "46": [
-                "CARC",
-                "Desert"
-            ],
-            "47": [
-                "CARC",
-                "Desert"
-            ],
-            "48": [
-                "CARC",
-                "Desert"
-            ],
-            "49": [
-                "CARC",
-                "Desert"
-            ],
-            "50": [
-                "CARC",
-                "Desert"
-            ],
-            "51": [
-                "CARC",
-                "Desert"
-            ],
-            "52": [
-                "CARC",
-                "Desert"
-            ],
-            "53": [
-                "CARC",
-                "Desert"
-            ],
-            "54": [
-                "CARC",
-                "Desert"
-            ],
-            "55": [
-                "CARC",
-                "Desert"
-            ],
-            "56": [
-                "CARC",
-                "Desert"
-            ],
-            "57": [
-                "CARC",
-                "Desert"
-            ],
-            "58": [
-                "CARC",
-                "Desert"
-            ],
-            "59": [
-                "CARC",
-                "Desert"
-            ],
-            "60": [
-                "CARC",
-                "Desert"
-            ],
-            "61": [
-                "CARC",
-                "Desert"
-            ],
-            "62": [
-                "CARC",
-                "Desert"
-            ],
-            "63": [
-                "CARC",
-                "Desert"
-            ],
-            "64": [
-                "CARC",
-                "Desert"
-            ],
-            "65": [
-                "CARC",
-                "Desert"
-            ],
-            "66": [
-                "CARC",
-                "Desert"
-            ],
-            "67": [
-                "CARC",
-                "Desert"
-            ],
-            "68": [
-                "CARC",
-                "Desert"
-            ],
-            "69": [
-                "CARC",
-                "Desert"
-            ],
-            "70": [
-                "CARC",
-                "Desert"
-            ],
-            "71": [
-                "CARC",
-                "Desert"
-            ],
-            "72": [
-                "CARC",
-                "Desert"
-            ],
-            "73": [
-                "CARC",
-                "Desert"
-            ],
-            "74": [
-                "CARC",
-                "Desert"
-            ],
-            "75": [
-                "CARC",
-                "Desert"
-            ],
-            "76": [
-                "CARC",
-                "Desert"
-            ],
-            "77": [
-                "CARC",
-                "Desert"
-            ],
-            "78": [
-                "CARC",
-                "Desert"
-            ],
-            "79": [
-                "CARC",
-                "Desert"
-            ],
-            "80": [
-                "CARC",
-                "Desert"
-            ],
-            "81": [
-                "CARC",
-                "Desert"
-            ],
-            "82": [
-                "CARC",
-                "Desert"
-            ],
-            "83": [
-                "CARC",
-                "Desert"
-            ],
-            "84": [
-                "CARC",
-                "Desert"
-            ],
-            "85": [
-                "CARC",
-                "Desert"
-            ],
-            "86": [
-                "CARC",
-                "Desert"
-            ],
-            "87": [
-                "CARC",
-                "Desert"
-            ],
-            "88": [
-                "CARC",
-                "Desert"
-            ],
-            "89": [
-                "CARC",
-                "Desert"
-            ],
-            "90": [
-                "CARC",
-                "Desert"
-            ]
-        },
-        "displayName": "[CH] M777 LTH Mobile",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "M777_MTVR",
-        "detectionRange": 0,
-        "threatRangeMin": 50,
-        "threatRange": 50000,
-        "operators": {
-            "USA": [
-                2000,
-                2020
-            ],
-            "Ukraine": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_MTVR",
-        "category": "Unarmed",
-        "paintSchemes": {
-            "0": [
-                "CARC",
-                "Desert"
-            ],
-            "1": [
-                "CARC",
-                "Desert"
-            ],
-            "2": [
-                "CARC",
-                "Desert"
-            ],
-            "3": [
-                "CARC",
-                "Desert"
-            ],
-            "4": [
-                "CARC",
-                "Desert"
-            ],
-            "5": [
-                "CARC",
-                "Desert"
-            ],
-            "6": [
-                "CARC",
-                "Desert"
-            ],
-            "7": [
-                "CARC",
-                "Desert"
-            ],
-            "8": [
-                "CARC",
-                "Desert"
-            ],
-            "9": [
-                "CARC",
-                "Desert"
-            ],
-            "10": [
-                "CARC",
-                "Desert"
-            ],
-            "11": [
-                "CARC",
-                "Desert"
-            ],
-            "12": [
-                "CARC",
-                "Desert"
-            ],
-            "13": [
-                "CARC",
-                "Desert"
-            ],
-            "15": [
-                "CARC",
-                "Desert"
-            ],
-            "16": [
-                "CARC",
-                "Desert"
-            ],
-            "17": [
-                "CARC",
-                "Desert"
-            ],
-            "18": [
-                "CARC",
-                "Desert"
-            ],
-            "19": [
-                "CARC",
-                "Desert"
-            ],
-            "20": [
-                "CARC",
-                "Desert"
-            ],
-            "21": [
-                "CARC",
-                "Desert"
-            ],
-            "22": [
-                "CARC",
-                "Desert"
-            ],
-            "23": [
-                "CARC",
-                "Desert"
-            ],
-            "24": [
-                "CARC",
-                "Desert"
-            ],
-            "25": [
-                "CARC",
-                "Desert"
-            ],
-            "26": [
-                "CARC",
-                "Desert"
-            ],
-            "27": [
-                "CARC",
-                "Desert"
-            ],
-            "28": [
-                "CARC",
-                "Desert"
-            ],
-            "29": [
-                "CARC",
-                "Desert"
-            ],
-            "30": [
-                "CARC",
-                "Desert"
-            ],
-            "31": [
-                "CARC",
-                "Desert"
-            ],
-            "32": [
-                "CARC",
-                "Desert"
-            ],
-            "33": [
-                "CARC",
-                "Desert"
-            ],
-            "34": [
-                "CARC",
-                "Desert"
-            ],
-            "35": [
-                "CARC",
-                "Desert"
-            ],
-            "36": [
-                "CARC",
-                "Desert"
-            ],
-            "37": [
-                "CARC",
-                "Desert"
-            ],
-            "38": [
-                "CARC",
-                "Desert"
-            ],
-            "39": [
-                "CARC",
-                "Desert"
-            ],
-            "40": [
-                "CARC",
-                "Desert"
-            ],
-            "41": [
-                "CARC",
-                "Desert"
-            ],
-            "42": [
-                "CARC",
-                "Desert"
-            ],
-            "43": [
-                "CARC",
-                "Desert"
-            ],
-            "44": [
-                "CARC",
-                "Desert"
-            ],
-            "45": [
-                "CARC",
-                "Desert"
-            ],
-            "46": [
-                "CARC",
-                "Desert"
-            ],
-            "47": [
-                "CARC",
-                "Desert"
-            ],
-            "48": [
-                "CARC",
-                "Desert"
-            ],
-            "49": [
-                "CARC",
-                "Desert"
-            ],
-            "50": [
-                "CARC",
-                "Desert"
-            ],
-            "51": [
-                "CARC",
-                "Desert"
-            ],
-            "52": [
-                "CARC",
-                "Desert"
-            ],
-            "53": [
-                "CARC",
-                "Desert"
-            ],
-            "54": [
-                "CARC",
-                "Desert"
-            ],
-            "55": [
-                "CARC",
-                "Desert"
-            ],
-            "56": [
-                "CARC",
-                "Desert"
-            ],
-            "57": [
-                "CARC",
-                "Desert"
-            ],
-            "58": [
-                "CARC",
-                "Desert"
-            ],
-            "59": [
-                "CARC",
-                "Desert"
-            ],
-            "60": [
-                "CARC",
-                "Desert"
-            ],
-            "61": [
-                "CARC",
-                "Desert"
-            ],
-            "62": [
-                "CARC",
-                "Desert"
-            ],
-            "63": [
-                "CARC",
-                "Desert"
-            ],
-            "64": [
-                "CARC",
-                "Desert"
-            ],
-            "65": [
-                "CARC",
-                "Desert"
-            ],
-            "66": [
-                "CARC",
-                "Desert"
-            ],
-            "67": [
-                "CARC",
-                "Desert"
-            ],
-            "68": [
-                "CARC",
-                "Desert"
-            ],
-            "69": [
-                "CARC",
-                "Desert"
-            ],
-            "70": [
-                "CARC",
-                "Desert"
-            ],
-            "71": [
-                "CARC",
-                "Desert"
-            ],
-            "72": [
-                "CARC",
-                "Desert"
-            ],
-            "73": [
-                "CARC",
-                "Desert"
-            ],
-            "74": [
-                "CARC",
-                "Desert"
-            ],
-            "75": [
-                "CARC",
-                "Desert"
-            ],
-            "76": [
-                "CARC",
-                "Desert"
-            ],
-            "77": [
-                "CARC",
-                "Desert"
-            ],
-            "78": [
-                "CARC",
-                "Desert"
-            ],
-            "79": [
-                "CARC",
-                "Desert"
-            ],
-            "80": [
-                "CARC",
-                "Desert"
-            ],
-            "81": [
-                "CARC",
-                "Desert"
-            ],
-            "82": [
-                "CARC",
-                "Desert"
-            ],
-            "83": [
-                "CARC",
-                "Desert"
-            ],
-            "84": [
-                "CARC",
-                "Desert"
-            ],
-            "85": [
-                "CARC",
-                "Desert"
-            ],
-            "86": [
-                "CARC",
-                "Desert"
-            ],
-            "87": [
-                "CARC",
-                "Desert"
-            ],
-            "88": [
-                "CARC",
-                "Desert"
-            ],
-            "89": [
-                "CARC",
-                "Desert"
-            ],
-            "90": [
-                "CARC",
-                "Desert"
-            ]
-        },
-        "displayName": "[CH] Oshkosh MTVR",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "MTVR",
-        "detectionRange": 0,
-        "threatRange": 0,
-        "operators": {
-            "USA": [
-                2000,
-                2020
-            ],
-            "Ukraine": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_NASAMS3_CP",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] NASAMS 3 CP",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "NASAMS_Command_Post",
-        "detectionRange": 0,
-        "threatRange": 0,
-        "operators": {
-            "USA": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_NASAMS3_LN_AIM9X2",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] NASAMS 3 LCHR LN (AIM-9X-2)",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "NASAMS3_HX_LCHR",
-        "detectionRange": 0,
-        "threatRangeMin": 200,
-        "threatRange": 20000,
-        "operators": {
-            "USA": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_NASAMS3_LN_AMRAAM_ER",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] NASAMS 3 LCHR LN (AMRAAM-ER)",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "NASAMS3_HX_LCHR",
-        "detectionRange": 0,
-        "threatRangeMin": 2000,
-        "threatRange": 50000,
-        "operators": {
-            "USA": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_NASAMS3_SR",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] NASAMS 3 SR",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "NASAMS_Radar_MPQ64F1",
-        "detectionRange": 120000,
-        "threatRange": 0,
-        "operators": {
-            "USA": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_OshkoshLATV_M2",
-        "category": "Armor",
-        "paintSchemes": {
-            "0": [
-                "CARC",
-                "Desert"
-            ],
-            "1": [
-                "CARC",
-                "Desert"
-            ],
-            "2": [
-                "CARC",
-                "Desert"
-            ],
-            "3": [
-                "CARC",
-                "Desert"
-            ],
-            "4": [
-                "CARC",
-                "Desert"
-            ],
-            "5": [
-                "CARC",
-                "Desert"
-            ],
-            "6": [
-                "CARC",
-                "Desert"
-            ],
-            "7": [
-                "CARC",
-                "Desert"
-            ],
-            "8": [
-                "CARC",
-                "Desert"
-            ],
-            "9": [
-                "CARC",
-                "Desert"
-            ],
-            "10": [
-                "CARC",
-                "Desert"
-            ],
-            "11": [
-                "CARC",
-                "Desert"
-            ],
-            "12": [
-                "CARC",
-                "Desert"
-            ],
-            "13": [
-                "CARC",
-                "Desert"
-            ],
-            "15": [
-                "CARC",
-                "Desert"
-            ],
-            "16": [
-                "CARC",
-                "Desert"
-            ],
-            "17": [
-                "CARC",
-                "Desert"
-            ],
-            "18": [
-                "CARC",
-                "Desert"
-            ],
-            "19": [
-                "CARC",
-                "Desert"
-            ],
-            "20": [
-                "CARC",
-                "Desert"
-            ],
-            "21": [
-                "CARC",
-                "Desert"
-            ],
-            "22": [
-                "CARC",
-                "Desert"
-            ],
-            "23": [
-                "CARC",
-                "Desert"
-            ],
-            "24": [
-                "CARC",
-                "Desert"
-            ],
-            "25": [
-                "CARC",
-                "Desert"
-            ],
-            "26": [
-                "CARC",
-                "Desert"
-            ],
-            "27": [
-                "CARC",
-                "Desert"
-            ],
-            "28": [
-                "CARC",
-                "Desert"
-            ],
-            "29": [
-                "CARC",
-                "Desert"
-            ],
-            "30": [
-                "CARC",
-                "Desert"
-            ],
-            "31": [
-                "CARC",
-                "Desert"
-            ],
-            "32": [
-                "CARC",
-                "Desert"
-            ],
-            "33": [
-                "CARC",
-                "Desert"
-            ],
-            "34": [
-                "CARC",
-                "Desert"
-            ],
-            "35": [
-                "CARC",
-                "Desert"
-            ],
-            "36": [
-                "CARC",
-                "Desert"
-            ],
-            "37": [
-                "CARC",
-                "Desert"
-            ],
-            "38": [
-                "CARC",
-                "Desert"
-            ],
-            "39": [
-                "CARC",
-                "Desert"
-            ],
-            "40": [
-                "CARC",
-                "Desert"
-            ],
-            "41": [
-                "CARC",
-                "Desert"
-            ],
-            "42": [
-                "CARC",
-                "Desert"
-            ],
-            "43": [
-                "CARC",
-                "Desert"
-            ],
-            "44": [
-                "CARC",
-                "Desert"
-            ],
-            "45": [
-                "CARC",
-                "Desert"
-            ],
-            "46": [
-                "CARC",
-                "Desert"
-            ],
-            "47": [
-                "CARC",
-                "Desert"
-            ],
-            "48": [
-                "CARC",
-                "Desert"
-            ],
-            "49": [
-                "CARC",
-                "Desert"
-            ],
-            "50": [
-                "CARC",
-                "Desert"
-            ],
-            "51": [
-                "CARC",
-                "Desert"
-            ],
-            "52": [
-                "CARC",
-                "Desert"
-            ],
-            "53": [
-                "CARC",
-                "Desert"
-            ],
-            "54": [
-                "CARC",
-                "Desert"
-            ],
-            "55": [
-                "CARC",
-                "Desert"
-            ],
-            "56": [
-                "CARC",
-                "Desert"
-            ],
-            "57": [
-                "CARC",
-                "Desert"
-            ],
-            "58": [
-                "CARC",
-                "Desert"
-            ],
-            "59": [
-                "CARC",
-                "Desert"
-            ],
-            "60": [
-                "CARC",
-                "Desert"
-            ],
-            "61": [
-                "CARC",
-                "Desert"
-            ],
-            "62": [
-                "CARC",
-                "Desert"
-            ],
-            "63": [
-                "CARC",
-                "Desert"
-            ],
-            "64": [
-                "CARC",
-                "Desert"
-            ],
-            "65": [
-                "CARC",
-                "Desert"
-            ],
-            "66": [
-                "CARC",
-                "Desert"
-            ],
-            "67": [
-                "CARC",
-                "Desert"
-            ],
-            "68": [
-                "CARC",
-                "Desert"
-            ],
-            "69": [
-                "CARC",
-                "Desert"
-            ],
-            "70": [
-                "CARC",
-                "Desert"
-            ],
-            "71": [
-                "CARC",
-                "Desert"
-            ],
-            "72": [
-                "CARC",
-                "Desert"
-            ],
-            "73": [
-                "CARC",
-                "Desert"
-            ],
-            "74": [
-                "CARC",
-                "Desert"
-            ],
-            "75": [
-                "CARC",
-                "Desert"
-            ],
-            "76": [
-                "CARC",
-                "Desert"
-            ],
-            "77": [
-                "CARC",
-                "Desert"
-            ],
-            "78": [
-                "CARC",
-                "Desert"
-            ],
-            "79": [
-                "CARC",
-                "Desert"
-            ],
-            "80": [
-                "CARC",
-                "Desert"
-            ],
-            "81": [
-                "CARC",
-                "Desert"
-            ],
-            "82": [
-                "CARC",
-                "Desert"
-            ],
-            "83": [
-                "CARC",
-                "Desert"
-            ],
-            "84": [
-                "CARC",
-                "Desert"
-            ],
-            "85": [
-                "CARC",
-                "Desert"
-            ],
-            "86": [
-                "CARC",
-                "Desert"
-            ],
-            "87": [
-                "CARC",
-                "Desert"
-            ],
-            "88": [
-                "CARC",
-                "Desert"
-            ],
-            "89": [
-                "CARC",
-                "Desert"
-            ],
-            "90": [
-                "CARC",
-                "Desert"
-            ]
-        },
-        "displayName": "[CH] Oshkosh L-ATV (M2)",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "OshkoshLATV_M2",
-        "detectionRange": 0,
-        "threatRange": 1800,
-        "operators": {
-            "USA": [
-                2010,
-                2020
-            ],
-            "Ukraine": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_OshkoshLATV_MK19",
-        "category": "Armor",
-        "paintSchemes": {
-            "0": [
-                "CARC",
-                "Desert"
-            ],
-            "1": [
-                "CARC",
-                "Desert"
-            ],
-            "2": [
-                "CARC",
-                "Desert"
-            ],
-            "3": [
-                "CARC",
-                "Desert"
-            ],
-            "4": [
-                "CARC",
-                "Desert"
-            ],
-            "5": [
-                "CARC",
-                "Desert"
-            ],
-            "6": [
-                "CARC",
-                "Desert"
-            ],
-            "7": [
-                "CARC",
-                "Desert"
-            ],
-            "8": [
-                "CARC",
-                "Desert"
-            ],
-            "9": [
-                "CARC",
-                "Desert"
-            ],
-            "10": [
-                "CARC",
-                "Desert"
-            ],
-            "11": [
-                "CARC",
-                "Desert"
-            ],
-            "12": [
-                "CARC",
-                "Desert"
-            ],
-            "13": [
-                "CARC",
-                "Desert"
-            ],
-            "15": [
-                "CARC",
-                "Desert"
-            ],
-            "16": [
-                "CARC",
-                "Desert"
-            ],
-            "17": [
-                "CARC",
-                "Desert"
-            ],
-            "18": [
-                "CARC",
-                "Desert"
-            ],
-            "19": [
-                "CARC",
-                "Desert"
-            ],
-            "20": [
-                "CARC",
-                "Desert"
-            ],
-            "21": [
-                "CARC",
-                "Desert"
-            ],
-            "22": [
-                "CARC",
-                "Desert"
-            ],
-            "23": [
-                "CARC",
-                "Desert"
-            ],
-            "24": [
-                "CARC",
-                "Desert"
-            ],
-            "25": [
-                "CARC",
-                "Desert"
-            ],
-            "26": [
-                "CARC",
-                "Desert"
-            ],
-            "27": [
-                "CARC",
-                "Desert"
-            ],
-            "28": [
-                "CARC",
-                "Desert"
-            ],
-            "29": [
-                "CARC",
-                "Desert"
-            ],
-            "30": [
-                "CARC",
-                "Desert"
-            ],
-            "31": [
-                "CARC",
-                "Desert"
-            ],
-            "32": [
-                "CARC",
-                "Desert"
-            ],
-            "33": [
-                "CARC",
-                "Desert"
-            ],
-            "34": [
-                "CARC",
-                "Desert"
-            ],
-            "35": [
-                "CARC",
-                "Desert"
-            ],
-            "36": [
-                "CARC",
-                "Desert"
-            ],
-            "37": [
-                "CARC",
-                "Desert"
-            ],
-            "38": [
-                "CARC",
-                "Desert"
-            ],
-            "39": [
-                "CARC",
-                "Desert"
-            ],
-            "40": [
-                "CARC",
-                "Desert"
-            ],
-            "41": [
-                "CARC",
-                "Desert"
-            ],
-            "42": [
-                "CARC",
-                "Desert"
-            ],
-            "43": [
-                "CARC",
-                "Desert"
-            ],
-            "44": [
-                "CARC",
-                "Desert"
-            ],
-            "45": [
-                "CARC",
-                "Desert"
-            ],
-            "46": [
-                "CARC",
-                "Desert"
-            ],
-            "47": [
-                "CARC",
-                "Desert"
-            ],
-            "48": [
-                "CARC",
-                "Desert"
-            ],
-            "49": [
-                "CARC",
-                "Desert"
-            ],
-            "50": [
-                "CARC",
-                "Desert"
-            ],
-            "51": [
-                "CARC",
-                "Desert"
-            ],
-            "52": [
-                "CARC",
-                "Desert"
-            ],
-            "53": [
-                "CARC",
-                "Desert"
-            ],
-            "54": [
-                "CARC",
-                "Desert"
-            ],
-            "55": [
-                "CARC",
-                "Desert"
-            ],
-            "56": [
-                "CARC",
-                "Desert"
-            ],
-            "57": [
-                "CARC",
-                "Desert"
-            ],
-            "58": [
-                "CARC",
-                "Desert"
-            ],
-            "59": [
-                "CARC",
-                "Desert"
-            ],
-            "60": [
-                "CARC",
-                "Desert"
-            ],
-            "61": [
-                "CARC",
-                "Desert"
-            ],
-            "62": [
-                "CARC",
-                "Desert"
-            ],
-            "63": [
-                "CARC",
-                "Desert"
-            ],
-            "64": [
-                "CARC",
-                "Desert"
-            ],
-            "65": [
-                "CARC",
-                "Desert"
-            ],
-            "66": [
-                "CARC",
-                "Desert"
-            ],
-            "67": [
-                "CARC",
-                "Desert"
-            ],
-            "68": [
-                "CARC",
-                "Desert"
-            ],
-            "69": [
-                "CARC",
-                "Desert"
-            ],
-            "70": [
-                "CARC",
-                "Desert"
-            ],
-            "71": [
-                "CARC",
-                "Desert"
-            ],
-            "72": [
-                "CARC",
-                "Desert"
-            ],
-            "73": [
-                "CARC",
-                "Desert"
-            ],
-            "74": [
-                "CARC",
-                "Desert"
-            ],
-            "75": [
-                "CARC",
-                "Desert"
-            ],
-            "76": [
-                "CARC",
-                "Desert"
-            ],
-            "77": [
-                "CARC",
-                "Desert"
-            ],
-            "78": [
-                "CARC",
-                "Desert"
-            ],
-            "79": [
-                "CARC",
-                "Desert"
-            ],
-            "80": [
-                "CARC",
-                "Desert"
-            ],
-            "81": [
-                "CARC",
-                "Desert"
-            ],
-            "82": [
-                "CARC",
-                "Desert"
-            ],
-            "83": [
-                "CARC",
-                "Desert"
-            ],
-            "84": [
-                "CARC",
-                "Desert"
-            ],
-            "85": [
-                "CARC",
-                "Desert"
-            ],
-            "86": [
-                "CARC",
-                "Desert"
-            ],
-            "87": [
-                "CARC",
-                "Desert"
-            ],
-            "88": [
-                "CARC",
-                "Desert"
-            ],
-            "89": [
-                "CARC",
-                "Desert"
-            ],
-            "90": [
-                "CARC",
-                "Desert"
-            ]
-        },
-        "displayName": "[CH] Oshkosh L-ATV (Mk19)",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "OshkoshLATV_MK19",
-        "detectionRange": 0,
-        "threatRangeMin": 75,
-        "threatRange": 2000,
-        "operators": {
-            "USA": [
-                2010,
-                2020
-            ],
-            "Ukraine": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_OshkoshMATV_M2",
-        "category": "Armor",
-        "paintSchemes": {
-            "0": [
-                "CARC",
-                "Desert"
-            ],
-            "1": [
-                "CARC",
-                "Desert"
-            ],
-            "2": [
-                "CARC",
-                "Desert"
-            ],
-            "3": [
-                "CARC",
-                "Desert"
-            ],
-            "4": [
-                "CARC",
-                "Desert"
-            ],
-            "5": [
-                "CARC",
-                "Desert"
-            ],
-            "6": [
-                "CARC",
-                "Desert"
-            ],
-            "7": [
-                "CARC",
-                "Desert"
-            ],
-            "8": [
-                "CARC",
-                "Desert"
-            ],
-            "9": [
-                "CARC",
-                "Desert"
-            ],
-            "10": [
-                "CARC",
-                "Desert"
-            ],
-            "11": [
-                "CARC",
-                "Desert"
-            ],
-            "12": [
-                "CARC",
-                "Desert"
-            ],
-            "13": [
-                "CARC",
-                "Desert"
-            ],
-            "15": [
-                "CARC",
-                "Desert"
-            ],
-            "16": [
-                "CARC",
-                "Desert"
-            ],
-            "17": [
-                "CARC",
-                "Desert"
-            ],
-            "18": [
-                "CARC",
-                "Desert"
-            ],
-            "19": [
-                "CARC",
-                "Desert"
-            ],
-            "20": [
-                "CARC",
-                "Desert"
-            ],
-            "21": [
-                "CARC",
-                "Desert"
-            ],
-            "22": [
-                "CARC",
-                "Desert"
-            ],
-            "23": [
-                "CARC",
-                "Desert"
-            ],
-            "24": [
-                "CARC",
-                "Desert"
-            ],
-            "25": [
-                "CARC",
-                "Desert"
-            ],
-            "26": [
-                "CARC",
-                "Desert"
-            ],
-            "27": [
-                "CARC",
-                "Desert"
-            ],
-            "28": [
-                "CARC",
-                "Desert"
-            ],
-            "29": [
-                "CARC",
-                "Desert"
-            ],
-            "30": [
-                "CARC",
-                "Desert"
-            ],
-            "31": [
-                "CARC",
-                "Desert"
-            ],
-            "32": [
-                "CARC",
-                "Desert"
-            ],
-            "33": [
-                "CARC",
-                "Desert"
-            ],
-            "34": [
-                "CARC",
-                "Desert"
-            ],
-            "35": [
-                "CARC",
-                "Desert"
-            ],
-            "36": [
-                "CARC",
-                "Desert"
-            ],
-            "37": [
-                "CARC",
-                "Desert"
-            ],
-            "38": [
-                "CARC",
-                "Desert"
-            ],
-            "39": [
-                "CARC",
-                "Desert"
-            ],
-            "40": [
-                "CARC",
-                "Desert"
-            ],
-            "41": [
-                "CARC",
-                "Desert"
-            ],
-            "42": [
-                "CARC",
-                "Desert"
-            ],
-            "43": [
-                "CARC",
-                "Desert"
-            ],
-            "44": [
-                "CARC",
-                "Desert"
-            ],
-            "45": [
-                "CARC",
-                "Desert"
-            ],
-            "46": [
-                "CARC",
-                "Desert"
-            ],
-            "47": [
-                "CARC",
-                "Desert"
-            ],
-            "48": [
-                "CARC",
-                "Desert"
-            ],
-            "49": [
-                "CARC",
-                "Desert"
-            ],
-            "50": [
-                "CARC",
-                "Desert"
-            ],
-            "51": [
-                "CARC",
-                "Desert"
-            ],
-            "52": [
-                "CARC",
-                "Desert"
-            ],
-            "53": [
-                "CARC",
-                "Desert"
-            ],
-            "54": [
-                "CARC",
-                "Desert"
-            ],
-            "55": [
-                "CARC",
-                "Desert"
-            ],
-            "56": [
-                "CARC",
-                "Desert"
-            ],
-            "57": [
-                "CARC",
-                "Desert"
-            ],
-            "58": [
-                "CARC",
-                "Desert"
-            ],
-            "59": [
-                "CARC",
-                "Desert"
-            ],
-            "60": [
-                "CARC",
-                "Desert"
-            ],
-            "61": [
-                "CARC",
-                "Desert"
-            ],
-            "62": [
-                "CARC",
-                "Desert"
-            ],
-            "63": [
-                "CARC",
-                "Desert"
-            ],
-            "64": [
-                "CARC",
-                "Desert"
-            ],
-            "65": [
-                "CARC",
-                "Desert"
-            ],
-            "66": [
-                "CARC",
-                "Desert"
-            ],
-            "67": [
-                "CARC",
-                "Desert"
-            ],
-            "68": [
-                "CARC",
-                "Desert"
-            ],
-            "69": [
-                "CARC",
-                "Desert"
-            ],
-            "70": [
-                "CARC",
-                "Desert"
-            ],
-            "71": [
-                "CARC",
-                "Desert"
-            ],
-            "72": [
-                "CARC",
-                "Desert"
-            ],
-            "73": [
-                "CARC",
-                "Desert"
-            ],
-            "74": [
-                "CARC",
-                "Desert"
-            ],
-            "75": [
-                "CARC",
-                "Desert"
-            ],
-            "76": [
-                "CARC",
-                "Desert"
-            ],
-            "77": [
-                "CARC",
-                "Desert"
-            ],
-            "78": [
-                "CARC",
-                "Desert"
-            ],
-            "79": [
-                "CARC",
-                "Desert"
-            ],
-            "80": [
-                "CARC",
-                "Desert"
-            ],
-            "81": [
-                "CARC",
-                "Desert"
-            ],
-            "82": [
-                "CARC",
-                "Desert"
-            ],
-            "83": [
-                "CARC",
-                "Desert"
-            ],
-            "84": [
-                "CARC",
-                "Desert"
-            ],
-            "85": [
-                "CARC",
-                "Desert"
-            ],
-            "86": [
-                "CARC",
-                "Desert"
-            ],
-            "87": [
-                "CARC",
-                "Desert"
-            ],
-            "88": [
-                "CARC",
-                "Desert"
-            ],
-            "89": [
-                "CARC",
-                "Desert"
-            ],
-            "90": [
-                "CARC",
-                "Desert"
-            ]
-        },
-        "displayName": "[CH] Oshkosh M-ATV MRAP (M2)",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "OshkoshMATV_M2",
-        "detectionRange": 0,
-        "threatRange": 1800,
-        "operators": {
-            "USA": [
-                2000,
-                2020
-            ],
-            "Ukraine": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_OshkoshMATV_MK19",
-        "category": "Armor",
-        "paintSchemes": {
-            "0": [
-                "CARC",
-                "Desert"
-            ],
-            "1": [
-                "CARC",
-                "Desert"
-            ],
-            "2": [
-                "CARC",
-                "Desert"
-            ],
-            "3": [
-                "CARC",
-                "Desert"
-            ],
-            "4": [
-                "CARC",
-                "Desert"
-            ],
-            "5": [
-                "CARC",
-                "Desert"
-            ],
-            "6": [
-                "CARC",
-                "Desert"
-            ],
-            "7": [
-                "CARC",
-                "Desert"
-            ],
-            "8": [
-                "CARC",
-                "Desert"
-            ],
-            "9": [
-                "CARC",
-                "Desert"
-            ],
-            "10": [
-                "CARC",
-                "Desert"
-            ],
-            "11": [
-                "CARC",
-                "Desert"
-            ],
-            "12": [
-                "CARC",
-                "Desert"
-            ],
-            "13": [
-                "CARC",
-                "Desert"
-            ],
-            "15": [
-                "CARC",
-                "Desert"
-            ],
-            "16": [
-                "CARC",
-                "Desert"
-            ],
-            "17": [
-                "CARC",
-                "Desert"
-            ],
-            "18": [
-                "CARC",
-                "Desert"
-            ],
-            "19": [
-                "CARC",
-                "Desert"
-            ],
-            "20": [
-                "CARC",
-                "Desert"
-            ],
-            "21": [
-                "CARC",
-                "Desert"
-            ],
-            "22": [
-                "CARC",
-                "Desert"
-            ],
-            "23": [
-                "CARC",
-                "Desert"
-            ],
-            "24": [
-                "CARC",
-                "Desert"
-            ],
-            "25": [
-                "CARC",
-                "Desert"
-            ],
-            "26": [
-                "CARC",
-                "Desert"
-            ],
-            "27": [
-                "CARC",
-                "Desert"
-            ],
-            "28": [
-                "CARC",
-                "Desert"
-            ],
-            "29": [
-                "CARC",
-                "Desert"
-            ],
-            "30": [
-                "CARC",
-                "Desert"
-            ],
-            "31": [
-                "CARC",
-                "Desert"
-            ],
-            "32": [
-                "CARC",
-                "Desert"
-            ],
-            "33": [
-                "CARC",
-                "Desert"
-            ],
-            "34": [
-                "CARC",
-                "Desert"
-            ],
-            "35": [
-                "CARC",
-                "Desert"
-            ],
-            "36": [
-                "CARC",
-                "Desert"
-            ],
-            "37": [
-                "CARC",
-                "Desert"
-            ],
-            "38": [
-                "CARC",
-                "Desert"
-            ],
-            "39": [
-                "CARC",
-                "Desert"
-            ],
-            "40": [
-                "CARC",
-                "Desert"
-            ],
-            "41": [
-                "CARC",
-                "Desert"
-            ],
-            "42": [
-                "CARC",
-                "Desert"
-            ],
-            "43": [
-                "CARC",
-                "Desert"
-            ],
-            "44": [
-                "CARC",
-                "Desert"
-            ],
-            "45": [
-                "CARC",
-                "Desert"
-            ],
-            "46": [
-                "CARC",
-                "Desert"
-            ],
-            "47": [
-                "CARC",
-                "Desert"
-            ],
-            "48": [
-                "CARC",
-                "Desert"
-            ],
-            "49": [
-                "CARC",
-                "Desert"
-            ],
-            "50": [
-                "CARC",
-                "Desert"
-            ],
-            "51": [
-                "CARC",
-                "Desert"
-            ],
-            "52": [
-                "CARC",
-                "Desert"
-            ],
-            "53": [
-                "CARC",
-                "Desert"
-            ],
-            "54": [
-                "CARC",
-                "Desert"
-            ],
-            "55": [
-                "CARC",
-                "Desert"
-            ],
-            "56": [
-                "CARC",
-                "Desert"
-            ],
-            "57": [
-                "CARC",
-                "Desert"
-            ],
-            "58": [
-                "CARC",
-                "Desert"
-            ],
-            "59": [
-                "CARC",
-                "Desert"
-            ],
-            "60": [
-                "CARC",
-                "Desert"
-            ],
-            "61": [
-                "CARC",
-                "Desert"
-            ],
-            "62": [
-                "CARC",
-                "Desert"
-            ],
-            "63": [
-                "CARC",
-                "Desert"
-            ],
-            "64": [
-                "CARC",
-                "Desert"
-            ],
-            "65": [
-                "CARC",
-                "Desert"
-            ],
-            "66": [
-                "CARC",
-                "Desert"
-            ],
-            "67": [
-                "CARC",
-                "Desert"
-            ],
-            "68": [
-                "CARC",
-                "Desert"
-            ],
-            "69": [
-                "CARC",
-                "Desert"
-            ],
-            "70": [
-                "CARC",
-                "Desert"
-            ],
-            "71": [
-                "CARC",
-                "Desert"
-            ],
-            "72": [
-                "CARC",
-                "Desert"
-            ],
-            "73": [
-                "CARC",
-                "Desert"
-            ],
-            "74": [
-                "CARC",
-                "Desert"
-            ],
-            "75": [
-                "CARC",
-                "Desert"
-            ],
-            "76": [
-                "CARC",
-                "Desert"
-            ],
-            "77": [
-                "CARC",
-                "Desert"
-            ],
-            "78": [
-                "CARC",
-                "Desert"
-            ],
-            "79": [
-                "CARC",
-                "Desert"
-            ],
-            "80": [
-                "CARC",
-                "Desert"
-            ],
-            "81": [
-                "CARC",
-                "Desert"
-            ],
-            "82": [
-                "CARC",
-                "Desert"
-            ],
-            "83": [
-                "CARC",
-                "Desert"
-            ],
-            "84": [
-                "CARC",
-                "Desert"
-            ],
-            "85": [
-                "CARC",
-                "Desert"
-            ],
-            "86": [
-                "CARC",
-                "Desert"
-            ],
-            "87": [
-                "CARC",
-                "Desert"
-            ],
-            "88": [
-                "CARC",
-                "Desert"
-            ],
-            "89": [
-                "CARC",
-                "Desert"
-            ],
-            "90": [
-                "CARC",
-                "Desert"
-            ]
-        },
-        "displayName": "[CH] Oshkosh M-ATV MRAP (Mk19)",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "OshkoshMATV_MK19",
-        "detectionRange": 0,
-        "threatRangeMin": 75,
-        "threatRange": 2000,
-        "operators": {
-            "USA": [
-                2000,
-                2020
-            ],
-            "Ukraine": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_USInfantry_FGM148",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] FGM-148 ATGM Soldier",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "US_Infantry_FGM148",
-        "detectionRange": 0,
-        "threatRangeMin": 100,
-        "threatRange": 5000,
-        "operators": {
-            "USA": [
-                1990,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_USInfantry_FIM92",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] FIM-92K Stinger Soldier",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "US_Infantry_FIM92",
-        "detectionRange": 0,
-        "threatRangeMin": 160,
-        "threatRange": 8000,
-        "operators": {
-            "USA": [
-                1980,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_USInfantry_M120",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] M120 120 mm Mortar",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "US_Infantry_M120",
-        "detectionRange": 0,
-        "threatRangeMin": 180,
-        "threatRange": 7200,
-        "operators": {
-            "USA": [
-                1990,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_USInfantry_M136",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] M136 AT Soldier",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "US_Infantry_M136",
-        "detectionRange": 0,
-        "threatRangeMin": 30,
-        "threatRange": 400,
-        "operators": {
-            "USA": [
-                1980,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_USInfantry_M2",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] M2 HMG Soldier",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "US_Infantry_M2",
-        "detectionRange": 0,
-        "threatRange": 1800,
-        "operators": {
-            "USA": [
-                1930,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_USInfantry_M240",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] M240 GPMG Soldier",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "US_Infantry_M240",
-        "detectionRange": 0,
-        "threatRange": 1200,
-        "operators": {
-            "USA": [
-                1970,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_USInfantry_M249",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] M249 LMG Soldier",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "US_Infantry_M249",
-        "detectionRange": 0,
-        "threatRange": 700,
-        "operators": {
-            "USA": [
-                1980,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_USInfantry_M4",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] M4 AR Soldier",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "US_Infantry_M4",
-        "detectionRange": 0,
-        "threatRange": 500,
-        "operators": {
-            "USA": [
-                1990,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_USInfantry_M4M203",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] M4/M203 AR/GL Soldier",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "US_Infantry_M4M203",
-        "detectionRange": 0,
-        "threatRange": 500,
-        "operators": {
-            "USA": [
-                1990,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_USInfantry_M82",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] M82 AMR Soldier",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "US_Infantry_M82",
-        "detectionRange": 0,
-        "threatRange": 1800,
-        "operators": {
-            "USA": [
-                1980,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_USInfantry_MK19",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] Mk19 AGL Soldier",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "US_Infantry_MK19",
-        "detectionRange": 0,
-        "threatRange": 1500,
-        "operators": {
-            "USA": [
-                1960,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "M142_HIMARS_ATACMS",
-        "category": "Artillery",
-        "paintSchemes": {},
-        "displayName": "[CH] M142 HIMARS (ATACMS)",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "M142-HIMARS-ATACMS",
-        "detectionRange": 0,
-        "threatRangeMin": 74000,
-        "threatRange": 296000,
-        "operators": {
-            "USA": [
-                2010,
-                2020
-            ],
-            "Ukraine": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "M142_HIMARS_GLSDB",
-        "category": "Artillery",
-        "paintSchemes": {},
-        "displayName": "[CH] M142 HIMARS (GLSDB)",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "M142-HIMARS",
-        "detectionRange": 0,
-        "threatRangeMin": 55000,
-        "threatRange": 150000,
-        "operators": {
-            "USA": [
-                2020,
-                2020
-            ],
-            "Ukraine": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "M142_HIMARS_GMLRS",
-        "category": "Artillery",
-        "paintSchemes": {},
-        "displayName": "[CH] M142 HIMARS (GMLRS)",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "M142-HIMARS",
-        "detectionRange": 0,
-        "threatRangeMin": 15000,
-        "threatRange": 92000,
-        "operators": {
-            "USA": [
-                2000,
-                2020
-            ],
-            "Ukraine": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "M142_HIMARS_PRSM",
-        "category": "Artillery",
-        "paintSchemes": {},
-        "displayName": "[CH] M142 HIMARS (PrSM)",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "M142-HIMARS-PrSM",
-        "detectionRange": 0,
-        "threatRangeMin": 100000,
-        "threatRange": 500000,
-        "operators": {
-            "USA": [
-                2020,
-                2020
-            ],
-            "Ukraine": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "M142_HIMARS_PRSM_ASHM",
-        "category": "Artillery",
-        "paintSchemes": {},
-        "displayName": "[CH] M142 HIMARS (PrSM AShM)",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "M142-HIMARS-PrSM",
-        "detectionRange": 0,
-        "threatRangeMin": 100000,
-        "threatRange": 500000,
-        "operators": {
-            "USA": [
-                2020,
-                2020
-            ],
-            "Ukraine": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "MIM104_ANMPQ65",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] SAM MIM-104 AN/MPQ-65 STR",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "MIM104_ANMPQ65",
-        "detectionRange": 200000,
-        "threatRange": 0,
-        "operators": {
-            "USA": [
-                2010,
-                2020
-            ],
-            "Ukraine": [
-                2020,
-                2020
-            ],
-            "Germany": [
-                2010,
-                2020
-            ],
-            "Greece": [
-                2010,
-                2020
-            ],
-            "Israel": [
-                2010,
-                2020
-            ],
-            "Japan": [
-                2010,
-                2020
-            ],
-            "Poland": [
-                2010,
-                2020
-            ],
-            "Spain": [
-                2010,
-                2020
-            ],
-            "Romania": [
-                2010,
-                2020
-            ],
-            "South Korea": [
-                2010,
-                2020
-            ],
-            "Jordan": [
-                2010,
-                2020
-            ],
-            "Saudi Arabia": [
-                2010,
-                2020
-            ],
-            "United Arab Emirates": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "MIM104_ANMPQ65A",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] SAM MIM-104 AN/MPQ-65A STR",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "MIM104_ANMPQ65A",
-        "detectionRange": 260000,
-        "threatRange": 0,
-        "operators": {
-            "USA": [
-                2010,
-                2020
-            ],
-            "Ukraine": [
-                2020,
-                2020
-            ],
-            "Germany": [
-                2010,
-                2020
-            ],
-            "Greece": [
-                2010,
-                2020
-            ],
-            "Israel": [
-                2010,
-                2020
-            ],
-            "Japan": [
-                2010,
-                2020
-            ],
-            "Poland": [
-                2010,
-                2020
-            ],
-            "Spain": [
-                2010,
-                2020
-            ],
-            "Romania": [
-                2010,
-                2020
-            ],
-            "South Korea": [
-                2010,
-                2020
-            ],
-            "Jordan": [
-                2010,
-                2020
-            ],
-            "Saudi Arabia": [
-                2010,
-                2020
-            ],
-            "United Arab Emirates": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "MIM104_ECS",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] SAM MIM-104 ECS",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "MIM104_ECS",
-        "detectionRange": 0,
-        "threatRange": 0,
-        "operators": {
-            "USA": [
-                2010,
-                2020
-            ],
-            "Ukraine": [
-                2020,
-                2020
-            ],
-            "Germany": [
-                2010,
-                2020
-            ],
-            "Greece": [
-                2010,
-                2020
-            ],
-            "Israel": [
-                2010,
-                2020
-            ],
-            "Japan": [
-                2010,
-                2020
-            ],
-            "Poland": [
-                2010,
-                2020
-            ],
-            "Spain": [
-                2010,
-                2020
-            ],
-            "Romania": [
-                2010,
-                2020
-            ],
-            "South Korea": [
-                2010,
-                2020
-            ],
-            "Jordan": [
-                2010,
-                2020
-            ],
-            "Saudi Arabia": [
-                2010,
-                2020
-            ],
-            "United Arab Emirates": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "MIM104_EPP",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] SAM MIM-104 EPP",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "MIM104_EPP",
-        "detectionRange": 0,
-        "threatRange": 0,
-        "operators": {
-            "USA": [
-                2010,
-                2020
-            ],
-            "Ukraine": [
-                2020,
-                2020
-            ],
-            "Germany": [
-                2010,
-                2020
-            ],
-            "Greece": [
-                2010,
-                2020
-            ],
-            "Israel": [
-                2010,
-                2020
-            ],
-            "Japan": [
-                2010,
-                2020
-            ],
-            "Poland": [
-                2010,
-                2020
-            ],
-            "Spain": [
-                2010,
-                2020
-            ],
-            "Romania": [
-                2010,
-                2020
-            ],
-            "South Korea": [
-                2010,
-                2020
-            ],
-            "Jordan": [
-                2010,
-                2020
-            ],
-            "Saudi Arabia": [
-                2010,
-                2020
-            ],
-            "United Arab Emirates": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "MIM104_LTAMDS",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] SAM MIM-104 LTAMDS STR",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "MIM104_LTAMDS",
-        "detectionRange": 400000,
-        "threatRange": 0,
-        "operators": {
-            "USA": [
-                2010,
-                2020
-            ],
-            "Ukraine": [
-                2020,
-                2020
-            ],
-            "Germany": [
-                2010,
-                2020
-            ],
-            "Greece": [
-                2010,
-                2020
-            ],
-            "Israel": [
-                2010,
-                2020
-            ],
-            "Japan": [
-                2010,
-                2020
-            ],
-            "Poland": [
-                2010,
-                2020
-            ],
-            "Spain": [
-                2010,
-                2020
-            ],
-            "Romania": [
-                2010,
-                2020
-            ],
-            "South Korea": [
-                2010,
-                2020
-            ],
-            "Jordan": [
-                2010,
-                2020
-            ],
-            "Saudi Arabia": [
-                2010,
-                2020
-            ],
-            "United Arab Emirates": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "MIM104_M903_PAC2",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] SAM MIM-104 M903 PAC-2 GEM/T LN",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "MIM104_M903_PAC2",
-        "detectionRange": 0,
-        "threatRangeMin": 3000,
-        "threatRange": 150000,
-        "operators": {
-            "USA": [
-                2010,
-                2020
-            ],
-            "Ukraine": [
-                2020,
-                2020
-            ],
-            "Germany": [
-                2010,
-                2020
-            ],
-            "Greece": [
-                2010,
-                2020
-            ],
-            "Israel": [
-                2010,
-                2020
-            ],
-            "Japan": [
-                2010,
-                2020
-            ],
-            "Poland": [
-                2010,
-                2020
-            ],
-            "Spain": [
-                2010,
-                2020
-            ],
-            "Romania": [
-                2010,
-                2020
-            ],
-            "South Korea": [
-                2010,
-                2020
-            ],
-            "Jordan": [
-                2010,
-                2020
-            ],
-            "Saudi Arabia": [
-                2010,
-                2020
-            ],
-            "United Arab Emirates": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "MIM104_M903_PAC3",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] SAM MIM-104 M903 PAC-3 MSE LN",
-        "module": "Military Asset Pack USA by Currenthill",
-        "shape": "MIM104_M903_PAC3",
-        "detectionRange": 0,
-        "threatRangeMin": 1000,
-        "threatRange": 120000,
-        "operators": {
-            "USA": [
-                2010,
-                2020
-            ],
-            "Ukraine": [
-                2020,
-                2020
-            ],
-            "Germany": [
-                2010,
-                2020
-            ],
-            "Greece": [
-                2010,
-                2020
-            ],
-            "Israel": [
-                2010,
-                2020
-            ],
-            "Japan": [
-                2010,
-                2020
-            ],
-            "Poland": [
-                2010,
-                2020
-            ],
-            "Spain": [
-                2010,
-                2020
-            ],
-            "Romania": [
-                2010,
-                2020
-            ],
-            "South Korea": [
-                2010,
-                2020
-            ],
-            "Jordan": [
-                2010,
-                2020
-            ],
-            "Saudi Arabia": [
-                2010,
-                2020
-            ],
-            "United Arab Emirates": [
-                2010,
-                2020
-            ]
-        }
+  {
+    "type": "CH_Centurion_C_RAM",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] Centurion C-RAM",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "Centurion_C-RAM",
+    "detectionRange": 20000,
+    "threatRange": 2000,
+    "operators": {
+      "USA": [
+        2000,
+        2020
+      ]
     }
+  },
+  {
+    "type": "CH_LAVAD",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] LAV-AD SPAAGM",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "LAV-AD",
+    "detectionRange": 10000,
+    "threatRangeMin": 160,
+    "threatRange": 8000,
+    "operators": {
+      "USA": [
+        1980,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_M10",
+    "category": "Armor",
+    "paintSchemes": {
+      "0": [
+        "CARC",
+        "Desert"
+      ],
+      "1": [
+        "CARC",
+        "Desert"
+      ],
+      "2": [
+        "CARC",
+        "Desert"
+      ],
+      "3": [
+        "CARC",
+        "Desert"
+      ],
+      "4": [
+        "CARC",
+        "Desert"
+      ],
+      "5": [
+        "CARC",
+        "Desert"
+      ],
+      "6": [
+        "CARC",
+        "Desert"
+      ],
+      "7": [
+        "CARC",
+        "Desert"
+      ],
+      "8": [
+        "CARC",
+        "Desert"
+      ],
+      "9": [
+        "CARC",
+        "Desert"
+      ],
+      "10": [
+        "CARC",
+        "Desert"
+      ],
+      "11": [
+        "CARC",
+        "Desert"
+      ],
+      "12": [
+        "CARC",
+        "Desert"
+      ],
+      "13": [
+        "CARC",
+        "Desert"
+      ],
+      "15": [
+        "CARC",
+        "Desert"
+      ],
+      "16": [
+        "CARC",
+        "Desert"
+      ],
+      "17": [
+        "CARC",
+        "Desert"
+      ],
+      "18": [
+        "CARC",
+        "Desert"
+      ],
+      "19": [
+        "CARC",
+        "Desert"
+      ],
+      "20": [
+        "CARC",
+        "Desert"
+      ],
+      "21": [
+        "CARC",
+        "Desert"
+      ],
+      "22": [
+        "CARC",
+        "Desert"
+      ],
+      "23": [
+        "CARC",
+        "Desert"
+      ],
+      "24": [
+        "CARC",
+        "Desert"
+      ],
+      "25": [
+        "CARC",
+        "Desert"
+      ],
+      "26": [
+        "CARC",
+        "Desert"
+      ],
+      "27": [
+        "CARC",
+        "Desert"
+      ],
+      "28": [
+        "CARC",
+        "Desert"
+      ],
+      "29": [
+        "CARC",
+        "Desert"
+      ],
+      "30": [
+        "CARC",
+        "Desert"
+      ],
+      "31": [
+        "CARC",
+        "Desert"
+      ],
+      "32": [
+        "CARC",
+        "Desert"
+      ],
+      "33": [
+        "CARC",
+        "Desert"
+      ],
+      "34": [
+        "CARC",
+        "Desert"
+      ],
+      "35": [
+        "CARC",
+        "Desert"
+      ],
+      "36": [
+        "CARC",
+        "Desert"
+      ],
+      "37": [
+        "CARC",
+        "Desert"
+      ],
+      "38": [
+        "CARC",
+        "Desert"
+      ],
+      "39": [
+        "CARC",
+        "Desert"
+      ],
+      "40": [
+        "CARC",
+        "Desert"
+      ],
+      "41": [
+        "CARC",
+        "Desert"
+      ],
+      "42": [
+        "CARC",
+        "Desert"
+      ],
+      "43": [
+        "CARC",
+        "Desert"
+      ],
+      "44": [
+        "CARC",
+        "Desert"
+      ],
+      "45": [
+        "CARC",
+        "Desert"
+      ],
+      "46": [
+        "CARC",
+        "Desert"
+      ],
+      "47": [
+        "CARC",
+        "Desert"
+      ],
+      "48": [
+        "CARC",
+        "Desert"
+      ],
+      "49": [
+        "CARC",
+        "Desert"
+      ],
+      "50": [
+        "CARC",
+        "Desert"
+      ],
+      "51": [
+        "CARC",
+        "Desert"
+      ],
+      "52": [
+        "CARC",
+        "Desert"
+      ],
+      "53": [
+        "CARC",
+        "Desert"
+      ],
+      "54": [
+        "CARC",
+        "Desert"
+      ],
+      "55": [
+        "CARC",
+        "Desert"
+      ],
+      "56": [
+        "CARC",
+        "Desert"
+      ],
+      "57": [
+        "CARC",
+        "Desert"
+      ],
+      "58": [
+        "CARC",
+        "Desert"
+      ],
+      "59": [
+        "CARC",
+        "Desert"
+      ],
+      "60": [
+        "CARC",
+        "Desert"
+      ],
+      "61": [
+        "CARC",
+        "Desert"
+      ],
+      "62": [
+        "CARC",
+        "Desert"
+      ],
+      "63": [
+        "CARC",
+        "Desert"
+      ],
+      "64": [
+        "CARC",
+        "Desert"
+      ],
+      "65": [
+        "CARC",
+        "Desert"
+      ],
+      "66": [
+        "CARC",
+        "Desert"
+      ],
+      "67": [
+        "CARC",
+        "Desert"
+      ],
+      "68": [
+        "CARC",
+        "Desert"
+      ],
+      "69": [
+        "CARC",
+        "Desert"
+      ],
+      "70": [
+        "CARC",
+        "Desert"
+      ],
+      "71": [
+        "CARC",
+        "Desert"
+      ],
+      "72": [
+        "CARC",
+        "Desert"
+      ],
+      "73": [
+        "CARC",
+        "Desert"
+      ],
+      "74": [
+        "CARC",
+        "Desert"
+      ],
+      "75": [
+        "CARC",
+        "Desert"
+      ],
+      "76": [
+        "CARC",
+        "Desert"
+      ],
+      "77": [
+        "CARC",
+        "Desert"
+      ],
+      "78": [
+        "CARC",
+        "Desert"
+      ],
+      "79": [
+        "CARC",
+        "Desert"
+      ],
+      "80": [
+        "CARC",
+        "Desert"
+      ],
+      "81": [
+        "CARC",
+        "Desert"
+      ],
+      "82": [
+        "CARC",
+        "Desert"
+      ],
+      "83": [
+        "CARC",
+        "Desert"
+      ],
+      "84": [
+        "CARC",
+        "Desert"
+      ],
+      "85": [
+        "CARC",
+        "Desert"
+      ],
+      "86": [
+        "CARC",
+        "Desert"
+      ],
+      "87": [
+        "CARC",
+        "Desert"
+      ],
+      "88": [
+        "CARC",
+        "Desert"
+      ],
+      "89": [
+        "CARC",
+        "Desert"
+      ],
+      "90": [
+        "CARC",
+        "Desert"
+      ]
+    },
+    "displayName": "[CH] M10 LT",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "M10",
+    "detectionRange": 0,
+    "threatRange": 4000,
+    "operators": {
+      "USA": [
+        2020,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_M1A2SEPV3",
+    "category": "Armor",
+    "paintSchemes": {
+      "0": [
+        "CARC",
+        "Desert"
+      ],
+      "1": [
+        "CARC",
+        "Desert"
+      ],
+      "2": [
+        "CARC",
+        "Desert"
+      ],
+      "3": [
+        "CARC",
+        "Desert"
+      ],
+      "4": [
+        "CARC",
+        "Desert"
+      ],
+      "5": [
+        "CARC",
+        "Desert"
+      ],
+      "6": [
+        "CARC",
+        "Desert"
+      ],
+      "7": [
+        "CARC",
+        "Desert"
+      ],
+      "8": [
+        "CARC",
+        "Desert"
+      ],
+      "9": [
+        "CARC",
+        "Desert"
+      ],
+      "10": [
+        "CARC",
+        "Desert"
+      ],
+      "11": [
+        "CARC",
+        "Desert"
+      ],
+      "12": [
+        "CARC",
+        "Desert"
+      ],
+      "13": [
+        "CARC",
+        "Desert"
+      ],
+      "15": [
+        "CARC",
+        "Desert"
+      ],
+      "16": [
+        "CARC",
+        "Desert"
+      ],
+      "17": [
+        "CARC",
+        "Desert"
+      ],
+      "18": [
+        "CARC",
+        "Desert"
+      ],
+      "19": [
+        "CARC",
+        "Desert"
+      ],
+      "20": [
+        "CARC",
+        "Desert"
+      ],
+      "21": [
+        "CARC",
+        "Desert"
+      ],
+      "22": [
+        "CARC",
+        "Desert"
+      ],
+      "23": [
+        "CARC",
+        "Desert"
+      ],
+      "24": [
+        "CARC",
+        "Desert"
+      ],
+      "25": [
+        "CARC",
+        "Desert"
+      ],
+      "26": [
+        "CARC",
+        "Desert"
+      ],
+      "27": [
+        "CARC",
+        "Desert"
+      ],
+      "28": [
+        "CARC",
+        "Desert"
+      ],
+      "29": [
+        "CARC",
+        "Desert"
+      ],
+      "30": [
+        "CARC",
+        "Desert"
+      ],
+      "31": [
+        "CARC",
+        "Desert"
+      ],
+      "32": [
+        "CARC",
+        "Desert"
+      ],
+      "33": [
+        "CARC",
+        "Desert"
+      ],
+      "34": [
+        "CARC",
+        "Desert"
+      ],
+      "35": [
+        "CARC",
+        "Desert"
+      ],
+      "36": [
+        "CARC",
+        "Desert"
+      ],
+      "37": [
+        "CARC",
+        "Desert"
+      ],
+      "38": [
+        "CARC",
+        "Desert"
+      ],
+      "39": [
+        "CARC",
+        "Desert"
+      ],
+      "40": [
+        "CARC",
+        "Desert"
+      ],
+      "41": [
+        "CARC",
+        "Desert"
+      ],
+      "42": [
+        "CARC",
+        "Desert"
+      ],
+      "43": [
+        "CARC",
+        "Desert"
+      ],
+      "44": [
+        "CARC",
+        "Desert"
+      ],
+      "45": [
+        "CARC",
+        "Desert"
+      ],
+      "46": [
+        "CARC",
+        "Desert"
+      ],
+      "47": [
+        "CARC",
+        "Desert"
+      ],
+      "48": [
+        "CARC",
+        "Desert"
+      ],
+      "49": [
+        "CARC",
+        "Desert"
+      ],
+      "50": [
+        "CARC",
+        "Desert"
+      ],
+      "51": [
+        "CARC",
+        "Desert"
+      ],
+      "52": [
+        "CARC",
+        "Desert"
+      ],
+      "53": [
+        "CARC",
+        "Desert"
+      ],
+      "54": [
+        "CARC",
+        "Desert"
+      ],
+      "55": [
+        "CARC",
+        "Desert"
+      ],
+      "56": [
+        "CARC",
+        "Desert"
+      ],
+      "57": [
+        "CARC",
+        "Desert"
+      ],
+      "58": [
+        "CARC",
+        "Desert"
+      ],
+      "59": [
+        "CARC",
+        "Desert"
+      ],
+      "60": [
+        "CARC",
+        "Desert"
+      ],
+      "61": [
+        "CARC",
+        "Desert"
+      ],
+      "62": [
+        "CARC",
+        "Desert"
+      ],
+      "63": [
+        "CARC",
+        "Desert"
+      ],
+      "64": [
+        "CARC",
+        "Desert"
+      ],
+      "65": [
+        "CARC",
+        "Desert"
+      ],
+      "66": [
+        "CARC",
+        "Desert"
+      ],
+      "67": [
+        "CARC",
+        "Desert"
+      ],
+      "68": [
+        "CARC",
+        "Desert"
+      ],
+      "69": [
+        "CARC",
+        "Desert"
+      ],
+      "70": [
+        "CARC",
+        "Desert"
+      ],
+      "71": [
+        "CARC",
+        "Desert"
+      ],
+      "72": [
+        "CARC",
+        "Desert"
+      ],
+      "73": [
+        "CARC",
+        "Desert"
+      ],
+      "74": [
+        "CARC",
+        "Desert"
+      ],
+      "75": [
+        "CARC",
+        "Desert"
+      ],
+      "76": [
+        "CARC",
+        "Desert"
+      ],
+      "77": [
+        "CARC",
+        "Desert"
+      ],
+      "78": [
+        "CARC",
+        "Desert"
+      ],
+      "79": [
+        "CARC",
+        "Desert"
+      ],
+      "80": [
+        "CARC",
+        "Desert"
+      ],
+      "81": [
+        "CARC",
+        "Desert"
+      ],
+      "82": [
+        "CARC",
+        "Desert"
+      ],
+      "83": [
+        "CARC",
+        "Desert"
+      ],
+      "84": [
+        "CARC",
+        "Desert"
+      ],
+      "85": [
+        "CARC",
+        "Desert"
+      ],
+      "86": [
+        "CARC",
+        "Desert"
+      ],
+      "87": [
+        "CARC",
+        "Desert"
+      ],
+      "88": [
+        "CARC",
+        "Desert"
+      ],
+      "89": [
+        "CARC",
+        "Desert"
+      ],
+      "90": [
+        "CARC",
+        "Desert"
+      ]
+    },
+    "displayName": "[CH] M1A2 SEPv3 MBT",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "M1A2SEPV3",
+    "detectionRange": 0,
+    "threatRange": 5000,
+    "operators": {
+      "USA": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_M270A1_ATACMS",
+    "category": "Artillery",
+    "paintSchemes": {},
+    "displayName": "[CH] M270A1 MLRS (ATACMS)",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "M270A1_ATACMS",
+    "detectionRange": 0,
+    "threatRangeMin": 74000,
+    "threatRange": 296000,
+    "operators": {
+      "USA": [
+        1990,
+        2020
+      ],
+      "Ukraine": [
+        1990,
+        2020
+      ],
+      "Finland": [
+        1990,
+        2020
+      ],
+      "France": [
+        1990,
+        2020
+      ],
+      "Germany": [
+        1990,
+        2020
+      ],
+      "Italy": [
+        1990,
+        2020
+      ],
+      "South Korea": [
+        1990,
+        2020
+      ],
+      "UK": [
+        1990,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_M270A1_GLSDB",
+    "category": "Artillery",
+    "paintSchemes": {},
+    "displayName": "[CH] M270A1 MLRS (GLSDB)",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "M270A1",
+    "detectionRange": 0,
+    "threatRangeMin": 55000,
+    "threatRange": 150000,
+    "operators": {
+      "USA": [
+        2020,
+        2020
+      ],
+      "Ukraine": [
+        2020,
+        2020
+      ],
+      "Finland": [
+        2020,
+        2020
+      ],
+      "France": [
+        2020,
+        2020
+      ],
+      "Germany": [
+        2020,
+        2020
+      ],
+      "Italy": [
+        2020,
+        2020
+      ],
+      "South Korea": [
+        2020,
+        2020
+      ],
+      "UK": [
+        2020,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_M270A1_GMLRS",
+    "category": "Artillery",
+    "paintSchemes": {},
+    "displayName": "[CH] M270A1 MLRS (GMLRS)",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "M270A1",
+    "detectionRange": 0,
+    "threatRangeMin": 15000,
+    "threatRange": 92000,
+    "operators": {
+      "USA": [
+        2000,
+        2020
+      ],
+      "Ukraine": [
+        2000,
+        2020
+      ],
+      "Finland": [
+        2000,
+        2020
+      ],
+      "France": [
+        2000,
+        2020
+      ],
+      "Germany": [
+        2000,
+        2020
+      ],
+      "Italy": [
+        2000,
+        2020
+      ],
+      "South Korea": [
+        2000,
+        2020
+      ],
+      "UK": [
+        2000,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_M551",
+    "category": "Armor",
+    "paintSchemes": {
+      "0": [
+        "CARC",
+        "ODS"
+      ],
+      "1": [
+        "CARC",
+        "ODS"
+      ],
+      "2": [
+        "CARC",
+        "ODS"
+      ],
+      "3": [
+        "CARC",
+        "ODS"
+      ],
+      "4": [
+        "CARC",
+        "ODS"
+      ],
+      "5": [
+        "CARC",
+        "ODS"
+      ],
+      "6": [
+        "CARC",
+        "ODS"
+      ],
+      "7": [
+        "CARC",
+        "ODS"
+      ],
+      "8": [
+        "CARC",
+        "ODS"
+      ],
+      "9": [
+        "CARC",
+        "ODS"
+      ],
+      "10": [
+        "CARC",
+        "ODS"
+      ],
+      "11": [
+        "CARC",
+        "ODS"
+      ],
+      "12": [
+        "CARC",
+        "ODS"
+      ],
+      "13": [
+        "CARC",
+        "ODS"
+      ],
+      "15": [
+        "CARC",
+        "ODS"
+      ],
+      "16": [
+        "CARC",
+        "ODS"
+      ],
+      "17": [
+        "CARC",
+        "ODS"
+      ],
+      "18": [
+        "CARC",
+        "ODS"
+      ],
+      "19": [
+        "CARC",
+        "ODS"
+      ],
+      "20": [
+        "CARC",
+        "ODS"
+      ],
+      "21": [
+        "CARC",
+        "ODS"
+      ],
+      "22": [
+        "CARC",
+        "ODS"
+      ],
+      "23": [
+        "CARC",
+        "ODS"
+      ],
+      "24": [
+        "CARC",
+        "ODS"
+      ],
+      "25": [
+        "CARC",
+        "ODS"
+      ],
+      "26": [
+        "CARC",
+        "ODS"
+      ],
+      "27": [
+        "CARC",
+        "ODS"
+      ],
+      "28": [
+        "CARC",
+        "ODS"
+      ],
+      "29": [
+        "CARC",
+        "ODS"
+      ],
+      "30": [
+        "CARC",
+        "ODS"
+      ],
+      "31": [
+        "CARC",
+        "ODS"
+      ],
+      "32": [
+        "CARC",
+        "ODS"
+      ],
+      "33": [
+        "CARC",
+        "ODS"
+      ],
+      "34": [
+        "CARC",
+        "ODS"
+      ],
+      "35": [
+        "CARC",
+        "ODS"
+      ],
+      "36": [
+        "CARC",
+        "ODS"
+      ],
+      "37": [
+        "CARC",
+        "ODS"
+      ],
+      "38": [
+        "CARC",
+        "ODS"
+      ],
+      "39": [
+        "CARC",
+        "ODS"
+      ],
+      "40": [
+        "CARC",
+        "ODS"
+      ],
+      "41": [
+        "CARC",
+        "ODS"
+      ],
+      "42": [
+        "CARC",
+        "ODS"
+      ],
+      "43": [
+        "CARC",
+        "ODS"
+      ],
+      "44": [
+        "CARC",
+        "ODS"
+      ],
+      "45": [
+        "CARC",
+        "ODS"
+      ],
+      "46": [
+        "CARC",
+        "ODS"
+      ],
+      "47": [
+        "CARC",
+        "ODS"
+      ],
+      "48": [
+        "CARC",
+        "ODS"
+      ],
+      "49": [
+        "CARC",
+        "ODS"
+      ],
+      "50": [
+        "CARC",
+        "ODS"
+      ],
+      "51": [
+        "CARC",
+        "ODS"
+      ],
+      "52": [
+        "CARC",
+        "ODS"
+      ],
+      "53": [
+        "CARC",
+        "ODS"
+      ],
+      "54": [
+        "CARC",
+        "ODS"
+      ],
+      "55": [
+        "CARC",
+        "ODS"
+      ],
+      "56": [
+        "CARC",
+        "ODS"
+      ],
+      "57": [
+        "CARC",
+        "ODS"
+      ],
+      "58": [
+        "CARC",
+        "ODS"
+      ],
+      "59": [
+        "CARC",
+        "ODS"
+      ],
+      "60": [
+        "CARC",
+        "ODS"
+      ],
+      "61": [
+        "CARC",
+        "ODS"
+      ],
+      "62": [
+        "CARC",
+        "ODS"
+      ],
+      "63": [
+        "CARC",
+        "ODS"
+      ],
+      "64": [
+        "CARC",
+        "ODS"
+      ],
+      "65": [
+        "CARC",
+        "ODS"
+      ],
+      "66": [
+        "CARC",
+        "ODS"
+      ],
+      "67": [
+        "CARC",
+        "ODS"
+      ],
+      "68": [
+        "CARC",
+        "ODS"
+      ],
+      "69": [
+        "CARC",
+        "ODS"
+      ],
+      "70": [
+        "CARC",
+        "ODS"
+      ],
+      "71": [
+        "CARC",
+        "ODS"
+      ],
+      "72": [
+        "CARC",
+        "ODS"
+      ],
+      "73": [
+        "CARC",
+        "ODS"
+      ],
+      "74": [
+        "CARC",
+        "ODS"
+      ],
+      "75": [
+        "CARC",
+        "ODS"
+      ],
+      "76": [
+        "CARC",
+        "ODS"
+      ],
+      "77": [
+        "CARC",
+        "ODS"
+      ],
+      "78": [
+        "CARC",
+        "ODS"
+      ],
+      "79": [
+        "CARC",
+        "ODS"
+      ],
+      "80": [
+        "CARC",
+        "ODS"
+      ],
+      "81": [
+        "CARC",
+        "ODS"
+      ],
+      "82": [
+        "CARC",
+        "ODS"
+      ],
+      "83": [
+        "CARC",
+        "ODS"
+      ],
+      "84": [
+        "CARC",
+        "ODS"
+      ],
+      "85": [
+        "CARC",
+        "ODS"
+      ],
+      "86": [
+        "CARC",
+        "ODS"
+      ],
+      "87": [
+        "CARC",
+        "ODS"
+      ],
+      "88": [
+        "CARC",
+        "ODS"
+      ],
+      "89": [
+        "CARC",
+        "ODS"
+      ],
+      "90": [
+        "CARC",
+        "ODS"
+      ]
+    },
+    "displayName": "[CH] M551 LT",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "M551",
+    "detectionRange": 0,
+    "threatRange": 3000,
+    "operators": {
+      "USA": [
+        1970,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_M777LTH",
+    "category": "Artillery",
+    "paintSchemes": {
+      "0": [
+        "CARC",
+        "Desert"
+      ],
+      "1": [
+        "CARC",
+        "Desert"
+      ],
+      "2": [
+        "CARC",
+        "Desert"
+      ],
+      "3": [
+        "CARC",
+        "Desert"
+      ],
+      "4": [
+        "CARC",
+        "Desert"
+      ],
+      "5": [
+        "CARC",
+        "Desert"
+      ],
+      "6": [
+        "CARC",
+        "Desert"
+      ],
+      "7": [
+        "CARC",
+        "Desert"
+      ],
+      "8": [
+        "CARC",
+        "Desert"
+      ],
+      "9": [
+        "CARC",
+        "Desert"
+      ],
+      "10": [
+        "CARC",
+        "Desert"
+      ],
+      "11": [
+        "CARC",
+        "Desert"
+      ],
+      "12": [
+        "CARC",
+        "Desert"
+      ],
+      "13": [
+        "CARC",
+        "Desert"
+      ],
+      "15": [
+        "CARC",
+        "Desert"
+      ],
+      "16": [
+        "CARC",
+        "Desert"
+      ],
+      "17": [
+        "CARC",
+        "Desert"
+      ],
+      "18": [
+        "CARC",
+        "Desert"
+      ],
+      "19": [
+        "CARC",
+        "Desert"
+      ],
+      "20": [
+        "CARC",
+        "Desert"
+      ],
+      "21": [
+        "CARC",
+        "Desert"
+      ],
+      "22": [
+        "CARC",
+        "Desert"
+      ],
+      "23": [
+        "CARC",
+        "Desert"
+      ],
+      "24": [
+        "CARC",
+        "Desert"
+      ],
+      "25": [
+        "CARC",
+        "Desert"
+      ],
+      "26": [
+        "CARC",
+        "Desert"
+      ],
+      "27": [
+        "CARC",
+        "Desert"
+      ],
+      "28": [
+        "CARC",
+        "Desert"
+      ],
+      "29": [
+        "CARC",
+        "Desert"
+      ],
+      "30": [
+        "CARC",
+        "Desert"
+      ],
+      "31": [
+        "CARC",
+        "Desert"
+      ],
+      "32": [
+        "CARC",
+        "Desert"
+      ],
+      "33": [
+        "CARC",
+        "Desert"
+      ],
+      "34": [
+        "CARC",
+        "Desert"
+      ],
+      "35": [
+        "CARC",
+        "Desert"
+      ],
+      "36": [
+        "CARC",
+        "Desert"
+      ],
+      "37": [
+        "CARC",
+        "Desert"
+      ],
+      "38": [
+        "CARC",
+        "Desert"
+      ],
+      "39": [
+        "CARC",
+        "Desert"
+      ],
+      "40": [
+        "CARC",
+        "Desert"
+      ],
+      "41": [
+        "CARC",
+        "Desert"
+      ],
+      "42": [
+        "CARC",
+        "Desert"
+      ],
+      "43": [
+        "CARC",
+        "Desert"
+      ],
+      "44": [
+        "CARC",
+        "Desert"
+      ],
+      "45": [
+        "CARC",
+        "Desert"
+      ],
+      "46": [
+        "CARC",
+        "Desert"
+      ],
+      "47": [
+        "CARC",
+        "Desert"
+      ],
+      "48": [
+        "CARC",
+        "Desert"
+      ],
+      "49": [
+        "CARC",
+        "Desert"
+      ],
+      "50": [
+        "CARC",
+        "Desert"
+      ],
+      "51": [
+        "CARC",
+        "Desert"
+      ],
+      "52": [
+        "CARC",
+        "Desert"
+      ],
+      "53": [
+        "CARC",
+        "Desert"
+      ],
+      "54": [
+        "CARC",
+        "Desert"
+      ],
+      "55": [
+        "CARC",
+        "Desert"
+      ],
+      "56": [
+        "CARC",
+        "Desert"
+      ],
+      "57": [
+        "CARC",
+        "Desert"
+      ],
+      "58": [
+        "CARC",
+        "Desert"
+      ],
+      "59": [
+        "CARC",
+        "Desert"
+      ],
+      "60": [
+        "CARC",
+        "Desert"
+      ],
+      "61": [
+        "CARC",
+        "Desert"
+      ],
+      "62": [
+        "CARC",
+        "Desert"
+      ],
+      "63": [
+        "CARC",
+        "Desert"
+      ],
+      "64": [
+        "CARC",
+        "Desert"
+      ],
+      "65": [
+        "CARC",
+        "Desert"
+      ],
+      "66": [
+        "CARC",
+        "Desert"
+      ],
+      "67": [
+        "CARC",
+        "Desert"
+      ],
+      "68": [
+        "CARC",
+        "Desert"
+      ],
+      "69": [
+        "CARC",
+        "Desert"
+      ],
+      "70": [
+        "CARC",
+        "Desert"
+      ],
+      "71": [
+        "CARC",
+        "Desert"
+      ],
+      "72": [
+        "CARC",
+        "Desert"
+      ],
+      "73": [
+        "CARC",
+        "Desert"
+      ],
+      "74": [
+        "CARC",
+        "Desert"
+      ],
+      "75": [
+        "CARC",
+        "Desert"
+      ],
+      "76": [
+        "CARC",
+        "Desert"
+      ],
+      "77": [
+        "CARC",
+        "Desert"
+      ],
+      "78": [
+        "CARC",
+        "Desert"
+      ],
+      "79": [
+        "CARC",
+        "Desert"
+      ],
+      "80": [
+        "CARC",
+        "Desert"
+      ],
+      "81": [
+        "CARC",
+        "Desert"
+      ],
+      "82": [
+        "CARC",
+        "Desert"
+      ],
+      "83": [
+        "CARC",
+        "Desert"
+      ],
+      "84": [
+        "CARC",
+        "Desert"
+      ],
+      "85": [
+        "CARC",
+        "Desert"
+      ],
+      "86": [
+        "CARC",
+        "Desert"
+      ],
+      "87": [
+        "CARC",
+        "Desert"
+      ],
+      "88": [
+        "CARC",
+        "Desert"
+      ],
+      "89": [
+        "CARC",
+        "Desert"
+      ],
+      "90": [
+        "CARC",
+        "Desert"
+      ]
+    },
+    "displayName": "[CH] M777 LTH Stationary",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "M777",
+    "detectionRange": 0,
+    "threatRangeMin": 50,
+    "threatRange": 50000,
+    "operators": {
+      "USA": [
+        2000,
+        2020
+      ],
+      "Ukraine": [
+        2020,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_M777LTH_MTVR",
+    "category": "Artillery",
+    "paintSchemes": {
+      "0": [
+        "CARC",
+        "Desert"
+      ],
+      "1": [
+        "CARC",
+        "Desert"
+      ],
+      "2": [
+        "CARC",
+        "Desert"
+      ],
+      "3": [
+        "CARC",
+        "Desert"
+      ],
+      "4": [
+        "CARC",
+        "Desert"
+      ],
+      "5": [
+        "CARC",
+        "Desert"
+      ],
+      "6": [
+        "CARC",
+        "Desert"
+      ],
+      "7": [
+        "CARC",
+        "Desert"
+      ],
+      "8": [
+        "CARC",
+        "Desert"
+      ],
+      "9": [
+        "CARC",
+        "Desert"
+      ],
+      "10": [
+        "CARC",
+        "Desert"
+      ],
+      "11": [
+        "CARC",
+        "Desert"
+      ],
+      "12": [
+        "CARC",
+        "Desert"
+      ],
+      "13": [
+        "CARC",
+        "Desert"
+      ],
+      "15": [
+        "CARC",
+        "Desert"
+      ],
+      "16": [
+        "CARC",
+        "Desert"
+      ],
+      "17": [
+        "CARC",
+        "Desert"
+      ],
+      "18": [
+        "CARC",
+        "Desert"
+      ],
+      "19": [
+        "CARC",
+        "Desert"
+      ],
+      "20": [
+        "CARC",
+        "Desert"
+      ],
+      "21": [
+        "CARC",
+        "Desert"
+      ],
+      "22": [
+        "CARC",
+        "Desert"
+      ],
+      "23": [
+        "CARC",
+        "Desert"
+      ],
+      "24": [
+        "CARC",
+        "Desert"
+      ],
+      "25": [
+        "CARC",
+        "Desert"
+      ],
+      "26": [
+        "CARC",
+        "Desert"
+      ],
+      "27": [
+        "CARC",
+        "Desert"
+      ],
+      "28": [
+        "CARC",
+        "Desert"
+      ],
+      "29": [
+        "CARC",
+        "Desert"
+      ],
+      "30": [
+        "CARC",
+        "Desert"
+      ],
+      "31": [
+        "CARC",
+        "Desert"
+      ],
+      "32": [
+        "CARC",
+        "Desert"
+      ],
+      "33": [
+        "CARC",
+        "Desert"
+      ],
+      "34": [
+        "CARC",
+        "Desert"
+      ],
+      "35": [
+        "CARC",
+        "Desert"
+      ],
+      "36": [
+        "CARC",
+        "Desert"
+      ],
+      "37": [
+        "CARC",
+        "Desert"
+      ],
+      "38": [
+        "CARC",
+        "Desert"
+      ],
+      "39": [
+        "CARC",
+        "Desert"
+      ],
+      "40": [
+        "CARC",
+        "Desert"
+      ],
+      "41": [
+        "CARC",
+        "Desert"
+      ],
+      "42": [
+        "CARC",
+        "Desert"
+      ],
+      "43": [
+        "CARC",
+        "Desert"
+      ],
+      "44": [
+        "CARC",
+        "Desert"
+      ],
+      "45": [
+        "CARC",
+        "Desert"
+      ],
+      "46": [
+        "CARC",
+        "Desert"
+      ],
+      "47": [
+        "CARC",
+        "Desert"
+      ],
+      "48": [
+        "CARC",
+        "Desert"
+      ],
+      "49": [
+        "CARC",
+        "Desert"
+      ],
+      "50": [
+        "CARC",
+        "Desert"
+      ],
+      "51": [
+        "CARC",
+        "Desert"
+      ],
+      "52": [
+        "CARC",
+        "Desert"
+      ],
+      "53": [
+        "CARC",
+        "Desert"
+      ],
+      "54": [
+        "CARC",
+        "Desert"
+      ],
+      "55": [
+        "CARC",
+        "Desert"
+      ],
+      "56": [
+        "CARC",
+        "Desert"
+      ],
+      "57": [
+        "CARC",
+        "Desert"
+      ],
+      "58": [
+        "CARC",
+        "Desert"
+      ],
+      "59": [
+        "CARC",
+        "Desert"
+      ],
+      "60": [
+        "CARC",
+        "Desert"
+      ],
+      "61": [
+        "CARC",
+        "Desert"
+      ],
+      "62": [
+        "CARC",
+        "Desert"
+      ],
+      "63": [
+        "CARC",
+        "Desert"
+      ],
+      "64": [
+        "CARC",
+        "Desert"
+      ],
+      "65": [
+        "CARC",
+        "Desert"
+      ],
+      "66": [
+        "CARC",
+        "Desert"
+      ],
+      "67": [
+        "CARC",
+        "Desert"
+      ],
+      "68": [
+        "CARC",
+        "Desert"
+      ],
+      "69": [
+        "CARC",
+        "Desert"
+      ],
+      "70": [
+        "CARC",
+        "Desert"
+      ],
+      "71": [
+        "CARC",
+        "Desert"
+      ],
+      "72": [
+        "CARC",
+        "Desert"
+      ],
+      "73": [
+        "CARC",
+        "Desert"
+      ],
+      "74": [
+        "CARC",
+        "Desert"
+      ],
+      "75": [
+        "CARC",
+        "Desert"
+      ],
+      "76": [
+        "CARC",
+        "Desert"
+      ],
+      "77": [
+        "CARC",
+        "Desert"
+      ],
+      "78": [
+        "CARC",
+        "Desert"
+      ],
+      "79": [
+        "CARC",
+        "Desert"
+      ],
+      "80": [
+        "CARC",
+        "Desert"
+      ],
+      "81": [
+        "CARC",
+        "Desert"
+      ],
+      "82": [
+        "CARC",
+        "Desert"
+      ],
+      "83": [
+        "CARC",
+        "Desert"
+      ],
+      "84": [
+        "CARC",
+        "Desert"
+      ],
+      "85": [
+        "CARC",
+        "Desert"
+      ],
+      "86": [
+        "CARC",
+        "Desert"
+      ],
+      "87": [
+        "CARC",
+        "Desert"
+      ],
+      "88": [
+        "CARC",
+        "Desert"
+      ],
+      "89": [
+        "CARC",
+        "Desert"
+      ],
+      "90": [
+        "CARC",
+        "Desert"
+      ]
+    },
+    "displayName": "[CH] M777 LTH Mobile",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "M777_MTVR",
+    "detectionRange": 0,
+    "threatRangeMin": 50,
+    "threatRange": 50000,
+    "operators": {
+      "USA": [
+        2000,
+        2020
+      ],
+      "Ukraine": [
+        2020,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_MTVR",
+    "category": "Unarmed",
+    "paintSchemes": {
+      "0": [
+        "CARC",
+        "Desert"
+      ],
+      "1": [
+        "CARC",
+        "Desert"
+      ],
+      "2": [
+        "CARC",
+        "Desert"
+      ],
+      "3": [
+        "CARC",
+        "Desert"
+      ],
+      "4": [
+        "CARC",
+        "Desert"
+      ],
+      "5": [
+        "CARC",
+        "Desert"
+      ],
+      "6": [
+        "CARC",
+        "Desert"
+      ],
+      "7": [
+        "CARC",
+        "Desert"
+      ],
+      "8": [
+        "CARC",
+        "Desert"
+      ],
+      "9": [
+        "CARC",
+        "Desert"
+      ],
+      "10": [
+        "CARC",
+        "Desert"
+      ],
+      "11": [
+        "CARC",
+        "Desert"
+      ],
+      "12": [
+        "CARC",
+        "Desert"
+      ],
+      "13": [
+        "CARC",
+        "Desert"
+      ],
+      "15": [
+        "CARC",
+        "Desert"
+      ],
+      "16": [
+        "CARC",
+        "Desert"
+      ],
+      "17": [
+        "CARC",
+        "Desert"
+      ],
+      "18": [
+        "CARC",
+        "Desert"
+      ],
+      "19": [
+        "CARC",
+        "Desert"
+      ],
+      "20": [
+        "CARC",
+        "Desert"
+      ],
+      "21": [
+        "CARC",
+        "Desert"
+      ],
+      "22": [
+        "CARC",
+        "Desert"
+      ],
+      "23": [
+        "CARC",
+        "Desert"
+      ],
+      "24": [
+        "CARC",
+        "Desert"
+      ],
+      "25": [
+        "CARC",
+        "Desert"
+      ],
+      "26": [
+        "CARC",
+        "Desert"
+      ],
+      "27": [
+        "CARC",
+        "Desert"
+      ],
+      "28": [
+        "CARC",
+        "Desert"
+      ],
+      "29": [
+        "CARC",
+        "Desert"
+      ],
+      "30": [
+        "CARC",
+        "Desert"
+      ],
+      "31": [
+        "CARC",
+        "Desert"
+      ],
+      "32": [
+        "CARC",
+        "Desert"
+      ],
+      "33": [
+        "CARC",
+        "Desert"
+      ],
+      "34": [
+        "CARC",
+        "Desert"
+      ],
+      "35": [
+        "CARC",
+        "Desert"
+      ],
+      "36": [
+        "CARC",
+        "Desert"
+      ],
+      "37": [
+        "CARC",
+        "Desert"
+      ],
+      "38": [
+        "CARC",
+        "Desert"
+      ],
+      "39": [
+        "CARC",
+        "Desert"
+      ],
+      "40": [
+        "CARC",
+        "Desert"
+      ],
+      "41": [
+        "CARC",
+        "Desert"
+      ],
+      "42": [
+        "CARC",
+        "Desert"
+      ],
+      "43": [
+        "CARC",
+        "Desert"
+      ],
+      "44": [
+        "CARC",
+        "Desert"
+      ],
+      "45": [
+        "CARC",
+        "Desert"
+      ],
+      "46": [
+        "CARC",
+        "Desert"
+      ],
+      "47": [
+        "CARC",
+        "Desert"
+      ],
+      "48": [
+        "CARC",
+        "Desert"
+      ],
+      "49": [
+        "CARC",
+        "Desert"
+      ],
+      "50": [
+        "CARC",
+        "Desert"
+      ],
+      "51": [
+        "CARC",
+        "Desert"
+      ],
+      "52": [
+        "CARC",
+        "Desert"
+      ],
+      "53": [
+        "CARC",
+        "Desert"
+      ],
+      "54": [
+        "CARC",
+        "Desert"
+      ],
+      "55": [
+        "CARC",
+        "Desert"
+      ],
+      "56": [
+        "CARC",
+        "Desert"
+      ],
+      "57": [
+        "CARC",
+        "Desert"
+      ],
+      "58": [
+        "CARC",
+        "Desert"
+      ],
+      "59": [
+        "CARC",
+        "Desert"
+      ],
+      "60": [
+        "CARC",
+        "Desert"
+      ],
+      "61": [
+        "CARC",
+        "Desert"
+      ],
+      "62": [
+        "CARC",
+        "Desert"
+      ],
+      "63": [
+        "CARC",
+        "Desert"
+      ],
+      "64": [
+        "CARC",
+        "Desert"
+      ],
+      "65": [
+        "CARC",
+        "Desert"
+      ],
+      "66": [
+        "CARC",
+        "Desert"
+      ],
+      "67": [
+        "CARC",
+        "Desert"
+      ],
+      "68": [
+        "CARC",
+        "Desert"
+      ],
+      "69": [
+        "CARC",
+        "Desert"
+      ],
+      "70": [
+        "CARC",
+        "Desert"
+      ],
+      "71": [
+        "CARC",
+        "Desert"
+      ],
+      "72": [
+        "CARC",
+        "Desert"
+      ],
+      "73": [
+        "CARC",
+        "Desert"
+      ],
+      "74": [
+        "CARC",
+        "Desert"
+      ],
+      "75": [
+        "CARC",
+        "Desert"
+      ],
+      "76": [
+        "CARC",
+        "Desert"
+      ],
+      "77": [
+        "CARC",
+        "Desert"
+      ],
+      "78": [
+        "CARC",
+        "Desert"
+      ],
+      "79": [
+        "CARC",
+        "Desert"
+      ],
+      "80": [
+        "CARC",
+        "Desert"
+      ],
+      "81": [
+        "CARC",
+        "Desert"
+      ],
+      "82": [
+        "CARC",
+        "Desert"
+      ],
+      "83": [
+        "CARC",
+        "Desert"
+      ],
+      "84": [
+        "CARC",
+        "Desert"
+      ],
+      "85": [
+        "CARC",
+        "Desert"
+      ],
+      "86": [
+        "CARC",
+        "Desert"
+      ],
+      "87": [
+        "CARC",
+        "Desert"
+      ],
+      "88": [
+        "CARC",
+        "Desert"
+      ],
+      "89": [
+        "CARC",
+        "Desert"
+      ],
+      "90": [
+        "CARC",
+        "Desert"
+      ]
+    },
+    "displayName": "[CH] Oshkosh MTVR",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "MTVR",
+    "detectionRange": 0,
+    "threatRange": 0,
+    "operators": {
+      "USA": [
+        2000,
+        2020
+      ],
+      "Ukraine": [
+        2020,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_NASAMS3_CP",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] NASAMS 3 CP",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "NASAMS_Command_Post",
+    "detectionRange": 0,
+    "threatRange": 0,
+    "operators": {
+      "USA": [
+        2020,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_NASAMS3_LN_AIM9X2",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] NASAMS 3 LCHR LN (AIM-9X-2)",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "NASAMS3_HX_LCHR",
+    "detectionRange": 0,
+    "threatRangeMin": 200,
+    "threatRange": 20000,
+    "operators": {
+      "USA": [
+        2020,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_NASAMS3_LN_AMRAAM_ER",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] NASAMS 3 LCHR LN (AMRAAM-ER)",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "NASAMS3_HX_LCHR",
+    "detectionRange": 0,
+    "threatRangeMin": 2000,
+    "threatRange": 50000,
+    "operators": {
+      "USA": [
+        2020,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_NASAMS3_SR",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] NASAMS 3 SR",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "NASAMS_Radar_MPQ64F1",
+    "detectionRange": 120000,
+    "threatRange": 0,
+    "operators": {
+      "USA": [
+        2020,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_OshkoshLATV_M2",
+    "category": "Armor",
+    "paintSchemes": {
+      "0": [
+        "CARC",
+        "Desert"
+      ],
+      "1": [
+        "CARC",
+        "Desert"
+      ],
+      "2": [
+        "CARC",
+        "Desert"
+      ],
+      "3": [
+        "CARC",
+        "Desert"
+      ],
+      "4": [
+        "CARC",
+        "Desert"
+      ],
+      "5": [
+        "CARC",
+        "Desert"
+      ],
+      "6": [
+        "CARC",
+        "Desert"
+      ],
+      "7": [
+        "CARC",
+        "Desert"
+      ],
+      "8": [
+        "CARC",
+        "Desert"
+      ],
+      "9": [
+        "CARC",
+        "Desert"
+      ],
+      "10": [
+        "CARC",
+        "Desert"
+      ],
+      "11": [
+        "CARC",
+        "Desert"
+      ],
+      "12": [
+        "CARC",
+        "Desert"
+      ],
+      "13": [
+        "CARC",
+        "Desert"
+      ],
+      "15": [
+        "CARC",
+        "Desert"
+      ],
+      "16": [
+        "CARC",
+        "Desert"
+      ],
+      "17": [
+        "CARC",
+        "Desert"
+      ],
+      "18": [
+        "CARC",
+        "Desert"
+      ],
+      "19": [
+        "CARC",
+        "Desert"
+      ],
+      "20": [
+        "CARC",
+        "Desert"
+      ],
+      "21": [
+        "CARC",
+        "Desert"
+      ],
+      "22": [
+        "CARC",
+        "Desert"
+      ],
+      "23": [
+        "CARC",
+        "Desert"
+      ],
+      "24": [
+        "CARC",
+        "Desert"
+      ],
+      "25": [
+        "CARC",
+        "Desert"
+      ],
+      "26": [
+        "CARC",
+        "Desert"
+      ],
+      "27": [
+        "CARC",
+        "Desert"
+      ],
+      "28": [
+        "CARC",
+        "Desert"
+      ],
+      "29": [
+        "CARC",
+        "Desert"
+      ],
+      "30": [
+        "CARC",
+        "Desert"
+      ],
+      "31": [
+        "CARC",
+        "Desert"
+      ],
+      "32": [
+        "CARC",
+        "Desert"
+      ],
+      "33": [
+        "CARC",
+        "Desert"
+      ],
+      "34": [
+        "CARC",
+        "Desert"
+      ],
+      "35": [
+        "CARC",
+        "Desert"
+      ],
+      "36": [
+        "CARC",
+        "Desert"
+      ],
+      "37": [
+        "CARC",
+        "Desert"
+      ],
+      "38": [
+        "CARC",
+        "Desert"
+      ],
+      "39": [
+        "CARC",
+        "Desert"
+      ],
+      "40": [
+        "CARC",
+        "Desert"
+      ],
+      "41": [
+        "CARC",
+        "Desert"
+      ],
+      "42": [
+        "CARC",
+        "Desert"
+      ],
+      "43": [
+        "CARC",
+        "Desert"
+      ],
+      "44": [
+        "CARC",
+        "Desert"
+      ],
+      "45": [
+        "CARC",
+        "Desert"
+      ],
+      "46": [
+        "CARC",
+        "Desert"
+      ],
+      "47": [
+        "CARC",
+        "Desert"
+      ],
+      "48": [
+        "CARC",
+        "Desert"
+      ],
+      "49": [
+        "CARC",
+        "Desert"
+      ],
+      "50": [
+        "CARC",
+        "Desert"
+      ],
+      "51": [
+        "CARC",
+        "Desert"
+      ],
+      "52": [
+        "CARC",
+        "Desert"
+      ],
+      "53": [
+        "CARC",
+        "Desert"
+      ],
+      "54": [
+        "CARC",
+        "Desert"
+      ],
+      "55": [
+        "CARC",
+        "Desert"
+      ],
+      "56": [
+        "CARC",
+        "Desert"
+      ],
+      "57": [
+        "CARC",
+        "Desert"
+      ],
+      "58": [
+        "CARC",
+        "Desert"
+      ],
+      "59": [
+        "CARC",
+        "Desert"
+      ],
+      "60": [
+        "CARC",
+        "Desert"
+      ],
+      "61": [
+        "CARC",
+        "Desert"
+      ],
+      "62": [
+        "CARC",
+        "Desert"
+      ],
+      "63": [
+        "CARC",
+        "Desert"
+      ],
+      "64": [
+        "CARC",
+        "Desert"
+      ],
+      "65": [
+        "CARC",
+        "Desert"
+      ],
+      "66": [
+        "CARC",
+        "Desert"
+      ],
+      "67": [
+        "CARC",
+        "Desert"
+      ],
+      "68": [
+        "CARC",
+        "Desert"
+      ],
+      "69": [
+        "CARC",
+        "Desert"
+      ],
+      "70": [
+        "CARC",
+        "Desert"
+      ],
+      "71": [
+        "CARC",
+        "Desert"
+      ],
+      "72": [
+        "CARC",
+        "Desert"
+      ],
+      "73": [
+        "CARC",
+        "Desert"
+      ],
+      "74": [
+        "CARC",
+        "Desert"
+      ],
+      "75": [
+        "CARC",
+        "Desert"
+      ],
+      "76": [
+        "CARC",
+        "Desert"
+      ],
+      "77": [
+        "CARC",
+        "Desert"
+      ],
+      "78": [
+        "CARC",
+        "Desert"
+      ],
+      "79": [
+        "CARC",
+        "Desert"
+      ],
+      "80": [
+        "CARC",
+        "Desert"
+      ],
+      "81": [
+        "CARC",
+        "Desert"
+      ],
+      "82": [
+        "CARC",
+        "Desert"
+      ],
+      "83": [
+        "CARC",
+        "Desert"
+      ],
+      "84": [
+        "CARC",
+        "Desert"
+      ],
+      "85": [
+        "CARC",
+        "Desert"
+      ],
+      "86": [
+        "CARC",
+        "Desert"
+      ],
+      "87": [
+        "CARC",
+        "Desert"
+      ],
+      "88": [
+        "CARC",
+        "Desert"
+      ],
+      "89": [
+        "CARC",
+        "Desert"
+      ],
+      "90": [
+        "CARC",
+        "Desert"
+      ]
+    },
+    "displayName": "[CH] Oshkosh L-ATV (M2)",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "OshkoshLATV_M2",
+    "detectionRange": 0,
+    "threatRange": 1800,
+    "operators": {
+      "USA": [
+        2010,
+        2020
+      ],
+      "Ukraine": [
+        2020,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_OshkoshLATV_MK19",
+    "category": "Armor",
+    "paintSchemes": {
+      "0": [
+        "CARC",
+        "Desert"
+      ],
+      "1": [
+        "CARC",
+        "Desert"
+      ],
+      "2": [
+        "CARC",
+        "Desert"
+      ],
+      "3": [
+        "CARC",
+        "Desert"
+      ],
+      "4": [
+        "CARC",
+        "Desert"
+      ],
+      "5": [
+        "CARC",
+        "Desert"
+      ],
+      "6": [
+        "CARC",
+        "Desert"
+      ],
+      "7": [
+        "CARC",
+        "Desert"
+      ],
+      "8": [
+        "CARC",
+        "Desert"
+      ],
+      "9": [
+        "CARC",
+        "Desert"
+      ],
+      "10": [
+        "CARC",
+        "Desert"
+      ],
+      "11": [
+        "CARC",
+        "Desert"
+      ],
+      "12": [
+        "CARC",
+        "Desert"
+      ],
+      "13": [
+        "CARC",
+        "Desert"
+      ],
+      "15": [
+        "CARC",
+        "Desert"
+      ],
+      "16": [
+        "CARC",
+        "Desert"
+      ],
+      "17": [
+        "CARC",
+        "Desert"
+      ],
+      "18": [
+        "CARC",
+        "Desert"
+      ],
+      "19": [
+        "CARC",
+        "Desert"
+      ],
+      "20": [
+        "CARC",
+        "Desert"
+      ],
+      "21": [
+        "CARC",
+        "Desert"
+      ],
+      "22": [
+        "CARC",
+        "Desert"
+      ],
+      "23": [
+        "CARC",
+        "Desert"
+      ],
+      "24": [
+        "CARC",
+        "Desert"
+      ],
+      "25": [
+        "CARC",
+        "Desert"
+      ],
+      "26": [
+        "CARC",
+        "Desert"
+      ],
+      "27": [
+        "CARC",
+        "Desert"
+      ],
+      "28": [
+        "CARC",
+        "Desert"
+      ],
+      "29": [
+        "CARC",
+        "Desert"
+      ],
+      "30": [
+        "CARC",
+        "Desert"
+      ],
+      "31": [
+        "CARC",
+        "Desert"
+      ],
+      "32": [
+        "CARC",
+        "Desert"
+      ],
+      "33": [
+        "CARC",
+        "Desert"
+      ],
+      "34": [
+        "CARC",
+        "Desert"
+      ],
+      "35": [
+        "CARC",
+        "Desert"
+      ],
+      "36": [
+        "CARC",
+        "Desert"
+      ],
+      "37": [
+        "CARC",
+        "Desert"
+      ],
+      "38": [
+        "CARC",
+        "Desert"
+      ],
+      "39": [
+        "CARC",
+        "Desert"
+      ],
+      "40": [
+        "CARC",
+        "Desert"
+      ],
+      "41": [
+        "CARC",
+        "Desert"
+      ],
+      "42": [
+        "CARC",
+        "Desert"
+      ],
+      "43": [
+        "CARC",
+        "Desert"
+      ],
+      "44": [
+        "CARC",
+        "Desert"
+      ],
+      "45": [
+        "CARC",
+        "Desert"
+      ],
+      "46": [
+        "CARC",
+        "Desert"
+      ],
+      "47": [
+        "CARC",
+        "Desert"
+      ],
+      "48": [
+        "CARC",
+        "Desert"
+      ],
+      "49": [
+        "CARC",
+        "Desert"
+      ],
+      "50": [
+        "CARC",
+        "Desert"
+      ],
+      "51": [
+        "CARC",
+        "Desert"
+      ],
+      "52": [
+        "CARC",
+        "Desert"
+      ],
+      "53": [
+        "CARC",
+        "Desert"
+      ],
+      "54": [
+        "CARC",
+        "Desert"
+      ],
+      "55": [
+        "CARC",
+        "Desert"
+      ],
+      "56": [
+        "CARC",
+        "Desert"
+      ],
+      "57": [
+        "CARC",
+        "Desert"
+      ],
+      "58": [
+        "CARC",
+        "Desert"
+      ],
+      "59": [
+        "CARC",
+        "Desert"
+      ],
+      "60": [
+        "CARC",
+        "Desert"
+      ],
+      "61": [
+        "CARC",
+        "Desert"
+      ],
+      "62": [
+        "CARC",
+        "Desert"
+      ],
+      "63": [
+        "CARC",
+        "Desert"
+      ],
+      "64": [
+        "CARC",
+        "Desert"
+      ],
+      "65": [
+        "CARC",
+        "Desert"
+      ],
+      "66": [
+        "CARC",
+        "Desert"
+      ],
+      "67": [
+        "CARC",
+        "Desert"
+      ],
+      "68": [
+        "CARC",
+        "Desert"
+      ],
+      "69": [
+        "CARC",
+        "Desert"
+      ],
+      "70": [
+        "CARC",
+        "Desert"
+      ],
+      "71": [
+        "CARC",
+        "Desert"
+      ],
+      "72": [
+        "CARC",
+        "Desert"
+      ],
+      "73": [
+        "CARC",
+        "Desert"
+      ],
+      "74": [
+        "CARC",
+        "Desert"
+      ],
+      "75": [
+        "CARC",
+        "Desert"
+      ],
+      "76": [
+        "CARC",
+        "Desert"
+      ],
+      "77": [
+        "CARC",
+        "Desert"
+      ],
+      "78": [
+        "CARC",
+        "Desert"
+      ],
+      "79": [
+        "CARC",
+        "Desert"
+      ],
+      "80": [
+        "CARC",
+        "Desert"
+      ],
+      "81": [
+        "CARC",
+        "Desert"
+      ],
+      "82": [
+        "CARC",
+        "Desert"
+      ],
+      "83": [
+        "CARC",
+        "Desert"
+      ],
+      "84": [
+        "CARC",
+        "Desert"
+      ],
+      "85": [
+        "CARC",
+        "Desert"
+      ],
+      "86": [
+        "CARC",
+        "Desert"
+      ],
+      "87": [
+        "CARC",
+        "Desert"
+      ],
+      "88": [
+        "CARC",
+        "Desert"
+      ],
+      "89": [
+        "CARC",
+        "Desert"
+      ],
+      "90": [
+        "CARC",
+        "Desert"
+      ]
+    },
+    "displayName": "[CH] Oshkosh L-ATV (Mk19)",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "OshkoshLATV_MK19",
+    "detectionRange": 0,
+    "threatRangeMin": 75,
+    "threatRange": 2000,
+    "operators": {
+      "USA": [
+        2010,
+        2020
+      ],
+      "Ukraine": [
+        2020,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_OshkoshMATV_M2",
+    "category": "Armor",
+    "paintSchemes": {
+      "0": [
+        "CARC",
+        "Desert"
+      ],
+      "1": [
+        "CARC",
+        "Desert"
+      ],
+      "2": [
+        "CARC",
+        "Desert"
+      ],
+      "3": [
+        "CARC",
+        "Desert"
+      ],
+      "4": [
+        "CARC",
+        "Desert"
+      ],
+      "5": [
+        "CARC",
+        "Desert"
+      ],
+      "6": [
+        "CARC",
+        "Desert"
+      ],
+      "7": [
+        "CARC",
+        "Desert"
+      ],
+      "8": [
+        "CARC",
+        "Desert"
+      ],
+      "9": [
+        "CARC",
+        "Desert"
+      ],
+      "10": [
+        "CARC",
+        "Desert"
+      ],
+      "11": [
+        "CARC",
+        "Desert"
+      ],
+      "12": [
+        "CARC",
+        "Desert"
+      ],
+      "13": [
+        "CARC",
+        "Desert"
+      ],
+      "15": [
+        "CARC",
+        "Desert"
+      ],
+      "16": [
+        "CARC",
+        "Desert"
+      ],
+      "17": [
+        "CARC",
+        "Desert"
+      ],
+      "18": [
+        "CARC",
+        "Desert"
+      ],
+      "19": [
+        "CARC",
+        "Desert"
+      ],
+      "20": [
+        "CARC",
+        "Desert"
+      ],
+      "21": [
+        "CARC",
+        "Desert"
+      ],
+      "22": [
+        "CARC",
+        "Desert"
+      ],
+      "23": [
+        "CARC",
+        "Desert"
+      ],
+      "24": [
+        "CARC",
+        "Desert"
+      ],
+      "25": [
+        "CARC",
+        "Desert"
+      ],
+      "26": [
+        "CARC",
+        "Desert"
+      ],
+      "27": [
+        "CARC",
+        "Desert"
+      ],
+      "28": [
+        "CARC",
+        "Desert"
+      ],
+      "29": [
+        "CARC",
+        "Desert"
+      ],
+      "30": [
+        "CARC",
+        "Desert"
+      ],
+      "31": [
+        "CARC",
+        "Desert"
+      ],
+      "32": [
+        "CARC",
+        "Desert"
+      ],
+      "33": [
+        "CARC",
+        "Desert"
+      ],
+      "34": [
+        "CARC",
+        "Desert"
+      ],
+      "35": [
+        "CARC",
+        "Desert"
+      ],
+      "36": [
+        "CARC",
+        "Desert"
+      ],
+      "37": [
+        "CARC",
+        "Desert"
+      ],
+      "38": [
+        "CARC",
+        "Desert"
+      ],
+      "39": [
+        "CARC",
+        "Desert"
+      ],
+      "40": [
+        "CARC",
+        "Desert"
+      ],
+      "41": [
+        "CARC",
+        "Desert"
+      ],
+      "42": [
+        "CARC",
+        "Desert"
+      ],
+      "43": [
+        "CARC",
+        "Desert"
+      ],
+      "44": [
+        "CARC",
+        "Desert"
+      ],
+      "45": [
+        "CARC",
+        "Desert"
+      ],
+      "46": [
+        "CARC",
+        "Desert"
+      ],
+      "47": [
+        "CARC",
+        "Desert"
+      ],
+      "48": [
+        "CARC",
+        "Desert"
+      ],
+      "49": [
+        "CARC",
+        "Desert"
+      ],
+      "50": [
+        "CARC",
+        "Desert"
+      ],
+      "51": [
+        "CARC",
+        "Desert"
+      ],
+      "52": [
+        "CARC",
+        "Desert"
+      ],
+      "53": [
+        "CARC",
+        "Desert"
+      ],
+      "54": [
+        "CARC",
+        "Desert"
+      ],
+      "55": [
+        "CARC",
+        "Desert"
+      ],
+      "56": [
+        "CARC",
+        "Desert"
+      ],
+      "57": [
+        "CARC",
+        "Desert"
+      ],
+      "58": [
+        "CARC",
+        "Desert"
+      ],
+      "59": [
+        "CARC",
+        "Desert"
+      ],
+      "60": [
+        "CARC",
+        "Desert"
+      ],
+      "61": [
+        "CARC",
+        "Desert"
+      ],
+      "62": [
+        "CARC",
+        "Desert"
+      ],
+      "63": [
+        "CARC",
+        "Desert"
+      ],
+      "64": [
+        "CARC",
+        "Desert"
+      ],
+      "65": [
+        "CARC",
+        "Desert"
+      ],
+      "66": [
+        "CARC",
+        "Desert"
+      ],
+      "67": [
+        "CARC",
+        "Desert"
+      ],
+      "68": [
+        "CARC",
+        "Desert"
+      ],
+      "69": [
+        "CARC",
+        "Desert"
+      ],
+      "70": [
+        "CARC",
+        "Desert"
+      ],
+      "71": [
+        "CARC",
+        "Desert"
+      ],
+      "72": [
+        "CARC",
+        "Desert"
+      ],
+      "73": [
+        "CARC",
+        "Desert"
+      ],
+      "74": [
+        "CARC",
+        "Desert"
+      ],
+      "75": [
+        "CARC",
+        "Desert"
+      ],
+      "76": [
+        "CARC",
+        "Desert"
+      ],
+      "77": [
+        "CARC",
+        "Desert"
+      ],
+      "78": [
+        "CARC",
+        "Desert"
+      ],
+      "79": [
+        "CARC",
+        "Desert"
+      ],
+      "80": [
+        "CARC",
+        "Desert"
+      ],
+      "81": [
+        "CARC",
+        "Desert"
+      ],
+      "82": [
+        "CARC",
+        "Desert"
+      ],
+      "83": [
+        "CARC",
+        "Desert"
+      ],
+      "84": [
+        "CARC",
+        "Desert"
+      ],
+      "85": [
+        "CARC",
+        "Desert"
+      ],
+      "86": [
+        "CARC",
+        "Desert"
+      ],
+      "87": [
+        "CARC",
+        "Desert"
+      ],
+      "88": [
+        "CARC",
+        "Desert"
+      ],
+      "89": [
+        "CARC",
+        "Desert"
+      ],
+      "90": [
+        "CARC",
+        "Desert"
+      ]
+    },
+    "displayName": "[CH] Oshkosh M-ATV MRAP (M2)",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "OshkoshMATV_M2",
+    "detectionRange": 0,
+    "threatRange": 1800,
+    "operators": {
+      "USA": [
+        2000,
+        2020
+      ],
+      "Ukraine": [
+        2020,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_OshkoshMATV_MK19",
+    "category": "Armor",
+    "paintSchemes": {
+      "0": [
+        "CARC",
+        "Desert"
+      ],
+      "1": [
+        "CARC",
+        "Desert"
+      ],
+      "2": [
+        "CARC",
+        "Desert"
+      ],
+      "3": [
+        "CARC",
+        "Desert"
+      ],
+      "4": [
+        "CARC",
+        "Desert"
+      ],
+      "5": [
+        "CARC",
+        "Desert"
+      ],
+      "6": [
+        "CARC",
+        "Desert"
+      ],
+      "7": [
+        "CARC",
+        "Desert"
+      ],
+      "8": [
+        "CARC",
+        "Desert"
+      ],
+      "9": [
+        "CARC",
+        "Desert"
+      ],
+      "10": [
+        "CARC",
+        "Desert"
+      ],
+      "11": [
+        "CARC",
+        "Desert"
+      ],
+      "12": [
+        "CARC",
+        "Desert"
+      ],
+      "13": [
+        "CARC",
+        "Desert"
+      ],
+      "15": [
+        "CARC",
+        "Desert"
+      ],
+      "16": [
+        "CARC",
+        "Desert"
+      ],
+      "17": [
+        "CARC",
+        "Desert"
+      ],
+      "18": [
+        "CARC",
+        "Desert"
+      ],
+      "19": [
+        "CARC",
+        "Desert"
+      ],
+      "20": [
+        "CARC",
+        "Desert"
+      ],
+      "21": [
+        "CARC",
+        "Desert"
+      ],
+      "22": [
+        "CARC",
+        "Desert"
+      ],
+      "23": [
+        "CARC",
+        "Desert"
+      ],
+      "24": [
+        "CARC",
+        "Desert"
+      ],
+      "25": [
+        "CARC",
+        "Desert"
+      ],
+      "26": [
+        "CARC",
+        "Desert"
+      ],
+      "27": [
+        "CARC",
+        "Desert"
+      ],
+      "28": [
+        "CARC",
+        "Desert"
+      ],
+      "29": [
+        "CARC",
+        "Desert"
+      ],
+      "30": [
+        "CARC",
+        "Desert"
+      ],
+      "31": [
+        "CARC",
+        "Desert"
+      ],
+      "32": [
+        "CARC",
+        "Desert"
+      ],
+      "33": [
+        "CARC",
+        "Desert"
+      ],
+      "34": [
+        "CARC",
+        "Desert"
+      ],
+      "35": [
+        "CARC",
+        "Desert"
+      ],
+      "36": [
+        "CARC",
+        "Desert"
+      ],
+      "37": [
+        "CARC",
+        "Desert"
+      ],
+      "38": [
+        "CARC",
+        "Desert"
+      ],
+      "39": [
+        "CARC",
+        "Desert"
+      ],
+      "40": [
+        "CARC",
+        "Desert"
+      ],
+      "41": [
+        "CARC",
+        "Desert"
+      ],
+      "42": [
+        "CARC",
+        "Desert"
+      ],
+      "43": [
+        "CARC",
+        "Desert"
+      ],
+      "44": [
+        "CARC",
+        "Desert"
+      ],
+      "45": [
+        "CARC",
+        "Desert"
+      ],
+      "46": [
+        "CARC",
+        "Desert"
+      ],
+      "47": [
+        "CARC",
+        "Desert"
+      ],
+      "48": [
+        "CARC",
+        "Desert"
+      ],
+      "49": [
+        "CARC",
+        "Desert"
+      ],
+      "50": [
+        "CARC",
+        "Desert"
+      ],
+      "51": [
+        "CARC",
+        "Desert"
+      ],
+      "52": [
+        "CARC",
+        "Desert"
+      ],
+      "53": [
+        "CARC",
+        "Desert"
+      ],
+      "54": [
+        "CARC",
+        "Desert"
+      ],
+      "55": [
+        "CARC",
+        "Desert"
+      ],
+      "56": [
+        "CARC",
+        "Desert"
+      ],
+      "57": [
+        "CARC",
+        "Desert"
+      ],
+      "58": [
+        "CARC",
+        "Desert"
+      ],
+      "59": [
+        "CARC",
+        "Desert"
+      ],
+      "60": [
+        "CARC",
+        "Desert"
+      ],
+      "61": [
+        "CARC",
+        "Desert"
+      ],
+      "62": [
+        "CARC",
+        "Desert"
+      ],
+      "63": [
+        "CARC",
+        "Desert"
+      ],
+      "64": [
+        "CARC",
+        "Desert"
+      ],
+      "65": [
+        "CARC",
+        "Desert"
+      ],
+      "66": [
+        "CARC",
+        "Desert"
+      ],
+      "67": [
+        "CARC",
+        "Desert"
+      ],
+      "68": [
+        "CARC",
+        "Desert"
+      ],
+      "69": [
+        "CARC",
+        "Desert"
+      ],
+      "70": [
+        "CARC",
+        "Desert"
+      ],
+      "71": [
+        "CARC",
+        "Desert"
+      ],
+      "72": [
+        "CARC",
+        "Desert"
+      ],
+      "73": [
+        "CARC",
+        "Desert"
+      ],
+      "74": [
+        "CARC",
+        "Desert"
+      ],
+      "75": [
+        "CARC",
+        "Desert"
+      ],
+      "76": [
+        "CARC",
+        "Desert"
+      ],
+      "77": [
+        "CARC",
+        "Desert"
+      ],
+      "78": [
+        "CARC",
+        "Desert"
+      ],
+      "79": [
+        "CARC",
+        "Desert"
+      ],
+      "80": [
+        "CARC",
+        "Desert"
+      ],
+      "81": [
+        "CARC",
+        "Desert"
+      ],
+      "82": [
+        "CARC",
+        "Desert"
+      ],
+      "83": [
+        "CARC",
+        "Desert"
+      ],
+      "84": [
+        "CARC",
+        "Desert"
+      ],
+      "85": [
+        "CARC",
+        "Desert"
+      ],
+      "86": [
+        "CARC",
+        "Desert"
+      ],
+      "87": [
+        "CARC",
+        "Desert"
+      ],
+      "88": [
+        "CARC",
+        "Desert"
+      ],
+      "89": [
+        "CARC",
+        "Desert"
+      ],
+      "90": [
+        "CARC",
+        "Desert"
+      ]
+    },
+    "displayName": "[CH] Oshkosh M-ATV MRAP (Mk19)",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "OshkoshMATV_MK19",
+    "detectionRange": 0,
+    "threatRangeMin": 75,
+    "threatRange": 2000,
+    "operators": {
+      "USA": [
+        2000,
+        2020
+      ],
+      "Ukraine": [
+        2020,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_USInfantry_FGM148",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] FGM-148 ATGM Soldier",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "US_Infantry_FGM148",
+    "detectionRange": 0,
+    "threatRangeMin": 100,
+    "threatRange": 5000,
+    "operators": {
+      "USA": [
+        1990,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_USInfantry_FIM92",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] FIM-92K Stinger Soldier",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "US_Infantry_FIM92",
+    "detectionRange": 0,
+    "threatRangeMin": 160,
+    "threatRange": 8000,
+    "operators": {
+      "USA": [
+        1980,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_USInfantry_M120",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] M120 120 mm Mortar",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "US_Infantry_M120",
+    "detectionRange": 0,
+    "threatRangeMin": 180,
+    "threatRange": 7200,
+    "operators": {
+      "USA": [
+        1990,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_USInfantry_M136",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] M136 AT Soldier",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "US_Infantry_M136",
+    "detectionRange": 0,
+    "threatRangeMin": 30,
+    "threatRange": 400,
+    "operators": {
+      "USA": [
+        1980,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_USInfantry_M2",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] M2 HMG Soldier",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "US_Infantry_M2",
+    "detectionRange": 0,
+    "threatRange": 1800,
+    "operators": {
+      "USA": [
+        1930,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_USInfantry_M240",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] M240 GPMG Soldier",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "US_Infantry_M240",
+    "detectionRange": 0,
+    "threatRange": 1200,
+    "operators": {
+      "USA": [
+        1970,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_USInfantry_M249",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] M249 LMG Soldier",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "US_Infantry_M249",
+    "detectionRange": 0,
+    "threatRange": 700,
+    "operators": {
+      "USA": [
+        1980,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_USInfantry_M4",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] M4 AR Soldier",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "US_Infantry_M4",
+    "detectionRange": 0,
+    "threatRange": 500,
+    "operators": {
+      "USA": [
+        1990,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_USInfantry_M4M203",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] M4/M203 AR/GL Soldier",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "US_Infantry_M4M203",
+    "detectionRange": 0,
+    "threatRange": 500,
+    "operators": {
+      "USA": [
+        1990,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_USInfantry_M82",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] M82 AMR Soldier",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "US_Infantry_M82",
+    "detectionRange": 0,
+    "threatRange": 1800,
+    "operators": {
+      "USA": [
+        1980,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_USInfantry_MK19",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] Mk19 AGL Soldier",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "US_Infantry_MK19",
+    "detectionRange": 0,
+    "threatRange": 1500,
+    "operators": {
+      "USA": [
+        1960,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "M142_HIMARS_ATACMS",
+    "category": "Artillery",
+    "paintSchemes": {},
+    "displayName": "[CH] M142 HIMARS (ATACMS)",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "M142-HIMARS-ATACMS",
+    "detectionRange": 0,
+    "threatRangeMin": 74000,
+    "threatRange": 296000,
+    "operators": {
+      "USA": [
+        2010,
+        2020
+      ],
+      "Ukraine": [
+        2020,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "M142_HIMARS_GLSDB",
+    "category": "Artillery",
+    "paintSchemes": {},
+    "displayName": "[CH] M142 HIMARS (GLSDB)",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "M142-HIMARS",
+    "detectionRange": 0,
+    "threatRangeMin": 55000,
+    "threatRange": 150000,
+    "operators": {
+      "USA": [
+        2020,
+        2020
+      ],
+      "Ukraine": [
+        2020,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "M142_HIMARS_GMLRS",
+    "category": "Artillery",
+    "paintSchemes": {},
+    "displayName": "[CH] M142 HIMARS (GMLRS)",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "M142-HIMARS",
+    "detectionRange": 0,
+    "threatRangeMin": 15000,
+    "threatRange": 92000,
+    "operators": {
+      "USA": [
+        2000,
+        2020
+      ],
+      "Ukraine": [
+        2020,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "M142_HIMARS_PRSM",
+    "category": "Artillery",
+    "paintSchemes": {},
+    "displayName": "[CH] M142 HIMARS (PrSM)",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "M142-HIMARS-PrSM",
+    "detectionRange": 0,
+    "threatRangeMin": 100000,
+    "threatRange": 500000,
+    "operators": {
+      "USA": [
+        2020,
+        2020
+      ],
+      "Ukraine": [
+        2020,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "M142_HIMARS_PRSM_ASHM",
+    "category": "Artillery",
+    "paintSchemes": {},
+    "displayName": "[CH] M142 HIMARS (PrSM AShM)",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "M142-HIMARS-PrSM",
+    "detectionRange": 0,
+    "threatRangeMin": 100000,
+    "threatRange": 500000,
+    "operators": {
+      "USA": [
+        2020,
+        2020
+      ],
+      "Ukraine": [
+        2020,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "MIM104_ANMPQ65",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] SAM MIM-104 AN/MPQ-65 STR",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "MIM104_ANMPQ65",
+    "detectionRange": 200000,
+    "threatRange": 0,
+    "operators": {
+      "USA": [
+        2010,
+        2020
+      ],
+      "Ukraine": [
+        2020,
+        2020
+      ],
+      "Germany": [
+        2010,
+        2020
+      ],
+      "Greece": [
+        2010,
+        2020
+      ],
+      "Israel": [
+        2010,
+        2020
+      ],
+      "Japan": [
+        2010,
+        2020
+      ],
+      "Poland": [
+        2010,
+        2020
+      ],
+      "Spain": [
+        2010,
+        2020
+      ],
+      "Romania": [
+        2010,
+        2020
+      ],
+      "South Korea": [
+        2010,
+        2020
+      ],
+      "Jordan": [
+        2010,
+        2020
+      ],
+      "Saudi Arabia": [
+        2010,
+        2020
+      ],
+      "United Arab Emirates": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "MIM104_ANMPQ65A",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] SAM MIM-104 AN/MPQ-65A STR",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "MIM104_ANMPQ65A",
+    "detectionRange": 260000,
+    "threatRange": 0,
+    "operators": {
+      "USA": [
+        2010,
+        2020
+      ],
+      "Ukraine": [
+        2020,
+        2020
+      ],
+      "Germany": [
+        2010,
+        2020
+      ],
+      "Greece": [
+        2010,
+        2020
+      ],
+      "Israel": [
+        2010,
+        2020
+      ],
+      "Japan": [
+        2010,
+        2020
+      ],
+      "Poland": [
+        2010,
+        2020
+      ],
+      "Spain": [
+        2010,
+        2020
+      ],
+      "Romania": [
+        2010,
+        2020
+      ],
+      "South Korea": [
+        2010,
+        2020
+      ],
+      "Jordan": [
+        2010,
+        2020
+      ],
+      "Saudi Arabia": [
+        2010,
+        2020
+      ],
+      "United Arab Emirates": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "MIM104_ECS",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] SAM MIM-104 ECS",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "MIM104_ECS",
+    "detectionRange": 0,
+    "threatRange": 0,
+    "operators": {
+      "USA": [
+        2010,
+        2020
+      ],
+      "Ukraine": [
+        2020,
+        2020
+      ],
+      "Germany": [
+        2010,
+        2020
+      ],
+      "Greece": [
+        2010,
+        2020
+      ],
+      "Israel": [
+        2010,
+        2020
+      ],
+      "Japan": [
+        2010,
+        2020
+      ],
+      "Poland": [
+        2010,
+        2020
+      ],
+      "Spain": [
+        2010,
+        2020
+      ],
+      "Romania": [
+        2010,
+        2020
+      ],
+      "South Korea": [
+        2010,
+        2020
+      ],
+      "Jordan": [
+        2010,
+        2020
+      ],
+      "Saudi Arabia": [
+        2010,
+        2020
+      ],
+      "United Arab Emirates": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "MIM104_EPP",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] SAM MIM-104 EPP",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "MIM104_EPP",
+    "detectionRange": 0,
+    "threatRange": 0,
+    "operators": {
+      "USA": [
+        2010,
+        2020
+      ],
+      "Ukraine": [
+        2020,
+        2020
+      ],
+      "Germany": [
+        2010,
+        2020
+      ],
+      "Greece": [
+        2010,
+        2020
+      ],
+      "Israel": [
+        2010,
+        2020
+      ],
+      "Japan": [
+        2010,
+        2020
+      ],
+      "Poland": [
+        2010,
+        2020
+      ],
+      "Spain": [
+        2010,
+        2020
+      ],
+      "Romania": [
+        2010,
+        2020
+      ],
+      "South Korea": [
+        2010,
+        2020
+      ],
+      "Jordan": [
+        2010,
+        2020
+      ],
+      "Saudi Arabia": [
+        2010,
+        2020
+      ],
+      "United Arab Emirates": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "MIM104_LTAMDS",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] SAM MIM-104 LTAMDS STR",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "MIM104_LTAMDS",
+    "detectionRange": 400000,
+    "threatRange": 0,
+    "operators": {
+      "USA": [
+        2010,
+        2020
+      ],
+      "Ukraine": [
+        2020,
+        2020
+      ],
+      "Germany": [
+        2010,
+        2020
+      ],
+      "Greece": [
+        2010,
+        2020
+      ],
+      "Israel": [
+        2010,
+        2020
+      ],
+      "Japan": [
+        2010,
+        2020
+      ],
+      "Poland": [
+        2010,
+        2020
+      ],
+      "Spain": [
+        2010,
+        2020
+      ],
+      "Romania": [
+        2010,
+        2020
+      ],
+      "South Korea": [
+        2010,
+        2020
+      ],
+      "Jordan": [
+        2010,
+        2020
+      ],
+      "Saudi Arabia": [
+        2010,
+        2020
+      ],
+      "United Arab Emirates": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "MIM104_M903_PAC2",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] SAM MIM-104 M903 PAC-2 GEM/T LN",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "MIM104_M903_PAC2",
+    "detectionRange": 0,
+    "threatRangeMin": 3000,
+    "threatRange": 150000,
+    "operators": {
+      "USA": [
+        2010,
+        2020
+      ],
+      "Ukraine": [
+        2020,
+        2020
+      ],
+      "Germany": [
+        2010,
+        2020
+      ],
+      "Greece": [
+        2010,
+        2020
+      ],
+      "Israel": [
+        2010,
+        2020
+      ],
+      "Japan": [
+        2010,
+        2020
+      ],
+      "Poland": [
+        2010,
+        2020
+      ],
+      "Spain": [
+        2010,
+        2020
+      ],
+      "Romania": [
+        2010,
+        2020
+      ],
+      "South Korea": [
+        2010,
+        2020
+      ],
+      "Jordan": [
+        2010,
+        2020
+      ],
+      "Saudi Arabia": [
+        2010,
+        2020
+      ],
+      "United Arab Emirates": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "MIM104_M903_PAC3",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] SAM MIM-104 M903 PAC-3 MSE LN",
+    "module": "Military Asset Pack USA by Currenthill",
+    "shape": "MIM104_M903_PAC3",
+    "detectionRange": 0,
+    "threatRangeMin": 1000,
+    "threatRange": 120000,
+    "operators": {
+      "USA": [
+        2010,
+        2020
+      ],
+      "Ukraine": [
+        2020,
+        2020
+      ],
+      "Germany": [
+        2010,
+        2020
+      ],
+      "Greece": [
+        2010,
+        2020
+      ],
+      "Israel": [
+        2010,
+        2020
+      ],
+      "Japan": [
+        2010,
+        2020
+      ],
+      "Poland": [
+        2010,
+        2020
+      ],
+      "Spain": [
+        2010,
+        2020
+      ],
+      "Romania": [
+        2010,
+        2020
+      ],
+      "South Korea": [
+        2010,
+        2020
+      ],
+      "Jordan": [
+        2010,
+        2020
+      ],
+      "Saudi Arabia": [
+        2010,
+        2020
+      ],
+      "United Arab Emirates": [
+        2010,
+        2020
+      ]
+    }
+  }
 ]

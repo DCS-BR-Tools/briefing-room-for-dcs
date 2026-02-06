@@ -1,74 +1,74 @@
 [
-    {
-        "type": "CH_Type022",
-        "displayName": "[CH] Type 022 FAC",
-        "categories": [
-            {
-                "name": "Armed Ship"
-            }
-        ],
-        "module": "Military Asset Pack China by Currenthill",
-        "shape": "Type022",
-        "helicopterStorage": 0,
-        "planeStorage": 0,
-        "detectionRange": 100000,
-        "threatRangeMin": 15000,
-        "threatRange": 4000,
-        "operators": {
-            "China": [
-                2000,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "Type052D",
-        "displayName": "[CH] Type 052D Destroyer",
-        "categories": [
-            {
-                "name": "Armed Ship"
-            },
-            {
-                "name": "HelicopterCarrier"
-            }
-        ],
-        "module": "Military Asset Pack China by Currenthill",
-        "shape": "Type052D",
-        "helicopterStorage": 1,
-        "planeStorage": 0,
-        "detectionRange": 400000,
-        "threatRangeMin": 500,
-        "threatRange": 250000,
-        "operators": {
-            "China": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "Type055",
-        "displayName": "[CH] Type 055 Destroyer",
-        "categories": [
-            {
-                "name": "Armed Ship"
-            },
-            {
-                "name": "HelicopterCarrier"
-            }
-        ],
-        "module": "Military Asset Pack China by Currenthill",
-        "shape": "Type055",
-        "helicopterStorage": 1,
-        "planeStorage": 0,
-        "detectionRange": 500000,
-        "threatRangeMin": 500,
-        "threatRange": 250000,
-        "operators": {
-            "China": [
-                2020,
-                2020
-            ]
-        }
+  {
+    "type": "CH_Type022",
+    "displayName": "[CH] Type 022 FAC",
+    "categories": [
+      {
+        "name": "Armed Ship"
+      }
+    ],
+    "module": "Military Asset Pack China by Currenthill",
+    "shape": "Type022",
+    "helicopterStorage": 0,
+    "planeStorage": 0,
+    "detectionRange": 100000,
+    "threatRangeMin": 15000,
+    "threatRange": 4000,
+    "operators": {
+      "China": [
+        2000,
+        2020
+      ]
     }
+  },
+  {
+    "type": "Type052D",
+    "displayName": "[CH] Type 052D Destroyer",
+    "categories": [
+      {
+        "name": "Armed Ship"
+      },
+      {
+        "name": "HelicopterCarrier"
+      }
+    ],
+    "module": "Military Asset Pack China by Currenthill",
+    "shape": "Type052D",
+    "helicopterStorage": 1,
+    "planeStorage": 0,
+    "detectionRange": 400000,
+    "threatRangeMin": 500,
+    "threatRange": 250000,
+    "operators": {
+      "China": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "Type055",
+    "displayName": "[CH] Type 055 Destroyer",
+    "categories": [
+      {
+        "name": "Armed Ship"
+      },
+      {
+        "name": "HelicopterCarrier"
+      }
+    ],
+    "module": "Military Asset Pack China by Currenthill",
+    "shape": "Type055",
+    "helicopterStorage": 1,
+    "planeStorage": 0,
+    "detectionRange": 500000,
+    "threatRangeMin": 500,
+    "threatRange": 250000,
+    "operators": {
+      "China": [
+        2020,
+        2020
+      ]
+    }
+  }
 ]

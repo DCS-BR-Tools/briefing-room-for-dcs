@@ -1,23 +1,23 @@
 [
-    {
-        "type": "CH_Shahed136",
-        "category": "Artillery",
-        "paintSchemes": {},
-        "displayName": "[CH] Shahed 136 LM",
-        "module": "Military Asset Pack Iran by Currenthill",
-        "shape": "Shahed136_truck",
-        "detectionRange": 0,
-        "threatRangeMin": 20000,
-        "threatRange": 360000,
-        "operators": {
-            "Iran": [
-                2020,
-                2020
-            ],
-            "Russia": [
-                2020,
-                2020
-            ]
-        }
+  {
+    "type": "CH_Shahed136",
+    "category": "Artillery",
+    "paintSchemes": {},
+    "displayName": "[CH] Shahed 136 LM",
+    "module": "Military Asset Pack Iran by Currenthill",
+    "shape": "Shahed136_truck",
+    "detectionRange": 0,
+    "threatRangeMin": 20000,
+    "threatRange": 360000,
+    "operators": {
+      "Iran": [
+        2020,
+        2020
+      ],
+      "Russia": [
+        2020,
+        2020
+      ]
     }
+  }
 ]

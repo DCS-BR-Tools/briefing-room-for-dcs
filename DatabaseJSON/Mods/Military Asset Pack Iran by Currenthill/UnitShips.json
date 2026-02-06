@@ -1,45 +1,45 @@
 [
-    {
-        "type": "IranFAC_MG",
-        "displayName": "[CH] IRGCN FAC (MG/MANPADS)",
-        "categories": [
-            {
-                "name": "Armed Ship"
-            }
-        ],
-        "module": "Military Asset Pack Iran by Currenthill",
-        "shape": "IranFAC_MG",
-        "helicopterStorage": 0,
-        "planeStorage": 0,
-        "detectionRange": 40000,
-        "threatRangeMin": 500,
-        "threatRange": 5200,
-        "operators": {
-            "Iran": [
-                2000,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "IranFAC_MG_AShM",
-        "displayName": "[CH] IRGCN FAC (MG/AShM)",
-        "categories": [
-            {
-                "name": "Armed Ship"
-            }
-        ],
-        "module": "Military Asset Pack Iran by Currenthill",
-        "shape": "IranFAC_MG_AShM",
-        "helicopterStorage": 0,
-        "planeStorage": 0,
-        "detectionRange": 40000,
-        "threatRange": 1800,
-        "operators": {
-            "Iran": [
-                2000,
-                2020
-            ]
-        }
+  {
+    "type": "IranFAC_MG",
+    "displayName": "[CH] IRGCN FAC (MG/MANPADS)",
+    "categories": [
+      {
+        "name": "Armed Ship"
+      }
+    ],
+    "module": "Military Asset Pack Iran by Currenthill",
+    "shape": "IranFAC_MG",
+    "helicopterStorage": 0,
+    "planeStorage": 0,
+    "detectionRange": 40000,
+    "threatRangeMin": 500,
+    "threatRange": 5200,
+    "operators": {
+      "Iran": [
+        2000,
+        2020
+      ]
     }
+  },
+  {
+    "type": "IranFAC_MG_AShM",
+    "displayName": "[CH] IRGCN FAC (MG/AShM)",
+    "categories": [
+      {
+        "name": "Armed Ship"
+      }
+    ],
+    "module": "Military Asset Pack Iran by Currenthill",
+    "shape": "IranFAC_MG_AShM",
+    "helicopterStorage": 0,
+    "planeStorage": 0,
+    "detectionRange": 40000,
+    "threatRange": 1800,
+    "operators": {
+      "Iran": [
+        2000,
+        2020
+      ]
+    }
+  }
 ]

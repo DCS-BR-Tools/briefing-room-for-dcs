@@ -1,1090 +1,1090 @@
 [
-    {
-        "type": "CH_2S38",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] 2S38 SPAAG",
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "2S38",
-        "detectionRange": 12000,
-        "threatRange": 5000,
-        "operators": {
-            "Russia": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_2S38_LG",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] 2S38 SPAAG (LG-HE)",
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "2S38",
-        "detectionRange": 12000,
-        "threatRangeMin": 500,
-        "threatRange": 8000,
-        "operators": {
-            "Russia": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_3K60_BAL",
-        "category": "MissilesSS",
-        "paintSchemes": {},
-        "displayName": "[CH] Bal LBASM TEL",
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "3K60_Bal",
-        "detectionRange": 260000,
-        "threatRangeMin": 7000,
-        "threatRange": 260000,
-        "operators": {
-            "Russia": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_DSHK_HMG_RUS",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] DShK HMG",
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "DShK-MG-Rus",
-        "detectionRange": 5000,
-        "threatRange": 1800,
-        "operators": {
-            "Russia": [
-                1940,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_DSHK_HMG_UKR",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "[CH] DShK HMG",
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "DShK-MG-Ukr",
-        "detectionRange": 5000,
-        "threatRange": 1800,
-        "operators": {
-            "Ukraine": [
-                1940,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_IskanderK",
-        "category": "MissilesSS",
-        "paintSchemes": {},
-        "displayName": "[CH] Iskander-K GLCM",
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "Iskander-K",
-        "detectionRange": 1500000,
-        "threatRangeMin": 20000,
-        "threatRange": 1500000,
-        "operators": {
-            "Russia": [
-                2000,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_IskanderM",
-        "category": "MissilesSS",
-        "paintSchemes": {},
-        "displayName": "[CH] Iskander-M SRBM",
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "Iskander-M",
-        "detectionRange": 500000,
-        "threatRangeMin": 150000,
-        "threatRange": 500000,
-        "operators": {
-            "Russia": [
-                2000,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_S350_50K6",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] S-350 50K6 CP",
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "S350_50K6",
-        "detectionRange": 0,
-        "threatRange": 0,
-        "operators": {
-            "Russia": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_S350_50N6",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] S-350 50N6 STR",
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "S350_50N6",
-        "detectionRange": 200000,
-        "threatRange": 0,
-        "operators": {
-            "Russia": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_S350_50P6_9M100",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] S-350 50P6 9M100 LN",
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "S350_50P6_9M100",
-        "detectionRange": 0,
-        "threatRangeMin": 1500,
-        "threatRange": 15000,
-        "operators": {
-            "Russia": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_S350_50P6_9M96D",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] S-350 50P6 9M96D LN",
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "S350_50P6_9M96D",
-        "detectionRange": 0,
-        "threatRangeMin": 2500,
-        "threatRange": 150000,
-        "operators": {
-            "Russia": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_S350_96L6",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] S-350 96L6 SR",
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "S350_96L6",
-        "detectionRange": 300000,
-        "threatRange": 0,
-        "operators": {
-            "Russia": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_T14",
-        "category": "Armor",
-        "paintSchemes": {},
-        "displayName": "[CH] T-14 MBT",
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "T-14",
-        "detectionRange": 8000,
-        "threatRangeMin": 100,
-        "threatRange": 5000,
-        "operators": {
-            "Russia": [
-                2020,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_T90M",
-        "category": "Armor",
-        "paintSchemes": {},
-        "displayName": "[CH] T-90M MBT",
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "T-90M",
-        "detectionRange": 8000,
-        "threatRangeMin": 100,
-        "threatRange": 5000,
-        "operators": {
-            "Russia": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_TigrM",
-        "category": "Armor",
-        "paintSchemes": {},
-        "displayName": "[CH] Tigr-M",
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "TigrM",
-        "detectionRange": 0,
-        "threatRange": 1200,
-        "operators": {
-            "Russia": [
-                2000,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "K300P",
-        "category": "MissilesSS",
-        "paintSchemes": {},
-        "displayName": "[CH] Bastion-P LBASM TEL",
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "K-300P",
-        "detectionRange": 400000,
-        "threatRangeMin": 4500,
-        "threatRange": 400000,
-        "operators": {
-            "Russia": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "MonolitB",
-        "category": "MissilesSS",
-        "paintSchemes": {},
-        "displayName": "[CH] Monolit-B LBASM STR",
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "Monolit-B",
-        "detectionRange": 800000,
-        "threatRange": 0,
-        "operators": {
-            "Russia": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "PantsirS1",
-        "category": "Air Defence",
-        "paintSchemes": {
-            "0": [
-                "Green",
-                "Desert"
-            ],
-            "1": [
-                "Green",
-                "Desert"
-            ],
-            "2": [
-                "Green",
-                "Desert"
-            ],
-            "3": [
-                "Green",
-                "Desert"
-            ],
-            "4": [
-                "Green",
-                "Desert"
-            ],
-            "5": [
-                "Green",
-                "Desert"
-            ],
-            "6": [
-                "Green",
-                "Desert"
-            ],
-            "7": [
-                "Green",
-                "Desert"
-            ],
-            "8": [
-                "Green",
-                "Desert"
-            ],
-            "9": [
-                "Green",
-                "Desert"
-            ],
-            "10": [
-                "Green",
-                "Desert"
-            ],
-            "11": [
-                "Green",
-                "Desert"
-            ],
-            "12": [
-                "Green",
-                "Desert"
-            ],
-            "13": [
-                "Green",
-                "Desert"
-            ],
-            "15": [
-                "Green",
-                "Desert"
-            ],
-            "16": [
-                "Green",
-                "Desert"
-            ],
-            "17": [
-                "Green",
-                "Desert"
-            ],
-            "18": [
-                "Green",
-                "Desert"
-            ],
-            "19": [
-                "Green",
-                "Desert"
-            ],
-            "20": [
-                "Green",
-                "Desert"
-            ],
-            "21": [
-                "Green",
-                "Desert"
-            ],
-            "22": [
-                "Green",
-                "Desert"
-            ],
-            "23": [
-                "Green",
-                "Desert"
-            ],
-            "24": [
-                "Green",
-                "Desert"
-            ],
-            "25": [
-                "Green",
-                "Desert"
-            ],
-            "26": [
-                "Green",
-                "Desert"
-            ],
-            "27": [
-                "Green",
-                "Desert"
-            ],
-            "28": [
-                "Green",
-                "Desert"
-            ],
-            "29": [
-                "Green",
-                "Desert"
-            ],
-            "30": [
-                "Green",
-                "Desert"
-            ],
-            "31": [
-                "Green",
-                "Desert"
-            ],
-            "32": [
-                "Green",
-                "Desert"
-            ],
-            "33": [
-                "Green",
-                "Desert"
-            ],
-            "34": [
-                "Green",
-                "Desert"
-            ],
-            "35": [
-                "Green",
-                "Desert"
-            ],
-            "36": [
-                "Green",
-                "Desert"
-            ],
-            "37": [
-                "Green",
-                "Desert"
-            ],
-            "38": [
-                "Green",
-                "Desert"
-            ],
-            "39": [
-                "Green",
-                "Desert"
-            ],
-            "40": [
-                "Green",
-                "Desert"
-            ],
-            "41": [
-                "Green",
-                "Desert"
-            ],
-            "42": [
-                "Green",
-                "Desert"
-            ],
-            "43": [
-                "Green",
-                "Desert"
-            ],
-            "44": [
-                "Green",
-                "Desert"
-            ],
-            "45": [
-                "Green",
-                "Desert"
-            ],
-            "46": [
-                "Green",
-                "Desert"
-            ],
-            "47": [
-                "Green",
-                "Desert"
-            ],
-            "48": [
-                "Green",
-                "Desert"
-            ],
-            "49": [
-                "Green",
-                "Desert"
-            ],
-            "50": [
-                "Green",
-                "Desert"
-            ],
-            "51": [
-                "Green",
-                "Desert"
-            ],
-            "52": [
-                "Green",
-                "Desert"
-            ],
-            "53": [
-                "Green",
-                "Desert"
-            ],
-            "54": [
-                "Green",
-                "Desert"
-            ],
-            "55": [
-                "Green",
-                "Desert"
-            ],
-            "56": [
-                "Green",
-                "Desert"
-            ],
-            "57": [
-                "Green",
-                "Desert"
-            ],
-            "58": [
-                "Green",
-                "Desert"
-            ],
-            "59": [
-                "Green",
-                "Desert"
-            ],
-            "60": [
-                "Green",
-                "Desert"
-            ],
-            "61": [
-                "Green",
-                "Desert"
-            ],
-            "62": [
-                "Green",
-                "Desert"
-            ],
-            "63": [
-                "Green",
-                "Desert"
-            ],
-            "64": [
-                "Green",
-                "Desert"
-            ],
-            "65": [
-                "Green",
-                "Desert"
-            ],
-            "66": [
-                "Green",
-                "Desert"
-            ],
-            "67": [
-                "Green",
-                "Desert"
-            ],
-            "68": [
-                "Green",
-                "Desert"
-            ],
-            "69": [
-                "Green",
-                "Desert"
-            ],
-            "70": [
-                "Green",
-                "Desert"
-            ],
-            "71": [
-                "Green",
-                "Desert"
-            ],
-            "72": [
-                "Green",
-                "Desert"
-            ],
-            "73": [
-                "Green",
-                "Desert"
-            ],
-            "74": [
-                "Green",
-                "Desert"
-            ],
-            "75": [
-                "Green",
-                "Desert"
-            ],
-            "76": [
-                "Green",
-                "Desert"
-            ],
-            "77": [
-                "Green",
-                "Desert"
-            ],
-            "78": [
-                "Green",
-                "Desert"
-            ],
-            "79": [
-                "Green",
-                "Desert"
-            ],
-            "80": [
-                "Green",
-                "Desert"
-            ],
-            "81": [
-                "Green",
-                "Desert"
-            ],
-            "82": [
-                "Green",
-                "Desert"
-            ],
-            "83": [
-                "Green",
-                "Desert"
-            ],
-            "84": [
-                "Green",
-                "Desert"
-            ],
-            "85": [
-                "Green",
-                "Desert"
-            ],
-            "86": [
-                "Green",
-                "Desert"
-            ],
-            "87": [
-                "Green",
-                "Desert"
-            ],
-            "88": [
-                "Green",
-                "Desert"
-            ],
-            "89": [
-                "Green",
-                "Desert"
-            ],
-            "90": [
-                "Green",
-                "Desert"
-            ]
-        },
-        "displayName": "[CH] Pantsir-S1 SPAAGM",
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "Pantsir-S1",
-        "detectionRange": 36000,
-        "threatRangeMin": 1200,
-        "threatRange": 20000,
-        "operators": {
-            "Russia": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "PantsirS2",
-        "category": "Air Defence",
-        "paintSchemes": {
-            "0": [
-                "Green",
-                "Desert"
-            ],
-            "1": [
-                "Green",
-                "Desert"
-            ],
-            "2": [
-                "Green",
-                "Desert"
-            ],
-            "3": [
-                "Green",
-                "Desert"
-            ],
-            "4": [
-                "Green",
-                "Desert"
-            ],
-            "5": [
-                "Green",
-                "Desert"
-            ],
-            "6": [
-                "Green",
-                "Desert"
-            ],
-            "7": [
-                "Green",
-                "Desert"
-            ],
-            "8": [
-                "Green",
-                "Desert"
-            ],
-            "9": [
-                "Green",
-                "Desert"
-            ],
-            "10": [
-                "Green",
-                "Desert"
-            ],
-            "11": [
-                "Green",
-                "Desert"
-            ],
-            "12": [
-                "Green",
-                "Desert"
-            ],
-            "13": [
-                "Green",
-                "Desert"
-            ],
-            "15": [
-                "Green",
-                "Desert"
-            ],
-            "16": [
-                "Green",
-                "Desert"
-            ],
-            "17": [
-                "Green",
-                "Desert"
-            ],
-            "18": [
-                "Green",
-                "Desert"
-            ],
-            "19": [
-                "Green",
-                "Desert"
-            ],
-            "20": [
-                "Green",
-                "Desert"
-            ],
-            "21": [
-                "Green",
-                "Desert"
-            ],
-            "22": [
-                "Green",
-                "Desert"
-            ],
-            "23": [
-                "Green",
-                "Desert"
-            ],
-            "24": [
-                "Green",
-                "Desert"
-            ],
-            "25": [
-                "Green",
-                "Desert"
-            ],
-            "26": [
-                "Green",
-                "Desert"
-            ],
-            "27": [
-                "Green",
-                "Desert"
-            ],
-            "28": [
-                "Green",
-                "Desert"
-            ],
-            "29": [
-                "Green",
-                "Desert"
-            ],
-            "30": [
-                "Green",
-                "Desert"
-            ],
-            "31": [
-                "Green",
-                "Desert"
-            ],
-            "32": [
-                "Green",
-                "Desert"
-            ],
-            "33": [
-                "Green",
-                "Desert"
-            ],
-            "34": [
-                "Green",
-                "Desert"
-            ],
-            "35": [
-                "Green",
-                "Desert"
-            ],
-            "36": [
-                "Green",
-                "Desert"
-            ],
-            "37": [
-                "Green",
-                "Desert"
-            ],
-            "38": [
-                "Green",
-                "Desert"
-            ],
-            "39": [
-                "Green",
-                "Desert"
-            ],
-            "40": [
-                "Green",
-                "Desert"
-            ],
-            "41": [
-                "Green",
-                "Desert"
-            ],
-            "42": [
-                "Green",
-                "Desert"
-            ],
-            "43": [
-                "Green",
-                "Desert"
-            ],
-            "44": [
-                "Green",
-                "Desert"
-            ],
-            "45": [
-                "Green",
-                "Desert"
-            ],
-            "46": [
-                "Green",
-                "Desert"
-            ],
-            "47": [
-                "Green",
-                "Desert"
-            ],
-            "48": [
-                "Green",
-                "Desert"
-            ],
-            "49": [
-                "Green",
-                "Desert"
-            ],
-            "50": [
-                "Green",
-                "Desert"
-            ],
-            "51": [
-                "Green",
-                "Desert"
-            ],
-            "52": [
-                "Green",
-                "Desert"
-            ],
-            "53": [
-                "Green",
-                "Desert"
-            ],
-            "54": [
-                "Green",
-                "Desert"
-            ],
-            "55": [
-                "Green",
-                "Desert"
-            ],
-            "56": [
-                "Green",
-                "Desert"
-            ],
-            "57": [
-                "Green",
-                "Desert"
-            ],
-            "58": [
-                "Green",
-                "Desert"
-            ],
-            "59": [
-                "Green",
-                "Desert"
-            ],
-            "60": [
-                "Green",
-                "Desert"
-            ],
-            "61": [
-                "Green",
-                "Desert"
-            ],
-            "62": [
-                "Green",
-                "Desert"
-            ],
-            "63": [
-                "Green",
-                "Desert"
-            ],
-            "64": [
-                "Green",
-                "Desert"
-            ],
-            "65": [
-                "Green",
-                "Desert"
-            ],
-            "66": [
-                "Green",
-                "Desert"
-            ],
-            "67": [
-                "Green",
-                "Desert"
-            ],
-            "68": [
-                "Green",
-                "Desert"
-            ],
-            "69": [
-                "Green",
-                "Desert"
-            ],
-            "70": [
-                "Green",
-                "Desert"
-            ],
-            "71": [
-                "Green",
-                "Desert"
-            ],
-            "72": [
-                "Green",
-                "Desert"
-            ],
-            "73": [
-                "Green",
-                "Desert"
-            ],
-            "74": [
-                "Green",
-                "Desert"
-            ],
-            "75": [
-                "Green",
-                "Desert"
-            ],
-            "76": [
-                "Green",
-                "Desert"
-            ],
-            "77": [
-                "Green",
-                "Desert"
-            ],
-            "78": [
-                "Green",
-                "Desert"
-            ],
-            "79": [
-                "Green",
-                "Desert"
-            ],
-            "80": [
-                "Green",
-                "Desert"
-            ],
-            "81": [
-                "Green",
-                "Desert"
-            ],
-            "82": [
-                "Green",
-                "Desert"
-            ],
-            "83": [
-                "Green",
-                "Desert"
-            ],
-            "84": [
-                "Green",
-                "Desert"
-            ],
-            "85": [
-                "Green",
-                "Desert"
-            ],
-            "86": [
-                "Green",
-                "Desert"
-            ],
-            "87": [
-                "Green",
-                "Desert"
-            ],
-            "88": [
-                "Green",
-                "Desert"
-            ],
-            "89": [
-                "Green",
-                "Desert"
-            ],
-            "90": [
-                "Green",
-                "Desert"
-            ]
-        },
-        "displayName": "[CH] Pantsir-S2 SPAAGM",
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "Pantsir-S2",
-        "detectionRange": 40000,
-        "threatRangeMin": 1200,
-        "threatRange": 30000,
-        "operators": {
-            "Russia": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "TorM2",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] Tor M2 SHORAD",
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "Tor-M2",
-        "detectionRange": 25000,
-        "threatRangeMin": 1000,
-        "threatRange": 12000,
-        "operators": {
-            "Russia": [
-                2000,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "TorM2K",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] Tor M2K SHORAD",
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "Tor-M2K",
-        "detectionRange": 25000,
-        "threatRangeMin": 1000,
-        "threatRange": 12000,
-        "operators": {
-            "Russia": [
-                2000,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "TorM2M",
-        "category": "Air Defence",
-        "paintSchemes": {},
-        "displayName": "[CH] Tor M2M SHORAD",
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "Tor-M2M",
-        "detectionRange": 25000,
-        "threatRangeMin": 1000,
-        "threatRange": 16000,
-        "operators": {
-            "Russia": [
-                2010,
-                2020
-            ]
-        }
+  {
+    "type": "CH_2S38",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] 2S38 SPAAG",
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "2S38",
+    "detectionRange": 12000,
+    "threatRange": 5000,
+    "operators": {
+      "Russia": [
+        2010,
+        2020
+      ]
     }
+  },
+  {
+    "type": "CH_2S38_LG",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] 2S38 SPAAG (LG-HE)",
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "2S38",
+    "detectionRange": 12000,
+    "threatRangeMin": 500,
+    "threatRange": 8000,
+    "operators": {
+      "Russia": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_3K60_BAL",
+    "category": "MissilesSS",
+    "paintSchemes": {},
+    "displayName": "[CH] Bal LBASM TEL",
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "3K60_Bal",
+    "detectionRange": 260000,
+    "threatRangeMin": 7000,
+    "threatRange": 260000,
+    "operators": {
+      "Russia": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_DSHK_HMG_RUS",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] DShK HMG",
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "DShK-MG-Rus",
+    "detectionRange": 5000,
+    "threatRange": 1800,
+    "operators": {
+      "Russia": [
+        1940,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_DSHK_HMG_UKR",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "[CH] DShK HMG",
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "DShK-MG-Ukr",
+    "detectionRange": 5000,
+    "threatRange": 1800,
+    "operators": {
+      "Ukraine": [
+        1940,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_IskanderK",
+    "category": "MissilesSS",
+    "paintSchemes": {},
+    "displayName": "[CH] Iskander-K GLCM",
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "Iskander-K",
+    "detectionRange": 1500000,
+    "threatRangeMin": 20000,
+    "threatRange": 1500000,
+    "operators": {
+      "Russia": [
+        2000,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_IskanderM",
+    "category": "MissilesSS",
+    "paintSchemes": {},
+    "displayName": "[CH] Iskander-M SRBM",
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "Iskander-M",
+    "detectionRange": 500000,
+    "threatRangeMin": 150000,
+    "threatRange": 500000,
+    "operators": {
+      "Russia": [
+        2000,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_S350_50K6",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] S-350 50K6 CP",
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "S350_50K6",
+    "detectionRange": 0,
+    "threatRange": 0,
+    "operators": {
+      "Russia": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_S350_50N6",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] S-350 50N6 STR",
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "S350_50N6",
+    "detectionRange": 200000,
+    "threatRange": 0,
+    "operators": {
+      "Russia": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_S350_50P6_9M100",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] S-350 50P6 9M100 LN",
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "S350_50P6_9M100",
+    "detectionRange": 0,
+    "threatRangeMin": 1500,
+    "threatRange": 15000,
+    "operators": {
+      "Russia": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_S350_50P6_9M96D",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] S-350 50P6 9M96D LN",
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "S350_50P6_9M96D",
+    "detectionRange": 0,
+    "threatRangeMin": 2500,
+    "threatRange": 150000,
+    "operators": {
+      "Russia": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_S350_96L6",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] S-350 96L6 SR",
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "S350_96L6",
+    "detectionRange": 300000,
+    "threatRange": 0,
+    "operators": {
+      "Russia": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_T14",
+    "category": "Armor",
+    "paintSchemes": {},
+    "displayName": "[CH] T-14 MBT",
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "T-14",
+    "detectionRange": 8000,
+    "threatRangeMin": 100,
+    "threatRange": 5000,
+    "operators": {
+      "Russia": [
+        2020,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_T90M",
+    "category": "Armor",
+    "paintSchemes": {},
+    "displayName": "[CH] T-90M MBT",
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "T-90M",
+    "detectionRange": 8000,
+    "threatRangeMin": 100,
+    "threatRange": 5000,
+    "operators": {
+      "Russia": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_TigrM",
+    "category": "Armor",
+    "paintSchemes": {},
+    "displayName": "[CH] Tigr-M",
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "TigrM",
+    "detectionRange": 0,
+    "threatRange": 1200,
+    "operators": {
+      "Russia": [
+        2000,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "K300P",
+    "category": "MissilesSS",
+    "paintSchemes": {},
+    "displayName": "[CH] Bastion-P LBASM TEL",
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "K-300P",
+    "detectionRange": 400000,
+    "threatRangeMin": 4500,
+    "threatRange": 400000,
+    "operators": {
+      "Russia": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "MonolitB",
+    "category": "MissilesSS",
+    "paintSchemes": {},
+    "displayName": "[CH] Monolit-B LBASM STR",
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "Monolit-B",
+    "detectionRange": 800000,
+    "threatRange": 0,
+    "operators": {
+      "Russia": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "PantsirS1",
+    "category": "Air Defence",
+    "paintSchemes": {
+      "0": [
+        "Green",
+        "Desert"
+      ],
+      "1": [
+        "Green",
+        "Desert"
+      ],
+      "2": [
+        "Green",
+        "Desert"
+      ],
+      "3": [
+        "Green",
+        "Desert"
+      ],
+      "4": [
+        "Green",
+        "Desert"
+      ],
+      "5": [
+        "Green",
+        "Desert"
+      ],
+      "6": [
+        "Green",
+        "Desert"
+      ],
+      "7": [
+        "Green",
+        "Desert"
+      ],
+      "8": [
+        "Green",
+        "Desert"
+      ],
+      "9": [
+        "Green",
+        "Desert"
+      ],
+      "10": [
+        "Green",
+        "Desert"
+      ],
+      "11": [
+        "Green",
+        "Desert"
+      ],
+      "12": [
+        "Green",
+        "Desert"
+      ],
+      "13": [
+        "Green",
+        "Desert"
+      ],
+      "15": [
+        "Green",
+        "Desert"
+      ],
+      "16": [
+        "Green",
+        "Desert"
+      ],
+      "17": [
+        "Green",
+        "Desert"
+      ],
+      "18": [
+        "Green",
+        "Desert"
+      ],
+      "19": [
+        "Green",
+        "Desert"
+      ],
+      "20": [
+        "Green",
+        "Desert"
+      ],
+      "21": [
+        "Green",
+        "Desert"
+      ],
+      "22": [
+        "Green",
+        "Desert"
+      ],
+      "23": [
+        "Green",
+        "Desert"
+      ],
+      "24": [
+        "Green",
+        "Desert"
+      ],
+      "25": [
+        "Green",
+        "Desert"
+      ],
+      "26": [
+        "Green",
+        "Desert"
+      ],
+      "27": [
+        "Green",
+        "Desert"
+      ],
+      "28": [
+        "Green",
+        "Desert"
+      ],
+      "29": [
+        "Green",
+        "Desert"
+      ],
+      "30": [
+        "Green",
+        "Desert"
+      ],
+      "31": [
+        "Green",
+        "Desert"
+      ],
+      "32": [
+        "Green",
+        "Desert"
+      ],
+      "33": [
+        "Green",
+        "Desert"
+      ],
+      "34": [
+        "Green",
+        "Desert"
+      ],
+      "35": [
+        "Green",
+        "Desert"
+      ],
+      "36": [
+        "Green",
+        "Desert"
+      ],
+      "37": [
+        "Green",
+        "Desert"
+      ],
+      "38": [
+        "Green",
+        "Desert"
+      ],
+      "39": [
+        "Green",
+        "Desert"
+      ],
+      "40": [
+        "Green",
+        "Desert"
+      ],
+      "41": [
+        "Green",
+        "Desert"
+      ],
+      "42": [
+        "Green",
+        "Desert"
+      ],
+      "43": [
+        "Green",
+        "Desert"
+      ],
+      "44": [
+        "Green",
+        "Desert"
+      ],
+      "45": [
+        "Green",
+        "Desert"
+      ],
+      "46": [
+        "Green",
+        "Desert"
+      ],
+      "47": [
+        "Green",
+        "Desert"
+      ],
+      "48": [
+        "Green",
+        "Desert"
+      ],
+      "49": [
+        "Green",
+        "Desert"
+      ],
+      "50": [
+        "Green",
+        "Desert"
+      ],
+      "51": [
+        "Green",
+        "Desert"
+      ],
+      "52": [
+        "Green",
+        "Desert"
+      ],
+      "53": [
+        "Green",
+        "Desert"
+      ],
+      "54": [
+        "Green",
+        "Desert"
+      ],
+      "55": [
+        "Green",
+        "Desert"
+      ],
+      "56": [
+        "Green",
+        "Desert"
+      ],
+      "57": [
+        "Green",
+        "Desert"
+      ],
+      "58": [
+        "Green",
+        "Desert"
+      ],
+      "59": [
+        "Green",
+        "Desert"
+      ],
+      "60": [
+        "Green",
+        "Desert"
+      ],
+      "61": [
+        "Green",
+        "Desert"
+      ],
+      "62": [
+        "Green",
+        "Desert"
+      ],
+      "63": [
+        "Green",
+        "Desert"
+      ],
+      "64": [
+        "Green",
+        "Desert"
+      ],
+      "65": [
+        "Green",
+        "Desert"
+      ],
+      "66": [
+        "Green",
+        "Desert"
+      ],
+      "67": [
+        "Green",
+        "Desert"
+      ],
+      "68": [
+        "Green",
+        "Desert"
+      ],
+      "69": [
+        "Green",
+        "Desert"
+      ],
+      "70": [
+        "Green",
+        "Desert"
+      ],
+      "71": [
+        "Green",
+        "Desert"
+      ],
+      "72": [
+        "Green",
+        "Desert"
+      ],
+      "73": [
+        "Green",
+        "Desert"
+      ],
+      "74": [
+        "Green",
+        "Desert"
+      ],
+      "75": [
+        "Green",
+        "Desert"
+      ],
+      "76": [
+        "Green",
+        "Desert"
+      ],
+      "77": [
+        "Green",
+        "Desert"
+      ],
+      "78": [
+        "Green",
+        "Desert"
+      ],
+      "79": [
+        "Green",
+        "Desert"
+      ],
+      "80": [
+        "Green",
+        "Desert"
+      ],
+      "81": [
+        "Green",
+        "Desert"
+      ],
+      "82": [
+        "Green",
+        "Desert"
+      ],
+      "83": [
+        "Green",
+        "Desert"
+      ],
+      "84": [
+        "Green",
+        "Desert"
+      ],
+      "85": [
+        "Green",
+        "Desert"
+      ],
+      "86": [
+        "Green",
+        "Desert"
+      ],
+      "87": [
+        "Green",
+        "Desert"
+      ],
+      "88": [
+        "Green",
+        "Desert"
+      ],
+      "89": [
+        "Green",
+        "Desert"
+      ],
+      "90": [
+        "Green",
+        "Desert"
+      ]
+    },
+    "displayName": "[CH] Pantsir-S1 SPAAGM",
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "Pantsir-S1",
+    "detectionRange": 36000,
+    "threatRangeMin": 1200,
+    "threatRange": 20000,
+    "operators": {
+      "Russia": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "PantsirS2",
+    "category": "Air Defence",
+    "paintSchemes": {
+      "0": [
+        "Green",
+        "Desert"
+      ],
+      "1": [
+        "Green",
+        "Desert"
+      ],
+      "2": [
+        "Green",
+        "Desert"
+      ],
+      "3": [
+        "Green",
+        "Desert"
+      ],
+      "4": [
+        "Green",
+        "Desert"
+      ],
+      "5": [
+        "Green",
+        "Desert"
+      ],
+      "6": [
+        "Green",
+        "Desert"
+      ],
+      "7": [
+        "Green",
+        "Desert"
+      ],
+      "8": [
+        "Green",
+        "Desert"
+      ],
+      "9": [
+        "Green",
+        "Desert"
+      ],
+      "10": [
+        "Green",
+        "Desert"
+      ],
+      "11": [
+        "Green",
+        "Desert"
+      ],
+      "12": [
+        "Green",
+        "Desert"
+      ],
+      "13": [
+        "Green",
+        "Desert"
+      ],
+      "15": [
+        "Green",
+        "Desert"
+      ],
+      "16": [
+        "Green",
+        "Desert"
+      ],
+      "17": [
+        "Green",
+        "Desert"
+      ],
+      "18": [
+        "Green",
+        "Desert"
+      ],
+      "19": [
+        "Green",
+        "Desert"
+      ],
+      "20": [
+        "Green",
+        "Desert"
+      ],
+      "21": [
+        "Green",
+        "Desert"
+      ],
+      "22": [
+        "Green",
+        "Desert"
+      ],
+      "23": [
+        "Green",
+        "Desert"
+      ],
+      "24": [
+        "Green",
+        "Desert"
+      ],
+      "25": [
+        "Green",
+        "Desert"
+      ],
+      "26": [
+        "Green",
+        "Desert"
+      ],
+      "27": [
+        "Green",
+        "Desert"
+      ],
+      "28": [
+        "Green",
+        "Desert"
+      ],
+      "29": [
+        "Green",
+        "Desert"
+      ],
+      "30": [
+        "Green",
+        "Desert"
+      ],
+      "31": [
+        "Green",
+        "Desert"
+      ],
+      "32": [
+        "Green",
+        "Desert"
+      ],
+      "33": [
+        "Green",
+        "Desert"
+      ],
+      "34": [
+        "Green",
+        "Desert"
+      ],
+      "35": [
+        "Green",
+        "Desert"
+      ],
+      "36": [
+        "Green",
+        "Desert"
+      ],
+      "37": [
+        "Green",
+        "Desert"
+      ],
+      "38": [
+        "Green",
+        "Desert"
+      ],
+      "39": [
+        "Green",
+        "Desert"
+      ],
+      "40": [
+        "Green",
+        "Desert"
+      ],
+      "41": [
+        "Green",
+        "Desert"
+      ],
+      "42": [
+        "Green",
+        "Desert"
+      ],
+      "43": [
+        "Green",
+        "Desert"
+      ],
+      "44": [
+        "Green",
+        "Desert"
+      ],
+      "45": [
+        "Green",
+        "Desert"
+      ],
+      "46": [
+        "Green",
+        "Desert"
+      ],
+      "47": [
+        "Green",
+        "Desert"
+      ],
+      "48": [
+        "Green",
+        "Desert"
+      ],
+      "49": [
+        "Green",
+        "Desert"
+      ],
+      "50": [
+        "Green",
+        "Desert"
+      ],
+      "51": [
+        "Green",
+        "Desert"
+      ],
+      "52": [
+        "Green",
+        "Desert"
+      ],
+      "53": [
+        "Green",
+        "Desert"
+      ],
+      "54": [
+        "Green",
+        "Desert"
+      ],
+      "55": [
+        "Green",
+        "Desert"
+      ],
+      "56": [
+        "Green",
+        "Desert"
+      ],
+      "57": [
+        "Green",
+        "Desert"
+      ],
+      "58": [
+        "Green",
+        "Desert"
+      ],
+      "59": [
+        "Green",
+        "Desert"
+      ],
+      "60": [
+        "Green",
+        "Desert"
+      ],
+      "61": [
+        "Green",
+        "Desert"
+      ],
+      "62": [
+        "Green",
+        "Desert"
+      ],
+      "63": [
+        "Green",
+        "Desert"
+      ],
+      "64": [
+        "Green",
+        "Desert"
+      ],
+      "65": [
+        "Green",
+        "Desert"
+      ],
+      "66": [
+        "Green",
+        "Desert"
+      ],
+      "67": [
+        "Green",
+        "Desert"
+      ],
+      "68": [
+        "Green",
+        "Desert"
+      ],
+      "69": [
+        "Green",
+        "Desert"
+      ],
+      "70": [
+        "Green",
+        "Desert"
+      ],
+      "71": [
+        "Green",
+        "Desert"
+      ],
+      "72": [
+        "Green",
+        "Desert"
+      ],
+      "73": [
+        "Green",
+        "Desert"
+      ],
+      "74": [
+        "Green",
+        "Desert"
+      ],
+      "75": [
+        "Green",
+        "Desert"
+      ],
+      "76": [
+        "Green",
+        "Desert"
+      ],
+      "77": [
+        "Green",
+        "Desert"
+      ],
+      "78": [
+        "Green",
+        "Desert"
+      ],
+      "79": [
+        "Green",
+        "Desert"
+      ],
+      "80": [
+        "Green",
+        "Desert"
+      ],
+      "81": [
+        "Green",
+        "Desert"
+      ],
+      "82": [
+        "Green",
+        "Desert"
+      ],
+      "83": [
+        "Green",
+        "Desert"
+      ],
+      "84": [
+        "Green",
+        "Desert"
+      ],
+      "85": [
+        "Green",
+        "Desert"
+      ],
+      "86": [
+        "Green",
+        "Desert"
+      ],
+      "87": [
+        "Green",
+        "Desert"
+      ],
+      "88": [
+        "Green",
+        "Desert"
+      ],
+      "89": [
+        "Green",
+        "Desert"
+      ],
+      "90": [
+        "Green",
+        "Desert"
+      ]
+    },
+    "displayName": "[CH] Pantsir-S2 SPAAGM",
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "Pantsir-S2",
+    "detectionRange": 40000,
+    "threatRangeMin": 1200,
+    "threatRange": 30000,
+    "operators": {
+      "Russia": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "TorM2",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] Tor M2 SHORAD",
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "Tor-M2",
+    "detectionRange": 25000,
+    "threatRangeMin": 1000,
+    "threatRange": 12000,
+    "operators": {
+      "Russia": [
+        2000,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "TorM2K",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] Tor M2K SHORAD",
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "Tor-M2K",
+    "detectionRange": 25000,
+    "threatRangeMin": 1000,
+    "threatRange": 12000,
+    "operators": {
+      "Russia": [
+        2000,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "TorM2M",
+    "category": "Air Defence",
+    "paintSchemes": {},
+    "displayName": "[CH] Tor M2M SHORAD",
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "Tor-M2M",
+    "detectionRange": 25000,
+    "threatRangeMin": 1000,
+    "threatRange": 16000,
+    "operators": {
+      "Russia": [
+        2010,
+        2020
+      ]
+    }
+  }
 ]

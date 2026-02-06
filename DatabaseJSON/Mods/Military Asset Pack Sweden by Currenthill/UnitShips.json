@@ -1,48 +1,48 @@
 [
-    {
-        "type": "HSwMS_Visby",
-        "displayName": "[CH] Visby Class Corvette",
-        "categories": [
-            {
-                "name": "Armed Ship"
-            },
-            {
-                "name": "HelicopterCarrier"
-            }
-        ],
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "HSwMS_Visby",
-        "helicopterStorage": 1,
-        "planeStorage": 0,
-        "detectionRange": 180000,
-        "threatRange": 30000,
-        "operators": {
-            "Sweden": [
-                2000,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "Strb90",
-        "displayName": "[CH] Strb 90 FAC",
-        "categories": [
-            {
-                "name": "Armed Ship"
-            }
-        ],
-        "module": "Military Asset Pack Sweden by Currenthill",
-        "shape": "Strb90",
-        "helicopterStorage": 0,
-        "planeStorage": 0,
-        "detectionRange": 46300,
-        "threatRangeMin": 500,
-        "threatRange": 10000,
-        "operators": {
-            "Sweden": [
-                1990,
-                2020
-            ]
-        }
+  {
+    "type": "HSwMS_Visby",
+    "displayName": "[CH] Visby Class Corvette",
+    "categories": [
+      {
+        "name": "Armed Ship"
+      },
+      {
+        "name": "HelicopterCarrier"
+      }
+    ],
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "HSwMS_Visby",
+    "helicopterStorage": 1,
+    "planeStorage": 0,
+    "detectionRange": 180000,
+    "threatRange": 30000,
+    "operators": {
+      "Sweden": [
+        2000,
+        2020
+      ]
     }
+  },
+  {
+    "type": "Strb90",
+    "displayName": "[CH] Strb 90 FAC",
+    "categories": [
+      {
+        "name": "Armed Ship"
+      }
+    ],
+    "module": "Military Asset Pack Sweden by Currenthill",
+    "shape": "Strb90",
+    "helicopterStorage": 0,
+    "planeStorage": 0,
+    "detectionRange": 46300,
+    "threatRangeMin": 500,
+    "threatRange": 10000,
+    "operators": {
+      "Sweden": [
+        1990,
+        2020
+      ]
+    }
+  }
 ]

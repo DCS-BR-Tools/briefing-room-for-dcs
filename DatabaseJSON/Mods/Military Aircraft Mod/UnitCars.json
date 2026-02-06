@@ -1,18 +1,18 @@
 [
-    {
-        "type": "MAMPilot",
-        "category": "Infantry",
-        "paintSchemes": {},
-        "displayName": "MAM USAF Pilot",
-        "module": "Military Aircraft Mod",
-        "shape": "MAM_usaf_pilot",
-        "detectionRange": 0,
-        "threatRange": 0,
-        "operators": {
-            "USA": [
-                1960,
-                2020
-            ]
-        }
+  {
+    "type": "MAMPilot",
+    "category": "Infantry",
+    "paintSchemes": {},
+    "displayName": "MAM USAF Pilot",
+    "module": "Military Aircraft Mod",
+    "shape": "MAM_usaf_pilot",
+    "detectionRange": 0,
+    "threatRange": 0,
+    "operators": {
+      "USA": [
+        1960,
+        2020
+      ]
     }
+  }
 ]

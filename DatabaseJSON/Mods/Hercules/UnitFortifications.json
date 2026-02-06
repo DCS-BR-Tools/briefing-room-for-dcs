@@ -1,7 +1,7 @@
 [
-    {
-        "type": "Hercules_Container_Parachute_Static",
-        "displayName": "Hercules container with parachute",
-        "module": "Hercules"
-    }
+  {
+    "type": "Hercules_Container_Parachute_Static",
+    "displayName": "Hercules container with parachute",
+    "module": "Hercules"
+  }
 ]

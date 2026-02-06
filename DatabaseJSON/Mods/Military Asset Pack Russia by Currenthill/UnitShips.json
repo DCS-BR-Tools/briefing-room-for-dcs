@@ -1,171 +1,171 @@
 [
-    {
-        "type": "Admiral_Gorshkov",
-        "displayName": "[CH] Project 22350 Admiral Gorshkov Frigate",
-        "categories": [
-            {
-                "name": "Armed Ship"
-            },
-            {
-                "name": "HelicopterCarrier"
-            }
-        ],
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "Admiral_Gorshkov",
-        "helicopterStorage": 1,
-        "planeStorage": 0,
-        "detectionRange": 150000,
-        "threatRangeMin": 500,
-        "threatRange": 150000,
-        "operators": {
-            "Russia": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_Grigorovich_AShM",
-        "displayName": "[CH] Project 11356R Admiral Grigorovich Class Frigate (AShM)",
-        "categories": [
-            {
-                "name": "Armed Ship"
-            },
-            {
-                "name": "HelicopterCarrier"
-            }
-        ],
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "Grigorovich",
-        "helicopterStorage": 1,
-        "planeStorage": 0,
-        "detectionRange": 300000,
-        "threatRangeMin": 1500,
-        "threatRange": 70000,
-        "operators": {
-            "Russia": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_Grigorovich_LACM",
-        "displayName": "[CH] Project 11356R Admiral Grigorovich Class Frigate (LACM)",
-        "categories": [
-            {
-                "name": "Armed Ship"
-            },
-            {
-                "name": "HelicopterCarrier"
-            }
-        ],
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "Grigorovich",
-        "helicopterStorage": 1,
-        "planeStorage": 0,
-        "detectionRange": 300000,
-        "threatRangeMin": 1500,
-        "threatRange": 70000,
-        "operators": {
-            "Russia": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_Project22160",
-        "displayName": "[CH] Project 22160 Patrol Ship",
-        "categories": [
-            {
-                "name": "Armed Ship"
-            },
-            {
-                "name": "HelicopterCarrier"
-            }
-        ],
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "Project22160",
-        "helicopterStorage": 1,
-        "planeStorage": 0,
-        "detectionRange": 80000,
-        "threatRangeMin": 500,
-        "threatRange": 8000,
-        "operators": {
-            "Russia": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "CH_Steregushchiy",
-        "displayName": "[CH] Project 20381 Steregushchiy Corvette",
-        "categories": [
-            {
-                "name": "Armed Ship"
-            },
-            {
-                "name": "HelicopterCarrier"
-            }
-        ],
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "Steregushchiy",
-        "helicopterStorage": 1,
-        "planeStorage": 0,
-        "detectionRange": 150000,
-        "threatRangeMin": 1500,
-        "threatRange": 150000,
-        "operators": {
-            "Russia": [
-                2000,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "Karakurt_AShM",
-        "displayName": "[CH] Project 22800 Karakurt Corvette AShM",
-        "categories": [
-            {
-                "name": "Armed Ship"
-            }
-        ],
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "Karakurt",
-        "helicopterStorage": 0,
-        "planeStorage": 0,
-        "detectionRange": 150000,
-        "threatRangeMin": 1000,
-        "threatRange": 25000,
-        "operators": {
-            "Russia": [
-                2010,
-                2020
-            ]
-        }
-    },
-    {
-        "type": "Karakurt_LACM",
-        "displayName": "[CH] Project 22800 Karakurt Corvette LACM",
-        "categories": [
-            {
-                "name": "Armed Ship"
-            }
-        ],
-        "module": "Military Asset Pack Russia by Currenthill",
-        "shape": "Karakurt",
-        "helicopterStorage": 0,
-        "planeStorage": 0,
-        "detectionRange": 150000,
-        "threatRangeMin": 1000,
-        "threatRange": 25000,
-        "operators": {
-            "Russia": [
-                2010,
-                2020
-            ]
-        }
+  {
+    "type": "Admiral_Gorshkov",
+    "displayName": "[CH] Project 22350 Admiral Gorshkov Frigate",
+    "categories": [
+      {
+        "name": "Armed Ship"
+      },
+      {
+        "name": "HelicopterCarrier"
+      }
+    ],
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "Admiral_Gorshkov",
+    "helicopterStorage": 1,
+    "planeStorage": 0,
+    "detectionRange": 150000,
+    "threatRangeMin": 500,
+    "threatRange": 150000,
+    "operators": {
+      "Russia": [
+        2010,
+        2020
+      ]
     }
+  },
+  {
+    "type": "CH_Grigorovich_AShM",
+    "displayName": "[CH] Project 11356R Admiral Grigorovich Class Frigate (AShM)",
+    "categories": [
+      {
+        "name": "Armed Ship"
+      },
+      {
+        "name": "HelicopterCarrier"
+      }
+    ],
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "Grigorovich",
+    "helicopterStorage": 1,
+    "planeStorage": 0,
+    "detectionRange": 300000,
+    "threatRangeMin": 1500,
+    "threatRange": 70000,
+    "operators": {
+      "Russia": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_Grigorovich_LACM",
+    "displayName": "[CH] Project 11356R Admiral Grigorovich Class Frigate (LACM)",
+    "categories": [
+      {
+        "name": "Armed Ship"
+      },
+      {
+        "name": "HelicopterCarrier"
+      }
+    ],
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "Grigorovich",
+    "helicopterStorage": 1,
+    "planeStorage": 0,
+    "detectionRange": 300000,
+    "threatRangeMin": 1500,
+    "threatRange": 70000,
+    "operators": {
+      "Russia": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_Project22160",
+    "displayName": "[CH] Project 22160 Patrol Ship",
+    "categories": [
+      {
+        "name": "Armed Ship"
+      },
+      {
+        "name": "HelicopterCarrier"
+      }
+    ],
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "Project22160",
+    "helicopterStorage": 1,
+    "planeStorage": 0,
+    "detectionRange": 80000,
+    "threatRangeMin": 500,
+    "threatRange": 8000,
+    "operators": {
+      "Russia": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "CH_Steregushchiy",
+    "displayName": "[CH] Project 20381 Steregushchiy Corvette",
+    "categories": [
+      {
+        "name": "Armed Ship"
+      },
+      {
+        "name": "HelicopterCarrier"
+      }
+    ],
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "Steregushchiy",
+    "helicopterStorage": 1,
+    "planeStorage": 0,
+    "detectionRange": 150000,
+    "threatRangeMin": 1500,
+    "threatRange": 150000,
+    "operators": {
+      "Russia": [
+        2000,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "Karakurt_AShM",
+    "displayName": "[CH] Project 22800 Karakurt Corvette AShM",
+    "categories": [
+      {
+        "name": "Armed Ship"
+      }
+    ],
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "Karakurt",
+    "helicopterStorage": 0,
+    "planeStorage": 0,
+    "detectionRange": 150000,
+    "threatRangeMin": 1000,
+    "threatRange": 25000,
+    "operators": {
+      "Russia": [
+        2010,
+        2020
+      ]
+    }
+  },
+  {
+    "type": "Karakurt_LACM",
+    "displayName": "[CH] Project 22800 Karakurt Corvette LACM",
+    "categories": [
+      {
+        "name": "Armed Ship"
+      }
+    ],
+    "module": "Military Asset Pack Russia by Currenthill",
+    "shape": "Karakurt",
+    "helicopterStorage": 0,
+    "planeStorage": 0,
+    "detectionRange": 150000,
+    "threatRangeMin": 1000,
+    "threatRange": 25000,
+    "operators": {
+      "Russia": [
+        2010,
+        2020
+      ]
+    }
+  }
 ]
