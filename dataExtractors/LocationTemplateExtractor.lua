@@ -154,7 +154,7 @@ for _, country in orderedPairs(mission.coalition.red.country) do
             local locIndex = 1
             for _, value in orderedPairs(groupValue.units) do --actualcode
                 locations[locIndex] = {
-                    coords = { originX - value.x, originY - value.y },
+                    coords = {  value.x - originX, value.y - originY },
                     heading = value.heading,
                     originalType = value.type,
                     unitTypes = switch(value.type, unitTypes)
@@ -177,7 +177,7 @@ for _, country in orderedPairs(mission.coalition.blue.country) do
             local locIndex = 1
             for _, value in orderedPairs(groupValue.units) do --actualcode
                 locations[locIndex] = {
-                    coords = { originX - value.x, originY - value.y },
+                    coords = {  value.x - originX, value.y - originY },
                     heading = value.heading,
                     originalType = value.type,
                     unitTypes = switch(value.type, unitTypes)
