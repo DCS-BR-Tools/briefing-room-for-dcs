@@ -1,0 +1,32 @@
+[
+      {
+    "type": "EA-18G",
+    "families": ["PlaneFighter", "PlaneSEAD", "PlaneStrike", "PlaneCATOBAR"],
+    "lowPolly": false,
+    "playerControllable": true
+  },
+    {
+    "type": "FA-18E",
+    "families": ["PlaneFighter", "PlaneSEAD", "PlaneStrike", "PlaneCATOBAR"],
+    "lowPolly": false,
+    "playerControllable": true
+  },
+    {
+    "type": "FA-18ET",
+    "families": ["PlaneFighter", "PlaneSEAD", "PlaneStrike", "PlaneCATOBAR"],
+    "lowPolly": false,
+    "playerControllable": true
+  },
+    {
+    "type": "FA-18F",
+    "families": ["PlaneFighter", "PlaneSEAD", "PlaneStrike", "PlaneCATOBAR"],
+    "lowPolly": false,
+    "playerControllable": true
+  },
+    {
+    "type": "FA-18FT",
+    "families": ["PlaneFighter", "PlaneSEAD", "PlaneStrike", "PlaneCATOBAR"],
+    "lowPolly": false,
+    "playerControllable": true
+  }
+]
