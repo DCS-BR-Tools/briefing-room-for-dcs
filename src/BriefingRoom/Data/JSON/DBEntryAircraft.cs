@@ -297,13 +297,12 @@ namespace BriefingRoom4DCS.Data
         {
             if (Payloads.Count == 0)
                 return;
-
             foreach (var payload in Payloads)
             {
                 payload.decade = Decade.Decade1940;
                 foreach (var pylon in payload.pylons)
                 {
-                    if (pylon.CLSID == null || pylon.CLSID == "")
+                    if (pylon == null || pylon.CLSID == null || pylon.CLSID == "")
                         continue;
                     var info = database.GetEntry<DBEntryWeaponByDecade>(pylon.CLSID);
                     if (info == null)
