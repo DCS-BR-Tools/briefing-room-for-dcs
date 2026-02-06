@@ -1880,5 +1880,350 @@
   { "decade": 1950, "clsid": "{2x Mk-82 SWA}" },
   { "decade": 1970, "clsid": "FAS}" },
   { "decade": 1990, "clsid": "{MBDA_MistralD}" },
-  { "decade": 1990, "clsid": "{MBDA_MistralG}" }
+  { "decade": 1990, "clsid": "{MBDA_MistralG}" },
+  {
+    "decade": 1990,
+    "clsid": "{{SUPERHORNET_PYLON_08_CN_FT_FPU-12_Fueltank}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_09_MB_BD_BRU41_6X_BDU-33}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_09_MB_MK_1X_MK-84}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_09_MB_MK_1X_GBU-31_V_2B}}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_09_MB_MK_1X_GBU-24}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_09_MB_JS_2X_BRU_AGM-154C}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_09_MB_MK_1X_GBU-31_V_2B}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_09_MB_MK_1X_GBU-10}"
+  },
+  {
+    "decade": 2000,
+    "clsid": "{GROWLER_PYLON_06_CN_PD_1X_AWW-13}"
+  },
+  { "decade": 2000, "clsid": "{FOLDED_FLAG_G}" },
+  {
+    "decade": 2000,
+    "clsid": "{GROWLER_PYLON_02_OB_AR_1X_AGM-88}"
+  },
+  {
+    "decade": 2000,
+    "clsid": "{GROWLER_PYLON_10_OB_AR_1X_AGM-88}"
+  },
+  {
+    "decade": 2000,
+    "clsid": "{GROWLER_PYLON_02_MB_AM_1X_AIM-120C}"
+  },
+  {
+    "decade": 2000,
+    "clsid": "{GROWLER_PYLON_10_MB_AM_2X_AIM-120C}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_03_MB_BD_BRU41_6X_BDU-33}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_02_OB_MK_1X_GBU-38}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_03_MB_MK_1X_GBU-38}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_09_MB_MK_1X_GBU-38}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_10_OB_MK_1X_GBU-38}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_03_MB_MK_1X_MK-84}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_03_MB_AR_1X_AGM-88}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_09_MB_AR_1X_AGM-88}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_03_MB_MK_1X_GBU-31_V_2B}}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_02_OB_MK_1X_MK-83}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_03_MB_MK_1X_MK-83}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_09_MB_MK_1X_MK-83}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_10_OB_MK_1X_MK-83}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_02_OB_MV_1X_AGM-65E}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_10_OB_MV_1X_AGM-65E}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_02_OB_MK_1X_GBU-12}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_03_MB_MK_1X_GBU-12}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_09_MB_MK_1X_GBU-12}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_10_OB_MK_1X_GBU-12}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_02_OB_MK_1X_MK-82}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_03_MB_MK_1X_MK-82}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_09_MB_MK_1X_MK-82}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_10_OB_MK_1X_MK-82}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_03_MB_MK_1X_GBU-24}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_03_MB_JS_2X_BRU_AGM-154C}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_03_MB_SM_1X_AGM-84E}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_09_MB_SM_1X_AGM-84E}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_03_MB_MK_1X_GBU-31_V_2B}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_03_MB_AM_2X_AIM-120C}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_09_MB_AM_2X_AIM-120C}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_03_MB_MK_1X_GBU-10}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_02_OB_MK_1X_GBU-16}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_03_MB_MK_1X_GBU-16}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_09_MB_MK_1X_GBU-16}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_10_OB_MK_1X_GBU-16}"
+  },
+  {
+    "decade": 2000,
+    "clsid": "{GROWLER_PYLON_02_OB_SW_1X_AIM-9X}"
+  },
+  {
+    "decade": 2000,
+    "clsid": "{GROWLER_PYLON_10_OB_SW_1X_AIM-9X}"
+  },
+  {
+    "decade": 2000,
+    "clsid": "{GROWLER_PYLON_06_CN_FT_FPU-12_FueltankHighVis}"
+  },
+  {
+    "decade": 2000,
+    "clsid": "{GROWLER_PYLON_09_OB_LAU127}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_06_CN_FT_AA42R}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_11_SW_1X_AIM-9}"
+  },
+  {
+    "decade": 2000,
+    "clsid": "{GROWLER_PYLON_04_IB_AR_1X_AGM-88}"
+  },
+  {
+    "decade": 2000,
+    "clsid": "{GROWLER_PYLON_08_IB_AR_1X_AGM-88}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_03_MB_FT_FPU-12_Fueltank}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_08_CN_FT_FPU-12_Fueltank}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_01_SW_1X_AIM-9}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_02_AM_1X_AIM-120C}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_10_AM_1X_AIM-120C}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_06_CN_FT_FPU-12_FueltankHighVis}"
+  },
+  { "decade": 1990, "clsid": "{CATM-120C}" },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_11_SW_1X_CATM-9M}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_03_MB_MV_1X_AGM-65E}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_09_MB_MV_1X_AGM-65E}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_09_MB_FT_FPU-12_Fueltank}"
+  },
+  {
+    "decade": 2000,
+    "clsid": "{GROWLER_PYLON_02_OB_AM_1X_AIM-120C}"
+  },
+  {
+    "decade": 2000,
+    "clsid": "{GROWLER_PYLON_10_OB_AM_1X_AIM-120C}"
+  },
+  {
+    "decade": 2000,
+    "clsid": "{GROWLER_PYLON_08_IB_FT_FPU-12_Fueltank}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_01_PD_1X_ais-pod-t50}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_04_IB_FT_FPU-12_Fueltank}"
+  },
+  {
+    "decade": 2000,
+    "clsid": "{GROWLER_PYLON_XX_CN_HOOD_FLAG}"
+  },
+  {
+    "decade": 2000,
+    "clsid": "{GROWLER_PYLON_04_IB_FT_FPU-12_Fueltank}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_02_OB_AR_1X_AGM-88}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_10_OB_AR_1X_AGM-88}"
+  },
+  {
+    "decade": 2000,
+    "clsid": "{GROWLER_PYLON_05_AM_1X_AIM-120C}"
+  },
+  {
+    "decade": 2000,
+    "clsid": "{GROWLER_PYLON_07_AM_1X_AIM-120C}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_IN_FT_AUX_CELLS}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_11_SW_1X_AIM-9X}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_01_SW_1X_AIM-9X}"
+  },
+  {
+    "decade": 1990,
+    "clsid": "{SUPERHORNET_PYLON_06_CN_FT_FPU-12_Fueltank}"
+  },
+  { "decade": 1980, "clsid": "{JAS39_AGM_65H}" },
+  { "decade": 1980, "clsid": "{JAS39_AGM_65K}" },
+  { "decade": 1980, "clsid": "{JAS39_M71HD}" },
+  { "decade": 1980, "clsid": "{AH6_GOLIATH}" },
+  { "decade": 1980, "clsid": "{AH-6_FN_HMP400}" },
+  { "decade": 1990, "clsid": "AH6_AGM_114K_R" },
+  { "decade": 1990, "clsid": "AH6_AGM_114K_L" },
+  { "decade": 1980, "clsid": "{AH6_SMOKE_GREEN}" },
+  { "decade": 1980, "clsid": "{AH6_SMOKE_BLUE}" },
+  { "decade": 1980, "clsid": "{AH6_SMOKE_YELLOW}" },
+  { "decade": 1980, "clsid": "{AH6_SMOKE_RED}" },
+  { "decade": 1980, "clsid": "{AH-6_DOORS}" },
+  { "decade": 1980, "clsid": "{AH6_M134L}" },
+  { "decade": 1980, "clsid": "{AH6_M134R}" },
+  { "decade": 1980, "clsid": "{M261_M229}" },
+  { "decade": 1980, "clsid": "{AH-6_Door}" },
+  { "decade": 1960, "clsid": "{OH-6_M134_Door}" },
+  { "decade": 1960, "clsid": "{OH-6_M134_Minigun}" },
+  { "decade": 1960, "clsid": "{OH-6_M60_Door}" }
 ]

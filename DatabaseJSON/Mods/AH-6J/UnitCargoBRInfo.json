@@ -1,0 +1,16 @@
+[
+  {
+    "type": "AH6_cargo",
+    "families": ["Cargo"],
+    "operational": [1970, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "delta_cargo",
+    "families": ["Cargo"],
+    "operational": [1970, 2020],
+    "lowPolly": false,
+    "immovable": false
+  }
+]

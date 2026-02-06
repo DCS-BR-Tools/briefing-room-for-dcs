@@ -1,0 +1,14 @@
+[
+  {
+    "type": "AH6_cargo",
+    "displayName": "AH-6J Cargo",
+    "module": "AH-6J",
+    "shapeName": "AH6_cargo"
+  },
+  {
+    "type": "delta_cargo",
+    "displayName": "Delta Crew",
+    "module": "AH-6J",
+    "shapeName": "delta_cargo"
+  }
+]

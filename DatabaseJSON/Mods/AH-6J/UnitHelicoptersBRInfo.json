@@ -1,0 +1,14 @@
+[
+  {
+    "type": "AH-6J",
+    "families": ["HelicopterAttack"],
+    "lowPolly": false,
+    "playerControllable": true
+  },
+  {
+    "type": "MH-6J",
+    "families": ["HelicopterUtility", "HelicopterTransport"],
+    "lowPolly": false,
+    "playerControllable": true
+  }
+]
