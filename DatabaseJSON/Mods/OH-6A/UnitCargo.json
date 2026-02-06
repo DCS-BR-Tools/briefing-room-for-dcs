@@ -1,0 +1,44 @@
+[
+  {
+    "type": "cargo_oh6_ammo",
+    "displayName": "(OH6A)Ammo",
+    "module": "OH-6A",
+    "shapeName": "cargo_oh6_ammo"
+  },
+  {
+    "type": "cargo_oh6_animals",
+    "displayName": "(OH6A)Animals",
+    "module": "OH-6A",
+    "shapeName": "cargo_oh6_animals"
+  },
+  {
+    "type": "cargo_oh6_fbi",
+    "displayName": "(OH6A)Agents",
+    "module": "OH-6A",
+    "shapeName": "cargo_oh6_fbi"
+  },
+  {
+    "type": "cargo_oh6_fuel",
+    "displayName": "(OH6A)Fuel",
+    "module": "OH-6A",
+    "shapeName": "cargo_oh6_fuel"
+  },
+  {
+    "type": "cargo_oh6_mixed",
+    "displayName": "(OH6A)Mixed Cargo",
+    "module": "OH-6A",
+    "shapeName": "cargo_oh6_mixed"
+  },
+  {
+    "type": "cargo_oh6_mre",
+    "displayName": "(OH6A)MRE",
+    "module": "OH-6A",
+    "shapeName": "cargo_oh6_mre"
+  },
+  {
+    "type": "cargo_oh6_pax",
+    "displayName": "(OH6A)Passengers",
+    "module": "OH-6A",
+    "shapeName": "cargo_oh6_pax"
+  }
+]

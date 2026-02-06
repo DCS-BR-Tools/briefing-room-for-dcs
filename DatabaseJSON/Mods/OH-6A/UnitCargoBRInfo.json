@@ -1,0 +1,51 @@
+[
+  {
+    "type": "cargo_oh6_ammo",
+    "families": ["Cargo"],
+    "operational": [1960, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "cargo_oh6_animals",
+    "families": ["Cargo"],
+    "operational": [1960, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "cargo_oh6_fbi",
+    "families": ["Cargo"],
+    "operational": [1960, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "cargo_oh6_fuel",
+    "families": ["Cargo"],
+    "operational": [1960, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "cargo_oh6_mixed",
+    "families": ["Cargo"],
+    "operational": [1960, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "cargo_oh6_mre",
+    "families": ["Cargo"],
+    "operational": [1960, 2020],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "cargo_oh6_pax",
+    "families": ["Cargo"],
+    "operational": [1960, 2020],
+    "lowPolly": false,
+    "immovable": false
+  }
+]
