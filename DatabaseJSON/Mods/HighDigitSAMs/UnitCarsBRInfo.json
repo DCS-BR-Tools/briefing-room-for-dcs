@@ -1,251 +1,258 @@
 [
-    {
-        "type": "S-300PMU1 54K6 cp",
-        "families": [
-            "VehicleSAMLong"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "S-300PMU1 40B6M tr",
-        "families": [
-            "VehicleSAMLong"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "S-300PMU1 30N6E tr",
-        "families": [
-            "VehicleSAMLong"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "S-300PMU1 40B6MD sr",
-        "families": [
-            "VehicleSAMLong"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "S-300PMU1 64N6E sr",
-        "families": [
-            "VehicleSAMLong"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "S-300PMU1 5P85CE ln",
-        "families": [
-            "VehicleSAMLong"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "S-300PMU1 5P85DE ln",
-        "families": [
-            "VehicleSAMLong"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "S-300PMU2 54K6E2 cp",
-        "families": [
-            "VehicleSAMLong"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "S-300PMU2 92H6E tr",
-        "families": [
-            "VehicleSAMLong"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "S-300PMU2 64H6E2 sr",
-        "families": [
-            "VehicleSAMLong"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "S-300PMU2 5P85SE2 ln",
-        "families": [
-            "VehicleSAMLong"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "S-300V 9S457 cp",
-        "families": [
-            "VehicleSAMLong"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "S-300V 9A82 ln",
-        "families": [
-            "VehicleSAMLong"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "S-300V 9A83 ln",
-        "families": [
-            "VehicleSAMLong"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "S-300V 9S15 sr",
-        "families": [
-            "VehicleSAMLong"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "S-300V 9S19 sr",
-        "families": [
-            "VehicleSAMLong"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "S-300V 9S32 tr",
-        "families": [
-            "VehicleSAMLong"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "S-300VM 9S457ME cp",
-        "families": [
-            "VehicleSAMLong"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "S-300VM 9S15M2 sr",
-        "families": [
-            "VehicleSAMLong"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "S-300VM 9S19M2 sr",
-        "families": [
-            "VehicleSAMLong"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "S-300VM 9S32ME tr",
-        "families": [
-            "VehicleSAMLong"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "S-300VM 9A83ME ln",
-        "families": [
-            "VehicleSAMLong"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "S-300VM 9A82ME ln",
-        "families": [
-            "VehicleSAMLong"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "SA-17 Buk M1-2 LN 9A310M1-2",
-        "families": [
-            "VehicleSAMMedium"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "S_75M_Volhov_V759",
-        "families": [
-            "VehicleSAMMedium"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "HQ_2_Guideline_LN",
-        "families": [
-            "VehicleSAMMedium"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "5p73 V-601P ln",
-        "families": [
-            "VehicleSAMMedium"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "SA-24 Igla-S manpad",
-        "families": [
-            "InfantryMANPADS"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "SA-14 Strela-3 manpad",
-        "families": [
-            "InfantryMANPADS"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "polyana-d4m1 cp",
-        "families": [
-            "VehicleSAMLong",
-            "VehicleStatic"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    },
-    {
-        "type": "34Ya6E Gazetchik E decoy",
-        "families": [
-            "VehicleStatic"
-        ],
-        "lowPolly": false,
-        "immovable": false
-    }
+  {
+    "type": "S-300PMU1 54K6 cp",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMCmd"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "S-300PMU1 40B6M tr",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMtr"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "S-300PMU1 30N6E tr",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMtr"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "S-300PMU1 40B6MD sr",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMsr"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "S-300PMU1 64N6E sr",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMsr"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "S-300PMU1 5P85CE ln",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMLauncher"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "S-300PMU1 5P85DE ln",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMLauncher"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "S-300PMU2 54K6E2 cp",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMCmd"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "S-300PMU2 92H6E tr",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMtr"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "S-300PMU2 64H6E2 sr",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMsr"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "S-300PMU2 5P85SE2 ln",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMLauncher"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "S-300V 9S457 cp",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMCmd"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "S-300V 9A82 ln",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMLauncher"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "S-300V 9A83 ln",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMLauncher"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "S-300V 9S15 sr",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMsr"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "S-300V 9S19 sr",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMsr"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "S-300V 9S32 tr",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMtr"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "S-300VM 9S457ME cp",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMCmd"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "S-300VM 9S15M2 sr",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMsr"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "S-300VM 9S19M2 sr",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMsr"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "S-300VM 9S32ME tr",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMtr"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "S-300VM 9A83ME ln",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMLauncher"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "S-300VM 9A82ME ln",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMLauncher"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "SA-17 Buk M1-2 LN 9A310M1-2",
+    "families": ["VehicleSAMMedium", "VehicleStatic", "VehicleSAMLauncher"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "S_75M_Volhov_V759",
+    "families": ["VehicleSAMMedium", "VehicleStatic", "VehicleSAMLauncher"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "HQ_2_Guideline_LN",
+    "families": ["VehicleSAMMedium", "VehicleStatic", "VehicleSAMLauncher"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "5p73 V-601P ln",
+    "families": ["VehicleSAMMedium", "VehicleStatic", "VehicleSAMLauncher"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "SA-24 Igla-S manpad",
+    "families": ["InfantryMANPADS"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "SA-14 Strela-3 manpad",
+    "families": ["InfantryMANPADS"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "polyana-d4m1 cp",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMCmd"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "34Ya6E Gazetchik E decoy",
+    "families": ["VehicleStatic"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "SA-7 Strela-2 manpad",
+    "families": ["InfantryMANPADS"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "SA-7b Strela-2M manpad",
+    "families": ["InfantryMANPADS"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "SAMPT_MC",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMCmd"],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "SAMPT_ME",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMCmd"],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "SAMPT_MGE",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMCmd"],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "SAMPT_MLT_Blk1",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMLauncher"],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "SAMPT_MLT_Blk1NT",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMLauncher"],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "SAMPT_MLT_Blk2",
+    "families": ["VehicleSAMLong", "VehicleStatic", "VehicleSAMLauncher"],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "SAMPT_MRI_ARABEL",
+    "families": [
+      "VehicleSAMLong",
+      "VehicleStatic",
+      "VehicleSAMsr",
+      "VehicleSAMtr"
+    ],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "SAMPT_MRI_GF300",
+    "families": [
+      "VehicleSAMLong",
+      "VehicleStatic",
+      "VehicleSAMsr",
+      "VehicleSAMtr"
+    ],
+    "lowPolly": false,
+    "immovable": true
+  }
 ]
