@@ -135,6 +135,17 @@ function dcsExtensions.getUnitNamesByGroupNameSuffix(suffix)
   return unitNames
 end
 
+function dcsExtensions.getUnitNamesByGroupNameSuffixExcludeScenery(suffix)
+  local unitNames = dcsExtensions.getUnitNamesByGroupNameSuffix(suffix)
+  local filteredUnitNames = {}
+  for _, unitName in pairs(unitNames) do
+    if not string.startsWith(unitName, "SCENERY-") then
+      table.insert(filteredUnitNames, unitName)
+    end
+  end
+  return filteredUnitNames
+end
+
 -- Converts a timecode (in seconds since midnight) in a hh:mm:ss string
 function dcsExtensions.timeToHMS(timecode)
   local h = math.floor(timecode / 3600)

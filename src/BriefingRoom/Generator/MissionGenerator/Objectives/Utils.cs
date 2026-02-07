@@ -117,8 +117,8 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             objectiveLua += $"targetCategory = Unit.Category.{targetDB.UnitCategory.ToLuaName()}, ";
             objectiveLua += $"taskType = \"{taskDB.ID}\", ";
             objectiveLua += $"task = \"{taskString}\", ";
-            objectiveLua += $"unitsCount = #dcsExtensions.getUnitNamesByGroupNameSuffix(\"-TGT-{objectiveName}\"), ";
-            objectiveLua += $"unitNames = dcsExtensions.getUnitNamesByGroupNameSuffix(\"-TGT-{objectiveName}\"), ";
+            objectiveLua += $"unitsCount = #dcsExtensions.getUnitNamesByGroupNameSuffixExcludeScenery(\"-TGT-{objectiveName}\"), ";
+            objectiveLua += $"unitNames = dcsExtensions.getUnitNamesByGroupNameSuffixExcludeScenery(\"-TGT-{objectiveName}\"), ";
             objectiveLua += $"progressionHidden = {(task.ProgressionActivation ? "true" : "false")},";
             objectiveLua += $"progressionHiddenBrief = {(task.ProgressionOptions.Contains(ObjectiveProgressionOption.ProgressionHiddenBrief) ? "true" : "false")},";
             objectiveLua += $"progressionCondition = \"{(!string.IsNullOrEmpty(task.ProgressionOverrideCondition) ? task.ProgressionOverrideCondition : string.Join(task.ProgressionDependentIsAny ? " or " : " and ", task.ProgressionDependentTasks.Select(x => x + 1).ToList()))}\", ";
