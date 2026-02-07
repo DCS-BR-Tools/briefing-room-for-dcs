@@ -617,7 +617,8 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
             var unit = new DCSUnit(unitType);
 
             var groupHeading = GetGroupHeading(coordinates, extraSettings);
-            var (unitCoordinates, unitHeading) = SetUnitCoordinatesAndHeading(ref mission, unitDB, unitLuaIndex, coordinates, groupHeading, (List<DBEntryTemplateUnit>)extraSettings.GetValueOrDefault("TemplatePositionMap", new List<DBEntryTemplateUnit>()), singleUnit);
+            var templatePositionMap = (List<DBEntryTemplateUnit>)extraSettings.GetValueOrDefault("TemplatePositionMap", new List<DBEntryTemplateUnit>());
+            var (unitCoordinates, unitHeading) = SetUnitCoordinatesAndHeading(ref mission, unitDB, unitLuaIndex, coordinates, groupHeading, templatePositionMap, singleUnit);
 
             foreach (KeyValuePair<string, object> extraSetting in extraSettings.Where(x => !IGNORE_PROPS.Contains(x.Key)).ToDictionary(x => x.Key, x => x.Value))
             {
@@ -656,7 +657,15 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                 unit.Parking = ((List<int>)extraSettings.GetValueOrDefault("ParkingID", new List<int>())).ElementAtOrDefault(unitLuaIndex - 1);
             }
             else
+            {
                 unit.Name = $"{groupName} {unitLuaIndex}";
+                var posIndex = unitLuaIndex - 1;
+                if (templatePositionMap.Count > posIndex && templatePositionMap[posIndex].IsScenery)
+                {
+                   unit.Name = "SCENERY-" + unit.Name;
+                }
+                
+            }
 
             return unit;
         }

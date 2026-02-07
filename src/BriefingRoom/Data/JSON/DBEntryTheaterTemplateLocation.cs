@@ -70,7 +70,8 @@ namespace BriefingRoom4DCS.Data
                     {
                         DCoordinates = unitLocation.Coordinates,
                         Heading = unitLocation.Heading,
-                        DCSID = unitLocation.SpecificType
+                        DCSID = unitLocation.SpecificType,
+                        IsScenery = unitLocation.IsScenery
                     };
                     positionMap.Add(specificTemplateUnit);
                     units.Add(unitLocation.SpecificType);
@@ -99,7 +100,8 @@ namespace BriefingRoom4DCS.Data
                 {
                     DCoordinates = unitLocation.Coordinates,
                     Heading = unitLocation.Heading,
-                    DCSID = unitID
+                    DCSID = unitID,
+                    IsScenery = unitLocation.IsScenery
                 };
                 positionMap.Add(templateUnit);
                 units.Add(unitID);

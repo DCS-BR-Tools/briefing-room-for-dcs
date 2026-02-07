@@ -70,7 +70,8 @@ namespace BriefingRoom4DCS.Data
                     {
                         DCoordinates = new Coordinates(x.dx, x.dy),
                         DCSID = x.name,
-                        Heading = x.heading
+                        Heading = x.heading,
+                        IsScenery = x.isScenery
                     }).ToList(),
                     Module = supportInfo.module
                 };
@@ -104,5 +105,6 @@ namespace BriefingRoom4DCS.Data
         public Coordinates DCoordinates { get; init; }
         public double Heading { get; init; }
         public string DCSID { get; init; }
+        public bool IsScenery { get; init; } = false;
     }
 }
