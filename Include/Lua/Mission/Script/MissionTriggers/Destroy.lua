@@ -10,7 +10,7 @@ function briefingRoom.mission.objectivesTriggersCommon.registerDestroyTrigger(ob
     if event.id == world.event.S_EVENT_KILL then
       destructionEvent = true
       killedUnit = event.target
-      playerName = event.initiator.getPlayerName and event.initiator:getPlayerName() or nil
+      playerName = event.initiator ~= nil and event.initiator.getPlayerName and event.initiator:getPlayerName() or nil
     elseif 
       briefingRoom.mission.isSoftKillEvent(event.id) or
       (event.id == world.event.S_EVENT_LAND and briefingRoom.mission.objectives[objectiveIndex].targetCategory == Unit.Category.HELICOPTER) then -- Check if parked AI Aircraft are damaged enough to be considered dead
