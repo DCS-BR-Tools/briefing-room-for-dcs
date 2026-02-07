@@ -5,6 +5,15 @@
 require "mission" -- Mission lua file
 json = require "json"
 
+-- Returns true if string str ends with needle
+function string.endsWith(str, needle)
+  return needle == "" or str:sub(-#needle) == needle
+end
+
+function string.startsWith(str, needle)
+  return str:sub(1, #needle) == needle
+end
+
 function __genOrderedIndex(t)
     local orderedIndex = {}
     for key in pairs(t) do
@@ -157,7 +166,9 @@ for _, country in orderedPairs(mission.coalition.red.country) do
                     coords = {  value.x - originX, value.y - originY },
                     heading = value.heading,
                     originalType = value.type,
-                    unitTypes = switch(value.type, unitTypes)
+                    unitTypes = switch(value.type, unitTypes),
+                    specificType = (value.name ~= nil and string.endsWith(value.name, '-SPECIFIC') and value.type or nil),
+                    isScenery =  (value.name ~= nil and string.startsWith(value.name, 'SCENERY-'))
                 }
                 locIndex = locIndex + 1
             end
@@ -180,7 +191,9 @@ for _, country in orderedPairs(mission.coalition.blue.country) do
                     coords = {  value.x - originX, value.y - originY },
                     heading = value.heading,
                     originalType = value.type,
-                    unitTypes = switch(value.type, unitTypes)
+                    unitTypes = switch(value.type, unitTypes),
+                    specificType = (value.name ~= nil and string.endsWith(value.name, '-SPECIFIC') and value.type or nil),
+                    isScenery =  (value.name ~= nil and string.startsWith(value.name, 'SCENERY-'))
                 }
                 locIndex = locIndex + 1
             end

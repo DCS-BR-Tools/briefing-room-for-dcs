@@ -9,6 +9,8 @@ namespace BriefingRoom4DCS.Data.JSON
         public List<double> coords { get; set; }
         public List<string> unitTypes { get; set; }
         public string originalType { get; set; }
+        public string specificType { get; set; }
+        public bool isScenery { get; set; } = false;
     }
 
     public class TheaterTemplateLocation

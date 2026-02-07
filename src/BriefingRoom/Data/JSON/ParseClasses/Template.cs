@@ -20,13 +20,14 @@ namespace BriefingRoom4DCS.Data.JSON
         public List<TemplateUnit> units { get; set; }
     }
 
-    public class TemplateUnit
+    public class TemplateUnit //TODO convert this to a common standard
     {
         public double dx { get; set; }
         public double dy { get; set; }
         public string name { get; set; }
         public string skill { get; set; }
         public double heading { get; set; }
+        public bool isScenery { get; set; } = false;
     }
 
     public class TemplateBRInfo

@@ -7,7 +7,7 @@
             ["unitId"] = $GLOBIDX$,
             ["y"] = $Y$,
             ["x"] = $X$,
-            ["name"] = "$GLOBIDX$-1",
+            ["name"] = "$SCENARY$$GLOBIDX$$SPECIFIC$",
             ["heading"] = $HEADING$,
             ["playerCanDrive"] = true,
         },

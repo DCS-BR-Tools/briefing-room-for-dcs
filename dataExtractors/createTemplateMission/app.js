@@ -37,6 +37,8 @@ templateLocations.forEach(templateLocation => {
         tempUnit = tempUnit.replaceAll("$GLOBIDX$", groupIndex)
         tempUnit = tempUnit.replaceAll("$TYPE$", loc.originalType)
         tempUnit = tempUnit.replaceAll("$IDX$", idx)
+        tempUnit = tempUnit.replaceAll("$SPECIFIC$", loc.specificType ? `-SPECIFIC` : "")
+        tempUnit = tempUnit.replaceAll("$SCENARY$", loc.isScenery ? "SCENERY-" : "")
         tempunits.push(tempUnit)
         idx++
         unitIndex++

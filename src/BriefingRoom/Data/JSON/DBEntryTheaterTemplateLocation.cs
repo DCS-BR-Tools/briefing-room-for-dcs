@@ -11,6 +11,8 @@ namespace BriefingRoom4DCS.Data
         public double Heading { get; init; }
         public Coordinates Coordinates { get; init; }
         public List<UnitFamily> UnitTypes { get; init; }
+        public string SpecificType { get; init; }
+        public bool IsScenery { get; init; }
     }
 
     public readonly struct DBEntryTheaterTemplateLocation
@@ -30,9 +32,10 @@ namespace BriefingRoom4DCS.Data
                 {
                     Heading = unitLocation.heading,
                     Coordinates = new Coordinates(unitLocation.coords[0], unitLocation.coords[1]),
-                    UnitTypes = unitLocation.unitTypes.Select(x => (UnitFamily)Enum.Parse(typeof(UnitFamily), x, true)).ToList()
+                    UnitTypes = unitLocation.unitTypes.Select(x => (UnitFamily)Enum.Parse(typeof(UnitFamily), x, true)).ToList(),
+                    SpecificType = unitLocation.specificType,
+                    IsScenery = unitLocation.isScenery
                 };
-
                 Locations.Add(location);
             }
 
@@ -61,6 +64,18 @@ namespace BriefingRoom4DCS.Data
             var units = new List<string>();
             foreach (var unitLocation in Locations)
             {
+                if(unitLocation.SpecificType != null)
+                {
+                    var specificTemplateUnit = new DBEntryTemplateUnit
+                    {
+                        DCoordinates = unitLocation.Coordinates,
+                        Heading = unitLocation.Heading,
+                        DCSID = unitLocation.SpecificType
+                    };
+                    positionMap.Add(specificTemplateUnit);
+                    units.Add(unitLocation.SpecificType);
+                    continue;
+                }
                 var familyOptions = unitLocation.UnitTypes.Intersect(familyMap.Keys).ToList();
                 if (familyOptions.Count == 0)
                 {
