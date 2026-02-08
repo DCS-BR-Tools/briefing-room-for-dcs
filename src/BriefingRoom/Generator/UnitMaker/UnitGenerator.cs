@@ -1,7 +1,6 @@
 ﻿using BriefingRoom4DCS.Data;
 using BriefingRoom4DCS.Mission;
 using BriefingRoom4DCS.Mission.DCSLuaObjects;
-using BriefingRoom4DCS.Template;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -137,9 +136,9 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                             continue;
                         }
                         var matchingFamilies = unitDB.Families.Intersect(unitMap.Keys).ToList();
-                        if (matchingFamilies.Count > 0)
+                        foreach (var family in matchingFamilies)
                         {
-                            unitMap[matchingFamilies.First()].Add(unit.DCSID);
+                            unitMap[family].Add(unit.DCSID);
                         }
                     }
                     tryUseAll = true;
