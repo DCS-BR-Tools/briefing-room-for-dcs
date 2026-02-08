@@ -314,7 +314,7 @@
   },
   {
     "type": "SA-11 Buk LN 9A310M1",
-    "families": ["VehicleSAMMedium", "VehicleStatic", "VehicleSAMLauncher"],
+    "families": ["VehicleSAMMedium", "VehicleStatic", "VehicleSAMLauncher", "VehicleSAMtr", "VehicleSAMShort"],
     "lowPolly": false,
     "immovable": true
   },
@@ -530,7 +530,7 @@
   },
   {
     "type": "Kub 1S91 str",
-    "families": ["VehicleSAMMedium", "VehicleStatic", "VehicleSAMsr"],
+    "families": ["VehicleSAMMedium", "VehicleStatic", "VehicleSAMsr", "VehicleSAMtr"],
     "lowPolly": false,
     "immovable": true
   },
@@ -1171,7 +1171,7 @@
   },
   {
     "type": "RPC_5N62V",
-    "families": ["VehicleSAMMedium", "VehicleStatic", "VehicleSAMsr"],
+    "families": ["VehicleSAMMedium", "VehicleStatic", "VehicleSAMtr"],
     "lowPolly": false,
     "immovable": true
   },
@@ -1435,7 +1435,7 @@
   },
   {
     "type": "HQ-7_STR_SP",
-    "families": ["VehicleEWR"],
+    "families": ["VehicleEWR", "VehicleSAMsr", "VehicleSAMtr"],
     "lowPolly": false,
     "immovable": false
   },
