@@ -1,4 +1,5 @@
 ﻿using BriefingRoom4DCS.Data;
+using BriefingRoom4DCS.Data.JSON;
 using BriefingRoom4DCS.Mission;
 using BriefingRoom4DCS.Mission.DCSLuaObjects;
 using System;
@@ -136,10 +137,18 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                             continue;
                         }
                         var matchingFamilies = unitDB.Families.Intersect(unitMap.Keys).ToList();
-                        foreach (var family in matchingFamilies)
+                        var isCriticalSAM = unitDB.Families.Intersect(DBEntryTheaterTemplateLocation.CRITICAL_SAM_FAMILIES);
+                        if (matchingFamilies.Count == 0 && isCriticalSAM.Any())
                         {
-                            unitMap[family].Add(unit.DCSID);
+
+                            matchingFamilies = isCriticalSAM.ToList(); // Override matching families to ensure critical SAM families are prioritized even if they are not in the template location's unit family list, as long as they are in the unitDB's families and the template location is a SAM site
+                            foreach (var family in matchingFamilies)
+                                if (!unitMap.ContainsKey(family))
+                                    unitMap[family] = new List<string>(); // Make sure the critical SAM family is added to the unitMap even if it was not originally in the template location's unit family list
+                            BriefingRoom.PrintToLog($"Forced critical SAM unit {unitDB.DCSID} into template location to keep it functional.");
                         }
+                        foreach (var family in matchingFamilies)
+                            unitMap[family].Add(unit.DCSID);
                     }
                     tryUseAll = true;
                 }
@@ -147,7 +156,12 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
 
             foreach (var unitFamily in unitMap.Keys)
             {
-                if (unitMap[unitFamily].Count > 0) continue;
+
+                if (unitMap[unitFamily].Count > 0)
+                {
+                    unitMap[unitFamily] = unitMap[unitFamily].Distinct().ToList();
+                    continue;
+                }
                 var (newCountry, unitSet) = unitsCoalitionDB.GetRandomUnits(
                     briefingRoom,
                     new List<UnitFamily> { unitFamily },
@@ -164,6 +178,7 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                 if (country == Country.ALL && newCountry != Country.ALL)
                     country = newCountry;
             }
+
 
 
             var (units, convertedUnitTemplate) = templateLocation.CreateTemplatePositionMap(unitMap, tryUseAll);
@@ -412,7 +427,8 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
 
             var dCSGroup = DCSGroup.YamlToGroup(groupYml);
 
-            if(unitFamily.GetUnitCategory().IsAircraft()) {
+            if (unitFamily.GetUnitCategory().IsAircraft())
+            {
 
                 if (unitFamily.GetUnitCategory().IsAircraft() && extraSettings.ContainsKey("GroupAirbaseID") && dCSGroup.Waypoints[0].AirdromeId == default)
                 {
@@ -424,9 +440,9 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                     if (!isHotStart)
                         dCSGroup.Uncontrolled = true;
                 }
-                if(mission.TemplateRecord.OptionsMission.Contains("SilenceAI") && unitFamily != UnitFamily.PlaneAWACS && unitFamily != UnitFamily.PlaneTankerBasket && unitFamily != UnitFamily.PlaneTankerBoom)
+                if (mission.TemplateRecord.OptionsMission.Contains("SilenceAI") && unitFamily != UnitFamily.PlaneAWACS && unitFamily != UnitFamily.PlaneTankerBasket && unitFamily != UnitFamily.PlaneTankerBoom)
                 {
-                   dCSGroup.Waypoints.First().Tasks.Insert(0, new DCSWrappedWaypointTask("Option", new Dictionary<string, object> { { "value", true }, { "name", 7 } }));
+                    dCSGroup.Waypoints.First().Tasks.Insert(0, new DCSWrappedWaypointTask("Option", new Dictionary<string, object> { { "value", true }, { "name", 7 } }));
                 }
             }
 
@@ -661,9 +677,9 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                 var posIndex = unitLuaIndex - 1;
                 if (templatePositionMap.Count > posIndex && templatePositionMap[posIndex].IsScenery)
                 {
-                   unit.Name = "SCENERY-" + unit.Name;
+                    unit.Name = "SCENERY-" + unit.Name;
                 }
-                
+
             }
 
             return unit;

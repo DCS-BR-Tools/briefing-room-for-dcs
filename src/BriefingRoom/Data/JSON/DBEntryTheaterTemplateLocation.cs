@@ -17,6 +17,7 @@ namespace BriefingRoom4DCS.Data
 
     public readonly struct DBEntryTheaterTemplateLocation
     {
+        public static readonly List<UnitFamily> CRITICAL_SAM_FAMILIES = new() { UnitFamily.VehicleSAMsr, UnitFamily.VehicleSAMtr, UnitFamily.VehicleSAMCmd, UnitFamily.VehicleSAMLauncher };
         public Coordinates Coordinates { get; init; }
         public List<DBEntryTheaterTemplateUnitLocation> Locations { get; init; }
         public TheaterTemplateLocationType LocationType { get; init; }
@@ -47,13 +48,9 @@ namespace BriefingRoom4DCS.Data
             var familyMap = new Dictionary<UnitFamily, List<string>>();
 
             foreach (var unitLocation in Locations)
-            {
-                var unitFamily = Toolbox.RandomFrom(unitLocation.UnitTypes);
-                if (!familyMap.ContainsKey(unitFamily))
-                {
-                    familyMap[unitFamily] = new List<string>();
-                }
-            }
+                foreach (var unitFamily in unitLocation.UnitTypes)
+                    if (!familyMap.ContainsKey(unitFamily))
+                        familyMap[unitFamily] = new List<string>();
 
             return familyMap;
         }
@@ -61,10 +58,15 @@ namespace BriefingRoom4DCS.Data
         public Tuple<List<string>, List<DBEntryTemplateUnit>> CreateTemplatePositionMap(Dictionary<UnitFamily, List<string>> familyMap, Boolean tryUseAll = false)
         {
             var positionMap = new List<DBEntryTemplateUnit>();
+            var potentialMissingCriticalFamilies = true;
             var units = new List<string>();
-            foreach (var unitLocation in Locations)
+            var sortedLocations = Locations.ToList();
+            sortedLocations.Sort((a, b) => a.UnitTypes.Count(af => CRITICAL_SAM_FAMILIES.Contains(af)).CompareTo(b.UnitTypes.Count(bf => CRITICAL_SAM_FAMILIES.Contains(bf))));
+            sortedLocations.Reverse();
+
+            foreach (var unitLocation in sortedLocations)
             {
-                if(unitLocation.SpecificType != null)
+                if (unitLocation.SpecificType != null)
                 {
                     var specificTemplateUnit = new DBEntryTemplateUnit
                     {
@@ -79,14 +81,19 @@ namespace BriefingRoom4DCS.Data
                 }
                 var familyOptions = unitLocation.UnitTypes.Intersect(familyMap.Keys).ToList();
                 if (familyOptions.Count == 0)
-                {
                     throw new BriefingRoomRawException($"Unit type {string.Join(",", unitLocation.UnitTypes)} not found in family map.");
+                if (tryUseAll && potentialMissingCriticalFamilies && !unitLocation.UnitTypes.Any(f => CRITICAL_SAM_FAMILIES.Contains(f)))
+                {
+                    var missingCriticalFamilies = CRITICAL_SAM_FAMILIES.Where(f => familyMap.ContainsKey(f) && familyMap[f].Count > 0 && !familyMap[f].All(id => units.Contains(id))).ToList();
+
+                    if (missingCriticalFamilies.Count > 0)
+                        familyOptions = missingCriticalFamilies;
+                    else 
+                        potentialMissingCriticalFamilies = false;
                 }
                 var options = familyOptions.SelectMany(x => familyMap[x]).ToList();
                 if (options.Count == 0)
-                {
                     throw new BriefingRoomRawException($"Unit type {string.Join(",", unitLocation.UnitTypes)} has no DCSID in family map.");
-                }
 
                 var unitID = Toolbox.RandomFrom(options);
                 if (tryUseAll) // Remove the unitID from all families unless its the last one
