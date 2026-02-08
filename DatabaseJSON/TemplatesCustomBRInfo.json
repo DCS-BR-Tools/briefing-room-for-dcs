@@ -1039,69 +1039,6 @@
     "operational": [1970, 2020]
   },
   {
-    "type": "SA-10 SAM Battery Tin No Bird",
-    "family": "VehicleSAMLong",
-    "extraOperators": {
-      "Algeria": [],
-      "Belarus": [],
-      "Bulgaria": [],
-      "China": [],
-      "Egypt": [],
-      "GDR": [],
-      "Greece": [],
-      "Kazakhstan": [],
-      "Russia": [],
-      "Slovakia": [],
-      "Venezuela": [],
-      "Vietnam": [],
-      "Iran": [],
-      "Ukraine": []
-    },
-    "operational": [1970, 2020]
-  },
-  {
-    "type": "SA-10 SAM Battery Low Tin No Bird",
-    "family": "VehicleSAMLong",
-    "extraOperators": {
-      "Algeria": [],
-      "Belarus": [],
-      "Bulgaria": [],
-      "China": [],
-      "Egypt": [],
-      "GDR": [],
-      "Greece": [],
-      "Kazakhstan": [],
-      "Russia": [],
-      "Slovakia": [],
-      "Venezuela": [],
-      "Vietnam": [],
-      "Iran": [],
-      "Ukraine": []
-    },
-    "operational": [1970, 2020]
-  },
-  {
-    "type": "SA-10 SAM Battery No Bird",
-    "family": "VehicleSAMLong",
-    "extraOperators": {
-      "Algeria": [],
-      "Belarus": [],
-      "Bulgaria": [],
-      "China": [],
-      "Egypt": [],
-      "GDR": [],
-      "Greece": [],
-      "Kazakhstan": [],
-      "Russia": [],
-      "Slovakia": [],
-      "Venezuela": [],
-      "Vietnam": [],
-      "Iran": [],
-      "Ukraine": []
-    },
-    "operational": [1970, 2020]
-  },
-  {
     "type": "SA-10 SAM Battery Flap B",
     "family": "VehicleSAMLong",
     "extraOperators": {
