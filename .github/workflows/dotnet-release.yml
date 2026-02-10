@@ -64,7 +64,21 @@ jobs:
         run: |
           LOGS=$(git log --pretty=format:"%s" HEAD...$(git describe --tags --match="release*" --abbrev=0 HEAD) 2>/dev/null || echo "Initial release")
           echo "log<<EOF" >> $GITHUB_OUTPUT
-          echo "$LOGS" | sort -u >> $GITHUB_OUTPUT
+          # Sort by category: Added, Updated, Fix, then alphabetically
+          # Handles variants: Add/Added/Adds/Adding, Update/Updated/Updates/Updating, Fix/Fixed/Fixes/Fixing/Bugfix
+          echo "$LOGS" | sort -u | awk '
+            BEGIN { added=""; updated=""; fix=""; other="" }
+            /^[Aa]dd(ed|s|ing)?[[:space:]]*:/ { added = added $0 "\n"; next }
+            /^[Uu]pdat(e|ed|es|ing)[[:space:]]*:/ { updated = updated $0 "\n"; next }
+            /^([Ff]ix(ed|es|ing)?|[Bb]ugfix)[[:space:]]*:/ { fix = fix $0 "\n"; next }
+            { other = other $0 "\n" }
+            END {
+              printf "%s", added;
+              printf "%s", updated;
+              printf "%s", fix;
+              printf "%s", other
+            }
+          ' >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Upload Release
@@ -77,13 +91,27 @@ jobs:
           prerelease: false
           artifacts: "BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }}.zip"
           token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Truncate Changelog for Discord
+        id: discord_log
+        shell: bash
+        run: |
+          HEADER="@everyone New Release out https://github.com/DCS-BR-Tools/briefing-room-for-dcs/releases/tag/release-${{ steps.current-date.outputs.formattedTime }}-${{ steps.current-time.outputs.formattedTime }}-${{ github.run_id }}-${{ github.run_attempt }}"
+          LOG="${{ steps.change_log.outputs.log }}"
+          HEADER_LEN=${#HEADER}
+          MAX_LOG_LEN=$((2000 - HEADER_LEN - 10))  # Reserve space for newlines and ellipsis
+          if [ ${#LOG} -gt $MAX_LOG_LEN ]; then
+            LOG="${LOG:0:$MAX_LOG_LEN}..."
+          fi
+          echo "content<<EOF" >> $GITHUB_OUTPUT
+          echo "$HEADER" >> $GITHUB_OUTPUT
+          echo "$LOG" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
       - name: Post to Discord
         uses: tsickert/discord-webhook@v6.0.0
         with:
           webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
-          content: |
-            @everyone New Release out https://github.com/DCS-BR-Tools/briefing-room-for-dcs/releases/tag/release-${{ steps.current-date.outputs.formattedTime }}-${{ steps.current-time.outputs.formattedTime }}-${{ github.run_id }}-${{ github.run_attempt }}
-            ${{ steps.change_log.outputs.log }}
+          content: ${{ steps.discord_log.outputs.content }}
 
   docker:
     name: docker build and push
