@@ -13,12 +13,16 @@ jobs:
         run: |
           git config --global core.autocrlf false
           git config --global core.eol crlf
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
         name: Checkout Code
+        with:
+          fetch-depth: 0
       - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: "10.0.x"
+          cache: true
+          cache-dependency-path: src/**/*.csproj
 
       - name: Restore NuGet Packages
         run: dotnet restore src/BriefingRoom.sln
@@ -49,9 +53,7 @@ jobs:
 
       - name: Build and Publish App
         run: |
-          dotnet publish src/CommandLine -o BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }} -c Release
-          dotnet publish src/Web -o BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }} -c Release
-          dotnet publish src/Desktop -o BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }} -c Release
+          dotnet publish src -c Release -p:Flavor=EXE -p:BRPublishDir=${{ github.workspace }}/BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }}/
 
       - name: Zip Release
         run: 7z a -tzip BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }}.zip BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }} "-xr!.git\" "-xr!.github\" "-xr!.git*" "-xr!.vscode\" "-xr!dataExtractors\"  "-xr!src\" "-xr!docs\" "-x!*.bat" "-x!*.filelist"
@@ -60,14 +62,10 @@ jobs:
         id: change_log
         shell: bash
         run: |
-          LOGS=$(git log --pretty=format:"%s" HEAD...$(git describe --tags --match="release*" --abbrev=0 HEAD))
-          LOGS="${LOGS//'%'/'%25'}"
-          LOGS="${LOGS//$'\n'/'%0A'}"
-          LOGS="${LOGS//$'\r'/'%0D'}"
-          echo "$LOGS" > logs.txt
-          sort -u logs.txt -o logs.txt
-          echo "::set-output name=log::$(cat logs.txt)"
-          rm logs.txt
+          LOGS=$(git log --pretty=format:"%s" HEAD...$(git describe --tags --match="release*" --abbrev=0 HEAD) 2>/dev/null || echo "Initial release")
+          echo "log<<EOF" >> $GITHUB_OUTPUT
+          echo "$LOGS" | sort -u >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Upload Release
         uses: ncipollo/release-action@v1
@@ -92,7 +90,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Get current time
         uses: 1466587594/get-current-time@v2

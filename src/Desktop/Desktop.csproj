@@ -10,8 +10,10 @@
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <PublishTrimmed>false</PublishTrimmed>
     <PublishReadyToRun>false</PublishReadyToRun>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
     <UseWPF>true</UseWPF>
     <PublishReadyToRunShowWarnings>true</PublishReadyToRunShowWarnings>
+    <PublishDir>$(BRPublishDir)</PublishDir>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,13 +23,14 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="10.0.2" />
-    <Content Include="..\..\Database\**" LinkBase="Database" CopyToPublishDirectory="PreserveNewest" />
-    <Content Include="..\..\DatabaseJSON\**" LinkBase="DatabaseJSON" CopyToPublishDirectory="PreserveNewest" />
-    <Content Include="..\..\CustomConfigs\**" LinkBase="CustomConfigs" CopyToPublishDirectory="PreserveNewest" />
-    <Content Include="..\..\Include\**" LinkBase="Include" CopyToPublishDirectory="PreserveNewest" />
-    <Content Include="..\..\Media\**" LinkBase="Media" CopyToPublishDirectory="PreserveNewest" />
-    <Content Include="..\..\README.md" LinkBase="" CopyToPublishDirectory="PreserveNewest" />
-    <Content Include="Resources\**" LinkBase="Resources" CopyToPublishDirectory="PreserveNewest" />
+    <!-- Data files go into bin/ subfolder, exe stays at root -->
+    <Content Include="..\..\Database\**" LinkBase="$(BRDataFolder)\Database" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="..\..\DatabaseJSON\**" LinkBase="$(BRDataFolder)\DatabaseJSON" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="..\..\CustomConfigs\**" LinkBase="$(BRDataFolder)\CustomConfigs" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="..\..\Include\**" LinkBase="$(BRDataFolder)\Include" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="..\..\Media\**" LinkBase="$(BRDataFolder)\Media" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="..\..\RELEASE_README.md" Link="README.md" CopyToPublishDirectory="PreserveNewest" />
+    <Content Include="Resources\**" LinkBase="$(BRDataFolder)\Resources" CopyToPublishDirectory="PreserveNewest" />
   </ItemGroup>
 
   <PropertyGroup>

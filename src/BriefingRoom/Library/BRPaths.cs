@@ -85,8 +85,16 @@ namespace BriefingRoom4DCS
             path = Path.GetFullPath(path);
             DirectoryInfo di = new(path);
             var directories = di.GetDirectories();
+            
+            // Check for Database directly in this folder (development layout)
             if (directories.Any(x => x.Name == "Database"))
                 return Toolbox.NormalizeDirectoryPath(path);
+            
+            // Check for Database in bin/ subfolder (publish layout: exe at root, data in bin/)
+            var binDir = directories.FirstOrDefault(x => x.Name == "bin");
+            if (binDir != null && binDir.GetDirectories().Any(x => x.Name == "Database"))
+                return Toolbox.NormalizeDirectoryPath(binDir.FullName);
+            
             if (loop > 10)
                 throw new Exception("Can't Find Database within 10 levels up on app");
             return FindRoot(Path.Combine(path, ".."), loop + 1);

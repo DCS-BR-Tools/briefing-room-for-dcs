@@ -1,0 +1,80 @@
+<Project>
+
+  <!-- 
+    Post-publish target to reorganize output:
+    - Keep .exe files at root
+    - Move .dll, .pak, and other runtime files to bin/ subfolder
+    
+    Only runs for Desktop, Web, and CommandLine projects (the actual executables)
+  -->
+
+  <Target Name="ReorganizePublishOutput" AfterTargets="Publish" 
+          Condition="('$(OutputType)' == 'Exe' Or '$(OutputType)' == 'WinExe') And ('$(MSBuildProjectName)' == 'Desktop' Or '$(MSBuildProjectName)' == 'Web' Or '$(MSBuildProjectName)' == 'CommandLine')">
+    
+    <PropertyGroup>
+      <_BinFolder>$(PublishDir)$(BRDataFolder)</_BinFolder>
+    </PropertyGroup>
+
+    <!-- Create bin folder if it doesn't exist -->
+    <MakeDir Directories="$(_BinFolder)" />
+
+    <!-- Collect files to move (exclude .exe, already-in-bin items, and wwwroot) -->
+    <ItemGroup>
+      <!-- DLL files -->
+      <_FilesToMove Include="$(PublishDir)*.dll" />
+      <!-- PAK files (Chromium locale resources) -->
+      <_FilesToMove Include="$(PublishDir)*.pak" />
+      <!-- PDB files (debug symbols) -->
+      <_FilesToMove Include="$(PublishDir)*.pdb" />
+      <!-- JSON config files (except appsettings which should stay accessible) -->
+      <_FilesToMove Include="$(PublishDir)*.deps.json" />
+      <_FilesToMove Include="$(PublishDir)*.runtimeconfig.json" />
+      <_FilesToMove Include="$(PublishDir)*.staticwebassets.endpoints.json" />
+      <!-- Other runtime files -->
+      <_FilesToMove Include="$(PublishDir)*.dat" />
+      <_FilesToMove Include="$(PublishDir)*.bin" />
+      <_FilesToMove Include="$(PublishDir)*.xml" Exclude="$(PublishDir)web.config" />
+      <!-- Native library deployment files -->
+      <_FilesToMove Include="$(PublishDir)*.deployment.json" />
+    </ItemGroup>
+
+    <!-- Move loose files to bin folder -->
+    <Move SourceFiles="@(_FilesToMove)" 
+          DestinationFolder="$(_BinFolder)" 
+          OverwriteReadOnlyFiles="true"
+          Condition="'@(_FilesToMove)' != ''" />
+
+    <!-- Move runtime/locale folders using robocopy (Windows) -->
+    <Exec Command="if exist &quot;$(PublishDir)runtimes&quot; (robocopy &quot;$(PublishDir)runtimes&quot; &quot;$(_BinFolder)\runtimes&quot; /E /MOVE /NFL /NDL /NJH /NJS &gt;nul 2&gt;&amp;1 || exit 0)" 
+          IgnoreExitCode="true" />
+    <Exec Command="if exist &quot;$(PublishDir)cs&quot; (robocopy &quot;$(PublishDir)cs&quot; &quot;$(_BinFolder)\cs&quot; /E /MOVE /NFL /NDL /NJH /NJS &gt;nul 2&gt;&amp;1 || exit 0)" 
+          IgnoreExitCode="true" />
+    <Exec Command="if exist &quot;$(PublishDir)de&quot; (robocopy &quot;$(PublishDir)de&quot; &quot;$(_BinFolder)\de&quot; /E /MOVE /NFL /NDL /NJH /NJS &gt;nul 2&gt;&amp;1 || exit 0)" 
+          IgnoreExitCode="true" />
+    <Exec Command="if exist &quot;$(PublishDir)es&quot; (robocopy &quot;$(PublishDir)es&quot; &quot;$(_BinFolder)\es&quot; /E /MOVE /NFL /NDL /NJH /NJS &gt;nul 2&gt;&amp;1 || exit 0)" 
+          IgnoreExitCode="true" />
+    <Exec Command="if exist &quot;$(PublishDir)fr&quot; (robocopy &quot;$(PublishDir)fr&quot; &quot;$(_BinFolder)\fr&quot; /E /MOVE /NFL /NDL /NJH /NJS &gt;nul 2&gt;&amp;1 || exit 0)" 
+          IgnoreExitCode="true" />
+    <Exec Command="if exist &quot;$(PublishDir)it&quot; (robocopy &quot;$(PublishDir)it&quot; &quot;$(_BinFolder)\it&quot; /E /MOVE /NFL /NDL /NJH /NJS &gt;nul 2&gt;&amp;1 || exit 0)" 
+          IgnoreExitCode="true" />
+    <Exec Command="if exist &quot;$(PublishDir)ja&quot; (robocopy &quot;$(PublishDir)ja&quot; &quot;$(_BinFolder)\ja&quot; /E /MOVE /NFL /NDL /NJH /NJS &gt;nul 2&gt;&amp;1 || exit 0)" 
+          IgnoreExitCode="true" />
+    <Exec Command="if exist &quot;$(PublishDir)ko&quot; (robocopy &quot;$(PublishDir)ko&quot; &quot;$(_BinFolder)\ko&quot; /E /MOVE /NFL /NDL /NJH /NJS &gt;nul 2&gt;&amp;1 || exit 0)" 
+          IgnoreExitCode="true" />
+    <Exec Command="if exist &quot;$(PublishDir)pl&quot; (robocopy &quot;$(PublishDir)pl&quot; &quot;$(_BinFolder)\pl&quot; /E /MOVE /NFL /NDL /NJH /NJS &gt;nul 2&gt;&amp;1 || exit 0)" 
+          IgnoreExitCode="true" />
+    <Exec Command="if exist &quot;$(PublishDir)pt-BR&quot; (robocopy &quot;$(PublishDir)pt-BR&quot; &quot;$(_BinFolder)\pt-BR&quot; /E /MOVE /NFL /NDL /NJH /NJS &gt;nul 2&gt;&amp;1 || exit 0)" 
+          IgnoreExitCode="true" />
+    <Exec Command="if exist &quot;$(PublishDir)ru&quot; (robocopy &quot;$(PublishDir)ru&quot; &quot;$(_BinFolder)\ru&quot; /E /MOVE /NFL /NDL /NJH /NJS &gt;nul 2&gt;&amp;1 || exit 0)" 
+          IgnoreExitCode="true" />
+    <Exec Command="if exist &quot;$(PublishDir)tr&quot; (robocopy &quot;$(PublishDir)tr&quot; &quot;$(_BinFolder)\tr&quot; /E /MOVE /NFL /NDL /NJH /NJS &gt;nul 2&gt;&amp;1 || exit 0)" 
+          IgnoreExitCode="true" />
+    <Exec Command="if exist &quot;$(PublishDir)zh-Hans&quot; (robocopy &quot;$(PublishDir)zh-Hans&quot; &quot;$(_BinFolder)\zh-Hans&quot; /E /MOVE /NFL /NDL /NJH /NJS &gt;nul 2&gt;&amp;1 || exit 0)" 
+          IgnoreExitCode="true" />
+    <Exec Command="if exist &quot;$(PublishDir)zh-Hant&quot; (robocopy &quot;$(PublishDir)zh-Hant&quot; &quot;$(_BinFolder)\zh-Hant&quot; /E /MOVE /NFL /NDL /NJH /NJS &gt;nul 2&gt;&amp;1 || exit 0)" 
+          IgnoreExitCode="true" />
+
+    <Message Importance="high" Text="Reorganized publish output: executables at root, runtime files in $(BRDataFolder)/" />
+  </Target>
+
+</Project>
