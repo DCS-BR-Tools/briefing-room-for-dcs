@@ -3,7 +3,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using BriefingRoom4DCS.Data;
 using BriefingRoom4DCS.Data.JSON;
@@ -17,192 +16,145 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
     internal class Escort
     {
         internal static List<Waypoint> CreateObjective(
-    IBriefingRoom briefingRoom,
-    MissionTemplateSubTaskRecord task,
-    DBEntryObjectiveTask taskDB,
-    DBEntryObjectiveTarget targetDB,
-    DBEntryObjectiveTargetBehavior targetBehaviorDB,
-    ref int objectiveIndex,
-    ref Coordinates objectiveCoordinates,
-    ObjectiveOption[] objectiveOptions,
-    ref DCSMission mission,
-    string[] featuresID)
+            IBriefingRoom briefingRoom,
+            MissionTemplateSubTaskRecord task,
+            DBEntryObjectiveTask taskDB,
+            DBEntryObjectiveTarget targetDB,
+            DBEntryObjectiveTargetBehavior targetBehaviorDB,
+            ref int objectiveIndex,
+            ref Coordinates objectiveCoordinates,
+            ObjectiveOption[] objectiveOptions,
+            ref DCSMission mission,
+            string[] featuresID)
         {
-            var extraSettings = new Dictionary<string, object>();
-            List<string> units = [];
-            List<DBEntryJSONUnit> unitDBs = [];
-            var (luaUnit, unitCount, unitCountMinMax, objectiveTargetUnitFamilies, groupFlags) = ObjectiveUtils.GetUnitData(task, targetDB, targetBehaviorDB, objectiveOptions);
-
-            (units, unitDBs) = UnitGenerator.GetUnits(briefingRoom, ref mission, objectiveTargetUnitFamilies, unitCount, taskDB.TargetSide, groupFlags, ref extraSettings, targetBehaviorDB.IsStatic);
-            var objectiveTargetUnitFamily = objectiveTargetUnitFamilies.First();
-            if (units.Count == 0 || unitDBs.Count == 0)
-                throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "NoUnitsForTimePeriod", taskDB.TargetSide, objectiveTargetUnitFamily);
-            var unitDB = unitDBs.First();
-
-            var (originAirbase, unitCoordinates) = ObjectiveUtils.GetTransportOrigin(briefingRoom, ref mission, targetBehaviorDB.Location, objectiveCoordinates, true, objectiveTargetUnitFamily.GetUnitCategory());
-            if (Constants.AIRBASE_LOCATIONS.Contains(targetBehaviorDB.Location) && targetDB.UnitCategory.IsAircraft())
-                unitCoordinates = ObjectiveUtils.PlaceInAirbase(briefingRoom, ref mission, extraSettings, targetBehaviorDB, unitCoordinates, unitCount, unitDB, true);
-            var (airbase, destinationPoint) = ObjectiveUtils.GetTransportDestination(briefingRoom, ref mission, targetBehaviorDB.Location, targetBehaviorDB.Destination, unitCoordinates, objectiveCoordinates, task.TransportDistance, originAirbase?.DCSID ?? -1, true, objectiveTargetUnitFamily.GetUnitCategory(), targetBehaviorDB.ID.StartsWith("ToFrontLine"));
-            if(airbase != null)
-                extraSettings.Add("EndAirbaseId", airbase.DCSID);
-            objectiveCoordinates = destinationPoint;
-
-            extraSettings.Add("playerCanDrive", false);
-
-            extraSettings["GroupX2"] = objectiveCoordinates.X;
-            extraSettings["GroupY2"] = objectiveCoordinates.Y;
-            groupFlags |= GroupFlags.RadioAircraftSpawn;
-
-
-            if (
-                objectiveTargetUnitFamily.GetUnitCategory().IsAircraft() &&
-                !groupFlags.HasFlag(GroupFlags.RadioAircraftSpawn) &&
-                !Constants.AIR_ON_GROUND_LOCATIONS.Contains(targetBehaviorDB.Location)
-                )
+            var ctx = new ObjectiveContext
             {
-                if (task.ProgressionActivation)
-                    groupFlags |= GroupFlags.ProgressionAircraftSpawn;
-                else
-                    groupFlags |= GroupFlags.ImmediateAircraftSpawn;
-            }
+                BriefingRoom = briefingRoom,
+                Task = task,
+                TaskDB = taskDB,
+                TargetDB = targetDB,
+                TargetBehaviorDB = targetBehaviorDB,
+                ObjectiveOptions = objectiveOptions,
+                Mission = mission,
+                FeaturesID = featuresID,
+                ObjectiveIndex = objectiveIndex,
+                ObjectiveCoordinates = objectiveCoordinates
+            };
+            ctx.InitializeUnitData();
+
+            // Get units with validation
+            ObjectiveCreationHelpers.GetUnitsWithValidation(ctx);
+
+            // Get transport origin and destination for escort
+            var (originAirbase, unitCoordinates) = ObjectiveTransportUtils.GetTransportOrigin(briefingRoom, ref ctx.Mission, targetBehaviorDB.Location, objectiveCoordinates, true, ctx.ObjectiveTargetUnitFamily.GetUnitCategory());
+            if (Constants.AIRBASE_LOCATIONS.Contains(targetBehaviorDB.Location) && targetDB.UnitCategory.IsAircraft())
+                unitCoordinates = ObjectiveUtils.PlaceInAirbase(briefingRoom, ref ctx.Mission, ctx.ExtraSettings, targetBehaviorDB, unitCoordinates, ctx.UnitCount, ctx.UnitDBs.First(), true);
+            
+            var (airbase, destinationPoint) = ObjectiveTransportUtils.GetTransportDestination(briefingRoom, ref ctx.Mission, targetBehaviorDB.Location, targetBehaviorDB.Destination, unitCoordinates, objectiveCoordinates, task.TransportDistance, originAirbase?.DCSID ?? -1, true, ctx.ObjectiveTargetUnitFamily.GetUnitCategory(), targetBehaviorDB.ID.StartsWith("ToFrontLine"));
+            if (airbase != null)
+                ctx.ExtraSettings.Add("EndAirbaseId", airbase.DCSID);
+            ctx.ObjectiveCoordinates = destinationPoint;
+            ctx.UnitCoordinates = unitCoordinates;
+
+            ctx.ExtraSettings.Add("playerCanDrive", false);
+            ctx.ExtraSettings["GroupX2"] = ctx.ObjectiveCoordinates.X;
+            ctx.ExtraSettings["GroupY2"] = ctx.ObjectiveCoordinates.Y;
+            ctx.GroupFlags |= GroupFlags.RadioAircraftSpawn;
+
+            ObjectiveCreationHelpers.AddAircraftSpawnFlags(ctx);
+
             var groupLua = targetBehaviorDB.GroupLua[(int)targetDB.DCSUnitCategory];
             if (originAirbase != null)
-            {
-                extraSettings["HotStart"] = true;
-            }
-            if (airbase != null && objectiveTargetUnitFamily.GetUnitCategory().IsAircraft())
+                ctx.ExtraSettings["HotStart"] = true;
+            
+            if (airbase != null && ctx.ObjectiveTargetUnitFamily.GetUnitCategory().IsAircraft())
             {
                 groupLua = "AircraftLanding";
-                if (mission.AirbaseDB.Find(x => x.DCSID == airbase.DCSID).Coalition == GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, Side.Enemy, true))
-                    groupLua = objectiveTargetUnitFamily switch
-                    {
-                        UnitFamily.PlaneAttack => "AircraftBomb",
-                        UnitFamily.PlaneBomber => "AircraftBomb",
-                        UnitFamily.PlaneStrike => "AircraftBomb",
-                        UnitFamily.PlaneFighter => "AircraftCAP",
-                        UnitFamily.PlaneInterceptor => "AircraftCAP",
-                        UnitFamily.HelicopterAttack => "AircraftBomb",
-                        _ => groupLua
-                    };
-
-            } else if (objectiveTargetUnitFamily == UnitFamily.HelicopterTransport || objectiveTargetUnitFamily == UnitFamily.HelicopterUtility)
+                if (ctx.Mission.AirbaseDB.Find(x => x.DCSID == airbase.DCSID).Coalition == GeneratorTools.GetSpawnPointCoalition(ctx.Mission.TemplateRecord, Side.Enemy, true))
+                    groupLua = ObjectiveCreationHelpers.GetAttackingAircraftGroupLua(ctx.ObjectiveTargetUnitFamily, groupLua);
+            }
+            else if (ctx.ObjectiveTargetUnitFamily == UnitFamily.HelicopterTransport || ctx.ObjectiveTargetUnitFamily == UnitFamily.HelicopterUtility)
             {
                 groupLua = "HeloCombatDrop";
             }
-            
+
             GroupInfo? VIPGroupInfo = UnitGenerator.AddUnitGroup(
                 briefingRoom,
-                ref mission,
-                units,
+                ref ctx.Mission,
+                ctx.Units,
                 taskDB.TargetSide,
-                objectiveTargetUnitFamily,
-                groupLua, luaUnit,
+                ctx.ObjectiveTargetUnitFamily,
+                groupLua, ctx.LuaUnit,
                 unitCoordinates,
-                groupFlags,
-                extraSettings);
+                ctx.GroupFlags,
+                ctx.ExtraSettings);
 
-            if (!VIPGroupInfo.HasValue) // Failed to generate target group
+            if (!VIPGroupInfo.HasValue)
                 throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "FailedToGenerateGroupObjective");
 
-
-            VIPGroupInfo.Value.DCSGroups.ForEach((grp) =>
+            VIPGroupInfo.Value.DCSGroups.ForEach(grp =>
             {
                 grp.LateActivation = true;
                 grp.Visible = task.ProgressionActivation ? task.ProgressionOptions.Contains(ObjectiveProgressionOption.PreProgressionSpottable) : true;
             });
 
+            ObjectiveCreationHelpers.AddUnlimitedFuelTask(ctx, VIPGroupInfo.Value);
 
-            if (targetDB.UnitCategory.IsAircraft())
-                VIPGroupInfo.Value.DCSGroup.Waypoints.First().Tasks.Insert(0, new DCSWrappedWaypointTask("SetUnlimitedFuel", new Dictionary<string, object> { { "value", true } }));
-            // Setup Threats
-            // Assume static threats just exist for now
-            var playerHasPlanes = mission.TemplateRecord.PlayerFlightGroups.Any(x => briefingRoom.Database.GetEntry<DBEntryJSONUnit>(x.Aircraft).Category == UnitCategory.Plane) || mission.TemplateRecord.AirbaseDynamicSpawn != DsAirbase.None;
-            switch (targetDB.UnitCategory)
+            // Setup Threats based on unit category
+            var playerHasPlanes = ctx.Mission.TemplateRecord.PlayerFlightGroups.Any(x => briefingRoom.Database.GetEntry<DBEntryJSONUnit>(x.Aircraft).Category == UnitCategory.Plane) || ctx.Mission.TemplateRecord.AirbaseDynamicSpawn != DsAirbase.None;
+            CreateThreats(briefingRoom, ref ctx.Mission, unitCoordinates, ctx.ObjectiveCoordinates, VIPGroupInfo, targetDB.UnitCategory, playerHasPlanes);
+
+            ctx.ObjectiveName = ctx.Mission.WaypointNameGenerator.GetWaypointName();
+            if (targetBehaviorDB.ID.EndsWith("OnRoads") && targetDB.UnitCategory.IsGroundMoving())
+                briefingRoom.PrintTranslatableWarning("EscortOnRoadsImperfect", ctx.ObjectiveName);
+
+            // Add pickup waypoint
+            var cargoWaypoint = ObjectiveCreationHelpers.GenerateObjectiveWaypoint(briefingRoom.Database, ref ctx.Mission, task, unitCoordinates, unitCoordinates, $"{ctx.ObjectiveName} Pickup", scriptIgnore: true);
+            ctx.Mission.Waypoints.Add(cargoWaypoint);
+            ctx.ObjectiveWaypoints.Add(cargoWaypoint);
+
+            ObjectiveUtils.AssignTargetSuffix(ref VIPGroupInfo, ctx.ObjectiveName, false);
+            ObjectiveCreationHelpers.AddBriefingItems(ctx, VIPGroupInfo.Value, false);
+            ObjectiveCreationHelpers.AddBriefingRemarks(ctx, ObjectiveCreationHelpers.GetPluralIndex(VIPGroupInfo.Value, false));
+            ObjectiveCreationHelpers.AddOggFilesAndFeatures(ctx, VIPGroupInfo.Value);
+
+            ctx.Mission.ObjectiveCoordinates.Add(ctx.ObjectiveCoordinates);
+            
+            // Add escort end trigger zone
+            var zoneId = ZoneMaker.AddZone(ref ctx.Mission, $"Escort End Zone {ctx.ObjectiveName}", ctx.ObjectiveCoordinates, VIPGroupInfo.Value.UnitDB.IsAircraft ? briefingRoom.Database.Common.DropOffDistanceMeters * 10 : briefingRoom.Database.Common.DropOffDistanceMeters);
+            TriggerMaker.AddEscortEndTrigger(ref ctx.Mission, zoneId, VIPGroupInfo.Value.GroupID, objectiveIndex);
+
+            // Update ref parameters
+            mission = ctx.Mission;
+            objectiveCoordinates = ctx.ObjectiveCoordinates;
+
+            return ObjectiveCreationHelpers.FinalizeObjective(ctx, VIPGroupInfo.Value);
+        }
+
+        private static void CreateThreats(IBriefingRoom briefingRoom, ref DCSMission mission, Coordinates unitCoordinates, Coordinates objectiveCoordinates, GroupInfo? VIPGroupInfo, UnitCategory unitCategory, bool playerHasPlanes)
+        {
+            switch (unitCategory)
             {
                 case UnitCategory.Plane:
                 case UnitCategory.Helicopter:
                     CreateThreat(briefingRoom, ref mission, unitCoordinates, objectiveCoordinates, VIPGroupInfo, "CAP");
                     break;
                 case UnitCategory.Ship:
-                    if (playerHasPlanes && Toolbox.RollChance(AmountNR.High)) { CreateThreat(briefingRoom, ref mission, unitCoordinates, objectiveCoordinates, VIPGroupInfo, "CAS"); }
-                    if (Toolbox.RollChance(AmountNR.Average)) { CreateThreat(briefingRoom, ref mission, unitCoordinates, objectiveCoordinates, VIPGroupInfo, "Helo"); }
-                    if (Toolbox.RollChance(AmountNR.Low)) { CreateThreat(briefingRoom, ref mission, unitCoordinates, objectiveCoordinates, VIPGroupInfo, "Ship"); }
+                    if (playerHasPlanes && Toolbox.RollChance(AmountNR.High)) CreateThreat(briefingRoom, ref mission, unitCoordinates, objectiveCoordinates, VIPGroupInfo, "CAS");
+                    if (Toolbox.RollChance(AmountNR.Average)) CreateThreat(briefingRoom, ref mission, unitCoordinates, objectiveCoordinates, VIPGroupInfo, "Helo");
+                    if (Toolbox.RollChance(AmountNR.Low)) CreateThreat(briefingRoom, ref mission, unitCoordinates, objectiveCoordinates, VIPGroupInfo, "Ship");
                     break;
                 default:
-                    if (playerHasPlanes && Toolbox.RollChance(AmountNR.High)) { CreateThreat(briefingRoom, ref mission, unitCoordinates, objectiveCoordinates, VIPGroupInfo, "CAS"); }
-                    if (Toolbox.RollChance(AmountNR.Average)) { CreateThreat(briefingRoom, ref mission, unitCoordinates, objectiveCoordinates, VIPGroupInfo, "Helo"); }
-                    if (Toolbox.RollChance(AmountNR.VeryHigh)) { CreateThreat(briefingRoom, ref mission, unitCoordinates, objectiveCoordinates, VIPGroupInfo, "Ground"); }
+                    if (playerHasPlanes && Toolbox.RollChance(AmountNR.High)) CreateThreat(briefingRoom, ref mission, unitCoordinates, objectiveCoordinates, VIPGroupInfo, "CAS");
+                    if (Toolbox.RollChance(AmountNR.Average)) CreateThreat(briefingRoom, ref mission, unitCoordinates, objectiveCoordinates, VIPGroupInfo, "Helo");
+                    if (Toolbox.RollChance(AmountNR.VeryHigh)) CreateThreat(briefingRoom, ref mission, unitCoordinates, objectiveCoordinates, VIPGroupInfo, "Ground");
                     break;
             }
-
-
-
-
-            var objectiveName = mission.WaypointNameGenerator.GetWaypointName();
-            if (targetBehaviorDB.ID.EndsWith("OnRoads") && targetDB.UnitCategory.IsGroundMoving())
-            {
-                briefingRoom.PrintTranslatableWarning("EscortOnRoadsImperfect", objectiveName);
-            }
-
-            var objectiveWaypoints = new List<Waypoint>();
-            var cargoWaypoint = ObjectiveUtils.GenerateObjectiveWaypoint(briefingRoom.Database, ref mission, task, unitCoordinates, unitCoordinates, $"{objectiveName} Pickup", scriptIgnore: true);
-            mission.Waypoints.Add(cargoWaypoint);
-            objectiveWaypoints.Add(cargoWaypoint);
-            ObjectiveUtils.AssignTargetSuffix(ref VIPGroupInfo, objectiveName, false);
-            var luaExtraSettings = new Dictionary<string, object>();
-            mission.Briefing.AddItem(DCSMissionBriefingItemType.TargetGroupName, $"-TGT-{objectiveName}");
-            var length = VIPGroupInfo.Value.UnitNames.Length;
-            var pluralIndex = length == 1 ? 0 : 1;
-            var taskString = GeneratorTools.ParseRandomString(taskDB.BriefingTask[pluralIndex].Get(mission.LangKey), mission).Replace("\"", "''");
-            var unitDisplayName = VIPGroupInfo.Value.UnitDB.UIDisplayName;
-            ObjectiveUtils.CreateTaskString(briefingRoom.Database, ref mission, pluralIndex, ref taskString, objectiveName, objectiveTargetUnitFamily, unitDisplayName, task, luaExtraSettings);
-            ObjectiveUtils.CreateLua(ref mission, targetDB, taskDB, objectiveIndex, objectiveName, VIPGroupInfo, taskString, task, luaExtraSettings);
-
-            // Add briefing remarks for this objective task
-            var remarksString = taskDB.BriefingRemarks.Get(mission.LangKey);
-            if (!string.IsNullOrEmpty(remarksString))
-            {
-                string remark = Toolbox.RandomFrom(remarksString.Split(";"));
-                GeneratorTools.ReplaceKey(ref remark, "ObjectiveName", objectiveName);
-                GeneratorTools.ReplaceKey(ref remark, "DropOffDistanceMeters", briefingRoom.Database.Common.DropOffDistanceMeters.ToString());
-                GeneratorTools.ReplaceKey(ref remark, "UnitFamily", briefingRoom.Database.Common.Names.UnitFamilies[(int)objectiveTargetUnitFamily].Get(mission.LangKey).Split(",")[pluralIndex]);
-                mission.Briefing.AddItem(DCSMissionBriefingItemType.Remark, remark);
-            }
-
-            // Add feature ogg files
-            foreach (string oggFile in taskDB.IncludeOgg)
-                mission.AddMediaFile($"{BRPaths.MIZ_RESOURCES_OGG}{oggFile}", Path.Combine(BRPaths.INCLUDE_OGG, oggFile));
-
-
-            // Add objective features Lua for this objective
-            mission.AppendValue("ScriptObjectivesFeatures", ""); // Just in case there's no features
-            var featureList = taskDB.RequiredFeatures.Concat(featuresID).ToHashSet();
-            // SetEscortFeatures(targetDB, ref featureList, playerHasPlanes);
-
-
-            foreach (string featureID in featureList)
-                FeaturesObjectives.GenerateMissionFeature(briefingRoom, ref mission, featureID, objectiveName, objectiveIndex, VIPGroupInfo.Value, taskDB.TargetSide, objectiveOptions, overrideCoords: targetBehaviorDB.ID.StartsWith("ToFrontLine") ? objectiveCoordinates : null);
-
-            mission.ObjectiveCoordinates.Add(objectiveCoordinates);
-            var zoneId = ZoneMaker.AddZone(ref mission, $"Escort End Zone {objectiveName}", objectiveCoordinates, VIPGroupInfo.Value.UnitDB.IsAircraft ? briefingRoom.Database.Common.DropOffDistanceMeters * 10 : briefingRoom.Database.Common.DropOffDistanceMeters);
-            TriggerMaker.AddEscortEndTrigger(ref mission, zoneId, VIPGroupInfo.Value.GroupID, objectiveIndex);
-            var objCoords = objectiveCoordinates;
-            var furthestWaypoint = VIPGroupInfo.Value.DCSGroup.Waypoints.Aggregate(objectiveCoordinates, (furthest, x) => objCoords.GetDistanceFrom(x.Coordinates) > objCoords.GetDistanceFrom(furthest) ? x.Coordinates : furthest);
-            var waypoint = ObjectiveUtils.GenerateObjectiveWaypoint(briefingRoom.Database, ref mission, task, objectiveCoordinates, furthestWaypoint, objectiveName, VIPGroupInfo.Value.DCSGroups.Select(x => x.GroupId).ToList(), hiddenMapMarker: task.ProgressionOptions.Contains(ObjectiveProgressionOption.ProgressionHiddenBrief));
-            mission.Waypoints.Add(waypoint);
-            objectiveWaypoints.Add(waypoint);
-            mission.MapData.Add($"OBJECTIVE_AREA_{objectiveIndex}", new List<double[]> { waypoint.Coordinates.ToArray() });
-            mission.ObjectiveTargetUnitFamilies.Add(objectiveTargetUnitFamily);
-            if (!VIPGroupInfo.Value.UnitDB.IsAircraft)
-                mission.MapData.Add($"UNIT-{VIPGroupInfo.Value.UnitDB.Families[0]}-{taskDB.TargetSide}-{VIPGroupInfo.Value.GroupID}", new List<double[]> { VIPGroupInfo.Value.Coordinates.ToArray() });
-            return objectiveWaypoints;
-
         }
 
         private static void CreateThreat(IBriefingRoom briefingRoom, ref DCSMission mission, Coordinates unitCoordinates, Coordinates objectiveCoordinates, GroupInfo? VIPGroupInfo, string type)
-
         {
-            var (threatMinMax, threatUnitFamilies, groupLua, unitLua, unitCount, validSpawns, spawnDistance) = getThreatValues(type);
+            var (threatMinMax, threatUnitFamilies, groupLua, unitLua, unitCount, validSpawns, spawnDistance) = GetThreatValues(type);
             var threatExtraSettings = new Dictionary<string, object>
             {
                 { "ObjectiveGroupID", VIPGroupInfo.Value.GroupID }
@@ -232,57 +184,14 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             TriggerMaker.AddEscortThreatTrigger(ref mission, zoneId, VIPGroupInfo.Value.GroupID, threatGroupInfo.Value.GroupID);
         }
 
-        private static Tuple<MinMaxD, List<UnitFamily>, string, string, MinMaxI, SpawnPointType[], MinMaxD> getThreatValues(string type)
-        {
-            switch (type)
+        private static (MinMaxD, List<UnitFamily>, string, string, MinMaxI, SpawnPointType[], MinMaxD) GetThreatValues(string type) =>
+            type switch
             {
-                case "CAP":
-                    return Tuple.Create(
-                        new MinMaxD(0.1, 0.9),
-                        new List<UnitFamily> { UnitFamily.PlaneFighter, UnitFamily.PlaneInterceptor },
-                        "AircraftCAPAttacking",
-                        "Aircraft",
-                        new MinMaxI(1, 4),
-                        new[] { SpawnPointType.Air },
-                        new MinMaxD(20, 60));
-                case "CAS":
-                    return Tuple.Create(
-                        new MinMaxD(0.15, 0.8),
-                        new List<UnitFamily> { UnitFamily.PlaneAttack, UnitFamily.PlaneStrike },
-                        "AircraftCASAttacking",
-                        "Aircraft",
-                        new MinMaxI(1, 4),
-                        new[] { SpawnPointType.Air },
-                        new MinMaxD(10, 40));
-                case "Helo":
-                    return Tuple.Create(
-                        new MinMaxD(0.02, 0.7),
-                        new List<UnitFamily> { UnitFamily.HelicopterAttack },
-                        "AircraftCASAttacking",
-                        "Aircraft",
-                        new MinMaxI(1, 4),
-                        new[] { SpawnPointType.Air },
-                        new MinMaxD(10, 20));
-                case "Ship":
-                    return Tuple.Create(
-                        new MinMaxD(0.05, 0.6),
-                        new List<UnitFamily> { UnitFamily.ShipCruiser, UnitFamily.ShipFrigate, UnitFamily.ShipSpeedboat, UnitFamily.ShipSubmarine },
-                        "ShipAttacking",
-                        "Ship",
-                        new MinMaxI(1, 4),
-                        new[] { SpawnPointType.Sea },
-                        new MinMaxD(30, 60));
-                case "Ground":
-                default:
-                    return Tuple.Create(
-                        new MinMaxD(0.05, 0.7),
-                        new List<UnitFamily> { UnitFamily.VehicleAPC, UnitFamily.VehicleMBT, UnitFamily.Infantry },
-                        "VehicleAttackingUncontrolled",
-                        "Vehicle",
-                        new MinMaxI(1, 10),
-                        new[] { SpawnPointType.LandMedium, SpawnPointType.LandLarge },
-                        new MinMaxD(5, 20));
-            }
-        }
+                "CAP" => (new MinMaxD(0.1, 0.9), new List<UnitFamily> { UnitFamily.PlaneFighter, UnitFamily.PlaneInterceptor }, "AircraftCAPAttacking", "Aircraft", new MinMaxI(1, 4), new[] { SpawnPointType.Air }, new MinMaxD(20, 60)),
+                "CAS" => (new MinMaxD(0.15, 0.8), new List<UnitFamily> { UnitFamily.PlaneAttack, UnitFamily.PlaneStrike }, "AircraftCASAttacking", "Aircraft", new MinMaxI(1, 4), new[] { SpawnPointType.Air }, new MinMaxD(10, 40)),
+                "Helo" => (new MinMaxD(0.02, 0.7), new List<UnitFamily> { UnitFamily.HelicopterAttack }, "AircraftCASAttacking", "Aircraft", new MinMaxI(1, 4), new[] { SpawnPointType.Air }, new MinMaxD(10, 20)),
+                "Ship" => (new MinMaxD(0.05, 0.6), new List<UnitFamily> { UnitFamily.ShipCruiser, UnitFamily.ShipFrigate, UnitFamily.ShipSpeedboat, UnitFamily.ShipSubmarine }, "ShipAttacking", "Ship", new MinMaxI(1, 4), new[] { SpawnPointType.Sea }, new MinMaxD(30, 60)),
+                _ => (new MinMaxD(0.05, 0.7), new List<UnitFamily> { UnitFamily.VehicleAPC, UnitFamily.VehicleMBT, UnitFamily.Infantry }, "VehicleAttackingUncontrolled", "Vehicle", new MinMaxI(1, 10), new[] { SpawnPointType.LandMedium, SpawnPointType.LandLarge }, new MinMaxD(5, 20))
+            };
     }
 }
