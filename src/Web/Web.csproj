@@ -15,6 +15,7 @@
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
     <PublishReadyToRunShowWarnings>true</PublishReadyToRunShowWarnings>
     <PublishDir>$(BRPublishDir)</PublishDir>
+    <ApplicationIcon>..\Desktop\Resources\Icon.ico</ApplicationIcon>
   </PropertyGroup>
 
     <ItemGroup>
