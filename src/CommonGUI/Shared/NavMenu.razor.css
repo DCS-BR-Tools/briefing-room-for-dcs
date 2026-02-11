@@ -52,18 +52,28 @@
 
 .bottom-logo {
     display: none;
-    padding: 1em;
-    position: absolute;
-    bottom: 0;
+    padding: 0.75rem 1rem;
 }
 
 .bottom-logo img {
     width: 100%;
 }
 
+.sidebar-bottom {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
 @media (min-width: 641px) {
     .navbar-toggler {
         display: none;
+    }
+
+    .sidebar-bottom {
+        display: block;
     }
 
     .bottom-logo {

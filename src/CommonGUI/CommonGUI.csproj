@@ -13,6 +13,7 @@
     <PackageReference Include="Markdig" Version="0.44.0" />
     <PackageReference Include="Blazor.Bootstrap" Version="3.5.0" />
     <ProjectReference Include="../BriefingRoom/BriefingRoom.csproj" />
+    <ProjectReference Include="../UpdateService/UpdateService.csproj" />
   </ItemGroup>
 
   <ItemGroup>

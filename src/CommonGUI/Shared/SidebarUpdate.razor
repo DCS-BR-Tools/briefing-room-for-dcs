@@ -1,13 +1,13 @@
 @using BriefingRoom4DCS.UpdateService
 @inject BriefingRoom4DCS.IBriefingRoom briefingRoom
 
-@if (Layout.MainRelease != null && Layout.MainRelease.versionNumber != BriefingRoom.VERSION)
+@if (!BriefingRoom.RUNNING_IN_DOCKER && Layout?.MainRelease != null && Layout.MainRelease.versionNumber != BriefingRoom.VERSION)
 {
-    <div class="version-note">
+    <div class="sidebar-update">
         @if (_isUpdating)
         {
             <div class="update-progress">
-                <div class="progress" style="height: 4px; flex: 1;">
+                <div class="progress" style="height: 4px;">
                     <div class="progress-bar" role="progressbar" style="width: @_downloadProgress%"></div>
                 </div>
                 <small class="update-status">@_updateStatus</small>
@@ -19,48 +19,53 @@
         }
         else
         {
-            <div class="update-row">
+            <div class="update-available">
                 <span class="oi oi-cloud-download update-icon" title="@briefingRoom.Translate("NewReleaseAvailable")"></span>
-                <a href="@Layout.MainRelease.htmlUrl" target="_blank" class="update-version" title="@Layout.MainRelease.name">
-                    @Layout.MainRelease.name
-                </a>
-                @if (UpdateManager.IsUpdateSupported)
-                {
-                    <button class="btn btn-sm btn-primary update-btn" @onclick="() => StartUpdateAsync(false)">
-                        @briefingRoom.Translate("UpdateNow")
-                    </button>
-                }
-                else
-                {
-                    <a href="@Layout.MainRelease.url" target="_blank" class="btn btn-sm btn-primary update-btn">
-                        @briefingRoom.Translate("Download")
-                    </a>
-                }
-            </div>
-            @if (Layout.BetaRelease != null && Layout.BetaRelease.publishedDate.CompareTo(Layout.MainRelease.publishedDate) > 0)
-            {
-                <div class="update-row beta">
-                    <span class="oi oi-beaker update-icon" title="@briefingRoom.Translate("BetaReleaseAvailable")"></span>
-                    <a href="@Layout.BetaRelease.htmlUrl" target="_blank" class="update-version" title="@Layout.BetaRelease.name">
-                        Beta: @Layout.BetaRelease.name
+                <div class="update-info">
+                    <a href="@Layout.MainRelease.htmlUrl" target="_blank" class="update-version" title="@Layout.MainRelease.name">
+                        @Layout.MainRelease.name
                     </a>
                     @if (UpdateManager.IsUpdateSupported)
                     {
-                        <button class="btn btn-sm btn-warning update-btn" @onclick="() => StartUpdateAsync(true)">
+                        <button class="btn btn-sm btn-primary update-btn" @onclick="() => StartUpdateAsync(false)">
                             @briefingRoom.Translate("UpdateNow")
                         </button>
                     }
                     else
                     {
-                        <a href="@Layout.BetaRelease.url" target="_blank" class="btn btn-sm btn-warning update-btn">
+                        <a href="@Layout.MainRelease.url" target="_blank" class="btn btn-sm btn-primary update-btn">
                             @briefingRoom.Translate("Download")
                         </a>
                     }
+                </div>
+            </div>
+            @if (Layout.BetaRelease != null && Layout.BetaRelease.publishedDate.CompareTo(Layout.MainRelease.publishedDate) > 0)
+            {
+                <div class="update-available beta">
+                    <span class="oi oi-beaker update-icon" title="@briefingRoom.Translate("BetaReleaseAvailable")"></span>
+                    <div class="update-info">
+                        <a href="@Layout.BetaRelease.htmlUrl" target="_blank" class="update-version" title="@Layout.BetaRelease.name">
+                            Beta
+                        </a>
+                        @if (UpdateManager.IsUpdateSupported)
+                        {
+                            <button class="btn btn-sm btn-warning update-btn" @onclick="() => StartUpdateAsync(true)">
+                                @briefingRoom.Translate("UpdateNow")
+                            </button>
+                        }
+                        else
+                        {
+                            <a href="@Layout.BetaRelease.url" target="_blank" class="btn btn-sm btn-warning update-btn">
+                                @briefingRoom.Translate("Download")
+                            </a>
+                        }
+                    </div>
                 </div>
             }
         }
     </div>
 }
+
 @code {
     [CascadingParameter]
     public MainLayout Layout { get; set; }
@@ -97,7 +102,6 @@
                 InvokeAsync(StateHasChanged);
             };
 
-            // Check for update
             var release = await updateManager.CheckForUpdateAsync();
             if (release == null)
             {
@@ -107,13 +111,11 @@
                 return;
             }
 
-            // Download update
             _updateStatus = briefingRoom.Translate("DownloadingUpdate");
             StateHasChanged();
 
             var extractedPath = await updateManager.DownloadUpdateAsync(release);
 
-            // Launch updater and exit
             _updateStatus = briefingRoom.Translate("InstallingUpdate");
             StateHasChanged();
 

@@ -42,7 +42,6 @@
   </Modal>
   <img class="img" src="_content/CommonGUI/img/br-logo-white.png" alt="BriefingRoom Logo" />
   <div class="landing-menu">
-  <VersionNote />
   @if(briefingRoom.Translate("ReloadDatabase").StartsWith("ERR_Missing_Translation_key"))
     {
       <div class="alert alert-danger" role="alert">
@@ -89,6 +88,7 @@
                     </div>
                     <div>&nbsp;</div>
                 }
+    <VersionNote />
     <div class="row flex-justify-spaced">
       <a href="@BriefingRoom.DISCORD_URL" target="_blank" class="col-1 img-link"><img alt="Discord"
           src="_content/CommonGUI/img/discord-icon-svgrepo-com.svg"></a>

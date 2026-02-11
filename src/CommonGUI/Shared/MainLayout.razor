@@ -15,7 +15,6 @@
             <div class="top-row px-4">
                 @if (!BriefingRoom.RUNNING_IN_DOCKER)
                 {
-                    <VersionNote />
                      <div class="form-group language-selector @((saveState.HasValue ? (saveState.Value ? "save-path-success" : "save-path-error") : ""))">
                         <label><span class="oi oi-info"></span>&nbsp;@briefingRoom.Translate("SaveGameLocation")  
                         @if(saveState.HasValue)

@@ -76,6 +76,7 @@ const getMainRelease = Memoize(async () => {
     name: release.name,
     versionNumber: release.name.replace("Version ", ""),
     url: release.assets[0].browser_download_url,
+    htmlUrl: release.html_url,
     publishedDate: release.published_at,
   };
 });
@@ -93,6 +94,7 @@ const getBetaRelease = Memoize(async () => {
     name: release[0].name,
     versionNumber: release[0].name.replace("Version ", ""),
     url: release[0].assets[0].browser_download_url,
+    htmlUrl: release[0].html_url,
     publishedDate: release[0].published_at,
   };
 });

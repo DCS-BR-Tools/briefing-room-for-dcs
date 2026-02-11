@@ -1,0 +1,319 @@
+/*
+==========================================================================
+This file is part of Briefing Room for DCS World, a mission
+generator for DCS World, by @akaAgar (https://github.com/akaAgar/briefing-room-for-dcs)
+
+Briefing Room for DCS World is free software: you can redistribute it
+and/or modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation, either version 3 of
+the License, or (at your option) any later version.
+
+Briefing Room for DCS World is distributed in the hope that it will
+be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses/
+==========================================================================
+*/
+
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.IO.Compression;
+using System.Linq;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace BriefingRoom4DCS.UpdateService
+{
+    /// <summary>
+    /// Manages the update process for BriefingRoom applications.
+    /// </summary>
+    public class UpdateManager : IDisposable
+    {
+        private readonly GitHubReleaseClient _releaseClient;
+        private readonly BackupManager _backupManager;
+        private readonly UpdateOptions _options;
+        private readonly string _installPath;
+        private readonly string _executableName;
+        private readonly HttpClient _httpClient;
+        private bool _disposed;
+
+        /// <summary>
+        /// Event raised during download to report progress (0-100).
+        /// </summary>
+        public event Action<int> DownloadProgressChanged;
+
+        /// <summary>
+        /// Event raised to report status messages.
+        /// </summary>
+        public event Action<string> StatusChanged;
+
+        /// <summary>
+        /// Gets whether auto-update is supported in the current environment.
+        /// Returns false when running in Docker or on non-Windows platforms.
+        /// </summary>
+        public static bool IsUpdateSupported
+        {
+            get
+            {
+                // Not supported in Docker
+                if (BriefingRoom.RUNNING_IN_DOCKER)
+                    return false;
+
+                // Only supported on Windows
+                if (!OperatingSystem.IsWindows())
+                    return false;
+
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Gets the current application version.
+        /// </summary>
+        public static string CurrentVersion => BriefingRoom.VERSION;
+
+        /// <summary>
+        /// Creates a new UpdateManager instance.
+        /// </summary>
+        /// <param name="installPath">Path to the application installation directory.</param>
+        /// <param name="executableName">Name of the main executable (e.g., "BriefingRoom-Desktop.exe").</param>
+        /// <param name="options">Update configuration options.</param>
+        public UpdateManager(string installPath, string executableName, UpdateOptions options = null)
+        {
+            _installPath = installPath ?? throw new ArgumentNullException(nameof(installPath));
+            _executableName = executableName ?? throw new ArgumentNullException(nameof(executableName));
+            _options = options ?? new UpdateOptions();
+
+            _releaseClient = new GitHubReleaseClient(_options);
+            _backupManager = new BackupManager(_installPath, _options);
+            _httpClient = new HttpClient();
+        }
+
+        /// <summary>
+        /// Checks if an update is available.
+        /// </summary>
+        /// <returns>The latest release info if an update is available, null otherwise.</returns>
+        public async Task<ReleaseInfo> CheckForUpdateAsync(CancellationToken cancellationToken = default)
+        {
+            StatusChanged?.Invoke("Checking for updates...");
+
+            var latestRelease = _options.IncludeBetaReleases
+                ? await _releaseClient.GetLatestReleaseAsync(cancellationToken)
+                : await _releaseClient.GetLatestStableReleaseAsync(cancellationToken);
+
+            if (latestRelease == null)
+            {
+                StatusChanged?.Invoke("No releases found");
+                return null;
+            }
+
+            // Compare versions
+            if (IsNewerVersion(latestRelease.VersionNumber, CurrentVersion))
+            {
+                StatusChanged?.Invoke($"Update available: {latestRelease.VersionNumber}");
+                return latestRelease;
+            }
+
+            StatusChanged?.Invoke("You have the latest version");
+            return null;
+        }
+
+        /// <summary>
+        /// Downloads and extracts the update to a temporary folder.
+        /// </summary>
+        /// <returns>Path to the extracted update files.</returns>
+        public async Task<string> DownloadUpdateAsync(ReleaseInfo release, CancellationToken cancellationToken = default)
+        {
+            if (release?.Assets == null || release.Assets.Length == 0)
+                throw new InvalidOperationException("Release has no downloadable assets");
+
+            // Find the ZIP asset
+            var zipAsset = release.Assets.FirstOrDefault(a => a.Name.EndsWith(".zip", StringComparison.OrdinalIgnoreCase));
+            if (zipAsset == null)
+                throw new InvalidOperationException("Release has no ZIP download");
+
+            StatusChanged?.Invoke($"Downloading {zipAsset.Name}...");
+
+            // Create temp folder
+            var tempPath = Path.Combine(Path.GetTempPath(), "BriefingRoom-Update", Guid.NewGuid().ToString("N"));
+            var zipPath = Path.Combine(tempPath, zipAsset.Name);
+            var extractPath = Path.Combine(tempPath, "extracted");
+
+            Directory.CreateDirectory(tempPath);
+            Directory.CreateDirectory(extractPath);
+
+            try
+            {
+                // Download with progress
+                using var response = await _httpClient.GetAsync(zipAsset.DownloadUrl, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
+                response.EnsureSuccessStatusCode();
+
+                var totalBytes = response.Content.Headers.ContentLength ?? zipAsset.Size;
+
+                using (var contentStream = await response.Content.ReadAsStreamAsync(cancellationToken))
+                using (var fileStream = new FileStream(zipPath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
+                {
+                    var buffer = new byte[8192];
+                    long totalRead = 0;
+                    int bytesRead;
+
+                    while ((bytesRead = await contentStream.ReadAsync(buffer, cancellationToken)) > 0)
+                    {
+                        await fileStream.WriteAsync(buffer.AsMemory(0, bytesRead), cancellationToken);
+                        totalRead += bytesRead;
+
+                        var progress = (int)(totalRead * 100 / totalBytes);
+                        DownloadProgressChanged?.Invoke(progress);
+                    }
+                }
+
+                StatusChanged?.Invoke("Extracting update...");
+
+                // Extract ZIP
+                ZipFile.ExtractToDirectory(zipPath, extractPath);
+
+                // Clean up ZIP file
+                File.Delete(zipPath);
+
+                return extractPath;
+            }
+            catch
+            {
+                // Clean up on failure
+                try { Directory.Delete(tempPath, recursive: true); } catch { }
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Launches the updater executable and exits the current application.
+        /// </summary>
+        /// <param name="extractedPath">Path to the extracted update files.</param>
+        public void LaunchUpdaterAndExit(string extractedPath)
+        {
+            if (!IsUpdateSupported)
+                throw new InvalidOperationException("Updates are not supported in this environment");
+
+            // Find Updater.exe in the extracted files
+            var updaterPath = FindUpdater(extractedPath);
+            if (updaterPath == null)
+                throw new FileNotFoundException("Updater.exe not found in update package");
+
+            // Prepare backup path
+            string backupPath = null;
+            if (_options.CreateBackup)
+            {
+                backupPath = _backupManager.CreateBackupPath();
+            }
+
+            // Build arguments
+            var skipPatterns = string.Join(";", _options.SkipPatterns);
+            var args = $"--source \"{extractedPath}\" --target \"{_installPath}\" --exe \"{_executableName}\"";
+
+            if (!string.IsNullOrEmpty(backupPath))
+            {
+                args += $" --backup \"{backupPath}\"";
+            }
+
+            if (!string.IsNullOrEmpty(skipPatterns))
+            {
+                args += $" --skip \"{skipPatterns}\"";
+            }
+
+            StatusChanged?.Invoke("Launching updater...");
+
+            var startInfo = new ProcessStartInfo
+            {
+                FileName = updaterPath,
+                Arguments = args,
+                UseShellExecute = true,
+                WorkingDirectory = Path.GetDirectoryName(updaterPath)
+            };
+
+            Process.Start(startInfo);
+
+            // Exit the current application
+            Environment.Exit(0);
+        }
+
+        /// <summary>
+        /// Gets the list of user-modified files that will be backed up.
+        /// </summary>
+        public System.Collections.Generic.IReadOnlyList<string> GetUserModifiedFiles()
+        {
+            return _backupManager.GetUserModifiedFiles(_executableName);
+        }
+
+        /// <summary>
+        /// Compares two version strings to determine if newVersion is newer than currentVersion.
+        /// </summary>
+        private static bool IsNewerVersion(string newVersion, string currentVersion)
+        {
+            if (string.IsNullOrEmpty(newVersion))
+                return false;
+
+            if (string.IsNullOrEmpty(currentVersion) || currentVersion.Contains("~"))
+                return true; // Development version, always allow update
+
+            try
+            {
+                // Parse versions like "0.5.602.11"
+                var newParts = newVersion.Split('.').Select(int.Parse).ToArray();
+                var currentParts = currentVersion.Split('.').Select(int.Parse).ToArray();
+
+                for (int i = 0; i < Math.Max(newParts.Length, currentParts.Length); i++)
+                {
+                    var newPart = i < newParts.Length ? newParts[i] : 0;
+                    var currentPart = i < currentParts.Length ? currentParts[i] : 0;
+
+                    if (newPart > currentPart)
+                        return true;
+                    if (newPart < currentPart)
+                        return false;
+                }
+
+                return false; // Equal versions
+            }
+            catch
+            {
+                // If parsing fails, do string comparison
+                return string.Compare(newVersion, currentVersion, StringComparison.OrdinalIgnoreCase) > 0;
+            }
+        }
+
+        /// <summary>
+        /// Finds the Updater.exe in the extracted update folder.
+        /// </summary>
+        private static string FindUpdater(string extractedPath)
+        {
+            // Check root
+            var updaterPath = Path.Combine(extractedPath, "Updater.exe");
+            if (File.Exists(updaterPath))
+                return updaterPath;
+
+            // Check bin folder
+            updaterPath = Path.Combine(extractedPath, "bin", "Updater.exe");
+            if (File.Exists(updaterPath))
+                return updaterPath;
+
+            // Search recursively
+            var found = Directory.GetFiles(extractedPath, "Updater.exe", SearchOption.AllDirectories);
+            return found.Length > 0 ? found[0] : null;
+        }
+
+        public void Dispose()
+        {
+            if (!_disposed)
+            {
+                _releaseClient?.Dispose();
+                _httpClient?.Dispose();
+                _disposed = true;
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>BriefingRoom4DCS.UpdateService</RootNamespace>
+    <AssemblyName>BriefingRoom.UpdateService</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../BriefingRoom/BriefingRoom.csproj" />
+  </ItemGroup>
+
+</Project>
