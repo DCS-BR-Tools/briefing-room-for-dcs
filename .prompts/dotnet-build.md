@@ -4,6 +4,7 @@
 - .NET 10
 - Solution: `src/BriefingRoom.sln`
 - Projects in `src/` folder
+- Project is built at project level not at csproj level
 
 ## Prompt
 
