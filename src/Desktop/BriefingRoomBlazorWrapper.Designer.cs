@@ -23,7 +23,7 @@ namespace BriefingRoom4DCS.GUI.Desktop
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1800, 1080);
             this.Text = "BriefingRoom";
-            this.Icon = new Icon("Resources/icon.ico");
+            this.Icon = Icon.ExtractAssociatedIcon(System.Environment.ProcessPath);
         }
 
         #endregion
