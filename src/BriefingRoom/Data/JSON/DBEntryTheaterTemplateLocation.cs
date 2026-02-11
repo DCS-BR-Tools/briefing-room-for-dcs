@@ -6,35 +6,26 @@ using BriefingRoom4DCS.Data.JSON;
 
 namespace BriefingRoom4DCS.Data
 {
-    public readonly struct DBEntryTheaterTemplateUnitLocation
-    {
-        public double Heading { get; init; }
-        public Coordinates Coordinates { get; init; }
-        public List<UnitFamily> UnitTypes { get; init; }
-        public string SpecificType { get; init; }
-        public bool IsScenery { get; init; }
-    }
-
     public readonly struct DBEntryTheaterTemplateLocation
     {
         public static readonly List<UnitFamily> CRITICAL_SAM_FAMILIES = new() { UnitFamily.VehicleSAMsr, UnitFamily.VehicleSAMtr, UnitFamily.VehicleSAMCmd, UnitFamily.VehicleSAMLauncher };
         public Coordinates Coordinates { get; init; }
-        public List<DBEntryTheaterTemplateUnitLocation> Locations { get; init; }
+        public List<DBEntryTemplateUnit> Locations { get; init; }
         public TheaterTemplateLocationType LocationType { get; init; }
 
         public DBEntryTheaterTemplateLocation(TheaterTemplateLocation TheaterTemplateLocation)
         {
             Coordinates = new Coordinates(TheaterTemplateLocation.coords[0], TheaterTemplateLocation.coords[1]);
-            Locations = new List<DBEntryTheaterTemplateUnitLocation>();
+            Locations = new List<DBEntryTemplateUnit>();
 
             foreach (var unitLocation in TheaterTemplateLocation.locations)
             {
-                var location = new DBEntryTheaterTemplateUnitLocation
+                var location = new DBEntryTemplateUnit
                 {
                     Heading = unitLocation.heading,
-                    Coordinates = new Coordinates(unitLocation.coords[0], unitLocation.coords[1]),
+                    RelativeCoords = new Coordinates(unitLocation.coords[0], unitLocation.coords[1]),
                     UnitTypes = unitLocation.unitTypes.Select(x => (UnitFamily)Enum.Parse(typeof(UnitFamily), x, true)).ToList(),
-                    SpecificType = unitLocation.specificType,
+                    DCSID = unitLocation.specificType,
                     IsScenery = unitLocation.isScenery
                 };
                 Locations.Add(location);
@@ -66,17 +57,10 @@ namespace BriefingRoom4DCS.Data
 
             foreach (var unitLocation in sortedLocations)
             {
-                if (unitLocation.SpecificType != null)
+                if (unitLocation.DCSID != null)
                 {
-                    var specificTemplateUnit = new DBEntryTemplateUnit
-                    {
-                        DCoordinates = unitLocation.Coordinates,
-                        Heading = unitLocation.Heading,
-                        DCSID = unitLocation.SpecificType,
-                        IsScenery = unitLocation.IsScenery
-                    };
-                    positionMap.Add(specificTemplateUnit);
-                    units.Add(unitLocation.SpecificType);
+                    positionMap.Add(unitLocation);
+                    units.Add(unitLocation.DCSID);
                     continue;
                 }
                 var familyOptions = unitLocation.UnitTypes.Intersect(familyMap.Keys).ToList();
@@ -105,7 +89,7 @@ namespace BriefingRoom4DCS.Data
 
                 var templateUnit = new DBEntryTemplateUnit
                 {
-                    DCoordinates = unitLocation.Coordinates,
+                    RelativeCoords = unitLocation.RelativeCoords,
                     Heading = unitLocation.Heading,
                     DCSID = unitID,
                     IsScenery = unitLocation.IsScenery

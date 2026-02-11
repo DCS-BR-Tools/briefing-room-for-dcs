@@ -199,8 +199,50 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
             GroupFlags GroupFlags,
             Dictionary<string, object> extraSettings)
         {
+            DBEntryCoalition unitsCoalitionDB = mission.CoalitionsDB[(int)((side == Side.Ally) ? mission.TemplateRecord.ContextPlayerCoalition : mission.TemplateRecord.ContextPlayerCoalition.GetEnemy())];
+            Country country = (Country)extraSettings.GetValueOrDefault("Country", Country.ALL);
+
+            var resolvedUnits = new List<string>();
+
+            foreach (var templateUnit in unitTemplate.Units)
+            {
+                if (!string.IsNullOrEmpty(templateUnit.DCSID))
+                {
+                    resolvedUnits.Add(templateUnit.DCSID);
+                }
+                else if (templateUnit.UnitTypes.Count > 0)
+                {
+                    var (newCountry, unitSet) = unitsCoalitionDB.GetRandomUnits(
+                        briefingRoom,
+                        templateUnit.UnitTypes,
+                        mission.TemplateRecord.ContextDecade,
+                        1, mission.TemplateRecord.Mods,
+                        mission.TemplateRecord.OptionsUnitBanList,
+                        mission.TemplateRecord.OptionsMission.Contains("AllowLowPoly"),
+                        mission.TemplateRecord.OptionsMission.Contains("BlockSuppliers"),
+                        requiredCountry: country != Country.ALL ? country : null,
+                        lowUnitVariation: false,
+                        allowStatic: true,
+                        allowDefaults: true);
+
+                    if (unitSet.Count > 0 && !string.IsNullOrEmpty(unitSet[0]))
+                    {
+                        resolvedUnits.Add(unitSet[0]);
+                        if (country == Country.ALL && newCountry != Country.ALL)
+                            country = newCountry;
+                    }
+                    else
+                    {
+                        throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "CantFindUnits", string.Join(", ", templateUnit.UnitTypes));
+                    }
+                }
+            }
+
             extraSettings["TemplatePositionMap"] = unitTemplate.Units;
-            return AddUnitGroup(briefingRoom, ref mission, unitTemplate.Units.Select(x => x.DCSID).ToList(), side, unitTemplate.Family, groupTypeLua, unitTypeLua, coordinates, GroupFlags, extraSettings);
+            if (country != Country.ALL && unitsCoalitionDB.Countries.Contains(country))
+                extraSettings["Country"] = country;
+
+            return AddUnitGroup(briefingRoom, ref mission, resolvedUnits, side, unitTemplate.Family, groupTypeLua, unitTypeLua, coordinates, GroupFlags, extraSettings);
         }
 
         internal static GroupInfo? AddUnitGroup(
@@ -816,7 +858,7 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                 var hasTemplatePosition = templatePositionMap.Count > posIndex;
                 if (hasTemplatePosition) // Unit has a fixed set of coordinates (for SAM sites, etc.)
                 {
-                    unitCoordinates = TransformFromOffset(groupHeading, groupCoordinates, templatePositionMap[posIndex].DCoordinates);
+                    unitCoordinates = TransformFromOffset(groupHeading, groupCoordinates, templatePositionMap[posIndex].RelativeCoords);
                 }
                 else if (!singleUnit) // No fixed coordinates, generate random coordinates
                 {

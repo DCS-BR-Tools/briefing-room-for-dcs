@@ -68,21 +68,29 @@ namespace BriefingRoom4DCS.Data
                     Family = (UnitFamily)Enum.Parse(typeof(UnitFamily), supportInfo.family, true),
                     Units = template.units.Select(x => new DBEntryTemplateUnit
                     {
-                        DCoordinates = new Coordinates(x.dx, x.dy),
-                        DCSID = x.name,
+                        RelativeCoords = new Coordinates(x.coords[0], x.coords[1]),
+                        DCSID = x.specificType,
                         Heading = x.heading,
+                        UnitTypes = (x.unitTypes ?? new List<string>()).Select(ut => (UnitFamily)Enum.Parse(typeof(UnitFamily), ut, true)).ToList(),
                         IsScenery = x.isScenery
                     }).ToList(),
                     Module = supportInfo.module
                 };
 
-                var units = entry.Units.Where(x => database.GetEntry<DBEntryJSONUnit>(x.DCSID) == null).Select(x => x.DCSID).ToList();
+                var invalidUnits = entry.Units.Where(x => string.IsNullOrEmpty(x.DCSID) && x.UnitTypes.Count == 0).ToList();
+                if (invalidUnits.Count > 0)
+                {
+                    BriefingRoom.PrintToLog($"Template {id} has units with no specificType and no unitTypes.", LogMessageErrorLevel.Warning);
+                    continue;
+                }
+
+                var units = entry.Units.Where(x => !string.IsNullOrEmpty(x.DCSID) && database.GetEntry<DBEntryJSONUnit>(x.DCSID) == null).Select(x => x.DCSID).ToList();
                 if (units.Count > 0)
                 {
                     BriefingRoom.PrintToLog($"{id} has units not in data: {string.Join(',', units)}", LogMessageErrorLevel.Warning);
                     continue;
                 }
-                var missingModuleRefs = entry.Units.Select(x => database.GetEntry<DBEntryJSONUnit>(x.DCSID).Module).Where(x => !String.IsNullOrEmpty(x) && x != entry.Module && !DBEntryDCSMod.CORE_MODS.Contains(x)).Distinct().ToList();
+                var missingModuleRefs = entry.Units.Where(x => !string.IsNullOrEmpty(x.DCSID)).Select(x => database.GetEntry<DBEntryJSONUnit>(x.DCSID).Module).Where(x => !String.IsNullOrEmpty(x) && x != entry.Module && !DBEntryDCSMod.CORE_MODS.Contains(x)).Distinct().ToList();
                 if (missingModuleRefs.Count > 0)
                 {
                     BriefingRoom.PrintToLog($"{id} missing module refs in BRInfo data: {string.Join(',', missingModuleRefs)}", LogMessageErrorLevel.Warning);
@@ -102,9 +110,10 @@ namespace BriefingRoom4DCS.Data
     public class DBEntryTemplateUnit
     {
         public DBEntryTemplateUnit() { }
-        public Coordinates DCoordinates { get; init; }
+        public Coordinates RelativeCoords { get; init; }
         public double Heading { get; init; }
         public string DCSID { get; init; }
+        public List<UnitFamily> UnitTypes { get; init; } = new List<UnitFamily>();
         public bool IsScenery { get; init; } = false;
     }
 }

@@ -55,7 +55,7 @@ namespace BriefingRoom4DCS.Data
                     MinUnits = layout.minUnits,
                     Units = layout.units.Select(x => new DBEntryTemplateUnit
                     {
-                        DCoordinates = new Coordinates(x.dx, x.dy),
+                        RelativeCoords = new Coordinates(x.dx, x.dy),
                         Heading = x.heading
                     }).ToList()
                 });
