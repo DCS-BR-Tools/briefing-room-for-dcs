@@ -53,6 +53,7 @@ dotnet publish src/BriefingRoom.sln -c Release -p:Flavor=EXE
 9. **Use translations** - User-facing text must use the existing translation system in `Database/Language/`; do not hardcode strings
 10. **Update documentation** - Keep relevant documentation in `src/BriefingRoom/code_docs/` up to date when making changes
 11. **Unit testing** - When modifying a function, first write/run tests against the original behavior, then make changes, then update tests accordingly
+12. **Publish entire project** - Always clean and publish the entire project, not individual files, to ensure all dependencies are included
 
 ## Language-Specific Notes
 
