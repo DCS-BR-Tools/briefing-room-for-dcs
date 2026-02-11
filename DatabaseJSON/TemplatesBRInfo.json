@@ -442,6 +442,42 @@
             2020
         ]
     },
+        {
+        "type": "SA-2 SAM Battery (early)",
+        "family": "VehicleSAMMedium",
+        "extraOperators": {
+            "Algeria": [],
+            "Bulgaria": [],
+            "China": [],
+            "Cuba": [],
+            "GDR": [],
+            "Egypt": [],
+            "Ethiopia": [],
+            "Georgia": [],
+            "Hungary": [],
+            "India": [],
+            "Indonesia": [],
+            "Iran": [],
+            "Iraq": [],
+            "Libya": [],
+            "NorthKorea": [],
+            "Pakistan": [],
+            "Poland": [],
+            "Romania": [],
+            "Russia": [],
+            "Slovakia": [],
+            "Sudan": [],
+            "Syria": [],
+            "Vietnam": [],
+            "Yemen": [],
+            "Yugoslavia": [],
+            "Afghanistan": []
+        },
+        "operational": [
+            1960,
+            2020
+        ]
+    },
     {
         "type": "SA-3 SAM Battery",
         "family": "VehicleSAMMedium",

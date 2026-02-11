@@ -1058,16 +1058,5 @@
       "Ukraine": []
     },
     "operational": [1980, 2020]
-  },
-  {
-    "type": "IRISTSLM",
-    "family": "VehicleSAMMedium",
-    "extraOperators": {
-      "Egypt": [2000, 2020],
-      "Sweden": [2000, 2020],
-      "Ukraine": [2020, 2020],
-      "Norway": [2000, 2020]
-    },
-    "operational": [2000, 2020]
   }
 ]
