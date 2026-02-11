@@ -3,19 +3,18 @@
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <RootNamespace>BriefingRoom4DCS.GUI.Web</RootNamespace>
+    <AssemblyName>BriefingRoom-Web</AssemblyName>
   </PropertyGroup>
 
+  <!-- Project-specific settings; common publish settings are in Directory.Build.props -->
   <PropertyGroup Condition="'$(Flavor)'=='EXE'">
     <OutputType>Exe</OutputType>
+    <ApplicationIcon>..\Desktop\Resources\Icon.ico</ApplicationIcon>
+    <!-- Single-file settings for standalone deployment -->
     <PublishSingleFile>true</PublishSingleFile>
-    <SelfContained>true</SelfContained>
-    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <PublishTrimmed>false</PublishTrimmed>
     <PublishReadyToRun>false</PublishReadyToRun>
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
-    <PublishReadyToRunShowWarnings>true</PublishReadyToRunShowWarnings>
-    <PublishDir>$(BRPublishDir)</PublishDir>
-    <ApplicationIcon>..\Desktop\Resources\Icon.ico</ApplicationIcon>
   </PropertyGroup>
 
     <ItemGroup>

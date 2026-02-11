@@ -32,4 +32,32 @@
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
   </PropertyGroup>
 
+  <!-- 
+    SHARED PUBLISH SETTINGS
+    
+    Single-file deployment bundles the runtime into each EXE for clean deployment.
+    Users get standalone executables that don't require .NET installation.
+  -->
+  
+  <!-- 
+    Exclude unused .NET localization satellite assemblies.
+    Only include languages supported by the app (per Database/Language.ini):
+    ES, DE, FR, IT, RU, UK (Ukrainian), TK (Turkish=tr), PT (pt-BR)
+    
+    This excludes: cs, ja, ko, pl, zh-Hans, zh-Hant
+    Expected savings: ~2-3 MB
+  -->
+  <PropertyGroup>
+    <SatelliteResourceLanguages>en;es;de;fr;it;ru;uk;tr;pt-BR</SatelliteResourceLanguages>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Flavor)'=='EXE'">
+    <!-- Self-contained ensures users don't need to install .NET runtime -->
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    
+    <!-- Centralized publish directory -->
+    <PublishDir>$(BRPublishDir)</PublishDir>
+  </PropertyGroup>
+
 </Project>

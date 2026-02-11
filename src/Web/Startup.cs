@@ -2,6 +2,7 @@ using System;
 using System.Globalization;
 using Blazored.LocalStorage;
 using BriefingRoom4DCS.Data;
+using BriefingRoom4DCS.Generator;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -39,7 +40,7 @@ namespace BriefingRoom4DCS.GUI.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IHostApplicationLifetime lifetime)
         {
             if (env.IsDevelopment())
             {
@@ -57,12 +58,8 @@ namespace BriefingRoom4DCS.GUI.Web
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
             CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InstalledUICulture;
 
-            if (BriefingRoom.RUNNING_IN_DOCKER)
-            {
-                IronPdf.Installation.LinuxAndDockerDependenciesAutoConfig = false;
-                IronPdf.Installation.ChromeGpuMode = IronPdf.Engines.Chrome.ChromeGpuModes.Disabled;
-            }
-            IronPdf.Installation.Initialize();
+            // Browser for image rendering will initialize lazily on first use
+            lifetime.ApplicationStopping.Register(() => Imagery.ShutdownAsync().GetAwaiter().GetResult());
 
             // app.UseHttpsRedirection();
             app.UseStaticFiles();

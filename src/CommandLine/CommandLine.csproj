@@ -1,17 +1,20 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Project-specific settings; common publish settings are in Directory.Build.props -->
   <PropertyGroup>
     <TargetFramework>net10.0-windows</TargetFramework>
     <RootNamespace>BriefingRoom4DCS.CommandLineTool</RootNamespace>
+    <AssemblyName>BriefingRoom-CLI</AssemblyName>
     <OutputType>Exe</OutputType>
+    <ApplicationIcon>..\Desktop\Resources\Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <!-- Single-file settings for standalone deployment -->
+  <PropertyGroup Condition="'$(Flavor)'=='EXE'">
     <PublishSingleFile>true</PublishSingleFile>
-    <SelfContained>true</SelfContained>
-    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <PublishTrimmed>false</PublishTrimmed>
     <PublishReadyToRun>false</PublishReadyToRun>
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
-    <PublishReadyToRunShowWarnings>true</PublishReadyToRunShowWarnings>
-    <PublishDir>$(BRPublishDir)</PublishDir>
-    <ApplicationIcon>..\Desktop\Resources\Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="10.0.2" />

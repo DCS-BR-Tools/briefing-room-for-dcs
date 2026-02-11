@@ -18,11 +18,14 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 ==========================================================================
 */
 
+#nullable enable
+
 using BriefingRoom4DCS.Data;
 using BriefingRoom4DCS.Mission;
 using BriefingRoom4DCS.Template;
-using IronPdf;
+using PuppeteerSharp;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -34,6 +37,159 @@ namespace BriefingRoom4DCS.Generator
     public class Imagery
     {
         private static string UNKOWN_IMAGE_PATH = Path.Combine(BRPaths.INCLUDE_JPG, "Flags", $"Unknown.png");
+        private static IBrowser? _browser;
+        private static readonly object _browserLock = new();
+        private static bool _browserInitialized;
+        
+        // Page pool for reuse - avoids creating new pages for each render
+        private static readonly ConcurrentBag<IPage> _pagePool = new();
+        private const int MaxPooledPages = 4;
+
+        /// <summary>
+        /// Initialize the browser for HTML rendering. Call this at application startup.
+        /// </summary>
+        public static async Task InitializeAsync()
+        {
+            if (_browserInitialized) return;
+            
+            lock (_browserLock)
+            {
+                if (_browserInitialized) return;
+                _browserInitialized = true;
+            }
+
+            var executablePath = FindInstalledBrowser();
+            
+            if (executablePath == null)
+            {
+                // Download Chromium if no browser found
+                var browserFetcher = new BrowserFetcher();
+                await browserFetcher.DownloadAsync();
+                executablePath = browserFetcher.GetInstalledBrowsers().First().GetExecutablePath();
+            }
+
+            // Build browser args - enable GPU acceleration on desktop, disable in Docker
+            var browserArgs = new List<string>
+            {
+                "--no-sandbox",
+                "--disable-setuid-sandbox",
+                "--disable-dev-shm-usage",
+                "--disable-extensions",
+                "--disable-background-networking",
+                "--disable-sync",
+                "--disable-translate",
+                "--disable-default-apps",
+                "--no-first-run"
+            };
+            
+            if (BriefingRoom.RUNNING_IN_DOCKER)
+            {
+                // Disable GPU in Docker (no display/driver)
+                browserArgs.Add("--disable-gpu");
+                browserArgs.Add("--single-process");
+            }
+            else
+            {
+                // Enable GPU acceleration on desktop
+                browserArgs.Add("--enable-gpu-rasterization");
+                browserArgs.Add("--enable-accelerated-2d-canvas");
+            }
+
+            _browser = await Puppeteer.LaunchAsync(new LaunchOptions
+            {
+                Headless = true,
+                ExecutablePath = executablePath,
+                Args = browserArgs.ToArray()
+            });
+        }
+
+        private static async Task<IPage> GetPooledPageAsync()
+        {
+            if (_pagePool.TryTake(out var page))
+            {
+                return page;
+            }
+            
+            var browser = await GetBrowserAsync();
+            return await browser.NewPageAsync();
+        }
+
+        private static void ReturnPageToPool(IPage page)
+        {
+            if (_pagePool.Count < MaxPooledPages)
+            {
+                _pagePool.Add(page);
+            }
+            else
+            {
+                page.Dispose();
+            }
+        }
+
+        private static string? FindInstalledBrowser()
+        {
+            // Check environment variable first
+            var envPath = Environment.GetEnvironmentVariable("CHROME_PATH") 
+                       ?? Environment.GetEnvironmentVariable("PUPPETEER_EXECUTABLE_PATH");
+            if (!string.IsNullOrEmpty(envPath) && File.Exists(envPath))
+                return envPath;
+
+            string[] candidates = OperatingSystem.IsWindows() ? 
+            [
+                // Chrome
+                @"C:\Program Files\Google\Chrome\Application\chrome.exe",
+                @"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
+                // Edge
+                @"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
+                @"C:\Program Files\Microsoft\Edge\Application\msedge.exe",
+                // Brave
+                @"C:\Program Files\BraveSoftware\Brave-Browser\Application\brave.exe",
+                @"C:\Program Files (x86)\BraveSoftware\Brave-Browser\Application\brave.exe",
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), 
+                    @"BraveSoftware\Brave-Browser\Application\brave.exe"),
+            ] : 
+            [
+                // Linux - check multiple paths as different distros install to different locations
+                "/usr/bin/chromium",
+                "/usr/bin/chromium-browser", 
+                "/usr/lib/chromium/chromium",
+                "/usr/lib/chromium-browser/chromium-browser",
+                "/usr/bin/google-chrome",
+                "/usr/bin/google-chrome-stable",
+                "/usr/bin/brave-browser",
+                "/snap/bin/brave",
+                "/snap/bin/chromium"
+            ];
+
+            return candidates.FirstOrDefault(File.Exists);
+        }
+
+        /// <summary>
+        /// Shutdown the browser. Call this at application shutdown.
+        /// </summary>
+        public static async Task ShutdownAsync()
+        {
+            // Clean up pooled pages
+            while (_pagePool.TryTake(out var page))
+            {
+                page.Dispose();
+            }
+            
+            if (_browser != null)
+            {
+                await _browser.CloseAsync();
+                _browser.Dispose();
+                _browser = null;
+                _browserInitialized = false;
+            }
+        }
+
+        private static async Task<IBrowser> GetBrowserAsync()
+        {
+            if (_browser == null)
+                await InitializeAsync();
+            return _browser!;
+        }
         internal static async Task GenerateCampaignImages(IDatabase database, CampaignTemplate campaignTemplate, DCSCampaign campaign, string baseFileName)
         {
             string titleHTML = Toolbox.ReadAllTextIfFileExists(Path.Combine(BRPaths.INCLUDE_HTML, "CampaignTitleImage.html"));
@@ -75,9 +231,13 @@ namespace BriefingRoom4DCS.Generator
             GeneratorTools.ReplaceKey(ref lossHTML, "Watermark", GetInternalImageHTMLBase64(Path.Combine(BRPaths.INCLUDE_JPG, "IconSlim.png")));
 
             var langKey = campaign.Missions[0].LangKey;
-            await GenerateCampaignImageAsync(database, langKey, titleHTML, campaign, $"{baseFileName}_Title");
-            await GenerateCampaignImageAsync(database, langKey, winHTML, campaign, $"{baseFileName}_Success");
-            await GenerateCampaignImageAsync(database, langKey, lossHTML, campaign, $"{baseFileName}_Failure");
+            
+            // Render all 3 campaign images in parallel
+            await Task.WhenAll(
+                GenerateCampaignImageAsync(database, langKey, titleHTML, campaign, $"{baseFileName}_Title"),
+                GenerateCampaignImageAsync(database, langKey, winHTML, campaign, $"{baseFileName}_Success"),
+                GenerateCampaignImageAsync(database, langKey, lossHTML, campaign, $"{baseFileName}_Failure")
+            );
 
         }
 
@@ -215,36 +375,76 @@ namespace BriefingRoom4DCS.Generator
         {
             var iWidth = 768;
             var iHeight = 1024;
-            string tempRenderPath = Path.ChangeExtension(Path.GetTempFileName(), ".png").Replace(".png", "_*.png");
-            ChromePdfRenderer renderer = new();
-            renderer.RenderingOptions.PaperSize = IronPdf.Rendering.PdfPaperSize.Custom;
-            renderer.RenderingOptions.SetCustomPaperSizeinPixelsOrPoints(iWidth, iHeight);
-            renderer.RenderingOptions.MarginTop = 0;
-            renderer.RenderingOptions.MarginLeft = 0;
-            renderer.RenderingOptions.MarginRight = 0;
-            renderer.RenderingOptions.MarginBottom = 0;
-            PdfDocument pdf = await renderer.RenderHtmlAsPdfAsync(html);
-            var imagePaths = pdf.ToPngImages(tempRenderPath, iWidth, iHeight);
+            
+            var page = await GetPooledPageAsync();
+            try
+            {
+                await page.SetViewportAsync(new ViewPortOptions { Width = iWidth, Height = iHeight });
+                // Use DOMContentLoaded - faster since images are base64 embedded
+                await page.SetContentAsync(html, new NavigationOptions { WaitUntil = [WaitUntilNavigation.DOMContentLoaded] });
+                
+                // Get full page height for multi-page kneeboards
+                var bodyHeight = await page.EvaluateExpressionAsync<int>("document.body.scrollHeight");
+                var pageCount = (int)Math.Ceiling((double)bodyHeight / iHeight);
+                
+                var imagePaths = new List<string>();
+                for (int i = 0; i < pageCount; i++)
+                {
+                    var tempPath = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.png");
+                    await page.EvaluateExpressionAsync($"window.scrollTo(0, {i * iHeight})");
+                    await page.ScreenshotAsync(tempPath, new ScreenshotOptions
+                    {
+                        Clip = new PuppeteerSharp.Media.Clip
+                        {
+                            X = 0,
+                            Y = 0,
+                            Width = iWidth,
+                            Height = iHeight
+                        },
+                        Type = ScreenshotType.Png
+                    });
+                    imagePaths.Add(tempPath);
+                }
 
-            return imagePaths;
+                return imagePaths.ToArray();
+            }
+            finally
+            {
+                ReturnPageToPool(page);
+            }
         }
 
         private static async Task<string> GenerateTitleImagePath(string html)
         {
             var iWidth = 1024;
             var iHeight = 1024;
-            string tempRenderPath = Path.ChangeExtension(Path.GetTempFileName(), ".png").Replace(".png", "_*.png");
-            ChromePdfRenderer renderer = new();
-            renderer.RenderingOptions.PaperSize = IronPdf.Rendering.PdfPaperSize.Custom;
-            renderer.RenderingOptions.SetCustomPaperSizeinPixelsOrPoints(iWidth, iHeight);
-            renderer.RenderingOptions.MarginTop = 0;
-            renderer.RenderingOptions.MarginLeft = 0;
-            renderer.RenderingOptions.MarginRight = 0;
-            renderer.RenderingOptions.MarginBottom = 0;
-            PdfDocument pdf = await renderer.RenderHtmlAsPdfAsync(html);
-            var imagePaths = pdf.ToPngImages(tempRenderPath, iWidth, iHeight);
+            
+            var page = await GetPooledPageAsync();
+            try
+            {
+                await page.SetViewportAsync(new ViewPortOptions { Width = iWidth, Height = iHeight });
+                // Use DOMContentLoaded - faster since images are base64 embedded
+                await page.SetContentAsync(html, new NavigationOptions { WaitUntil = [WaitUntilNavigation.DOMContentLoaded] });
+                
+                var tempPath = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.png");
+                await page.ScreenshotAsync(tempPath, new ScreenshotOptions
+                {
+                    Clip = new PuppeteerSharp.Media.Clip
+                    {
+                        X = 0,
+                        Y = 0,
+                        Width = iWidth,
+                        Height = iHeight
+                    },
+                    Type = ScreenshotType.Png
+                });
 
-            return imagePaths[0];
+                return tempPath;
+            }
+            finally
+            {
+                ReturnPageToPool(page);
+            }
         }
 
         private static string GetInternalImageHTMLBase64(string filePath)

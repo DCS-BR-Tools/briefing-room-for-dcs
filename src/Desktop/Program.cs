@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using System.Windows.Forms;
+using BriefingRoom4DCS.Generator;
 
 namespace BriefingRoom4DCS.GUI.Desktop
 {
@@ -16,12 +17,16 @@ namespace BriefingRoom4DCS.GUI.Desktop
                 Application.SetCompatibleTextRenderingDefault(false);
                 CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
                 CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InstalledUICulture;
-                IronPdf.Installation.Initialize();
+                // Browser initializes lazily on first image generation
                 Application.Run(new BriefingRoomBlazorWrapper());
             }
             catch (Exception ex)
             {
                 ExceptionHandler.ShowException(ex);
+            }
+            finally
+            {
+                Imagery.ShutdownAsync().GetAwaiter().GetResult();
             }
         }
     }

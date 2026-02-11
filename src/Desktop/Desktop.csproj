@@ -1,19 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
+  <!-- Project-specific settings; common publish settings are in Directory.Build.props -->
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net10.0-windows</TargetFramework>
     <RootNamespace>BriefingRoom4DCS.GUI.Desktop</RootNamespace>
+    <AssemblyName>BriefingRoom-Desktop</AssemblyName>
     <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <!-- Single-file settings for standalone deployment -->
+  <PropertyGroup Condition="'$(Flavor)'=='EXE'">
     <PublishSingleFile>true</PublishSingleFile>
-    <SelfContained>true</SelfContained>
-    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <PublishTrimmed>false</PublishTrimmed>
     <PublishReadyToRun>false</PublishReadyToRun>
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
-    <UseWPF>true</UseWPF>
-    <PublishReadyToRunShowWarnings>true</PublishReadyToRunShowWarnings>
-    <PublishDir>$(BRPublishDir)</PublishDir>
   </PropertyGroup>
 
   <ItemGroup>

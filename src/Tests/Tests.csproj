@@ -7,6 +7,8 @@
     <Nullable>enable</Nullable>
 
     <IsPackable>false</IsPackable>
+    <!-- Exclude from publish output - tests should not be part of release -->
+    <IsPublishable>false</IsPublishable>
   </PropertyGroup>
 
   <ItemGroup>

@@ -5,20 +5,30 @@ WORKDIR /source
 # copy csproj and restore as distinct layers
 COPY src src
 
-RUN cd src/BriefingRoom && dotnet remove package IronPdf && dotnet add package IronPdf.Linux --version 2025.9.4 && cd ../../
-
 RUN dotnet publish -c Release -o /app --use-current-runtime --self-contained false src/Web/Web.csproj
 
 # final stage/image
 FROM mcr.microsoft.com/dotnet/aspnet:10.0
 ENV DOTNET_RUNNING_IN_CONTAINER=true
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
+
+# Install Google Chrome (Ubuntu's chromium is a snap wrapper that doesn't work in Docker)
 RUN apt update \
-    && apt install -y libc6 libc6-dev libgtk2.0-0 libnss3 libatk-bridge2.0-0 libx11-xcb1 libxcb-dri3-0 libdrm-common libgbm1 libappindicator3-1 libxrender1 libfontconfig1 libxshmfence1 libgdiplus libva-dev
+    && apt install -y --no-install-recommends \
+        wget \
+        gnupg \
+        libgdiplus \
+    && wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor -o /usr/share/keyrings/google-chrome.gpg \
+    && echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list \
+    && apt update \
+    && apt install -y --no-install-recommends google-chrome-stable \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 COPY --from=build /app .
-COPY Database Database
-COPY DatabaseJSON DatabaseJSON
-COPY CustomConfigs CustomConfigs
-COPY Media Media
-COPY Include Include
-ENTRYPOINT ["dotnet", "bin/Web.dll"]
+COPY Database bin/Database
+COPY DatabaseJSON bin/DatabaseJSON
+COPY CustomConfigs bin/CustomConfigs
+COPY Media bin/Media
+COPY Include bin/Include
+ENTRYPOINT ["dotnet", "bin/BriefingRoom-Web.dll"]
