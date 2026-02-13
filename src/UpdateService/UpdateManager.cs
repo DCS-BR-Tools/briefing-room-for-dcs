@@ -88,6 +88,7 @@ namespace BriefingRoom4DCS.UpdateService
             }
 
             var currentVersionDate = GetCurrentBuildVersionDate();
+            BriefingRoom.PrintToLog($"Current build version date: {currentVersionDate:yyyy-MM-dd HH:mm:ss}", LogMessageErrorLevel.Warning);
             var betaNewerThanStable = DateTime.Compare(latestBetaRelease.PublishedAt, latestStableRelease.PublishedAt) > 0;
             var newerStable = DateTime.Compare(latestStableRelease.PublishedAt, currentVersionDate) > 0;
             var newerBeta = DateTime.Compare(latestBetaRelease.PublishedAt, currentVersionDate) > 0;
@@ -108,7 +109,7 @@ namespace BriefingRoom4DCS.UpdateService
 
         private DateTime GetCurrentBuildVersionDate()
         {
-            if (DateTime.TryParseExact(BriefingRoom.BUILD_VERSION, "yyMMdd-HHmmss", null, System.Globalization.DateTimeStyles.None, out var date))
+            if (DateTime.TryParseExact(BriefingRoom.BUILD_VERSION, "yyyyMMdd-HHmmss", null, System.Globalization.DateTimeStyles.None, out var date))
                 return date;
 
             return DateTime.MinValue;

@@ -43,7 +43,7 @@ namespace BriefingRoom4DCS
 
         public const string VERSION = "0.5.~RELEASE_VERSION~";
 
-        public const string BUILD_VERSION = "~BUILD_VERSION~";
+        public const string BUILD_VERSION = "20260213-171541";
 
         public const string TARGETED_DCS_WORLD_VERSION = "2.9.24.19998";
 

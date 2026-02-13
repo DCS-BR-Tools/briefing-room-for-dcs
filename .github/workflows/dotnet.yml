@@ -31,7 +31,7 @@ jobs:
         uses: 1466587594/get-current-time@v2
         id: current-time
         with:
-          format: yyMMdd-HHmmss
+          format: yyMMDD-HHmmss
           utcOffset: "+00:00"
 
       - name: Set Build Version
