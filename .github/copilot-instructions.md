@@ -25,7 +25,7 @@ BriefingRoom is a mission generator for DCS World (Digital Combat Simulator).
 dotnet build src/BriefingRoom.sln
 
 # Release publish
-rm -r ./Release &&  dotnet publish src/BriefingRoom.sln -c Release -p:Flavor=EXE
+rm -r ./Release;  dotnet publish src/BriefingRoom.sln -c Release -p:Flavor=EXE
 ```
 
 ## Key Directories
