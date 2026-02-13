@@ -21,7 +21,8 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
+using System.CommandLine;
+using System.CommandLine.Parsing;
 using System.Threading;
 
 namespace BriefingRoom4DCS.Updater
@@ -90,38 +91,57 @@ namespace BriefingRoom4DCS.Updater
 
         private static UpdaterOptions ParseArguments(string[] args)
         {
-            var options = new UpdaterOptions();
-
-            for (int i = 0; i < args.Length; i++)
+            Option<FileInfo> fileOption = new("--source")
             {
-                switch (args[i].ToLowerInvariant())
+                Description = "Path to extracted update files",
+                Required = true
+            };
+            Option<DirectoryInfo> targetOption = new("--target")
+            {
+                Description = "Path to application installation",
+                Required = true
+            };
+            Option<string> exeOption = new("--exe")
+            {
+                Description = "Name of main executable (e.g., BriefingRoom-Desktop.exe)",
+                Required = true
+            };
+            Option<DirectoryInfo> backupOption = new("--backup")
+            {
+                Description = "Path to store backup of user-modified files (optional)",
+                Required = false
+            };
+            Option<string> skipOption = new("--skip")
+            {
+                Description = "Semicolon-separated patterns to skip (e.g., CustomConfigs;*.brt)",
+                Required = false
+            };
+
+            RootCommand rootCommand = new("BriefingRoom Updater");
+            rootCommand.Options.Add(fileOption);
+            rootCommand.Options.Add(targetOption);
+            rootCommand.Options.Add(exeOption);
+            rootCommand.Options.Add(backupOption);
+            rootCommand.Options.Add(skipOption);
+
+            ParseResult parseResult = rootCommand.Parse(args);
+            if (parseResult.Errors.Count == 0 && parseResult.GetValue(fileOption) is FileInfo parsedFile)
+            {
+                var options = new UpdaterOptions
                 {
-                    case "--source":
-                        if (i + 1 < args.Length) options.SourcePath = args[++i];
-                        break;
-                    case "--target":
-                        if (i + 1 < args.Length) options.TargetPath = args[++i];
-                        break;
-                    case "--exe":
-                        if (i + 1 < args.Length) options.ExecutableName = args[++i];
-                        break;
-                    case "--backup":
-                        if (i + 1 < args.Length) options.BackupPath = args[++i];
-                        break;
-                    case "--skip":
-                        if (i + 1 < args.Length) options.SkipPatterns = args[++i].Split(';', StringSplitOptions.RemoveEmptyEntries);
-                        break;
-                }
+                    SourcePath = parsedFile.FullName,
+                    TargetPath = parseResult.GetValue(targetOption)?.FullName,
+                    ExecutableName = parseResult.GetValue(exeOption),
+                    BackupPath = parseResult.GetValue(backupOption)?.FullName,
+                    SkipPatterns = parseResult.GetValue(skipOption)?.Split(';', StringSplitOptions.RemoveEmptyEntries) ?? Array.Empty<string>()
+                };
+                return options;
             }
-
-            if (string.IsNullOrEmpty(options.SourcePath) ||
-                string.IsNullOrEmpty(options.TargetPath) ||
-                string.IsNullOrEmpty(options.ExecutableName))
+            foreach (ParseError parseError in parseResult.Errors)
             {
-                return null;
+                Console.Error.WriteLine(parseError.Message);
             }
-
-            return options;
+            return null;
         }
 
         private static void ShowUsage()

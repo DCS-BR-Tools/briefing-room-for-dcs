@@ -22,5 +22,8 @@
     <!-- Suppress trim warnings for this simple app -->
     <SuppressTrimAnalysisWarnings>true</SuppressTrimAnalysisWarnings>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="System.CommandLine" Version="2.0.3" />
+  </ItemGroup>
 
 </Project>
