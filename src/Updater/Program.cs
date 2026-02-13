@@ -73,6 +73,8 @@ namespace BriefingRoom4DCS.Updater
                 CleanupTempFolder(options.SourcePath);
 
                 Log("Update completed successfully");
+                Console.WriteLine("Press any key to exit...");
+                Console.ReadKey();
                 return 0;
             }
             catch (Exception ex)
@@ -134,6 +136,8 @@ namespace BriefingRoom4DCS.Updater
             Console.WriteLine("  --exe     Name of main executable (e.g., BriefingRoom-Desktop.exe)");
             Console.WriteLine("  --backup  Path to store backup of user-modified files (optional)");
             Console.WriteLine("  --skip    Semicolon-separated patterns to skip (e.g., CustomConfigs;*.brt)");
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
         }
 
         private static void WaitForProcessToExit(string executableName)

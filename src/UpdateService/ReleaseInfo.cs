@@ -69,11 +69,6 @@ namespace BriefingRoom4DCS.UpdateService
         /// </summary>
         [JsonPropertyName("assets")]
         public ReleaseAsset[] Assets { get; set; }
-
-        /// <summary>
-        /// Parsed version number from the release name (e.g., "0.5.602.11").
-        /// </summary>
-        public string VersionNumber { get; set; }
     }
 
     /// <summary>

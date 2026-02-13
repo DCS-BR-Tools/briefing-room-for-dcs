@@ -54,10 +54,5 @@ namespace BriefingRoom4DCS.UpdateService
         /// GitHub repository name.
         /// </summary>
         public string GitHubRepo { get; set; } = "briefing-room-for-dcs";
-
-        /// <summary>
-        /// Whether to check for beta releases as well.
-        /// </summary>
-        public bool IncludeBetaReleases { get; set; } = false;
     }
 }

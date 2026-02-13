@@ -1,6 +1,7 @@
 @inherits LayoutComponentBase
 @using BriefingRoom4DCS
 @using BriefingRoom4DCS.GUI.Utils
+@using BriefingRoom4DCS.UpdateService
 @inject IJSRuntime JSRuntime
 @inject NavigationManager navigationManager
 @inject Blazored.LocalStorage.ILocalStorageService localStorage
@@ -97,8 +98,15 @@
 
     public bool? saveState = null;
 
-    public GitHubRelease MainRelease = null;
-    public GitHubRelease BetaRelease = null;
+    public ReleaseInfo NewerMainRelease = null;
+    public ReleaseInfo NewerBetaRelease = null;
+    public UpdateManager UpdateManager = null;
+
+    public bool IsUpdating = false;
+    public string UpdateStatus = "";
+    public int DownloadProgress = 0;
+    public string DownloadErrorMessage = "";
+
 
     public static List<Tuple<DateTime, LogMessageErrorLevel, string>> logs = new List<Tuple<DateTime, LogMessageErrorLevel,
     string>>();
@@ -129,14 +137,32 @@
             {
             }
             briefingRoom.SetLogHandler(WriteToDebugLog);
-            try
-            {
-                MainRelease = await JSRuntime.InvokeAsync<GitHubRelease>("GetMainRelease");
-                BetaRelease = await JSRuntime.InvokeAsync<GitHubRelease>("GetBetaRelease");
-            }
-            catch (System.Exception)
-            {
-            }
+            if(!BriefingRoom.RUNNING_IN_DOCKER)
+                try
+                {
+                    var options = new UpdateOptions {};
+                    UpdateManager = UpdateContext.CreateUpdateManager(options);
+                    UpdateManager.StatusChanged += status =>
+                    {
+                        UpdateStatus = status;
+                        InvokeAsync(StateHasChanged);
+                    };
+
+                    UpdateManager.DownloadProgressChanged += progress =>
+                    {
+
+                        DownloadProgress = progress;
+                        InvokeAsync(StateHasChanged);
+                    };
+                    var versions = await UpdateManager.GetLatestVersions();
+                    if (versions != null)                {
+                        NewerMainRelease = versions.Item1;
+                        NewerBetaRelease = versions.Item2;
+                    }
+                }
+                catch (System.Exception)
+                {
+                }
             StateHasChanged();
         }
     }

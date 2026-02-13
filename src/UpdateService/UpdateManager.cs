@@ -52,30 +52,6 @@ namespace BriefingRoom4DCS.UpdateService
         /// </summary>
         public event Action<string> StatusChanged;
 
-        /// <summary>
-        /// Gets whether auto-update is supported in the current environment.
-        /// Returns false when running in Docker or on non-Windows platforms.
-        /// </summary>
-        public static bool IsUpdateSupported
-        {
-            get
-            {
-                // Not supported in Docker
-                if (BriefingRoom.RUNNING_IN_DOCKER)
-                    return false;
-
-                // Only supported on Windows
-                if (!OperatingSystem.IsWindows())
-                    return false;
-
-                return true;
-            }
-        }
-
-        /// <summary>
-        /// Gets the current application version.
-        /// </summary>
-        public static string CurrentVersion => BriefingRoom.VERSION;
 
         /// <summary>
         /// Creates a new UpdateManager instance.
@@ -98,29 +74,42 @@ namespace BriefingRoom4DCS.UpdateService
         /// Checks if an update is available.
         /// </summary>
         /// <returns>The latest release info if an update is available, null otherwise.</returns>
-        public async Task<ReleaseInfo> CheckForUpdateAsync(CancellationToken cancellationToken = default)
+        public async Task<Tuple<ReleaseInfo, ReleaseInfo>> GetLatestVersions(CancellationToken cancellationToken = default)
         {
-            StatusChanged?.Invoke("Checking for updates...");
+            var releases = await _releaseClient.GetReleasesAsync(cancellationToken);
+            var latestBetaRelease = releases.FirstOrDefault(r => r.IsPrerelease && !r.IsDraft);
+            var latestStableRelease = releases.FirstOrDefault(r => !r.IsPrerelease && !r.IsDraft);
 
-            var latestRelease = _options.IncludeBetaReleases
-                ? await _releaseClient.GetLatestReleaseAsync(cancellationToken)
-                : await _releaseClient.GetLatestStableReleaseAsync(cancellationToken);
-
-            if (latestRelease == null)
+            if (latestBetaRelease == null && latestStableRelease == null)
             {
-                StatusChanged?.Invoke("No releases found");
                 return null;
             }
 
-            // Compare versions
-            if (IsNewerVersion(latestRelease.VersionNumber, CurrentVersion))
+            var currentVersionDate = GetCurrentBuildVersionDate();
+            var betaNewerThanStable = DateTime.Compare(latestBetaRelease.PublishedAt, latestStableRelease.PublishedAt) > 0;
+            var newerStable = DateTime.Compare(latestStableRelease.PublishedAt, currentVersionDate) > 0;
+            var newerBeta = DateTime.Compare(latestBetaRelease.PublishedAt, currentVersionDate) > 0;
+            if (!newerStable && !newerBeta)
             {
-                StatusChanged?.Invoke($"Update available: {latestRelease.VersionNumber}");
-                return latestRelease;
+                return null;
             }
+            if (newerStable & !betaNewerThanStable)
+            {
+                return new Tuple<ReleaseInfo, ReleaseInfo>(latestStableRelease, null);
+            }
+            if (newerStable & betaNewerThanStable)
+            {
+                return new Tuple<ReleaseInfo, ReleaseInfo>(latestStableRelease, latestBetaRelease);
+            }
+            return new Tuple<ReleaseInfo, ReleaseInfo>(null, latestBetaRelease);
+        }
 
-            StatusChanged?.Invoke("You have the latest version");
-            return null;
+        private DateTime GetCurrentBuildVersionDate()
+        {
+            if (DateTime.TryParseExact(BriefingRoom.BUILD_VERSION, "yyMMdd-HHmmss", null, System.Globalization.DateTimeStyles.None, out var date))
+                return date;
+
+            return DateTime.MinValue;
         }
 
         /// <summary>
@@ -145,7 +134,9 @@ namespace BriefingRoom4DCS.UpdateService
             var extractPath = Path.Combine(tempPath, "extracted");
 
             Directory.CreateDirectory(tempPath);
+            BriefingRoom.PrintToLog($"Created temporary update folder: {tempPath}", LogMessageErrorLevel.Warning);
             Directory.CreateDirectory(extractPath);
+            BriefingRoom.PrintToLog($"Created temporary extracted folder: {extractPath}", LogMessageErrorLevel.Warning);
 
             try
             {
@@ -176,9 +167,11 @@ namespace BriefingRoom4DCS.UpdateService
 
                 // Extract ZIP
                 ZipFile.ExtractToDirectory(zipPath, extractPath);
+                BriefingRoom.PrintToLog($"Extracted update from {zipPath} to {extractPath}", LogMessageErrorLevel.Warning);
 
                 // Clean up ZIP file
                 File.Delete(zipPath);
+                BriefingRoom.PrintToLog($"Deleted temporary ZIP file: {zipPath}", LogMessageErrorLevel.Warning);
 
                 return extractPath;
             }
@@ -196,19 +189,17 @@ namespace BriefingRoom4DCS.UpdateService
         /// <param name="extractedPath">Path to the extracted update files.</param>
         public void LaunchUpdaterAndExit(string extractedPath)
         {
-            if (!IsUpdateSupported)
-                throw new InvalidOperationException("Updates are not supported in this environment");
-
             // Find Updater.exe in the extracted files
             var updaterPath = FindUpdater(extractedPath);
             if (updaterPath == null)
-                throw new FileNotFoundException("Updater.exe not found in update package");
+                throw new FileNotFoundException($"Updater.exe not found in update package. Searched in: {extractedPath}");
 
             // Prepare backup path
             string backupPath = null;
             if (_options.CreateBackup)
             {
                 backupPath = _backupManager.CreateBackupPath();
+                BriefingRoom.PrintToLog($"Backup enabled. Backup will be created at: {backupPath}", LogMessageErrorLevel.Warning);
             }
 
             // Build arguments
@@ -226,6 +217,7 @@ namespace BriefingRoom4DCS.UpdateService
             }
 
             StatusChanged?.Invoke("Launching updater...");
+            BriefingRoom.PrintToLog($"Launching updater: {updaterPath} with arguments: {args}", LogMessageErrorLevel.Warning);
 
             var startInfo = new ProcessStartInfo
             {
@@ -238,7 +230,7 @@ namespace BriefingRoom4DCS.UpdateService
             Process.Start(startInfo);
 
             // Exit the current application
-            Environment.Exit(0);
+            // Environment.Exit(0);
         }
 
         /// <summary>
@@ -249,42 +241,6 @@ namespace BriefingRoom4DCS.UpdateService
             return _backupManager.GetUserModifiedFiles(_executableName);
         }
 
-        /// <summary>
-        /// Compares two version strings to determine if newVersion is newer than currentVersion.
-        /// </summary>
-        private static bool IsNewerVersion(string newVersion, string currentVersion)
-        {
-            if (string.IsNullOrEmpty(newVersion))
-                return false;
-
-            if (string.IsNullOrEmpty(currentVersion) || currentVersion.Contains("~"))
-                return true; // Development version, always allow update
-
-            try
-            {
-                // Parse versions like "0.5.602.11"
-                var newParts = newVersion.Split('.').Select(int.Parse).ToArray();
-                var currentParts = currentVersion.Split('.').Select(int.Parse).ToArray();
-
-                for (int i = 0; i < Math.Max(newParts.Length, currentParts.Length); i++)
-                {
-                    var newPart = i < newParts.Length ? newParts[i] : 0;
-                    var currentPart = i < currentParts.Length ? currentParts[i] : 0;
-
-                    if (newPart > currentPart)
-                        return true;
-                    if (newPart < currentPart)
-                        return false;
-                }
-
-                return false; // Equal versions
-            }
-            catch
-            {
-                // If parsing fails, do string comparison
-                return string.Compare(newVersion, currentVersion, StringComparison.OrdinalIgnoreCase) > 0;
-            }
-        }
 
         /// <summary>
         /// Finds the Updater.exe in the extracted update folder.
