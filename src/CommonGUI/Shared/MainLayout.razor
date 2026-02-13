@@ -223,4 +223,32 @@
         briefingRoom.ReloadDatabase();
         navigationManager.NavigateTo(navigationManager.Uri, true);
     }
+
+    public async Task StartUpdateAsync(bool useBeta)
+    {
+        IsUpdating = true;
+        DownloadErrorMessage = "";
+        StateHasChanged();
+
+        try
+        {
+            UpdateStatus = briefingRoom.Translate("CleaningUpUpdateFiles");
+            UpdateManager.CleanUpTempUpdateFolder();
+            UpdateStatus = briefingRoom.Translate("DownloadingUpdate");
+            StateHasChanged();
+
+            var extractedPath = await UpdateManager.DownloadUpdateAsync(useBeta ? NewerBetaRelease : NewerMainRelease);
+
+            UpdateStatus = briefingRoom.Translate("InstallingUpdate");
+            StateHasChanged();
+
+            UpdateManager.LaunchUpdaterAndExit(extractedPath);
+        }
+        catch (Exception ex)
+        {
+            DownloadErrorMessage = $"{briefingRoom.Translate("UpdateFailed")}: {ex.Message}";
+            IsUpdating = false;
+            StateHasChanged();
+        }
+    }
 }

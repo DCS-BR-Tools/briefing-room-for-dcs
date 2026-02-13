@@ -74,8 +74,6 @@ namespace BriefingRoom4DCS.Updater
                 CleanupTempFolder(options.SourcePath);
 
                 Log("Update completed successfully");
-                Console.WriteLine("Press any key to exit...");
-                Console.ReadKey();
                 return 0;
             }
             catch (Exception ex)

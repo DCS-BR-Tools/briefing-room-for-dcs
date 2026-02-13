@@ -55,7 +55,7 @@ namespace BriefingRoom4DCS.UpdateService
                     }
 
                     // Normalize path
-                    _installPath = Path.GetFullPath(_installPath);
+                    _installPath = Path.GetFullPath(_installPath).TrimEnd(Path.DirectorySeparatorChar);
                 }
 
                 return _installPath;

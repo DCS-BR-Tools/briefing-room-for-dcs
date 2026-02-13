@@ -29,7 +29,7 @@
                                title="@Layout.NewerMainRelease.Name">
                             @Layout.NewerMainRelease.Name
                         </a>
-                        <button class="btn btn-sm btn-primary update-btn" @onclick="() => StartUpdateAsync(false)">
+                        <button class="btn btn-sm btn-primary update-btn" @onclick="() => Layout.StartUpdateAsync(false)">
                             @briefingRoom.Translate("UpdateNow")
                         </button>
                     </div>
@@ -44,7 +44,7 @@
                                title="@Layout.NewerBetaRelease.Name">
                             Beta: @Layout.NewerBetaRelease.Name
                         </a>
-                        <button class="btn btn-sm btn-warning update-btn" @onclick="() => StartUpdateAsync(true)">
+                        <button class="btn btn-sm btn-warning update-btn" @onclick="() => Layout.StartUpdateAsync(true)">
                             @briefingRoom.Translate("UpdateNow")
                         </button>
                     </div>
@@ -57,31 +57,4 @@
 @code {
     [CascadingParameter]
     public MainLayout Layout { get; set; }
-
-    private async Task StartUpdateAsync(bool useBeta)
-    {
-        Layout.IsUpdating = true;
-        Layout.DownloadErrorMessage = "";
-        StateHasChanged();
-
-        try
-        {
-            Layout.UpdateStatus = briefingRoom.Translate("DownloadingUpdate");
-            StateHasChanged();
-
-            var extractedPath = await Layout.UpdateManager.DownloadUpdateAsync(useBeta ? Layout.NewerBetaRelease :
-Layout.NewerMainRelease);
-
-            Layout.UpdateStatus = briefingRoom.Translate("InstallingUpdate");
-            StateHasChanged();
-
-            Layout.UpdateManager.LaunchUpdaterAndExit(extractedPath);
-        }
-        catch (Exception ex)
-        {
-            Layout.DownloadErrorMessage = $"{briefingRoom.Translate("UpdateFailed")}: {ex.Message}";
-            Layout.IsUpdating = false;
-            StateHasChanged();
-        }
-    }
 }

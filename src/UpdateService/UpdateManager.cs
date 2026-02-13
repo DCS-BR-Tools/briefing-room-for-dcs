@@ -77,8 +77,10 @@ namespace BriefingRoom4DCS.UpdateService
         public async Task<Tuple<ReleaseInfo, ReleaseInfo>> GetLatestVersions(CancellationToken cancellationToken = default)
         {
             var releases = await _releaseClient.GetReleasesAsync(cancellationToken);
-            var latestBetaRelease = releases.FirstOrDefault(r => r.IsPrerelease && !r.IsDraft);
-            var latestStableRelease = releases.FirstOrDefault(r => !r.IsPrerelease && !r.IsDraft);
+            releases = releases.Where(r => !r.IsDraft).ToArray(); // Exclude drafts
+            releases = releases.OrderByDescending(r => r.PublishedAt).ToArray(); // Sort by publish date
+            var latestBetaRelease = releases.FirstOrDefault(r => r.IsPrerelease);
+            var latestStableRelease = releases.FirstOrDefault(r => !r.IsPrerelease);
 
             if (latestBetaRelease == null && latestStableRelease == null)
             {
@@ -190,7 +192,8 @@ namespace BriefingRoom4DCS.UpdateService
         public void LaunchUpdaterAndExit(string extractedPath)
         {
             // Find Updater.exe in the extracted files
-            var updaterPath = FindUpdater(extractedPath);
+            var updaterPath = FindExe(extractedPath, "Updater.exe");
+            var sourcePath = FindExe(extractedPath, _executableName).Replace(_executableName, "").TrimEnd(Path.DirectorySeparatorChar); // Get the folder containing the executable
             if (updaterPath == null)
                 throw new FileNotFoundException($"Updater.exe not found in update package. Searched in: {extractedPath}");
 
@@ -204,7 +207,7 @@ namespace BriefingRoom4DCS.UpdateService
 
             // Build arguments
             var skipPatterns = string.Join(";", _options.SkipPatterns);
-            var args = $"--source \"{extractedPath}\" --target \"{_installPath}\" --exe \"{_executableName}\"";
+            var args = $"--source \"{sourcePath}\" --target \"{_installPath}\" --exe \"{_executableName}\"";
 
             if (!string.IsNullOrEmpty(backupPath))
             {
@@ -230,7 +233,7 @@ namespace BriefingRoom4DCS.UpdateService
             Process.Start(startInfo);
 
             // Exit the current application
-            // Environment.Exit(0);
+            Environment.Exit(0);
         }
 
         /// <summary>
@@ -245,20 +248,20 @@ namespace BriefingRoom4DCS.UpdateService
         /// <summary>
         /// Finds the Updater.exe in the extracted update folder.
         /// </summary>
-        private static string FindUpdater(string extractedPath)
+        private static string FindExe(string extractedPath, string executableName)
         {
             // Check root
-            var updaterPath = Path.Combine(extractedPath, "Updater.exe");
+            var updaterPath = Path.Combine(extractedPath, executableName);
             if (File.Exists(updaterPath))
                 return updaterPath;
-
+    
             // Check bin folder
-            updaterPath = Path.Combine(extractedPath, "bin", "Updater.exe");
+            updaterPath = Path.Combine(extractedPath, "bin", executableName);
             if (File.Exists(updaterPath))
                 return updaterPath;
 
             // Search recursively
-            var found = Directory.GetFiles(extractedPath, "Updater.exe", SearchOption.AllDirectories);
+            var found = Directory.GetFiles(extractedPath, executableName, SearchOption.AllDirectories);
             return found.Length > 0 ? found[0] : null;
         }
 
@@ -269,6 +272,25 @@ namespace BriefingRoom4DCS.UpdateService
                 _releaseClient?.Dispose();
                 _httpClient?.Dispose();
                 _disposed = true;
+            }
+        }
+        /// <summary>
+        /// Deletes all contents in the BriefingRoom-Update temp directory.
+        /// </summary>
+        public static void CleanUpTempUpdateFolder()
+        {
+            var tempUpdatePath = Path.Combine(Path.GetTempPath(), "BriefingRoom-Update");
+            if (Directory.Exists(tempUpdatePath))
+            {
+                try
+                {
+                    Directory.Delete(tempUpdatePath, recursive: true);
+                    BriefingRoom.PrintToLog($"Deleted temp update folder: {tempUpdatePath}", LogMessageErrorLevel.Warning);
+                }
+                catch (Exception ex)
+                {
+                    BriefingRoom.PrintToLog($"Failed to delete temp update folder: {tempUpdatePath}. Error: {ex.Message}", LogMessageErrorLevel.Error);
+                }
             }
         }
     }

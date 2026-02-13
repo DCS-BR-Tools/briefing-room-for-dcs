@@ -9,7 +9,7 @@ namespace BriefingRoom4DCS.GUI.Web
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine(@"
+            Console.WriteLine($@"
         @@@@@@@@@@  .@@@@@@@@@@  @@@&  @@@@@@@@@@  @@@@@@@@@/ @@@   @@@@,   @@@   *@@@@@@@@@#       
         @@@    @@@  .@@@    @@@  @@@&  @@@         @@@        @@@   @@@@@@  @@@  @@@@               
         @@@@@@@@@@  .@@@@@@@@@.  @@@&  @@@@@@@@@   @@@@@@@@@  @@@   @@@ @@@@@@@  @@@   (@@@@@       
@@ -33,7 +33,8 @@ namespace BriefingRoom4DCS.GUI.Web
 
                                                                                                  
                                                                                                  
-    OPEN Browser on http://localhost:5000                                                                                                                                                                                                 
+    OPEN Browser on http://localhost:5000
+    Version: {BriefingRoom.VERSION} ({BriefingRoom.BUILD_VERSION})                                                                                                                                                                                                 
                                                                                                               
 Server Logs:");
             try
