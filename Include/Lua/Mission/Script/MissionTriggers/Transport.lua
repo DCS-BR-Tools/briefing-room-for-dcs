@@ -73,7 +73,7 @@ function briefingRoom.mission.objectivesTriggersCommon.registerTransportTroopsTr
         table.removeValue(briefingRoom.mission.objectives[objectiveIndex].unitNames, value)
       end
       if table.count(briefingRoom.mission.objectives[objectiveIndex].unitNames) < 1 then -- all target units moved or dead, objective complete
-        local playername = event.initiator.getPlayerName and event.initiator:getPlayerName() or nil
+        local playername = event.initiator ~= nil  and event.initiator.getPlayerName and event.initiator:getPlayerName() or nil
         briefingRoom.radioManager.play((playername or"$LANG_PILOT$")..": $LANG_TROOPSDELIVERED$", "RadioPilotTroopsDelivered")
         briefingRoom.mission.coreFunctions.completeObjective(objectiveIndex)
       end

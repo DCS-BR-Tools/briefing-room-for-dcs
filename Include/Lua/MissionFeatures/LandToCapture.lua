@@ -5,6 +5,7 @@ briefingRoom.mission.missionFeatures.LandToCapture.eventHandler = {}
 function briefingRoom.mission.missionFeatures.LandToCapture.eventHandler:onEvent(event)
     if event.id == world.event.S_EVENT_LAND and
         event.place ~= nil and
+        event.initiator ~= nil and
         event.initiator.getPlayerName and
         event.initiator:getCoalition() ~= event.place:getCoalition()
     then

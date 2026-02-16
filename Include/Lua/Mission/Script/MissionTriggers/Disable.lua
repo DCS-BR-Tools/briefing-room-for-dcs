@@ -8,7 +8,7 @@ function briefingRoom.mission.objectivesTriggersCommon.registerDisableTrigger(ob
     if event.id == world.event.S_EVENT_KILL then
         if event.target == nil then return false end
         killedUnit = event.target
-        playerName = event.initiator.getPlayerName and event.initiator:getPlayerName() or nil
+        playerName = event.initiator ~= nil and event.initiator.getPlayerName and event.initiator:getPlayerName() or nil
     elseif  event.id == world.event.S_EVENT_HIT then -- unit was hit but not destroyed, check anyway because destroying a parked aircraft in DCS is HARD, and any aircraft with less than 90% hp left is not airworthy
         if event.target == nil then return false end
         if event.target:getCategory() ~= Object.Category.UNIT then return false end -- target was not a unit
