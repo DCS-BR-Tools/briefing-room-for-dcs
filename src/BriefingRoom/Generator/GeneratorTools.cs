@@ -30,7 +30,7 @@ using System.Linq;
 
 namespace BriefingRoom4DCS.Generator
 {
-    internal static class GeneratorTools
+    public static class GeneratorTools
     {
         private static readonly int[] DAYS_PER_MONTH = new int[] { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
@@ -337,7 +337,7 @@ namespace BriefingRoom4DCS.Generator
             if (!database.EntryExists<T>(id)) throw new BriefingRoomRawException($"Database entry {typeof(T).Name} with ID \"{id}\" not found.");
         }
 
-        internal static string ParseRandomString(string randomString, DCSMission mission = null)
+        public static string ParseRandomString(string randomString, DCSMission mission = null)
         {
             while (randomString.Contains('{') && randomString.Contains('{'))
             {

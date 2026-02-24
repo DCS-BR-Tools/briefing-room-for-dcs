@@ -1,52 +1,51 @@
 @using BriefingRoom4DCS.GUI.Common.Shared.Inputs.Objectives
- @using BriefingRoom4DCS.GUI.Utils
+@using BriefingRoom4DCS.GUI.Utils
 @using BriefingRoom4DCS.Template
 
 @inject BriefingRoom4DCS.IBriefingRoom briefingRoom
- 
- <div class="accordion" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingObjective">
-                                <button
-                                    class="accordion-button collapsed @(objective.ProgressionActivation ? "progression-active" : "")"
-                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseProgression"
-                                    aria-expanded="false" aria-controls="collapseProgression">
-                                    @briefingRoom.Translate("Progression")@(objective.ProgressionActivation ? ": " +
-                                    briefingRoom.Translate("Active") : "")
-                                </button>
-                            </h2>
-                            <div id="collapseProgression" class="accordion-collapse collapse" aria-labelledby="headingObjective"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <h6>@briefingRoom.Translate("PrerequisiteObjectives")</h6>
-                                    <ProgressionRadio objective="objective" />
 
-                                    <CheckBoxList Data="Template.GetTasksFlat().Where(x => x != objective).ToList()"
-                                        TextField="@(item =>(Template.GetTasksFlat().IndexOf(item) + 1) + ": " + item.Alias + ": " + (item.HasPreset ? item.Preset   : item.Task + "-" + item.Target))"
-                                        ValueField="@(item =>Template.GetTasksFlat().IndexOf(item))"
-                                        SelectedValues="objective.ProgressionDependentTasks"
-                                        ParentStateHasChanged="@(() => StateHasChanged())"
-                                        IsDisabled=@(!string.IsNullOrEmpty(objective.ProgressionOverrideCondition))
-                                        TItem="MissionTemplateSubTask" TItemOutput="int">
-                                    </CheckBoxList>
-                                    <div class="form-group flex-block">
-                                        <label>@briefingRoom.Translate("ProgressionOverrideCondition")</label>
-                                        <input class="form-control" type="text" @bind="objective.ProgressionOverrideCondition"
-                                            placeholder=@briefingRoom.Translate("ProgressionOverrideConditionPlaceHolder") />
-                                    </div>
-                                    <hr />
-                                    <h6>@briefingRoom.Translate("Options")</h6>
-                                    <CheckBoxList
-                                        Data="Enum.GetValues(typeof(ObjectiveProgressionOption)).Cast<ObjectiveProgressionOption>()"
-                                        TextField="@(item =>BriefingRoomGUITools.GetEnumName(briefingRoom, item))"
-                                        DescriptionField="@(item => BriefingRoomGUITools.GetEnumDescription( briefingRoom, item))"
-                                        ValueField="@(item =>item)" SelectedValues="objective.ProgressionOptions"
-                                        TItem="ObjectiveProgressionOption" TItemOutput="ObjectiveProgressionOption">
-                                    </CheckBoxList>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingObjective">
+            <button                 class="accordion-button collapsed @(objective.ProgressionActivation ? "progression-active" : "")"
+                                    type="button" data-bs-toggle="collapse" data-bs-target="#collapseProgression"                   aria-expanded="false"
+                                    aria-controls="collapseProgression">
+                @briefingRoom.Translate("Progression")@(objective.ProgressionActivation ? ": " +
+                briefingRoom.Translate("Active") : "")
+            </button>
+        </h2>
+        <div id="collapseProgression" class="accordion-collapse collapse" aria-labelledby="headingObjective"
+             data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <h6>@briefingRoom.Translate("PrerequisiteObjectives")</h6>
+                <ProgressionRadio objective="objective" />
+
+                <CheckBoxList Data="Template.GetTasksFlat().Where(x => x != objective).ToList()"
+                              TextField="@(item =>(Template.GetTasksFlat().IndexOf(item) + 1) + ": " + item.Alias + ": " + (item.HasPreset ? item.Preset   : item.Task + "-" + item.Target))"
+                              ValueField="@(item =>Template.GetTasksFlat().IndexOf(item))"
+                              SelectedValues="objective.ProgressionDependentTasks"
+                              ParentStateHasChanged="@(() => StateHasChanged())"
+                              IsDisabled=@(!string.IsNullOrEmpty(objective.ProgressionOverrideCondition))
+                              TItem="MissionTemplateSubTask" TItemOutput="int">
+                </CheckBoxList>
+                <div class="form-group flex-block">
+                    <label>@briefingRoom.Translate("ProgressionOverrideCondition")</label>
+                    <input class="form-control" type="text" @bind="objective.ProgressionOverrideCondition"
+                           placeholder=@briefingRoom.Translate("ProgressionOverrideConditionPlaceHolder") />
+                </div>
+                <hr />
+                <h6>@briefingRoom.Translate("Options")</h6>
+                <CheckBoxList
+                    Data="Enum.GetValues(typeof(ObjectiveProgressionOption)).Cast<ObjectiveProgressionOption>()"
+                    TextField="@(item =>BriefingRoomGUITools.GetEnumName(briefingRoom, item))"
+                    DescriptionField="@(item => BriefingRoomGUITools.GetEnumDescription( briefingRoom, item))"
+                    ValueField="@(item =>item)" SelectedValues="objective.ProgressionOptions"
+                    TItem="ObjectiveProgressionOption" TItemOutput="ObjectiveProgressionOption">
+                </CheckBoxList>
+            </div>
+        </div>
+    </div>
+</div>
 
 @code {
     [Parameter] public MissionTemplate Template { get; set; }

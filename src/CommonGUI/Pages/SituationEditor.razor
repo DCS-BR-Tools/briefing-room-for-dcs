@@ -3,6 +3,7 @@
 @inject BriefingRoom4DCS.IBriefingRoom briefingRoom
 @using BriefingRoom4DCS
 @using BriefingRoom4DCS.Data.JSON
+@using BriefingRoom4DCS.Generator
 @using Newtonsoft.Json
 @using System.IO
 @using Polly
@@ -11,7 +12,7 @@
 <div class="title-bar">
   <h1>@briefingRoom.Translate("SituationEditor")</h1>
   <TemplateButtons Title="Situation" LoadTemplate="LoadSituationFile" SaveTemplate="SaveSituation"
-    ClearTemplate="ClearSituation" AcceptString=".json" />
+                   ClearTemplate="ClearSituation" AcceptString=".json" />
 </div>
 <div class="generator-group">
   <div class="generator-form">
@@ -26,47 +27,68 @@
     <div class="full-width">
       <EditForm Model="ContextTheater">
         <InputDataBase ClassString="flex-block" Label=@briefingRoom.Translate("Theater") @bind-Value="ContextTheater"
-          DataBaseType="DatabaseEntryType.Theater" />
-        <button class="btn btn-primary form-control"
-          @onclick="() => GetMapAsync()">@briefingRoom.Translate("SetMap")</button>
-        @if (MapLoaded)
-        {
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="sideRadio" value="BLUE" id="RadioBLUFOR" checked>
-            <label class="form-check-label" for="RadioBLUFOR">
-              @briefingRoom.Translate("Blue")
-            </label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="sideRadio" value="RED" id="RadioREDFOR">
-            <label class="form-check-label" for="RadioREDFOR">
-              @briefingRoom.Translate("Red")
-            </label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="sideRadio" value="NEUTRAL" id="RadioNEUTRAL">
-            <label class="form-check-label" for="RadioNEUTRAL">
-              @briefingRoom.Translate("Neutral")
-            </label>
-          </div>
-        }
+                       DataBaseType="DatabaseEntryType.Theater" OnChange="() => GetMapAsync()" />
+        <div class="flex-block">
+          <label>@briefingRoom.Translate("Name")</label>
+          <input class="form-control" type="text" @bind="SituationName" placeholder="@briefingRoom.Translate("Name")" />
+        </div>
+        <div class="flex-block">
+          <label>@briefingRoom.Translate("Description")</label>
+          @foreach (var (desc, i) in SituationDescriptions.Select((value, i) => (value, i)))
+          {
+            <div class="generator-group">
+              <div class="flex-block">
+                <textarea value="@SituationDescriptions[i]" class="form-control" spellcheck="true"
+                          @onchange="@(e => SituationDescriptions[i] = e.Value.ToString())"
+                          placeholder="@briefingRoom.Translate("Description")"></textarea>
+                @if (!String.IsNullOrEmpty(SituationDescriptions[i]))
+                {
+                  <p class="custom-warning" @onclick="() => StateHasChanged()">
+                    <span class="oi oi-info"></span>&nbsp;@GeneratorTools.ParseRandomString(SituationDescriptions[i]) <span
+                    class="oi oi-reload"></span>
+                  </p>
+                }
+              </div>
+              @if (SituationDescriptions.Count > 1)
+              {
+                <button class="btn btn-secondary row-button" @onclick='() => SituationDescriptions.RemoveAt(i)'>x</button>
+              }
+            </div>
+          }
+          <button class="btn btn-secondary form-control" @onclick='() => SituationDescriptions.Add("")'>+</button>
+        </div>
       </EditForm>
     </div>
     <div>
-      <div id="situationMap"></div>
       @if (MapLoaded)
       {
-        <button class="btn btn-primary form-control"
-          @onclick="() => GenerateSituation()">@briefingRoom.Translate("GenerateSituation")</button>
-        @if (!String.IsNullOrEmpty(GeneratedSituationJSON))
-        {
-          <div>
-            <h3>@briefingRoom.Translate("GeneratedSituation")</h3>
-            <p>@briefingRoom.Translate("GeneratedSituationInstructions")</p>
-            <textarea @bind="GeneratedSituationJSON" class="form-control long" spellcheck="true"></textarea>
+        <div class="accordion" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                @briefingRoom.Translate("Advanced")&nbsp; @if (IsEditedByAdv) { <span class="oi oi-warning"></span> }
+              </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                 data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <button class="btn btn-primary form-control"
+                        @onclick="() => GenerateSituation()">@briefingRoom.Translate("GenerateSituation")</button>
+                @if (!String.IsNullOrEmpty(GeneratedSituationJSON))
+                {
+                  <div>
+                    <h3>@briefingRoom.Translate("GeneratedSituation")</h3>
+                    <p>@briefingRoom.Translate("GeneratedSituationInstructions")</p>
+                    <textarea @bind="GeneratedSituationJSON" @bind:event="onchange" class="form-control long" spellcheck="true" @oninput="() => IsEditedByAdv = true"></textarea>
+                  </div>
+                }
+              </div>
+            </div>
           </div>
-        }
+        </div>
       }
+      <div id="situationMap"></div>
     </div>
   </div>
 </div>
@@ -76,15 +98,27 @@
   public MainLayout Layout { get; set; }
   private string errorMessage;
   private string ContextTheater = "Caucasus";
+  private string SituationName = "";
+  private bool IsEditedByAdv = false;
+  private List<string> SituationDescriptions = new List<string> { "" };
   private string GeneratedSituationJSON = "";
   private Situation ExistingSituation = new Situation();
   private bool MapLoaded = false;
+
+  protected override async System.Threading.Tasks.Task OnAfterRenderAsync(bool firstRender)
+  {
+    if (firstRender)
+    {
+      await GetMapAsync();
+    }
+  }
 
   private async System.Threading.Tasks.Task GetMapAsync()
   {
     var airbaseData = briefingRoom.GetAirbasesMapData(ContextTheater);
     await Policy.Handle<Exception>().RetryAsync(3).ExecuteAsync(async () => await
-    JSRuntime.InvokeVoidAsync("RenderEditorMap", ContextTheater, briefingRoom.GetTheaterSpawnPoints(ContextTheater), airbaseData, briefingRoom.GetTheaterWaterZones(ContextTheater)));
+    JSRuntime.InvokeVoidAsync("RenderEditorMap", ContextTheater, briefingRoom.GetTheaterSpawnPoints(ContextTheater),
+airbaseData, briefingRoom.GetTheaterWaterZones(ContextTheater)));
     MapLoaded = true;
   }
 
@@ -95,8 +129,27 @@
     {
       var result = await JSRuntime.InvokeAsync<Situation>("GetSituationCoordinates", ContextTheater);
       result.Theater = ContextTheater;
-      result.BriefingDescriptions = ExistingSituation.BriefingDescriptions;
-      result.DisplayName = ExistingSituation.DisplayName;
+      
+      var mergedDescriptions = ExistingSituation.BriefingDescriptions.ToList();
+      for (int i = 0; i < SituationDescriptions.Count; i++)
+      {
+        var desc = SituationDescriptions[i];
+        if (!string.IsNullOrWhiteSpace(desc))
+        {
+          if(mergedDescriptions.Count <= i)
+          {
+            mergedDescriptions.Add(new Dictionary<string, string>());
+          }
+          mergedDescriptions[i][briefingRoom.LanguageKey] = desc;
+          }
+      }
+      result.BriefingDescriptions = mergedDescriptions;
+
+      var mergedDisplayName = ExistingSituation.DisplayName;
+      if (!string.IsNullOrWhiteSpace(SituationName))
+        mergedDisplayName[briefingRoom.LanguageKey] = SituationName;
+      result.DisplayName = mergedDisplayName;
+
       result.RelatedSituations = ExistingSituation.RelatedSituations;
       GeneratedSituationJSON = JsonConvert.SerializeObject(result, Formatting.Indented);
     }
@@ -110,8 +163,11 @@
 
   private async System.Threading.Tasks.Task ClearSituation()
   {
+    SituationName = "";
+    SituationDescriptions = new List<string> { "" };
     GeneratedSituationJSON = "";
     ExistingSituation = new Situation();
+    IsEditedByAdv = false;
     await JSRuntime.InvokeVoidAsync("ClearMap");
     MapLoaded = false;
     StateHasChanged();
@@ -125,7 +181,10 @@
       using var reader = new StreamReader(targetFile);
       var data = await reader.ReadToEndAsync();
       GeneratedSituationJSON = data;
+      IsEditedByAdv = false;
       ExistingSituation = JsonConvert.DeserializeObject<Situation>(data);
+      SituationName = ExistingSituation.DisplayName[briefingRoom.LanguageKey];
+      SituationDescriptions = ExistingSituation.BriefingDescriptions.Select(x => x[briefingRoom.LanguageKey]).ToList();
       ContextTheater = ExistingSituation.Theater;
       await GetMapAsync();
       await JSRuntime.InvokeVoidAsync("SetSituationZones", data, ContextTheater);
@@ -134,7 +193,7 @@
     catch (Exception ex)
     {
       Console.WriteLine(ex);
-      errorMessage = $"Failed to Load Siuation (Siuation may no longer be compatable): {ex.Message}";
+      errorMessage = $"Failed to Load Situation (Situation may no longer be compatible): {ex.Message}";
     }
   }
 
@@ -144,6 +203,10 @@
     {
       try
       {
+        if(string.IsNullOrEmpty(GeneratedSituationJSON) || !IsEditedByAdv)
+        {
+          await GenerateSituation();
+        }
         JsonConvert.DeserializeObject<Situation>(GeneratedSituationJSON);
       }
       catch (Exception ex)

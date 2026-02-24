@@ -59,10 +59,13 @@
     [Parameter]
     public EventCallback<string> ValueChanged { get; set; }
 
+    [Parameter]
+    public EventCallback<string> OnChange { get; set; }
 
     private async Task ValueChangedChild(string value)
     {
         await ValueChanged.InvokeAsync(value);
+        await OnChange.InvokeAsync(value);
     }
 
     private DatabaseEntryInfo[] GetData()
