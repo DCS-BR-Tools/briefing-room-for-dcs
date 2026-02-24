@@ -3,8 +3,21 @@
     "en": "Russian Costal Invation (Early Stages)"
   },
   "Theater": "Caucasus",
-  "BriefingDescriptions": [],
-  "RelatedSituations": [],
+  "BriefingDescriptions": [
+    {
+      "en": "Amphibious forces have begun coastal landings {near major ports|along sparsely defended beaches|under cover of darkness}; $BRIEFINGALLYCOALITION$ must {intercept landing craft|deny beachheads|contest the shoreline} to prevent $BRIEFINGENEMYCOALITION$ from gaining a foothold."
+    },
+    {
+      "en": "Naval and airborne insertions {are ongoing|have increased in tempo|appear to be probing defenses}; expect follow-on forces to {seize coastal roads|cut off supply routes|establish forward bases} within 24–48 hours."
+    },
+    {
+      "en": "A nearby neutral town is at risk of becoming a logistics hub; planners should {prioritize interdiction strikes|prepare evacuations|secure the approaches} while minimizing civilian casualties."
+    },
+    {
+      "en": "Recon indicates $BRIEFINGENEMYCOALITION$ may attempt to {encircle southern ports|push inland along the estuary|open a secondary front to the west}; maintain ISR assets and position quick reaction forces to blunt advances."
+    }
+  ],
+  "RelatedSituations": ["CaucasusRussianCostalInvasionLate"],
   "redZones": [
     [
       [

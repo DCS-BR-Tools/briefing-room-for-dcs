@@ -3,7 +3,20 @@
     "en": "Beslan Rebellion"
   },
   "Theater": "Caucasus",
-  "BriefingDescriptions": [],
+  "BriefingDescriptions": [
+    {
+      "en": "Beslan {has erupted in unrest|is seeing a sudden uprising|is at the center of a civilian-led rebellion}, with clashes spilling into coastal and inland approaches; $BRIEFINGALLYCOALITION$ must {secure key checkpoints|hold the seaport and main roads|establish blocking positions} to prevent $BRIEFINGENEMYCOALITION$ from expanding their foothold."
+    },
+    {
+      "en": "Urban pockets and nearby red zones {are contested|have become hotly contested|show signs of coordinated resistance}; expect irregular opponents to {use civilian cover|blend with refugees|employ hit-and-run tactics}, and plan strikes to minimize collateral damage."
+    },
+    {
+      "en": "A neutral waypoint near the coast remains {intact|unoccupied|temporarily uncontested} and can be used to stage logistics or humanitarian relief; commanders should {prioritize securing it|use it for casualty evacuation|hold it as a forward hub} before pushing into hardened red areas."
+    },
+    {
+      "en": "Intelligence indicates $BRIEFINGENEMYCOALITION$ may attempt to {consolidate positions along the northern ridge|cut off supply lines through the estuary|launch diversion attacks from the hills}; $BRIEFINGALLYCOALITION$ teams should {interdict movement|establish aerial reconnaissance|prepare quick reaction forces} to blunt their efforts."
+    }
+  ],
   "RelatedSituations": [],
   "redZones": [
     [

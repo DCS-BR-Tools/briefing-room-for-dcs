@@ -3,7 +3,20 @@
     "en": "Russian Costal Invation (Late Stages)"
   },
   "Theater": "Caucasus",
-  "BriefingDescriptions": [],
+  "BriefingDescriptions": [
+    {
+      "en": "Enemy amphibious forces have consolidated beachheads and {are pushing inland|are fortifying coastal positions|have established forward logistics nodes}; $BRIEFINGALLYCOALITION$ must {break their supply chain|sever lines of communication|disrupt resupply efforts} before they entrench."
+    },
+    {
+      "en": "Major ports and estuaries {are contested|lie under sustained bombardment|have been heavily damaged}; plan strikes that {prioritize military targets|avoid civilian infrastructure|protect civilian corridors} while maintaining operational tempo."
+    },
+    {
+      "en": "With the campaign in its late stages, $BRIEFINGENEMYCOALITION$ may attempt to {consolidate territorial gains|open multiple fronts|force a negotiated stalemate}; commanders should {hold choke points|prepare counteroffensives|sustain air superiority} to prevent consolidation."
+    },
+    {
+      "en": "Humanitarian concerns are rising as civilians {flee coastal towns|are caught between forces|require evacuation}; coordinate with ground elements to {open safe corridors|deliver relief by air|escort convoys} where possible."
+    }
+  ],
   "RelatedSituations": [],
   "redZones": [
     [
