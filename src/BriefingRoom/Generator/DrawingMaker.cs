@@ -98,13 +98,13 @@ namespace BriefingRoom4DCS.Generator
         {
             var mapData = new Dictionary<string, List<double[]>>();
             List<DBEntryAirbase> airbases;
-            if (!template.ContextSituation.StartsWith(template.ContextTheater))
+            var situationDB = database.GetEntry<DBEntrySituation>(template.ContextSituation);
+            if (situationDB == null)
             {
                 airbases = GetAirbasesForMap(database, template.ContextTheater);
             }
             else
             {
-                var situationDB = database.GetEntry<DBEntrySituation>(template.ContextSituation);
                 airbases = situationDB.GetAirbases(database, template.OptionsMission.Contains("InvertCountriesCoalitions"));
                 var invertCoalition = template.OptionsMission.Contains("InvertCountriesCoalitions");
                 var red = situationDB.GetRedZones(invertCoalition);
