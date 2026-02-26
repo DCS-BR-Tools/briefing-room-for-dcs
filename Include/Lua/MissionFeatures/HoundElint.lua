@@ -12,7 +12,7 @@ end
 
 do
     HOUND = {
-        VERSION = "0.4.5",
+        VERSION = "0.5.0",
         DEBUG = false,
         ELLIPSE_PERCENTILE = 0.6,
         DATAPOINTS_NUM = 30,
@@ -27,12 +27,11 @@ do
         MARKER_MAX_ALPHA = 0.2,
         MARKER_LINE_OPACITY = 0.3,
         MARKER_TEXT_POINTER = "⇙ ", -- "¤ « "
-        TTS_ENGINE = {'STTS','GRPC'},
+        TTS_ENGINE = {'HOUND','STTS'},
         MENU_PAGE_LENGTH = 9,
-        ENABLE_BETTER_SCORE = true,
         REF_DIST = 75000, -- Do not change, used for datapoint weighting
-        ENABLE_WLS = false,
-        ENABLE_KALMAN = false,
+        ENABLE_KALMAN = true,
+        KALMAN_DEBUG = false,
         AUTO_ADD_PLATFORM_BY_PAYLOAD = true, -- if true, will automatically add platforms that have ELINT payloads (currently, due to DCS limits, only works for units spawning with the required pods)
     }
 
@@ -173,8 +172,16 @@ do
       end
 
     function HOUND.Gaussian(mean, sigma)
-        return math.sqrt(-2 * sigma * math.log(math.random())) *
+        return math.sqrt(-2 * math.log(math.random())) * sigma *
                    math.cos(2 * math.pi * math.random()) + mean
+    end
+
+    function HOUND.Clamp(value, min, max)
+        return math.max(min, math.min(max, value))
+    end
+
+    function HOUND.MixedGaussian(mean, sigma, uniform)
+        return mean + sigma * (math.random() - 0.5) * uniform + HOUND.Gaussian(0, sigma) * (1 - uniform)
     end
 
     function HOUND.reverseLookup(tbl,value)
@@ -1848,7 +1855,8 @@ do
                 [true] = { 1.362693, 0.302821 },
                 [false] = { 1.362693, 0.302821 },
             },
-            ['Primary'] = false
+            ['Primary'] = false,
+            ['numDistinctFreqs'] = 4
         },
         ['55G6 EWR'] = {
             ['Name'] = "Tall Rack",
@@ -1858,7 +1866,8 @@ do
                 [true] = { 0.999308, 8.993774 },
                 [false] = { 0.999308, 8.993774 }
             },
-            ['Primary'] = false
+            ['Primary'] = false,
+            ['numDistinctFreqs'] = 4
         },
         ['FPS-117'] = {
             ['Name'] = "Seek Igloo",
@@ -1868,7 +1877,8 @@ do
                 [true] = { 0.214137, 0.032605 },
                 [false] = { 0.214137, 0.032605 },
             },
-            ['Primary'] = false
+            ['Primary'] = false,
+            ['numDistinctFreqs'] = 0
         },
         ['FPS-117 Dome'] = {
             ['Name'] = "Seek Igloo",
@@ -1878,7 +1888,8 @@ do
                 [true] = { 0.214137, 0.032605 },
                 [false] = { 0.214137, 0.032605 },
             },
-            ['Primary'] = false
+            ['Primary'] = false,
+            ['numDistinctFreqs'] = 0
         },
         ['p-19 s-125 sr'] = {
             ['Name'] = "Flat Face",
@@ -1888,7 +1899,8 @@ do
                 [true] = { 0.342620, 0.018576 },
                 [false] = { 0.342620, 0.018576 }
             },
-            ['Primary'] = false
+            ['Primary'] = false,
+            ['numDistinctFreqs'] = 4
         },
         ['SNR_75V'] = {
             ['Name'] = "Fan-song",
@@ -1898,7 +1910,8 @@ do
                 [true] = { 0.058898, 0.002159 },
                 [false] = { 0.058898, 0.000940 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 2
         },
         ['RD_75'] = {
             ['Name'] = "Amazonka",
@@ -1908,7 +1921,8 @@ do
                 [true] = HOUND.DB.Bands.G,
                 [false] = HOUND.DB.Bands.G
             },
-            ['Primary'] = false
+            ['Primary'] = false,
+            ['numDistinctFreqs'] = 2
         },
         ['snr s-125 tr'] = {
             ['Name'] = "Low Blow",
@@ -1918,7 +1932,8 @@ do
                 [true] = { 0.031893, 0.001417 },
                 [false] = { 0.031893, 0.001417 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 2
         },
         ['Kub 1S91 str'] = {
             ['Name'] = "Straight Flush",
@@ -1928,7 +1943,8 @@ do
                 [true] = HOUND.DB.Bands.I,
                 [false] = { 0.033310, 0.004164 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 4
         },
         ['Osa 9A33 ln'] = {
             ['Name'] = "Osa",
@@ -1938,7 +1954,8 @@ do
                 [true] = { 0.020256, 0.000856 },
                 [false] = HOUND.DB.Bands.H
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 4
         },
         ['S-300PS 40B6MD sr'] = {
             ['Name'] = "Clam Shell",
@@ -1948,7 +1965,8 @@ do
                 [true] = { 0.090846, 0.012531 },
                 [false] = { 0.090846, 0.012531 }
             },
-            ['Primary'] = false
+            ['Primary'] = false,
+            ['numDistinctFreqs'] = 0
         },
         ['S-300PS 64H6E sr'] = {
             ['Name'] = "Big Bird",
@@ -1958,7 +1976,8 @@ do
                 [true] = { 0.090846, 0.012531 },
                 [false] = { 0.090846, 0.012531 }
             },
-            ['Primary'] = false
+            ['Primary'] = false,
+            ['numDistinctFreqs'] = 0
         },
         ['RLS_19J6'] = {
             ['Name'] = "Tin Shield",
@@ -1968,7 +1987,19 @@ do
                 [true] = { 0.093685, 0.011505 },
                 [false] = { 0.093685, 0.011505 }
             },
-            ['Primary'] = false
+            ['Primary'] = false,
+            ['numDistinctFreqs'] = 0
+        },
+        ['P14_SR'] = {
+            ['Name'] = "Tall king",
+            ['Assigned'] = { "SA-5" },
+            ['Role'] = { HOUND.DB.RadarType.SEARCH },
+            ['Band'] = {
+                    [true] = {1.620500,0.253203},
+                    [false] = {1.620500,0.253203}
+            },
+            ['Primary'] = false,
+            ['numDistinctFreqs'] = 4
         },
         ['S-300PS 40B6MD sr_19J6'] = {
             ['Name'] = "Tin Shield",
@@ -1978,7 +2009,8 @@ do
                 [true] = { 0.093685, 0.011505 },
                 [false] = { 0.093685, 0.011505 }
             },
-            ['Primary'] = false
+            ['Primary'] = false,
+            ['numDistinctFreqs'] = 0
         },
         ['S-300PS 40B6M tr'] = {
             ['Name'] = "Tomb Stone",
@@ -1988,7 +2020,8 @@ do
                 [true] = { 0.014990, 0.022484 },
                 [false] = { 0.014990, 0.022484 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['S-300PS 5H63C 30H6_tr'] = {
             ['Name'] = "Flap Lid",
@@ -1998,7 +2031,8 @@ do
                 [true] = { 0.014990, 0.022484 },
                 [false] = { 0.014990, 0.022484 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['SA-11 Buk SR 9S18M1'] = {
             ['Name'] = "Snow Drift",
@@ -2008,7 +2042,8 @@ do
                 [true] = { 0.033310, 0.016655 },
                 [false] = HOUND.DB.Bands.F
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['SA-11 Buk LN 9A310M1'] = {
             ['Name'] = "Fire Dome",
@@ -2018,7 +2053,8 @@ do
                 [true] = { 0.033310, 0.016655 },
                 [false] = { 0.029979, 0.019986 }
             },
-            ['Primary'] = false
+            ['Primary'] = false,
+            ['numDistinctFreqs'] = 0
         },
         ['Tor 9A331'] = {
             ['Name'] = "Tor",
@@ -2028,7 +2064,8 @@ do
                 [true] = { 0.037474, 0.037474 }, -- G+H
                 [false] = HOUND.DB.Bands.F
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['Strela-1 9P31'] = {
             ['Name'] = "SA-9",
@@ -2038,7 +2075,8 @@ do
                 [true] = HOUND.DB.Bands.K,
                 [false] = HOUND.DB.Bands.K
             },
-            ['Primary'] = false
+            ['Primary'] = false,
+            ['numDistinctFreqs'] = 0
         },
         ['Strela-10M3'] = {
             ['Name'] = "SA-13",
@@ -2048,7 +2086,8 @@ do
                 [true] = HOUND.DB.Bands.J,
                 [false] = HOUND.DB.Bands.J
             },
-            ['Primary'] = false
+            ['Primary'] = false,
+            ['numDistinctFreqs'] = 0
         },
         ['Patriot str'] = {
             ['Name'] = "Patriot",
@@ -2058,7 +2097,8 @@ do
                 [true] = { 0.055008, 0.011910 },
                 [false] = { 0.055008, 0.011910 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['Hawk sr'] = {
             ['Name'] = "Hawk SR",
@@ -2068,7 +2108,8 @@ do
                 [true] = HOUND.DB.Bands.C,
                 [false] = HOUND.DB.Bands.C
             },
-            ['Primary'] = false
+            ['Primary'] = false,
+            ['numDistinctFreqs'] = 6
         },
         ['Hawk tr'] = {
             ['Name'] = "Hawk TR",
@@ -2078,7 +2119,8 @@ do
                 [true] = { 0.024983, 0.012491 },
                 [false] = { 0.024983, 0.012491 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 6
         },
         ['Hawk cwar'] = {
             ['Name'] = "Hawk CWAR",
@@ -2088,7 +2130,8 @@ do
                 [true] = HOUND.DB.Bands.J,
                 [false] = HOUND.DB.Bands.J
             },
-            ['Primary'] = false
+            ['Primary'] = false,
+            ['numDistinctFreqs'] = 6
         },
         ['RPC_5N62V'] = {
             ['Name'] = "Square Pair",
@@ -2098,7 +2141,8 @@ do
                 [true] = { 0.044087, 0.002755 },
                 [false] = { 0.044087, 0.002755 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 4
         },
         ['Roland ADS'] = {
             ['Name'] = "Roland TR",
@@ -2108,7 +2152,8 @@ do
                 [true] = { 0.024983, 0.012491 },
                 [false] = HOUND.DB.Bands.D
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['Roland Radar'] = {
             ['Name'] = "Roland SR",
@@ -2118,7 +2163,8 @@ do
                 [true] = HOUND.DB.Bands.D,
                 [false] = HOUND.DB.Bands.D
             },
-            ['Primary'] = false
+            ['Primary'] = false,
+            ['numDistinctFreqs'] = 0
         },
         ['Gepard'] = {
             ['Name'] = "Gepard",
@@ -2128,7 +2174,8 @@ do
                 [true] = HOUND.DB.Bands.J,
                 [false] = HOUND.DB.Bands.E
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['rapier_fsa_blindfire_radar'] = {
             ['Name'] = "Rapier",
@@ -2138,7 +2185,8 @@ do
                 [true] = HOUND.DB.Bands.F,
                 [false] = HOUND.DB.Bands.F
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['rapier_fsa_launcher'] = {
             ['Name'] = "Rapier",
@@ -2148,7 +2196,8 @@ do
                 [true] = { 0.074948, 0.224844 },
                 [false] = { 0.074948, 0.224844 }
             },
-            ['Primary'] = false
+            ['Primary'] = false,
+            ['numDistinctFreqs'] = 0
         },
         ['NASAMS_Radar_MPQ64F1'] = {
             ['Name'] = "Sentinel",
@@ -2158,7 +2207,8 @@ do
                 [true] = { 0.024983, 0.012491 },
                 [false] = { 0.024983, 0.012491 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['HQ-7_STR_SP'] = {
             ['Name'] = "HQ-7",
@@ -2168,7 +2218,8 @@ do
                 [true] = { 0.516884, 0.082701 },
                 [false] = HOUND.DB.Bands.E
             },
-            ['Primary'] = false
+            ['Primary'] = false,
+            ['numDistinctFreqs'] = 0
         },
         ['HQ-7_LN_SP'] = {
             ['Name'] = "HQ-7",
@@ -2178,7 +2229,8 @@ do
                 [true] = HOUND.DB.Bands.J,
                 [false] = HOUND.DB.Bands.E
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['HQ-7_LN_P'] = {
             ['Name'] = "HQ-7",
@@ -2188,7 +2240,8 @@ do
                 [true] = HOUND.DB.Bands.E,
                 [false] = HOUND.DB.Bands.E
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['2S6 Tunguska'] = {
             ['Name'] = "Tunguska",
@@ -2198,7 +2251,8 @@ do
                 [true] = HOUND.DB.Bands.J,
                 [false] = HOUND.DB.Bands.E
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['ZSU-23-4 Shilka'] = {
             ['Name'] = "Shilka",
@@ -2208,7 +2262,8 @@ do
                 [true] = { 0.019217, 0.001316 },
                 [false] = { 0.019217, 0.001316 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['HEMTT_C-RAM_Phalanx'] = {
             ['Name'] = "Phalanx C-RAM",
@@ -2218,7 +2273,8 @@ do
                 [true] = { 0.016655, 0.008328 },
                 [false] = { 0.016655, 0.008328 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['Dog Ear radar'] = {
             ['Name'] = "Dog Ear",
@@ -2228,7 +2284,8 @@ do
                 [true] = { 0.049965, 0.049965 },
                 [false] = { 0.049965, 0.049965 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['SON_9'] = {
             ['Name'] = "Fire Can",
@@ -2238,7 +2295,8 @@ do
                 [true] = { 0.103377, 0.007658 },
                 [false] = { 0.103377, 0.007658 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['Silkworm_SR'] = {
             ['Name'] = "Silkworm",
@@ -2248,7 +2306,8 @@ do
                 [true] = HOUND.DB.Bands.K,
                 [false] = HOUND.DB.Bands.K
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['FuSe-65'] = {
             ['Name'] = "Würzburg",
@@ -2258,7 +2317,8 @@ do
                 [true] = { 0.535344, 0.000000 },
                 [false] = { 0.535344, 0.000000 }
             },
-            ['Primary'] = false
+            ['Primary'] = false,
+            ['numDistinctFreqs'] = 0
         },
         ['FuMG-401'] = {
             ['Name'] = "EWR",
@@ -2268,7 +2328,8 @@ do
                 [true] = { 2.306096, 0.192175 },
                 [false] = { 2.306096, 0.192175 }
             },
-            ['Primary'] = false
+            ['Primary'] = false,
+            ['numDistinctFreqs'] = 0
         },
         ['Flakscheinwerfer_37'] = {
             ['Name'] = "AAA Searchlight",
@@ -2278,7 +2339,8 @@ do
                 [true] = HOUND.DB.Bands.L,
                 [false] = HOUND.DB.Bands.L
             },
-            ['Primary'] = false
+            ['Primary'] = false,
+            ['numDistinctFreqs'] = 0
         },
         ['Type_052B'] = {
             ['Name'] = "Luyang-1 (DD)",
@@ -2288,7 +2350,8 @@ do
                 [true] = { 0.033310, 0.016655 },
                 [false] = HOUND.DB.Bands.F
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['Type_052C'] = {
             ['Name'] = "Luyang-2 (DD)",
@@ -2298,7 +2361,8 @@ do
                 [true] = { 0.516884, 0.082701 },
                 [false] = { 0.024983, 0.012491 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['Type_054A'] = {
             ['Name'] = "Jiangkai (FF)",
@@ -2308,7 +2372,8 @@ do
                 [true] = { 0.033310, 0.016655 },
                 [false] = HOUND.DB.Bands.F
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
 
         ['Type_093'] = {
@@ -2319,17 +2384,19 @@ do
                 [true] = HOUND.DB.Bands.E,
                 [false] = HOUND.DB.Bands.E
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['USS_Arleigh_Burke_IIa'] = {
             ['Name'] = "Arleigh Burke (DD)",
             ['Assigned'] = { "Naval" },
             ['Role'] = { HOUND.DB.RadarType.NAVAL },
             ['Band'] = {
-                [true] = { 0.024983, 0.012491 },
+                [true] = HOUND.DB.Bands.I,
                 [false] = HOUND.DB.Bands.I
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['CV_1143_5'] = {
             ['Name'] = "Kuznetsov (CV)",
@@ -2339,7 +2406,8 @@ do
                 [true] = { 0.037474, 0.037474 },
                 [false] = { 0.075325, 0.003052 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['KUZNECOW'] = {
             ['Name'] = "Kuznetsov (CV)",
@@ -2349,7 +2417,8 @@ do
                 [true] = { 0.037474, 0.037474 },
                 [false] = { 0.075325, 0.003052 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['Forrestal'] = {
             ['Name'] = "Forrestal (CV)",
@@ -2359,7 +2428,8 @@ do
                 [true] = { 0.022472, 0.005789 },
                 [false] = { 0.022472, 0.005789 },
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['VINSON'] = {
             ['Name'] = "Nimitz (CV)",
@@ -2369,7 +2439,8 @@ do
                 [true] = { 0.318251, 0.034446 },
                 [false] = { 0.318251, 0.034446 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['CVN_71'] = {
             ['Name'] = "Nimitz (CV)",
@@ -2379,7 +2450,8 @@ do
                 [true] = { 0.024983, 0.012491 },
                 [false] = HOUND.DB.Bands.I
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['CVN_72'] = {
             ['Name'] = "Nimitz (CV)",
@@ -2389,7 +2461,8 @@ do
                 [true] = { 0.024983, 0.012491 },
                 [false] = HOUND.DB.Bands.I
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['CVN_73'] = {
             ['Name'] = "Nimitz (CV)",
@@ -2399,7 +2472,8 @@ do
                 [true] = { 0.024983, 0.012491 },
                 [false] = HOUND.DB.Bands.I
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['Stennis'] = {
             ['Name'] = "Nimitz (CV)",
@@ -2409,7 +2483,8 @@ do
                 [true] = { 0.024983, 0.012491 },
                 [false] = HOUND.DB.Bands.I
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['CVN_75'] = {
             ['Name'] = "Nimitz (CV)",
@@ -2419,7 +2494,8 @@ do
                 [true] = { 0.024983, 0.012491 },
                 [false] = HOUND.DB.Bands.I
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['La_Combattante_II'] = {
             ['Name'] = "La Combattante (FC)",
@@ -2429,17 +2505,19 @@ do
                 [true] = { 0.024983, 0.012491 },
                 [false] = { 0.049965, 0.007687 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['ALBATROS'] = {
             ['Name'] = "Grisha (FC)",
             ['Assigned'] = { "Naval" },
             ['Role'] = { HOUND.DB.RadarType.NAVAL },
             ['Band'] = {
-                [true] = { 20256247.162162, 855897.767415 },
-                [false] = { 0.026069, 0.009201 }
+                [true] = {0.020256,0.000856},
+                [false] = {0.031624,0.000682}
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['MOLNIYA'] = {
             ['Name'] = "Molniya (FC)",
@@ -2449,7 +2527,8 @@ do
                 [true] = { 0.031691, 0.000202 },
                 [false] = { 0.031691, 0.000202 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['MOSCOW'] = {
             ['Name'] = "Moskva (CG)",
@@ -2459,7 +2538,8 @@ do
                 [true] = { 0.024879, 0.012595 },
                 [false] = HOUND.DB.Bands.H
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['NEUSTRASH'] = {
             ['Name'] = "Neustrashimy (DD)",
@@ -2469,7 +2549,8 @@ do
                 [true] = { 0.037474, 0.037474 },
                 [false] = { 0.031691, 0.000202 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['PERRY'] = {
             ['Name'] = "Oliver H. Perry (FF)",
@@ -2479,7 +2560,8 @@ do
                 [true] = { 0.029682, 0.007329 },
                 [false] = HOUND.DB.Bands.I
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['PIOTR'] = {
             ['Name'] = "Kirov (CG)",
@@ -2489,7 +2571,8 @@ do
                 [true] = { 0.020256, 0.000856 },
                 [false] = { 0.020256, 0.000856 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['REZKY'] = {
             ['Name'] = "Krivak (FF)",
@@ -2499,7 +2582,8 @@ do
                 [true] = { 31757675.635593, 203140.782317 },
                 [false] = { 31757675.635593, 203140.782317 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['LHA_Tarawa'] = {
             ['Name'] = "Tarawa (LHA)",
@@ -2509,17 +2593,19 @@ do
                 [true] = { 0.516884, 0.082701 },
                 [false] = { 0.516884, 0.082701 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['TICONDEROG'] = {
             ['Name'] = "Ticonderoga (CG)",
             ['Assigned'] = { "Naval" },
             ['Role'] = { HOUND.DB.RadarType.NAVAL },
             ['Band'] = {
-                [true] = { 0.024983, 0.012491 },
+                [true] = HOUND.DB.Bands.I,
                 [false] = HOUND.DB.Bands.I
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['hms_invincible'] = {
             ['Name'] = "Invincible (CV)",
@@ -2529,7 +2615,8 @@ do
                 [true] = { 0.516884, 0.082701 },
                 [false] = { 0.516884, 0.082701 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['leander-gun-achilles'] = {
             ['Name'] = "Leander (FF)",
@@ -2539,7 +2626,8 @@ do
                 [true] = { 0.516884, 0.082701 },
                 [false] = { 0.516884, 0.082701 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['leander-gun-andromeda'] = {
             ['Name'] = "Leander (FF)",
@@ -2549,7 +2637,8 @@ do
                 [true] = { 0.516884, 0.082701 },
                 [false] = { 0.516884, 0.082701 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['leander-gun-ariadne'] = {
             ['Name'] = "Leander (FF)",
@@ -2559,7 +2648,8 @@ do
                 [true] = { 0.516884, 0.082701 },
                 [false] = { 0.516884, 0.082701 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['leander-gun-condell'] = {
             ['Name'] = "Condell (FF)",
@@ -2569,7 +2659,8 @@ do
                 [true] = { 0.516884, 0.082701 },
                 [false] = { 0.516884, 0.082701 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['leander-gun-lynch'] = {
             ['Name'] = "Condell (FF)",
@@ -2579,7 +2670,8 @@ do
                 [true] = { 0.516884, 0.082701 },
                 [false] = { 0.516884, 0.082701 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['ara_vdm'] = {
             ['Name'] = "Veinticinco de Mayo (CV)",
@@ -2589,7 +2681,8 @@ do
                 [true] = { 0.516884, 0.082701 },
                 [false] = { 0.136269, 0.013627 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['santafe'] = {
             ['Name'] = "Balao Class (SS)",
@@ -2599,7 +2692,8 @@ do
                 [true] = { 0.136269, 0.013627 },
                 [false] = { 0.136269, 0.013627 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['Essex'] = {
             ['Name'] = "Essex (CV)",
@@ -2609,17 +2703,19 @@ do
                 [true] = { 0.516884, 0.082701 },
                 [false] = { 0.136269, 0.013627 }
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['BDK-775'] = {
             ['Name'] = "Ropucha (LS)",
             ['Assigned'] = { "Naval" },
             ['Role'] = { HOUND.DB.RadarType.NAVAL },
             ['Band'] = {
-                [true] = HOUND.DB.Bands.E,
-                [false] = HOUND.DB.Bands.E
+                [true] = {0.031624,0.000682},
+                [false] = {0.031624,0.000682}
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['Type_071'] = {
             ['Name'] = "Yuzhao transport",
@@ -2629,7 +2725,19 @@ do
                 [true] = HOUND.DB.Bands.E,
                 [false] = HOUND.DB.Bands.E
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
+        },
+        ['Type_021_1'] = {
+            ['Name'] = "Type 021-1 Missile Boat",
+            ['Assigned'] = {"Naval"},
+            ['Role'] = { HOUND.DB.RadarType.NAVAL },
+            ['Band'] = {
+                    [true] = {0.024983,0.012491},
+                    [false] = {0.024983,0.012491}
+            },
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
         ['atconveyor'] = {
             ['Name'] = "SS Atlantic Conveyor",
@@ -2639,7 +2747,8 @@ do
                 [true] = HOUND.DB.Bands.D,
                 [false] = HOUND.DB.Bands.D
             },
-            ['Primary'] = true
+            ['Primary'] = true,
+            ['numDistinctFreqs'] = 0
         },
     }
 
@@ -2651,7 +2760,8 @@ do
             [true] = { 0.049965, 0.024983 },
             [false] = { 0.049965, 0.024983 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CHAP_PantsirS1'] = {
         ['Name'] = "Pantsir",
@@ -2661,7 +2771,8 @@ do
             [true] = { 0.016655, 0.020819 },
             [false] = { 0.074948, 0.074948 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CHAP_TorM2'] = {
         ['Name'] = "Tor",
@@ -2671,7 +2782,8 @@ do
             [true] = { 0.011103, 0.005552 },
             [false] = { 0.074948, 0.074948 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CHAP_Project22160'] = {
         ['Name'] = "Project 22160 (DD)",
@@ -2681,7 +2793,8 @@ do
             [true] = { 0.024983, 0.012491 },
             [false] = { 0.024983, 0.012491 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CHAP_Project22160_TorM2KM'] = {
         ['Name'] = "Project 22160 (DD)",
@@ -2691,7 +2804,8 @@ do
             [true] = { 0.011103, 0.005552 },
             [false] = { 0.024983, 0.012491 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
 
     HOUND.DB.Platform = {
@@ -2733,6 +2847,7 @@ do
             ['AJS37'] = { antenna = { size = 4.5, factor = 1 }, require = { Payload = { 'U22/A Jammer Pod', 'U22 Jammer' } }, ins_error = 50 },
             ['F-16C_50'] = { antenna = { size = 1.45, factor = 1 }, require = { Payload = { 'f-16c_hts_pod' } }, ins_error = 0 },
             ['JF-17'] = { antenna = { size = 3.25, factor = 1 }, require = { Payload = { 'KG-600' } }, ins_error = 0 },
+            ['A6E'] = { antenna = { size = 9, factor = 1 }, require = { Payload = { 'AN/ALQ-99','HB_F14_EXT_AN_APQ-167','ALQ167' } }, ins_error = 0 }, -- A-6E stand in for EA-6B, ALQ167 is Standin for ALQ-99
             ['Mirage-F1EE'] = { antenna = { size = 3.7, factor = 1 }, require = { Payload = { 'TMV_018_Syrel_POD' } }, ins_error = 50 }, -- does not reflect features in actual released product
             ['Mirage-F1M-CE'] = { antenna = { size = 3.7, factor = 1 }, require = { Payload = { 'TMV_018_Syrel_POD' } }, ins_error = 0 }, -- does not reflect features in actual released product
             ['Mirage-F1M-EE'] = { antenna = { size = 3.7, factor = 1 }, require = { Payload = { 'TMV_018_Syrel_POD' } }, ins_error = 0 }, -- does not reflect features in actual released product
@@ -2753,6 +2868,8 @@ do
     HOUND.DB.Platform[Object.Category.UNIT]['EA_6B'] = { antenna = { size = 9, factor = 1 }, ins_error = 0 }       --VSN EA-6B
     HOUND.DB.Platform[Object.Category.UNIT]['EA-18G'] = { antenna = { size = 14, factor = 1 }, ins_error = 0 }     --CJS EF-18G
     HOUND.DB.Platform[Object.Category.UNIT]['Shavit'] = { antenna = { size = 30, factor = 1 }, ins_error = 0 }     --IDF_Mods Shavit
+    HOUND.DB.Platform[Object.Category.UNIT]['SU22'] = { antenna = { size = 3.5, factor = 1 }, require = { Payload = { 'SU22_BA52' } }, ins_error = 50 } --VinntoreZ SU-22M4 Mod
+    HOUND.DB.Platform[Object.Category.UNIT]['SU22_AI'] = { antenna = { size = 3.5, factor = 1 }, require = { Payload = { 'SU22_BA52' } }, ins_error = 50 } --VinntoreZ SU-22M4 Mod
 
     HOUND.DB.Radars['S-300PS 64H6E TRAILER sr'] = {
         ['Name'] = "Big Bird",
@@ -2762,7 +2879,8 @@ do
             [true] = HOUND.DB.Bands.C,
             [false] = HOUND.DB.Bands.C
         },
-        ['Primary'] = false
+        ['Primary'] = false,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['S-300PS SA-10B 40B6MD MAST sr'] = {
         ['Name'] = "Clam Shell",
@@ -2772,7 +2890,8 @@ do
             [true] = HOUND.DB.Bands.I,
             [false] = HOUND.DB.Bands.I
         },
-        ['Primary'] = false
+        ['Primary'] = false,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['S-300PS 40B6M MAST tr'] = {
         ['Name'] = "Flap Lid",
@@ -2782,7 +2901,8 @@ do
             [true] = HOUND.DB.Bands.J,
             [false] = HOUND.DB.Bands.J
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['S-300PS 30H6 TRAILER tr'] = {
         ['Name'] = "Flap Lid",
@@ -2792,7 +2912,8 @@ do
             [true] = HOUND.DB.Bands.J,
             [false] = HOUND.DB.Bands.J
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['S-300PS 30N6 TRAILER tr'] = {
         ['Name'] = "Flap Lid",
@@ -2802,7 +2923,8 @@ do
             [true] = HOUND.DB.Bands.J,
             [false] = HOUND.DB.Bands.J
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['S-300PMU1 40B6MD sr'] = {
         ['Name'] = "Clam Shell",
@@ -2812,7 +2934,8 @@ do
             [true] = HOUND.DB.Bands.I,
             [false] = HOUND.DB.Bands.I
         },
-        ['Primary'] = false
+        ['Primary'] = false,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['S-300PMU1 64N6E sr'] = {
         ['Name'] = "Big Bird",
@@ -2822,7 +2945,8 @@ do
             [true] = HOUND.DB.Bands.C,
             [false] = HOUND.DB.Bands.C
         },
-        ['Primary'] = false
+        ['Primary'] = false,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['S-300PMU1 30N6E tr'] = {
         ['Name'] = "Flap Lid",
@@ -2832,7 +2956,8 @@ do
             [true] = HOUND.DB.Bands.J,
             [false] = HOUND.DB.Bands.J
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['S-300PMU1 40B6M tr'] = {
         ['Name'] = "Grave Stone",
@@ -2842,7 +2967,8 @@ do
             [true] = HOUND.DB.Bands.J,
             [false] = HOUND.DB.Bands.J
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['S-300V 9S15 sr'] = {
         ['Name'] = 'Bill Board',
@@ -2852,7 +2978,8 @@ do
             [true] = HOUND.DB.Bands.E,
             [false] = HOUND.DB.Bands.E
         },
-        ['Primary'] = false
+        ['Primary'] = false,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['S-300V 9S19 sr'] = {
         ['Name'] = 'High Screen',
@@ -2862,7 +2989,8 @@ do
             [true] = HOUND.DB.Bands.C,
             [false] = HOUND.DB.Bands.C
         },
-        ['Primary'] = false
+        ['Primary'] = false,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['S-300V 9S32 tr'] = {
         ['Name'] = 'Grill Pan',
@@ -2872,7 +3000,8 @@ do
             [true] = HOUND.DB.Bands.J,
             [false] = HOUND.DB.Bands.J
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['S-300PMU2 92H6E tr'] = {
         ['Name'] = 'Grave Stone',
@@ -2882,7 +3011,8 @@ do
             [true] = HOUND.DB.Bands.I,
             [false] = HOUND.DB.Bands.I
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['S-300PMU2 64H6E2 sr'] = {
         ['Name'] = "Big Bird",
@@ -2892,7 +3022,8 @@ do
             [true] = HOUND.DB.Bands.C,
             [false] = HOUND.DB.Bands.C
         },
-        ['Primary'] = false
+        ['Primary'] = false,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['S-300VM 9S15M2 sr'] = {
         ['Name'] = 'Bill Board M',
@@ -2902,7 +3033,8 @@ do
             [true] = HOUND.DB.Bands.E,
             [false] = HOUND.DB.Bands.E
         },
-        ['Primary'] = false
+        ['Primary'] = false,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['S-300VM 9S19M2 sr'] = {
         ['Name'] = 'High Screen M',
@@ -2912,7 +3044,8 @@ do
             [true] = HOUND.DB.Bands.C,
             [false] = HOUND.DB.Bands.C
         },
-        ['Primary'] = false
+        ['Primary'] = false,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['S-300VM 9S32ME tr'] = {
         ['Name'] = 'Grill Pan M',
@@ -2922,7 +3055,8 @@ do
             [true] = HOUND.DB.Bands.K,
             [false] = HOUND.DB.Bands.K
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['SA-17 Buk M1-2 LN 9A310M1-2'] = {
         ['Name'] = "Fire Dome M",
@@ -2932,7 +3066,8 @@ do
             [true] = HOUND.DB.Bands.H,
             [false] = HOUND.DB.Bands.H
         },
-        ['Primary'] = false
+        ['Primary'] = false,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['34Ya6E Gazetchik E decoy'] = {
         ['Name'] = "Flap Lid",
@@ -2942,7 +3077,8 @@ do
             [true] = HOUND.DB.Bands.J,
             [false] = HOUND.DB.Bands.J
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['SAMPT_MRI_ARABEL'] = {
         ['Name'] = "SAMP/T",
@@ -2952,7 +3088,8 @@ do
             [true] = HOUND.DB.Bands.I,
             [false] = HOUND.DB.Bands.I
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['SAMPT_MRI_GF300'] = {
         ['Name'] = "SAMP/T",
@@ -2962,7 +3099,8 @@ do
             [true] = HOUND.DB.Bands.K,
             [false] = HOUND.DB.Bands.K
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['Fire Can radar'] = {
         ['Name'] = "Fire Can",
@@ -2972,7 +3110,8 @@ do
             [true] = HOUND.DB.Bands.E,
             [false] = HOUND.DB.Bands.E
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['EWR 55G6U NEBO-U'] = {
         ['Name'] = "Tall Rack",
@@ -2982,7 +3121,8 @@ do
             [true] = HOUND.DB.Bands.A,
             [false] = HOUND.DB.Bands.A
         },
-        ['Primary'] = false
+        ['Primary'] = false,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['EWR P-37 BAR LOCK'] = {
         ['Name'] = "Bar lock",
@@ -2992,7 +3132,8 @@ do
             [true] = HOUND.DB.Bands.E,
             [false] = HOUND.DB.Bands.E
         },
-        ['Primary'] = false
+        ['Primary'] = false,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['EWR 1L119 Nebo-SVU'] = {
         ['Name'] = "Box Spring",
@@ -3002,7 +3143,8 @@ do
             [true] = HOUND.DB.Bands.A,
             [false] = HOUND.DB.Bands.A
         },
-        ['Primary'] = false
+        ['Primary'] = false,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['EWR Generic radar tower'] = {
         ['Name'] = "Civilian Radar",
@@ -3012,7 +3154,8 @@ do
             [true] = HOUND.DB.Bands.C,
             [false] = HOUND.DB.Bands.C
         },
-        ['Primary'] = false
+        ['Primary'] = false,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['PantsirS1'] = {
         ['Name'] = "Pantsir",
@@ -3022,7 +3165,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['PantsirS2'] = {
         ['Name'] = "Pantsir",
@@ -3032,7 +3176,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['Admiral_Kasatonov'] = {
         ['Name'] = "Gorshkov (FF)",
@@ -3042,7 +3187,8 @@ do
             [true] = HOUND.DB.Bands.F,
             [false] = HOUND.DB.Bands.F
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['Karakurt_AShM'] = {
         ['Name'] = "Karakurt (FS)",
@@ -3052,7 +3198,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['Karakurt_LACM'] = {
         ['Name'] = "Karakurt (FS)",
@@ -3062,7 +3209,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['MonolitB'] = {
         ['Name'] = "Monolit B",
@@ -3072,7 +3220,8 @@ do
             [true] = HOUND.DB.Bands.I,
             [false] = HOUND.DB.Bands.I
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['TorM2'] = {
         ['Name'] = "Tor",
@@ -3082,7 +3231,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['TorM2K'] = {
         ['Name'] = "Tor",
@@ -3092,7 +3242,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['TorM2M'] = {
         ['Name'] = "Tor",
@@ -3102,7 +3253,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
 
     HOUND.DB.Radars['CH_BukM3_9A317M'] = {
@@ -3113,7 +3265,8 @@ do
             [true] = { 0.136269, 0.013627 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = false
+        ['Primary'] = false,
+        ['numDistinctFreqs'] = 0
 
     }
     HOUND.DB.Radars['CH_BukM3_9A317MA'] = {
@@ -3124,7 +3277,8 @@ do
             [true] = { 0.136269, 0.013627 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = false
+        ['Primary'] = false,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_BukM3_9S18M13'] = {
         ['Name'] = "Snow Drift",
@@ -3134,7 +3288,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.516884, 0.082701 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_BukM3_9S36M'] = {
         ['Name'] = "Buk M3",
@@ -3144,7 +3299,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = false
+        ['Primary'] = false,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_S350_50N6'] = {
         ['Name'] = "S-350 STR",
@@ -3154,7 +3310,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
 
     }
     HOUND.DB.Radars['CH_S350_96L6'] = {
@@ -3165,7 +3322,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.516884, 0.082701 }
         },
-        ['Primary'] = false
+        ['Primary'] = false,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_Gremyashchiy_AShM'] = {
         ['Name'] = "Gremyashchiy Corvette",
@@ -3175,7 +3333,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_Gremyashchiy_LACM'] = {
         ['Name'] = "Gremyashchiy Corvette",
@@ -3185,7 +3344,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_Grigorovich_AShM'] = {
         ['Name'] = "Krivak 5 (FF)",
@@ -3195,7 +3355,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_Grigorovich_LACM'] = {
         ['Name'] = "Krivak 5 (FF)",
@@ -3205,7 +3366,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_Project22160'] = {
         ['Name'] = "Project 22160 (DD)",
@@ -3215,7 +3377,8 @@ do
             [true] = { 0.136269, 0.013627 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
 
     }
     HOUND.DB.Radars['CH_Steregushchiy'] = {
@@ -3226,7 +3389,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
 
     }
     HOUND.DB.Radars['Admiral_Gorshkov'] = {
@@ -3237,7 +3401,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
 
     HOUND.DB.Radars['CH_Arleigh_Burke_IIA'] = {
@@ -3248,7 +3413,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_Arleigh_Burke_III'] = {
         ['Name'] = "Arleigh Burke (DD)",
@@ -3259,7 +3425,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_Constellation'] = {
         ['Name'] = "[CH] Constellation Frigate",
@@ -3269,7 +3436,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_Ticonderoga'] = {
         ['Name'] = "Ticonderoga (CG)",
@@ -3279,7 +3447,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_Ticonderoga_CMP'] = {
         ['Name'] = "Ticonderoga (CG)",
@@ -3289,7 +3458,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['Arleigh_Burke_Flight_III_AShM'] = {
         ['Name'] = "Arleigh Burke (DD)",
@@ -3299,7 +3469,8 @@ do
             [true] = HOUND.DB.Bands.E,
             [false] = HOUND.DB.Bands.E
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['Arleigh_Burke_Flight_III_LACM'] = {
         ['Name'] = "Arleigh Burke (DD)",
@@ -3309,7 +3480,8 @@ do
             [true] = HOUND.DB.Bands.E,
             [false] = HOUND.DB.Bands.E
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['Arleigh_Burke_Flight_III_SAM'] = {
         ['Name'] = "Arleigh Burke (DD)",
@@ -3319,7 +3491,8 @@ do
             [true] = HOUND.DB.Bands.E,
             [false] = HOUND.DB.Bands.E
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['Ticonderoga_CMP_AShM'] = {
         ['Name'] = "Ticonderoga (CG)",
@@ -3329,7 +3502,8 @@ do
             [true] = HOUND.DB.Bands.E,
             [false] = HOUND.DB.Bands.E
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['Ticonderoga_CMP_LACM'] = {
         ['Name'] = "Ticonderoga (CG)",
@@ -3339,7 +3513,8 @@ do
             [true] = HOUND.DB.Bands.E,
             [false] = HOUND.DB.Bands.E
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['Ticonderoga_CMP_SAM'] = {
         ['Name'] = "Ticonderoga (CG)",
@@ -3349,7 +3524,8 @@ do
             [true] = HOUND.DB.Bands.E,
             [false] = HOUND.DB.Bands.E
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['MIM104_ANMPQ65'] = {
         ['Name'] = "Patriot",
@@ -3359,7 +3535,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['MIM104_ANMPQ65A'] = {
         ['Name'] = "Patriot",
@@ -3369,7 +3546,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['MIM104_LTAMDS'] = {
         ['Name'] = "Patriot LTAMDS",
@@ -3379,7 +3557,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['MIM104_ANMPQ65A_HEMTT'] = {
         ['Name'] = "Patriot",
@@ -3389,7 +3568,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['MIM104_ANMPQ65_HEMTT'] = {
         ['Name'] = "Patriot",
@@ -3399,7 +3579,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
 
     HOUND.DB.Radars['MIM104_LTAMDS_HEMTT'] = {
@@ -3410,7 +3591,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
 
     HOUND.DB.Radars['CH_NASAMS3_SR'] = {
@@ -3421,7 +3603,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_Centurion_C_RAM'] = {
         ['Name'] = "Centurion C-RAM",
@@ -3431,7 +3614,8 @@ do
             [true] = { 0.136269, 0.013627 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
 
     HOUND.DB.Radars['CH_THAAD_ANTPY2'] = {
@@ -3442,7 +3626,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
 
     HOUND.DB.Radars['Type45'] = {
@@ -3453,7 +3638,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_Type26'] = {
         ['Name'] = "Type 26 (FF)",
@@ -3463,7 +3649,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_SkySabreGiraffe'] = {
         ['Name'] = "Giraffe",
@@ -3473,7 +3660,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['HSwMS_Visby'] = {
         ['Name'] = "Visby (FS)",
@@ -3483,7 +3671,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['LvKv9040'] = {
         ['Name'] = "LvKv9040",
@@ -3493,7 +3682,8 @@ do
             [true] = { 0.136269, 0.013627 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['LvS-103_PM103'] = {
         ['Name'] = "Patriot",
@@ -3503,7 +3693,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['LvS-103_PM103_HX'] = {
         ['Name'] = "Patriot",
@@ -3513,7 +3704,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['RBS-90'] = {
         ['Name'] = "RBS-90",
@@ -3523,7 +3715,8 @@ do
             [true] = HOUND.DB.Bands.J,
             [false] = HOUND.DB.Bands.J
         },
-        ['Primary'] = false
+        ['Primary'] = false,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['BV410_RBS90'] = {
         ['Name'] = "RBS-90",
@@ -3533,7 +3726,8 @@ do
             [true] = HOUND.DB.Bands.J,
             [false] = HOUND.DB.Bands.J
         },
-        ['Primary'] = false
+        ['Primary'] = false,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['UndE23'] = {
         ['Name'] = "UndE23",
@@ -3543,7 +3737,8 @@ do
             [true] = HOUND.DB.Bands.G,
             [false] = HOUND.DB.Bands.G
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
 
     HOUND.DB.Radars['Strb90'] = {
@@ -3554,7 +3749,8 @@ do
             [true] = HOUND.DB.Bands.E,
             [false] = HOUND.DB.Bands.E
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_Type022'] = {
         ['Name'] = "Type 022 FAC",
@@ -3564,7 +3760,8 @@ do
             [true] = { 0.136269, 0.013627 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_Type054B'] = {
         ['Name'] = "Type 054B Frigate",
@@ -3574,7 +3771,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_Type056A'] = {
         ['Name'] = "Type 056A Corvette",
@@ -3584,7 +3782,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['Type055'] = {
         ['Name'] = "Type 055 (CG)",
@@ -3594,7 +3793,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['Type052D'] = {
         ['Name'] = "Type 052D (DD)",
@@ -3604,7 +3804,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['PGL_625'] = {
         ['Name'] = "PGL-625",
@@ -3614,7 +3815,8 @@ do
             [true] = { 0.136269, 0.013627 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['HQ17A'] = {
         ['Name'] = "HQ-17",
@@ -3624,7 +3826,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_HQ22_SR'] = {
         ['Name'] = "HQ-22 SR",
@@ -3634,7 +3837,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.516884, 0.082701 }
         },
-        ['Primary'] = false
+        ['Primary'] = false,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_HQ22_STR'] = {
         ['Name'] = "HQ-22 STR",
@@ -3644,7 +3848,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_PGZ09'] = {
         ['Name'] = "PGZ-09",
@@ -3654,7 +3859,8 @@ do
             [true] = { 0.136269, 0.013627 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_PGZ95'] = {
         ['Name'] = "PGZ-95",
@@ -3664,7 +3870,8 @@ do
             [true] = { 0.136269, 0.013627 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_LD3000'] = {
         ['Name'] = "LD-3000 C-RAM",
@@ -3674,7 +3881,8 @@ do
             [true] = { 0.136269, 0.013627 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_LD3000_stationary'] = {
         ['Name'] = "LD-3000 C-RAM",
@@ -3684,7 +3892,8 @@ do
             [true] = { 0.136269, 0.013627 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_MIM104_ANMPQ53_KAT1'] = {
         ['Name'] = "Patriot",
@@ -3694,7 +3903,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_F124'] = {
         ['Name'] = "F124 Frigate",
@@ -3704,7 +3914,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_BoxerSkyranger'] = {
         ['Name'] = "Boxer",
@@ -3714,7 +3925,8 @@ do
             [true] = { 0.136269, 0.013627 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_FlaRakRad'] = {
         ['Name'] = "FlaRakRad",
@@ -3724,7 +3936,8 @@ do
             [true] = { 0.024983, 0.012491 },
             [false] = HOUND.DB.Bands.D
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_SkynexHX'] = {
         ['Name'] = "Skynex",
@@ -3734,7 +3947,8 @@ do
             [true] = { 0.136269, 0.013627 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_Skyshield_FCU'] = {
         ['Name'] = "Skyshield",
@@ -3744,7 +3958,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['CH_TRML4D'] = {
         ['Name'] = "IRIS-T",
@@ -3754,7 +3969,8 @@ do
             [true] = { 0.516884, 0.082701 },
             [false] = { 0.136269, 0.013627 }
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['ELM2048_MMR'] = {
         ['Name'] = "Elta MMR",
@@ -3764,7 +3980,8 @@ do
             [true] = HOUND.DB.Bands.F,
             [false] = HOUND.DB.Bands.E
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['ELM2084_MMR_AD_SC'] = {
         ['Name'] = "Elta MMR",
@@ -3774,7 +3991,8 @@ do
             [true] = HOUND.DB.Bands.F,
             [false] = HOUND.DB.Bands.E
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['ELM2084_MMR_AD_RT'] = {
         ['Name'] = "Elta MMR",
@@ -3784,7 +4002,8 @@ do
             [true] = HOUND.DB.Bands.F,
             [false] = HOUND.DB.Bands.E
         },
-        ['Primary'] = false
+        ['Primary'] = false,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['ELM2084_MMR_WLR'] = {
         ['Name'] = "Elta MMR",
@@ -3794,17 +4013,19 @@ do
             [true] = HOUND.DB.Bands.F,
             [false] = HOUND.DB.Bands.E
         },
-        ['Primary'] = true
+        ['Primary'] = true,
+        ['numDistinctFreqs'] = 0
     }
     HOUND.DB.Radars['EWR P-14 Tall King'] = {
         ['Name'] = "Tall King",
-        ['Assigned'] = { "EWR" },
-        ['Role'] = { HOUND.DB.RadarType.EWR },
+        ['Assigned'] = { "EWR" , "SA-5" },
+        ['Role'] = { HOUND.DB.RadarType.EWR, HOUND.DB.RadarType.SEARCH },
         ['Band'] = {
-            [true] = HOUND.DB.Bands.A,
-            [false] = HOUND.DB.Bands.A
+            [true] = {1.620500,0.253203},
+            [false] = {1.620500,0.253203}
         },
-        ['Primary'] = false
+        ['Primary'] = false,
+        ['numDistinctFreqs'] = 4
     }
 end
 do
@@ -3815,7 +4036,12 @@ do
         if not HOUND.DB.Radars[typeName] then return end
         local data = l_mist.utils.deepCopy(HOUND.DB.Radars[typeName])
         data.isEWR = HOUND.setContainsValue(data.Role,HOUND.DB.RadarType.EWR)
-        data.Freqency = HOUND.DB.getEmitterFrequencies(data.Band)
+        local randomFactor = nil
+        if data.numDistinctFreqs and data.numDistinctFreqs > 0 then
+            local spacing = 1/(data.numDistinctFreqs+1)
+            randomFactor = HOUND.Clamp(HOUND.Gaussian(spacing * l_math.random(data.numDistinctFreqs), spacing/6),0,1)
+        end
+        data.Freqency = HOUND.DB.getEmitterFrequencies(data.Band, randomFactor)
         return data
     end
 
@@ -4377,8 +4603,8 @@ do
         return l_mist.utils.round(input/nearest) * nearest
     end
 
-    function HOUND.Utils.getNormalAngularError(variance)
-        local stddev = variance /2
+    function HOUND.Utils.getNormalAngularError(maxError)
+        local stddev = maxError / 2
         local Magnitude = l_math.sqrt(-2 * l_math.log(l_math.random())) * stddev
         local Theta = 2* math.pi * l_math.random()
 
@@ -5090,8 +5316,8 @@ do
         return string.format("%02d",DHMS.h)  .. string.format("%02d",DHMS.m)
     end
 
-    function HOUND.Utils.Elint.generateAngularError(variance)
-        local vec2 = HOUND.Utils.Vector.getRandomVec2(variance)
+    function HOUND.Utils.Elint.generateAngularError(maxError)
+        local vec2 = HOUND.Utils.Vector.getRandomVec2(maxError)
         local epsilon = {
             az = vec2.x,
             el = vec2.z
@@ -5183,9 +5409,9 @@ do
         return unitVector
     end
 
-    function HOUND.Utils.Vector.getRandomVec2(variance)
-        if type(variance) ~= 'number' or variance == 0 then return {x=0,y=0,z=0} end
-        local stddev = variance / 2
+    function HOUND.Utils.Vector.getRandomVec2(maxError)
+        if type(maxError) ~= 'number' or maxError == 0 then return {x=0,y=0,z=0} end
+        local stddev = maxError / 2
         local Magnitude = l_math.sqrt(-2 * l_math.log(l_math.random())) * stddev
         local Theta = PI_2 * l_math.random()
         local epsilon = HOUND.Utils.Vector.getUnitVector(Theta)
@@ -5195,9 +5421,9 @@ do
         return epsilon
     end
 
-    function HOUND.Utils.Vector.getRandomVec3(variance)
-        if type(variance) ~= 'number' or variance == 0 then return {x=0,y=0,z=0} end
-        local stddev = variance /2
+    function HOUND.Utils.Vector.getRandomVec3(maxError)
+        if type(maxError) ~= 'number' or maxError == 0 then return {x=0,y=0,z=0} end
+        local stddev = maxError / 2
         local Magnitude = l_math.sqrt(-2 * l_math.log(l_math.random())) * stddev
         local Theta = PI_2 * l_math.random()
         local Phi = PI_2 * l_math.random()
@@ -5385,14 +5611,17 @@ do
     local l_mist = HOUND.Mist
     local l_math = math
     local l_grpc = GRPC
+    local l_stts = HoundTTS or STTS
+    local l_houndTTS = HoundTTS
     local PI_2 = 2*l_math.pi
 
     HOUND.Utils.TTS = {}
 
     function HOUND.Utils.TTS.isAvailable()
         for _,engine in ipairs(HOUND.TTS_ENGINE) do
+            if engine == "HOUND" and l_houndTTS ~= nil then return true end
             if engine == "GRPC" and (l_grpc ~= nil and type(l_grpc.tts) == "function") then return true end
-            if engine == "STTS" and STTS ~= nil then return true end
+            if engine == "STTS" and l_stts ~= nil then return true end
         end
         return false
     end
@@ -5429,30 +5658,76 @@ do
         args.volume = args.volume or "1.0"
         args.name = args.name or "Hound"
         args.gender = args.gender or "female"
-        if type(args.engine) ~= "string" or not HOUND.setContainsValue(HOUND.TTS_ENGINE,args.engine) then
+        if type(args.tts_engine) ~= "string" or not HOUND.setContainsValue(HOUND.TTS_ENGINE,args.tts_engine) then
             for _,engine in ipairs(HOUND.TTS_ENGINE) do
-                if engine == "GRPC" and (l_grpc ~= nil and type(l_grpc.tts) == "function") then
-                    args.engine = engine
+                if engine == "HOUND" and (l_houndTTS ~= nil and type(l_houndTTS.Transmit) == "function") then
+                    args.tts_engine = engine
                     break
                 end
-                if engine == "STTS" and STTS ~= nil then
-                    args.engine = engine
+                if engine == "GRPC" and (l_grpc ~= nil and type(l_grpc.tts) == "function") then
+                    args.tts_engine = engine
+                    break
+                end
+                if engine == "STTS" and l_stts ~= nil then
+                    args.tts_engine = engine
                     break
                 end
             end
         end
-        if args.engine == "STTS" then
+        if args.tts_engine == "STTS" then
             return HOUND.Utils.TTS.TransmitSTTS(msg,coalitionID,args,transmitterPos)
         end
-        if args.engine == "GRPC" then
+        if args.tts_engine == "GRPC" then
             return HOUND.Utils.TTS.TransmitGRPC(msg,coalitionID,args,transmitterPos)
+        end
+        if args.tts_engine == "HOUND" then
+            return HOUND.Utils.TTS.TransmitHound(msg,coalitionID,args,transmitterPos)
         end
     end
 
     function HOUND.Utils.TTS.TransmitSTTS(msg,coalitionID,args,transmitterPos)
         args.modulation = args.modulation or HOUND.Utils.TTS.getdefaultModulation(args.freq)
         args.culture = args.culture or "en-US"
-        return STTS.TextToSpeech(msg,args.freq,args.modulation,args.volume,args.name,coalitionID,transmitterPos,args.speed,args.gender,args.culture,args.voice,args.googletts,args.azurecreds)
+        return l_stts.TextToSpeech(msg,args.freq,args.modulation,args.volume,args.name,coalitionID,transmitterPos,args.speed,args.gender,args.culture,args.voice,args.googletts,args.azurecreds)
+    end
+
+    function HOUND.Utils.TTS.TransmitHound(msg,coalitionID,args,transmitterPos)
+        local transmitter_params = {
+            name = args.name,
+            freq = args.freq,
+            modulation = args.modulation or HOUND.Utils.TTS.getdefaultModulation(args.freq),
+            point = transmitterPos,
+            coalition = coalitionID,
+            transmitter = args.transmitter or "srs"
+        }
+        local provider_params = {
+            provider = args.provider or "sapi",
+            culture = args.culture or "en-US",
+            gender = args.gender or "female",
+            voice = args.voice,
+            speed = args.speed,
+            volume = args.volume or "1.0"
+        }
+
+        if args.googletts then
+            provider_params.provider = "google"
+        end
+
+        if provider_params.provider == "piper" then
+            provider_params.voice = args.voice or "en_US-lessac-low"
+            provider_params.speaker = args.speaker
+        elseif provider_params.provider == "google" or provider_params.provider == "gcloud" then
+            provider_params.voice = args.voice or "google-auto"
+        elseif provider_params.provider == "aws" or provider_params.provider == "polly" then
+            provider_params.voice = args.voice or "Joanna"
+            provider_params.engine = provider_params.engine or "standard"
+        elseif provider_params.provider == "azure" then
+            provider_params.voice = args.voice
+        elseif provider_params.provider == "elevenlabs" then
+            provider_params.voice = args.voice or "pNInz6obpgDQGcFmaJgB" -- Default to "Adam"
+        end
+
+        return l_houndTTS.Transmit(msg,transmitter_params,provider_params)
     end
 
     function HOUND.Utils.TTS.TransmitGRPC(msg,coalitionID,args,transmitterPos)
@@ -5696,184 +5971,6 @@ do
         return inPolygon,intersectsPolygon
     end
 
-    function HOUND.Utils.Polygon.filterPointsByPolygon(points,polygon)
-        local filteredPoints = {}
-        if type(points) ~= "table" or type(polygon) ~= "table" then return filteredPoints end
-
-        for _,point in pairs(points) do
-            if l_mist.pointInPolygon(point,polygon) then
-                table.insert(filteredPoints,point)
-            end
-        end
-        return filteredPoints
-    end
-
-    function HOUND.Utils.Polygon.clipPolygons(subjectPolygon, clipPolygon)
-        local function inside (p, cp1, cp2)
-            return (cp2.x-cp1.x)*(p.z-cp1.z) > (cp2.z-cp1.z)*(p.x-cp1.x)
-        end
-
-        local function intersection (cp1, cp2, s, e)
-            local dcx, dcz = cp1.x-cp2.x, cp1.z-cp2.z
-            local dpx, dpz = s.x-e.x, s.z-e.z
-            local n1 = cp1.x*cp2.z - cp1.z*cp2.x
-            local n2 = s.x*e.z - s.z*e.x
-            local n3 = 1 / (dcx*dpz - dcz*dpx)
-            local x = (n1*dpx - n2*dcx) * n3
-            local z = (n1*dpz - n2*dcz) * n3
-            return {x=x, z=z}
-        end
-
-        if type(subjectPolygon) ~= "table" or type(clipPolygon) ~= "table" then return end
-
-        local outputList = subjectPolygon
-        local cp1 = clipPolygon[#clipPolygon]
-        for _, cp2 in ipairs(clipPolygon) do  -- WP clipEdge is cp1,cp2 here
-        local inputList = outputList
-        outputList = {}
-        local s = inputList[#inputList]
-        for _, e in ipairs(inputList) do
-            if inside(e, cp1, cp2) then
-            if not inside(s, cp1, cp2) then
-                outputList[#outputList+1] = intersection(cp1, cp2, s, e)
-            end
-            outputList[#outputList+1] = e
-            elseif inside(s, cp1, cp2) then
-            outputList[#outputList+1] = intersection(cp1, cp2, s, e)
-            end
-            s = e
-        end
-        cp1 = cp2
-        end
-        if HOUND.Length(outputList) > 0 then
-            return outputList
-        end
-        return nil
-    end
-
-    function HOUND.Utils.Polygon.giftWrap(points)
-        local function signedArea(p, q, r)
-            local cross = (q.z - p.z) * (r.x - q.x)
-                        - (q.x - p.x) * (r.z - q.z)
-            return cross
-        end
-        local function isCCW(p, q, r) return signedArea(p, q, r) < 0 end
-
-        local numPoints = #points
-        if numPoints < 3 then
-            return
-        end
-
-        local leftMostPointIndex = 1
-        for i = 1, numPoints do
-            if points[i].x < points[leftMostPointIndex].x then
-                leftMostPointIndex = i
-            end
-        end
-
-        local p = leftMostPointIndex
-        local hull = {} -- The convex hull to be returned
-
-        repeat
-            local q = points[p + 1] and p + 1 or 1
-            for i = 1, numPoints, 1 do
-                if isCCW(points[p], points[i], points[q]) then q = i end
-            end
-
-            table.insert(hull, points[q]) -- Save q to the hull
-            p = q  -- p is now q for the next iteration
-        until (p == leftMostPointIndex)
-
-        return hull
-    end
-
-    function HOUND.Utils.Polygon.circumcirclePoints(points)
-        local function calcCircle(p1,p2,p3)
-            local cx,cz, r
-            if HOUND.Utils.Dcs.isPoint(p1) and not p2 and not p3 then
-                return {x = p1.x, z = p1.z,r = 0}
-            end
-            if HOUND.Utils.Dcs.isPoint(p1) and HOUND.Utils.Dcs.isPoint(p2) and not p3 then
-                cx = 0.5 * (p1.x + p2.x)
-                cz = 0.5 * (p1.z + p2.z)
-            else
-                local a = p2.x - p1.x
-                local b = p2.z - p1.z
-                local c = p3.x - p1.x
-                local d = p3.z - p1.z
-                local e = a * (p2.x + p1.x) * 0.5 + b * (p2.z + p1.z) * 0.5
-                local f = c * (p3.x + p1.x) * 0.5 + d * (p3.z + p1.z) * 0.5
-                local det = a * d - b * c
-
-                cx = (d * e - b * f) / det
-                cz = (-c * e + a * f) / det
-            end
-
-            r = l_math.sqrt((p1.x - cx) * (p1.x - cx) + (p1.z - cz) * (p1.z - cz))
-            return {x=cx,z=cz,r=r}
-        end
-
-        local function isInCircle(p,c)
-            return ((c.x - p.x) * (c.x - p.x) + (c.z - p.z) * (c.z - p.z) <= c.r * c.r)
-        end
-
-        local function shuffle(a)
-            for i = #a, 2, -1 do
-                local j = l_math.random(i)
-                a[i], a[j] = a[j], a[i]
-            end
-            return a
-        end
-
-        local function mec(pts,n,boundary,b)
-            local circle
-            if b == 3 then
-                circle = calcCircle(boundary[1],boundary[2],boundary[3])
-            elseif (n == 1) and (b == 0) then circle = calcCircle(pts[1])
-            elseif (n == 0) and (b == 2) then circle = calcCircle(boundary[1], boundary[2])
-            elseif (n == 1) and (b == 1) then circle = calcCircle(boundary[1], pts[1])
-            else
-                circle = mec(pts, n-1, boundary, #boundary)
-                if ( not isInCircle(pts[n], circle)) then
-                    boundary[b+1] = pts[n]
-                    circle = mec(pts, n-1, boundary, #boundary)
-                end
-            end
-            return circle
-        end
-
-        local clonedPoints = l_mist.utils.deepCopy(points)
-        shuffle(clonedPoints)
-        return mec(clonedPoints, #points, {}, 0)
-    end
-
-    function HOUND.Utils.Polygon.getArea(polygon)
-        if not polygon or type(polygon) ~= "table" or HOUND.Length(polygon) < 2 then return 0 end
-        local a,b = 0,0
-        for i=1,HOUND.Length(polygon)-1 do
-            a = a + polygon[i].x * polygon[i+1].z
-            b = b + polygon[i].z * polygon[i+1].x
-        end
-        a = a + polygon[HOUND.Length(polygon)].x * polygon[1].z
-        b = b + polygon[HOUND.Length(polygon)].z * polygon[1].x
-        return l_math.abs((a-b)/2)
-    end
-
-    function HOUND.Utils.Polygon.clipOrHull(polyA,polyB)
-        if HOUND.Utils.Polygon.getArea(polyA) < HOUND.Utils.Polygon.getArea(polyB) then
-            polyA,polyB = polyB,polyA
-        end
-        local polygon = HOUND.Utils.Polygon.clipPolygons(polyA,polyB)
-        if Polygon == nil then
-            local points = l_mist.utils.deepCopy(polyA)
-            for _,point in pairs(polyB) do
-                table.insert(points,l_mist.utils.deepCopy(point))
-            end
-            polygon = HOUND.Utils.Polygon.giftWrap(points)
-        end
-        return polygon
-    end
-
     function HOUND.Utils.Polygon.azMinMax(poly,refPos)
         if not HOUND.Utils.Dcs.isPoint(refPos) or type(poly) ~= "table" or HOUND.Length(poly) < 2 or l_mist.pointInPolygon(refPos,poly) then
             return
@@ -5892,72 +5989,6 @@ do
 
     function HOUND.Utils.Cluster.gaussianKernel(value,bandwidth)
         return (1/(bandwidth*l_math.sqrt(2*l_math.pi))) * l_math.exp(-0.5*((value / bandwidth))^2)
-    end
-
-    function HOUND.Utils.Cluster.stdDev()
-        local instance = {}
-        instance.count = 0
-        instance.mean = 0
-        instance.M2 = 0
-        instance.update = function(self,value)
-            self.count = self.count + 1
-            local delta = value - self.mean
-            self.mean = self.mean + (delta / self.count)
-            local delta2 = value - self.mean
-            self.M2 = self.M2 + (delta * delta2)
-        end
-        instance.get = function (self)
-            if self.count < 2 then return nil end
-            return {
-                mean = self.mean,
-                variance = (self.M2/self.count),
-                sampleVariance = (self.M2/(self.count-1))
-            }
-        end
-        return instance
-    end
-
-    function HOUND.Utils.Cluster.weightedMean(origPoints,initPos,threashold,maxIttr)
-        if type(origPoints) ~= "table" or not HOUND.Utils.Dcs.isPoint(origPoints[1]) then return end
-        local points = HOUND.Utils.Geo.setHeight(l_mist.utils.deepCopy(origPoints))
-        if HOUND.Length(points) == 1 then return l_mist.utils.deepCopy(points[1]) end
-
-        local current_mean = initPos
-        if type(current_mean) == "boolean" and current_mean then
-            current_mean = points[l_math.random(HOUND.Length(points))]
-        end
-        if not HOUND.Utils.Dcs.isPoint(current_mean) then
-            current_mean = l_mist.getAvgPoint(origPoints)
-        end
-        if not HOUND.Utils.Dcs.isPoint(current_mean) then return end
-        threashold = threashold or 10
-        maxIttr = maxIttr or 50
-        local last_mean
-        local ittr = 0
-        local converged = false
-
-        while not converged do
-            last_mean = l_mist.utils.deepCopy(current_mean)
-            local totalDist = 0
-            local totalInvWeight = 0
-            for _,point in pairs(points) do
-                point.dist = l_mist.utils.get2DDist(last_mean,point)
-                totalDist = totalDist + point.dist
-            end
-            for _,point in pairs(points) do
-                point.w = 1/(point.dist/totalDist)
-                totalInvWeight = totalInvWeight + point.w
-            end
-
-            for _,point in pairs(points) do
-                local weight = point.w/totalInvWeight
-                current_mean = l_mist.vec.add(current_mean,l_mist.vec.scalar_mult(l_mist.vec.sub(point,current_mean),weight))
-            end
-            ittr = ittr + 1
-            converged = l_mist.utils.get2DDist(last_mean,current_mean) < threashold or ittr == maxIttr
-        end
-        HOUND.Utils.Geo.setHeight(current_mean)
-        return l_mist.utils.deepCopy(current_mean)
     end
 
     function HOUND.Utils.Cluster.getDeltaSubsetPercent(Table,referencePos,NthPercentile,returnRelative)
@@ -6000,82 +6031,6 @@ do
         end
         estimate.y = land.getHeight({x=estimate.x, y=estimate.z}) or 0
         return estimate
-    end
-
-    function HOUND.Utils.Cluster.WLS_GDOP(measurements, initial_guess, max_iter, tol)
-        local l_math = math
-        local x, z = initial_guess.x, initial_guess.z
-        max_iter = max_iter or 10
-        tol = tol or 1
-
-        local function computeJacobian(x, z, xi, zi)
-            local dx = x - xi
-            local dz = z - zi
-            local r2 = dx*dx + dz*dz
-            return {-dz/r2, dx/r2}
-        end
-
-        local H, y, W
-        local Cov
-
-        for iter = 1, max_iter do
-            H, y, W = {}, {}, {}
-
-            for i, m in ipairs(measurements) do
-
-                local jac = computeJacobian(x, z, m.platformPos.x, m.platformPos.z)
-                local pred_theta = l_math.atan2(z - m.platformPos.z, x - m.platformPos.x)
-                local residual = (m.az - pred_theta + l_math.pi) % (2*l_math.pi) - l_math.pi
-
-                H[#H+1] = jac
-                y[#y+1] = {residual}
-                local sigma2 = (m.platformPrecision or 1)^2 * (m.gdop or 1)
-                W[#W+1] = {1/sigma2}
-            end
-
-            local Hmat = HOUND.Matrix(H)
-            local ymat = HOUND.Matrix(y)
-            local Wmat = HOUND.Matrix:new(#W, #W)
-            for i=1,#W do Wmat[i][i] = W[i][1] end
-
-            local Ht = HOUND.Matrix.transpose(Hmat)
-            local HtW = HOUND.Matrix.mul(Ht, Wmat)
-            local HtWH = HOUND.Matrix.mul(HtW, Hmat)
-            local HtWy = HOUND.Matrix.mul(HtW, ymat)
-            local HtWH_inv = HOUND.Matrix.invert(HtWH)
-            if not HtWH_inv then break end
-            Cov = HtWH_inv -- always keep the last HtWH_inv in the Cov matrix
-
-            local delta = HOUND.Matrix.mul(HtWH_inv, HtWy)
-            local dx, dz = delta[1][1], delta[2][1]
-
-            x = x + dx
-            z = z + dz
-            if l_math.abs(dx) < tol and l_math.abs(dz) < tol then break end
-        end
-
-        local a = Cov[1][1]
-        local b = Cov[1][2]
-        local c = Cov[2][2]
-        local trace = a + c
-        local det = a * c - b * b
-        local eig1 = trace/2 + l_math.sqrt((trace*trace)/4 - det)
-        local eig2 = trace/2 - l_math.sqrt((trace*trace)/4 - det)
-
-        local major = l_math.sqrt(l_math.max(eig1, eig2))
-        local minor = l_math.sqrt(l_math.min(eig1, eig2))
-        local theta = 0.5 * l_math.atan2(2*b, a - c)
-
-        local uncertenty_data = {}
-        uncertenty_data.major = HOUND.Mist.utils.round(major)
-        uncertenty_data.minor = HOUND.Mist.utils.round(minor)
-        uncertenty_data.theta = (theta + math.pi*2) % math.pi -- [0, pi]
-        uncertenty_data.az = HOUND.Mist.utils.round(l_math.deg(uncertenty_data.theta))
-        uncertenty_data.r  = (major + minor) / 2
-
-        local solution = {x = x, z = z, y = land.getHeight({x=x, y=z}) or 0}
-
-        return solution, uncertenty_data
     end
 end    --- HOUND.EventHandler
 do
@@ -6437,10 +6392,11 @@ do
         return Kalman
     end
 
-    function HOUND.Contact.Estimator.Kalman.AzFilter(noise)
+    function HOUND.Contact.Estimator.Kalman.AzFilter(maxError)
         local Kalman = {}
         Kalman.P = 0.5
-        Kalman.noise = noise
+        local sigma = maxError / 2
+        Kalman.noiseVariance = sigma * sigma
 
         Kalman.estimated = nil
 
@@ -6449,16 +6405,17 @@ do
                 self.estimated = newAz
             end
             local predAz = self.estimated
-            local noiseP = self.noise
+            local noiseVar = self.noiseVariance
             if type(predictedAz) == "number" then
                 predAz = predictedAz
             end
             if type(processNoise) == "number" then
-                noiseP = processNoise
+                local sigma_p = processNoise / 2
+                noiseVar = sigma_p * sigma_p
             end
 
-            self.P = self.P + l_math.sqrt(noiseP) -- add "process noise" in the form of standard diviation
-            local K = self.P / (self.P + self.noise)
+            self.P = self.P + noiseVar -- add process noise as variance
+            local K = self.P / (self.P + self.noiseVariance)
             local deltaAz = newAz - predAz
             self.estimated = ((self.estimated + K * (deltaAz)) + TwoPI) % TwoPI
             self.P = (1 - K) * self.P
@@ -6545,7 +6502,6 @@ do
         setmetatable(instance, HOUND.Contact.Estimator.UPLKF)
         instance.t0 = timestamp or timer.getAbsTime()
         instance.mobile = isMobile or false
-        instance._maxNoise = 0
         v0 = v0 or { z = 0, x = 0 }
 
         instance.state = matrix({
@@ -6564,7 +6520,7 @@ do
             { 0,                                0,                                0,                                l_math.pow(velocity_accuracy, 2) }
         })
 
-        if HOUND.DEBUG then
+        if HOUND.KALMAN_DEBUG and  HOUND.DEBUG then
             instance.marker = HoundUtils.Marker.create()
             trigger.action.outText("new KF: x:" .. instance.state[2][1] .. "| y: " .. instance.state[1][1], 20)
         end
@@ -6578,6 +6534,36 @@ do
             pos = HoundUtils.Geo.setPointHeight(pos)
             return pos
         end
+    end
+
+    function HOUND.Contact.Estimator.UPLKF:getUncertainty(confidence)
+        local k = confidence or 2.45
+
+        local P_xx = self.P[1][1]  -- variance in x (North)
+        local P_zz = self.P[2][2]  -- variance in z (East)
+        local P_xz = self.P[1][2]  -- covariance x-z
+
+        local trace = P_xx + P_zz
+        local det = P_xx * P_zz - P_xz * P_xz
+        local discriminant = l_math.max(0, trace * trace - 4 * det)  -- ensure non-negative
+        local sqrt_disc = l_math.sqrt(discriminant)
+
+        local lambda1 = (trace + sqrt_disc) / 2  -- larger eigenvalue
+        local lambda2 = (trace - sqrt_disc) / 2  -- smaller eigenvalue
+
+        local major = k * l_math.sqrt(l_math.max(0, lambda1))
+        local minor = k * l_math.sqrt(l_math.max(0, lambda2))
+
+        local theta = 0.5 * l_math.atan2(2 * P_xz, P_xx - P_zz)
+
+        local uncertenty_data = {}
+        uncertenty_data.major = l_math.floor(major * 2 + 0.5)  -- full axis length, rounded
+        uncertenty_data.minor = l_math.floor(minor * 2 + 0.5)  -- full axis length, rounded
+        uncertenty_data.theta = theta
+        uncertenty_data.az = l_math.floor(l_math.deg(theta) + 0.5)
+        uncertenty_data.r = (uncertenty_data.major + uncertenty_data.minor) / 4
+
+        return uncertenty_data
     end
 
     function HOUND.Contact.Estimator.UPLKF.normalizeAz(azimuth)
@@ -6607,23 +6593,23 @@ do
         return Ft
     end
 
-    function HOUND.Contact.Estimator.UPLKF:getQ(deltaT, sigma)
+    function HOUND.Contact.Estimator.UPLKF:getQ(deltaT)
         local dT = deltaT or 10
-        local sigma_a = sigma or self._maxNoise
-        sigma_a = sigma_a / 2
+        local q_a = self.mobile and 0.5 or 0.01
+        local q = q_a * q_a  -- variance
 
         return matrix({
-            { 0.25 * l_math.pow(dT, 4) * sigma_a, 0,                                  0.5 * l_math.pow(dT, 3) * sigma_a, 0 },
-            { 0,                                  0.25 * l_math.pow(dT, 4) * sigma_a, 0,                                 0.5 * l_math.pow(dT, 3) * sigma_a },
-            { 0.5 * l_math.pow(dT, 3) * sigma_a,  0,                                  l_math.pow(dT, 2) * sigma_a,       0 },
-            { 0,                                  0.5 * l_math.pow(dT, 3) * sigma_a,  0,                                 l_math.pow(dT, 2) * sigma_a },
+            { (dT^4)/4 * q, 0,             (dT^3)/2 * q, 0 },
+            { 0,            (dT^4)/4 * q,  0,            (dT^3)/2 * q },
+            { (dT^3)/2 * q, 0,             (dT^2) * q,   0 },
+            { 0,            (dT^3)/2 * q,  0,            (dT^2) * q },
         })
     end
 
     function HOUND.Contact.Estimator.UPLKF:predictStep(X, P, timestep, Q)
         local F = self:getF(timestep)
         local Q = Q or self:getQ(timestep)
-        local x_hat = F * X + Q
+        local x_hat = F * X
         local P_hat = F * P * F:transpose() + Q
 
         x_hat[3][1] = HoundUtils.Mapping.clamp(x_hat[3][1], -30.0, 30.0)
@@ -6642,44 +6628,53 @@ do
     function HOUND.Contact.Estimator.UPLKF:update(p0, z, timestamp, z_err)
         timestamp = timestamp or timer.getAbsTime()
         local deltaT = timestamp - self.t0
-        self.t0 = timestamp
-        local err = z_err or l_math.rad(HOUND.MAX_ANGULAR_RES_DEG)
-        local Ri = err
-        self._maxNoise = l_math.max(self._maxNoise, err)
 
-        local Q = self:getQ(deltaT)
-        local x_hat, P_k = self:predictStep(self.state, self.P, deltaT, Q)
+        local sigma_r = (z_err or l_math.rad(HOUND.MAX_ANGULAR_RES_DEG)) / 2
+
+        local x_hat, P_k
+        if deltaT < 0.5 then
+            x_hat = self.state
+            P_k = self.P
+        else
+            self.t0 = timestamp  -- only update time reference for significant time steps
+            local Q = self:getQ(deltaT)
+            x_hat, P_k = self:predictStep(self.state, self.P, deltaT, Q)
+        end
 
         local estimatedPos = self:getEstimatedPos(x_hat)
-        local d_k = HoundUtils.Geo.get2DDistance(p0, estimatedPos)
 
-        local z_bearing = self.normalizeAz(z)
-        local z_hat_bearing = self.normalizeAz(HoundUtils.Elint.getAzimuth(p0, estimatedPos))
+        local beta_measured = z  -- measured azimuth (with noise)
 
-        local cos_beta_k, sin_beta_k = l_math.cos(z_hat_bearing), l_math.sin(z_hat_bearing)
-        local m_k = cos_beta_k * estimatedPos.x + sin_beta_k * estimatedPos.z - d_k
+        local cos_beta_k, sin_beta_k = l_math.cos(beta_measured), l_math.sin(beta_measured)
+
+        local m_k = cos_beta_k * (estimatedPos.x - p0.x) + sin_beta_k * (estimatedPos.z - p0.z)
+
+        local m_min = 100
+        local m_sign = (m_k >= 0) and 1 or -1
+        m_k = m_sign * l_math.sqrt(m_k * m_k + m_min * m_min)
 
         local H_k = matrix({
             { sin_beta_k / m_k, -cos_beta_k / m_k, 0, 0 }
         })
 
-        local z_k = matrix({ { z_bearing } }) / m_k
+        local cos_z, sin_z = l_math.cos(beta_measured), l_math.sin(beta_measured)
+        local z_pseudo = sin_z * p0.x - cos_z * p0.z
+        local z_k = matrix({ { z_pseudo / m_k } })
 
-        local R_k = matrix({ { Ri } })
+        local R_k = matrix({ { sigma_r * sigma_r } })
         local S_k = H_k * P_k * H_k:transpose() + R_k
 
         local K_k = P_k * H_k:transpose() * S_k:invert()
 
         local y_k = z_k - H_k * x_hat
 
-        HOUND.Logger.debug("z_bearing: " .. z_bearing .. "\n z_hat_bearing: " .. z_hat_bearing)
         self.state = x_hat + (K_k * y_k)
         self.P = (matrix(4, "I") - K_k * H_k) * P_k
 
         self.state[3][1] = HoundUtils.Mapping.clamp(self.state[3][1], -30.0, 30.0)
         self.state[4][1] = HoundUtils.Mapping.clamp(self.state[4][1], -30.0, 30.0)
 
-        if HOUND.DEBUG then
+        if HOUND.KALMAN_DEBUG and HOUND.DEBUG then
             self:updateMarker()
         end
     end
@@ -6914,23 +6909,25 @@ do
     function HOUND.Contact.Emitter:KalmanPredict(timestamp)
         timestamp = timestamp or timer.getAbsTime()
         if HOUND.ENABLE_KALMAN and self.Kalman then
-            HOUND.Logger.debug(self:getName() .. " is KalmanPredict")
             self.Kalman:predict(timestamp)
         end
 
     end
     function HOUND.Contact.Emitter:AddPoint(datapoint)
         if HOUND.ENABLE_KALMAN and not self.Kalman and HoundUtils.Dcs.isPoint(self.pos.p) then
-            if self.uncertenty_data.r < 5000 then
-                self.Kalman = HOUND.Contact.Estimator.UPLKF(self.pos.p,{x=0,z=0},self.last_seen,self.uncertenty_data.r)
+            if self.uncertenty_data.r < 15000 then
+                self.Kalman = HOUND.Contact.Estimator.UPLKF(self.pos.p,{x=0,z=0},self.last_seen,self.uncertenty_data.major)
             end
         end
         self.last_seen = datapoint.t
         if HOUND.ENABLE_KALMAN and self.Kalman then
-            HOUND.Logger.debug(self:getName() .. " is KalmanUpdate")
             self.Kalman:update(datapoint.platformPos,datapoint.az,datapoint.t,datapoint.platformPrecision)
         end
-
+        self._platforms = self._platforms or {}
+        self._platforms[datapoint.platformName] = datapoint.t
+        if HOUND.ENABLE_KALMAN and self.Kalman then
+            return
+        end
         if HOUND.Length(self._dataPoints[datapoint.platformId]) == 0 then
             self._dataPoints[datapoint.platformId] = {}
         end
@@ -6959,16 +6956,13 @@ do
             if  DeltaT >= HOUND.DATAPOINTS_INTERVAL then
                 table.insert(self._dataPoints[datapoint.platformId], 1, datapoint)
             else
-                local deallocate = self._dataPoints[datapoint.platformId][1]
                 self._dataPoints[datapoint.platformId][1] = datapoint
-                deallocate = nil
             end
         end
 
         for i=HOUND.Length(self._dataPoints[datapoint.platformId]),1,-1 do
             if self._dataPoints[datapoint.platformId][i]:getAge() > HOUND.CONTACT_TIMEOUT then
-                local deallocate = table.remove(self._dataPoints[datapoint.platformId])
-                deallocate = nil
+                table.remove(self._dataPoints[datapoint.platformId])
             else
                 i=1
             end
@@ -6977,8 +6971,7 @@ do
         if self:countPlatforms(true) > 0 then
             local pointsPerPlatform = l_math.ceil(HOUND.DATAPOINTS_NUM/self:countPlatforms(true))
             while HOUND.Length(self._dataPoints[datapoint.platformId]) > pointsPerPlatform do
-                local deallocate = table.remove(self._dataPoints[datapoint.platformId])
-                deallocate = nil
+                table.remove(self._dataPoints[datapoint.platformId])
             end
         end
     end
@@ -7012,9 +7005,8 @@ do
         return pos
     end
 
-    function HOUND.Contact.Emitter.calculateEllipse(estimatedPositions,refPos,giftWrapped)
+    function HOUND.Contact.Emitter.calculateEllipse(estimatedPositions,refPos)
         local percentile = HOUND.ELLIPSE_PERCENTILE
-        if giftWrapped then percentile = 1.0 end
         local RelativeToPos = HoundUtils.Cluster.getDeltaSubsetPercent(estimatedPositions,refPos,percentile,true)
 
         local min = {}
@@ -7098,13 +7090,45 @@ do
             return self.state
         end
 
+        if HOUND.ENABLE_KALMAN and self.Kalman then
+            local newContact = (self.state == HOUND.EVENTS.RADAR_NEW)
+
+            self.pos.p = self.Kalman:getEstimatedPos()
+            self.uncertenty_data = self.Kalman:getUncertainty()
+            self.uncertenty_data.az = l_mist.utils.round(l_math.deg((self.uncertenty_data.theta+l_mist.getNorthCorrection(self.pos.p)+PI_2)%PI_2))
+
+            self:calculateExtrasPosData(self.pos)
+
+            if self.state == HOUND.EVENTS.RADAR_ASLEEP then
+                self.state = HOUND.EVENTS.SITE_ALIVE
+            else
+                self.state = HOUND.EVENTS.RADAR_UPDATED
+            end
+
+            if self._platforms then
+                local detected_by = {}
+                local currentTime = timer.getAbsTime()
+                for name, lastSeen in pairs(self._platforms) do
+                    if (currentTime - lastSeen) <= HOUND.CONTACT_TIMEOUT then
+                        table.insert(detected_by, name)
+                    end
+                end
+                self.detected_by = detected_by
+            end
+
+            if newContact and HoundUtils.Dcs.isPoint(self.pos.p) ~= nil and self.isEWR == false then
+                self.state = HOUND.EVENTS.RADAR_DETECTED
+            end
+
+            self:queueEvent(self.state)
+            return self.state
+        end
+
         local newContact = (self.state == HOUND.EVENTS.RADAR_NEW)
         local mobileDataPoints = {}
         local staticDataPoints = {}
         local estimatePositions = {}
-        local platforms = {}
         local staticPlatformsOnly = true
-        local staticClipPolygon2D = nil
         local AllDataPoints = {}
 
         for _,platformDatapoints in pairs(self._dataPoints) do
@@ -7116,7 +7140,6 @@ do
                         staticPlatformsOnly = false
                         table.insert(mobileDataPoints,datapoint)
                     end
-                    platforms[datapoint.platformName] = 1
                 end
             end
         end
@@ -7154,23 +7177,8 @@ do
         end
 
         if HOUND.Length(estimatePositions) > 2 or (HOUND.Length(estimatePositions) > 0 and staticPlatformsOnly) then
-
-                if HOUND.ENABLE_BETTER_SCORE then
-                    self.pos.p = HoundUtils.Cluster.WeightedCentroid(estimatePositions)
-                else
-                    self.pos.p = HoundUtils.Cluster.weightedMean(estimatePositions,self.pos.p)
-
-                    if HOUND.Length(estimatePositions) > 10 then
-                        self.pos.p = HoundUtils.Cluster.weightedMean(
-                            HoundUtils.Cluster.getDeltaSubsetPercent(estimatePositions,self.pos.p,HOUND.ELLIPSE_PERCENTILE),
-                            self.pos.p)
-                    end
-                end
-
-                self.uncertenty_data = self.calculateEllipse(estimatePositions,self.pos.p)
-                if type(staticClipPolygon2D) == "table" and ( staticPlatformsOnly) then
-                    self.uncertenty_data = self.calculateEllipse(staticClipPolygon2D,self.pos.p,true)
-                end
+            self.pos.p = HoundUtils.Cluster.WeightedCentroid(estimatePositions)
+            self.uncertenty_data = self.calculateEllipse(estimatePositions,self.pos.p)
 
             self.uncertenty_data.az = l_mist.utils.round(l_math.deg((self.uncertenty_data.theta+l_mist.getNorthCorrection(self.pos.p)+PI_2)%PI_2))
 
@@ -7182,14 +7190,16 @@ do
                 self.state = HOUND.EVENTS.RADAR_UPDATED
             end
 
-            local detected_by = {}
-
-            for key,_ in pairs(platforms) do
-                table.insert(detected_by,key)
+            if self._platforms then
+                local detected_by = {}
+                local currentTime = timer.getAbsTime()
+                for name, lastSeen in pairs(self._platforms) do
+                    if (currentTime - lastSeen) <= HOUND.CONTACT_TIMEOUT then
+                        table.insert(detected_by, name)
+                    end
+                end
+                self.detected_by = detected_by
             end
-            local deallocate = self.detected_by
-            self.detected_by = detected_by
-            deallocate = nil
         end
 
         if newContact and HoundUtils.Dcs.isPoint(self.pos.p) ~= nil and self.isEWR == false then
@@ -7971,7 +7981,6 @@ do
         end
         if drawSite then
             self:updateMarker(HOUND.MARKER.SITE_ONLY)
-            HOUND.Logger.debug(self:getName() .. " Done")
         end
     end
 
@@ -8702,6 +8711,10 @@ do
                     coalition = self.settings:getCoalition()
                 })
                 return true
+        end
+        if candidate ~= nil and HOUND.setContainsValue(self.platforms,candidate) then
+            HOUND.Logger.debug("[Hound] - "..platformName.." Already registered platform.")
+            return false
         end
         HOUND.Logger.warn("[Hound] - Failed to add platform "..platformName..". Make sure you use unit name and that all requirments are met.")
         return false
@@ -10395,6 +10408,7 @@ do
 
     function HoundElint:AlertOnLaunch(fireUnit)
         if not self:getAlertOnLaunch() or (not HoundUtils.Dcs.isGroup(fireUnit) and not HoundUtils.Dcs.isUnit(fireUnit)) then return end
+        HOUND.Logger.debug("Launch Alert called for " .. fireUnit:getName())
 
         self.contacts:AlertOnLaunch(fireUnit)
     end
@@ -11367,7 +11381,7 @@ do
             local grp = DcsEvent.initiator:getGroup()
             if HoundUtils.Dcs.isGroup(grp) then
                 self.contacts:Sniff(grp:getName())
-                if DcsEvent.weapon:getDesc().category ~= Weapon.Category.Missile then return end
+                if DcsEvent.weapon:getDesc().category ~= Weapon.Category.MISSILE then return end
                 local tgtPos = nil
                 local wpnTgt = DcsEvent.weapon:getTarget()
                 if HoundUtils.Dcs.isUnit(wpnTgt) then
@@ -11376,7 +11390,7 @@ do
                 if HoundUtils.Dcs.isPoint(tgtPos) then
                     HoundUtils.Geo.setPointHeight(tgtPos)
                 end
-                self.contacts:ensureSitePrimaryHasPos(grp:getName(),tgtPos)
+                self.contacts:ensureSitePrimaryHasPos(grp:getName(),tgtPos) -- pass target position, if no position available, it will alert on target position
                 self:AlertOnLaunch(grp)
             end
         end
@@ -11387,14 +11401,8 @@ do
             and DcsEvent.initiator:getCoalition() == self.settings:getCoalition()
         then
             local unit = DcsEvent.initiator
-            local type = unit:getTypeName()
-            HOUND.Logger.debug("S_EVENT_WEAPON_ADD for " .. unit:getName() .. " (" .. type .. ") with weapon " .. DcsEvent.weapon_name )
-
             if not HOUND.DB.isValidPlatform(unit,DcsEvent.weapon_name) then return end
-            HOUND.Logger.debug(self:countPlatforms())
-            HOUND.Logger.debug("S_EVENT_WEAPON_ADD for " .. unit:getName() .. " (" .. type .. ") with weapon " .. DcsEvent.weapon_name .. " add platform")
             self:addPlatform(unit:getName())
-            HOUND.Logger.debug(self:countPlatforms())
         end
     end
 
@@ -11412,4 +11420,4 @@ do
     trigger.action.outText("Hound ELINT ("..HOUND.VERSION..") is loaded.", 15)
     env.info("[Hound] - finished loading (".. HOUND.VERSION..")")
 end
--- Hound version 0.4.5 - Compiled on 2025-12-04 11:36
+-- Hound version 0.5.0 - Compiled on 2026-02-24 22:19
