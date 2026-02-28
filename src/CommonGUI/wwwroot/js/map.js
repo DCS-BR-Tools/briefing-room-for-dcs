@@ -520,3 +520,28 @@ function GetNatoIcon(id, invert = false) {
             }
     }
 }
+
+
+function AddLegend(map) {
+var legend = L.control({ position: "topright" });
+
+legend.onAdd = function(map) {
+  var div = L.DomUtil.create("div", "legend");
+  div.innerHTML += "<h4>Legend</h4>";
+  div.innerHTML += `<i style="background: ${situationColors.BLUE}"></i><span>Blue Zone</span><br>`;
+  div.innerHTML += `<i style="background: ${situationColors.RED}"></i><span>Red Zone</span><br>`;
+  div.innerHTML += `<i style="background: ${situationColors.NEUTRAL}"></i><span>Neutral Zone (No Spawn)</span><br>`;
+  div.innerHTML += `<i style="background: ${situationColors.COMBAT}"></i><span>Combat Zone (Only Spawn)</span><br>`;
+  div.innerHTML += `<i style="background: ${situationColors.WATER}"></i><span>Water</span><br>`;
+  div.innerHTML += `<i style="background: ${situationColors.LAND}"></i><span>Land</span><br>`;
+  div.innerHTML += `<i style="background: ${situationColors.FRONTLINE}"></i><span>Front Line</span><br>`;
+  div.innerHTML += '<i class="icon" style="background-image: url(_content/CommonGUI/img/nato-icons/GREEN_AIRBASE.svg);background-repeat: no-repeat;"></i><span>Airbase</span><br>';
+  div.innerHTML += '<span>Spawn Points (sample)</span><br>';
+  div.innerHTML += '<i class="icon" style="background-image: url(_content/CommonGUI/img/nato-icons/RED_VEHICLE.svg);background-repeat: no-repeat; background-color: transparent;"></i><span>Small Spawn</span><br>';
+  div.innerHTML += '<i class="icon" style="background-image: url(_content/CommonGUI/img/nato-icons/GREEN_VEHICLE.svg);background-repeat: no-repeat; background-color: transparent;"></i><span>Medium Spawn</span><br>';
+  div.innerHTML += '<i class="icon" style="background-image: url(_content/CommonGUI/img/nato-icons/BLUE_VEHICLE.svg);background-repeat: no-repeat; background-color: transparent;"></i><span>Large Spawn</span><br>';
+  return div;
+};
+
+legend.addTo(map);
+}
