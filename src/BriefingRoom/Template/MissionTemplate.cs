@@ -21,6 +21,7 @@ If not, see https://www.gnu.org/licenses/
 */
 
 using BriefingRoom4DCS.Data;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -52,12 +53,12 @@ namespace BriefingRoom4DCS.Template
         private List<MissionTemplatePackage> AircraftPackages_ = new();
         public Dictionary<string, double[]> CarrierHints { get; set; } = new Dictionary<string, double[]>();
 
-        public MissionTemplate(IDatabase database): base(database)
+        public MissionTemplate(IDatabase database) : base(database)
         {
             Clear();
         }
 
-        public MissionTemplate(IDatabase database, string filePath): base(database)
+        public MissionTemplate(IDatabase database, string filePath) : base(database)
         {
             Clear();
             LoadFromFile(filePath);
@@ -107,6 +108,10 @@ namespace BriefingRoom4DCS.Template
             BriefingMissionName = ini.GetValue("Briefing", "MissionName", BriefingMissionName);
             BriefingMissionDescription = ini.GetValue("Briefing", "MissionDescription", BriefingMissionDescription).Replace("\\n", "\n");
 
+            ContextCustomFrontLine = ini.GetValueArray<string>("Context", "CustomFrontLine", ';').Select(x => x.Split(',').Select(x => double.Parse(x)).ToList()).ToList();
+             foreach (string key in ini.GetTopLevelKeysInSection("CustomCombatZones"))
+                ContextCustomCombatZones.Add(ini.GetValueArray<string>("CustomCombatZones", key, ';').Select(x => x.Split(',').Select(x => double.Parse(x)).ToList()).ToList());
+
             EnvironmentSeason = ini.GetValue("Environment", "Season", EnvironmentSeason);
             EnvironmentTimeOfDay = ini.GetValue("Environment", "TimeOfDay", EnvironmentTimeOfDay);
             EnvironmentWeatherPreset = ini.GetValue("Environment", "WeatherPreset", EnvironmentWeatherPreset);
@@ -154,6 +159,11 @@ namespace BriefingRoom4DCS.Template
             ini.SetValue("Briefing", "MissionName", BriefingMissionName);
             ini.SetValue("Briefing", "MissionDescription", BriefingMissionDescription.Replace("\n", "\\n"));
 
+            ini.SetValueArray("Context", "CustomFrontLine", ContextCustomFrontLine.Select(x => string.Join(",", x)).ToArray(), ';');
+
+            for (i = 0; i < ContextCustomCombatZones.Count; i++)
+                ini.SetValueArray("CustomCombatZones", $"CustomCombatZones{i:000}", ContextCustomCombatZones[i].Select(x => string.Join(",", x)).ToArray(), ';');
+
             ini.SetValue("Environment", "Season", EnvironmentSeason);
             ini.SetValue("Environment", "TimeOfDay", EnvironmentTimeOfDay);
             ini.SetValue("Environment", "WeatherPreset", EnvironmentWeatherPreset);
@@ -187,7 +197,8 @@ namespace BriefingRoom4DCS.Template
                 item.AssignAlias(AircraftPackages.IndexOf(item));
         }
 
-        public List<MissionTemplateSubTask> GetTasksFlat() {
+        public List<MissionTemplateSubTask> GetTasksFlat()
+        {
             List<MissionTemplateSubTask> lst = new();
             foreach (var obj in Objectives)
             {
