@@ -159,13 +159,13 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
             {
                 var coordOptionsLinq = Enumerable.Range(0, 300)
                     .Select(x => Coordinates.CreateRandom(distanceOrigin1, searchRange))
-                    .Where(x => CheckNotInHostileCoords(ref mission, x, coalition) && CheckNotInNoSpawnCoords(mission.SituationDB, x) && CheckInCombatZone(mission, x) && CheckNotFarFromBorders(ref mission, x, borderLimit, coalition));
+                    .Where(x => CheckNotInHostileCoords(ref mission, x, coalition) && CheckNotInNoSpawnCoords(mission.SituationDB, x) && CheckNotFarFromBorders(ref mission, x, borderLimit, coalition));
 
                 if (secondSearchRange.HasValue)
                     coordOptionsLinq = coordOptionsLinq.Where(x => secondSearchRange.Value.Contains(distanceOrigin2.Value.GetDistanceFrom(x)));
 
                 if (validTypes.First() == SpawnPointType.Sea) //sea position
-                    coordOptionsLinq = coordOptionsLinq.Where(x => CheckInSea(mission.TheaterDB, x));
+                    coordOptionsLinq = coordOptionsLinq.Where(x => CheckInSea(mission.TheaterDB, x) && CheckInCombatZone(mission, x));
 
                 var coordOptions = coordOptionsLinq.ToList();
                 if (coordOptions.Count > 0)
