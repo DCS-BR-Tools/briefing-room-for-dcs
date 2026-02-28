@@ -6,7 +6,7 @@ const situationMapLayers = {
   FRONTLINE: undefined,
 };
 
-let leafSituationMap, drawnItems, SPGroupS, SPGroupM, SPGroupL;
+let leafSituationMap, situationDrawnItems, SPGroupS, SPGroupM, SPGroupL;
 
 async function RenderEditorMap(map, spawnPoints, airbaseData, landWaterZones) {
   console.log("SpawnPoints", spawnPoints.length);
@@ -20,15 +20,17 @@ async function RenderEditorMap(map, spawnPoints, airbaseData, landWaterZones) {
     L.esri.basemapLayer("Imagery").addTo(leafSituationMap);
     L.esri.basemapLayer("ImageryLabels").addTo(leafSituationMap);
 
-    drawnItems = new L.FeatureGroup();
-    leafSituationMap.addLayer(drawnItems);
+    situationDrawnItems = new L.FeatureGroup();
+    leafSituationMap.addLayer(situationDrawnItems);
 
     AddDrawControls();
-    leafSituationMap.on("draw:created", onDrawCreated);
+    leafSituationMap.on(
+      "draw:created",
+      onDrawCreated(situationDrawnItems, situationMapLayers),
+    );
+    leafSituationMap.on("draw:deleted", onDrawDeleted(situationMapLayers));
 
-    leafSituationMap.on("draw:deleted", onDrawDeleted);
-
-    AddLegend(leafSituationMap);
+    AddSituationLegend(leafSituationMap);
 
     AddSpawnButtonsToMap(spawnPoints);
 
@@ -76,50 +78,25 @@ function SetSituationZones(dataString, map) {
   const data = JSON.parse(dataString);
   if (data.combatZones) {
     situationMapLayers.COMBAT = data.combatZones.map((zone) =>
-      SetSituationZone(zone, projector, situationColors.COMBAT),
-    );
-    situationMapLayers.RED = data.redZones.map((zone) =>
-      SetSituationZone(zone, projector, situationColors.RED),
-    );
-    situationMapLayers.BLUE = data.blueZones.map((zone) =>
-      SetSituationZone(zone, projector, situationColors.BLUE),
-    );
-    situationMapLayers.NEUTRAL = data.noSpawnZones.map((zone) =>
-      SetSituationZone(zone, projector, situationColors.NEUTRAL),
+      SetZone(zone, projector, situationColors.COMBAT, situationDrawnItems),
     );
   }
+  situationMapLayers.RED = data.redZones.map((zone) =>
+    SetZone(zone, projector, situationColors.RED, situationDrawnItems),
+  );
+  situationMapLayers.BLUE = data.blueZones.map((zone) =>
+    SetZone(zone, projector, situationColors.BLUE, situationDrawnItems),
+  );
+  situationMapLayers.NEUTRAL = data.noSpawnZones.map((zone) =>
+    SetZone(zone, projector, situationColors.NEUTRAL, situationDrawnItems),
+  );
   if (data.frontLine) {
-    situationMapLayers.FRONTLINE = SetSituationLine(
+    situationMapLayers.FRONTLINE = SetLine(
       data.frontLine,
       projector,
       situationColors.FRONTLINE,
     );
   }
-}
-
-function SetSituationZone(zone, projector, color) {
-  zone = zone.map((x) => DCStoLatLong(x, projector).reverse());
-  var layer = L.polygon(zone, {
-    color: color,
-    fillColor: color,
-    fillOpacity: 0.2,
-  });
-  layer.addTo(drawnItems);
-  return layer;
-}
-
-function SetSituationLine(zone, projector, color) {
-  zone = zone.map((x) => DCStoLatLong(x, projector).reverse());
-  var layer = L.polyline(zone, {
-    color: color,
-    fillColor: color,
-    fillOpacity: 0.2,
-    weight: 5,
-    dashArray: "8, 8",
-    dashOffset: "0",
-  });
-  layer.addTo(drawnItems);
-  return layer;
 }
 
 function CreateZoneCoordsList(layer, map) {
@@ -163,85 +140,11 @@ function GetSituationCoordinates(map) {
   };
 }
 
-function ClearMap() {
-  situationMapLayers.RED = [];
-  situationMapLayers.BLUE = [];
-  situationMapLayers.NEUTRAL = [];
-  situationMapLayers.COMBAT = [];
-  situationMapLayers.FRONTLINE = undefined;
-  drawnItems.remove();
-  drawnItems = new L.FeatureGroup();
-}
-
-function onDrawCreated(e) {
-  {
-    const layer = e.layer;
-    let areaType;
-    switch (layer.options.color) {
-      case situationColors.RED:
-        areaType = "RED";
-        break;
-      case situationColors.BLUE:
-        areaType = "BLUE";
-        break;
-      case situationColors.NEUTRAL:
-        areaType = "NEUTRAL";
-        break;
-      case situationColors.COMBAT:
-        areaType = "COMBAT";
-        break;
-      case situationColors.FRONTLINE:
-        areaType = "FRONTLINE";
-        break;
-      default:
-        areaType = "NEUTRAL";
-        break;
-    }
-    if (areaType === "FRONTLINE") {
-      if (situationMapLayers.FRONTLINE) {
-        drawnItems.removeLayer(situationMapLayers.FRONTLINE);
-      }
-      situationMapLayers.FRONTLINE = layer;
-    } else {
-      situationMapLayers[areaType].push(layer);
-    }
-    drawnItems.addLayer(layer);
-  }
-}
-
-function onDrawDeleted(e) {
-  e.layers.eachLayer((x) => {
-    situationMapLayers.RED = situationMapLayers.RED.filter((y) => y !== x);
-    situationMapLayers.BLUE = situationMapLayers.BLUE.filter((y) => y !== x);
-    situationMapLayers.NEUTRAL = situationMapLayers.NEUTRAL.filter(
-      (y) => y !== x,
-    );
-    situationMapLayers.COMBAT = situationMapLayers.COMBAT.filter(
-      (y) => y !== x,
-    );
-    if (situationMapLayers.FRONTLINE === x) {
-      situationMapLayers.FRONTLINE = undefined;
-    }
-  });
+function ClearSituationMap() {
+  ClearMap(situationMapLayers, situationDrawnItems);
 }
 
 function AddDrawControls() {
-  const drawBaseOptions = {
-    rectangle: false,
-    circle: false,
-    circlemarker: false,
-    marker: false,
-  };
-  const polyBaseOptions = {
-    allowIntersection: false,
-    drawError: {
-      color: "orange",
-      timeout: 1000,
-    },
-    showArea: true,
-    metric: false,
-    repeatMode: false,
-  };
   var drawControlBlue = new L.Control.Draw({
     draw: {
       ...drawBaseOptions,
@@ -281,39 +184,7 @@ function AddDrawControls() {
     },
   });
   leafSituationMap.addControl(drawControlGreen);
-  var drawControlOrange = new L.Control.Draw({
-    draw: {
-      ...drawBaseOptions,
-      polygon: {
-        ...polyBaseOptions,
-        shapeOptions: {
-          color: situationColors.COMBAT,
-        },
-      },
-      polyline: false,
-    },
-  });
-  leafSituationMap.addControl(drawControlOrange);
-  var drawControlFrontLine = new L.Control.Draw({
-    draw: {
-      ...drawBaseOptions,
-      polyline: {
-        ...polyBaseOptions,
-        shapeOptions: {
-          color: situationColors.FRONTLINE,
-          stroke: true,
-          weight: 5,
-          dashArray: "8, 8",
-          dashOffset: "0",
-        },
-      },
-      polygon: false,
-    },
-    edit: {
-      featureGroup: drawnItems,
-    },
-  });
-  leafSituationMap.addControl(drawControlFrontLine);
+  AddDrawOverrideControls(leafSituationMap, situationDrawnItems);
 }
 
 function AddSpawnPointToMap(map, spawnPoints) {
@@ -426,3 +297,24 @@ function AddSpawnButtonsToMap(spawnPoints) {
     "Land Water Zones",
   ).addTo(leafSituationMap);
 }
+
+function AddSituationLegend(map) {
+  var legend = L.control({ position: "topright" });
+
+  legend.onAdd = function (map) {
+    const div = GetCommonLegendDiv();
+    div.innerHTML += `<i style="background: ${situationColors.WATER}"></i><span>Water</span><br>`;
+    div.innerHTML += `<i style="background: ${situationColors.LAND}"></i><span>Land</span><br>`;
+    div.innerHTML += "<span>Spawn Points (sample)</span><br>";
+    div.innerHTML +=
+      '<i class="icon" style="background-image: url(_content/CommonGUI/img/nato-icons/RED_VEHICLE.svg);background-repeat: no-repeat; background-color: transparent;"></i><span>Small Spawn</span><br>';
+    div.innerHTML +=
+      '<i class="icon" style="background-image: url(_content/CommonGUI/img/nato-icons/GREEN_VEHICLE.svg);background-repeat: no-repeat; background-color: transparent;"></i><span>Medium Spawn</span><br>';
+    div.innerHTML +=
+      '<i class="icon" style="background-image: url(_content/CommonGUI/img/nato-icons/BLUE_VEHICLE.svg);background-repeat: no-repeat; background-color: transparent;"></i><span>Large Spawn</span><br>';
+    return div;
+  };
+
+  legend.addTo(map);
+}
+

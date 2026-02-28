@@ -33,6 +33,9 @@ namespace BriefingRoom4DCS.Template
     {
         public string BriefingMissionName { get; set; }
         public string BriefingMissionDescription { get; set; }
+
+        public List<List<double>> ContextCustomFrontLine { get; set; }
+        public List<List<List<double>>> ContextCustomCombatZones { get; set; }
         public Season EnvironmentSeason { get; set; }
         public TimeOfDay EnvironmentTimeOfDay { get; set; }
         public string EnvironmentWeatherPreset { get { return EnvironmentWeatherPreset_; } set { EnvironmentWeatherPreset_ = Database.CheckID<DBEntryWeatherPreset>(value, allowEmptyStr: true); } }
@@ -65,6 +68,9 @@ namespace BriefingRoom4DCS.Template
 
             BriefingMissionName = "";
             BriefingMissionDescription = "";
+
+            ContextCustomFrontLine = new List<List<double>>();
+            ContextCustomCombatZones = new List<List<List<double>>>();
 
             EnvironmentSeason = Season.Random;
             EnvironmentTimeOfDay = TimeOfDay.RandomDaytime;

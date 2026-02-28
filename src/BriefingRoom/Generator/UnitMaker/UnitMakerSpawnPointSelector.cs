@@ -397,9 +397,10 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
 
         internal static bool CheckInCombatZone(DCSMission mission, Coordinates coordinates)
         {
-            if (mission.TemplateRecord.ContextSituationIgnoresCombatZones || mission.SituationDB.CombatZones.Count == 0)
+            var combatZone = mission.TemplateRecord.ContextCustomCombatZones.Count > 0 ? mission.TemplateRecord.ContextCustomCombatZones : mission.SituationDB.CombatZones;
+            if (mission.TemplateRecord.ContextSituationIgnoresCombatZones || combatZone.Count == 0)
                 return true;
-            return ShapeManager.IsPosValid(coordinates, mission.SituationDB.CombatZones);
+            return ShapeManager.IsPosValid(coordinates, combatZone);
         }
 
         private static bool CheckNotFarFromBorders(ref DCSMission mission, Coordinates coordinates, double borderLimit, Coalition? coalition = null)

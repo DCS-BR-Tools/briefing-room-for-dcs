@@ -37,7 +37,9 @@ namespace BriefingRoom4DCS.Template
         internal string ContextTheater { get; init; }
         internal string ContextSituation { get; init; }
         internal bool ContextSituationIgnoresFrontLine { get; init; }
+        internal List<List<double>> ContextCustomFrontLine { get; init; }
         internal bool ContextSituationIgnoresCombatZones { get; init; }
+        internal List<List<Coordinates>> ContextCustomCombatZones { get; init; }
         internal Season EnvironmentSeason { get; init; }
         internal TimeOfDay EnvironmentTimeOfDay { get; init; }
         internal string EnvironmentWeatherPreset { get; init; }
@@ -87,7 +89,9 @@ namespace BriefingRoom4DCS.Template
             ContextTheater = template.ContextTheater;
             ContextSituation = template.ContextSituation;
             ContextSituationIgnoresFrontLine = template.ContextSituationIgnoresFrontLine;
+            ContextCustomFrontLine = template.ContextCustomFrontLine;
             ContextSituationIgnoresCombatZones = template.ContextSituationIgnoresCombatZones;
+            ContextCustomCombatZones = template.ContextCustomCombatZones.Select(zone => zone.Select(coord => new Coordinates(coord[0], coord[1])).ToList()).ToList();
             EnvironmentSeason = template.EnvironmentSeason;
             EnvironmentTimeOfDay = template.EnvironmentTimeOfDay;
             EnvironmentWeatherPreset = template.EnvironmentWeatherPreset;

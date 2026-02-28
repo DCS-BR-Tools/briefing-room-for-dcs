@@ -10,7 +10,25 @@ const situationColors = {
   BLUE: "blue",
   NEUTRAL: "green",
   COMBAT: "orange",
-  FRONTLINE: "#BF40BFDD",
+  FRONTLINE: "#BF40BF",
   WATER: "cyan",
   LAND: "yellow",
+};
+
+
+const drawBaseOptions = {
+  rectangle: false,
+  circle: false,
+  circlemarker: false,
+  marker: false,
+};
+const polyBaseOptions = {
+  allowIntersection: false,
+  drawError: {
+    color: "orange",
+    timeout: 1000,
+  },
+  showArea: true,
+  metric: false,
+  repeatMode: false,
 };

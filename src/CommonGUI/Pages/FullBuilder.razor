@@ -4,6 +4,7 @@
 @inject BriefingRoom4DCS.IBriefingRoom briefingRoom
 @using BriefingRoom4DCS
 @using BriefingRoom4DCS.Data
+@using BriefingRoom4DCS.Data.JSON
 @using BriefingRoom4DCS.GUI.Common.Shared.Sections
 @using BriefingRoom4DCS.Template
 @using BriefingRoom4DCS.Generator
@@ -20,98 +21,113 @@
 @using BriefingRoom4DCS.GUI.Common.Shared.Tabs
 
 
-<LoadingSpinner ON="spinner"/>
-<LateDownloadButton Download="LateDownload" ON="showLateDownloadButton" />  
+<LoadingSpinner ON="spinner" />
+<LateDownloadButton Download="LateDownload" ON="showLateDownloadButton" />
 <div class="title-bar">
     <h1>@briefingRoom.Translate("FullGenerator")</h1>
-    <TemplateButtons LoadTemplate="LoadTemplate" SaveTemplate="SaveTemplate" ClearTemplate="ClearTemplate" AcceptString=".brt,.miz" />
+    <TemplateButtons LoadTemplate="LoadTemplate" SaveTemplate="SaveTemplate" ClearTemplate="ClearTemplate"
+                     AcceptString=".brt,.miz" />
 </div>
 <div class="generator-group">
-    @if(showGenerator) {
-    <div class="generator-form">
-        <AlertMessages templateMessage="@templateMessage" errorMessage="@errorMessage" />
-        <EditForm Model="Template" OnSubmit="GenerateMissionAsync">
-            <DataAnnotationsValidator />
-            <ValidationSummary />
-            <button class="btn btn-primary form-control" type="submit">@briefingRoom.Translate("Generate")</button>
-            <hr>
-            <ul class="nav nav-tabs">
-                @foreach (var value in tabs)
-                {
-                    <li class="nav-item">
-                        <a class="nav-link @(tab == value.Key ? "active" : "")" aria-current="page"
-                        @onclick='() => SetTab(value.Key)'>@string.Join(" & ", value.Value.Select(x => briefingRoom.Translate(x)))</a>
-                    </li>
-                }
-            </ul>
-            @switch (tab)
-            {
-                case "context-&-enviroment":
-                    <ContextAndEnvTab builderUtils="@builderUtils" Template="@Template" />
-                    break;
-                case "objectives":
-                    <ObjectivesTab objectiveUtil="@objectiveUtil" builderUtils="@builderUtils" Template="@Template" RenderHintMap="@RenderHintMap" />
-                    break;
-                case "options":
-                    <OptionsTab builderUtils="@builderUtils" Template="@Template" />
-                    break;
-                case "briefing":
-                    <BriefingTab Template="@Template" />
-                    break;
-                case "situation":
-                    <SituationTab Template="@Template" />
-                    <CombinedArmsTab Template="@Template" />
-                    break;
-                case "flight-groups":
-                    <FlightGroupsTab builderUtils="@builderUtils" flightGroupUtil="@flightGroupUtil" Template="@Template" RenderHintMap="@RenderHintMap" />
-                    break;
-                    case "unitBanlist":
-                    <UnitBanTab Template="@Template" />
-                    break;
-            }
-        </EditForm>
-        <button id="hint-open-map-button" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom" @onclick='() => RenderHintMap("")'><span class="oi oi-globe"></span> @briefingRoom.Translate("ViewLocationHint")</button>
-        <div class="offcanvas offcanvas-bottom h-auto" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasBottomLabel">@briefingRoom.Translate("LocationHint")</h5>
-                <button id="hint-close-map-button" type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-                <div class="offcanvas-body">
-                    <p>@briefingRoom.Translate("HintUsageP1")&nbsp;<span class="oi oi-globe"></span>&nbsp;@briefingRoom.Translate("HintUsageP2")</p>
-                    <p class="custom-warning"><span class="oi oi-info"></span>&nbsp;@briefingRoom.Translate("HintNote")</p>
-                    <button class="btn btn-warning float-right" aria-hidden="true" @onclick='async() => await JSRuntime.InvokeVoidAsync("RemoveAllHintMarkers")'>
-                        <span class="oi oi-reload"></span>
-                        <span class="template-box-button-text">@briefingRoom.Translate("Reset")</span>
-                    </button>
-                    <div id="hintMap"></div>
-                </div>
-            </div>
-        <div class=bottom-bar>
-            <LoggerAll logs="MainLayout.logs"/>
-        </div>
-    </div>
-    }
-    @if (mission != null)
+    @if (showGenerator)
     {
-        <div class="generator-preview">
-            <LoggerWarn logs="MainLayout.logs"/>
-            <ButtonTrio
-              PrimaryFunc="DownloadMission"  PrimaryLabel=@briefingRoom.Translate("Mission") PrimaryIcon="data-transfer-download"
-              SecondaryFunc="DownloadBriefing"  SecondaryLabel=@briefingRoom.Translate("Briefing") SecondaryIcon="browser"
-              TertiaryFunc="ClearMission"  TertiaryLabel="" TertiaryIcon="x"
-            />
-            @if(!showGenerator){
-                <button class="btn btn-secondary float-right"  @onclick="() => showGenerator = true"><span class="oi oi-fullscreen-exit"></span></button>
-                <button class="btn btn-primary form-control"  @onclick="() => GenerateMissionAsync()">@briefingRoom.Translate("Generate")</button>
-            }
-            else {
-                <button class="btn btn-secondary float-right"  @onclick="() => showGenerator = false"><span class="oi oi-fullscreen-enter"></span></button>
-            }
+        <div class="generator-form">
+            <AlertMessages templateMessage="@templateMessage" errorMessage="@errorMessage" />
+            <EditForm Model="Template" OnSubmit="GenerateMissionAsync">
+                <DataAnnotationsValidator />
+                <ValidationSummary />
+                <button class="btn btn-primary form-control" type="submit">@briefingRoom.Translate("Generate")</button>
+                <hr>
+                <ul class="nav nav-tabs">
+                    @foreach (var value in tabs)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link @(tab == value.Key ? "active" : "")" aria-current="page"
+                                   @onclick='() => SetTab(value.Key)'>@string.Join(" & ", value.Value.Select(x =>
+                                briefingRoom.Translate(x)))</a>
+                            </li>
+                        }
+                    </ul>
+                    @switch (tab)
+                    {
+                        case "context-&-enviroment":
+                            <ContextAndEnvTab builderUtils="@builderUtils" Template="@Template" />
+                            break;
+                        case "objectives":
+                            <ObjectivesTab objectiveUtil="@objectiveUtil" builderUtils="@builderUtils" Template="@Template"
+                                           RenderHintMap="@RenderHintMap" />
+                            break;
+                        case "options":
+                            <OptionsTab builderUtils="@builderUtils" Template="@Template" />
+                            break;
+                        case "briefing":
+                            <BriefingTab Template="@Template" />
+                            break;
+                        case "situation":
+                            <SituationTab Template="@Template" />
+                            <CombinedArmsTab Template="@Template" />
+                            break;
+                        case "flight-groups":
+                            <FlightGroupsTab builderUtils="@builderUtils" flightGroupUtil="@flightGroupUtil" Template="@Template"
+                                             RenderHintMap="@RenderHintMap" />
+                            break;
+                        case "unitBanlist":
+                            <UnitBanTab Template="@Template" />
+                            break;
+                    }
+                </EditForm>
+                <button id="hint-open-map-button" class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom" @onclick='() => RenderHintMap("")'><span
+                    class="oi oi-globe"></span> @briefingRoom.Translate("ViewLocationHint")</button>
+                    <div class="offcanvas offcanvas-bottom h-auto" tabindex="-1" id="offcanvasBottom"
+                         aria-labelledby="offcanvasBottomLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasBottomLabel">@briefingRoom.Translate("LocationHint")</h5>
+                            <button id="hint-close-map-button" type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                    aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <p>@briefingRoom.Translate("HintUsageP1")&nbsp;<span
+                                class="oi oi-globe"></span>&nbsp;@briefingRoom.Translate("HintUsageP2")</p>
+                                <p class="custom-warning"><span class="oi oi-info"></span>&nbsp;@briefingRoom.Translate("HintNote")</p>
+                                <button class="btn btn-warning float-right" aria-hidden="true"
+                                        @onclick='async () => await JSRuntime.InvokeVoidAsync("ClearHintMap")'>
+                                    <span class="oi oi-reload"></span>
+                                    <span class="template-box-button-text">@briefingRoom.Translate("Reset")</span>
+                                </button>
+                                <div id="hintMap"></div>
+                            </div>
+                        </div>
+                        <div class=bottom-bar>
+                            <LoggerAll logs="MainLayout.logs" />
+                        </div>
+                    </div>
+                }
+                @if (mission != null)
+                {
+                    <div class="generator-preview">
+                        <LoggerWarn logs="MainLayout.logs" />
+                        <ButtonTrio              PrimaryFunc="DownloadMission" PrimaryLabel=@briefingRoom.Translate("Mission")
+                                                 PrimaryIcon="data-transfer-download"              SecondaryFunc="DownloadBriefing"
+                                                 SecondaryLabel=@briefingRoom.Translate("Briefing") SecondaryIcon="browser"              TertiaryFunc="ClearMission"
+                                                 TertiaryLabel="" TertiaryIcon="x"            />
+                        @if (!showGenerator)
+                        {
+                            <button class="btn btn-secondary float-right" @onclick="() => showGenerator = true"><span
+                                class="oi oi-fullscreen-exit"></span></button>
+                                <button class="btn btn-primary form-control"
+                                        @onclick="() => GenerateMissionAsync()">@briefingRoom.Translate("Generate")</button>
+                            }
+            else
+                            {
+                                <button class="btn btn-secondary float-right" @onclick="() => showGenerator = false"><span
+                                    class="oi oi-fullscreen-enter"></span></button>
+                                }
 
-            <Briefing mission=@mission />
-        </div>
-    }
-</div>
+                                <Briefing mission=@mission />
+                            </div>
+                        }
+                    </div>
 
 
 @code {
@@ -127,27 +143,30 @@
 
     private FlightGroupUtils flightGroupUtil = new FlightGroupUtils();
     private ObjectiveUtils objectiveUtil = new ObjectiveUtils(false);
-    private BuilderUtils builderUtils {get; set;}
+    private BuilderUtils builderUtils { get; set; }
 
     protected override void OnInitialized()
     {
         builderUtils = new BuilderUtils(briefingRoom);
         Template = new MissionTemplate(briefingRoom.Database);
         flightGroupUtil.Tab = Template.PlayerFlightGroups[0];
-        objectiveUtil.Tab = Template.Objectives[0];  
+        objectiveUtil.Tab = Template.Objectives[0];
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override async System.Threading.Tasks.Task OnAfterRenderAsync(bool firstRender)
     {
-        if (!firstRender) {
+        if (!firstRender)
+        {
             await localStorage.SetItemAsync("DCSFullEditorTemplate", Template.GetIniBytes());
-        } else {
-             try
+        }
+        else
+        {
+            try
             {
                 var autoLoadPreviousState = await localStorage.GetItemAsync<bool>("DCSAutoLoadPreviousState");
-                if(!autoLoadPreviousState) return;
+                if (!autoLoadPreviousState) return;
                 var templateBytes = await localStorage.GetItemAsync<byte[]>("DCSFullEditorTemplate");
-                if(templateBytes == null)
+                if (templateBytes == null)
                 {
                     throw new Exception("Template is null");
                 }
@@ -168,21 +187,22 @@
 
     private async void clearTemplateMessageDelay()
     {
-        await Task.Delay(1000);
+        await System.Threading.Tasks.Task.Delay(1000);
         templateMessage = "";
         StateHasChanged();
     }
 
-    private async Task LoadTemplate(InputFileChangeEventArgs e)
+    private async System.Threading.Tasks.Task LoadTemplate(InputFileChangeEventArgs e)
     {
         try
         {
             Template = await BuilderUtils.LoadTemplateFile(e, Template);
-            await JSRuntime.InvokeVoidAsync("SetHintPositions", BuilderUtils.LoadHints(ref Template), Template.ContextTheater);
+            await JSRuntime.InvokeVoidAsync("SetMapData", BuilderUtils.LoadHints(ref Template), Template.ContextCustomFrontLine,
+Template.ContextCustomCombatZones, Template.ContextTheater);
             templateMessage = "Template Loaded";
             clearTemplateMessageDelay();
             flightGroupUtil.Tab = Template.PlayerFlightGroups[0];
-            objectiveUtil.Tab = Template.Objectives[0];  
+            objectiveUtil.Tab = Template.Objectives[0];
         }
         catch (Exception ex)
         {
@@ -191,102 +211,121 @@
         }
     }
 
-    private async Task SaveTemplate()
+    private async System.Threading.Tasks.Task SaveTemplate()
     {
-        try {
+        try
+        {
             await AddPositionHints();
             var fileBytes = Template.GetIniBytes();
             await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", $"Default.brt", "application/octet-stream", fileBytes);
-            templateMessage = "Template Saved"; 
+            templateMessage = "Template Saved";
             clearTemplateMessageDelay();
-        } catch (Exception ex) {
-             Console.WriteLine(ex);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
         }
     }
 
-    private async Task ClearTemplate()
+    private async System.Threading.Tasks.Task ClearTemplate()
     {
-        templateMessage = "Template Reset"; 
+        templateMessage = "Template Reset";
         Template.Clear();
         Template.Objectives[0].Preset = "Custom";
-        await JSRuntime.InvokeVoidAsync("SetHintPositions", new Dictionary<string, double[]>(),  Template.ContextTheater);
+        await JSRuntime.InvokeVoidAsync("ClearHintMap");
         clearTemplateMessageDelay();
-        objectiveUtil.Tab = Template.Objectives[0];  
+        objectiveUtil.Tab = Template.Objectives[0];
         flightGroupUtil.Tab = Template.PlayerFlightGroups[0];
         StateHasChanged();
     }
 
-    private async Task AddPositionHints()
+    private async System.Threading.Tasks.Task AddPositionHints()
     {
-        var result = await JSRuntime.InvokeAsync<Dictionary<string, double[]>>("GetHintPoints", Template.ContextTheater);
-        BuilderUtils.SetTemplateHints(result, ref Template);
+        var result = await JSRuntime.InvokeAsync<HintResponse>("GetMapData", Template.ContextTheater);
+        Template.ContextCustomFrontLine = result.frontLine;
+        Template.ContextCustomCombatZones = result.combatZones;
+        BuilderUtils.SetTemplateHints(result.hints, ref Template);
     }
 
     private async void GenerateMissionAsync()
     {
-        try {
+        try
+        {
             await ClearLateDownload();
             spinner = true;
             StateHasChanged();
             mission = null;
             errorMessage = "";
-            await Task.Run(async () => {
+            await System.Threading.Tasks.Task.Run(async () =>
+            {
                 await AddPositionHints();
                 mission = briefingRoom.GenerateMission(Template);
             });
             StateHasChanged();
-            await Policy.Handle<Exception>().RetryAsync(3).ExecuteAsync(async () => await JSRuntime.InvokeVoidAsync("RenderMap", mission.GetMapData(), Template.ContextTheater, Template.ContextPlayerCoalition == Coalition.Red));
-        } catch (Exception ex){
+            await Policy.Handle<Exception>().RetryAsync(3).ExecuteAsync(async () => await JSRuntime.InvokeVoidAsync("RenderMap",
+mission.GetMapData(), Template.ContextTheater, Template.ContextPlayerCoalition == Coalition.Red));
+        }
+        catch (Exception ex)
+        {
             Console.WriteLine(ex);
             errorMessage = ex.Message;
-            if(ex.InnerException != null)
+            if (ex.InnerException != null)
                 errorMessage += " " + ex.InnerException.Message;
-        } finally {
+        }
+        finally
+        {
             spinner = false;
             StateHasChanged();
         }
     }
 
-    private Task ClearMission()
+    private System.Threading.Tasks.Task ClearMission()
     {
         mission = null;
         showGenerator = true;
         StateHasChanged();
-        return Task.CompletedTask;
+        return System.Threading.Tasks.Task.CompletedTask;
     }
 
-    async Task DownloadMission()
+    async System.Threading.Tasks.Task DownloadMission()
     {
-        try {
+        try
+        {
             spinner = true;
             StateHasChanged();
-            await Task.Run(async () => {
-                Stopwatch stopwatch = Stopwatch.StartNew(); 
+            await System.Threading.Tasks.Task.Run(async () =>
+            {
+                Stopwatch stopwatch = Stopwatch.StartNew();
                 byte[] zipBytes = await mission.SaveToMizBytes(briefingRoom.Database);
                 if (zipBytes == null) return; // Something went wrong during the .miz export
                 stopwatch.Stop();
                 Console.WriteLine($"Download Prep in {stopwatch.Elapsed.Seconds}s");
-                if(stopwatch.Elapsed.Seconds > 5)
+                if (stopwatch.Elapsed.Seconds > 5)
                 {
-                    ShowLateDownloadButton( $"{(Template.OptionsMission.Contains("DSMC")? "DSMC_": "")}{Template.ContextTheater} - {mission.Briefing.Name}.miz", "application/octet-stream", zipBytes);
-                    return;  
-                } 
-                await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", $"{(Template.OptionsMission.Contains("DSMC")? "DSMC_": "")}{Template.ContextTheater} - {mission.Briefing.Name}.miz", "application/octet-stream", zipBytes);
+                    ShowLateDownloadButton($"{(Template.OptionsMission.Contains("DSMC") ? "DSMC_" : "")}{Template.ContextTheater} - {mission.Briefing.Name}.miz", "application/octet-stream", zipBytes);
+                    return;
                 }
+                await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", $"{(Template.OptionsMission.Contains("DSMC") ? "DSMC_" :
+"")}{Template.ContextTheater} - {mission.Briefing.Name}.miz", "application/octet-stream", zipBytes);
+            }
             );
-            
-        } catch (Exception ex){
+
+        }
+        catch (Exception ex)
+        {
             Console.WriteLine(ex);
-        } finally {
+        }
+        finally
+        {
             spinner = false;
             StateHasChanged();
         }
     }
 
     private byte[] cachedBytes;
-     private string cachedName;
-     private string cachedMimeType;
-     private Boolean showLateDownloadButton = false;
+    private string cachedName;
+    private string cachedMimeType;
+    private Boolean showLateDownloadButton = false;
 
     private void ShowLateDownloadButton(string fileName, string mimeType, byte[] data)
     {
@@ -296,40 +335,49 @@
         showLateDownloadButton = true;
     }
 
-    private async Task LateDownload()
+    private async System.Threading.Tasks.Task LateDownload()
     {
-        try {
-        await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", cachedName, cachedMimeType, cachedBytes);
+        try
+        {
+            await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", cachedName, cachedMimeType, cachedBytes);
 
-        } catch (Exception ex) { 
+        }
+        catch (Exception ex)
+        {
             Console.WriteLine(ex);
-        } finally {
+        }
+        finally
+        {
             await ClearLateDownload();
         }
     }
 
-    private Task ClearLateDownload()
+    private System.Threading.Tasks.Task ClearLateDownload()
     {
         showLateDownloadButton = false;
         cachedBytes = null;
         cachedName = null;
         cachedMimeType = null;
-        return Task.CompletedTask;
+        return System.Threading.Tasks.Task.CompletedTask;
     }
 
 
-    async Task DownloadBriefing()
+    async System.Threading.Tasks.Task DownloadBriefing()
     {
-        try { 
+        try
+        {
             byte[] zipBytes = Encoding.UTF8.GetBytes(mission.Briefing.GetBriefingAsHTML(briefingRoom.Database, mission));
             if (zipBytes == null) return; // Something went wrong during the .miz export
-            await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", $"{Template.ContextTheater} - {mission.Briefing.Name}.html", "text/html", zipBytes); }
-        catch (Exception ex) {
+            await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", $"{Template.ContextTheater} - {mission.Briefing.Name}.html",
+"text/html", zipBytes);
+        }
+        catch (Exception ex)
+        {
             Console.WriteLine(ex);
         }
     }
 
-    private async Task RenderHintMap(string hintKey)
+    private async System.Threading.Tasks.Task RenderHintMap(string hintKey)
     {
         var supporingData = briefingRoom.GetMapSupportingMapData(Template);
         await JSRuntime.InvokeVoidAsync("RenderHintMap", Template.ContextTheater, hintKey, supporingData);
@@ -350,5 +398,5 @@
         tab = var;
     }
 
-  
+
 }

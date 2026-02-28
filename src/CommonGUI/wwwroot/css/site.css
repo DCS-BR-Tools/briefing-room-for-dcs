@@ -686,11 +686,13 @@ a.kofi-button:active {
   background-color: #28a745;
 }
 
-.leaflet-draw:nth-of-type(5) .leaflet-draw-draw-polygon {
+.leaflet-draw:nth-of-type(5) .leaflet-draw-draw-polygon,
+#hintMap .leaflet-draw:nth-of-type(2) .leaflet-draw-draw-polygon {
   background-color: orange;
 }
 
-.leaflet-draw:nth-of-type(6) .leaflet-draw-draw-polyline {
+.leaflet-draw:nth-of-type(6) .leaflet-draw-draw-polyline,
+#hintMap .leaflet-draw:nth-of-type(3) .leaflet-draw-draw-polyline {
   background-color: #bd56bddd;
 }
 
@@ -728,6 +730,5 @@ a.kofi-button:active {
 
 .legend i.icon {
   background-size: 18px;
-  background-color: rgba(255, 255, 255, 1);
 }
 

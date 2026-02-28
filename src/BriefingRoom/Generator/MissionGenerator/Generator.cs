@@ -305,7 +305,13 @@ namespace BriefingRoom4DCS.Generator.Mission
         private static void WorldPreloadStage(IBriefingRoom briefingRoom, ref DCSMission mission)
         {
             // TEMP HACK SO SITUATION FRONTLINE CAN BE USED BY OBJECTIVES          
-            if (mission.SituationDB.Frontline.Count > 0 && !mission.TemplateRecord.ContextSituationIgnoresFrontLine)
+            if(mission.TemplateRecord.ContextCustomFrontLine.Count > 0 && !mission.TemplateRecord.ContextSituationIgnoresFrontLine)
+            {
+                mission.MapData.Add("FRONTLINE", mission.TemplateRecord.ContextCustomFrontLine.Select(x => x.ToArray()).ToList());
+                mission.SetFrontLine(mission.TemplateRecord.ContextCustomFrontLine.Select(x => new Coordinates(x[0], x[1])).ToList(), mission.PlayerAirbase.Coordinates, mission.TemplateRecord.ContextPlayerCoalition);
+                return;
+            }
+            if (mission.FrontLine.Count == 0 && mission.SituationDB.Frontline.Count > 0 && !mission.TemplateRecord.ContextSituationIgnoresFrontLine)
             {
                 mission.MapData.Add("FRONTLINE", mission.SituationDB.Frontline.Select(x => x.ToArray()).ToList());
                 mission.SetFrontLine(mission.SituationDB.Frontline, mission.PlayerAirbase.Coordinates, mission.TemplateRecord.ContextPlayerCoalition);
