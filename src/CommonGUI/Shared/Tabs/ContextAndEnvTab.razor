@@ -8,17 +8,19 @@
     <h3>@briefingRoom.Translate("Context")</h3>
     <div class="generator-group flex-justify-spaced flex-margin-fix">
         <CoalitionInput Label="BlueCoalition" builderUtils="@builderUtils"
-            @bind-CoalitionId="@Template.ContextCoalitionBlue" />
+                        @bind-CoalitionId="@Template.ContextCoalitionBlue" />
         <CoalitionInput Label="RedCoalition" builderUtils="@builderUtils"
-            @bind-CoalitionId="@Template.ContextCoalitionRed" />
+                        @bind-CoalitionId="@Template.ContextCoalitionRed" />
     </div>
     <div class="generator-group flex-justify-spaced flex-margin-fix">
         <InputDataBase ClassString="flex-block" Label=@briefingRoom.Translate("Theater")
-            @bind-Value="Template.ContextTheater" DataBaseType="DatabaseEntryType.Theater" />
+                       @bind-Value="Template.ContextTheater" DataBaseType="DatabaseEntryType.Theater" />
         <InputDataBase ClassString="flex-block" Label=@briefingRoom.Translate("Situation")
-            @bind-Value="Template.ContextSituation" DataBaseType="DatabaseEntryType.Situation"
-            Grouping="@Template.ContextTheater" EmptOpt=@briefingRoom.Translate("Random") CustomOpt=@(new
-                                                                                                      List<string> { briefingRoom.Translate("SpawnAnywhere") + ",None" }) />
+                       @bind-Value="Template.ContextSituation" DataBaseType="DatabaseEntryType.Situation"
+                       Grouping="@Template.ContextTheater" EmptOpt=@briefingRoom.Translate("Random") CustomOpt=@(new List<string> {briefingRoom.Translate("SpawnAnywhere") + ",None" }) />
+
+        <CheckboxWrapped row @bind-Value="@Template.ContextSituationIgnoresFrontLine" Label="IgnoreSituationFrontLine" />
+        <CheckboxWrapped row @bind-Value="@Template.ContextSituationIgnoresCombatZones" Label="IgnoreSituationCombatZones" />
         @if (CampaignTemplate != null)
         {
             <CheckboxWrapped row @bind-Value="@CampaignTemplate.StaticSituation" Label="StaticSituation" />
@@ -26,12 +28,11 @@
     </div>
     <div class="generator-group flex-justify-spaced flex-margin-fix">
         <InputDataBase ClassString="flex-block" Label=@briefingRoom.Translate("HomeAirbase")
-            @bind-Value="Template.FlightPlanTheaterStartingAirbase" DataBaseType="DatabaseEntryType.Airbase"
-            Grouping="@Template.ContextTheater" EmptOpt=@briefingRoom.Translate("Random") />
+                       @bind-Value="Template.FlightPlanTheaterStartingAirbase" DataBaseType="DatabaseEntryType.Airbase"
+                       Grouping="@Template.ContextTheater" EmptOpt=@briefingRoom.Translate("Random") />
         <InputDataBase ClassString="flex-block" Label=@briefingRoom.Translate("DestinationAirbase")
-            @bind-Value="Template.FlightPlanTheaterDestinationAirbase" DataBaseType="DatabaseEntryType.Airbase"
-            Grouping="@Template.ContextTheater" EmptOpt=@briefingRoom.Translate("Random") CustomOpt=@(new
-                                                                                                      List<string> { briefingRoom.Translate("HomeAirbase") + ",home" }) />
+                       @bind-Value="Template.FlightPlanTheaterDestinationAirbase" DataBaseType="DatabaseEntryType.Airbase"
+                       Grouping="@Template.ContextTheater" EmptOpt=@briefingRoom.Translate("Random") CustomOpt=@(new List<string> {briefingRoom.Translate("HomeAirbase") + ",home" }) />
     </div>
     @if (CampaignTemplate != null)
     {
@@ -40,12 +41,13 @@
         <div class="generator-group flex-justify-spaced flex-margin-fix">
             <CheckboxWrapped row @bind-Value=@CampaignTemplate.MissionsPersistentAirbases Label="PersistentAirbases" />
             <InputEnum ClassString="flex-block" Label=@briefingRoom.Translate("AirbaseVariationDistance")
-                @bind-Value="CampaignTemplate.MissionsAirbaseVariationDistance" EnumType="AmountN" />
+                       @bind-Value="CampaignTemplate.MissionsAirbaseVariationDistance" EnumType="AmountN" />
         </div>
     }
+
     <InputEnum Label=@briefingRoom.Translate("TimePeriod") @bind-Value="Template.ContextDecade" EnumType="Decade" />
     <InputEnum Label=@briefingRoom.Translate("PlayerSide") @bind-Value="Template.ContextPlayerCoalition"
-        EnumType="Coalition" />
+               EnumType="Coalition" />
 </div>
 <hr />
 <div id="environment" class="generator-block">
@@ -54,26 +56,26 @@
     {
         <div class="generator-group flex-justify-spaced flex-margin-fix">
             <InputEnum ClassString="flex-block" Label=@briefingRoom.Translate("Season")
-                @bind-Value="MissionTemplate.EnvironmentSeason" EnumType="Season" />
+                       @bind-Value="MissionTemplate.EnvironmentSeason" EnumType="Season" />
             <InputEnum ClassString="flex-block" Label=@briefingRoom.Translate("TimeOfDay")
-                @bind-Value="MissionTemplate.EnvironmentTimeOfDay" EnumType="TimeOfDay" />
+                       @bind-Value="MissionTemplate.EnvironmentTimeOfDay" EnumType="TimeOfDay" />
         </div>
 
         <div class="generator-group flex-justify-spaced flex-margin-fix">
             <InputDataBase ClassString="flex-block" Label=@briefingRoom.Translate("WeatherPreset")
-                @bind-Value="MissionTemplate.EnvironmentWeatherPreset" DataBaseType="DatabaseEntryType.WeatherPreset"
-                EmptOpt=@briefingRoom.Translate("Random") />
+                           @bind-Value="MissionTemplate.EnvironmentWeatherPreset" DataBaseType="DatabaseEntryType.WeatherPreset"
+                           EmptOpt=@briefingRoom.Translate("Random") />
             <InputEnum ClassString="flex-block" Label=@briefingRoom.Translate("Wind")
-                @bind-Value="MissionTemplate.EnvironmentWind" EnumType="Wind" />
+                       @bind-Value="MissionTemplate.EnvironmentWind" EnumType="Wind" />
         </div>
     }
     else if (CampaignTemplate != null)
     {
         <div class="generator-group flex-justify-spaced flex-margin-fix">
             <InputEnum ClassString="flex-block" Label=@briefingRoom.Translate("BadWeatherChance")
-                @bind-Value="CampaignTemplate.EnvironmentBadWeatherChance" EnumType="Amount" />
+                       @bind-Value="CampaignTemplate.EnvironmentBadWeatherChance" EnumType="Amount" />
             <InputEnum ClassString="flex-block" Label=@briefingRoom.Translate("NightMissionChance")
-                @bind-Value="CampaignTemplate.EnvironmentNightMissionChance" EnumType="Amount" />
+                       @bind-Value="CampaignTemplate.EnvironmentNightMissionChance" EnumType="Amount" />
         </div>
     }
 </div>

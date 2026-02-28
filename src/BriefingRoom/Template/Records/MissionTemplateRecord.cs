@@ -36,6 +36,8 @@ namespace BriefingRoom4DCS.Template
         internal Coalition ContextPlayerCoalition { get; init; }
         internal string ContextTheater { get; init; }
         internal string ContextSituation { get; init; }
+        internal bool ContextSituationIgnoresFrontLine { get; init; }
+        internal bool ContextSituationIgnoresCombatZones { get; init; }
         internal Season EnvironmentSeason { get; init; }
         internal TimeOfDay EnvironmentTimeOfDay { get; init; }
         internal string EnvironmentWeatherPreset { get; init; }
@@ -84,6 +86,8 @@ namespace BriefingRoom4DCS.Template
             ContextPlayerCoalition = template.ContextPlayerCoalition;
             ContextTheater = template.ContextTheater;
             ContextSituation = template.ContextSituation;
+            ContextSituationIgnoresFrontLine = template.ContextSituationIgnoresFrontLine;
+            ContextSituationIgnoresCombatZones = template.ContextSituationIgnoresCombatZones;
             EnvironmentSeason = template.EnvironmentSeason;
             EnvironmentTimeOfDay = template.EnvironmentTimeOfDay;
             EnvironmentWeatherPreset = template.EnvironmentWeatherPreset;

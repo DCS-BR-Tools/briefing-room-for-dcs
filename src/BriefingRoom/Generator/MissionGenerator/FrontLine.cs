@@ -30,8 +30,15 @@ namespace BriefingRoom4DCS.Generator.Mission
     {
         internal static void GenerateFrontLine(IDatabase database, ref DCSMission mission)
         {
+
             if (mission.TemplateRecord.OptionsMission.Contains("SpawnAnywhere") || mission.TemplateRecord.ContextSituation == "None" || mission.TemplateRecord.OptionsMission.Contains("NoFrontLine"))
                 return;
+            if (mission.SituationDB.Frontline != null && !mission.TemplateRecord.ContextSituationIgnoresFrontLine)
+            {
+                mission.MapData.Add("FRONTLINE", mission.SituationDB.Frontline.Select(x => x.ToArray()).ToList());
+                mission.SetFrontLine(mission.SituationDB.Frontline, mission.PlayerAirbase.Coordinates, mission.TemplateRecord.ContextPlayerCoalition);
+                return;
+            }
             var frontLineDB = database.Common.FrontLine;
             var frontLineCenter = Coordinates.Lerp(mission.PlayerAirbase.Coordinates, mission.ObjectivesCenter, GetObjectiveLerpBias(database, mission.LangKey, mission.TemplateRecord, frontLineDB));
 
@@ -68,20 +75,22 @@ namespace BriefingRoom4DCS.Generator.Mission
             return point;
         }
 
-        private static double GetObjectiveLerpBias(IDatabase database, string langKey, MissionTemplateRecord template, DBCommonFrontLine frontLineDB) {
+        private static double GetObjectiveLerpBias(IDatabase database, string langKey, MissionTemplateRecord template, DBCommonFrontLine frontLineDB)
+        {
             var friendlySideObjectivesCount = 0;
             var enemySideObjectivesCount = 0;
 
-            template.Objectives.ForEach(x => {
-                if(ObjectiveGenerator.GetObjectiveData(database, langKey, x).taskDB.TargetSide == Side.Ally)
+            template.Objectives.ForEach(x =>
+            {
+                if (ObjectiveGenerator.GetObjectiveData(database, langKey, x).taskDB.TargetSide == Side.Ally)
                     friendlySideObjectivesCount++;
                 else
                     enemySideObjectivesCount++;
-                });
+            });
 
             var lerpDistance = frontLineDB.BaseObjectiveBiasRange.GetValue();
             var bias = friendlySideObjectivesCount - enemySideObjectivesCount;
-            if(bias < 1)
+            if (bias < 1)
                 lerpDistance += bias * frontLineDB.EnemyObjectiveBias;
             else
                 lerpDistance += bias * frontLineDB.FriendlyObjectiveBias;

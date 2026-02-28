@@ -159,7 +159,7 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
             {
                 var coordOptionsLinq = Enumerable.Range(0, 300)
                     .Select(x => Coordinates.CreateRandom(distanceOrigin1, searchRange))
-                    .Where(x => CheckNotInHostileCoords(ref mission, x, coalition) && CheckNotInNoSpawnCoords(mission.SituationDB, x) && CheckNotFarFromBorders(ref mission, x, borderLimit, coalition));
+                    .Where(x => CheckNotInHostileCoords(ref mission, x, coalition) && CheckNotInNoSpawnCoords(mission.SituationDB, x) && CheckInCombatZone(mission, x) && CheckNotFarFromBorders(ref mission, x, borderLimit, coalition));
 
                 if (secondSearchRange.HasValue)
                     coordOptionsLinq = coordOptionsLinq.Where(x => secondSearchRange.Value.Contains(distanceOrigin2.Value.GetDistanceFrom(x)));
@@ -393,6 +393,13 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
             if (situationDB.NoSpawnZones.Count == 0)
                 return true;
             return !ShapeManager.IsPosValid(coordinates, situationDB.NoSpawnZones);
+        }
+
+        internal static bool CheckInCombatZone(DCSMission mission, Coordinates coordinates)
+        {
+            if (mission.TemplateRecord.ContextSituationIgnoresCombatZones || mission.SituationDB.CombatZones.Count == 0)
+                return true;
+            return ShapeManager.IsPosValid(coordinates, mission.SituationDB.CombatZones);
         }
 
         private static bool CheckNotFarFromBorders(ref DCSMission mission, Coordinates coordinates, double borderLimit, Coalition? coalition = null)

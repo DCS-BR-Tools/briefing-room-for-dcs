@@ -40,6 +40,9 @@ namespace BriefingRoom4DCS.Template
         private string ContextTheater_;
         public string ContextSituation { get { return ContextSituation_; } set { ContextSituation_ = Database.CheckID<DBEntrySituation>(value, allowEmptyStr: true, allowedValues: new List<string>{"None"}); } }
         private string ContextSituation_;
+
+        public bool ContextSituationIgnoresFrontLine { get; set; }
+        public bool ContextSituationIgnoresCombatZones { get; set; }
         public int FlightPlanObjectiveDistanceMax { get { return FlightPlanObjectiveDistanceMax_; } set { FlightPlanObjectiveDistanceMax_ = Toolbox.Clamp(value, 0, Database.Common.MaxObjectiveDistance); } }
         private int FlightPlanObjectiveDistanceMax_;
         public int FlightPlanObjectiveDistanceMin { get { return FlightPlanObjectiveDistanceMin_; } set { FlightPlanObjectiveDistanceMin_ = Toolbox.Clamp(value, 0, Database.Common.MaxObjectiveDistance); } }
@@ -94,6 +97,8 @@ namespace BriefingRoom4DCS.Template
             ContextPlayerCoalition = Coalition.Blue;
             ContextTheater = "Caucasus";
             ContextSituation = "";
+            ContextSituationIgnoresFrontLine = false;
+            ContextSituationIgnoresCombatZones = false;
 
             FlightPlanObjectiveDistanceMax = 160;
             FlightPlanObjectiveDistanceMin = 40;
@@ -147,6 +152,8 @@ namespace BriefingRoom4DCS.Template
             ContextPlayerCoalition = ini.GetValue("Context", "PlayerCoalition", ContextPlayerCoalition);
             ContextTheater = ini.GetValue("Context", "Theater", ContextTheater);
             ContextSituation = ini.GetValue("Context", "Situation", ContextSituation);
+            ContextSituationIgnoresFrontLine = ini.GetValue("Context", "SituationIgnoresFrontLine", ContextSituationIgnoresFrontLine);
+            ContextSituationIgnoresCombatZones = ini.GetValue("Context", "SituationIgnoresCombatZones", ContextSituationIgnoresCombatZones);
 
             FlightPlanObjectiveDistanceMax = ini.GetValue("FlightPlan", "ObjectiveDistanceMax", FlightPlanObjectiveDistanceMax);
             FlightPlanObjectiveDistanceMin = ini.GetValue("FlightPlan", "ObjectiveDistanceMin", FlightPlanObjectiveDistanceMin);
@@ -203,6 +210,8 @@ namespace BriefingRoom4DCS.Template
             ini.SetValue("Context", "PlayerCoalition", ContextPlayerCoalition);
             ini.SetValue("Context", "Theater", ContextTheater);
             ini.SetValue("Context", "Situation", ContextSituation);
+            ini.SetValue("Context", "SituationIgnoresFrontLine", ContextSituationIgnoresFrontLine);
+            ini.SetValue("Context", "SituationIgnoresCombatZones", ContextSituationIgnoresCombatZones);
 
             ini.SetValue("FlightPlan", "ObjectiveDistanceMax", FlightPlanObjectiveDistanceMax);
             ini.SetValue("FlightPlan", "ObjectiveDistanceMin", FlightPlanObjectiveDistanceMin);

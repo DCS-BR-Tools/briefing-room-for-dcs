@@ -238,8 +238,9 @@ namespace BriefingRoom4DCS.Generator.Mission
             if (mission.TheaterDB.SpawnPoints is not null)
             {
                 var situationDB = mission.SituationDB;
-                mission.SpawnPoints.AddRange(mission.TheaterDB.SpawnPoints.Where(x => SpawnPointSelector.CheckNotInNoSpawnCoords(situationDB, x.Coordinates)).ToList());
-                mission.TemplateLocations.AddRange(mission.TheaterDB.TemplateLocations.Where(x => SpawnPointSelector.CheckNotInNoSpawnCoords(situationDB, x.Coordinates)).ToList());
+                var missionLocal = mission; // workaround for ref in lambda
+                mission.SpawnPoints.AddRange(mission.TheaterDB.SpawnPoints.Where(x => SpawnPointSelector.CheckNotInNoSpawnCoords(situationDB, x.Coordinates) && SpawnPointSelector.CheckInCombatZone(missionLocal, x.Coordinates)).ToList());
+                mission.TemplateLocations.AddRange(mission.TheaterDB.TemplateLocations.Where(x => SpawnPointSelector.CheckNotInNoSpawnCoords(situationDB, x.Coordinates) && SpawnPointSelector.CheckInCombatZone(missionLocal, x.Coordinates)).ToList());
             }
 
             var theaterDB = mission.TheaterDB;

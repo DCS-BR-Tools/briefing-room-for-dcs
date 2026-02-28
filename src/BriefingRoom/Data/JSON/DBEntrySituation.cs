@@ -37,6 +37,9 @@ namespace BriefingRoom4DCS.Data
 
         internal List<List<Coordinates>> NoSpawnZones { get; set; }
 
+        internal List<List<Coordinates>> CombatZones { get; set; }
+        internal List<Coordinates> Frontline { get; set; }
+
         internal string Theater { get; private set; }
 
         internal List<LanguageString> BriefingDescriptions { get; private set; }
@@ -62,6 +65,8 @@ namespace BriefingRoom4DCS.Data
                     RedZones = situation.redZones.Select(x => x.Select(y => new Coordinates(y)).ToList()).ToList(),
                     BlueZones = situation.blueZones.Select(x => x.Select(y => new Coordinates(y)).ToList()).ToList(),
                     NoSpawnZones = situation.noSpawnZones.Select(x => x.Select(y => new Coordinates(y)).ToList()).ToList(),
+                    CombatZones = situation.combatZones.Select(x => x.Select(y => new Coordinates(y)).ToList()).ToList(),
+                    Frontline = situation.frontLine.Select(x => new Coordinates(x)).ToList(),
                 }}
             };
         }
