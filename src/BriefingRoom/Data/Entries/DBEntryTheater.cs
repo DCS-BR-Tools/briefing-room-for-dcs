@@ -25,7 +25,6 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using BriefingRoom4DCS.Data.JSON;
 using Newtonsoft.Json;
 
@@ -163,6 +162,16 @@ namespace BriefingRoom4DCS.Data
             decompressor.CopyTo(resultStream);
             return JsonConvert.DeserializeObject<List<SpawnPoint>>(Encoding.ASCII.GetString(resultStream.ToArray()));
         }
+
+        internal List<SpawnPoint> ConvertToJSONSpawnPoint(List<DBEntryTheaterSpawnPoint> spawnPoints)
+        {
+            return spawnPoints.Select(x => new SpawnPoint
+            {
+                BRtype = x.PointType.ToString(),
+                coords = new double[] { x.Coordinates.X, x.Coordinates.Y }
+            }).ToList();
+        }
+
 
         private static MinMaxI? ParseMinMaxTime(string[] timeValues)
         {

@@ -30,7 +30,7 @@ async function RenderEditorMap(map, spawnPoints, airbaseData, landWaterZones) {
 
     AddLegend(leafSituationMap);
 
-    AddSpawnButtonsToMap(map, spawnPoints);
+    AddSpawnButtonsToMap(spawnPoints);
 
     Object.keys(airbaseData).forEach((key) => {
       data = airbaseData[key];
@@ -385,7 +385,7 @@ function AddLandWaterZones(map, landWaterZones) {
   });
 }
 
-function AddSpawnButtonsToMap(map, spawnPoints) {
+function AddSpawnButtonsToMap(spawnPoints) {
   SPGroupS = new L.layerGroup();
   SPGroupM = new L.layerGroup();
   SPGroupL = new L.layerGroup();

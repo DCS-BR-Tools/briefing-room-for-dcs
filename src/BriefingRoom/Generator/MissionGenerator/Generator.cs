@@ -22,7 +22,9 @@ using BriefingRoom4DCS.Data;
 using BriefingRoom4DCS.Generator.UnitMaker;
 using BriefingRoom4DCS.Mission;
 using BriefingRoom4DCS.Template;
+using Newtonsoft.Json;
 using Polly;
+using PuppeteerSharp;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -119,7 +121,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                     switch (nextStage)
                     {
                         case MissionStageName.Situation:
-                            SituationStage(briefingRoom.Database, ref mission);
+                            SituationStage(briefingRoom, ref mission);
                             break;
                         case MissionStageName.Airbase:
                             AirbaseStage(briefingRoom, ref mission);
@@ -219,19 +221,19 @@ namespace BriefingRoom4DCS.Generator.Mission
             return mission;
         }
 
-        private static void SituationStage(IDatabase database, ref DCSMission mission)
+        private static void SituationStage(IBriefingRoom briefingRoom, ref DCSMission mission)
         {
             var theaterID = mission.TemplateRecord.ContextTheater.ToLower();
             mission.SituationDB = Toolbox.RandomFrom(
-                database.GetAllEntries<DBEntrySituation>()
+                briefingRoom.Database.GetAllEntries<DBEntrySituation>()
                     .Where(x => x.Theater == theaterID)
                     .ToArray()
                 );
             if(mission.TemplateRecord.ContextSituation != "None" && !string.IsNullOrEmpty(mission.TemplateRecord.ContextSituation))
-                mission.SituationDB = database.GetEntry<DBEntrySituation>(mission.TemplateRecord.ContextSituation);
+                mission.SituationDB = briefingRoom.Database.GetEntry<DBEntrySituation>(mission.TemplateRecord.ContextSituation);
             mission.SetValue("BriefingSituation", mission.TemplateRecord.SpawnAnywhere ? "None" : mission.SituationDB.UIDisplayName.Get(mission.LangKey));
             mission.SetValue("BriefingSituationId", mission.TemplateRecord.SpawnAnywhere ? "None" : mission.SituationDB.ID);
-            mission.AirbaseDB = mission.SituationDB.GetAirbases(database, mission.TemplateRecord.OptionsMission.Contains("InvertCountriesCoalitions"));
+            mission.AirbaseDB = mission.SituationDB.GetAirbases(briefingRoom.Database, mission.TemplateRecord.OptionsMission.Contains("InvertCountriesCoalitions"));
 
 
             DrawingMaker.AddTheaterZones(ref mission);
@@ -247,11 +249,11 @@ namespace BriefingRoom4DCS.Generator.Mission
             var theaterDB = mission.TheaterDB;
             var brokenSP = mission.SpawnPoints.Where(x => SpawnPointSelector.CheckInSea(theaterDB, x.Coordinates)).ToList();
             if (brokenSP.Count > 0)
-                throw new BriefingRoomException(database, mission.LangKey, "SpawnPointsInSea", string.Join("\n", brokenSP.Select(x => $"[{x.Coordinates.X},{x.Coordinates.Y}],{x.PointType}").ToList()));
+               briefingRoom.PrintTranslatableWarning("SpawnPointsInSea", JsonConvert.SerializeObject(mission.TheaterDB.ConvertToJSONSpawnPoint(brokenSP), Formatting.Indented));
 
             var brokenTL = mission.TemplateLocations.Where(x => SpawnPointSelector.CheckInSea(theaterDB, x.Coordinates)).ToList();
             if (brokenTL.Count > 0)
-                throw new BriefingRoomException(database, mission.LangKey, "TemplateLocationsInSea", string.Join("\n", brokenTL.Select(x => $"[{x.Coordinates.X},{x.Coordinates.Y}],{x.LocationType}").ToList()));
+                briefingRoom.PrintTranslatableWarning("TemplateLocationsInSea", string.Join("\n", brokenTL.Select(x => $"[{x.Coordinates.X},{x.Coordinates.Y}],{x.LocationType}").ToList()));
 
             foreach (DBEntryAirbase airbase in mission.AirbaseDB)
             {
