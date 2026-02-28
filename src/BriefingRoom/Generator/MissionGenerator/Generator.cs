@@ -227,7 +227,8 @@ namespace BriefingRoom4DCS.Generator.Mission
                     .Where(x => x.Theater == theaterID)
                     .ToArray()
                 );
-            mission.SituationDB = database.GetEntry<DBEntrySituation>(mission.TemplateRecord.ContextSituation);
+            if(mission.TemplateRecord.ContextSituation != "None" && !string.IsNullOrEmpty(mission.TemplateRecord.ContextSituation))
+                mission.SituationDB = database.GetEntry<DBEntrySituation>(mission.TemplateRecord.ContextSituation);
             mission.SetValue("BriefingSituation", mission.TemplateRecord.SpawnAnywhere ? "None" : mission.SituationDB.UIDisplayName.Get(mission.LangKey));
             mission.SetValue("BriefingSituationId", mission.TemplateRecord.SpawnAnywhere ? "None" : mission.SituationDB.ID);
             mission.AirbaseDB = mission.SituationDB.GetAirbases(database, mission.TemplateRecord.OptionsMission.Contains("InvertCountriesCoalitions"));
