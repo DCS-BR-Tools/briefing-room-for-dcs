@@ -5,10 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BriefingRoom4DCS.Data;
-using BriefingRoom4DCS.Data.JSON;
 using BriefingRoom4DCS.Generator.UnitMaker;
 using BriefingRoom4DCS.Mission;
-using BriefingRoom4DCS.Mission.DCSLuaObjects;
 using BriefingRoom4DCS.Template;
 
 namespace BriefingRoom4DCS.Generator.Mission.Objectives
@@ -25,7 +23,8 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             ref Coordinates objectiveCoordinates,
             ObjectiveOption[] objectiveOptions,
             ref DCSMission mission,
-            string[] featuresID)
+            string[] featuresID,
+            List<UnitFamily> preSelectedUnitFamilies)
         {
             var ctx = new ObjectiveContext
             {
@@ -40,7 +39,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 ObjectiveIndex = objectiveIndex,
                 ObjectiveCoordinates = objectiveCoordinates
             };
-            ctx.InitializeUnitData();
+            ctx.InitializeUnitData(preSelectedUnitFamilies);
 
             // Get units with validation
             ObjectiveCreationHelpers.GetUnitsWithValidation(ctx);

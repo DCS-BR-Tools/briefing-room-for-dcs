@@ -31,14 +31,8 @@ namespace BriefingRoom4DCS.Generator.Mission
         internal static void GenerateFrontLine(IDatabase database, ref DCSMission mission)
         {
 
-            if (mission.TemplateRecord.OptionsMission.Contains("SpawnAnywhere") || mission.TemplateRecord.ContextSituation == "None" || mission.TemplateRecord.OptionsMission.Contains("NoFrontLine"))
+            if (mission.FrontLine.Count > 0 || mission.TemplateRecord.OptionsMission.Contains("SpawnAnywhere") || mission.TemplateRecord.ContextSituation == "None" || mission.TemplateRecord.OptionsMission.Contains("NoFrontLine"))
                 return;
-            if (mission.SituationDB.Frontline.Count > 0 && !mission.TemplateRecord.ContextSituationIgnoresFrontLine)
-            {
-                mission.MapData.Add("FRONTLINE", mission.SituationDB.Frontline.Select(x => x.ToArray()).ToList());
-                mission.SetFrontLine(mission.SituationDB.Frontline, mission.PlayerAirbase.Coordinates, mission.TemplateRecord.ContextPlayerCoalition);
-                return;
-            }
             var frontLineDB = database.Common.FrontLine;
             var frontLineCenter = Coordinates.Lerp(mission.PlayerAirbase.Coordinates, mission.ObjectivesCenter, GetObjectiveLerpBias(database, mission.LangKey, mission.TemplateRecord, frontLineDB));
 

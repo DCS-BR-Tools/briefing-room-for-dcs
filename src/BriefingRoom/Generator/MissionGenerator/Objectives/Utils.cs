@@ -26,6 +26,17 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             if (objectiveOptions.Contains(ObjectiveOption.ShowTarget)) groupFlags = GroupFlags.NeverHidden;
             else if (objectiveOptions.Contains(ObjectiveOption.HideTarget)) groupFlags = GroupFlags.AlwaysHidden;
             if (objectiveOptions.Contains(ObjectiveOption.EmbeddedAirDefense)) groupFlags |= GroupFlags.EmbeddedAirDefense;
+
+            return (targetBehaviorDB.UnitLua[(int)targetDB.DCSUnitCategory],
+                targetDB.UnitCount[(int)task.TargetCount].GetValue(),
+                targetDB.UnitCount[(int)task.TargetCount],
+                GetUnitFamilies(targetDB),
+                groupFlags
+            );
+        }
+
+        internal static List<UnitFamily> GetUnitFamilies(DBEntryObjectiveTarget targetDB)
+        {
             List<UnitFamily> unitFamilies;
             switch (true)
             {
@@ -39,16 +50,10 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                     unitFamilies = Toolbox.RandomFrom(Constants.MIXED_INFANTRY_SETS).Concat(Toolbox.RandomFrom(Constants.MIXED_VEHICLE_SETS)).ToList();
                     break;
                 default:
-                    unitFamilies = [Toolbox.RandomFrom(targetDB.UnitFamilies)];
+                    unitFamilies = new List<UnitFamily> { Toolbox.RandomFrom(targetDB.UnitFamilies) };
                     break;
             }
-
-            return (targetBehaviorDB.UnitLua[(int)targetDB.DCSUnitCategory],
-                targetDB.UnitCount[(int)task.TargetCount].GetValue(),
-                targetDB.UnitCount[(int)task.TargetCount],
-                unitFamilies,
-                groupFlags
-            );
+            return unitFamilies;
         }
 
         internal static Coordinates PlaceInAirbase(IBriefingRoom briefingRoom, ref DCSMission mission, Dictionary<string, object> extraSettings, DBEntryObjectiveTargetBehavior targetBehaviorDB, Coordinates objectiveCoordinates, int unitCount, DBEntryJSONUnit unitDB, bool Friendly = false)

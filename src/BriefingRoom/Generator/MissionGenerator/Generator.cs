@@ -304,6 +304,14 @@ namespace BriefingRoom4DCS.Generator.Mission
 
         private static void WorldPreloadStage(IBriefingRoom briefingRoom, ref DCSMission mission)
         {
+            // TEMP HACK SO SITUATION FRONTLINE CAN BE USED BY OBJECTIVES          
+            if (mission.SituationDB.Frontline.Count > 0 && !mission.TemplateRecord.ContextSituationIgnoresFrontLine)
+            {
+                mission.MapData.Add("FRONTLINE", mission.SituationDB.Frontline.Select(x => x.ToArray()).ToList());
+                mission.SetFrontLine(mission.SituationDB.Frontline, mission.PlayerAirbase.Coordinates, mission.TemplateRecord.ContextPlayerCoalition);
+                return;
+            }
+
             if (mission.TemplateRecord.ContextDecade < Decade.Decade1960) // Helicopters were not available in DCS until 1960
             {
                 BriefingRoom.PrintToLog("Skipping world preload stage for helicopters.");

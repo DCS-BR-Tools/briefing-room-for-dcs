@@ -44,7 +44,8 @@ namespace BriefingRoom4DCS.Generator.Mission
             var (featuresID, targetDB, targetBehaviorDB, taskDB, objectiveOptions) = GetObjectiveData(briefingRoom.Database, mission.LangKey, task);
             var useHintCoordinates = task.CoordinatesHint.ToString() != "0,0";
             lastCoordinates = useHintCoordinates ? task.CoordinatesHint : lastCoordinates;
-            var objectiveCoordinates = GetSpawnCoordinates(briefingRoom.Database, ref mission, lastCoordinates, mission.PlayerAirbase, targetDB, useHintCoordinates);
+            var unitFamilies = ObjectiveUtils.GetUnitFamilies(targetDB);
+            var objectiveCoordinates = GetSpawnCoordinates(briefingRoom.Database, ref mission, lastCoordinates, mission.PlayerAirbase, targetDB, useHintCoordinates, unitFamilies.First());
 
 
             waypointList.Add(CreateObjective(
@@ -57,7 +58,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 ref objectiveCoordinates,
                 objectiveOptions,
                 ref mission,
-                featuresID));
+                featuresID, unitFamilies));
 
             var preValidSpawns = targetDB.ValidSpawnPoints.ToList();
 
@@ -107,7 +108,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 featuresID);
         }
 
-        private static Coordinates GetSpawnCoordinates(IDatabase database, ref DCSMission mission, Coordinates lastCoordinates, DBEntryAirbase playerAirbase, DBEntryObjectiveTarget targetDB, bool usingHint)
+        private static Coordinates GetSpawnCoordinates(IDatabase database, ref DCSMission mission, Coordinates lastCoordinates, DBEntryAirbase playerAirbase, DBEntryObjectiveTarget targetDB, bool usingHint, UnitFamily objectiveUnitFamily)
         {
             Coordinates? spawnPoint = SpawnPointSelector.GetRandomSpawnPoint(
                 database,
@@ -117,7 +118,8 @@ namespace BriefingRoom4DCS.Generator.Mission
                 usingHint ? Toolbox.ANY_RANGE : mission.TemplateRecord.FlightPlanObjectiveDistance,
                 lastCoordinates,
                 usingHint ? Toolbox.HINT_RANGE : mission.TemplateRecord.FlightPlanObjectiveSeparation,
-                GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, Side.Enemy));
+                GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, Side.Enemy),
+                objectiveUnitFamily);
 
             if (!spawnPoint.HasValue)
                 throw new BriefingRoomException(database, mission.LangKey, "FailedToSpawnObjectiveGroup", String.Join(", ", targetDB.ValidSpawnPoints.Select(x => x.ToString()).ToList()));
@@ -145,17 +147,17 @@ namespace BriefingRoom4DCS.Generator.Mission
             ref Coordinates objectiveCoords,
             ObjectiveOption[] objectiveOptions,
             ref DCSMission mission,
-            string[] featuresID
-        )
+            string[] featuresID,
+            List<UnitFamily> unitFamilies = null)
         {
             BriefingRoom.PrintToLog($"Generating objective {objectiveIndex} ...");
             return taskDB.ID switch
             {
-                "Escort" => Escort.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID),
-                "Hold" or "HoldSuperiority" => Hold.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID),
-                "TransportTroops" or "TransportCargo" or "ExtractTroops" => Transport.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID),
-                "TransportDynamicCargo" => TransportDynamicCargo.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID),
-                _ => Basic.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID)
+                "Escort" => Escort.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID, unitFamilies),
+                "Hold" or "HoldSuperiority" => Hold.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID, unitFamilies),
+                "TransportTroops" or "TransportCargo" or "ExtractTroops" => Transport.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID, unitFamilies),
+                "TransportDynamicCargo" => TransportDynamicCargo.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID, unitFamilies),
+                _ => Basic.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID, unitFamilies)
             };
         }
     }

@@ -20,7 +20,8 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             ref Coordinates objectiveCoordinates,
             ObjectiveOption[] objectiveOptions,
             ref DCSMission mission,
-            string[] featuresID)
+            string[] featuresID,
+            List<UnitFamily> preSelectedUnitFamilies)
         {
             var ctx = new ObjectiveContext
             {
@@ -35,7 +36,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 ObjectiveIndex = objectiveIndex,
                 ObjectiveCoordinates = objectiveCoordinates
             };
-            ctx.InitializeUnitData();
+            ctx.InitializeUnitData(preSelectedUnitFamilies);
 
             // Get transport origin and destination
             var (originAirbase, unitCoordinates) = ObjectiveTransportUtils.GetTransportOrigin(briefingRoom, ref ctx.Mission, targetBehaviorDB.Location, objectiveCoordinates);

@@ -69,14 +69,14 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
         /// Initializes unit data from task and target configuration.
         /// Must be called after setting Task, TargetDB, TargetBehaviorDB, and ObjectiveOptions.
         /// </summary>
-        public void InitializeUnitData()
+        public void InitializeUnitData(List<UnitFamily> preSelectedUnitFamilies)
         {
             var (luaUnit, unitCount, unitCountMinMax, objectiveTargetUnitFamilies, groupFlags) = 
                 ObjectiveUtils.GetUnitData(Task, TargetDB, TargetBehaviorDB, ObjectiveOptions);
             LuaUnit = luaUnit;
             UnitCount = unitCount;
             UnitCountMinMax = unitCountMinMax;
-            ObjectiveTargetUnitFamilies = objectiveTargetUnitFamilies;
+            ObjectiveTargetUnitFamilies = preSelectedUnitFamilies ?? objectiveTargetUnitFamilies;
             GroupFlags = groupFlags;
             UnitCoordinates = ObjectiveCoordinates;
         }
