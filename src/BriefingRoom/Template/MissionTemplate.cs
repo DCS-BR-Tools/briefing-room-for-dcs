@@ -53,6 +53,8 @@ namespace BriefingRoom4DCS.Template
         private List<MissionTemplatePackage> AircraftPackages_ = new();
         public Dictionary<string, double[]> CarrierHints { get; set; } = new Dictionary<string, double[]>();
 
+        public bool HasMapItems => ContextCustomFrontLine.Count > 0 || ContextCustomCombatZones.Count > 0 || CarrierHints.Count > 0 || Objectives.Any(x => x.CoordinateHint[0] != 0);
+
         public MissionTemplate(IDatabase database) : base(database)
         {
             Clear();
@@ -109,7 +111,7 @@ namespace BriefingRoom4DCS.Template
             BriefingMissionDescription = ini.GetValue("Briefing", "MissionDescription", BriefingMissionDescription).Replace("\\n", "\n");
 
             ContextCustomFrontLine = ini.GetValueArray<string>("Context", "CustomFrontLine", ';').Select(x => x.Split(',').Select(x => double.Parse(x)).ToList()).ToList();
-             foreach (string key in ini.GetTopLevelKeysInSection("CustomCombatZones"))
+            foreach (string key in ini.GetTopLevelKeysInSection("CustomCombatZones"))
                 ContextCustomCombatZones.Add(ini.GetValueArray<string>("CustomCombatZones", key, ';').Select(x => x.Split(',').Select(x => double.Parse(x)).ToList()).ToList());
 
             EnvironmentSeason = ini.GetValue("Environment", "Season", EnvironmentSeason);

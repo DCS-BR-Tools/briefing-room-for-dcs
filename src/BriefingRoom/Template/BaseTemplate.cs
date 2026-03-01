@@ -40,7 +40,6 @@ namespace BriefingRoom4DCS.Template
         private string ContextTheater_;
         public string ContextSituation { get { return ContextSituation_; } set { ContextSituation_ = Database.CheckID<DBEntrySituation>(value, allowEmptyStr: true, allowedValues: new List<string>{"None"}); } }
         private string ContextSituation_;
-
         public bool ContextSituationIgnoresFrontLine { get; set; }
         public bool ContextSituationIgnoresCombatZones { get; set; }
         public int FlightPlanObjectiveDistanceMax { get { return FlightPlanObjectiveDistanceMax_; } set { FlightPlanObjectiveDistanceMax_ = Toolbox.Clamp(value, 0, Database.Common.MaxObjectiveDistance); } }
