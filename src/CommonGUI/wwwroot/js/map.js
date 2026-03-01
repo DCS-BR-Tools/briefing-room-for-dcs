@@ -85,7 +85,6 @@ function ClearMap(mapLayers, drawnItems) {
   mapLayers.COMBAT = [];
   mapLayers.FRONTLINE = undefined;
   drawnItems.remove();
-  drawnItems = new L.FeatureGroup();
 }
 
 function onDrawCreated(drawnItems, mapLayers) {
@@ -355,6 +354,7 @@ function ClearHintMap() {
   hintPositions = {};
   hintMarkers = {};
   ClearMap(hintMapLayers, hintDrawnItems);
+  hintDrawnItems = new L.FeatureGroup();
 }
 
 function GetMapData(map) {

@@ -142,6 +142,8 @@ function GetSituationCoordinates(map) {
 
 function ClearSituationMap() {
   ClearMap(situationMapLayers, situationDrawnItems);
+  situationDrawnItems = new L.FeatureGroup();
+  
 }
 
 function AddDrawControls() {
