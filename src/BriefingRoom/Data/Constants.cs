@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using BriefingRoom4DCS.Data;
+using BriefingRoom4DCS.Data.JSON;
 
 namespace BriefingRoom4DCS.Data
 {
@@ -73,6 +74,19 @@ namespace BriefingRoom4DCS.Data
         {
             UnitFamily.VehicleSAMLong,
             UnitFamily.VehicleSAMMedium
+        };
+
+        internal static readonly List<UnitFamily> SPAWN_POINT_PREFERENCE_HIGH_POINT = new()
+        {
+            UnitFamily.VehicleEWR,
+            UnitFamily.VehicleSAMLong,
+            UnitFamily.VehicleSAMMedium,
+            UnitFamily.VehicleSAMShort,
+            UnitFamily.VehicleSAMShortIR,
+            UnitFamily.VehicleAAA,
+            UnitFamily.VehicleAAAStatic,
+            UnitFamily.VehicleTACAN,
+            UnitFamily.InfantryMANPADS,
         };
 
         internal static readonly List<UnitCategory> NEAR_FRONT_LINE_CATEGORIES = new() { UnitCategory.Static, UnitCategory.Vehicle, UnitCategory.Infantry };

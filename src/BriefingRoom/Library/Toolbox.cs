@@ -22,6 +22,7 @@ using BriefingRoom4DCS.Template;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Reflection;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -478,6 +479,74 @@ namespace BriefingRoom4DCS
         {
             if (list == null || list.Count == 0) return default;
             return list[Rnd.Next(list.Count)];
+        }
+
+        internal static T RandomWeightedFrom<T>(T[] list, string weightPropertyName)
+        {
+            return RandomWeightedFrom(list != null ? list.ToList() : null, weightPropertyName);
+        }
+
+        internal static T RandomWeightedFrom<T>(List<T> list, string weightPropertyName)
+        {            
+            if (list == null || list.Count == 0) return default;
+
+            double total = 0.0;
+            double[] weights = new double[list.Count];
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                var item = list[i];
+                double w = 1.0; // default weight
+
+                if (!string.IsNullOrEmpty(weightPropertyName) && item != null)
+                {
+                    var type = item.GetType();
+                    var prop = type.GetProperty(weightPropertyName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.IgnoreCase);
+                    object val = null;
+                    if (prop != null)
+                        val = prop.GetValue(item);
+                    else
+                    {
+                        var field = type.GetField(weightPropertyName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.IgnoreCase);
+                        if (field != null)
+                            val = field.GetValue(item);
+                    }
+
+                    if (val != null)
+                    {
+                        try
+                        {
+                            w = Convert.ToDouble(val, NumberFormatInfo.InvariantInfo);
+                        }
+                        catch (Exception)
+                        {
+                            // If conversion fails, keep default weight
+                            w = 1.0;
+                        }
+                    }
+                }
+
+                if (double.IsNaN(w) || double.IsInfinity(w) || w < 0)
+                    w = 0.0; // negative/invalid weights treated as zero
+
+                weights[i] = w;
+                total += w;
+            }
+
+            // If no positive weights found, fall back to uniform random
+            if (total <= 0.0)
+                return RandomFrom(list);
+
+            double r = RandomDouble() * total;
+            double cumulative = 0.0;
+            for (int i = 0; i < list.Count; i++)
+            {
+                cumulative += weights[i];
+                if (r < cumulative)
+                    return list[i];
+            }
+
+            return list[list.Count - 1];
         }
 
         internal static bool RandomChance(int oneOutOf)

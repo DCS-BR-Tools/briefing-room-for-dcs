@@ -32,13 +32,16 @@ namespace BriefingRoom4DCS
 
         internal readonly double Y;
 
+        internal readonly double Z = double.NegativeZero;
+
         internal Coordinates(double both) { X = both; Y = both; }
-        internal Coordinates(double[] arr) { X = arr[0]; Y = arr[1]; }
-        internal Coordinates(List<double> arr) { X = arr[0]; Y = arr[1]; }
+        internal Coordinates(double[] arr) { X = arr[0]; Y = arr[1]; Z = arr.Length > 2 ? arr[2] : double.NaN; }
+        internal Coordinates(List<double> arr) { X = arr[0]; Y = arr[1]; Z = arr.Count > 2 ? arr[2] : double.NaN; }
 
         internal Coordinates(double x, double y) { X = x; Y = y; }
+        internal Coordinates(double x, double y, double z) { X = x; Y = y; Z = z; }
 
-        internal Coordinates(Coordinates source) { X = source.X; Y = source.Y; }
+        internal Coordinates(Coordinates source) { X = source.X; Y = source.Y; Z = source.Z; }
 
         internal Coordinates(string coordinatesString)
         {
@@ -48,10 +51,11 @@ namespace BriefingRoom4DCS
 
                 X = Toolbox.StringToDouble(xAndYStrings[0]);
                 Y = Toolbox.StringToDouble(xAndYStrings[1]);
+                Z = xAndYStrings.Length > 2 ? Toolbox.StringToDouble(xAndYStrings[2]) : double.NaN;
             }
             catch (Exception)
             {
-                X = 0; Y = 0;
+                X = 0; Y = 0; Z = double.NaN;
             }
         }
 

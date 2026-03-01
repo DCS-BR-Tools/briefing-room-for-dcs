@@ -133,7 +133,7 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
 
             if (!validSP.Any())
                 return !coalition.HasValue && (useFrontLine || nested) ? null : GetLandCoordinates(database, mission, validTypes, distanceOrigin1, distanceFrom1, distanceOrigin2, distanceFrom2, null, nearFrontLineFamily, true);
-            DBEntryTheaterSpawnPoint selectedSpawnPoint = Toolbox.RandomFrom(validSP.ToArray());
+            DBEntryTheaterSpawnPoint selectedSpawnPoint = nearFrontLineFamily.HasValue && Constants.SPAWN_POINT_PREFERENCE_HIGH_POINT.Contains(nearFrontLineFamily.Value) ? Toolbox.RandomWeightedFrom(validSP.ToArray(), "Z") : Toolbox.RandomFrom(validSP.ToArray());
             mission.SpawnPoints.Remove(selectedSpawnPoint); // Remove spawn point so it won't be used again;
             mission.UsedSpawnPoints.Add(selectedSpawnPoint);
             return selectedSpawnPoint.Coordinates;
