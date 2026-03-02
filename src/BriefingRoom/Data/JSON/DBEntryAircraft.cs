@@ -26,7 +26,6 @@ using System.Linq;
 using BriefingRoom4DCS.Data.JSON;
 using BriefingRoom4DCS.Template;
 using LuaTableSerializer;
-using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 
 namespace BriefingRoom4DCS.Data

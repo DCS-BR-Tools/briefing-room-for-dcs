@@ -19,11 +19,9 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 */
 
 using System;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
-using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 

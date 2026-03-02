@@ -21,7 +21,6 @@ If not, see https://www.gnu.org/licenses/
 */
 
 using BriefingRoom4DCS.Data;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;

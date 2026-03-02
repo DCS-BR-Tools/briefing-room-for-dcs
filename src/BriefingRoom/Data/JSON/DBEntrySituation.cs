@@ -23,7 +23,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using BriefingRoom4DCS.Data.JSON;
-using BriefingRoom4DCS.Mission;
 using Newtonsoft.Json;
 
 namespace BriefingRoom4DCS.Data

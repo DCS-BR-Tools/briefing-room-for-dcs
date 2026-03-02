@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using BriefingRoom4DCS.Data;
-using BriefingRoom4DCS.Data.JSON;
 
 namespace BriefingRoom4DCS.Data
 {

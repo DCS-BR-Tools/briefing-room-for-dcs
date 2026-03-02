@@ -18,7 +18,6 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 ==========================================================================
 */
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using BriefingRoom4DCS.Data;
