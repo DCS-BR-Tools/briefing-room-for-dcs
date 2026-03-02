@@ -26,6 +26,7 @@ namespace BriefingRoom4DCS
         Situation,
         Airbase,
         WorldPreload,
+        FrontLine,
         Objective,
         Carrier,
         PlayerFlightGroups,

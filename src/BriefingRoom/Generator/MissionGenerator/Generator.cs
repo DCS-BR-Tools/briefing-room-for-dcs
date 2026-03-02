@@ -41,6 +41,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             MissionStageName.WorldPreload,
             MissionStageName.Objective,
             MissionStageName.Carrier,
+            MissionStageName.FrontLine,
             MissionStageName.PlayerFlightGroups,
             MissionStageName.CAPResponse,
             MissionStageName.AirDefense,
@@ -128,6 +129,9 @@ namespace BriefingRoom4DCS.Generator.Mission
                             break;
                         case MissionStageName.WorldPreload:
                             WorldPreloadStage(briefingRoom, ref mission);
+                            break;
+                        case MissionStageName.FrontLine:
+                            FrontLineStage(briefingRoom, ref mission);
                             break;
                         case MissionStageName.Objective:
                             ObjectiveStage(briefingRoom, ref mission);
@@ -417,7 +421,6 @@ namespace BriefingRoom4DCS.Generator.Mission
             FlightPlan.GenerateAircraftPackageWaypoints(briefingRoom.Database, ref mission);
             FlightPlan.GenerateIngressAndEgressWaypoints(briefingRoom.Database, ref mission);
             FlightPlan.GenerateBullseyeWaypoint(briefingRoom.Database, ref mission);
-            FrontLine.GenerateFrontLine(briefingRoom.Database, ref mission);
 
             foreach (var waypoint in mission.Waypoints)
             {
@@ -432,6 +435,12 @@ namespace BriefingRoom4DCS.Generator.Mission
             foreach (var templateFlightGroup in mission.TemplateRecord.PlayerFlightGroups)
                 PlayerFlightGroups.GeneratePlayerFlightGroup(briefingRoom, ref mission, templateFlightGroup);
             mission.SaveStage(MissionStageName.PlayerFlightGroups);
+        }
+
+        private static void FrontLineStage(IBriefingRoom briefingRoom, ref DCSMission mission)
+        {
+            FrontLine.GenerateFrontLine(briefingRoom.Database, ref mission);
+            mission.SaveStage(MissionStageName.FrontLine);
         }
 
         private static void CAPStage(IBriefingRoom briefingRoom, ref DCSMission mission)
