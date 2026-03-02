@@ -19,6 +19,7 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 */
 
 using BriefingRoom4DCS.Data;
+using BriefingRoom4DCS.Generator.UnitMaker;
 using BriefingRoom4DCS.Mission;
 using BriefingRoom4DCS.Template;
 using System.Collections.Generic;
@@ -30,13 +31,48 @@ namespace BriefingRoom4DCS.Generator.Mission
     {
         internal static void GenerateFrontLine(IDatabase database, ref DCSMission mission)
         {
-
+            if (mission.TemplateRecord.ContextCustomFrontLine.Count > 0)
+            {
+                mission.MapData.Add("FRONTLINE", mission.TemplateRecord.ContextCustomFrontLine.Select(x => x.ToArray()).ToList());
+                mission.SetFrontLine(mission.TemplateRecord.ContextCustomFrontLine.Select(x => new Coordinates(x[0], x[1])).ToList(), mission.PlayerAirbase.Coordinates, mission.TemplateRecord.ContextPlayerCoalition);
+                return;
+            }
+            if (mission.FrontLine.Count == 0 && mission.SituationDB.Frontline.Count > 0 && !mission.TemplateRecord.ContextSituationIgnoresFrontLine)
+            {
+                mission.MapData.Add("FRONTLINE", mission.SituationDB.Frontline.Select(x => x.ToArray()).ToList());
+                mission.SetFrontLine(mission.SituationDB.Frontline, mission.PlayerAirbase.Coordinates, mission.TemplateRecord.ContextPlayerCoalition);
+                return;
+            }
             if (mission.FrontLine.Count > 0 || mission.TemplateRecord.OptionsMission.Contains("SpawnAnywhere") || mission.TemplateRecord.ContextSituation == "None" || mission.TemplateRecord.OptionsMission.Contains("NoFrontLine"))
                 return;
-            var frontLineDB = database.Common.FrontLine;
-            var frontLineCenter = Coordinates.Lerp(mission.PlayerAirbase.Coordinates, mission.ObjectivesCenter, GetObjectiveLerpBias(database, mission.LangKey, mission.TemplateRecord, frontLineDB));
 
-            var objectiveHeading = mission.PlayerAirbase.Coordinates.GetHeadingFrom(mission.ObjectivesCenter);
+            var frontLineList = CreateFrontLine(database, ref mission);
+            mission.MapData.Add("FRONTLINE", frontLineList.Select(x => x.ToArray()).ToList());
+            mission.SetFrontLine(frontLineList, mission.PlayerAirbase.Coordinates, mission.TemplateRecord.ContextPlayerCoalition);
+        }
+
+
+        private static List<Coordinates> CreateFrontLine(IDatabase database, ref DCSMission mission)
+        {
+            var frontLineDB = database.Common.FrontLine;
+            var bias = GetObjectiveBias(database, mission.LangKey, mission.TemplateRecord, frontLineDB);
+
+            Coordinates? centerPoint = null;
+            var objHints = mission.TemplateRecord.Objectives.Where(x => x.CoordinatesHint.ToString() != "0,0").Select(x => x.CoordinatesHint).ToList();
+            if (objHints.Count > 0)
+            {
+                centerPoint = Coordinates.Sum(objHints) / objHints.Count;
+            }
+            else
+            {
+                centerPoint = GetRandomCenterCoordinates(
+                    database,
+                    ref mission,
+                    GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, bias > 0 ? Side.Ally : Side.Enemy));
+            }
+
+            var frontLineCenter = Coordinates.Lerp(mission.PlayerAirbase.Coordinates, centerPoint.Value, GetObjectiveLerpBias(bias, frontLineDB));
+            var objectiveHeading = mission.PlayerAirbase.Coordinates.GetHeadingFrom(centerPoint.Value);
             var angleVariance = frontLineDB.AngleVarianceRange + objectiveHeading;
             var frontLineList = new List<Coordinates> { frontLineCenter };
 
@@ -49,9 +85,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 frontLineList.Insert(0, CreatePoint(frontLineDB, frontLineList, angleVariance, biasZones, true));
                 frontLineList.Add(CreatePoint(frontLineDB, frontLineList, angleVariance, biasZones, false));
             }
-
-            mission.MapData.Add("FRONTLINE", frontLineList.Select(x => x.ToArray()).ToList());
-            mission.SetFrontLine(frontLineList, mission.PlayerAirbase.Coordinates, mission.TemplateRecord.ContextPlayerCoalition);
+            return frontLineList;
         }
 
         private static Coordinates CreatePoint(DBCommonFrontLine frontLineDB, List<Coordinates> frontLineList, MinMaxD angleVariance, List<List<Coordinates>> biasPoints, bool preCenter)
@@ -69,7 +103,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             return point;
         }
 
-        private static double GetObjectiveLerpBias(IDatabase database, string langKey, MissionTemplateRecord template, DBCommonFrontLine frontLineDB)
+        private static double GetObjectiveBias(IDatabase database, string langKey, MissionTemplateRecord template, DBCommonFrontLine frontLineDB)
         {
             var friendlySideObjectivesCount = 0;
             var enemySideObjectivesCount = 0;
@@ -81,15 +115,31 @@ namespace BriefingRoom4DCS.Generator.Mission
                 else
                     enemySideObjectivesCount++;
             });
+            return friendlySideObjectivesCount - enemySideObjectivesCount;
+        }
 
+        private static double GetObjectiveLerpBias(double bias, DBCommonFrontLine frontLineDB)
+        {
             var lerpDistance = frontLineDB.BaseObjectiveBiasRange.GetValue();
-            var bias = friendlySideObjectivesCount - enemySideObjectivesCount;
             if (bias < 1)
                 lerpDistance += bias * frontLineDB.EnemyObjectiveBias;
             else
                 lerpDistance += bias * frontLineDB.FriendlyObjectiveBias;
 
             return double.Min(double.Max(lerpDistance, frontLineDB.ObjectiveBiasLimits.Min), frontLineDB.ObjectiveBiasLimits.Max);
+        }
+
+        private static Coordinates? GetRandomCenterCoordinates(IDatabase database, ref DCSMission mission, Coalition? coalition)
+        {
+            Coordinates? spawnPoint = SpawnPointSelector.GetRandomSpawnPoint(
+                database,
+                ref mission,
+                Constants.LAND_SPAWNS.ToArray(),
+                mission.PlayerAirbase.Coordinates,
+                mission.TemplateRecord.FlightPlanObjectiveDistance,
+                coalition: coalition);
+
+            return spawnPoint;
         }
 
     }
