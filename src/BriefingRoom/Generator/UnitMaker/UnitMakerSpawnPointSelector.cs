@@ -405,7 +405,6 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
 
         private static bool CheckNotFarFromBorders(ref DCSMission mission, Coordinates coordinates, double borderLimit, Coalition? coalition = null)
         {
-            return true;
             if (!coalition.HasValue)
                 return true;
 
