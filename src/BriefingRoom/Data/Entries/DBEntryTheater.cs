@@ -135,19 +135,19 @@ namespace BriefingRoom4DCS.Data
                     PointType = (SpawnPointType)Enum.Parse(typeof(SpawnPointType), x.BRtype, true)
                 }
             ).ToArray();
-            BriefingRoom.PrintToLog($"{DCSID} loaded {_SpawnPoints.Length} spawn points");
+            BriefingRoom.PrintToLog($"{DCSID} loaded {_SpawnPoints.Length} Generated spawn points");
 
-            var spawnPointsGeneratedJsonFilePath = Path.Combine(BRPaths.DATABASEJSON, "TheaterSpawnPoints", $"{DCSID}_Generated.json.gz");
-            if (File.Exists(spawnPointsGeneratedJsonFilePath))
+            var spawnPointsManualJsonFilePath = Path.Combine(BRPaths.DATABASEJSON, "TheaterSpawnPoints", $"{DCSID}_Manual.json.gz");
+            if (File.Exists(spawnPointsManualJsonFilePath))
             {
-                var generatedSpawnPoints = ReadSpawnPointsFromFile(spawnPointsGeneratedJsonFilePath).Select(x =>
+                var generatedSpawnPoints = ReadSpawnPointsFromFile(spawnPointsManualJsonFilePath).Select(x =>
                     new DBEntryTheaterSpawnPoint
                     {
                         Coordinates = new Coordinates(x.coords),
                         PointType = (SpawnPointType)Enum.Parse(typeof(SpawnPointType), x.BRtype, true)
                     }
                 ).ToArray();
-                BriefingRoom.PrintToLog($"{DCSID} loaded {generatedSpawnPoints.Length} generated spawn points");
+                BriefingRoom.PrintToLog($"{DCSID} loaded {generatedSpawnPoints.Length} Manual spawn points");
                 _SpawnPoints = _SpawnPoints.Concat(generatedSpawnPoints).ToArray();
                 BriefingRoom.PrintToLog($"{DCSID} total {SpawnPoints.Length} spawn points");
             }
