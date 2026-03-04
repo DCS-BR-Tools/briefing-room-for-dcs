@@ -385,7 +385,7 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
             var red = mission.SituationDB.GetRedZones(mission.InvertedCoalition);
             var blue = mission.SituationDB.GetBlueZones(mission.InvertedCoalition);
 
-            return !ShapeManager.IsPosValid(coordinates, (coalition.Value == Coalition.Blue ? red : blue));
+            return !ShapeManager.IsPosValid(coordinates, coalition.Value == Coalition.Blue ? red : blue);
         }
 
         internal static bool CheckNotInNoSpawnCoords(DBEntrySituation situationDB, Coordinates coordinates)
@@ -405,6 +405,7 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
 
         private static bool CheckNotFarFromBorders(ref DCSMission mission, Coordinates coordinates, double borderLimit, Coalition? coalition = null)
         {
+            return true;
             if (!coalition.HasValue)
                 return true;
 
