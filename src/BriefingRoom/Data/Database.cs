@@ -31,6 +31,7 @@ namespace BriefingRoom4DCS.Data
 
         public DatabaseCommon Common { get; set; }
         public DatabaseLanguage Language { get; set; }
+        public string DCSSaveGamePath { get; private set; } = string.Empty;
 
         private readonly Dictionary<Type, Dictionary<string, DBEntry>> DBEntries;
         private readonly Dictionary<Type, Tuple<string, string>[]> UnloadedEntries = new();
@@ -43,6 +44,7 @@ namespace BriefingRoom4DCS.Data
             Language = new DatabaseLanguage();
             Common = new DatabaseCommon();
             DBEntries = new Dictionary<Type, Dictionary<string, DBEntry>>();
+            getSaveGamePath();
             this.Initialize();
         }
 
@@ -385,6 +387,38 @@ namespace BriefingRoom4DCS.Data
         {
             CheckAndLoadEntries<T>();
             return (from T entry in GetAllEntries<T>() where ids.Distinct().OrderBy(x => x).Contains(entry.ID) select entry).ToList();
+        }
+
+
+        private void getSaveGamePath()
+        {
+            if (!string.IsNullOrEmpty(DCSSaveGamePath))
+                return;
+            var userPath = Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile);
+            if (Directory.Exists(Path.Join(userPath, "Saved Games", "DCS.openbeta")))
+            {
+                DCSSaveGamePath = Path.Join(userPath, "Saved Games", "DCS.openbeta");
+                return;
+            }
+            if (Directory.Exists(Path.Join(userPath, "Saved Games", "DCS")))
+            {
+                DCSSaveGamePath = Path.Join(userPath, "Saved Games", "DCS");
+                return;
+            }
+        }
+
+        public bool SetDCSSaveGamePath(string path)
+        {
+            if (
+                Directory.Exists(path) &&
+                Directory.Exists(Path.Join(path, "MissionEditor", "UnitPayloads")) &&
+                Directory.Exists(Path.Join(path, "Liveries")))
+            {
+                DCSSaveGamePath = path;
+                Reset();
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -50,8 +50,6 @@ namespace BriefingRoom4DCS
 
         void ReloadDatabase();
 
-        bool SetDCSSaveGamePath(string path);
-
         void PrintTranslatableWarning(string key, params object[] args);
 
     }

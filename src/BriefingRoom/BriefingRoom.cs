@@ -49,9 +49,6 @@ namespace BriefingRoom4DCS
 
         public const int MAXFILESIZE = 50000000;
 
-        public static string DCSSaveGamePath { get; private set; } = string.Empty;
-
-
         public delegate void LogHandler(string message, LogMessageErrorLevel errorLevel);
         public string LanguageKey { get; set; } = "en";
         public IDatabase Database { get; }
@@ -59,13 +56,9 @@ namespace BriefingRoom4DCS
         private static event LogHandler OnMessageLogged;
 
         public BriefingRoom(IDatabase database, LogHandler logHandler = null)
-        {
-           
-
-            getSaveGamePath();
+        {  
             OnMessageLogged = logHandler;
             Database = database;
-
         }
 
         public void SetLogHandler(LogHandler logHandler)
@@ -285,38 +278,6 @@ namespace BriefingRoom4DCS
         public void ReloadDatabase()
         {
             Database.Reset();
-        }
-
-        private void getSaveGamePath()
-        {
-            if (!string.IsNullOrEmpty(DCSSaveGamePath))
-                return;
-            var userPath = Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile);
-            if (Directory.Exists(Path.Join(userPath, "Saved Games", "DCS.openbeta")))
-            {
-                DCSSaveGamePath = Path.Join(userPath, "Saved Games", "DCS.openbeta");
-                return;
-            }
-            if (Directory.Exists(Path.Join(userPath, "Saved Games", "DCS")))
-            {
-                DCSSaveGamePath = Path.Join(userPath, "Saved Games", "DCS");
-                return;
-            }
-
-        }
-
-        public bool SetDCSSaveGamePath(string path)
-        {
-            if (
-                Directory.Exists(path) &&
-                Directory.Exists(Path.Join(path, "MissionEditor", "UnitPayloads")) &&
-                Directory.Exists(Path.Join(path, "Liveries")))
-            {
-                DCSSaveGamePath = path;
-                Database.Reset();
-                return true;
-            }
-            return false;
         }
     }
 }

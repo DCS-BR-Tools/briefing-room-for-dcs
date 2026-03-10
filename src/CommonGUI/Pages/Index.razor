@@ -84,7 +84,7 @@
                                     <span class="oi oi-x"></span>
                                 }
                             }</label>
-                            <input class="form-control" type="text" @onchange="e => Layout.getDCSSaveGamePath((string)e.Value)" placeholder="@(string.IsNullOrEmpty(BriefingRoom.DCSSaveGamePath) ? "e.g: C:\\Users\\<USER>\\Saved Games\\DCS.openbeta" : BriefingRoom.DCSSaveGamePath)" />
+                            <input class="form-control" type="text" @onchange="e => Layout.getDCSSaveGamePath((string)e.Value)" placeholder="@(string.IsNullOrEmpty(briefingRoom.Database.DCSSaveGamePath) ? "e.g: C:\\Users\\<USER>\\Saved Games\\DCS.openbeta" : briefingRoom.Database.DCSSaveGamePath)" />
                     </div>
                     <div>&nbsp;</div>
                 }

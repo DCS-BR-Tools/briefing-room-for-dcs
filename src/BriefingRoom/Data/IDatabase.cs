@@ -49,5 +49,8 @@ namespace BriefingRoom4DCS.Data
 
         string CheckID<T>(string id, string defaultID = null, bool allowEmptyStr = false, List<string> allowedValues = null) where T : DBEntry, new();
         string[] CheckIDs<T>(params string[] ids) where T : DBEntry, new();
+
+        string DCSSaveGamePath { get; }
+        bool SetDCSSaveGamePath(string path);
     }
 }
