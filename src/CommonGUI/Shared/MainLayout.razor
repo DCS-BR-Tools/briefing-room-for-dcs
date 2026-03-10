@@ -220,7 +220,7 @@
 
     public void ReloadDatabase()
     {
-        briefingRoom.ReloadDatabase();
+        briefingRoom.Database.Reset();
         navigationManager.NavigateTo(navigationManager.Uri, true);
     }
 

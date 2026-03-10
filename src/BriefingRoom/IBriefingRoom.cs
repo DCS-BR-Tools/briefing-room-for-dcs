@@ -48,8 +48,6 @@ namespace BriefingRoom4DCS
 
         string Translate(string key, params object[] args);
 
-        void ReloadDatabase();
-
         void PrintTranslatableWarning(string key, params object[] args);
 
     }

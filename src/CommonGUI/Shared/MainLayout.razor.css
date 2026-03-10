@@ -97,4 +97,5 @@
 
 .save-path-success > input {
     background-color: lightgreen;
+    color: black;
 }

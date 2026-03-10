@@ -50,6 +50,9 @@ namespace BriefingRoom4DCS.Data
 
         public void Reset()
         {
+            LoadingInProgress = false;
+            Initialized = false;
+            UnloadedEntries.Clear();
             this.Initialize();
         }
 
@@ -111,6 +114,7 @@ namespace BriefingRoom4DCS.Data
                 throw new BriefingRoomRawException("No player-controllable aircraft found.");
 
             Initialized = true;
+            LoadingInProgress = false;
             BriefingRoom.PrintToLog("---------------> Database initialized.", LogMessageErrorLevel.Warning);
         }
 
@@ -409,12 +413,14 @@ namespace BriefingRoom4DCS.Data
 
         public bool SetDCSSaveGamePath(string path)
         {
+            if(path == DCSSaveGamePath) return true;
             if (
                 Directory.Exists(path) &&
                 Directory.Exists(Path.Join(path, "MissionEditor", "UnitPayloads")) &&
                 Directory.Exists(Path.Join(path, "Liveries")))
             {
                 DCSSaveGamePath = path;
+
                 Reset();
                 return true;
             }

@@ -52,7 +52,7 @@ else
 
     private void ReloadDatabase()
     {
-        briefingRoom.ReloadDatabase();
+        briefingRoom.Database.Reset();
     }
 
     private List<Tuple<DateTime, LogMessageErrorLevel, string>> ReverseLogs()

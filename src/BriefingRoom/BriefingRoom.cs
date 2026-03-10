@@ -274,10 +274,5 @@ namespace BriefingRoom4DCS
             if (errorLevel == LogMessageErrorLevel.Warning || errorLevel == LogMessageErrorLevel.Error || System.Diagnostics.Debugger.IsAttached)
                 Console.WriteLine($"{errorLevel}: {message}");
         }
-
-        public void ReloadDatabase()
-        {
-            Database.Reset();
-        }
     }
 }
