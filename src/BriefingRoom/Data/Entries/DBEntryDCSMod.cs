@@ -80,7 +80,8 @@ namespace BriefingRoom4DCS.Data
             "C-130J AI",
             "C-130-Assets",
             "ColdWarAssetsPack",
-            "A-6E AI by Heatblur Simulations"
+            "A-6E AI by Heatblur Simulations",
+            "La-7 AI by OctopusG",
         };
 
         internal string Module { get; private set; }

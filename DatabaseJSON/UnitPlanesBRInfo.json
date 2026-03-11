@@ -864,5 +864,11 @@
     "families": ["PlaneAttack", "PlaneStrike"],
     "lowPolly": false,
     "playerControllable": false
+  },
+  {
+    "type": "La-7",
+    "families": ["PlaneAttack", "PlaneStrike", "PlaneSTOVL", "PlaneFighter"],
+    "lowPolly": false,
+    "playerControllable": true
   }
 ]

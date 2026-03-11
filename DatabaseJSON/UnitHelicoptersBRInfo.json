@@ -203,5 +203,13 @@
         ],
         "lowPolly": false,
         "playerControllable": true
+    },
+    {
+        "type": "CHAP_TigerUHT",
+        "families": [
+            "HelicopterAttack"
+        ],
+        "lowPolly": false,
+        "playerControllable": false
     }
 ]

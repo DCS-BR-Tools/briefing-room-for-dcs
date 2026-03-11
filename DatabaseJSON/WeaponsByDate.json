@@ -1816,5 +1816,12 @@
   { "decade": 1960, "clsid": "{HB_A6E_LAU10_TER_3x}" },
   { "decade": 1960, "clsid": "{HB_A6E_D704}" },
   { "decade": 1960, "clsid": "{HB_A6E_MK82_MER_6x}" },
-  { "decade": 1960, "clsid": "{HB_A6E_AERO1D}" }
+  { "decade": 1960, "clsid": "{HB_A6E_AERO1D}" },
+  { "decade": 1940, "clsid": "LA7_AO_25SL"},
+  { "decade": 1990, "clsid": "{CHAP_AIM92}"},
+  { "decade": 1990, "clsid": "{CHAP_TigerUHT_fueltank}"}, 
+  { "decade": 1990, "clsid": "{CHAP_HOT3}"}, 
+  { "decade": 1990, "clsid": "{CHAP_FZ225_M229}"}, 
+  { "decade": 1990, "clsid": "{CHAP_HMP400LC}"},
+  { "decade": 1990, "clsid": "{CHAP_FZ225_M151}"}
 ]

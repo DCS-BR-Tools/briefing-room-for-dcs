@@ -243,7 +243,7 @@ namespace BriefingRoom4DCS.Data
                     };
 
                     Payloads.Add(payload);
-                    BriefingRoom.PrintToLog($"Imported payload {payload.displayName} for {DCSID}", LogMessageErrorLevel.Warning);
+                    BriefingRoom.PrintToLog($"Imported payload {payload.displayName} for {DCSID}");
                 }
 
             }
@@ -271,7 +271,7 @@ namespace BriefingRoom4DCS.Data
                 if (!Liveries[Country.ALL].Contains(Tuple.Create(rawFileName, rawFileName)))
                 {
                     Liveries[Country.ALL].Add(Tuple.Create(rawFileName, rawFileName));
-                    BriefingRoom.PrintToLog($"Imported Livery {rawFileName} for {DCSID}", LogMessageErrorLevel.Warning);
+                    BriefingRoom.PrintToLog($"Imported Livery {rawFileName} for {DCSID}");
                 }
             }
 
@@ -282,7 +282,7 @@ namespace BriefingRoom4DCS.Data
                 if (!Liveries[Country.ALL].Contains(Tuple.Create(rawFileName, rawFileName)))
                 {
                     Liveries[Country.ALL].Add(Tuple.Create(rawFileName, rawFileName));
-                    BriefingRoom.PrintToLog($"Imported Livery {rawFileName} for {DCSID}", LogMessageErrorLevel.Warning);
+                    BriefingRoom.PrintToLog($"Imported Livery {rawFileName} for {DCSID}");
                 }
             }
 
