@@ -72,7 +72,7 @@ jobs:
           echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Zip Release
-        run: 7z a -tzip beta-release-${{ steps.current-time.outputs.formattedTime }}.zip BriefingRoom-build${{ steps.current-time.outputs.formattedTime }} "-xr!.git\" "-xr!.github\" "-xr!.git*" "-xr!.vscode\" "-xr!dataExtractors\"  "-xr!src\" "-xr!docs\" "-x!*.bat" "-x!*.filelist"
+        run: 7z a -tzip beta-release-${{ steps.current-time.outputs.formattedTime }}.zip BriefingRoom-build${{ steps.current-time.outputs.formattedTime }}\* "-xr!.git\" "-xr!.github\" "-xr!.git*" "-xr!.vscode\" "-xr!dataExtractors\"  "-xr!src\" "-xr!docs\" "-x!*.bat" "-x!*.filelist"
 
       - name: Upload unsigned zip as artifact
         id: upload-unsigned
