@@ -84,15 +84,14 @@ jobs:
       - name: Sign artifact with SignPath
         uses: signpath/github-action-submit-signing-request@v2
         with:
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
           organization-id: ${{ secrets.SIGNPATH_ORGANIZATION_ID }}
           project-slug: ${{ secrets.SIGNPATH_PROJECT_SLUG }}
           signing-policy-slug: ${{ secrets.SIGNPATH_SIGNING_POLICY_SLUG }}
           artifact-configuration-slug: briefing-room-release
           github-artifact-id: ${{ steps.upload-unsigned.outputs.artifact-id }}
           wait-for-completion: true
-          output-artifact-path: beta-release-${{ steps.current-time.outputs.formattedTime }}.zip
-        env:
-          SIGNPATH_API_TOKEN: ${{ secrets.SIGNPATH_API_TOKEN }}
+          output-artifact-directory: .
 
       - name: Delete unsigned artifact
         if: always()
