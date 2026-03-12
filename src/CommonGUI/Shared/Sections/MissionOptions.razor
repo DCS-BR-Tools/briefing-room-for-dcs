@@ -3,7 +3,7 @@
 
 <div class="form-group">
         <h4>@briefingRoom.Translate("MissionOptions")</h4>
-        <CheckBoxList Data="briefingRoom.GetDatabaseEntriesInfo(DatabaseEntryType.OptionsMission).ToList()"
+        <CheckBoxList Data="briefingRoom.GetDatabaseEntriesInfo(DatabaseEntryType.OptionsMission).Where(item => string.IsNullOrEmpty(SearchTerm) || item.Name.Get(briefingRoom.LanguageKey).Contains(SearchTerm, StringComparison.OrdinalIgnoreCase)).ToList()"
             TextField="@(item =>item.Name.Get(briefingRoom.LanguageKey))"
             DescriptionField="@(item => item.Description.Get(briefingRoom.LanguageKey))" ValueField="@(item =>item.ID)"
             SelectedValues="Template.OptionsMission" TItem="DatabaseEntryInfo" TItemOutput="string">
@@ -11,7 +11,7 @@
     </div>
     <div class="form-group">
         <h4>@briefingRoom.Translate("RealismOptions")</h4>
-        <CheckBoxList Data="Enum.GetValues(typeof(RealismOption)).Cast<RealismOption>()"
+        <CheckBoxList Data="Enum.GetValues(typeof(RealismOption)).Cast<RealismOption>().Where(item => string.IsNullOrEmpty(SearchTerm) || BriefingRoomGUITools.GetEnumName(briefingRoom, item).Contains(SearchTerm, StringComparison.OrdinalIgnoreCase)).ToList()"
             TextField="@(item => BriefingRoomGUITools.GetEnumName(briefingRoom, item))"
             ValueField="@(item =>item)" SelectedValues="Template.OptionsRealism" TItem="RealismOption"
             TItemOutput="RealismOption">
@@ -19,7 +19,7 @@
     </div>
     <div class="form-group">
         <h4>@briefingRoom.Translate("UnitMods")</h4>
-        <CheckBoxList Data="briefingRoom.GetDatabaseEntriesInfo(DatabaseEntryType.DCSMod).ToList()"
+        <CheckBoxList Data="briefingRoom.GetDatabaseEntriesInfo(DatabaseEntryType.DCSMod).Where(item => string.IsNullOrEmpty(SearchTerm) || item.Name.Get(briefingRoom.LanguageKey).Contains(SearchTerm, StringComparison.OrdinalIgnoreCase)).ToList()"
             TextField="@(item =>item.Name.Get(briefingRoom.LanguageKey))"
             DescriptionField="@(item => item.Description.Get(briefingRoom.LanguageKey))" ValueField="@(item =>item.ID)"
             SelectedValues="Template.Mods" TItem="DatabaseEntryInfo" TItemOutput="string">
@@ -27,5 +27,6 @@
     </div>
 
     @code {
+        [Parameter] public string SearchTerm { get; set; }
         [Parameter] public BaseTemplate Template { get; set; }
     }

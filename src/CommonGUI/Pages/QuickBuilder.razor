@@ -165,7 +165,9 @@
                 <div class="col-6">
                     <h3>@briefingRoom.Translate("Options")</h3>
                     <InputEnum Label="Fog of war" @bind-Value="Template.OptionsFogOfWar" EnumType="FogOfWar" />
-                    <MissionFeatures Template="Template" />
+                    <hr/>
+                    <input type="text" class="float-right" placeholder="Search" @bind="SearchTerm"  @bind:event="oninput" />
+                    <MissionFeatures Template="Template" SearchTerm="@SearchTerm" />
                 </div>
                 <div class="col-6">
                     <h5><span class="oi oi-info"></span>&nbsp;@briefingRoom.Translate("InheritedSettings")</h5>
@@ -250,6 +252,7 @@
     private string templateMessage;
     private bool showGenerator = true;
     private bool spinner = false;
+    private string SearchTerm;
     private FlightGroupUtils flightGroupUtil = new FlightGroupUtils();
     private ObjectiveUtils objectiveUtil = new ObjectiveUtils(true);
     private BuilderUtils builderUtils {get; set;}

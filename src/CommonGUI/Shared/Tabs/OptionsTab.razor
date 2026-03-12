@@ -8,10 +8,13 @@
 <div id="options" class="generator-block">
     <h3>@briefingRoom.Translate("Options")</h3>
     <InputEnum Label="Fog of war" @bind-Value="Template.OptionsFogOfWar" EnumType="FogOfWar" />
-    <MissionFeatures Template="Template" />
-    <MissionOptions Template="Template" />
+    <hr
+    <input type="text" class="float-right" placeholder="Search" @bind="SearchTerm"  @bind:event="oninput" />
+    <MissionFeatures Template="Template" SearchTerm="@SearchTerm" />
+    <MissionOptions Template="Template" SearchTerm="@SearchTerm" />
 </div>
 @code {
+    private string SearchTerm;
     [Parameter] public BuilderUtils builderUtils { get; set; }
     [Parameter] public MissionTemplate Template { get; set; }
 }

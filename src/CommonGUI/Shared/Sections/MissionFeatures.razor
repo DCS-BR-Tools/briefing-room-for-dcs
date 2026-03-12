@@ -3,7 +3,7 @@
 @inject BriefingRoom4DCS.IBriefingRoom briefingRoom
 <div class="form-group">
     <h4>@briefingRoom.Translate("MissionFeatures")</h4>
-    <CheckBoxList Data="briefingRoom.GetDatabaseEntriesInfo(DatabaseEntryType.MissionFeature).ToList()"
+    <CheckBoxList Data="briefingRoom.GetDatabaseEntriesInfo(DatabaseEntryType.MissionFeature).Where(item => string.IsNullOrEmpty(SearchTerm) || item.Name.Get(briefingRoom.LanguageKey).Contains(SearchTerm, StringComparison.OrdinalIgnoreCase)).ToList()"
         TextField="@(item =>item.Name.Get(briefingRoom.LanguageKey))"
         DescriptionField="@(item => item.Description.Get(briefingRoom.LanguageKey))"
         GroupingField="@(item => item.Category.Get(briefingRoom.LanguageKey))" ValueField="@(item =>item.ID)"
@@ -11,5 +11,6 @@
     </CheckBoxList>
 </div>
 @code {
+    [Parameter] public string SearchTerm { get; set; }
     [Parameter] public MissionTemplate Template { get; set; }
 }
