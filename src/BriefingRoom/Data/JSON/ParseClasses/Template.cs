@@ -1,6 +1,6 @@
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using System;
 
 namespace BriefingRoom4DCS.Data.JSON
 {

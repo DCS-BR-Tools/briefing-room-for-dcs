@@ -19,10 +19,10 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 */
 
 using System;
-using System.Diagnostics;
-using System.IO;
 using System.CommandLine;
 using System.CommandLine.Parsing;
+using System.Diagnostics;
+using System.IO;
 using System.Threading;
 
 namespace BriefingRoom4DCS.Updater

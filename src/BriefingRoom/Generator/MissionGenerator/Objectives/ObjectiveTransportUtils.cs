@@ -1,7 +1,7 @@
+using System.Linq;
 using BriefingRoom4DCS.Data;
 using BriefingRoom4DCS.Generator.UnitMaker;
 using BriefingRoom4DCS.Mission;
-using System.Linq;
 
 namespace BriefingRoom4DCS.Generator.Mission.Objectives
 {

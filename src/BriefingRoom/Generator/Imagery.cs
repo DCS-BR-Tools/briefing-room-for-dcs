@@ -20,16 +20,16 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 
 #nullable enable
 
-using BriefingRoom4DCS.Data;
-using BriefingRoom4DCS.Mission;
-using BriefingRoom4DCS.Template;
-using PuppeteerSharp;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BriefingRoom4DCS.Data;
+using BriefingRoom4DCS.Mission;
+using BriefingRoom4DCS.Template;
+using PuppeteerSharp;
 
 namespace BriefingRoom4DCS.Generator
 {

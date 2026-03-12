@@ -1,11 +1,11 @@
-﻿using BriefingRoom4DCS.Data;
-using BriefingRoom4DCS.Mission;
-using BriefingRoom4DCS.Mission.DCSLuaObjects;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using BriefingRoom4DCS.Data;
+using BriefingRoom4DCS.Mission;
+using BriefingRoom4DCS.Mission.DCSLuaObjects;
 
 namespace BriefingRoom4DCS.Generator.UnitMaker
 {

@@ -18,18 +18,18 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 ==========================================================================
 */
 
-using BriefingRoom4DCS.Template;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Reflection;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.IO.Compression;
-using BriefingRoom4DCS.Data;
+using System.Linq;
+using System.Reflection;
+using System.Text;
 using System.Text.RegularExpressions;
+using BriefingRoom4DCS.Data;
 using BriefingRoom4DCS.Mission;
+using BriefingRoom4DCS.Template;
 using Microsoft.Maui.Graphics;
 
 namespace BriefingRoom4DCS

@@ -19,8 +19,8 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 */
 
 using System.Collections.Generic;
-using BriefingRoom4DCS.Mission.DCSLuaObjects;
 using BriefingRoom4DCS.Data;
+using BriefingRoom4DCS.Mission.DCSLuaObjects;
 
 namespace BriefingRoom4DCS.Generator
 {

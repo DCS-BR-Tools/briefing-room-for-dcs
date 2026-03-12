@@ -20,13 +20,13 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 
 #nullable enable
 
-using PuppeteerSharp;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using PuppeteerSharp;
 
 namespace BriefingRoom4DCS.Generator
 {

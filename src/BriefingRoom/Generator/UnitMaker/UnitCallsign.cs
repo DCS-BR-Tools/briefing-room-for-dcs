@@ -17,8 +17,8 @@ You should have received a copy of the GNU General Public License
 along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses/
 ==========================================================================
 */
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BriefingRoom4DCS.Generator.UnitMaker
 {

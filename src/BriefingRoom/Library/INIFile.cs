@@ -20,8 +20,8 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using BriefingRoom4DCS.Data;
