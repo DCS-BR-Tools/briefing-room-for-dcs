@@ -14,14 +14,17 @@
         <button id="un-ban-all" class="btn btn-primary row-button" type="button"
             @onclick='() => UnBanFamily(selectedFamily)'>@briefingRoom.Translate("UnBanGroup")</button>
     </div>
+    <hr />
+    <input type="text" class="float-right" placeholder="Search" @bind="SearchTerm"  @bind:event="oninput" />
     <CheckBoxList
-        Data="briefingRoom.GetDatabaseEntriesInfo(DatabaseEntryType.Unit, string.Join(',', Template.Mods)).ToList()"
+        Data="briefingRoom.GetDatabaseEntriesInfo(DatabaseEntryType.Unit, string.Join(',', Template.Mods)).Where(item => string.IsNullOrEmpty(SearchTerm) || item.Name.Get(briefingRoom.LanguageKey).Contains(SearchTerm, StringComparison.OrdinalIgnoreCase)).ToList()"
         TextField="@(item =>item.Name.Get(briefingRoom.LanguageKey))" ValueField="@(item =>item.ID)"
         GroupingField="@(item => item.Category.Get(briefingRoom.LanguageKey))"
         SelectedValues="Template.OptionsUnitBanList" TItem="DatabaseEntryInfo" TItemOutput="string">
     </CheckBoxList>
 </div>
 @code {
+        private string SearchTerm;
     [Parameter] public BaseTemplate Template { get; set; }
 
     private void BanEverything()
