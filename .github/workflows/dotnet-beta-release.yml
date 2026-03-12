@@ -72,7 +72,7 @@ jobs:
           echo "EOF" >> $GITHUB_OUTPUT
 
 
-      - name: Upload unsigned zip as artifact
+      - name: Upload unsigned as artifact
         id: beta-release-unsigned
         uses: actions/upload-artifact@v4
         with:
@@ -108,38 +108,45 @@ jobs:
         shell: bash
         run: |
           ls signed
-      # - name: Upload Release
-      #   uses: ncipollo/release-action@v1
-      #   with:
-      #     tag: "beta-release-${{ steps.current-time.outputs.formattedTime }}-${{ github.run_id }}-${{ github.run_attempt }}"
-      #     name: "beta-release-${{ steps.current-time.outputs.formattedTime }}"
-      #     body: |
-      #       This is a automated beta build. This may not work. Its not recommend to overwrite a official release with this.
-      #       ${{ steps.change_log.outputs.log }}
-      #     prerelease: true
-      #     artifacts: "beta-release-${{ steps.current-time.outputs.formattedTime }}/"
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      # - name: Truncate Changelog for Discord
-      #   id: discord_log
-      #   shell: bash
-      #   run: |
-      #     HEADER="New Beta Release out https://github.com/DCS-BR-Tools/briefing-room-for-dcs/releases/tag/beta-release-${{ steps.current-time.outputs.formattedTime }}-${{ github.run_id }}-${{ github.run_attempt }}"
-      #     LOG="${{ steps.change_log.outputs.log }}"
-      #     HEADER_LEN=${#HEADER}
-      #     MAX_LOG_LEN=$((2000 - HEADER_LEN - 10))  # Reserve space for newlines and ellipsis
-      #     if [ ${#LOG} -gt $MAX_LOG_LEN ]; then
-      #       LOG="${LOG:0:$MAX_LOG_LEN}..."
-      #     fi
-      #     echo "content<<EOF" >> $GITHUB_OUTPUT
-      #     echo "$HEADER" >> $GITHUB_OUTPUT
-      #     echo "$LOG" >> $GITHUB_OUTPUT
-      #     echo "EOF" >> $GITHUB_OUTPUT
+      
+      - name: Upload signed artifact
+        id: beta-release-signed
+        uses: actions/upload-artifact@v4
+        with:
+          name:  BriefingRoom-beta-${{ steps.current-time.outputs.formattedTime }}
+          if-no-files-found: error
+          path: ${{ github.workspace }}/signed/
+      - name: Upload Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: "beta-release-${{ steps.current-time.outputs.formattedTime }}-${{ github.run_id }}-${{ github.run_attempt }}"
+          name: "beta-release-${{ steps.current-time.outputs.formattedTime }}"
+          body: |
+            This is a automated beta build. This may not work. Its not recommend to overwrite a official release with this.
+            ${{ steps.change_log.outputs.log }}
+          prerelease: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Truncate Changelog for Discord
+        id: discord_log
+        shell: bash
+        run: |
+          HEADER="New Beta Release out https://github.com/DCS-BR-Tools/briefing-room-for-dcs/releases/tag/beta-release-${{ steps.current-time.outputs.formattedTime }}-${{ github.run_id }}-${{ github.run_attempt }}"
+          LOG="${{ steps.change_log.outputs.log }}"
+          HEADER_LEN=${#HEADER}
+          MAX_LOG_LEN=$((2000 - HEADER_LEN - 10))  # Reserve space for newlines and ellipsis
+          if [ ${#LOG} -gt $MAX_LOG_LEN ]; then
+            LOG="${LOG:0:$MAX_LOG_LEN}..."
+          fi
+          echo "content<<EOF" >> $GITHUB_OUTPUT
+          echo "$HEADER" >> $GITHUB_OUTPUT
+          echo "$LOG" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
-      # - name: Post to Discord
-      #   uses: tsickert/discord-webhook@v6.0.0
-      #   with:
-      #     webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
-      #     content: ${{ steps.discord_log.outputs.content }}
+      - name: Post to Discord
+        uses: tsickert/discord-webhook@v6.0.0
+        with:
+          webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
+          content: ${{ steps.discord_log.outputs.content }}
 
   docker:
     name: docker build and push
