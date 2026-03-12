@@ -71,15 +71,15 @@ jobs:
           ' >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
-      - name: Zip Release
-        run: 7z a -tzip beta-release-${{ steps.current-time.outputs.formattedTime }}.zip BriefingRoom-build${{ steps.current-time.outputs.formattedTime }}\* "-xr!.git\" "-xr!.github\" "-xr!.git*" "-xr!.vscode\" "-xr!dataExtractors\"  "-xr!src\" "-xr!docs\" "-x!*.bat" "-x!*.filelist"
+      # - name: Zip Release
+      #   run: 7z a -tzip beta-release-${{ steps.current-time.outputs.formattedTime }}.zip BriefingRoom-build${{ steps.current-time.outputs.formattedTime }}\* "-xr!.git\" "-xr!.github\" "-xr!.git*" "-xr!.vscode\" "-xr!dataExtractors\"  "-xr!src\" "-xr!docs\" "-x!*.bat" "-x!*.filelist"
 
       - name: Upload unsigned zip as artifact
         id: upload-unsigned
         uses: actions/upload-artifact@v4
         with:
           name: unsigned-release
-          path: beta-release-${{ steps.current-time.outputs.formattedTime }}.zip
+          path: beta-release-${{ steps.current-time.outputs.formattedTime }}
 
       - name: Sign artifact with SignPath
         uses: signpath/github-action-submit-signing-request@v2

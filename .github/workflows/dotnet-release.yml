@@ -55,8 +55,8 @@ jobs:
         run: |
           dotnet publish src -c Release -p:Flavor=EXE -p:BRPublishDir=${{ github.workspace }}/BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }}/
 
-      - name: Zip Release
-        run: 7z a -tzip BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }}.zip BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }}\* "-xr!.git\" "-xr!.github\" "-xr!.git*" "-xr!.vscode\" "-xr!dataExtractors\"  "-xr!src\" "-xr!docs\" "-x!*.bat" "-x!*.filelist"
+      # - name: Zip Release
+      #   run: 7z a -tzip BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }}.zip BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }}\* "-xr!.git\" "-xr!.github\" "-xr!.git*" "-xr!.vscode\" "-xr!dataExtractors\"  "-xr!src\" "-xr!docs\" "-x!*.bat" "-x!*.filelist"
 
       - name: Create Changelog
         id: change_log
@@ -86,7 +86,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: unsigned-release
-          path: BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }}.zip
+          path: BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }}
 
       - name: Sign artifact with SignPath
         uses: signpath/github-action-submit-signing-request@v2
