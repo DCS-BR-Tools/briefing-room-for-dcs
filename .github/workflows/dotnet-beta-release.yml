@@ -71,11 +71,9 @@ jobs:
           ' >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
-      # - name: Zip Release
-      #   run: 7z a -tzip beta-release-${{ steps.current-time.outputs.formattedTime }}.zip BriefingRoom-build${{ steps.current-time.outputs.formattedTime }}\* "-xr!.git\" "-xr!.github\" "-xr!.git*" "-xr!.vscode\" "-xr!dataExtractors\"  "-xr!src\" "-xr!docs\" "-x!*.bat" "-x!*.filelist"
 
       - name: Upload unsigned zip as artifact
-        id: upload-unsigned
+        id: beta-release-unsigned
         uses: actions/upload-artifact@v4
         with:
           name: unsigned-release
@@ -90,9 +88,9 @@ jobs:
           project-slug: ${{ secrets.SIGNPATH_PROJECT_SLUG }}
           signing-policy-slug: ${{ secrets.SIGNPATH_SIGNING_POLICY_SLUG }}
           artifact-configuration-slug: briefing-room-release
-          github-artifact-id: ${{ steps.upload-unsigned.outputs.artifact-id }}
+          github-artifact-id: ${{ steps.beta-release-unsigned.outputs.artifact-id }}
           wait-for-completion: true
-          output-artifact-directory: .
+          output-artifact-directory: /signed/
 
       - name: Delete unsigned artifact
         if: always()
@@ -100,44 +98,47 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          $artifactId = '${{ steps.upload-unsigned.outputs.artifact-id }}'
+          $artifactId = '${{ steps.beta-release-unsigned.outputs.artifact-id }}'
           $repo = '${{ github.repository }}'
           $token = $env:GITHUB_TOKEN
           $headers = @{ Authorization = "Bearer $token"; Accept = "application/vnd.github+json" }
           Invoke-RestMethod -Uri "https://api.github.com/repos/$repo/actions/artifacts/$artifactId" -Method Delete -Headers $headers
 
-      - name: Upload Release
-        uses: ncipollo/release-action@v1
-        with:
-          tag: "beta-release-${{ steps.current-time.outputs.formattedTime }}-${{ github.run_id }}-${{ github.run_attempt }}"
-          name: "beta-release-${{ steps.current-time.outputs.formattedTime }}"
-          body: |
-            This is a automated beta build. This may not work. Its not recommend to overwrite a official release with this.
-            ${{ steps.change_log.outputs.log }}
-          prerelease: true
-          artifacts: "beta-release-${{ steps.current-time.outputs.formattedTime }}/"
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Truncate Changelog for Discord
-        id: discord_log
-        shell: bash
+      - name: check signed artifact
         run: |
-          HEADER="New Beta Release out https://github.com/DCS-BR-Tools/briefing-room-for-dcs/releases/tag/beta-release-${{ steps.current-time.outputs.formattedTime }}-${{ github.run_id }}-${{ github.run_attempt }}"
-          LOG="${{ steps.change_log.outputs.log }}"
-          HEADER_LEN=${#HEADER}
-          MAX_LOG_LEN=$((2000 - HEADER_LEN - 10))  # Reserve space for newlines and ellipsis
-          if [ ${#LOG} -gt $MAX_LOG_LEN ]; then
-            LOG="${LOG:0:$MAX_LOG_LEN}..."
-          fi
-          echo "content<<EOF" >> $GITHUB_OUTPUT
-          echo "$HEADER" >> $GITHUB_OUTPUT
-          echo "$LOG" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          ls -la /signed/
+      # - name: Upload Release
+      #   uses: ncipollo/release-action@v1
+      #   with:
+      #     tag: "beta-release-${{ steps.current-time.outputs.formattedTime }}-${{ github.run_id }}-${{ github.run_attempt }}"
+      #     name: "beta-release-${{ steps.current-time.outputs.formattedTime }}"
+      #     body: |
+      #       This is a automated beta build. This may not work. Its not recommend to overwrite a official release with this.
+      #       ${{ steps.change_log.outputs.log }}
+      #     prerelease: true
+      #     artifacts: "beta-release-${{ steps.current-time.outputs.formattedTime }}/"
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Truncate Changelog for Discord
+      #   id: discord_log
+      #   shell: bash
+      #   run: |
+      #     HEADER="New Beta Release out https://github.com/DCS-BR-Tools/briefing-room-for-dcs/releases/tag/beta-release-${{ steps.current-time.outputs.formattedTime }}-${{ github.run_id }}-${{ github.run_attempt }}"
+      #     LOG="${{ steps.change_log.outputs.log }}"
+      #     HEADER_LEN=${#HEADER}
+      #     MAX_LOG_LEN=$((2000 - HEADER_LEN - 10))  # Reserve space for newlines and ellipsis
+      #     if [ ${#LOG} -gt $MAX_LOG_LEN ]; then
+      #       LOG="${LOG:0:$MAX_LOG_LEN}..."
+      #     fi
+      #     echo "content<<EOF" >> $GITHUB_OUTPUT
+      #     echo "$HEADER" >> $GITHUB_OUTPUT
+      #     echo "$LOG" >> $GITHUB_OUTPUT
+      #     echo "EOF" >> $GITHUB_OUTPUT
 
-      - name: Post to Discord
-        uses: tsickert/discord-webhook@v6.0.0
-        with:
-          webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
-          content: ${{ steps.discord_log.outputs.content }}
+      # - name: Post to Discord
+      #   uses: tsickert/discord-webhook@v6.0.0
+      #   with:
+      #     webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
+      #     content: ${{ steps.discord_log.outputs.content }}
 
   docker:
     name: docker build and push
