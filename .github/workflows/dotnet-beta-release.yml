@@ -104,18 +104,9 @@ jobs:
           $headers = @{ Authorization = "Bearer $token"; Accept = "application/vnd.github+json" }
           Invoke-RestMethod -Uri "https://api.github.com/repos/$repo/actions/artifacts/$artifactId" -Method Delete -Headers $headers
 
-      - name: check signed artifact
-        shell: bash
-        run: |
-          ls signed
-      
-      - name: Upload signed artifact
-        id: beta-release-signed
-        uses: actions/upload-artifact@v4
-        with:
-          name:  BriefingRoom-beta-${{ steps.current-time.outputs.formattedTime }}
-          if-no-files-found: error
-          path: ${{ github.workspace }}/signed/
+      - name: Zip Release
+        run: 7z a -tzip BriefingRoom-beta-${{ steps.current-time.outputs.formattedTime }}.zip ${{ github.workspace }}/signed/* "-xr!.git\" "-xr!.github\" "-xr!.git*" "-xr!.vscode\" "-xr!dataExtractors\"  "-xr!src\" "-xr!docs\" "-x!*.bat" "-x!*.filelist"
+
       - name: Upload Release
         uses: ncipollo/release-action@v1
         with:
@@ -125,7 +116,9 @@ jobs:
             This is a automated beta build. This may not work. Its not recommend to overwrite a official release with this.
             ${{ steps.change_log.outputs.log }}
           prerelease: true
+          artifacts: BriefingRoom-beta-${{ steps.current-time.outputs.formattedTime }}.zip
           token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Truncate Changelog for Discord
         id: discord_log
         shell: bash
