@@ -90,7 +90,7 @@ jobs:
           artifact-configuration-slug: briefing-room-release
           github-artifact-id: ${{ steps.beta-release-unsigned.outputs.artifact-id }}
           wait-for-completion: true
-          output-artifact-directory: /signed/
+          output-artifact-directory: signed
 
       - name: Delete unsigned artifact
         if: always()
@@ -107,7 +107,7 @@ jobs:
       - name: check signed artifact
         shell: bash
         run: |
-          ls /signed/
+          ls signed
       # - name: Upload Release
       #   uses: ncipollo/release-action@v1
       #   with:
