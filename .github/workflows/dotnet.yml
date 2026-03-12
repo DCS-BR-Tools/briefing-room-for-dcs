@@ -79,7 +79,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: unsigned-release
-          path: beta-release-${{ steps.current-time.outputs.formattedTime }}
+          path: beta-release-${{ steps.current-time.outputs.formattedTime }}/
 
       - name: Sign artifact with SignPath
         uses: signpath/github-action-submit-signing-request@v2
@@ -114,7 +114,7 @@ jobs:
             This is a automated beta build. This may not work. Its not recommend to overwrite a official release with this.
             ${{ steps.change_log.outputs.log }}
           prerelease: true
-          artifacts: "beta-release-${{ steps.current-time.outputs.formattedTime }}.zip"
+          artifacts: "beta-release-${{ steps.current-time.outputs.formattedTime }}/"
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Truncate Changelog for Discord
         id: discord_log
