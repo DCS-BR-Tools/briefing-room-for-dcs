@@ -81,6 +81,38 @@ jobs:
           ' >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
+      - name: Upload unsigned zip as artifact
+        id: upload-unsigned
+        uses: actions/upload-artifact@v4
+        with:
+          name: unsigned-release
+          path: BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }}.zip
+
+      - name: Sign artifact with SignPath
+        uses: signpath/github-action-submit-signing-request@v2
+        with:
+          organization-id: ${{ secrets.SIGNPATH_ORGANIZATION_ID }}
+          project-slug: ${{ secrets.SIGNPATH_PROJECT_SLUG }}
+          signing-policy-slug: ${{ secrets.SIGNPATH_SIGNING_POLICY_SLUG }}
+          artifact-configuration-slug: briefing-room-release
+          github-artifact-id: ${{ steps.upload-unsigned.outputs.artifact-id }}
+          wait-for-completion: true
+          output-artifact-path: BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }}.zip
+        env:
+          SIGNPATH_API_TOKEN: ${{ secrets.SIGNPATH_API_TOKEN }}
+
+      - name: Delete unsigned artifact
+        if: always()
+        shell: pwsh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $artifactId = '${{ steps.upload-unsigned.outputs.artifact-id }}'
+          $repo = '${{ github.repository }}'
+          $token = $env:GITHUB_TOKEN
+          $headers = @{ Authorization = "Bearer $token"; Accept = "application/vnd.github+json" }
+          Invoke-RestMethod -Uri "https://api.github.com/repos/$repo/actions/artifacts/$artifactId" -Method Delete -Headers $headers
+
       - name: Upload Release
         uses: ncipollo/release-action@v1
         with:
