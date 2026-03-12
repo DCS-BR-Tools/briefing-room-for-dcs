@@ -105,8 +105,9 @@ jobs:
           Invoke-RestMethod -Uri "https://api.github.com/repos/$repo/actions/artifacts/$artifactId" -Method Delete -Headers $headers
 
       - name: check signed artifact
+        shell: bash
         run: |
-          ls -la /signed/
+          ls /signed/
       # - name: Upload Release
       #   uses: ncipollo/release-action@v1
       #   with:
