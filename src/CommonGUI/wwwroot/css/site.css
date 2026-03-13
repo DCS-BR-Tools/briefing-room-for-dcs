@@ -696,6 +696,17 @@ a.kofi-button:active {
   background-color: #bd56bddd;
 }
 
+.leaflet-bar button.easy-button-button[title="Ground Forces Blue"] {
+  background-color: #0366d6;
+}
+
+.leaflet-bar button.easy-button-button[title="Ground Forces Red"] {
+  background-color: #d63636;
+}
+
+.leaflet-bar button.easy-button-button[title="Front Line"] {
+  background-color: #bd56bddd;
+}
 
 /*Legend specific*/
 .legend {

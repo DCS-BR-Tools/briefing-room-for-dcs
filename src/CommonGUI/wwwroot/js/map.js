@@ -46,8 +46,8 @@ function AddHintLegend(map) {
 
   legend.onAdd = function (map) {
     const div = GetCommonLegendDiv();
-       div.innerHTML +=
-    '<i class="icon" style="background-image: url(_content/CommonGUI/img/nato-icons/OBJECTIVE.svg);background-repeat: no-repeat; background-color: transparent;"></i><span>Objective Hint</span><br>';
+    div.innerHTML +=
+      '<i class="icon" style="background-image: url(_content/CommonGUI/img/nato-icons/OBJECTIVE.svg);background-repeat: no-repeat; background-color: transparent;"></i><span>Objective Hint</span><br>';
     return div;
   };
 
@@ -380,8 +380,11 @@ async function RenderMap(mapData, map, inverted) {
 
   try {
     mapGroups = {
-      SAMs: new L.layerGroup(),
-      GroundForces: new L.layerGroup(),
+      SAMsBlue: new L.layerGroup(),
+      SAMsRed: new L.layerGroup(),
+      GroundForcesBlue: new L.layerGroup(),
+      GroundForcesRed: new L.layerGroup(),
+      Lines: new L.layerGroup(),
     };
     leafMap = L.map("map");
     L.esri.basemapLayer("Imagery").addTo(leafMap);
@@ -424,16 +427,41 @@ function addButtons() {
   L.easyButton(
     "oi oi-audio",
     function (btn, map) {
-      ToggleLayer("SAMs");
+      ToggleLayer("SAMsBlue");
+      ToggleLayer("SAMsRed");
     },
     "SAMs",
   ).addTo(leafMap);
   L.easyButton(
     "oi oi-dial",
     function (btn, map) {
-      ToggleLayer("GroundForces");
+      ToggleLayer("GroundForcesBlue");
+      ToggleLayer("GroundForcesRed");
     },
     "Ground Forces",
+  ).addTo(leafMap);
+  L.easyButton(
+    "oi oi-people",
+    function (btn, map) {
+      ToggleLayer("SAMsBlue");
+      ToggleLayer("GroundForcesBlue");
+    },
+    "Ground Forces Blue",
+  ).addTo(leafMap);
+  L.easyButton(
+    "oi oi-people",
+    function (btn, map) {
+      ToggleLayer("SAMsRed");
+      ToggleLayer("GroundForcesRed");
+    },
+    "Ground Forces Red",
+  ).addTo(leafMap);
+    L.easyButton(
+    "oi oi-graph",
+    function (btn, map) {
+      ToggleLayer("Lines");
+    },
+    "Front Line",
   ).addTo(leafMap);
 }
 
@@ -444,7 +472,6 @@ function AddIcon(key, data, map, mapName, inverted) {
     AddWaypoint(key, data, map, mapName);
   } else if (key.includes("OBJECTIVE")) {
     AddObjective(key, data, map, mapName);
-     
   } else {
     let postfix = "";
     if (key.includes("NAME_")) {
@@ -493,7 +520,7 @@ function AddWaypoint(key, data, map, mapName) {
 
 function AddUnit(key, data, map, mapName, inverted) {
   const coords = GetFromMapCoordData(data[0], mapName);
-  group = mapGroups[GetGroup(key)];
+  group = mapGroups[GetGroup(key, inverted)];
   group.addLayer(
     new L.Marker(coords, {
       title: GetTitle(key),
@@ -539,7 +566,7 @@ function AddZone(key, data, map, mapName) {
 
 function AddLine(key, data, map, mapName) {
   let coords = data.map((x) => GetFromMapCoordData(x, mapName));
-  group = mapGroups["GroundForces"];
+  group = mapGroups["Lines"];
   group.addLayer(
     L.polyline(coords, {
       color: GetColour(key),
@@ -550,12 +577,16 @@ function AddLine(key, data, map, mapName) {
   );
 }
 
-function GetGroup(id) {
+function GetGroup(id, invert = false) {
+  let suffix = invert ? "Red" : "Blue";
+  if (id.includes("Enemy")) {
+    suffix = invert ? "Blue" : "Red";
+  }
   switch (true) {
     case id.includes("SAM") || id.includes("EWR"):
-      return "SAMs";
+      return `SAMs${suffix}`;
     default:
-      return "GroundForces";
+      return `GroundForces${suffix}`;
   }
 }
 
