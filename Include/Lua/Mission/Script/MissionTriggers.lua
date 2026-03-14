@@ -8,7 +8,9 @@ briefingRoom.mission.objectiveTimers = { } -- Objective timers (called every sec
 function briefingRoom.mission.objectiveTimerSchedule(args, time)
   for i=1,table.count(briefingRoom.mission.objectives) do
     if briefingRoom.mission.objectiveTimers[i] ~= nil then
-      briefingRoom.mission.objectiveTimers[i]()
+      if briefingRoom.mission.objectiveTimers[i]() == false then -- if the timer function returns false, stop calling it
+        briefingRoom.mission.objectiveTimers[i] = nil
+      end
     end
   end
 

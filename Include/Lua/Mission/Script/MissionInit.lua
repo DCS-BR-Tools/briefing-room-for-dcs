@@ -25,8 +25,6 @@ function briefingRoom.mission.coreFunctions.completeObjective(index, failed)
   briefingRoom.aircraftActivator.pushFromReserveQueue() -- activate next batch of aircraft (so more CAP will pop up)
   for k,objective in pairs(briefingRoom.mission.objectives) do
     if objective ~= nil and objective.progressionHidden and briefingRoom.mission.coreFunctions.assesCondition(objective.progressionCondition) then
-      local minsPassed = math.floor((timer.getAbsTime() - timer.getTime0())/60)
-      objective.startMinutes = minsPassed
       local acGroup = Group.getByName(objective.groupName) -- get the group
       if acGroup ~= nil then -- activate the group, if it exists
         acGroup:activate()

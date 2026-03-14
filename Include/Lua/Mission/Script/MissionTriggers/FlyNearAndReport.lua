@@ -6,16 +6,18 @@ function briefingRoom.mission.objectivesTriggersCommon.flyNearAndReportComplete(
 end
 
 function briefingRoom.mission.objectivesTriggersCommon.registerFlyNearAndReportTrigger(objectiveIndex)
-  briefingRoom.mission.objectives[objectiveIndex].completeCommand = nil
+  local objective = briefingRoom.mission.objectives[objectiveIndex]
+  objective.completeCommand = nil
 
 
   table.insert(briefingRoom.mission.objectiveTimers,  function ()
-    if briefingRoom.mission.objectives[objectiveIndex].flownOver then return false end -- Objective complete, nothing to do
+    if objective.flownOver then return false end -- Objective complete, nothing to do
+    if objective.progressionHidden then return true end -- skip check until active
   
     local players = dcsExtensions.getAllPlayers()
   
     for _,p in ipairs(players) do
-      for __,u in ipairs(briefingRoom.mission.objectives[objectiveIndex].unitNames) do
+      for __,u in ipairs(objective.unitNames) do
         local unit = dcsExtensions.getUnitOrStatic(u)
         if unit ~= nil then
           local vec2p = dcsExtensions.toVec2(p:getPoint())
@@ -29,8 +31,12 @@ function briefingRoom.mission.objectivesTriggersCommon.registerFlyNearAndReportT
             else
                 briefingRoom.radioManager.play((playername or"$LANG_PILOT$").." $LANG_FLYNEAR2$", "RadioPilotTargetReconned2")
             end
-            briefingRoom.mission.objectives[objectiveIndex].unitNames = { }
-            briefingRoom.mission.objectives[objectiveIndex].completeCommand = missionCommands.addCommandForCoalition(briefingRoom.playerCoalition, "$LANG_REPORTCOMPLETE$", briefingRoom.f10Menu.objectives[objectiveIndex],  briefingRoom.mission.objectivesTriggersCommon.flyNearAndReportComplete, {objectiveIndex})
+            objective.unitNames = { }
+            if objective.startMinutes == -1 then -- start the objective
+              local minsPassed = math.floor((timer.getAbsTime() - timer.getTime0())/60)
+              objective.startMinutes = minsPassed
+             end
+            objective.completeCommand = missionCommands.addCommandForCoalition(briefingRoom.playerCoalition, "$LANG_REPORTCOMPLETE$", briefingRoom.f10Menu.objectives[objectiveIndex],  briefingRoom.mission.objectivesTriggersCommon.flyNearAndReportComplete, {objectiveIndex})
           end
         end
       end

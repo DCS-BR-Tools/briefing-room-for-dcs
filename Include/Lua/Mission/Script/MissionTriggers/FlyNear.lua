@@ -1,8 +1,10 @@
 function briefingRoom.mission.objectivesTriggersCommon.registerFlyNearTrigger(objectiveIndex)
+  local objective = briefingRoom.mission.objectives[objectiveIndex]
+  objective.hideTargetCount = true
   table.insert(briefingRoom.mission.objectiveTimers,  function ()
     if briefingRoom.mission.objectivesTriggersCommon.isMissionOrObjectiveComplete(objectiveIndex) then return false end
+    if objective.progressionHidden then return true end -- skip check until active
 
-  
     local players = dcsExtensions.getAllPlayers()
   
     for _,p in ipairs(players) do
@@ -20,14 +22,12 @@ function briefingRoom.mission.objectivesTriggersCommon.registerFlyNearTrigger(ob
             else
               briefingRoom.radioManager.play((playername or"$LANG_PILOT$")..": $LANG_FLYNEAR2$", "RadioPilotTargetReconned2")
             end
-            briefingRoom.mission.objectives[objectiveIndex].unitNames = { }
+            objective.unitNames = { }
             briefingRoom.mission.coreFunctions.completeObjective(objectiveIndex)
-            return nil
+            return false
           end
         end
       end
     end
   end)
-  
-  briefingRoom.mission.objectives[objectiveIndex].hideTargetCount = true
 end
