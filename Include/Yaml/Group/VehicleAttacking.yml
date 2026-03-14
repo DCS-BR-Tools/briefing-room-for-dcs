@@ -5,6 +5,7 @@ modulation: $RADIOBAND$
 task: Ground Nothing
 uncontrolled: false
 hiddenOnMFD: $HIDDEN$
+hiddenOnPlanner: $HIDDEN$
 routeRelativeTOT: false
 waypoints:
   - alt: 8

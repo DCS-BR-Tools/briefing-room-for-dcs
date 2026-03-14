@@ -28,6 +28,7 @@ namespace BriefingRoom4DCS.Mission.DCSLuaObjects
         public bool? Visible { get; set; }
 
         public bool? HiddenOnMFD { get; set; }
+        public bool? HiddenOnPlanner { get; set; }
 
         public bool Dead { get; set; }
 
@@ -58,6 +59,7 @@ namespace BriefingRoom4DCS.Mission.DCSLuaObjects
                 {"frequency", Frequency},
                 {"visible", Visible},
                 {"hiddenOnMFD", HiddenOnMFD ?? Visible},
+                {"hiddenOnPlanner", HiddenOnPlanner ?? Visible},
             };
             if (RadioSet)
                 obj.Add("radioSet", true);
