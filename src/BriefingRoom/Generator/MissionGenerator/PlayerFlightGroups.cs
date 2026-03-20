@@ -42,6 +42,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             var destinationAirbase = mission.PlayerAirbaseDestination;
             var flightWaypoints = new List<Waypoint>(mission.Waypoints);
             var groupStartingCoords = mission.PlayerAirbase.Coordinates;
+            var groupDestinationCoords = mission.PlayerAirbaseDestination.Coordinates;
 
             var package = mission.TemplateRecord.AircraftPackages.FirstOrDefault(x => x.FlightGroupIndexes.Contains(flightGroup.Index));
             if (package is not null)
@@ -52,6 +53,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 airbase = missionPackage.StartAirbase;
                 destinationAirbase = missionPackage.DestinationAirbase;
                 groupStartingCoords = missionPackage.StartAirbase.Coordinates;
+                groupDestinationCoords = missionPackage.DestinationAirbase.Coordinates;
             }
 
 
@@ -62,7 +64,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 var startsWith_P = w.Name.StartsWith("P-");
                 var distanceFromStart = w.Coordinates.GetDistanceFrom(groupStartingCoords);
                 var isClosePickup = startsWith_P && distanceFromStart < 5 * Toolbox.NM_TO_METERS;
-                var distanceFromDestination = w.Coordinates.GetDistanceFrom(destinationAirbase.Coordinates);
+                var distanceFromDestination = w.Coordinates.GetDistanceFrom(groupDestinationCoords);
                 var isCloseDropoff = !startsWith_P
                     && flightWaypoints.Any(x => x.Name.StartsWith("P-") && x.Name.Contains(w.Name))
                     && distanceFromDestination < 5 * Toolbox.NM_TO_METERS;
@@ -83,6 +85,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             List<Coordinates> parkingSpotCoordinatesList = new();
             var groupLuaFile = "AircraftPlayer";
             var carrierUnitID = 0;
+            var returnToCarrier = !string.IsNullOrEmpty(flightGroup.Carrier) && flightGroup.ReturnToCarrier;
             string carrierName = null;
             var side = flightGroup.Hostile ? Side.Enemy : Side.Ally;
             var country = flightGroup.Country;
@@ -127,6 +130,8 @@ namespace BriefingRoom4DCS.Generator.Mission
                         carrier.RemainingHelicopterSpotCount -= flightGroup.Count;
                 }
                 groupStartingCoords = carrier.GroupInfo.Coordinates;
+                if (returnToCarrier)
+                    groupDestinationCoords = carrier.GroupInfo.Coordinates;
                 atcRadioFrequency = carrier.GroupInfo.Frequency / 1000000.0;
             }
             else if (flightGroup.Hostile)
@@ -143,6 +148,8 @@ namespace BriefingRoom4DCS.Generator.Mission
                 if (country == Country.CombinedJointTaskForcesBlue || country == Country.CombinedJointTaskForcesRed)
                     country = coalition == Coalition.Blue ? Country.CombinedJointTaskForcesBlue : Country.CombinedJointTaskForcesRed;
                 mission.MapData.AddIfKeyUnused($"AIRBASE_Enemy_NAME_{hostileAirbase.UIDisplayName.Get(mission.LangKey)}", new List<double[]> { hostileAirbase.Coordinates.ToArray() });
+                groupDestinationCoords = hostileAirbase.Coordinates;
+                destinationAirbase = hostileAirbase;
             }
             else // Land airbase take off
             {
@@ -174,14 +181,21 @@ namespace BriefingRoom4DCS.Generator.Mission
             extraSettings.AddIfKeyUnused("Country", country);
             extraSettings.AddIfKeyUnused("InitialWPName", briefingRoom.Database.Common.Names.WPInitialName.Get(mission.LangKey));
             extraSettings.AddIfKeyUnused("FinalWPName", briefingRoom.Database.Common.Names.WPFinalName.Get(mission.LangKey));
-            extraSettings.AddIfKeyUnused("LinkUnit", carrierUnitID);
             extraSettings.AddIfKeyUnused("MissionAirbaseX", groupStartingCoords.X);
             extraSettings.AddIfKeyUnused("MissionAirbaseY", groupStartingCoords.Y);
-            extraSettings.AddIfKeyUnused("MissionAirbaseID", airbase.DCSID);
+            if(carrierUnitID == 0)
+                extraSettings.AddIfKeyUnused("MissionAirbaseID", airbase.DCSID);
+            else
+                extraSettings.AddIfKeyUnused("LinkUnit", carrierUnitID);
 
-            extraSettings.AddIfKeyUnused("MissionAirbase2X", destinationAirbase.Coordinates.X);
-            extraSettings.AddIfKeyUnused("MissionAirbase2Y", destinationAirbase.Coordinates.Y);
-            extraSettings.AddIfKeyUnused("MissionAirbase2ID", destinationAirbase.DCSID);
+            extraSettings.AddIfKeyUnused("MissionAirbase2X", groupDestinationCoords.X);
+            extraSettings.AddIfKeyUnused("MissionAirbase2Y", groupDestinationCoords.Y);
+            if(!returnToCarrier)
+                extraSettings.AddIfKeyUnused("MissionAirbase2ID", destinationAirbase.DCSID);
+            else 
+                 extraSettings.AddIfKeyUnused("LinkUnit2", carrierUnitID);
+
+            
             extraSettings.AddIfKeyUnused("Livery", flightGroup.Livery);
             if (atcRadioFrequency > 0)
                 extraSettings.AddIfKeyUnused("AirbaseRadioFrequency", atcRadioFrequency);
@@ -216,7 +230,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             }
 
             groupInfo.Value.DCSGroup.Waypoints.InsertRange(1, flightWaypoints.Where(x => !x.AircraftIgnore).Select(x => x.ToDCSWaypoint(unitDB, task)).ToList());
-            var returnToCarrier = !string.IsNullOrEmpty(carrierName) && flightGroup.ReturnToCarrier;
+ 
             SaveFlightGroup(ref mission, groupInfo, flightGroup, unitDB, carrierName ?? airbase.Name, returnToCarrier ? carrierName : destinationAirbase.Name, task);
             SaveWaypointsToBriefing(
                 briefingRoom.Database,

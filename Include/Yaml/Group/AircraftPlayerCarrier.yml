@@ -20,9 +20,10 @@ waypoints:
     y: $GROUPY$
     x: $GROUPX$
     name: $INITIALWPNAME$
-    airdromeId: $MISSIONAIRBASEID$
   - alt: 13
     action: Landing
+    linkUnit: $LINKUNIT2$
+    helipadId: $LINKUNIT2$
     speed: $SPEED$
     type: Land
     etaLocked: false
