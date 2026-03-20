@@ -90,7 +90,7 @@ function SetSituationZones(dataString, map) {
   situationMapLayers.NEUTRAL = data.noSpawnZones.map((zone) =>
     SetZone(zone, projector, situationColors.NEUTRAL, situationDrawnItems),
   );
-  if (data.frontLine) {
+  if (data.frontLine && data.frontLine.length > 0) {
     situationMapLayers.FRONTLINE = SetLine(
       data.frontLine,
       projector,
