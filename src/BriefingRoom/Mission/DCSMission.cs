@@ -328,10 +328,7 @@ namespace BriefingRoom4DCS.Mission
             var objCenter = new Coordinates(
                 double.Parse(GetValue("MissionCenterX"), CultureInfo.InvariantCulture),
                 double.Parse(GetValue("MissionCenterY"), CultureInfo.InvariantCulture));
-            var playerAirbase = new Coordinates(
-                double.Parse(GetValue("MissionAirbaseX"), CultureInfo.InvariantCulture),
-                double.Parse(GetValue("MissionAirbaseY"), CultureInfo.InvariantCulture));
-            distance = objCenter.GetDistanceFrom(playerAirbase) * Toolbox.METERS_TO_NM;
+            distance = objCenter.GetDistanceFrom(AverageInitialPosition) * Toolbox.METERS_TO_NM;
             var extremeLimit = template.FlightPlanObjectiveDistanceMax * 1.7;
             var isTooFar = distance > extremeLimit;
             if (isTooFar)
