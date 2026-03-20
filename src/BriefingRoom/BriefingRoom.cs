@@ -168,7 +168,13 @@ namespace BriefingRoom4DCS
             .Aggregate(new List<Tuple<string, string>>(), (acc, x) => { acc.AddRange(x); return acc; })
             .Distinct().Order().ToList();
 
-        public List<string> GetAircraftCallsigns(string aircraftID, Country country) => Database.GetEntry<DBEntryJSONUnit, DBEntryAircraft>(aircraftID).CallSigns[country].Select(x => x).Distinct().Order().ToList();
+        public List<string> GetAircraftCallsigns(string aircraftID, Country country)
+        {
+            var aircraft = Database.GetEntry<DBEntryJSONUnit, DBEntryAircraft>(aircraftID);
+            if (aircraft?.CallSigns == null) return new List<string>();
+            if (!aircraft.CallSigns.ContainsKey(country)) return new List<string>();
+            return aircraft.CallSigns[country].Distinct().OrderBy(x => x).ToList();
+        }
 
         public List<Tuple<string, Decade>> GetAircraftPayloads(string aircraftID) =>
             Database.GetEntry<DBEntryJSONUnit, DBEntryAircraft>(aircraftID).Payloads.Select(x => new Tuple<string, Decade>(x.name, x.decade)).Distinct().Order().ToList();
