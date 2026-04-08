@@ -83,7 +83,7 @@ namespace BriefingRoom4DCS.Mission
         protected internal Dictionary<string, CarrierGroupInfo> CarrierDictionary { get; protected set; }
         protected internal List<string> ModUnits { get; protected set; }
         protected internal Dictionary<Country, Dictionary<DCSUnitCategory, List<DCSGroup>>> UnitLuaTables { get; protected set; }
-        protected internal List<Waypoint> Waypoints { get; protected set; }
+        protected internal List<Waypoint> Waypoints { get; set; }
         internal List<DBEntryAirbase> AirbaseDB { get; set; }
 
         internal DCSMissionState()

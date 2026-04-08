@@ -47,12 +47,14 @@ namespace BriefingRoom4DCS.Generator.Mission
             {
                 var aircraftPackages = mission.TemplateRecord.AircraftPackages;
                 var missionPackage = mission.StrikePackages.First(x => x.RecordIndex == aircraftPackages.IndexOf(package));
-                missionPackage.Waypoints = mission.ObjectiveGroupedWaypoints
+                var waypoints = mission.ObjectiveGroupedWaypoints
                     .SelectMany(x => x)
                     .Where((v, i) => package.ObjectiveIndexes.Contains(i))
                     .SelectMany(x => x)
                     .ToList();
-                GenerateIngressAndEgressWaypoints(database, ref mission);
+                var packageObjectiveCenter = waypoints.Select(x => x.Coordinates).Aggregate((a, b) => a + b) / waypoints.Count;
+                GenerateIngressAndEgressWaypoints(database, ref mission, ref waypoints, missionPackage.StartAirbase.Coordinates, packageObjectiveCenter);
+                missionPackage.Waypoints = waypoints;
 
                 foreach (var waypoint in missionPackage.Waypoints)
                 {
@@ -62,26 +64,27 @@ namespace BriefingRoom4DCS.Generator.Mission
         }
 
 
-        internal static void GenerateIngressAndEgressWaypoints(IDatabase database, ref DCSMission mission)
+        internal static void GenerateIngressAndEgressWaypoints(IDatabase database, ref DCSMission mission, ref List<Waypoint> waypoints, Coordinates initialPosition, Coordinates objectivesCenter)
         {
             if (!mission.TemplateRecord.MissionFeatures.Contains("IngressEgressWaypoints"))
                 return;
 
             BriefingRoom.PrintToLog($"Generating ingress and egress waypoints...");
 
-            double flightPathLength = (mission.ObjectivesCenter - mission.AverageInitialPosition).GetLength();
+            double flightPathLength = (objectivesCenter - initialPosition).GetLength();
             double ingressDeviation = Math.Max(4.0, flightPathLength * .15);
-            Coordinates baseIngressPosition = mission.AverageInitialPosition + (mission.ObjectivesCenter - mission.AverageInitialPosition) * .7f;
+            Coordinates baseIngressPosition = initialPosition + (objectivesCenter - initialPosition) * .7f;
 
-            mission.Waypoints.Insert(0,
+            waypoints.Insert(0,
                 new Waypoint(
                     $"{database.Common.Names.WPIngressName.Get(mission.LangKey).ToUpper()}_{mission.WaypointNameGenerator.GetWaypointName()}",
                     baseIngressPosition + Coordinates.CreateRandom(ingressDeviation * 0.9, ingressDeviation * 1.1)));
 
-            mission.Waypoints.Add(
+            waypoints.Add(
                 new Waypoint(
                     $"{database.Common.Names.WPEgressName.Get(mission.LangKey).ToUpper()}_{mission.WaypointNameGenerator.GetWaypointName()}",
                     baseIngressPosition + Coordinates.CreateRandom(ingressDeviation * 0.9, ingressDeviation * 1.1)));
+            return;
         }
 
         internal static void GenerateBullseyeWaypoint(IDatabase database, ref DCSMission mission)
@@ -113,14 +116,30 @@ namespace BriefingRoom4DCS.Generator.Mission
             if (mission.TemplateRecord.OptionsMission.Contains("MarkWaypoints"))
                 foreach (var waypoint in mission.Waypoints)
                 {
-                    if(!waypoint.HiddenMapMarker)
-                        DrawingMaker.AddDrawing(ref mission,waypoint.Name, DrawingType.TextBox, waypoint.Coordinates + new Coordinates(-100, 0), "Text".ToKeyValuePair(waypoint.Name));
+                    if (!waypoint.HiddenMapMarker)
+                        DrawingMaker.AddDrawing(ref mission, waypoint.Name, DrawingType.TextBox, waypoint.Coordinates + new Coordinates(-100, 0), "Text".ToKeyValuePair(waypoint.Name));
                 }
 
             foreach (var waypoint in mission.Waypoints)
             {
                 mission.MapData.AddIfKeyUnused($"WAYPOINT_{waypoint.Name}", new List<double[]> { waypoint.Coordinates.ToArray() });
             }
+        }
+
+        internal static void RecalculateAverageInitialPosition(ref DCSMission mission)
+        {
+            var playerAirbaseCoords = mission.PlayerAirbase.Coordinates;
+            var strikeAirbaseCoords = mission.StrikePackages
+                .Select(sp => sp.StartAirbase.Coordinates)
+                .Where(c => c.X != playerAirbaseCoords.X || c.Y != playerAirbaseCoords.Y)
+                .Distinct()
+                .ToList();
+            var allPositions = mission.CarrierDictionary.Values
+                .Select(c => c.GroupInfo.Coordinates)
+                .Concat(strikeAirbaseCoords)
+                .Append(playerAirbaseCoords)
+                .ToList();
+            mission.AverageInitialPosition = Coordinates.Sum(allPositions) / allPositions.Count;
         }
 
         private static double GetBullseyeRandomDistance()

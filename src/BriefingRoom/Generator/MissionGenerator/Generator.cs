@@ -232,7 +232,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                     .Where(x => x.Theater == theaterID)
                     .ToArray()
                 );
-            if(mission.TemplateRecord.ContextSituation != "None" && !string.IsNullOrEmpty(mission.TemplateRecord.ContextSituation))
+            if (mission.TemplateRecord.ContextSituation != "None" && !string.IsNullOrEmpty(mission.TemplateRecord.ContextSituation))
                 mission.SituationDB = briefingRoom.Database.GetEntry<DBEntrySituation>(mission.TemplateRecord.ContextSituation);
             mission.SetValue("BriefingSituation", mission.TemplateRecord.SpawnAnywhere ? "None" : mission.SituationDB.UIDisplayName.Get(mission.LangKey));
             mission.SetValue("BriefingSituationId", mission.TemplateRecord.SpawnAnywhere ? "None" : mission.SituationDB.ID);
@@ -252,7 +252,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             var theaterDB = mission.TheaterDB;
             var brokenSP = mission.SpawnPoints.Where(x => SpawnPointSelector.CheckInSea(theaterDB, x.Coordinates)).ToList();
             if (brokenSP.Count > 0)
-               briefingRoom.PrintTranslatableWarning("SpawnPointsInSea", JsonConvert.SerializeObject(mission.TheaterDB.ConvertToJSONSpawnPoint(brokenSP), Formatting.Indented));
+                briefingRoom.PrintTranslatableWarning("SpawnPointsInSea", JsonConvert.SerializeObject(mission.TheaterDB.ConvertToJSONSpawnPoint(brokenSP), Formatting.Indented));
 
             var brokenTL = mission.TemplateLocations.Where(x => SpawnPointSelector.CheckInSea(theaterDB, x.Coordinates)).ToList();
             if (brokenTL.Count > 0)
@@ -410,37 +410,28 @@ namespace BriefingRoom4DCS.Generator.Mission
             // Generate extra flight plan info
             FlightPlan.GenerateBullseyes(ref mission);
             FlightPlan.GenerateObjectiveWPCoordinatesLua(ref mission);
-            FlightPlan.GenerateAircraftPackageWaypoints(briefingRoom.Database, ref mission);
-            FlightPlan.GenerateIngressAndEgressWaypoints(briefingRoom.Database, ref mission);
             FlightPlan.GenerateBullseyeWaypoint(briefingRoom.Database, ref mission);
-
-            foreach (var waypoint in mission.Waypoints)
-            {
-                mission.MapData.AddIfKeyUnused($"WAYPOINT_{waypoint.Name}", new List<double[]> { waypoint.Coordinates.ToArray() });
-            }
             mission.SaveStage(MissionStageName.Carrier);
         }
 
         private static void PlayerFlightsStage(IBriefingRoom briefingRoom, ref DCSMission mission)
         {
+            BriefingRoom.PrintToLog("Generating waypoints...");
+            FlightPlan.GenerateAircraftPackageWaypoints(briefingRoom.Database, ref mission);
+            FlightPlan.RecalculateAverageInitialPosition(ref mission);
+            var missionWaypoints = mission.Waypoints;
+            FlightPlan.GenerateIngressAndEgressWaypoints(briefingRoom.Database, ref mission, ref missionWaypoints, mission.AverageInitialPosition, mission.ObjectivesCenter);
+            mission.Waypoints = missionWaypoints;
+
+
             BriefingRoom.PrintToLog("Generating player flight groups...");
             foreach (var templateFlightGroup in mission.TemplateRecord.PlayerFlightGroups)
                 PlayerFlightGroups.GeneratePlayerFlightGroup(briefingRoom, ref mission, templateFlightGroup);
 
-            // Recalculate AverageInitialPosition to also include strike package start airbases
-            var playerAirbaseCoords = mission.PlayerAirbase.Coordinates;
-            var strikeAirbaseCoords = mission.StrikePackages
-                .Select(sp => sp.StartAirbase.Coordinates)
-                .Where(c => c.X != playerAirbaseCoords.X || c.Y != playerAirbaseCoords.Y)
-                .Distinct()
-                .ToList();
-            var allPositions = mission.CarrierDictionary.Values
-                .Select(c => c.GroupInfo.Coordinates)
-                .Concat(strikeAirbaseCoords)
-                .Append(playerAirbaseCoords)
-                .ToList();
-            mission.AverageInitialPosition = Coordinates.Sum(allPositions) / allPositions.Count;
-
+            foreach (var waypoint in mission.Waypoints)
+            {
+                mission.MapData.AddIfKeyUnused($"WAYPOINT_{waypoint.Name}", new List<double[]> { waypoint.Coordinates.ToArray() });
+            }
             mission.SaveStage(MissionStageName.PlayerFlightGroups);
         }
 
