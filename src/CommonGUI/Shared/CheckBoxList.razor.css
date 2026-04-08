@@ -16,6 +16,10 @@
     flex-wrap: wrap;
 }
 
+.checkboxList-item {
+    position: relative;
+}
+
 .checkboxList-item>input {
     display: none;
 }
@@ -43,6 +47,7 @@
 .checkboxList-item .description {
     font-size: 70%;
     display: none;
+    z-index: 10;
 }
 
 .checkboxList-item:hover .description {
