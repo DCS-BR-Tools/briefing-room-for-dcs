@@ -398,7 +398,14 @@ namespace BriefingRoom4DCS.Generator.Mission
             BriefingRoom.PrintToLog("Generating carrier groups...");
             CarrierGroup.GenerateCarrierGroup(briefingRoom, ref mission);
             mission.AverageInitialPosition = mission.PlayerAirbase.Coordinates;
-            if (mission.CarrierDictionary.Count > 0) mission.AverageInitialPosition = (mission.AverageInitialPosition + mission.CarrierDictionary.First().Value.GroupInfo.Coordinates) / 2.0;
+            if (mission.CarrierDictionary.Count > 0)
+            {
+                var positions = mission.CarrierDictionary.Values
+                    .Select(c => c.GroupInfo.Coordinates)
+                    .Append(mission.PlayerAirbase.Coordinates)
+                    .ToList();
+                mission.AverageInitialPosition = Coordinates.Sum(positions) / positions.Count;
+            }
 
             // Generate extra flight plan info
             FlightPlan.GenerateBullseyes(ref mission);
@@ -419,6 +426,21 @@ namespace BriefingRoom4DCS.Generator.Mission
             BriefingRoom.PrintToLog("Generating player flight groups...");
             foreach (var templateFlightGroup in mission.TemplateRecord.PlayerFlightGroups)
                 PlayerFlightGroups.GeneratePlayerFlightGroup(briefingRoom, ref mission, templateFlightGroup);
+
+            // Recalculate AverageInitialPosition to also include strike package start airbases
+            var playerAirbaseCoords = mission.PlayerAirbase.Coordinates;
+            var strikeAirbaseCoords = mission.StrikePackages
+                .Select(sp => sp.StartAirbase.Coordinates)
+                .Where(c => c.X != playerAirbaseCoords.X || c.Y != playerAirbaseCoords.Y)
+                .Distinct()
+                .ToList();
+            var allPositions = mission.CarrierDictionary.Values
+                .Select(c => c.GroupInfo.Coordinates)
+                .Concat(strikeAirbaseCoords)
+                .Append(playerAirbaseCoords)
+                .ToList();
+            mission.AverageInitialPosition = Coordinates.Sum(allPositions) / allPositions.Count;
+
             mission.SaveStage(MissionStageName.PlayerFlightGroups);
         }
 
