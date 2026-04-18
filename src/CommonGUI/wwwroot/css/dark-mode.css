@@ -33,11 +33,6 @@ html[data-bs-theme="dark"] .nav-link.active {
     color: white;
 }
 
-html[data-bs-theme="dark"] .navbar-brand>img {
-    filter: drop-shadow(0 0 1rem rgb(255, 255, 255));
-}
-
-
 html[data-bs-theme="dark"] .blazored-typeahead__input,
 html[data-bs-theme="dark"] .blazored-typeahead__results {
     background-color: #0a263f;

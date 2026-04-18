@@ -1,8 +1,9 @@
 ﻿@inject BriefingRoom4DCS.IBriefingRoom briefingRoom
 
 <div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="/"><img src="_content/CommonGUI/img/br-logo-blue-horiz.png"
-            alt="Briefing Room Logo" </a>
+    <a class="navbar-brand" href="/">
+        <img src="_content/CommonGUI/img/br-logo-@(Layout.darkmode ? "white" : "blue" )-horiz.png" alt="Briefing Room Logo" />
+    </a>
         <button class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
