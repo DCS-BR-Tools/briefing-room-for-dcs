@@ -18,9 +18,6 @@ While BriefingRoom is designed to be easy to use and to allow the creation of mi
 
 BriefingRoom is free and open source and will always remain so, but if you want to support its development, you can make a one-time or monthly donation.
 
-Hosting costs:[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V0IZI9N) or <a href="https://www.patreon.com/bePatron?u=99514930" data-patreon-widget-type="become-patron-button">Become a member!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
-
-Original Creator: [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VTLATJ7URMMWY)
 
 ### Features summary
 
@@ -35,6 +32,7 @@ Original Creator: [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donat
 * Customize enemy SAM and air-to-air opposition for any mission difficulty.
 * No units spawned through runtime scripting. All units are  to the mission itself, so they can be edited with DCS World's mission editor for further customization.
 * **Please read the user's manual and the modder's manual for more information**
+
 
 ### Included Scripted systems (Thanks to them)
 
@@ -70,6 +68,17 @@ The generation of Kneeboard images has been prone to issues. While we aim to fix
 * Released under the [GNU General Public License 3.0](https://www.gnu.org/licenses/gpl-3.0.en.html)
 * Project website: [akaagar.itch.io/briefing-room-for-dcs](https://akaagar.itch.io/briefing-room-for-dcs/)
 * Source code repository: [github.com/akaAgar/briefing-room-for-dcs](https://github.com/akaAgar/briefing-room-for-dcs)
+
+
+
+## Sponsors
+Free code signing provided by [SignPath.io](https://about.signpath.io), certificate by [SignPath Foundation](https://signpath.org/)
+
+### Hosting costs and Current maintainer:
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V0IZI9N) or <a href="https://www.patreon.com/bePatron?u=99514930" data-patreon-widget-type="become-patron-button">Become a patron member!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+
+### Original Creator:
+ [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VTLATJ7URMMWY)
 
 [Credits](Include/Markdown/Manuals/Credits.md)
 
