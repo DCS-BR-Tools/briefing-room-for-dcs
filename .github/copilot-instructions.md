@@ -85,6 +85,16 @@ rm -r ./Release;  dotnet publish src/BriefingRoom.sln -c Release -p:Flavor=EXE
 3. **State assumptions** before implementing
 4. **Provide complete code** (no pseudocode or placeholders)
 
+## Contributing & Commit Conventions
+
+**Read `CONTRIBUTING.md` before writing or suggesting any code.**
+
+Key rules summarised:
+- Commit messages must read like changelog lines using the prefixes `Added:`, `Updated:`, `Fixed:`, or `Removed:` — releases are generated from commit history.
+- Any commit that contains AI-generated code **must** be suffixed with `(AI Written)`, e.g. `Fixed: Null reference in spawn selection (AI Written)`.
+- Tests must be written/run against the original behaviour before changing it.
+- Do not hardcode user-facing strings — use `Database/Language/`.
+
 ## Additional Prompts
 For task-specific prompts, see `.prompts/` folder:
 - `dotnet-build.md` - Build optimization
