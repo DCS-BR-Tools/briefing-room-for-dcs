@@ -7,6 +7,8 @@ const waypointColors = [
   "Gold",
 ];
 let mapGroups = {};
+let hintMapGroups = {};
+let hintMapToggleButtons = [];
 let leafMap, leafHintMap, hintMarkerMap, hintTarget, hintDrawnItems;
 const hintMapLayers = {
   BLUE: [],
@@ -26,6 +28,16 @@ function ToggleLayer(id) {
     return;
   }
   group.addTo(leafMap);
+}
+
+function ToggleHintLayer(id) {
+  const group = hintMapGroups[id];
+  if (!group) return;
+  if (group._map) {
+    group.remove();
+    return;
+  }
+  group.addTo(leafHintMap);
 }
 
 function GetCommonLegendDiv() {
@@ -267,6 +279,13 @@ async function RenderHintMap(map, hintKey, mapData) {
     hintMarkers = {};
   }
   if (leafHintMap) {
+    // Belt-and-braces: Leaflet's Map.remove() is meant to dispose attached
+    // controls, but we keep our own refs to the side-toggle buttons so a
+    // future Leaflet behaviour change can't leave them stacked across renders.
+    hintMapToggleButtons.forEach((btn) => {
+      try { btn.remove(); } catch (e) { /* ignore */ }
+    });
+    hintMapToggleButtons = [];
     leafHintMap.off();
     leafHintMap.remove();
   }
@@ -275,6 +294,13 @@ async function RenderHintMap(map, hintKey, mapData) {
     leafHintMap = L.map("hintMap");
     L.esri.basemapLayer("Imagery").addTo(leafHintMap);
     L.esri.basemapLayer("ImageryLabels").addTo(leafHintMap);
+    hintMapGroups = {
+      AirbasesBlue: new L.layerGroup().addTo(leafHintMap),
+      AirbasesRed: new L.layerGroup().addTo(leafHintMap),
+      AirbasesNeutral: new L.layerGroup().addTo(leafHintMap),
+      ZonesBlue: new L.layerGroup().addTo(leafHintMap),
+      ZonesRed: new L.layerGroup().addTo(leafHintMap),
+    };
   } catch (error) {
     console.warn(error);
   }
@@ -288,9 +314,9 @@ async function RenderHintMap(map, hintKey, mapData) {
   Object.keys(mapData).forEach((key) => {
     data = mapData[key];
     if (data.length == 1) {
-      AddIcon(key, data, leafHintMap, map);
+      AddHintIcon(key, data, leafHintMap, map);
     } else {
-      AddZone(key, data, leafHintMap, map);
+      AddHintZone(key, data, leafHintMap, map);
     }
   });
   leafHintMap.setView([0, 0], 6.5);
@@ -298,11 +324,96 @@ async function RenderHintMap(map, hintKey, mapData) {
   DrawMapBounds(map, leafHintMap);
   AddDrawOverrideControls(leafHintMap, hintDrawnItems);
   AddHintLegend(leafHintMap);
+  AddHintSideToggles();
   leafHintMap.on("draw:created", onDrawCreated(hintDrawnItems, hintMapLayers));
   leafHintMap.on("draw:deleted", onDrawDeleted(hintMapLayers));
   if (hintKey) {
     await PrepClickHint(hintKey, map);
   }
+}
+
+function GetHintAirbaseSide(key) {
+  if (key.startsWith("Blue_AIRBASE")) return "AirbasesBlue";
+  if (key.startsWith("Enemy_AIRBASE")) return "AirbasesRed";
+  if (key.startsWith("Neutral_AIRBASE")) return "AirbasesNeutral";
+  return null;
+}
+
+function GetHintZoneSide(key) {
+  if (key.startsWith("BLUE")) return "ZonesBlue";
+  if (key.startsWith("RED")) return "ZonesRed";
+  return null;
+}
+
+function AddHintIcon(key, data, map, mapName) {
+  const groupKey = GetHintAirbaseSide(key);
+  if (!groupKey) {
+    AddIcon(key, data, map, mapName);
+    return;
+  }
+  const group = hintMapGroups[groupKey];
+  let postfix = "";
+  if (key.includes("NAME_")) {
+    postfix = ` - ${key.split("NAME_", 2)[1]}`;
+  }
+  group.addLayer(
+    new L.Marker(GetFromMapCoordData(data[0], mapName), {
+      title: GetTitle(key) + postfix,
+      icon: new L.DivIcon({
+        html: `<img class="map_point_icon" src="_content/CommonGUI/img/nato-icons/${GetNatoIcon(key, false)}.svg" alt="${key}"/>`,
+      }),
+      zIndexOffset: key.includes("OBJECTIVE_AREA") ? 200 : 100,
+    }),
+  );
+}
+
+function AddHintZone(key, data, map, mapName) {
+  const groupKey = GetHintZoneSide(key);
+  if (!groupKey) {
+    AddZone(key, data, map, mapName);
+    return;
+  }
+  const group = hintMapGroups[groupKey];
+  const coords = data.map((x) => GetFromMapCoordData(x, mapName));
+  group.addLayer(
+    L.polygon(coords, {
+      color: GetColour(key),
+      fillColor: GetColour(key),
+      fillOpacity: 0.2,
+    }),
+  );
+}
+
+function AddHintSideToggles() {
+  hintMapToggleButtons.push(
+    L.easyButton(
+      "oi oi-people",
+      function () {
+        ToggleHintLayer("AirbasesBlue");
+        ToggleHintLayer("ZonesBlue");
+      },
+      "Blue Forces",
+    ).addTo(leafHintMap),
+  );
+  hintMapToggleButtons.push(
+    L.easyButton(
+      "oi oi-people",
+      function () {
+        ToggleHintLayer("AirbasesRed");
+        ToggleHintLayer("ZonesRed");
+      },
+      "Red Forces",
+    ).addTo(leafHintMap),
+  );
+  hintMapToggleButtons.push(
+    L.easyButton(
+      "oi oi-aperture",
+      function () {
+        ToggleHintLayer("AirbasesNeutral");
+      },
+      "Neutral Airbases",
+    ).addTo(leafHintMap),
+  );
 }
 
 function PrepClickHint(hintKey, map) {
