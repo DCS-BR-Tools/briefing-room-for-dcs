@@ -708,6 +708,18 @@ a.kofi-button:active {
   background-color: #bd56bddd;
 }
 
+.leaflet-bar button.easy-button-button[title="Blue Forces"] {
+  background-color: #0366d6;
+}
+
+.leaflet-bar button.easy-button-button[title="Red Forces"] {
+  background-color: #d63636;
+}
+
+.leaflet-bar button.easy-button-button[title="Neutral Airbases"] {
+  background-color: #28a745;
+}
+
 /*Legend specific*/
 .legend {
   padding: 6px 8px;
