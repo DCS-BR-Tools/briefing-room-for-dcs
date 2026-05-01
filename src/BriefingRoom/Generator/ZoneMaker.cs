@@ -50,10 +50,10 @@ namespace BriefingRoom4DCS.Generator
 
 
         private static int AddToList(ref DCSMission mission, string UIName, Coordinates coordinates, int radius)
-        { 
-            var zoneId = new Random().Next(100, 500);
+        {
+            var zoneId = Toolbox.RandomInt(100, 500);
             if(mission.LuaZones.Any(x => x.Contains($"[\"zoneId\"] = {zoneId},")))
-                zoneId = new Random().Next(500, 900);
+                zoneId = Toolbox.RandomInt(500, 900);
             string template = File.ReadAllText(Path.Combine(BRPaths.INCLUDE_LUA_MISSION, "Zone.lua"));
             GeneratorTools.ReplaceKey(ref template, "NAME", UIName);
             GeneratorTools.ReplaceKey(ref template, "RADIUS", radius);

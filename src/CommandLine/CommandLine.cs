@@ -19,11 +19,13 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 */
 
 using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using BriefingRoom4DCS.Data;
 using BriefingRoom4DCS.Mission;
+using BriefingRoom4DCS.Template;
 
 namespace BriefingRoom4DCS.CommandLineTool
 {
@@ -71,8 +73,10 @@ namespace BriefingRoom4DCS.CommandLineTool
 
         public async Task<bool> DoCommandLineAsync(string[] args)
         {
+            int? seedOverride = ExtractSeedFlag(ref args);
+
             string[] templateFiles = (from string arg in args where File.Exists(arg) select arg).ToArray();
-            string[] invalidTemplateFiles = (from string arg in args where !File.Exists(arg) select arg).ToArray();
+            string[] invalidTemplateFiles = (from string arg in args where !File.Exists(arg) && !arg.StartsWith("-") select arg).ToArray();
 
             foreach (string filePath in invalidTemplateFiles)
                 WriteToDebugLog($"Template file {filePath} doesn't exist.", LogMessageErrorLevel.Warning);
@@ -81,7 +85,8 @@ namespace BriefingRoom4DCS.CommandLineTool
             {
                 WriteToDebugLog("No valid mission template files given as parameters.", LogMessageErrorLevel.Error);
                 WriteToDebugLog("");
-                WriteToDebugLog("Command-line format is BriefingRoomCommandLine.exe <MissionTemplate.brt> [<MissionTemplate2.brt> <MissionTemplate3.brt>...]");
+                WriteToDebugLog("Command-line format is BriefingRoomCommandLine.exe [--seed N] <MissionTemplate.brt> [<MissionTemplate2.brt> ...]");
+                WriteToDebugLog("  --seed N    Apply random seed N to every template, overriding any seed in the .brt file.");
                 return false;
             }
 
@@ -91,7 +96,16 @@ namespace BriefingRoom4DCS.CommandLineTool
             {
                 if (Path.GetExtension(t).ToLower() == ".cbrt") // Template file is a campaign template
                 {
-                    DCSCampaign campaign = briefingRoom.GenerateCampaign(t);
+                    DCSCampaign campaign;
+                    if (seedOverride.HasValue)
+                    {
+                        var campaignTemplate = new CampaignTemplate(briefingRoom, t) { RandomSeed = seedOverride };
+                        campaign = briefingRoom.GenerateCampaign(campaignTemplate);
+                    }
+                    else
+                    {
+                        campaign = briefingRoom.GenerateCampaign(t);
+                    }
                     if (campaign == null)
                     {
                         Console.WriteLine($"Failed to generate a campaign from template {Path.GetFileName(t)}");
@@ -110,7 +124,16 @@ namespace BriefingRoom4DCS.CommandLineTool
                 }
                 else // Template file is a mission template
                 {
-                    DCSMission mission = briefingRoom.GenerateMission(t);
+                    DCSMission mission;
+                    if (seedOverride.HasValue)
+                    {
+                        var missionTemplate = new MissionTemplate(briefingRoom.Database, t) { RandomSeed = seedOverride };
+                        mission = briefingRoom.GenerateMission(missionTemplate);
+                    }
+                    else
+                    {
+                        mission = briefingRoom.GenerateMission(t);
+                    }
                     if (mission == null)
                     {
                         Console.WriteLine($"Failed to generate a mission from template {Path.GetFileName(t)}");
@@ -142,6 +165,32 @@ namespace BriefingRoom4DCS.CommandLineTool
         {
             if (string.IsNullOrEmpty(fileName)) return "_";
             return string.Join("_", fileName.Split(Path.GetInvalidFileNameChars()));
+        }
+
+        // Extract `--seed N` (or `--seed=N`) from args. Returns null if absent or unparseable.
+        // The flag is removed from the args array so the rest of the loop only sees template paths.
+        private static int? ExtractSeedFlag(ref string[] args)
+        {
+            int? seed = null;
+            var remaining = new System.Collections.Generic.List<string>(args.Length);
+            for (int i = 0; i < args.Length; i++)
+            {
+                var a = args[i];
+                if (a == "--seed" && i + 1 < args.Length && int.TryParse(args[i + 1], NumberStyles.Integer, CultureInfo.InvariantCulture, out int s))
+                {
+                    seed = s;
+                    i++;
+                    continue;
+                }
+                if (a.StartsWith("--seed=") && int.TryParse(a.Substring("--seed=".Length), NumberStyles.Integer, CultureInfo.InvariantCulture, out int s2))
+                {
+                    seed = s2;
+                    continue;
+                }
+                remaining.Add(a);
+            }
+            args = remaining.ToArray();
+            return seed;
         }
 
         private static string GetUnusedFileName(string filePath)

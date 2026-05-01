@@ -63,6 +63,9 @@ namespace BriefingRoom4DCS.Template
         public DsAirbase AirbaseDynamicSpawn { get; set; }
         public bool DSAllowHotStart { get; set; }
 
+        // Optional fixed RNG seed for reproducible mission generation. Null = time-based default.
+        public int? RandomSeed { get; set; }
+
         public void Clear(IDatabase database) {}
 
     }

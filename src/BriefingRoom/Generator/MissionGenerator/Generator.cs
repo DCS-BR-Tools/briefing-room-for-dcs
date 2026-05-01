@@ -49,6 +49,10 @@ namespace BriefingRoom4DCS.Generator.Mission
 
         internal static DCSMission Generate(IBriefingRoom briefingRoom, MissionTemplateRecord template)
         {
+            // Reseed before any RNG draws so that runs with the same RandomSeed produce
+            // identical missions. Null restores the time-based default.
+            Toolbox.Reseed(template.RandomSeed);
+
             // -- START INITIALIZATION
             // Check for missing entries in the database
             GeneratorTools.CheckDBForMissingEntry<DBEntryCoalition>(briefingRoom.Database, template.ContextCoalitionBlue);

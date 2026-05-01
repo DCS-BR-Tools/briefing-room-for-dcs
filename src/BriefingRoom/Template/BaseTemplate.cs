@@ -80,6 +80,7 @@ namespace BriefingRoom4DCS.Template
         public DsAirbase AirbaseDynamicCargo { get; set; }
         public bool CarrierDynamicCargo { get; set; }
         public bool DSAllowHotStart { get; set; }
+        public int? RandomSeed { get; set; }
         public IDatabase Database { get; private set; }
 
         public BaseTemplate(IDatabase database)
@@ -137,6 +138,7 @@ namespace BriefingRoom4DCS.Template
             AirbaseDynamicCargo = DsAirbase.Friendly;
             CarrierDynamicCargo = true;
 
+            RandomSeed = null;
 
             AssignAliases();
         }
@@ -191,6 +193,9 @@ namespace BriefingRoom4DCS.Template
             AirbaseDynamicCargo = ini.GetValue("Options", "AirbaseDynamicCargo", AirbaseDynamicCargo);
             CarrierDynamicCargo = ini.GetValue("Options", "CarrierDynamicCargo", CarrierDynamicCargo);
 
+            // RandomSeed is optional. Stored as a string so we can distinguish "" (unset) from "0" (a valid seed).
+            var seedStr = ini.GetValue("Options", "RandomSeed", "");
+            RandomSeed = int.TryParse(seedStr, out int parsedSeed) ? parsedSeed : (int?)null;
 
             AssignAliases();
             return true;
@@ -231,6 +236,8 @@ namespace BriefingRoom4DCS.Template
 
             ini.SetValue("Options", "AirbaseDynamicCargo", AirbaseDynamicCargo);
             ini.SetValue("Options", "CarrierDynamicCargo", CarrierDynamicCargo);
+
+            ini.SetValue("Options", "RandomSeed", RandomSeed.HasValue ? RandomSeed.Value.ToString() : "");
 
             for (i = 0; i < PlayerFlightGroups.Count; i++)
                 PlayerFlightGroups[i].SaveToFile(ini, "PlayerFlightGroups", $"PlayerFlightGroup{i:000}");

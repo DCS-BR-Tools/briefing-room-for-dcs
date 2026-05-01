@@ -165,6 +165,12 @@
                 <div class="col-6">
                     <h3>@briefingRoom.Translate("Options")</h3>
                     <InputEnum Label="Fog of war" @bind-Value="Template.OptionsFogOfWar" EnumType="FogOfWar" />
+                    <div class="form-group flex-block">
+                        <label>Random Seed <span class="note">(optional, leave blank for time-based)</span></label>
+                        <input type="text" class="form-control" placeholder="e.g. 42"
+                               value="@(Template.RandomSeed.HasValue ? Template.RandomSeed.Value.ToString() : "")"
+                               @onchange="OnSeedChanged" />
+                    </div>
                     <hr/>
                     <input type="text" class="float-right" placeholder="Search" @bind="SearchTerm"  @bind:event="oninput" />
                     <MissionFeatures Template="Template" SearchTerm="@SearchTerm" />
@@ -256,6 +262,15 @@
     private FlightGroupUtils flightGroupUtil = new FlightGroupUtils();
     private ObjectiveUtils objectiveUtil = new ObjectiveUtils(true);
     private BuilderUtils builderUtils {get; set;}
+
+    private void OnSeedChanged(ChangeEventArgs e)
+    {
+        var raw = e.Value?.ToString()?.Trim();
+        if (string.IsNullOrEmpty(raw))
+            Template.RandomSeed = null;
+        else if (int.TryParse(raw, out int parsed))
+            Template.RandomSeed = parsed;
+    }
 
     protected override void OnInitialized()
     {
