@@ -23,7 +23,6 @@ using System.Linq;
 using BriefingRoom4DCS.Data;
 using BriefingRoom4DCS.Mission;
 using BriefingRoom4DCS.Template;
-using FluentRandomPicker;
 
 namespace BriefingRoom4DCS.Generator.Mission
 {
@@ -82,10 +81,9 @@ namespace BriefingRoom4DCS.Generator.Mission
             {
                 var task = descriptionsMap.Keys.First();
                 if (descriptionsMap.Keys.Count > 1)
-                    task = Out.Of()
-                    .Values(descriptionsMap.Keys.ToList())
-                    .WithWeights(descriptionsMap.Values.Select(x => x.Count).ToList())
-                    .PickOne();
+                    task = Toolbox.RandomWeightedFrom(
+                        descriptionsMap.Keys.ToList(),
+                        descriptionsMap.Values.Select(x => x.Count).ToList());
 
                 var item = descriptionsMap[task].GroupBy(i => i).OrderByDescending(grp => grp.Count()).Select(grp => grp.Key).First();
                 descriptionsMap[task].Remove(item);

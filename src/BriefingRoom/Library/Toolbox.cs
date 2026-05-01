@@ -87,7 +87,21 @@ namespace BriefingRoom4DCS
 
         internal static readonly UnitFamily[] CARRIER_FAMILIES = new UnitFamily[] { UnitFamily.ShipCarrierCATOBAR, UnitFamily.ShipCarrierSTOBAR, UnitFamily.ShipCarrierSTOVL };
 
-        private static readonly Random Rnd = new();
+        // Per-thread RNG so concurrent Generate calls (e.g. the Web app serving two
+        // missions at once) don't scramble each other's seeded state. Each thread
+        // lazy-inits its own Random the first time it touches Rnd; MissionGenerator.Generate
+        // then calls Reseed at entry to install the template's seed for the current thread.
+        [ThreadStatic]
+        private static Random _rnd;
+        private static Random Rnd => _rnd ??= new Random();
+
+        // When the user provides a RandomSeed in their template, MissionGenerator.Generate
+        // calls Reseed at entry so every Toolbox.Random* draw is reproducible. Pass null to
+        // restore the default time-based RNG (test isolation, CLI batch runs without a seed).
+        internal static void Reseed(int? seed)
+        {
+            _rnd = seed.HasValue ? new Random(seed.Value) : new Random();
+        }
 
         internal static bool StringICompare(string string1, string string2)
         {
@@ -484,6 +498,32 @@ namespace BriefingRoom4DCS
         internal static T RandomWeightedFrom<T>(T[] list, string weightPropertyName)
         {
             return RandomWeightedFrom(list != null ? list.ToList() : null, weightPropertyName);
+        }
+
+        // Parallel-lists overload: pick a value with probability proportional to its weight.
+        // Used in place of FluentRandomPicker so the seedable Toolbox.Rnd drives the draw.
+        internal static T RandomWeightedFrom<T>(IList<T> values, IList<int> weights)
+        {
+            if (values == null || values.Count == 0) return default;
+            if (weights == null || weights.Count != values.Count)
+                return RandomFrom(values.ToList());
+
+            long total = 0;
+            for (int i = 0; i < weights.Count; i++)
+                total += Math.Max(0, weights[i]);
+
+            if (total <= 0)
+                return RandomFrom(values.ToList());
+
+            long r = (long)(RandomDouble() * total);
+            long cumulative = 0;
+            for (int i = 0; i < values.Count; i++)
+            {
+                cumulative += Math.Max(0, weights[i]);
+                if (r < cumulative)
+                    return values[i];
+            }
+            return values[values.Count - 1];
         }
 
         internal static T RandomWeightedFrom<T>(List<T> list, string weightPropertyName)

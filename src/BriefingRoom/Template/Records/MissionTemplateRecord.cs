@@ -78,6 +78,8 @@ namespace BriefingRoom4DCS.Template
         internal DsAirbase AirbaseDynamicCargo { get; init; }
         internal bool CarrierDynamicCargo { get; init; }
 
+        internal int? RandomSeed { get; init; }
+
         internal MissionTemplateRecord(IDatabase database, MissionTemplate template)
         {
             BriefingMissionName = template.BriefingMissionName;
@@ -137,6 +139,7 @@ namespace BriefingRoom4DCS.Template
             DsAllowHotStart = template.DSAllowHotStart;
             AirbaseDynamicCargo = template.AirbaseDynamicCargo;
             CarrierDynamicCargo = template.CarrierDynamicCargo;
+            RandomSeed = template.RandomSeed;
         }
 
         internal string GetCoalitionID(Coalition coalition)

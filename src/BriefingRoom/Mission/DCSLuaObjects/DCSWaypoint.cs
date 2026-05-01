@@ -91,7 +91,7 @@ namespace BriefingRoom4DCS.Mission.DCSLuaObjects
             foreach (var waypointCoords in new Coordinates[] { mid1, mid2, mid3 })
             {
                 var tempWaypointCoords = waypointCoords;
-                if (new Random().NextDouble() <= 0.5)
+                if (Toolbox.RandomDouble() <= 0.5)
                     continue;
                 if (isGroundBased)
                 {

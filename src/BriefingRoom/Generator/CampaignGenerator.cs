@@ -191,6 +191,13 @@ namespace BriefingRoom4DCS.Generator
                 CombinedArmsCommanderRed = campaignTemplate.CombinedArmsCommanderRed,
                 CombinedArmsJTACBlue = campaignTemplate.CombinedArmsJTACBlue,
                 CombinedArmsJTACRed = campaignTemplate.CombinedArmsJTACRed,
+
+                // Derive a per-mission seed from the campaign seed + mission index so that
+                // (a) the campaign as a whole is reproducible from a single seed, and
+                // (b) individual missions stay distinct from each other.
+                RandomSeed = campaignTemplate.RandomSeed.HasValue
+                    ? unchecked(campaignTemplate.RandomSeed.Value + missionIndex)
+                    : (int?)null,
             };
 
             if (!String.IsNullOrEmpty(previousPlayerAirbaseId))
