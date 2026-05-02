@@ -474,14 +474,15 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             if (additionalFeatures != null)
                 featureList.UnionWith(additionalFeatures);
 
-            var overrideCoords = ctx.TargetBehaviorDB.ID.StartsWith("ToFrontLine") 
-                ? ctx.ObjectiveCoordinates 
+            var overrideCoords = ctx.TargetBehaviorDB.ID.StartsWith("ToFrontLine")
+                ? ctx.ObjectiveCoordinates
                 : (Coordinates?)null;
-            
+
             foreach (string featureID in featureList)
-                FeaturesObjectives.GenerateMissionFeature(ctx.BriefingRoom, ref ctx.Mission, featureID, 
-                    ctx.ObjectiveName, ctx.ObjectiveIndex, targetGroupInfo, ctx.TaskDB.TargetSide, 
-                    ctx.ObjectiveOptions, overrideCoords: overrideCoords);
+                FeaturesObjectives.GenerateMissionFeature(ctx.BriefingRoom, ref ctx.Mission, featureID,
+                    ctx.ObjectiveName, ctx.ObjectiveIndex, targetGroupInfo, ctx.TaskDB.TargetSide,
+                    ctx.ObjectiveOptions, overrideCoords: overrideCoords,
+                    parentTaskProgressionActivation: ctx.Task.ProgressionActivation);
         }
 
         #endregion
