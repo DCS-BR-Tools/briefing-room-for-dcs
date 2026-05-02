@@ -31,8 +31,8 @@ namespace BriefingRoom4DCS.Generator.Mission
     internal class FeaturesObjectives :Features<DBEntryFeatureObjective>
     {
 
-        internal static void GenerateMissionFeature(IBriefingRoom briefingRoom, ref DCSMission mission, string featureID, string objectiveName, int objectiveIndex, GroupInfo objectiveTarget, Side objectiveTargetSide, ObjectiveOption[] objectiveOptions, Coordinates? overrideCoords = null)
-        {   
+        internal static void GenerateMissionFeature(IBriefingRoom briefingRoom, ref DCSMission mission, string featureID, string objectiveName, int objectiveIndex, GroupInfo objectiveTarget, Side objectiveTargetSide, ObjectiveOption[] objectiveOptions, Coordinates? overrideCoords = null, bool parentTaskProgressionActivation = false)
+        {
             var objCoords = overrideCoords.HasValue ? overrideCoords.Value : objectiveTarget.Coordinates;
             DBEntryFeatureObjective featureDB = briefingRoom.Database.GetEntry<DBEntryFeatureObjective>(featureID);
             if (featureDB == null) // Feature doesn't exist
@@ -50,6 +50,12 @@ namespace BriefingRoom4DCS.Generator.Mission
                 objCoords = Coordinates.Lerp(objectiveTarget.DCSGroup.Waypoints.First().Coordinates, objectiveTarget.DCSGroup.Waypoints.Last().Coordinates, lerp);
                 extraSettings.AddIfKeyUnused("TimeQueueTime",  (int)Math.Floor(60*lerp));
             }
+
+            // When the parent task is gated on Progression, the AircraftActivator's wide 1-60 min default
+            // can leave the player loitering with nothing to fight (HoldSuperiority needs only 5-15 min on
+            // station). Bound the random delay so attackers arrive within minutes of objective activation.
+            if (parentTaskProgressionActivation && flags.HasFlag(FeatureUnitGroupFlags.TimedAircraftActivation))
+                extraSettings.AddIfKeyUnused("TimeQueueTime", new MinMaxI(1, 5).GetValue());
     
             if (flags.HasFlag(FeatureUnitGroupFlags.SpawnOnObjective))
             {
