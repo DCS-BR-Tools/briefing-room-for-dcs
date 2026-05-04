@@ -166,11 +166,17 @@
                     <h3>@briefingRoom.Translate("Options")</h3>
                     <InputEnum Label="Fog of war" @bind-Value="Template.OptionsFogOfWar" EnumType="FogOfWar" />
                     <div class="form-group flex-block">
-                        <label>Random Seed <span class="note">(optional, leave blank for time-based)</span></label>
+                        <label>@briefingRoom.Translate("RandomSeed") <span class="note">(@briefingRoom.Translate("RandomSeedNote"))</span></label>
                         <input type="text" class="form-control" placeholder="e.g. 42"
                                value="@(Template.RandomSeed.HasValue ? Template.RandomSeed.Value.ToString() : "")"
                                @onchange="OnSeedChanged" />
                     </div>
+                    <p class="custom-warning"><span class="oi oi-info"></span>&nbsp;@briefingRoom.Translate("RandomSeedHelp")</p>
+                    @if (Template.RandomSeed.HasValue)
+                    {
+                        <p class="custom-warning"><span class="oi oi-info"></span>&nbsp;@briefingRoom.Translate("RandomSeedActiveWarning")
+                        <a @onclick="() => Template.RandomSeed = null">@briefingRoom.Translate("ClearRandomSeed")</a></p>
+                    }
                     <hr/>
                     <input type="text" class="float-right" placeholder="Search" @bind="SearchTerm"  @bind:event="oninput" />
                     <MissionFeatures Template="Template" SearchTerm="@SearchTerm" />
