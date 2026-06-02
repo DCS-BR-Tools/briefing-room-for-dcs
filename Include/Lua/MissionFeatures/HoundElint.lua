@@ -12,7 +12,7 @@ end
 
 do
     HOUND = {
-        VERSION = "0.5.0",
+        VERSION = "0.5.1",
         DEBUG = false,
         ELLIPSE_PERCENTILE = 0.6,
         DATAPOINTS_NUM = 30,
@@ -146,6 +146,15 @@ do
         local count = 0
         if T ~= nil then for _ in pairs(T) do count = count + 1 end end
         return count
+    end
+
+    function HOUND.shallowCopy(T)
+        if type(T) ~= "table" then return {} end
+        local newTable = {}
+        for k,v in pairs(T) do
+            newTable[k] = v
+        end
+        return newTable
     end
 
     function HOUND.setContains(set, key)
@@ -335,7 +344,7 @@ do
     HOUND.Mist.__index = HOUND.Mist
 
     function HOUND.Mist.getNorthCorrection(gPoint)	--gets the correction needed for true north
-		local point = HOUND.Mist.utils.deepCopy(gPoint)
+		local point = HOUND.Utils.Dcs.copyPoint(gPoint)
 		if not point.z then --Vec2; convert to Vec3
 			point.z = point.y
 			point.y = 0
@@ -2579,8 +2588,8 @@ do
             ['Assigned'] = { "Naval" },
             ['Role'] = { HOUND.DB.RadarType.NAVAL },
             ['Band'] = {
-                [true] = { 31757675.635593, 203140.782317 },
-                [false] = { 31757675.635593, 203140.782317 }
+                [true] = HOUND.DB.Bands.H,
+                [false] = HOUND.DB.Bands.F
             },
             ['Primary'] = true,
             ['numDistinctFreqs'] = 0
@@ -2832,6 +2841,7 @@ do
             ['S-3B'] = { antenna = { size = 18, factor = 0.8 }, ins_error = 0 },
             ['E-3A'] = { antenna = { size = 9, factor = 0.5 }, ins_error = 0 },
             ['E-2C'] = { antenna = { size = 7, factor = 0.5 }, ins_error = 0 },
+            ['E-2D'] = { antenna = { size = 7, factor = 0.5 }, ins_error = 0 },
             ['Tu-95MS'] = { antenna = { size = 50, factor = 1 }, ins_error = 50 },
             ['Tu-142'] = { antenna = { size = 50, factor = 1 }, ins_error = 0 },
             ['IL-76MD'] = { antenna = { size = 48, factor = 0.8 }, ins_error = 50 },
@@ -4058,12 +4068,9 @@ do
                 if HOUND.DB.Platform[mainCategory][UnitType]['require'] then
                     local platformData = HOUND.DB.Platform[mainCategory][UnitType]
                     if HOUND.setContains(platformData['require'],'Payload') then
-                        HOUND.Logger.debug(tostring(PayloadAdded).. " | " .. type(PayloadAdded))
                         local required = platformData['require']['Payload']
                         if type(PayloadAdded) == 'string' then
-                            HOUND.Logger.debug("HOUND.DB.isValidPlatform: checking payload " .. PayloadAdded .. " for platform " .. UnitType)
                             isValid = HOUND.setContainsValue(required,PayloadAdded)
-                            HOUND.Logger.debug("HOUND.DB.isValidPlatform: isValid = " .. tostring(isValid))
                         else
                             isValid = HOUND.Utils.hasPayload(candidate,required)
                         end
@@ -4084,7 +4091,7 @@ do
         if not HOUND.Utils.Dcs.isUnit(DcsObject) and not HOUND.Utils.Dcs.isStaticObject(DcsObject) then return end
 
         local platformData={
-            pos = l_mist.utils.deepCopy(DcsObject:getPosition().p),
+            pos = HOUND.Utils.Dcs.copyPoint(DcsObject:getPosition().p),
             isStatic = false,
             isAerial = false,
         }
@@ -4547,11 +4554,11 @@ do
     end
 
     function HOUND.Utils.AzimuthAverage(azimuths)
-        if not azimuths or HOUND.Length(azimuths) == 0 then return nil end
+        if not azimuths or #azimuths == 0 then return nil end
 
         local sumSin = 0
         local sumCos = 0
-        for i=1, HOUND.Length(azimuths) do
+        for i=1, #azimuths do
             sumSin = sumSin + l_math.sin(azimuths[i])
             sumCos = sumCos + l_math.cos(azimuths[i])
         end
@@ -4624,7 +4631,7 @@ do
             "Come back with E T A, T O T, and B D A.",
             " "
         }
-        return response[l_math.max(1,l_math.min(l_math.ceil(timer.getAbsTime() % HOUND.Length(response)),HOUND.Length(response)))]
+        return response[l_math.max(1,l_math.min(l_math.ceil(timer.getAbsTime() % #response),#response))]
     end
 
     function HOUND.Utils.getCoalitionString(coalitionID)
@@ -4706,10 +4713,16 @@ do
             override,flightMember = flightMember,override
         end
         local formationCallsign = string.gsub(player.callsign.name,"[%d%s]","")
+        callsign = formationCallsign
 
-        callsign =  formationCallsign .. " " .. player.callsign[2]
-        if flightMember then
-            callsign = callsign .. " " .. player.callsign[3]
+        if string.len(formationCallsign) == 0 and type(player.callsign.name) == "string" then
+            callsign = player.callsign.name
+        end
+        if HOUND.Length(player.callsign) > 1 then
+            callsign = callsign .. " " .. player.callsign[2]
+            if flightMember then
+                callsign = callsign .. " " .. player.callsign[3]
+            end
         end
 
         if type(override) == "table" then
@@ -4724,19 +4737,26 @@ do
         end
 
         if not DcsUnit then return string.upper(callsign:match( "^%s*(.-)%s*$" )) end
+        local rawPlayerName = DcsUnit:getPlayerName()
+        if rawPlayerName then
+            local callsign = rawPlayerName
 
-        local playerName = DcsUnit:getPlayerName()
-        playerName = playerName:match("%a+%s%d+[?%p%s*]%d*")
-        if playerName then
-            callsign = playerName
-            local base = string.match(callsign,"%a+")
-            local num = tonumber(string.match(callsign,"%d+"))
-            local memberNum = string.gsub(callsign,"%a+%s%d+[%p%s*]","")
-            if memberNum:len() > 0 then
-                memberNum = tonumber(memberNum:match("%d+"))
-            else
-                memberNum = nil
+            if rawPlayerName:find("|") then
+                callsign = rawPlayerName:match("([^|]+)")
             end
+
+            callsign = callsign:match("^%s*(.-)%s*$")
+
+            local base = callsign:match("^(.-)%s+[%d]") or callsign
+            base = base:match("^%s*(.-)%s*$")
+
+            local numbers = {}
+            for n in callsign:gmatch("%d+") do
+                table.insert(numbers, tonumber(n))
+            end
+
+            local num = numbers[1]       -- First number found (e.g., the '1' in Carbon 1-1)
+            local memberNum = numbers[2] -- Second number found (e.g., the '2' in Carbon 1-2)
 
             callsign = base
             if type(num) == "number" and type(memberNum) == "number" then
@@ -4758,7 +4778,7 @@ do
 
     function HOUND.Utils.getHoundCallsign(namePool)
         local SelectedPool = HOUND.DB.CALLSIGNS[namePool] or HOUND.DB.CALLSIGNS.GENERIC
-        return SelectedPool[l_math.random(1, HOUND.Length(SelectedPool))]
+        return SelectedPool[l_math.random(1, #SelectedPool)]
     end
 
     function HOUND.Utils.useDMM(DcsUnit)
@@ -4853,6 +4873,16 @@ do
         return (type(point.x) == "number") and (type(point.z) == "number")
     end
 
+    function HOUND.Utils.Dcs.copyPoint(point)
+        if type(point) ~= "table" or type(point.x) ~= "number" then return nil end
+        if point.z ~= nil then
+            return {x = point.x, y = point.y, z = point.z}
+        elseif point.y ~= nil then
+            return {x = point.x, y = 0, z = point.y}
+        end
+        return nil
+    end
+
     function HOUND.Utils.Dcs.isUnit(obj)
         if type(obj) ~= "table" then return false end
         return getmetatable(obj) == Unit
@@ -4876,6 +4906,7 @@ do
     function HOUND.Utils.Dcs.getPlayers(coalitionId)
         if type(coalitionId) ~= "number" or (coalitionId > 2 or coalitionId < 0) then return {} end
         local players = coalition.getPlayers(coalitionId)
+
         local humanUnits = {}
         for i = 1, #players do
             local playerUnit = players[i]
@@ -5189,13 +5220,9 @@ do
 
         instance.remove = function(self)
             if self.id > 0 then
-                local GC = (self.id % 5 == 0)
                 trigger.action.removeMark(self.id)
                 self.id = -1
                 self.type = HOUND.Utils.Marker.Type.NONE
-                if GC then
-                    collectgarbage("collect")
-                end
             end
         end
 
@@ -5221,21 +5248,21 @@ do
                 trigger.action.textToAll(coalition,self.id, pos,lineColor,fillColor,fontSize,true,HOUND.MARKER_TEXT_POINTER .. text)
                 return true
             end
-
-            if HOUND.Length(pos) == 2 and HOUND.Utils.Dcs.isPoint(pos.p) and type(pos.r) == "number" then
+            local len_pos = HOUND.Length(pos)
+            if len_pos == 2 and HOUND.Utils.Dcs.isPoint(pos.p) and type(pos.r) == "number" then
                 self.type = HOUND.Utils.Marker.Type.CIRCLE
                 trigger.action.circleToAll(coalition,self.id, pos.p,pos.r,lineColor,fillColor,lineType,true)
                 return true
             end
 
-            if HOUND.Length(pos) == 4 then
+            if len_pos == 4 then
                 self.type = HOUND.Utils.Marker.Type.FREEFORM
                 trigger.action.markupToAll(6,coalition,self.id,
                     pos[1], pos[2], pos[3], pos[4],
                     lineColor,fillColor,lineType,true)
             end
 
-            if HOUND.Length(pos) == 8 then
+            if len_pos == 8 then
                 self.type = HOUND.Utils.Marker.Type.FREEFORM
                 trigger.action.markupToAll(7,coalition,self.id,
                     pos[1], pos[2], pos[3], pos[4],
@@ -5243,7 +5270,7 @@ do
                     lineColor,fillColor,lineType,true)
             end
 
-            if HOUND.Length(pos) == 16 then
+            if len_pos == 16 then
                 self.type = HOUND.Utils.Marker.Type.FREEFORM
                 trigger.action.markupToAll(7,coalition,self.id,
                     pos[1], pos[2], pos[3], pos[4],
@@ -5273,11 +5300,12 @@ do
                 if HOUND.Utils.Dcs.isPoint(pos) then
                     self:setPos(pos)
                 end
-                if HOUND.Length(pos) == 2 and type(pos.r) == "number" and HOUND.Utils.Dcs.isPoint(pos.p) then
+                local len_pos = HOUND.Length(pos)
+                if len_pos == 2 and type(pos.r) == "number" and HOUND.Utils.Dcs.isPoint(pos.p) then
                     self:setPos(pos.p)
                     self:setRadius(pos.r)
                 end
-                if type(pos) == "table" and HOUND.Length(pos) > 2 and HOUND.Utils.Dcs.isPoint(pos[1]) then
+                if type(pos) == "table" and len_pos > 2 and HOUND.Utils.Dcs.isPoint(pos[1]) then
                     return self:_replace(args)
                 end
             end
@@ -5460,7 +5488,7 @@ do
                     if drawObject["name"] == zoneName and drawObject["primitiveType"] == "Polygon" then
                         local points = {}
                         local theta = nil
-                        if drawObject["polygonMode"] == "free" and HOUND.Length(drawObject["points"]) >2 then
+                        if drawObject["polygonMode"] == "free" and #drawObject["points"] >2 then
                             points = l_mist.utils.deepCopy(drawObject["points"])
                             table.remove(points)
                         end
@@ -5494,7 +5522,7 @@ do
                                 point.y = x * l_math.sin(theta) + y * l_math.cos(theta)
                             end
                         end
-                        if HOUND.Length(points) < 3 then return nil end
+                        if #points < 3 then return nil end
                         local objectX,objecty = drawObject["mapX"],drawObject["mapY"]
                         for _,point in pairs(points) do
                             point.x = point.x + objectX
@@ -5610,7 +5638,6 @@ end
 do
     local l_mist = HOUND.Mist
     local l_math = math
-    local l_grpc = GRPC
     local l_stts = HoundTTS or STTS
     local l_houndTTS = HoundTTS
     local PI_2 = 2*l_math.pi
@@ -5620,7 +5647,6 @@ do
     function HOUND.Utils.TTS.isAvailable()
         for _,engine in ipairs(HOUND.TTS_ENGINE) do
             if engine == "HOUND" and l_houndTTS ~= nil then return true end
-            if engine == "GRPC" and (l_grpc ~= nil and type(l_grpc.tts) == "function") then return true end
             if engine == "STTS" and l_stts ~= nil then return true end
         end
         return false
@@ -5649,6 +5675,24 @@ do
         return "AM"
     end
 
+    function HOUND.Utils.TTS.getTransmitterPos(dcsObject)
+        if dcsObject == nil then return nil end
+        if HOUND.Utils.Dcs.isPoint(dcsObject) then return dcsObject end
+        if not HOUND.Utils.Dcs.isUnit(dcsObject) and not HOUND.Utils.Dcs.isStaticObject(dcsObject) then
+            return nil
+        end
+        if (dcsObject:isExist() == false or dcsObject:getLife() < 1) then
+            return false
+        end
+        local pos = dcsObject:getPoint()
+        local transmitterObjectCat, transmitterSubCat = dcsObject:getCategory()
+        if transmitterObjectCat == Object.Category.STATIC or (transmitterObjectCat == Object.Category.UNIT and transmitterSubCat == Unit.Category.GROUND_UNIT) then
+            local verticalOffset = (dcsObject:getDesc()["box"]["max"]["y"] + 5) or 20
+            pos.y = pos.y + verticalOffset
+        end
+        return pos
+    end
+
     function HOUND.Utils.TTS.Transmit(msg,coalitionID,args,transmitterPos)
         if not HOUND.Utils.TTS.isAvailable() then return end
         if msg == nil then return end
@@ -5664,24 +5708,29 @@ do
                     args.tts_engine = engine
                     break
                 end
-                if engine == "GRPC" and (l_grpc ~= nil and type(l_grpc.tts) == "function") then
-                    args.tts_engine = engine
-                    break
-                end
-                if engine == "STTS" and l_stts ~= nil then
+                if engine == "STTS" and (l_stts ~= nil and type(l_stts.TextToSpeech) == "function") then
                     args.tts_engine = engine
                     break
                 end
             end
         end
+        local dcsObject = nil
+        if type(transmitterPos) == "string" then
+            dcsObject = Unit.getByName(transmitterPos) or StaticObject.getByName(transmitterPos)
+            transmitterPos = nil
+        end
+        if HOUND.Utils.Dcs.isUnit(transmitterPos) or HOUND.Utils.Dcs.isStaticObject(transmitterPos) then
+            dcsObject = transmitterPos
+            transmitterPos = HOUND.Utils.TTS.getTransmitterPos(dcsObject)
+        end
+        if transmitterPos == false then
+            return
+        end
         if args.tts_engine == "STTS" then
             return HOUND.Utils.TTS.TransmitSTTS(msg,coalitionID,args,transmitterPos)
         end
-        if args.tts_engine == "GRPC" then
-            return HOUND.Utils.TTS.TransmitGRPC(msg,coalitionID,args,transmitterPos)
-        end
         if args.tts_engine == "HOUND" then
-            return HOUND.Utils.TTS.TransmitHound(msg,coalitionID,args,transmitterPos)
+            return HOUND.Utils.TTS.TransmitHound(msg,coalitionID,args,transmitterPos,dcsObject)
         end
     end
 
@@ -5691,11 +5740,12 @@ do
         return l_stts.TextToSpeech(msg,args.freq,args.modulation,args.volume,args.name,coalitionID,transmitterPos,args.speed,args.gender,args.culture,args.voice,args.googletts,args.azurecreds)
     end
 
-    function HOUND.Utils.TTS.TransmitHound(msg,coalitionID,args,transmitterPos)
+    function HOUND.Utils.TTS.TransmitHound(msg,coalitionID,args,transmitterPos,dcsObject)
         local transmitter_params = {
             name = args.name,
             freq = args.freq,
             modulation = args.modulation or HOUND.Utils.TTS.getdefaultModulation(args.freq),
+            dcsObject = dcsObject,
             point = transmitterPos,
             coalition = coalitionID,
             transmitter = args.transmitter or "srs"
@@ -5728,91 +5778,6 @@ do
         end
 
         return l_houndTTS.Transmit(msg,transmitter_params,provider_params)
-    end
-
-    function HOUND.Utils.TTS.TransmitGRPC(msg,coalitionID,args,transmitterPos)
-        local VOLUME = {"default","x-slow", "slow", "medium", "fast", "x-fast"}
-        local ssml_msg = msg
-
-        local grpc_ttsArgs = {
-            srsClientName = args.name,
-            coalition = HOUND.Utils.getCoalitionString(coalitionID):lower(),
-        }
-        if type(transmitterPos) == "table" then
-            grpc_ttsArgs.position = {}
-            grpc_ttsArgs.position.lat, grpc_ttsArgs.position.lon, grpc_ttsArgs.position.alt = coord.LOtoLL( transmitterPos )
-        end
-        if type(args.provider) == "table" then
-            grpc_ttsArgs.provider = args.provider
-        end
-
-        local readSpeed = 1.0
-        if args.speed ~= 0 then
-            if args.speed > 10 then
-                readSpeed = HOUND.Utils.Mapping.linear(args.speed,50,250,0.5,2.5,true)
-            else
-                if args.speed > 0 then
-                    readSpeed = HOUND.Utils.Mapping.linear(args.speed,0,10,1.0,2.5,true)
-                else
-                    readSpeed = HOUND.Utils.Mapping.linear(args.speed,-10,0,0.5,1.0,true)
-                end
-            end
-        end
-
-        local ssml_prosody = ""
-        if readSpeed ~= 1.0  then
-            ssml_prosody = ssml_prosody .. " rate='"..readSpeed.."'"
-        end
-
-        if args.volume ~= 1.0 then
-            local volume = ""
-
-            if HOUND.setContainsValue(VOLUME,args.volume) then
-                volume = args.volume
-            end
-
-            if type(args.volume)=="number" then
-                if args.volume ~= 0 then
-                    volume = (args.volume*100)-100 .. "%"
-                    if args.volume > 1 then
-                        volume = "+" .. volume
-                    end
-                else
-                    volume = "slient"
-                end
-            end
-
-            if string.len(volume) > 0 then
-                ssml_prosody = ssml_prosody .. " volume='"..volume.."'"
-            end
-        end
-        if string.len(ssml_prosody) > 0 then
-            ssml_msg = table.concat({"<prosody",ssml_prosody,">",ssml_msg,"</prosody>"},"")
-        end
-
-        local ssml_voice = ""
-        if args.voice then
-            ssml_voice = ssml_voice.." name='"..args.voice.."'"
-        else
-            if args.gender then
-                ssml_voice = ssml_voice.." gender='"..args.gender.."'"
-            end
-            if args.culture then
-                ssml_voice = ssml_voice.." language='"..args.culture.."'"
-            end
-        end
-
-        if string.len(ssml_voice) > 0 then
-            ssml_msg = table.concat({"<voice",ssml_voice,">",ssml_msg,"</voice>"},"")
-        end
-
-        local freqs = string.split(args.freq,",")
-
-        for _,freq in ipairs(freqs) do
-            freq = math.ceil(freq * 1000000)
-            l_grpc.tts(ssml_msg, freq, grpc_ttsArgs)
-        end
-        return HOUND.Utils.TTS.getReadTime(msg) / readSpeed -- read speed > 1.0 is fast
     end
 
     function HOUND.Utils.TTS.getTtsTime(timestamp)
@@ -5936,11 +5901,11 @@ do
         return l_math.ceil(length/cps)
     end
 
-    function HOUND.Utils.TTS.simplfyDistance(distanceM)
+    function HOUND.Utils.TTS.simplifyDistance(distanceM)
         local distanceUnit = "meters"
         local distance = HOUND.Utils.roundToNearest(distanceM,50) or 0
         if distance >= 1000 then
-            distance = string.format("%.1f",tostring(HOUND.Utils.roundToNearest(distanceM,100)/1000))
+            distance = string.format("%.1f",HOUND.Utils.roundToNearest(distanceM,100)/1000)
             distanceUnit = "kilometers"
         end
         return distance .. " " .. distanceUnit
@@ -5955,7 +5920,7 @@ do
     HOUND.Utils.Cluster = {}
 
     function HOUND.Utils.Polygon.threatOnSector(polygon,point, radius)
-        if type(polygon) ~= "table" or HOUND.Length(polygon) < 3 or not HOUND.Utils.Dcs.isPoint(l_mist.utils.makeVec3(polygon[1])) then
+        if type(polygon) ~= "table" or #polygon < 3 or not HOUND.Utils.Dcs.isPoint(l_mist.utils.makeVec3(polygon[1])) then
             return
         end
         if not HOUND.Utils.Dcs.isPoint(point) then
@@ -5972,7 +5937,7 @@ do
     end
 
     function HOUND.Utils.Polygon.azMinMax(poly,refPos)
-        if not HOUND.Utils.Dcs.isPoint(refPos) or type(poly) ~= "table" or HOUND.Length(poly) < 2 or l_mist.pointInPolygon(refPos,poly) then
+        if not HOUND.Utils.Dcs.isPoint(refPos) or type(poly) ~= "table" or #poly < 2 or l_mist.pointInPolygon(refPos,poly) then
             return
         end
 
@@ -5992,9 +5957,12 @@ do
     end
 
     function HOUND.Utils.Cluster.getDeltaSubsetPercent(Table,referencePos,NthPercentile,returnRelative)
-        local t = l_mist.utils.deepCopy(Table)
-        local len_t = HOUND.Length(t)
-        t = HOUND.Utils.Geo.setHeight(t)
+        local t = {}
+        for _,pt in ipairs(Table) do
+            table.insert(t, { x = pt.x, y = pt.y or 0, z = pt.z, dist = 0, score = pt.score})
+        end
+        local len_t = #t
+
         if not referencePos then
             referencePos = l_mist.getAvgPoint(t)
         end
@@ -6834,7 +6802,7 @@ do
     end
 
     function HOUND.Contact.Emitter:getPos()
-        return self.pos.p
+        return HoundUtils.Dcs.copyPoint(self.pos.p)
     end
 
     function HOUND.Contact.Emitter:getWavelenght(isTracking)
@@ -7132,7 +7100,7 @@ do
         local AllDataPoints = {}
 
         for _,platformDatapoints in pairs(self._dataPoints) do
-            if HOUND.Length(platformDatapoints) > 0 then
+            if #platformDatapoints > 0 then
                 for _,datapoint in pairs(platformDatapoints) do
                     if datapoint:isStatic() then
                         table.insert(staticDataPoints,datapoint)
@@ -7143,12 +7111,12 @@ do
                 end
             end
         end
-        local numMobilepoints = HOUND.Length(mobileDataPoints)
-        local numStaticPoints = HOUND.Length(staticDataPoints)
+        local numMobilepoints = #mobileDataPoints
+        local numStaticPoints = #staticDataPoints
         table.sort(mobileDataPoints, function(a,b) return a.signalStrength < b.signalStrength end)
         table.sort(staticDataPoints, function(a,b) return a.signalStrength < b.signalStrength end)
 
-        if numMobilepoints+numStaticPoints < 2 and HOUND.Length(estimatePositions) == 0 then return end
+        if numMobilepoints+numStaticPoints < 2 and #estimatePositions == 0 then return end
         if numStaticPoints > 1 then
             for i=1,numStaticPoints-1 do
                 for j=i+1,numStaticPoints do
@@ -7176,7 +7144,7 @@ do
             end
         end
 
-        if HOUND.Length(estimatePositions) > 2 or (HOUND.Length(estimatePositions) > 0 and staticPlatformsOnly) then
+        if #estimatePositions > 2 or (#estimatePositions > 0 and staticPlatformsOnly) then
             self.pos.p = HoundUtils.Cluster.WeightedCentroid(estimatePositions)
             self.uncertenty_data = self.calculateEllipse(estimatePositions,self.pos.p)
 
@@ -7336,7 +7304,7 @@ do
         local unitPos = self.DcsObject:getPosition()
         self:setPreBriefed(true)
 
-        self.pos.p = l_mist.utils.deepCopy(unitPos.p)
+        self.pos.p = HoundUtils.Dcs.copyPoint(unitPos.p)
         self:calculateExtrasPosData(self.pos)
 
         self.uncertenty_data = {}
@@ -7356,7 +7324,7 @@ do
         contact.uid = self.uid % 100
         contact.DcsObjectName = self.DcsObject:getName()
         if self.pos.p ~= nil and self.uncertenty_data ~= nil then
-            contact.pos = self.pos.p
+            contact.pos = HoundUtils.Dcs.copyPoint(self.pos.p)
             contact.LL = self.pos.LL
 
             contact.accuracy = HoundUtils.TTS.getVerbalConfidenceLevel( self.uncertenty_data.r )
@@ -7368,8 +7336,8 @@ do
         end
         contact.maxWeaponsRange = self.maxWeaponsRange
         contact.last_seen = self.last_seen
-        contact.detected_by = self.detected_by
-        return l_mist.utils.deepCopy(contact)
+        contact.detected_by = HOUND.shallowCopy(self.detected_by)
+        return contact
     end
 end
 do
@@ -7485,7 +7453,7 @@ do
                 then
                     msg = msg .. ", Reported " .. HoundUtils.TTS.getVerbalContactAge(self.first_seen) .. " ago"
                 else
-                    msg = msg .. ", ellipse " ..  HoundUtils.TTS.simplfyDistance(self.uncertenty_data.major) .. " by " ..  HoundUtils.TTS.simplfyDistance(self.uncertenty_data.minor) .. ", aligned bearing " .. HoundUtils.TTS.toPhonetic(string.format("%03d",self.uncertenty_data.az))
+                    msg = msg .. ", ellipse " ..  HoundUtils.TTS.simplifyDistance(self.uncertenty_data.major) .. " by " ..  HoundUtils.TTS.simplifyDistance(self.uncertenty_data.minor) .. ", aligned bearing " .. HoundUtils.TTS.toPhonetic(string.format("%03d",self.uncertenty_data.az))
                     msg = msg .. ", Tracked for " .. HoundUtils.TTS.getVerbalContactAge(self.first_seen) .. ", last seen " .. HoundUtils.TTS.getVerbalContactAge(self.last_seen) .. " ago"
                 end
         end
@@ -7808,7 +7776,7 @@ do
         self:ensurePrimaryHasPos()
         for _,emitter in ipairs(self.emitters) do
             if emitter:hasPos() then
-                self.pos.p = l_mist.utils.deepCopy(emitter:getPos())
+                self.pos.p = emitter:getPos()
                 break
             end
         end
@@ -7822,15 +7790,16 @@ do
         if ( not primary:hasPos() ) then
             for _,emitter in ipairs(self.emitters) do
                 if ( emitter:hasPos() ) then
-                    primary.pos = l_mist.utils.deepCopy(emitter.pos)
-                    primary.uncertenty_data = l_mist.utils.deepCopy(emitter.uncertenty_data)
+                    primary.pos = HOUND.shallowCopy(emitter.pos)
+                    primary.pos.p = HoundUtils.Dcs.copyPoint(emitter.pos.p)
+                    primary.uncertenty_data = HOUND.shallowCopy(emitter.uncertenty_data)
                     break
                 end
             end
 
             if ( not primary:hasPos() and HoundUtils.Dcs.isPoint(refPos)) then
                 local uncertenty = primary:getMaxWeaponsRange() * 0.75
-                primary.pos.p = l_mist.utils.deepCopy(refPos)
+                primary.pos.p = HoundUtils.Dcs.copyPoint(refPos)
                 primary.pos = primary:calculateExtrasPosData(primary.pos)
                 primary.uncertenty_data = {}
                 primary.uncertenty_data.major = uncertenty
@@ -8195,7 +8164,7 @@ do
         for _,emitter in ipairs(self.emitters) do
             table.insert(report.emitters,emitter:export())
         end
-        return l_mist.utils.deepCopy(report)
+        return report
     end
 end--- Hound Comms Manager (Base class)
 do
@@ -8452,26 +8421,12 @@ do
         end
     end
 
-    function HOUND.Comms.Manager:getTransmitterPos()
-        if self.transmitter == nil then return nil end
-        if self.transmitter ~= nil and (self.transmitter:isExist() == false or self.transmitter:getLife() < 1) then
-            return false
-        end
-        local pos = self.transmitter:getPoint()
-        local transmitterObjectCat, transmitterSubCat = self.transmitter:getCategory()
-        if transmitterObjectCat == Object.Category.STATIC or (transmitterObjectCat == Object.Category.UNIT and transmitterSubCat == Unit.Category.GROUND_UNIT) then
-            local verticalOffset = (self.transmitter:getDesc()["box"]["max"]["y"] + 5) or 20
-            pos.y = pos.y + verticalOffset
-        end
-        return pos
-    end
-
     function HOUND.Comms.Manager.TransmitFromQueue(gSelf)
         local msgObj = gSelf:getNextMsg()
         local readTime = gSelf.settings.interval
         if msgObj == nil then return timer.getTime() + readTime end
 
-        local transmitterPos = gSelf:getTransmitterPos()
+        local transmitterPos = HoundUtils.TTS.getTransmitterPos(gSelf.transmitter)
 
         if transmitterPos == false then
             env.info("[Hound] - Transmitter destroyed")
@@ -8482,11 +8437,12 @@ do
                     transmitter = gSelf.transmitter
                 })
 
+            gSelf.transmitter = nil
             return timer.getTime() + 10
         end
 
         if gSelf.enabled and HoundUtils.TTS.isAvailable() and msgObj.tts ~= nil and gSelf.preferences.enabletts then
-            HoundUtils.TTS.Transmit(msgObj.tts,msgObj.coalition,gSelf.settings,transmitterPos)
+            HoundUtils.TTS.Transmit(msgObj.tts,msgObj.coalition,gSelf.settings,gSelf.transmitter)
             readTime = HoundUtils.TTS.getReadTime(msgObj.tts,gSelf.settings.speed,gSelf.settings.googletts)
 
         end
@@ -8744,7 +8700,7 @@ do
     end
 
     function HOUND.ElintWorker:platformRefresh()
-        if HOUND.Length(self.platforms) < 1 then return end
+        if #self.platforms < 1 then return end
         for id,platform in ipairs(self.platforms) do
             if platform:isExist() == false or platform:getLife() <1 then
                 table.remove(self.platforms, id)
@@ -8759,7 +8715,7 @@ do
     end
 
     function HOUND.ElintWorker:removeDeadPlatforms()
-        if HOUND.Length(self.platforms) < 1 then return end
+        if #self.platforms < 1 then return end
         for id,platform in ipairs(self.platforms) do
             if platform:isExist() == false or platform:getLife() <1  or (platform:getCategory() ~= Object.Category.STATIC and platform:isActive() == false) then
                 table.remove(self.platforms, id)
@@ -8774,7 +8730,7 @@ do
     end
 
     function HOUND.ElintWorker:countPlatforms()
-        return HOUND.Length(self.platforms)
+        return #self.platforms
     end
 
     function HOUND.ElintWorker:listPlatforms()
@@ -8964,7 +8920,7 @@ do
         for _, contact in pairs(self.contacts) do
             contact:KalmanPredict()
         end
-        if HOUND.Length(self.platforms) == 0 then return end
+        if #self.platforms == 0 then return end
         local Radars = {}
         if GroupName then
             Radars = HoundUtils.Elint.getActiveRadarsInGroup(GroupName)
@@ -9952,7 +9908,6 @@ function HOUND.Sector:notifySiteLaunching(site)
         end
 
         if gSelf.comms.controller:isEnabled() then
-            HOUND.Logger.debug(args["contact"].. ":\n" .. HOUND.Mist.utils.tableShow(contact))
 
             msgObj.contactId = contact:getId()
             msgObj.tts = contact:generateTtsReport(useDMM,preferMGRS)
@@ -9962,7 +9917,6 @@ function HOUND.Sector:notifySiteLaunching(site)
             if gSelf.comms.controller:getSettings("enableText") == true then
                 msgObj.txt = contact:generateTextReport(useDMM)
             end
-            HOUND.Logger.debug("msg: \n"..HOUND.Mist.utils.tableShow(msgObj))
             gSelf.comms.controller:addMessageObj(msgObj)
         end
     end
@@ -10091,14 +10045,14 @@ do
         local sitesData = self:getRadioItemsText()
         local typesSpotted = {}
 
-        if HOUND.setContains(sitesData.noData) and
+        if HOUND.setContains(sitesData, "noData") and
             not self.comms.menu.noData then
                 self.comms.menu.noData = missionCommands.addCommandForCoalition(self._hSettings:getCoalition(),
                             sitesData.noData,
                             self.comms.menu.root, timer.getAbsTime)
         end
 
-        if not HOUND.setContains(sitesData.noData) then
+        if not HOUND.setContains(sitesData, "noData") then
             if self.comms.menu.noData ~= nil then
                 self.comms.menu.noData = missionCommands.removeItemForCoalition(self._hSettings:getCoalition(),
                 self.comms.menu.noData)
@@ -10107,7 +10061,7 @@ do
 
         local grpMenuDone = {}
         if HOUND.Length(self.comms.enrolled) > 0 then
-            if HOUND.Length(sitesData) and not HOUND.setContains(sitesData.noData) then
+            if HOUND.Length(sitesData) > 0 and not HOUND.setContains(sitesData, "noData") then
                 for _,siteData in ipairs(sitesData) do
                     if not HOUND.setContainsValue(typesSpotted,siteData.typeAssigned) then
                         table.insert(typesSpotted,siteData.typeAssigned)
@@ -10224,12 +10178,12 @@ do
 
         local siteObj = typeMenu.objs[siteData.dcsName]
         if HOUND.setContains(siteObj,'items') then
-            for emitterName,emitter in (siteObj.items) do
+            for emitterName,emitter in pairs(siteObj.items) do
                 siteObj.items[emitterName] = missionCommands.removeItemForGroup(playerGid,emitter)
             end
         end
 
-        if HOUND.setContains(typeMenu.items[siteData.dcsName]) then
+        if HOUND.setContains(typeMenu.items, siteData.dcsName) then
             typeMenu.items[siteData.dcsName] = missionCommands.removeItemForGroup(playerGid,typeMenu.items[siteData.dcsName] )
         end
     end
@@ -10274,7 +10228,7 @@ do
 
     function HoundElint:destroy()
         self:systemOff(false)
-        self:defaultEventHandler(false)
+        self:defaultEventHandler(true)
 
         for name,sector in pairs(self.sectors) do
             self.sectors[name] = sector:destroy()
@@ -10409,7 +10363,6 @@ do
     function HoundElint:AlertOnLaunch(fireUnit)
         if not self:getAlertOnLaunch() or (not HoundUtils.Dcs.isGroup(fireUnit) and not HoundUtils.Dcs.isUnit(fireUnit)) then return end
         HOUND.Logger.debug("Launch Alert called for " .. fireUnit:getName())
-
         self.contacts:AlertOnLaunch(fireUnit)
     end
 
@@ -11131,10 +11084,11 @@ do
     end
 
     function HoundElint:populateRadioMenu()
-        if not self:isRunning() or not self.contacts or self.contacts:countContacts() == 0 or self.settings:getCoalition() == nil then
+        if not self:isRunning() or not self.contacts or type(self.contacts:countContacts()) ~= "number" or self.settings:getCoalition() == nil then
             return
         end
         HOUND.DB.updateHumanDb(self.settings:getCoalition())
+
         local sectors = self:getSectors()
         table.sort(sectors,HoundUtils.Sort.sectorsByPriorityLowLast)
         for _,sector in pairs(sectors) do
@@ -11164,7 +11118,8 @@ do
             trigger.action.outTextForCoalition(self.settings:getCoalition(),
                                            "Hound ELINT system is now Operating", 10)
         end
-        env.info("Hound is now on")
+        env.info("Hound instance " .. self.settings:getId() .. " is now on")
+        self:populateRadioMenu()
         HOUND.EventHandler.publishEvent({
             id = HOUND.EVENTS.HOUND_ENABLED,
             houndId = self.settings:getId(),
@@ -11182,7 +11137,7 @@ do
             trigger.action.outTextForCoalition(self.settings:getCoalition(),
                                            "Hound ELINT system is now Offline", 10)
         end
-        env.info("Hound is now off")
+        env.info("Hound instance " ..  self.settings:getId() .. " is now off")
         HOUND.EventHandler.publishEvent({
             id = HOUND.EVENTS.HOUND_DISABLED,
             houndId = self.settings:getId(),
@@ -11406,8 +11361,8 @@ do
         end
     end
 
-    function HoundElint:defaultEventHandler(remove)
-        if remove == false then
+    function HoundElint:defaultEventHandler(purge)
+        if purge == true then
             HOUND.EventHandler.removeInternalEventHandler(self)
             world.removeEventHandler(self)
             return
@@ -11420,4 +11375,4 @@ do
     trigger.action.outText("Hound ELINT ("..HOUND.VERSION..") is loaded.", 15)
     env.info("[Hound] - finished loading (".. HOUND.VERSION..")")
 end
--- Hound version 0.5.0 - Compiled on 2026-02-24 22:19
+-- Hound version 0.5.1 - Compiled on 2026-04-29 10:28
