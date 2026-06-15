@@ -40,6 +40,13 @@
     "shapeName": "FARP"
   },
   {
+    "type": "Zell",
+    "numParking": 1,
+    "displayName": "F-100D ZELL",
+    "module": "F-100D AI by GrinnelliDesigns",
+    "shapeName": "ZELL"
+  },
+  {
     "type": "bhd_farp_large",
     "numParking": 3,
     "displayName": "BHD - FARP",

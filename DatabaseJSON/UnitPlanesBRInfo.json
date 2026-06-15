@@ -567,6 +567,17 @@
     "playerControllable": true
   },
   {
+    "type": "F-14A-95-GR",
+    "families": [
+      "PlaneFighter",
+      "PlaneInterceptor",
+      "PlaneStrike",
+      "PlaneCATOBAR"
+    ],
+    "lowPolly": false,
+    "playerControllable": true
+  },
+  {
     "type": "F-14A-135-GR-Early",
     "families": [
       "PlaneFighter",
@@ -868,6 +879,12 @@
   {
     "type": "La-7",
     "families": ["PlaneAttack", "PlaneStrike", "PlaneSTOVL", "PlaneFighter"],
+    "lowPolly": false,
+    "playerControllable": true
+  },
+  {
+    "type": "F-100D",
+    "families": ["PlaneFighter", "PlaneAttack", "PlaneStrike"],
     "lowPolly": false,
     "playerControllable": true
   }

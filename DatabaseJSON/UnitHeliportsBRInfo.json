@@ -54,5 +54,13 @@
         ],
         "lowPolly": false,
         "immovable": false
+    },
+            {
+        "type": "Zell",
+        "families": [
+            "FOB"
+        ],
+        "lowPolly": false,
+        "immovable": false
     }
 ]
