@@ -18,7 +18,7 @@
   </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.1" />
+      <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.2" />
       <ProjectReference Include="../CommonGUI/CommonGUI.csproj" />
     </ItemGroup>
 
