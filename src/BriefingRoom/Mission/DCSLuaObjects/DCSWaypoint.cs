@@ -95,7 +95,12 @@ namespace BriefingRoom4DCS.Mission.DCSLuaObjects
                     continue;
                 if (isGroundBased)
                 {
-                    var waypointCoordsSpawn = SpawnPointSelector.GetNearestSpawnPoint(mission, new SpawnPointType[] { SpawnPointType.LandLarge, SpawnPointType.LandMedium, SpawnPointType.LandSmall }, tempWaypointCoords, false);
+                    var waypointCoordsSpawn = SpawnPointSelector.GetNearestSpawnPoint(
+                        mission,
+                        new SpawnPointType[] { SpawnPointType.LandLarge, SpawnPointType.LandMedium, SpawnPointType.LandSmall },
+                        tempWaypointCoords,
+                        false,
+                        20);
                     if (!waypointCoordsSpawn.HasValue)
                         continue;
                     tempWaypointCoords = waypointCoordsSpawn.Value;

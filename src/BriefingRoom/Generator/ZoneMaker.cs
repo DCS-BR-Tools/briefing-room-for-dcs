@@ -22,7 +22,7 @@ namespace BriefingRoom4DCS.Generator
             if (!onTop)
             {
                 var spawnPoints = new List<SpawnPointType> { SpawnPointType.LandLarge }.ToArray();
-                Coordinates? newCoords = SpawnPointSelector.GetNearestSpawnPoint(mission, spawnPoints, coordinates);
+                Coordinates? newCoords = SpawnPointSelector.GetNearestSpawnPoint(mission, spawnPoints, coordinates, true, 20);
                 if (!newCoords.HasValue)
                     throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "Can't find suitable zone Coordinates!");
                 coords = newCoords.Value;

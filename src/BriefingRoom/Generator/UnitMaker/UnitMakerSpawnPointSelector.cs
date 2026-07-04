@@ -31,6 +31,10 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
     internal static class SpawnPointSelector
     {
         private const int MAX_RADIUS_SEARCH_ITERATIONS = 15;
+        private const double MAX_LAND_RANGE_EXPANSION_FACTOR = 1.35;
+        private const double MAX_AIRSEA_RANGE_EXPANSION_FACTOR = 1.75;
+        private const double MAX_SECONDARY_RANGE_EXPANSION_FACTOR = 1.35;
+        private const double MAX_BORDER_LIMIT_EXPANSION_FACTOR = 1.2;
 
         internal static List<DBEntryAirbaseParkingSpot> GetFreeParkingSpots(IBriefingRoom briefingRoom,ref DCSMission mission, int airbaseID, int unitCount, DBEntryAircraft aircraftDB, bool requiresOpenAirParking = false, int reservedSpots = 0)
         {
@@ -56,12 +60,27 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
         internal static Coordinates? GetNearestSpawnPoint(
             DCSMission mission,
             SpawnPointType[] validTypes,
-            Coordinates origin, bool remove = true)
+            Coordinates origin, bool remove = true,
+            double? maxDistanceNM = null)
         {
+            var maxDistanceMeters = maxDistanceNM.HasValue ? maxDistanceNM.Value * Toolbox.NM_TO_METERS : (double?)null;
             if (validTypes.Contains(SpawnPointType.Air) || validTypes.Contains(SpawnPointType.Sea))
-                return GetAirOrSeaCoordinates(mission, validTypes, origin, new MinMaxD(1, 30));
+            {
+                var maxDistance = maxDistanceNM.HasValue ? Math.Max(1, maxDistanceNM.Value) : 30;
+                var nearestAirOrSeaCoordinates = GetAirOrSeaCoordinates(mission, validTypes, origin, new MinMaxD(1, maxDistance));
+                if (!nearestAirOrSeaCoordinates.HasValue)
+                    return null;
+                if (maxDistanceMeters.HasValue && origin.GetDistanceFrom(nearestAirOrSeaCoordinates.Value) > maxDistanceMeters.Value)
+                    return null;
+                return nearestAirOrSeaCoordinates.Value;
+            }
 
-            var sp = mission.SpawnPoints.Where(x => validTypes.Contains(x.PointType)).Aggregate((acc, x) => origin.GetDistanceFrom(x.Coordinates) < origin.GetDistanceFrom(acc.Coordinates) ? x : acc);
+            var options = mission.SpawnPoints.Where(x => validTypes.Contains(x.PointType)).ToList();
+            if (!options.Any())
+                return null;
+            var sp = options.Aggregate((acc, x) => origin.GetDistanceFrom(x.Coordinates) < origin.GetDistanceFrom(acc.Coordinates) ? x : acc);
+            if (maxDistanceMeters.HasValue && origin.GetDistanceFrom(sp.Coordinates) > maxDistanceMeters.Value)
+                return null;
             if (remove)
             {
                 mission.SpawnPoints.Remove(sp);
@@ -104,9 +123,11 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                 if (!validSP.Any()) break;
                 if (!distanceFrom[i].HasValue || !distanceOrigin[i].HasValue) continue;
 
-                var borderLimit = (double)mission.TemplateRecord.BorderLimit;
+                var initialBorderLimit = (double)mission.TemplateRecord.BorderLimit;
+                var borderLimit = initialBorderLimit;
                 Coordinates origin = distanceOrigin[i].Value;
-                var searchRange = distanceFrom[i].Value * Toolbox.NM_TO_METERS; // convert distance to meters
+                var initialSearchRange = distanceFrom[i].Value * Toolbox.NM_TO_METERS; // convert distance to meters
+                var searchRange = initialSearchRange;
 
                 IEnumerable<DBEntryTheaterSpawnPoint> validSPInRange;
 
@@ -123,9 +144,9 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                                         CheckNotInHostileCoords(ref mission, s.Coordinates, coalition) &&
                                         (useFrontLine ? CheckNotFarFromFrontLine(database, ref mission, s.Coordinates, nearFrontLineFamily.Value, coalition) : CheckNotFarFromBorders(ref mission, s.Coordinates, borderLimit, coalition))
                                       select s);
-                    searchRange = new MinMaxD(searchRange.Min * 0.95, searchRange.Max * 1.05);
+                    searchRange = ExpandSearchRange(searchRange, initialSearchRange, 0.95, 1.05, MAX_LAND_RANGE_EXPANSION_FACTOR);
                     if (iterationsLeft < MAX_RADIUS_SEARCH_ITERATIONS * 0.3)
-                        borderLimit *= 1.05;
+                        borderLimit = Math.Min(initialBorderLimit * MAX_BORDER_LIMIT_EXPANSION_FACTOR, borderLimit * 1.05);
                     iterationsLeft--;
                 } while ((!validSPInRange.Any()) && (iterationsLeft > 0));
                 validSP = validSPInRange;
@@ -146,12 +167,16 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
             Coordinates? distanceOrigin2 = null, MinMaxD? distanceFrom2 = null,
             Coalition? coalition = null)
         {
-            var searchRange = distanceFrom1 * Toolbox.NM_TO_METERS;
-            var borderLimit = (double)mission.TemplateRecord.BorderLimit; ;
+            var initialSearchRange = distanceFrom1 * Toolbox.NM_TO_METERS;
+            var searchRange = initialSearchRange;
+            var initialBorderLimit = (double)mission.TemplateRecord.BorderLimit;
+            var borderLimit = initialBorderLimit;
             MinMaxD? secondSearchRange = null;
+            MinMaxD? initialSecondSearchRange = null;
             if (distanceOrigin2.HasValue && distanceFrom2.HasValue)
             {
                 secondSearchRange = distanceFrom2.Value * Toolbox.NM_TO_METERS;
+                initialSecondSearchRange = secondSearchRange.Value;
             }
 
             var iterations = 0;
@@ -171,13 +196,13 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                 if (coordOptions.Count > 0)
                     return Toolbox.RandomFrom(coordOptions);
 
-                searchRange = new MinMaxD(searchRange.Min * 0.95, searchRange.Max * 1.15);
+                searchRange = ExpandSearchRange(searchRange, initialSearchRange, 0.95, 1.15, MAX_AIRSEA_RANGE_EXPANSION_FACTOR);
 
-                if (secondSearchRange.HasValue)
-                    secondSearchRange = new MinMaxD(secondSearchRange.Value.Min * 0.95, secondSearchRange.Value.Max * 1.05);
+                if (secondSearchRange.HasValue && initialSecondSearchRange.HasValue)
+                    secondSearchRange = ExpandSearchRange(secondSearchRange.Value, initialSecondSearchRange.Value, 0.95, 1.05, MAX_SECONDARY_RANGE_EXPANSION_FACTOR);
 
                 if (iterations > MAX_RADIUS_SEARCH_ITERATIONS * 0.66)
-                    borderLimit *= 1.05;
+                    borderLimit = Math.Min(initialBorderLimit * MAX_BORDER_LIMIT_EXPANSION_FACTOR, borderLimit * 1.05);
 
                 iterations++;
             } while (iterations < MAX_RADIUS_SEARCH_ITERATIONS);
@@ -331,6 +356,18 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
                 .ToList();
 
             return Toolbox.RandomWeightedFrom(options, weights);
+        }
+
+        private static MinMaxD ExpandSearchRange(MinMaxD currentRange, MinMaxD initialRange, double minFactor, double maxFactor, double maxExpansionFactor)
+        {
+            var expandedRange = new MinMaxD(currentRange.Min * minFactor, currentRange.Max * maxFactor);
+            var minimumCap = initialRange.Min * 0.8;
+            var maximumCap = initialRange.Max * maxExpansionFactor;
+            var min = Math.Max(minimumCap, expandedRange.Min);
+            var max = Math.Min(maximumCap, expandedRange.Max);
+            if (min > max)
+                min = max;
+            return new MinMaxD(min, max);
         }
 
         internal static double GetDirToFrontLine(ref DCSMission mission, Coordinates coords)

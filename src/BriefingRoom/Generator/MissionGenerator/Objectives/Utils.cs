@@ -122,7 +122,9 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             Coordinates? spawnPoint = SpawnPointSelector.GetNearestSpawnPoint(
                 mission,
                 validSpawnPoints,
-                coreCoordinates, remove);
+                coreCoordinates,
+                remove,
+                mission.TemplateRecord.FlightPlanObjectiveSeparation.Max);
 
             if (!spawnPoint.HasValue)
                 throw new BriefingRoomException(database, mission.LangKey, "FailedToLaunchNearbyObjective", String.Join(",", validSpawnPoints.Select(x => x.ToString()).ToList()));

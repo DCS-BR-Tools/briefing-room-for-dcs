@@ -173,7 +173,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             if (usingHint)
                 location = new Coordinates(mission.TemplateRecord.CarrierHints[flightGroup.Carrier]);
 
-            Coordinates? spawnPoint = SpawnPointSelector.GetNearestSpawnPoint(mission, new SpawnPointType[] { SpawnPointType.LandLarge }, location);
+            Coordinates? spawnPoint = SpawnPointSelector.GetNearestSpawnPoint(mission, new SpawnPointType[] { SpawnPointType.LandLarge }, location, true, 50);
 
             if (!spawnPoint.HasValue)
             {

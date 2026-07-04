@@ -96,7 +96,12 @@ namespace BriefingRoom4DCS.Generator.Mission
                 coordinates2 = goPoint + Coordinates.CreateRandom(5, 20) * Toolbox.NM_TO_METERS;
 
                 if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.DestinationSpawnPoint))
-                    coordinates2 = SpawnPointSelector.GetNearestSpawnPoint(mission, featureDB.UnitGroupValidSpawnPoints, goPoint, false);
+                    coordinates2 = SpawnPointSelector.GetNearestSpawnPoint(
+                        mission,
+                        featureDB.UnitGroupValidSpawnPoints,
+                        goPoint,
+                        false,
+                        mission.TemplateRecord.FlightPlanObjectiveSeparation.Max);
             }
             Dictionary<string, object> extraSettings = new();
             GroupInfo? groupInfo = AddMissionFeature(briefingRoom, featureDB, ref mission, spawnPoint, coordinates2, ref extraSettings, missionLevelFeature: true);
@@ -112,7 +117,12 @@ namespace BriefingRoom4DCS.Generator.Mission
             foreach (DBEntryAirbase airbase in airbases)
             {
 
-                Coordinates? spawnPoint = SpawnPointSelector.GetNearestSpawnPoint(mission, featureDB.UnitGroupValidSpawnPoints, airbase.Coordinates);
+                Coordinates? spawnPoint = SpawnPointSelector.GetNearestSpawnPoint(
+                    mission,
+                    featureDB.UnitGroupValidSpawnPoints,
+                    airbase.Coordinates,
+                    true,
+                    mission.TemplateRecord.FlightPlanObjectiveSeparation.Max);
                 if (!spawnPoint.HasValue) // No spawn point found
                 {
                     throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "NoSpawnPointForMissionFeature", featureID);
