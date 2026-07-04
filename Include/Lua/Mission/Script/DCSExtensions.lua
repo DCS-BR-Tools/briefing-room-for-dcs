@@ -4,6 +4,27 @@
 -- ===================================================================================
 
 dcsExtensions = { } -- main dcsExtensions table
+dcsExtensions.cache = {
+  players = { units = { }, expiresAt = -1, ttlSeconds = 5 },
+  coalitionUnits = { },
+  coalitionUnitsTTLSeconds = 3
+}
+
+function dcsExtensions.getCacheTime()
+  return timer.getAbsTime()
+end
+
+function dcsExtensions.filterValidUnitReferences(units, requirePlayer)
+  local validUnits = { }
+  for _,u in ipairs(units) do
+    if u ~= nil and u.isExist ~= nil and u:isExist() and u.isActive ~= nil and u:isActive() and u.getLife ~= nil and u:getLife() >= 1 then
+      if not requirePlayer or (u.getPlayerName ~= nil and u:getPlayerName() ~= nil) then
+        table.insert(validUnits, u)
+      end
+    end
+  end
+  return validUnits
+end
 
 -- Returns an angle in degrees to the nearest cardinal direction, as a string
 function dcsExtensions.degreesToCardinalDirection(angle)
@@ -15,6 +36,12 @@ end
 
 -- Returns a table with all units controlled by a player
 function dcsExtensions.getAllPlayers()
+  local now = dcsExtensions.getCacheTime()
+  if dcsExtensions.cache.players.expiresAt > now then
+    dcsExtensions.cache.players.units = dcsExtensions.filterValidUnitReferences(dcsExtensions.cache.players.units, true)
+    return dcsExtensions.cache.players.units
+  end
+
   local players = { }
   
   for coaName, i in pairs(coalition.side) do
@@ -26,6 +53,9 @@ function dcsExtensions.getAllPlayers()
       end
     end
   end
+
+  dcsExtensions.cache.players.units = players
+  dcsExtensions.cache.players.expiresAt = now + dcsExtensions.cache.players.ttlSeconds
 
   return players
 end
@@ -71,6 +101,16 @@ end
 
 -- Returns all units belonging to the given coalition
 function dcsExtensions.getCoalitionUnits(coalID)
+  local now = dcsExtensions.getCacheTime()
+  if dcsExtensions.cache.coalitionUnits[coalID] == nil then
+    dcsExtensions.cache.coalitionUnits[coalID] = { units = { }, expiresAt = -1 }
+  end
+  local coalitionCache = dcsExtensions.cache.coalitionUnits[coalID]
+  if coalitionCache.expiresAt > now then
+    coalitionCache.units = dcsExtensions.filterValidUnitReferences(coalitionCache.units, false)
+    return coalitionCache.units
+  end
+
   local units = { }
   for _,g in pairs(coalition.getGroups(coalID)) do
     for __,u in pairs(g:getUnits()) do
@@ -81,6 +121,9 @@ function dcsExtensions.getCoalitionUnits(coalID)
       end
     end
   end
+
+  coalitionCache.units = units
+  coalitionCache.expiresAt = now + dcsExtensions.cache.coalitionUnitsTTLSeconds
 
   return units
 end
