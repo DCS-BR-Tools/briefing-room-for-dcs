@@ -96,7 +96,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 coordinates2 = goPoint + Coordinates.CreateRandom(5, 20) * Toolbox.NM_TO_METERS;
 
                 if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.DestinationSpawnPoint))
-                    coordinates2 = SpawnPointSelector.GetNearestSpawnPoint(mission, featureDB.UnitGroupValidSpawnPoints, goPoint);
+                    coordinates2 = SpawnPointSelector.GetNearestSpawnPoint(mission, featureDB.UnitGroupValidSpawnPoints, goPoint, false);
             }
             Dictionary<string, object> extraSettings = new();
             GroupInfo? groupInfo = AddMissionFeature(briefingRoom, featureDB, ref mission, spawnPoint, coordinates2, ref extraSettings, missionLevelFeature: true);

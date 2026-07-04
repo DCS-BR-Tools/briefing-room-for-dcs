@@ -272,7 +272,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                     coordinates2 = coordinates.CreateNearRandom(50 * Toolbox.NM_TO_METERS, 100 * Toolbox.NM_TO_METERS);
                     if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.DestinationSpawnPoint))
                     {
-                        var coordinates2Spawn = SpawnPointSelector.GetNearestSpawnPoint(mission, featureDB.UnitGroupValidSpawnPoints, coordinates);
+                        var coordinates2Spawn = SpawnPointSelector.GetNearestSpawnPoint(mission, featureDB.UnitGroupValidSpawnPoints, coordinates, false);
                         if (!coordinates2Spawn.HasValue)
                         {
                             briefingRoom.PrintTranslatableWarning("NoExtraGroupSpawnPoint", featureDB.UIDisplayName.Get(mission.LangKey));

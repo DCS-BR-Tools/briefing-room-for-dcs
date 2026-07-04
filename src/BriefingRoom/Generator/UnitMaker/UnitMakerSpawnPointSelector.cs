@@ -133,7 +133,7 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
 
             if (!validSP.Any())
                 return !coalition.HasValue && (useFrontLine || nested) ? null : GetLandCoordinates(database, mission, validTypes, distanceOrigin1, distanceFrom1, distanceOrigin2, distanceFrom2, null, nearFrontLineFamily, true);
-            DBEntryTheaterSpawnPoint selectedSpawnPoint = nearFrontLineFamily.HasValue && Constants.SPAWN_POINT_PREFERENCE_HIGH_POINT.Contains(nearFrontLineFamily.Value) ? Toolbox.RandomWeightedFrom(validSP.ToArray(), "Z") : Toolbox.RandomFrom(validSP.ToArray());
+            DBEntryTheaterSpawnPoint selectedSpawnPoint = SelectSpawnPoint(validSP, nearFrontLineFamily);
             mission.SpawnPoints.Remove(selectedSpawnPoint); // Remove spawn point so it won't be used again;
             mission.UsedSpawnPoints.Add(selectedSpawnPoint);
             return selectedSpawnPoint.Coordinates;
@@ -217,9 +217,10 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
 
         internal static void RecoverSpawnPoint(ref DCSMission mission, Coordinates coords)
         {
-            var usedSP = mission.UsedSpawnPoints.Find(x => x.Coordinates.X == coords.X && x.Coordinates.Y == x.Coordinates.Y);
+            var usedSP = mission.UsedSpawnPoints.Find(x => x.Coordinates.X == coords.X && x.Coordinates.Y == coords.Y);
             if (usedSP.Coordinates.ToString() == Coordinates.Zero.ToString())
                 return;
+            mission.UsedSpawnPoints.Remove(usedSP);
             mission.SpawnPoints.Add(usedSP);
         }
 
@@ -295,10 +296,41 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
 
         internal static void RecoverTemplateLocation(ref DCSMission mission, Coordinates coords)
         {
-            var usedTL = mission.UsedTemplateLocations.Find(x => x.Coordinates.X == coords.X && x.Coordinates.Y == x.Coordinates.Y);
+            var usedTL = mission.UsedTemplateLocations.Find(x => x.Coordinates.X == coords.X && x.Coordinates.Y == coords.Y);
             if (usedTL.Coordinates.ToString() == Coordinates.Zero.ToString())
                 return;
-            mission.UsedTemplateLocations.Add(usedTL);
+            mission.UsedTemplateLocations.Remove(usedTL);
+            mission.TemplateLocations.Add(usedTL);
+        }
+
+        private static DBEntryTheaterSpawnPoint SelectSpawnPoint(IEnumerable<DBEntryTheaterSpawnPoint> validSpawnPoints, UnitFamily? nearFrontLineFamily)
+        {
+            var options = validSpawnPoints.ToList();
+            if (!nearFrontLineFamily.HasValue || !Constants.SPAWN_POINT_PREFERENCE_HIGH_POINT.Contains(nearFrontLineFamily.Value))
+                return Toolbox.RandomFrom(options);
+
+            var finiteAltitudes = options
+                .Select(x => x.Coordinates.Z)
+                .Where(x => !double.IsNaN(x) && !double.IsInfinity(x))
+                .ToList();
+
+            if (!finiteAltitudes.Any())
+                return Toolbox.RandomFrom(options);
+
+            var minimumAltitude = finiteAltitudes.Min();
+            var weights = options
+                .Select(x =>
+                {
+                    var altitude = x.Coordinates.Z;
+                    if (double.IsNaN(altitude) || double.IsInfinity(altitude))
+                        return 1;
+
+                    var normalizedWeight = Math.Round(altitude - minimumAltitude) + 1;
+                    return (int)Math.Max(1, Math.Min(int.MaxValue, normalizedWeight));
+                })
+                .ToList();
+
+            return Toolbox.RandomWeightedFrom(options, weights);
         }
 
         internal static double GetDirToFrontLine(ref DCSMission mission, Coordinates coords)
