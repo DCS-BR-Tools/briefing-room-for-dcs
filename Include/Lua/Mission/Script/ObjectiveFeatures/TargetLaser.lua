@@ -5,9 +5,13 @@ function briefingRoom.mission.objectiveFeaturesCommon.targetDesignationLaser.las
   local objectiveIndex = args[1]
   local objFeature = briefingRoom.mission.objectiveFeatures[objectiveIndex]
   local objective = briefingRoom.mission.objectives[objectiveIndex]
+  if objective.complete then
+    briefingRoom.mission.objectiveFeaturesCommon.targetDesignationLaser.deleteLaser(objectiveIndex)
+    return nil
+  end
   -- if lasing target is set...
   if objFeature.targetDesignationLaser.laserTarget == nil then
-    return time + 1 -- next update in one second
+    return time + 5 -- slower checks while laser is off
   end
 
   if not objFeature.targetDesignationLaser.laserTarget:isExist() or not table.contains(objective.unitNames, objFeature.targetDesignationLaser.laserTarget:getName()) then -- target is considered complete

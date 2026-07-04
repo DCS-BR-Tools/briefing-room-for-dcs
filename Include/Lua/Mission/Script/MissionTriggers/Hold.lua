@@ -1,12 +1,21 @@
 function briefingRoom.mission.objectivesTriggersCommon.registerHoldTrigger(objectiveIndex, distanceInMeters, timeRequiredSeconds, superiorityRequired)
   local objective = briefingRoom.mission.objectives[objectiveIndex]
   local holdDistanceMetersSquared = distanceInMeters * distanceInMeters
+  local nextRunAt = 0
+  local activeIntervalSeconds = 1
+  local hiddenIntervalSeconds = 5
   superiorityRequired = superiorityRequired or false
   briefingRoom.mission.objectives[objectiveIndex].superiortyTimer = 0
   objective.hideTargetCount = true
   table.insert(briefingRoom.mission.objectiveTimers,  function ()
+    local now = timer.getAbsTime()
+    if now < nextRunAt then return true end
     if briefingRoom.mission.objectivesTriggersCommon.isMissionOrObjectiveComplete(objectiveIndex) then return false end
-    if objective.progressionHidden then return true end -- skip check until active
+    if objective.progressionHidden then
+      nextRunAt = now + hiddenIntervalSeconds
+      return true -- skip check until active
+    end
+    nextRunAt = now + activeIntervalSeconds
     local players = dcsExtensions.getAllPlayers()
   
     for _,p in ipairs(players) do

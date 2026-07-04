@@ -8,12 +8,21 @@ end
 function briefingRoom.mission.objectivesTriggersCommon.registerFlyNearAndReportTrigger(objectiveIndex)
   local objective = briefingRoom.mission.objectives[objectiveIndex]
   local triggerDistanceMetersSquared = 9260 * 9260
+  local nextRunAt = 0
+  local activeIntervalSeconds = 1
+  local hiddenIntervalSeconds = 5
   objective.completeCommand = nil
 
 
   table.insert(briefingRoom.mission.objectiveTimers,  function ()
+    local now = timer.getAbsTime()
+    if now < nextRunAt then return true end
     if objective.flownOver then return false end -- Objective complete, nothing to do
-    if objective.progressionHidden then return true end -- skip check until active
+    if objective.progressionHidden then
+      nextRunAt = now + hiddenIntervalSeconds
+      return true -- skip check until active
+    end
+    nextRunAt = now + activeIntervalSeconds
   
     local players = dcsExtensions.getAllPlayers()
   
