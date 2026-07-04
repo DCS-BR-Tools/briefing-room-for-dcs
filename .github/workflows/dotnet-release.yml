@@ -86,6 +86,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: unsigned-release
+          if-no-files-found: error
           path: BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }}
 
       - name: Sign artifact with SignPath
@@ -98,7 +99,7 @@ jobs:
           artifact-configuration-slug: briefing-room-release
           github-artifact-id: ${{ steps.upload-unsigned.outputs.artifact-id }}
           wait-for-completion: true
-          output-artifact-directory: .
+          output-artifact-directory: signed
 
       - name: Delete unsigned artifact
         if: always()
@@ -112,6 +113,29 @@ jobs:
           $headers = @{ Authorization = "Bearer $token"; Accept = "application/vnd.github+json" }
           Invoke-RestMethod -Uri "https://api.github.com/repos/$repo/actions/artifacts/$artifactId" -Method Delete -Headers $headers
 
+      - name: Verify signed files exist
+        shell: pwsh
+        run: |
+          $signedFiles = Get-ChildItem -Path "${{ github.workspace }}\signed" -File -Recurse -ErrorAction SilentlyContinue
+          if (-not $signedFiles -or $signedFiles.Count -eq 0) {
+            throw "SignPath output is empty. No signed files were produced."
+          }
+
+      - name: Zip Release
+        run: 7z a -tzip BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }}.zip ${{ github.workspace }}/signed/* "-xr!.git\" "-xr!.github\" "-xr!.git*" "-xr!.vscode\" "-xr!dataExtractors\" "-xr!src\" "-xr!docs\" "-x!*.bat" "-x!*.filelist"
+
+      - name: Verify release zip exists
+        shell: pwsh
+        run: |
+          $zipPath = "${{ github.workspace }}\BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }}.zip"
+          if (-not (Test-Path -LiteralPath $zipPath)) {
+            throw "Release zip was not created: $zipPath"
+          }
+          $zipInfo = Get-Item -LiteralPath $zipPath
+          if ($zipInfo.Length -le 0) {
+            throw "Release zip exists but is empty: $zipPath"
+          }
+
       - name: Upload Release
         uses: ncipollo/release-action@v1
         with:
@@ -120,6 +144,7 @@ jobs:
           body: |
             ${{ steps.change_log.outputs.log }}
           prerelease: false
+          artifactErrorsFailBuild: true
           artifacts: "BriefingRoom-V0.5.${{ steps.current-date.outputs.formattedTime }}.zip"
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Truncate Changelog for Discord

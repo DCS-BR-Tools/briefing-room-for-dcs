@@ -104,8 +104,28 @@ jobs:
           $headers = @{ Authorization = "Bearer $token"; Accept = "application/vnd.github+json" }
           Invoke-RestMethod -Uri "https://api.github.com/repos/$repo/actions/artifacts/$artifactId" -Method Delete -Headers $headers
 
+      - name: Verify signed files exist
+        shell: pwsh
+        run: |
+          $signedFiles = Get-ChildItem -Path "${{ github.workspace }}\signed" -File -Recurse -ErrorAction SilentlyContinue
+          if (-not $signedFiles -or $signedFiles.Count -eq 0) {
+            throw "SignPath output is empty. No signed files were produced."
+          }
+
       - name: Zip Release
         run: 7z a -tzip BriefingRoom-beta-${{ steps.current-time.outputs.formattedTime }}.zip ${{ github.workspace }}/signed/* "-xr!.git\" "-xr!.github\" "-xr!.git*" "-xr!.vscode\" "-xr!dataExtractors\"  "-xr!src\" "-xr!docs\" "-x!*.bat" "-x!*.filelist"
+
+      - name: Verify release zip exists
+        shell: pwsh
+        run: |
+          $zipPath = "${{ github.workspace }}\BriefingRoom-beta-${{ steps.current-time.outputs.formattedTime }}.zip"
+          if (-not (Test-Path -LiteralPath $zipPath)) {
+            throw "Release zip was not created: $zipPath"
+          }
+          $zipInfo = Get-Item -LiteralPath $zipPath
+          if ($zipInfo.Length -le 0) {
+            throw "Release zip exists but is empty: $zipPath"
+          }
 
       - name: Upload Release
         uses: ncipollo/release-action@v1
@@ -116,6 +136,7 @@ jobs:
             This is a automated beta build. This may not work. Its not recommend to overwrite a official release with this.
             ${{ steps.change_log.outputs.log }}
           prerelease: true
+          artifactErrorsFailBuild: true
           artifacts: BriefingRoom-beta-${{ steps.current-time.outputs.formattedTime }}.zip
           token: ${{ secrets.GITHUB_TOKEN }}
 
