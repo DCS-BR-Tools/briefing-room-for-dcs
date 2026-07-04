@@ -1,5 +1,5 @@
 function briefingRoom.mission.objectivesTriggersCommon.registerDisableTrigger(objectiveIndex)
-  table.insert(briefingRoom.mission.objectiveTriggers, function(event)
+  local handler = function(event)
     -- Mission complete, nothing to do
     if briefingRoom.mission.objectivesTriggersCommon.isMissionOrObjectiveComplete(objectiveIndex) then return false end
 
@@ -19,5 +19,11 @@ function briefingRoom.mission.objectivesTriggersCommon.registerDisableTrigger(ob
         if event.initiator == nil then return false end
     else return false end
     return  briefingRoom.mission.destroyCallout(objectiveIndex, killedUnit, event.id, playerName)
-  end)
+  end
+
+  briefingRoom.mission.registerObjectiveEventTrigger(world.event.S_EVENT_KILL, handler)
+  briefingRoom.mission.registerObjectiveEventTrigger(world.event.S_EVENT_HIT, handler)
+  briefingRoom.mission.registerObjectiveEventTrigger(world.event.S_EVENT_DEAD, handler)
+  briefingRoom.mission.registerObjectiveEventTrigger(world.event.S_EVENT_CRASH, handler)
+  briefingRoom.mission.registerObjectiveEventTrigger(world.event.S_EVENT_AI_ABORT_MISSION, handler)
 end

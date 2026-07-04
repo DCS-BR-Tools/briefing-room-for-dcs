@@ -1,5 +1,5 @@
 function briefingRoom.mission.objectivesTriggersCommon.registerKeepAliveTrigger(objectiveIndex)
-  table.insert(briefingRoom.mission.objectiveTriggers, function(event)
+  local handler = function(event)
     -- Mission complete, nothing to do
     if briefingRoom.mission.objectivesTriggersCommon.isMissionOrObjectiveComplete(objectiveIndex) then return false end
 
@@ -37,5 +37,9 @@ function briefingRoom.mission.objectivesTriggersCommon.registerKeepAliveTrigger(
     end
   
     return true
-  end)
+  end
+
+  briefingRoom.mission.registerObjectiveEventTrigger(world.event.S_EVENT_DEAD, handler)
+  briefingRoom.mission.registerObjectiveEventTrigger(world.event.S_EVENT_CRASH, handler)
+  briefingRoom.mission.registerObjectiveEventTrigger(world.event.S_EVENT_LAND, handler)
 end

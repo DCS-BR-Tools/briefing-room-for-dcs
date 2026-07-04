@@ -79,21 +79,27 @@ function briefingRoom.handleGeneralKill(event)
 end
 
 function briefingRoom.eventHandler:onEvent(event)
+  if event == nil or event.id == nil then return end
+
   if event.id == world.event.S_EVENT_TAKEOFF and -- unit took off
+    event.initiator ~= nil and
+    event.initiator.getPlayerName ~= nil and
     event.initiator:getPlayerName() ~= nil then -- unit is a pleyr
       briefingRoom.mission.coreFunctions.beginMission() -- first player to take off triggers the mission start
   end
 
   local eventHandled = false
-  -- Pass the event to the completion trigger of all objectives that have one
-  for k, func in pairs(briefingRoom.mission.objectiveTriggers) do
-    if func ~= nil then
+  local objectiveHandlers = briefingRoom.mission.objectiveTriggersByEvent[event.id]
+  -- Pass the event to objective completion triggers registered for this event ID
+  if objectiveHandlers ~= nil then
+    for _, func in ipairs(objectiveHandlers) do
       local didHandle = func(event)
       if didHandle then
         eventHandled = true
       end
     end
-  end 
+  end
+
   if eventHandled == false then
     briefingRoom.handleGeneralKill(event)
   end

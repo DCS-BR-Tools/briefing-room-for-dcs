@@ -1,5 +1,5 @@
 function briefingRoom.mission.objectivesTriggersCommon.registerDestroyTrigger(objectiveIndex)
-  table.insert(briefingRoom.mission.objectiveTriggers, function(event)
+  local handler = function(event)
 
     if briefingRoom.mission.objectivesTriggersCommon.isMissionOrObjectiveComplete(objectiveIndex) then return false end
 
@@ -25,5 +25,11 @@ function briefingRoom.mission.objectivesTriggersCommon.registerDestroyTrigger(ob
     then return false end
 
     return briefingRoom.mission.destroyCallout(objectiveIndex, killedUnit, event.id, playerName)
-  end)
+  end
+
+  briefingRoom.mission.registerObjectiveEventTrigger(world.event.S_EVENT_KILL, handler)
+  briefingRoom.mission.registerObjectiveEventTrigger(world.event.S_EVENT_DEAD, handler)
+  briefingRoom.mission.registerObjectiveEventTrigger(world.event.S_EVENT_CRASH, handler)
+  briefingRoom.mission.registerObjectiveEventTrigger(world.event.S_EVENT_AI_ABORT_MISSION, handler)
+  briefingRoom.mission.registerObjectiveEventTrigger(world.event.S_EVENT_LAND, handler)
 end

@@ -54,7 +54,7 @@ function briefingRoom.mission.objectivesTriggersCommon.registerTransportTroopsTr
   table.insert(briefingRoom.mission.objectives[objectiveIndex].f10Commands, {text = "$LANG_FORCEPICKUP$", func = briefingRoom.mission.objectivesTriggersCommon.transportTroopsForcePickup, args = {objectiveIndex}})
   table.insert(briefingRoom.mission.objectives[objectiveIndex].f10Commands, {text = "$LANG_FORCEDROP$", func =  briefingRoom.mission.objectivesTriggersCommon.transportTroopsForceDrop, args =  {objectiveIndex}})
 
-  table.insert(briefingRoom.mission.objectiveTriggers, function(event)
+  local handler = function(event)
     if briefingRoom.mission.objectivesTriggersCommon.isMissionOrObjectiveComplete(objectiveIndex) then return false end
 
     if event.id ~= world.event.S_EVENT_LAND then return false end -- Not a "land" event, nothing to do
@@ -96,11 +96,13 @@ function briefingRoom.mission.objectivesTriggersCommon.registerTransportTroopsTr
     if table.count(collect) > 0 and table.contains(nonNativeTransportingAircraft, event.initiator:getTypeName()) then
       briefingRoom.transportManager.troopsMoveToGetIn(event.initiator:getName(), collect)
     end
-  end)
+  end
+
+  briefingRoom.mission.registerObjectiveEventTrigger(world.event.S_EVENT_LAND, handler)
 end
 
 function briefingRoom.mission.objectivesTriggersCommon.registerCaptureLocation(objectiveIndex, objectiveLocationId)
-  table.insert(briefingRoom.mission.objectiveTriggers, function(event)
+  local handler = function(event)
 
     if briefingRoom.mission.objectivesTriggersCommon.isMissionOrObjectiveComplete(objectiveIndex) then return false end
     if event.id == world.event.S_EVENT_BASE_CAPTURED then
@@ -111,5 +113,7 @@ function briefingRoom.mission.objectivesTriggersCommon.registerCaptureLocation(o
         return true
       end
     else return false end
-  end)
+  end
+
+  briefingRoom.mission.registerObjectiveEventTrigger(world.event.S_EVENT_BASE_CAPTURED, handler)
 end

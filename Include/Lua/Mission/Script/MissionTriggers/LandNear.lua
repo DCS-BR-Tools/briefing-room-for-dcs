@@ -1,5 +1,5 @@
 function briefingRoom.mission.objectivesTriggersCommon.registerLandNearTrigger(objectiveIndex)
-  table.insert(briefingRoom.mission.objectiveTriggers, function(event)
+  local handler = function(event)
     if briefingRoom.mission.objectivesTriggersCommon.isMissionOrObjectiveComplete(objectiveIndex) then return false end
     if event.id ~= world.event.S_EVENT_LAND then return false end -- Not a "land" event, nothing to do
   
@@ -22,7 +22,8 @@ function briefingRoom.mission.objectivesTriggersCommon.registerLandNearTrigger(o
         end
       end
     end
-end)
+  end
 
-briefingRoom.mission.objectives[objectiveIndex].hideTargetCount = true
+  briefingRoom.mission.registerObjectiveEventTrigger(world.event.S_EVENT_LAND, handler)
+  briefingRoom.mission.objectives[objectiveIndex].hideTargetCount = true
 end
