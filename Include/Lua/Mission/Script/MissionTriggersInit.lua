@@ -12,6 +12,7 @@ for objIndex,obj in ipairs(briefingRoom.mission.objectives) do
       return u:isExist()
     end)
   end
+  briefingRoom.mission.objectivesTriggersCommon.rebuildObjectiveUnitNameSet(objIndex)
   if(next(obj.unitNames) == nil) then
     briefingRoom.mission.coreFunctions.completeObjective(objIndex)
   end

@@ -12,6 +12,40 @@ function briefingRoom.mission.registerObjectiveEventTrigger(eventID, func)
   table.insert(briefingRoom.mission.objectiveTriggersByEvent[eventID], func)
 end
 
+function briefingRoom.mission.objectivesTriggersCommon.rebuildObjectiveUnitNameSet(objectiveIndex)
+  local objective = briefingRoom.mission.objectives[objectiveIndex]
+  objective.unitNameSet = { }
+  for _, unitName in pairs(objective.unitNames) do
+    objective.unitNameSet[unitName] = true
+  end
+end
+
+function briefingRoom.mission.objectivesTriggersCommon.objectiveHasUnitName(objectiveIndex, unitName)
+  local objective = briefingRoom.mission.objectives[objectiveIndex]
+  if objective.unitNameSet == nil then
+    briefingRoom.mission.objectivesTriggersCommon.rebuildObjectiveUnitNameSet(objectiveIndex)
+  end
+  return objective.unitNameSet[unitName] == true
+end
+
+function briefingRoom.mission.objectivesTriggersCommon.removeObjectiveUnitName(objectiveIndex, unitName)
+  local objective = briefingRoom.mission.objectives[objectiveIndex]
+  if objective.unitNameSet == nil then
+    briefingRoom.mission.objectivesTriggersCommon.rebuildObjectiveUnitNameSet(objectiveIndex)
+  end
+  if objective.unitNameSet[unitName] ~= true then return false end
+
+  objective.unitNameSet[unitName] = nil
+  table.removeValue(objective.unitNames, unitName)
+  return true
+end
+
+function briefingRoom.mission.objectivesTriggersCommon.clearObjectiveUnitNames(objectiveIndex)
+  local objective = briefingRoom.mission.objectives[objectiveIndex]
+  objective.unitNames = { }
+  objective.unitNameSet = { }
+end
+
 function briefingRoom.mission.objectiveTimerSchedule(args, time)
   for i=1,table.count(briefingRoom.mission.objectives) do
     if briefingRoom.mission.objectiveTimers[i] ~= nil then
@@ -27,10 +61,10 @@ end
 function briefingRoom.mission.destroyCallout(objectiveIndex, killedUnit, eventID, playerName)
   if killedUnit == nil or killedUnit.getName == nil  then return false end
   local unitName = killedUnit:getName()
-  if not table.contains(briefingRoom.mission.objectives[objectiveIndex].unitNames, unitName) then return false end
+  if not briefingRoom.mission.objectivesTriggersCommon.objectiveHasUnitName(objectiveIndex, unitName) then return false end
 
   -- Remove the unit from the list of targets
-  table.removeValue(briefingRoom.mission.objectives[objectiveIndex].unitNames, unitName)
+  briefingRoom.mission.objectivesTriggersCommon.removeObjectiveUnitName(objectiveIndex, unitName)
 
   -- Play "target destroyed" radio message
   local soundName = "TargetDestroyed"
@@ -85,6 +119,7 @@ function briefingRoom.mission.objectivesTriggersCommon.filterTargets(objectiveIn
     if table.count(newTargetTable) > 0 then
       briefingRoom.mission.objectives[objectiveIndex].unitNames = newTargetTable
       briefingRoom.mission.objectives[objectiveIndex].unitsCount = table.count(newTargetTable)
+      briefingRoom.mission.objectivesTriggersCommon.rebuildObjectiveUnitNameSet(objectiveIndex)
     end
   end
 end

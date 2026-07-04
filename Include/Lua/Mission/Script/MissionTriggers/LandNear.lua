@@ -1,4 +1,5 @@
 function briefingRoom.mission.objectivesTriggersCommon.registerLandNearTrigger(objectiveIndex)
+  local triggerDistanceMetersSquared = 650 * 650
   local handler = function(event)
     if briefingRoom.mission.objectivesTriggersCommon.isMissionOrObjectiveComplete(objectiveIndex) then return false end
     if event.id ~= world.event.S_EVENT_LAND then return false end -- Not a "land" event, nothing to do
@@ -15,8 +16,8 @@ function briefingRoom.mission.objectivesTriggersCommon.registerLandNearTrigger(o
       local targetUnit = dcsExtensions.getUnitOrStatic(id)
       if targetUnit ~= nil then
         local targetPosition = dcsExtensions.toVec2(targetUnit:getPoint())
-        if dcsExtensions.getDistance(position, targetPosition) < 650 then
-          briefingRoom.mission.objectives[objectiveIndex].unitNames = { }
+        if dcsExtensions.getDistanceSquared(position, targetPosition) < triggerDistanceMetersSquared then
+          briefingRoom.mission.objectivesTriggersCommon.clearObjectiveUnitNames(objectiveIndex)
           briefingRoom.mission.coreFunctions.completeObjective(objectiveIndex)
           return true
         end

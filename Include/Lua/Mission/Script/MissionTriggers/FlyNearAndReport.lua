@@ -7,6 +7,7 @@ end
 
 function briefingRoom.mission.objectivesTriggersCommon.registerFlyNearAndReportTrigger(objectiveIndex)
   local objective = briefingRoom.mission.objectives[objectiveIndex]
+  local triggerDistanceMetersSquared = 9260 * 9260
   objective.completeCommand = nil
 
 
@@ -22,16 +23,16 @@ function briefingRoom.mission.objectivesTriggersCommon.registerFlyNearAndReportT
         if unit ~= nil then
           local vec2p = dcsExtensions.toVec2(p:getPoint())
           local vec2u = dcsExtensions.toVec2(unit:getPoint())
-          local distance = dcsExtensions.getDistance(vec2p, vec2u);
+          local distanceSquared = dcsExtensions.getDistanceSquared(vec2p, vec2u)
   
-          if distance < 9260 and math.abs(vec2p.y - vec2u.y) < 2438 and briefingRoom.mission.objectives[objectiveIndex].completeCommand == nil then
+          if distanceSquared < triggerDistanceMetersSquared and math.abs(vec2p.y - vec2u.y) < 2438 and briefingRoom.mission.objectives[objectiveIndex].completeCommand == nil then
             local playername = p.getPlayerName and p:getPlayerName() or nil
             if math.random(1, 2) == 1 then
                 briefingRoom.radioManager.play((playername or"$LANG_PILOT$").." $LANG_FLYNEAR1$", "RadioPilotTargetReconned1")
             else
                 briefingRoom.radioManager.play((playername or"$LANG_PILOT$").." $LANG_FLYNEAR2$", "RadioPilotTargetReconned2")
             end
-            objective.unitNames = { }
+            briefingRoom.mission.objectivesTriggersCommon.clearObjectiveUnitNames(objectiveIndex)
             if objective.startMinutes == -1 then -- start the objective
               local minsPassed = math.floor((timer.getAbsTime() - timer.getTime0())/60)
               objective.startMinutes = minsPassed

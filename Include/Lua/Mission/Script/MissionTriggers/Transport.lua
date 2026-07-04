@@ -1,6 +1,8 @@
 function briefingRoom.mission.objectivesTriggersCommon.transportTroopsForcePickup(args)
   local objectiveIndex = args[1]
   if briefingRoom.mission.objectives[objectiveIndex].complete then return end
+  local dropDistanceMeters = briefingRoom.mission.objectiveDropDistanceMeters
+  local dropDistanceMetersSquared = dropDistanceMeters * dropDistanceMeters
   local players = dcsExtensions.getAllPlayers()
     for _,p in ipairs(players) do
       if not p:inAir() then
@@ -12,8 +14,9 @@ function briefingRoom.mission.objectivesTriggersCommon.transportTroopsForcePicku
         local targetUnit = Unit.getByName(id)
         if targetUnit ~= nil then
           local targetPosition = dcsExtensions.toVec2(targetUnit:getPoint())
-          briefingRoom.debugPrint("Player distance"..dcsExtensions.getDistance(position, targetPosition))
-          if dcsExtensions.getDistance(position, targetPosition) < briefingRoom.mission.objectiveDropDistanceMeters then
+          local distanceSquared = dcsExtensions.getDistanceSquared(position, targetPosition)
+          briefingRoom.debugPrint("Player distance"..math.sqrt(distanceSquared))
+          if distanceSquared < dropDistanceMetersSquared then
             table.insert(collect, id)
           end
         end
@@ -43,7 +46,7 @@ end
 
 function briefingRoom.mission.objectivesTriggersCommon.fireTroopsNearTrigger(objectiveIndex, unitName)
    if briefingRoom.mission.objectivesTriggersCommon.isMissionOrObjectiveComplete(objectiveIndex) then return false end
-   table.removeValue(briefingRoom.mission.objectives[objectiveIndex].unitNames, unitName)
+   briefingRoom.mission.objectivesTriggersCommon.removeObjectiveUnitName(objectiveIndex, unitName)
    briefingRoom.radioManager.play("$LANG_PILOT$: $LANG_TROOPSDELIVERED$", "RadioPilotTroopsDelivered")
     if table.count(briefingRoom.mission.objectives[objectiveIndex].unitNames) < 1 then
       briefingRoom.mission.coreFunctions.completeObjective(objectiveIndex)
@@ -66,11 +69,13 @@ function briefingRoom.mission.objectivesTriggersCommon.registerTransportTroopsTr
     local position = dcsExtensions.toVec2(event.initiator:getPoint()) -- get the landing unit position
    
     -- Drop off
-    local distanceToObjective = dcsExtensions.getDistance(briefingRoom.mission.objectives[objectiveIndex].waypoint, position);  -- Zone Pos?
-    if distanceToObjective < briefingRoom.mission.objectiveDropDistanceMeters then
+    local dropDistanceMeters = briefingRoom.mission.objectiveDropDistanceMeters
+    local dropDistanceMetersSquared = dropDistanceMeters * dropDistanceMeters
+    local distanceToObjectiveSquared = dcsExtensions.getDistanceSquared(briefingRoom.mission.objectives[objectiveIndex].waypoint, position) -- Zone Pos?
+    if distanceToObjectiveSquared < dropDistanceMetersSquared then
       local removed = briefingRoom.transportManager.removeTroopCargo(event.initiator:getName(), briefingRoom.mission.objectives[objectiveIndex].unitNames)
       for index, value in ipairs(removed) do
-        table.removeValue(briefingRoom.mission.objectives[objectiveIndex].unitNames, value)
+        briefingRoom.mission.objectivesTriggersCommon.removeObjectiveUnitName(objectiveIndex, value)
       end
       if table.count(briefingRoom.mission.objectives[objectiveIndex].unitNames) < 1 then -- all target units moved or dead, objective complete
         local playername = event.initiator ~= nil  and event.initiator.getPlayerName and event.initiator:getPlayerName() or nil
@@ -86,7 +91,7 @@ function briefingRoom.mission.objectivesTriggersCommon.registerTransportTroopsTr
       local targetUnit = Unit.getByName(id)
       if targetUnit ~= nil then
         local targetPosition = dcsExtensions.toVec2(targetUnit:getPoint())
-        if dcsExtensions.getDistance(position, targetPosition) < briefingRoom.mission.objectiveDropDistanceMeters then
+        if dcsExtensions.getDistanceSquared(position, targetPosition) < dropDistanceMetersSquared then
           table.insert(collect, id)
         end
       end

@@ -61,8 +61,15 @@ function dcsExtensions.getAllPlayers()
 end
 
 -- Returns the distance between two vec2s
+function dcsExtensions.getDistanceSquared(vec2a, vec2b)
+  local dx = vec2a.x - vec2b.x
+  local dy = vec2a.y - vec2b.y
+  return dx * dx + dy * dy
+end
+
+-- Returns the distance between two vec2s
 function dcsExtensions.getDistance(vec2a, vec2b)
-  return math.sqrt(math.pow(vec2a.x - vec2b.x, 2) + math.pow(vec2a.y - vec2b.y, 2))
+  return math.sqrt(dcsExtensions.getDistanceSquared(vec2a, vec2b))
 end
 
 -- Is an unit alive?

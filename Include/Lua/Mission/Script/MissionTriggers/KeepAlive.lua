@@ -17,10 +17,10 @@ function briefingRoom.mission.objectivesTriggersCommon.registerKeepAliveTrigger(
   
     local unitName = event.initiator:getName()
     -- Destroyed unit wasn't a target
-    if not table.contains(briefingRoom.mission.objectives[objectiveIndex].unitNames, unitName) then return false end
+    if not briefingRoom.mission.objectivesTriggersCommon.objectiveHasUnitName(objectiveIndex, unitName) then return false end
   
     -- Remove the unit from the list of targets
-    table.removeValue(briefingRoom.mission.objectives[objectiveIndex].unitNames, unitName)
+    briefingRoom.mission.objectivesTriggersCommon.removeObjectiveUnitName(objectiveIndex, unitName)
   
     -- Play "target destroyed" radio message
     local messages = { "$LANG_COMMAND$: $LANG_TARGETLOST1$", "$LANG_COMMAND$: $LANG_TARGETLOST2$" }
