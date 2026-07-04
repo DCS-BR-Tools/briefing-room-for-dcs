@@ -254,9 +254,15 @@ namespace BriefingRoom4DCS.Generator.Mission
             }
 
             var theaterDB = mission.TheaterDB;
-            var brokenSP = mission.SpawnPoints.Where(x => SpawnPointSelector.CheckInSea(theaterDB, x.Coordinates)).ToList();
+            var brokenSP = mission.SpawnPoints
+                .Where(x => Constants.LAND_SPAWNS.Contains(x.PointType) && SpawnPointSelector.CheckInSea(theaterDB, x.Coordinates))
+                .ToList();
             if (brokenSP.Count > 0)
+            {
                 briefingRoom.PrintTranslatableWarning("SpawnPointsInSea", JsonConvert.SerializeObject(mission.TheaterDB.ConvertToJSONSpawnPoint(brokenSP), Formatting.Indented));
+                mission.SpawnPoints.RemoveAll(x => brokenSP.Contains(x));
+                BriefingRoom.PrintToLog($"Removed {brokenSP.Count} invalid land spawn points in sea for theater {mission.TheaterDB.DCSID}.", LogMessageErrorLevel.Warning);
+            }
 
             var brokenTL = mission.TemplateLocations.Where(x => SpawnPointSelector.CheckInSea(theaterDB, x.Coordinates)).ToList();
             if (brokenTL.Count > 0)
