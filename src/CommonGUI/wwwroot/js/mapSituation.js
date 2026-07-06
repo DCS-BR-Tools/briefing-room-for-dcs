@@ -6,9 +6,9 @@ const situationMapLayers = {
   FRONTLINE: undefined,
 };
 
-let leafSituationMap, situationDrawnItems, SPGroupS, SPGroupM, SPGroupL;
+let leafSituationMap, situationDrawnItems, SPGroupS, SPGroupM, SPGroupL, OffendingSPGroup, OffendingSPButton, currentSituationTheater;
 
-async function RenderEditorMap(map, spawnPoints, airbaseData, landWaterZones) {
+async function RenderEditorMap(map, spawnPoints, airbaseData, landWaterZones, spawnPointsInSea) {
   console.log("SpawnPoints", spawnPoints.length);
   if (leafSituationMap) {
     leafSituationMap.off();
@@ -16,6 +16,8 @@ async function RenderEditorMap(map, spawnPoints, airbaseData, landWaterZones) {
   }
 
   try {
+    currentSituationTheater = map;
+    OffendingSPButton = undefined;
     leafSituationMap = L.map("situationMap");
     L.esri.basemapLayer("Imagery").addTo(leafSituationMap);
     L.esri.basemapLayer("ImageryLabels").addTo(leafSituationMap);
@@ -44,6 +46,7 @@ async function RenderEditorMap(map, spawnPoints, airbaseData, landWaterZones) {
 
     AddLandWaterZones(map, landWaterZones);
     AddSpawnPointToMap(map, spawnPoints);
+    SetOffendingSpawnPointsLayer(spawnPointsInSea);
   } catch (error) {
     console.warn(error);
   }
@@ -71,6 +74,14 @@ function ToggleSPLayer(size) {
     return;
   }
   SPGroup.addTo(leafSituationMap);
+}
+
+function ToggleOffendingSPLayer() {
+  if (OffendingSPGroup._map) {
+    OffendingSPGroup.remove();
+    return;
+  }
+  OffendingSPGroup.addTo(leafSituationMap);
 }
 
 function SetSituationZones(dataString, map) {
@@ -232,6 +243,58 @@ function AddSpawnPointToMap(map, spawnPoints) {
   spawnPoints.forEach(addSP);
 }
 
+function AddOffendingSpawnPointsToMap(map, spawnPointsInSea) {
+  if (!spawnPointsInSea || spawnPointsInSea.length === 0) {
+    return;
+  }
+
+  const maxMarkers = 5000;
+  let markerCount = 0;
+
+  shuffle(spawnPointsInSea);
+  spawnPointsInSea.forEach((sp) => {
+    if (markerCount >= maxMarkers) {
+      return;
+    }
+
+    OffendingSPGroup.addLayer(
+      L.circleMarker(GetFromMapCoordData(sp.coords, map), {
+        radius: 4,
+        color: "#ff00ff",
+        fillColor: "#ff00ff",
+        fillOpacity: 0.8,
+      }).bindTooltip(sp.bRtype),
+    );
+    markerCount++;
+  });
+}
+
+function SetOffendingSpawnPointsLayer(spawnPointsInSea) {
+  if (!OffendingSPGroup) {
+    OffendingSPGroup = new L.layerGroup();
+  }
+
+  OffendingSPGroup.clearLayers();
+  if (OffendingSPButton) {
+    OffendingSPButton.remove();
+    OffendingSPButton = undefined;
+  }
+
+  if (!spawnPointsInSea || spawnPointsInSea.length === 0 || !leafSituationMap) {
+    return;
+  }
+
+  AddOffendingSpawnPointsToMap(currentSituationTheater, spawnPointsInSea);
+  OffendingSPButton = L.easyButton(
+    "oi oi-warning",
+    function (btn, map) {
+      ToggleOffendingSPLayer();
+    },
+    `Spawn Points In Sea (${spawnPointsInSea.length})`,
+  );
+  OffendingSPButton.addTo(leafSituationMap);
+}
+
 function AddLandWaterZones(map, landWaterZones) {
   const waterZones = landWaterZones.item1;
   const waterExclusionZones = landWaterZones.item2;
@@ -262,6 +325,7 @@ function AddSpawnButtonsToMap(spawnPoints) {
   SPGroupS = new L.layerGroup();
   SPGroupM = new L.layerGroup();
   SPGroupL = new L.layerGroup();
+  OffendingSPGroup = new L.layerGroup();
   LangGroup = new L.layerGroup();
   L.easyButton(
     "oi oi-grid-four-up",
@@ -319,4 +383,3 @@ function AddSituationLegend(map) {
 
   legend.addTo(map);
 }
-

@@ -26,7 +26,6 @@ using BriefingRoom4DCS.Data;
 using BriefingRoom4DCS.Generator.UnitMaker;
 using BriefingRoom4DCS.Mission;
 using BriefingRoom4DCS.Template;
-using Newtonsoft.Json;
 using Polly;
 
 namespace BriefingRoom4DCS.Generator.Mission
@@ -254,12 +253,10 @@ namespace BriefingRoom4DCS.Generator.Mission
             }
 
             var theaterDB = mission.TheaterDB;
-            var brokenSP = mission.SpawnPoints
-                .Where(x => Constants.LAND_SPAWNS.Contains(x.PointType) && SpawnPointSelector.CheckInSea(theaterDB, x.Coordinates))
-                .ToList();
+            var brokenSP = SpawnPointSelector.GetLandSpawnPointsInSea(theaterDB, mission.SpawnPoints);
             if (brokenSP.Count > 0)
             {
-                briefingRoom.PrintTranslatableWarning("SpawnPointsInSea", JsonConvert.SerializeObject(mission.TheaterDB.ConvertToJSONSpawnPoint(brokenSP), Formatting.Indented));
+                briefingRoom.PrintTranslatableWarning("SpawnPointsInSea", brokenSP.Count);
                 mission.SpawnPoints.RemoveAll(x => brokenSP.Contains(x));
                 BriefingRoom.PrintToLog($"Removed {brokenSP.Count} invalid land spawn points in sea for theater {mission.TheaterDB.DCSID}.", LogMessageErrorLevel.Warning);
             }

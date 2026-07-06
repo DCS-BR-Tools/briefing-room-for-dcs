@@ -513,5 +513,12 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
             return theaterDB.WaterCoordinates.Any(x => ShapeManager.IsPosValid(coordinates, x, theaterDB.WaterExclusionCoordinates));
         }
 
+        internal static List<DBEntryTheaterSpawnPoint> GetLandSpawnPointsInSea(DBEntryTheater theaterDB, IEnumerable<DBEntryTheaterSpawnPoint> spawnPoints)
+        {
+            return spawnPoints
+                .Where(x => Constants.LAND_SPAWNS.Contains(x.PointType) && CheckInSea(theaterDB, x.Coordinates))
+                .ToList();
+        }
+
     }
 }

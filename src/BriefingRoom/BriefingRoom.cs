@@ -26,6 +26,7 @@ using BriefingRoom4DCS.Data;
 using BriefingRoom4DCS.Data.JSON;
 using BriefingRoom4DCS.Generator;
 using BriefingRoom4DCS.Generator.Mission;
+using BriefingRoom4DCS.Generator.UnitMaker;
 using BriefingRoom4DCS.Mission;
 using BriefingRoom4DCS.Template;
 
@@ -181,6 +182,14 @@ namespace BriefingRoom4DCS
 
         public List<SpawnPoint> GetTheaterSpawnPoints(string theaterID) =>
            Database.GetEntry<DBEntryTheater>(theaterID).SpawnPoints.Select(x => x.ToSpawnPoint()).ToList();
+
+        public List<SpawnPoint> GetTheaterSpawnPointsInSea(string theaterID)
+        {
+            var theater = Database.GetEntry<DBEntryTheater>(theaterID);
+            return SpawnPointSelector.GetLandSpawnPointsInSea(theater, theater.SpawnPoints)
+                .Select(x => x.ToSpawnPoint())
+                .ToList();
+        }
 
         public Tuple<List<List<double[]>>, List<List<double[]>>> GetTheaterWaterZones(string theaterID)
         {

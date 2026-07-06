@@ -104,6 +104,15 @@
   private string GeneratedSituationJSON = "";
   private Situation ExistingSituation = new Situation();
   private bool MapLoaded = false;
+  private int MapLoadRequestId = 0;
+
+  private static bool IsDevelopmentMode()
+  {
+    var aspnetEnvironment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+    var dotnetEnvironment = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT");
+    return string.Equals(aspnetEnvironment, "Development", StringComparison.InvariantCultureIgnoreCase) ||
+           string.Equals(dotnetEnvironment, "Development", StringComparison.InvariantCultureIgnoreCase);
+  }
 
   protected override async System.Threading.Tasks.Task OnAfterRenderAsync(bool firstRender)
   {
@@ -115,11 +124,24 @@
 
   private async System.Threading.Tasks.Task GetMapAsync()
   {
+    var requestId = ++MapLoadRequestId;
+    var theater = ContextTheater;
     var airbaseData = briefingRoom.GetAirbasesMapData(ContextTheater);
     await Policy.Handle<Exception>().RetryAsync(3).ExecuteAsync(async () => await
     JSRuntime.InvokeVoidAsync("RenderEditorMap", ContextTheater, briefingRoom.GetTheaterSpawnPoints(ContextTheater),
-airbaseData, briefingRoom.GetTheaterWaterZones(ContextTheater)));
+airbaseData, briefingRoom.GetTheaterWaterZones(ContextTheater), new List<SpawnPoint>()));
     MapLoaded = true;
+
+    if (IsDevelopmentMode())
+    _ = LoadOffendingSpawnPointsInBackgroundAsync(theater, requestId);
+  }
+
+  private async System.Threading.Tasks.Task LoadOffendingSpawnPointsInBackgroundAsync(string theater, int requestId)
+  {
+    var offendingSpawnPoints = await System.Threading.Tasks.Task.Run(() => briefingRoom.GetTheaterSpawnPointsInSea(theater));
+    if (requestId != MapLoadRequestId || theater != ContextTheater)
+    return;
+    await JSRuntime.InvokeVoidAsync("SetOffendingSpawnPointsLayer", offendingSpawnPoints);
   }
 
   private async System.Threading.Tasks.Task GenerateSituation()

@@ -27,6 +27,7 @@ namespace BriefingRoom4DCS
         List<Tuple<string, Decade>> GetAircraftPayloads(string aircraftID);
 
         List<SpawnPoint> GetTheaterSpawnPoints(string theaterID);
+        List<SpawnPoint> GetTheaterSpawnPointsInSea(string theaterID);
 
         Tuple<List<List<double[]>>, List<List<double[]>>> GetTheaterWaterZones(string theaterID);
 
