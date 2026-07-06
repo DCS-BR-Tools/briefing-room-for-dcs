@@ -239,7 +239,7 @@ namespace BriefingRoom4DCS.Generator
             {
                 await page.SetViewportAsync(new ViewPortOptions { Width = iWidth, Height = iHeight });
                 // Use DOMContentLoaded - faster since images are base64 embedded
-                await page.SetContentAsync(html, new NavigationOptions { WaitUntil = [WaitUntilNavigation.DOMContentLoaded] });
+                await page.SetContentAsync(html, new SetContentOptions { WaitUntil = [WaitUntilNavigation.DOMContentLoaded] });
                 
                 // Get full page height for multi-page kneeboards
                 var bodyHeight = await page.EvaluateExpressionAsync<int>("document.body.scrollHeight");
@@ -282,7 +282,7 @@ namespace BriefingRoom4DCS.Generator
             {
                 await page.SetViewportAsync(new ViewPortOptions { Width = iWidth, Height = iHeight });
                 // Use DOMContentLoaded - faster since images are base64 embedded
-                await page.SetContentAsync(html, new NavigationOptions { WaitUntil = [WaitUntilNavigation.DOMContentLoaded] });
+                await page.SetContentAsync(html, new SetContentOptions { WaitUntil = [WaitUntilNavigation.DOMContentLoaded] });
                 
                 var tempPath = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.png");
                 await page.ScreenshotAsync(tempPath, new ScreenshotOptions
