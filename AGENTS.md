@@ -3,6 +3,7 @@
 Before writing any code, read:
 - **`CONTRIBUTING.md`** — commit conventions, AI tagging, test requirements
 - **`.github/copilot-instructions.md`** — full tech stack, constraints, and language-specific rules
+- **`CODEMAP.md`** — structural overview of the codebase; read this to orient yourself before making any changes
 
 ## Critical rules
 

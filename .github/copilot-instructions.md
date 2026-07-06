@@ -78,6 +78,10 @@ rm -r ./Release;  dotnet publish src/BriefingRoom.sln -c Release -p:Flavor=EXE
 - Prefer official/widely-adopted actions
 - Windows runner for builds, Ubuntu for Docker
 
+## CodeMap
+
+Read **`CODEMAP.md`** at the repo root to orient yourself before making any changes. It contains a full structural overview of all projects, directories, data files, and the mission generation pipeline.
+
 ## Before Making Changes
 
 1. **Read relevant files** to understand existing patterns
