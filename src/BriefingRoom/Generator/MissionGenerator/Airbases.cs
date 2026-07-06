@@ -21,6 +21,7 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 using System.Collections.Generic;
 using System.Linq;
 using BriefingRoom4DCS.Data;
+using BriefingRoom4DCS.Generator.UnitMaker;
 using BriefingRoom4DCS.Mission;
 using BriefingRoom4DCS.Template;
 
@@ -34,8 +35,7 @@ namespace BriefingRoom4DCS.Generator.Mission
             foreach (var package in mission.TemplateRecord.AircraftPackages)
             {
                 var airbase = mission.PlayerAirbase;
-                var flights = mission.TemplateRecord.PlayerFlightGroups.Where((v, i) => package.FlightGroupIndexes.Contains(i));
-                var requiredSpots = flights.Sum(x => x.Count);
+                var packageParkingDemand = GetParkingDemandForFlightGroupIndexes(database, mission.TemplateRecord.PlayerFlightGroups, package.FlightGroupIndexes);
                 if (package.StartingAirbase == "home" && package.DestinationAirbase == "home")
                 {
                     missionPackages.Add(new DCSMissionStrikePackage(mission.TemplateRecord.AircraftPackages.IndexOf(package), mission.PlayerAirbase, mission.PlayerAirbaseDestination));
@@ -50,7 +50,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                     airbase = mission.PlayerAirbaseDestination;
                 }
                 else if (package.StartingAirbase != "home")
-                    airbase = GetStrikeAirbase(database, ref mission, ref missionPackages, package.StartingAirbase, requiredSpots);
+                    airbase = GetStrikeAirbase(database, ref mission, ref missionPackages, package.StartingAirbase, packageParkingDemand);
 
 
                 if (package.DestinationAirbase == "home")
@@ -69,19 +69,22 @@ namespace BriefingRoom4DCS.Generator.Mission
                     continue;
                 }
 
-                var destinationAirbase = GetStrikeAirbase(database, ref mission, ref missionPackages, package.DestinationAirbase, requiredSpots);
+                var destinationAirbase = GetStrikeAirbase(database, ref mission, ref missionPackages, package.DestinationAirbase, packageParkingDemand);
                 missionPackages.Add(new DCSMissionStrikePackage(mission.TemplateRecord.AircraftPackages.IndexOf(package), airbase, destinationAirbase));
             }
             mission.StrikePackages.AddRange(missionPackages);
         }
 
-        internal static DBEntryAirbase SelectStartingAirbase(IDatabase database, string selectedAirbaseID, ref DCSMission mission, int requiredParkingSpots = 0)
+        internal static DBEntryAirbase SelectStartingAirbase(IDatabase database, string selectedAirbaseID, ref DCSMission mission, int requiredParkingSpots = 0, IReadOnlyCollection<SpawnPointSelector.ParkingDemand> parkingDemand = null)
         {
-            // Get total number of required parking spots for flight groups
+            parkingDemand ??= GetParkingDemandForFlightGroups(database, mission.TemplateRecord.PlayerFlightGroups);
+
             if (requiredParkingSpots == 0)
-                requiredParkingSpots = mission.TemplateRecord.PlayerFlightGroups.Sum(x => x.Count);
+                requiredParkingSpots = parkingDemand.Sum(x => x.UnitCount);
+
             // Select all airbases for this theater
             var airbases = mission.AirbaseDB;
+
             // If a particular airbase name has been specified and an airbase with this name exists, pick it
             if (!string.IsNullOrEmpty(selectedAirbaseID))
             {
@@ -91,11 +94,13 @@ namespace BriefingRoom4DCS.Generator.Mission
 
             var templateRecord = mission.TemplateRecord;
             var theaterDB = mission.TheaterDB;
+            var missionLocal = mission;
 
             var opts = airbases.Where(x =>
                     x.ParkingSpots.Length >= requiredParkingSpots &&
                     (x.Coalition == templateRecord.ContextPlayerCoalition || templateRecord.SpawnAnywhere) &&
-                    (!MissionPrefersShoreAirbase(database, templateRecord) || IsNearWater(x.Coordinates, theaterDB))
+                    (!MissionPrefersShoreAirbase(database, templateRecord) || IsNearWater(x.Coordinates, theaterDB)) &&
+                    (parkingDemand.Count == 0 || SpawnPointSelector.CanSatisfyParkingDemand(missionLocal, x.DCSID, parkingDemand))
                     ).ToList();
 
             if (opts.Count == 0)
@@ -140,9 +145,35 @@ namespace BriefingRoom4DCS.Generator.Mission
             return theaterDB.WaterCoordinates.Any(x => ShapeManager.GetDistanceFromShape(coords, x) * Toolbox.METERS_TO_NM < 50);
         }
 
-        private static DBEntryAirbase GetStrikeAirbase(IDatabase database, ref DCSMission mission, ref List<DCSMissionStrikePackage> missionPackages, string airbaseId, int requiredSpots)
+        private static List<SpawnPointSelector.ParkingDemand> GetParkingDemandForFlightGroupIndexes(IDatabase database, IReadOnlyCollection<MissionTemplateFlightGroupRecord> flightGroups, IEnumerable<int> flightGroupIndexes)
         {
-            var airbase = SelectStartingAirbase(database, airbaseId, ref mission, requiredSpots);
+            var indexSet = flightGroupIndexes.ToHashSet();
+            var packageFlights = flightGroups.Where(x => indexSet.Contains(x.Index));
+            return GetParkingDemandForFlightGroups(database, packageFlights);
+        }
+
+        private static List<SpawnPointSelector.ParkingDemand> GetParkingDemandForFlightGroups(IDatabase database, IEnumerable<MissionTemplateFlightGroupRecord> flightGroups)
+        {
+            return flightGroups
+                .Where(x =>
+                    !x.Hostile &&
+                    string.IsNullOrEmpty(x.Carrier) &&
+                    x.StartLocation != PlayerStartLocation.Air &&
+                    x.Count > 0)
+                .GroupBy(x => x.Aircraft)
+                .Select(x => new
+                {
+                    Aircraft = database.GetEntry<DBEntryJSONUnit>(x.Key) as DBEntryAircraft,
+                    UnitCount = x.Sum(flight => flight.Count)
+                })
+                .Where(x => x.Aircraft is not null && x.UnitCount > 0)
+                .Select(x => new SpawnPointSelector.ParkingDemand(x.Aircraft!, x.UnitCount))
+                .ToList();
+        }
+
+        private static DBEntryAirbase GetStrikeAirbase(IDatabase database, ref DCSMission mission, ref List<DCSMissionStrikePackage> missionPackages, string airbaseId, IReadOnlyCollection<SpawnPointSelector.ParkingDemand> parkingDemand)
+        {
+            var airbase = SelectStartingAirbase(database, airbaseId, ref mission, parkingDemand: parkingDemand);
             if (!missionPackages.Any(x => x.StartAirbase.ID == airbase.ID))
                 mission.Briefing.AddItem(DCSMissionBriefingItemType.Airbase, $"{airbase.UIDisplayName.Get(mission.LangKey)}{(string.IsNullOrEmpty(airbase.ICAO) ? "" : $"<br />{airbase.ICAO}")}\t{airbase.Runways}\t{airbase.ATC}\t{airbase.ILS}\t{airbase.TACAN}");
             mission.MapData.AddIfKeyUnused($"AIRBASE_NAME_{airbase.UIDisplayName.Get(mission.LangKey)}", new List<double[]> { airbase.Coordinates.ToArray() });
