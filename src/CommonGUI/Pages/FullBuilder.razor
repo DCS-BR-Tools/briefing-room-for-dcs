@@ -218,6 +218,7 @@ Template.ContextCustomCombatZones, Template.ContextTheater);
     {
         try
         {
+            errorMessage = "";
             await AddPositionHints();
             var fileBytes = Template.GetIniBytes();
             await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", $"Default.brt", "application/octet-stream", fileBytes);
@@ -227,6 +228,7 @@ Template.ContextCustomCombatZones, Template.ContextTheater);
         catch (Exception ex)
         {
             Console.WriteLine(ex);
+            SetErrorMessage(ex);
         }
     }
 
@@ -296,6 +298,7 @@ mission.GetMapData(), Template.ContextTheater, Template.ContextPlayerCoalition =
         {
             spinner = true;
             StateHasChanged();
+           errorMessage = "";
            var fileName = $"{(Template.OptionsMission.Contains("DSMC") ? "DSMC_" : "")}{Template.ContextTheater} - {mission.Briefing.Name}.miz";
            var downloadData = await System.Threading.Tasks.Task.Run(async () =>
            {
@@ -320,10 +323,11 @@ mission.GetMapData(), Template.ContextTheater, Template.ContextPlayerCoalition =
        catch (Exception ex)
        {
            Console.WriteLine(ex);
-        }
-        finally
-        {
-            spinner = false;
+           SetErrorMessage(ex);
+       }
+       finally
+       {
+           spinner = false;
             StateHasChanged();
         }
     }
@@ -345,12 +349,14 @@ mission.GetMapData(), Template.ContextTheater, Template.ContextPlayerCoalition =
     {
         try
         {
+            errorMessage = "";
             await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", cachedName, cachedMimeType, cachedBytes);
 
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex);
+            SetErrorMessage(ex);
         }
         finally
         {
@@ -372,16 +378,25 @@ mission.GetMapData(), Template.ContextTheater, Template.ContextPlayerCoalition =
     {
         try
         {
-            byte[] zipBytes = Encoding.UTF8.GetBytes(mission.Briefing.GetBriefingAsHTML(briefingRoom.Database, mission));
-            if (zipBytes == null) return; // Something went wrong during the .miz export
-            await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", $"{Template.ContextTheater} - {mission.Briefing.Name}.html",
+           errorMessage = "";
+           byte[] zipBytes = Encoding.UTF8.GetBytes(mission.Briefing.GetBriefingAsHTML(briefingRoom.Database, mission));
+           if (zipBytes == null) return; // Something went wrong during the .miz export
+           await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", $"{Template.ContextTheater} - {mission.Briefing.Name}.html",
 "text/html", zipBytes);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex);
-        }
-    }
+       }
+       catch (Exception ex)
+       {
+           Console.WriteLine(ex);
+           SetErrorMessage(ex);
+       }
+   }
+
+   private void SetErrorMessage(Exception ex)
+   {
+       errorMessage = ex.Message;
+       if (ex.InnerException != null)
+           errorMessage += " " + ex.InnerException.Message;
+   }
 
     private async System.Threading.Tasks.Task RenderHintMap(string hintKey)
     {

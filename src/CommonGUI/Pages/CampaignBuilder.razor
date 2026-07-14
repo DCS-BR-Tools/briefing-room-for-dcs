@@ -204,10 +204,18 @@
     private async Task SaveTemplate()
     {
         var fileBytes = Template.GetIniBytes();
-        try { await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", $"Default.cbrt", "application/octet-stream", fileBytes); }
-        catch (Exception) { }
-        templateMessage = "Template Saved"; 
-        clearTemplateMessageDelay();
+        try
+        {
+            errorMessage = "";
+            await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", $"Default.cbrt", "application/octet-stream", fileBytes);
+            templateMessage = "Template Saved";
+            clearTemplateMessageDelay();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+            SetErrorMessage(ex);
+        }
     }
 
     private Task ClearTemplate()
@@ -257,6 +265,7 @@
         try {
             spinner = true;
             StateHasChanged();
+            errorMessage = "";
             var fileName = $"{Template.ContextTheater} - {campaign.Name}.zip";
             var downloadData = await Task.Run(async () => {
                 Stopwatch stopwatch = Stopwatch.StartNew(); 
@@ -277,6 +286,7 @@
             await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", fileName, "application/octet-stream", downloadData.zipBytes);
         } catch (Exception ex){
             Console.WriteLine(ex);
+            SetErrorMessage(ex);
         } finally {
             spinner = false;
             StateHasChanged();
@@ -299,10 +309,12 @@
     private async Task LateDownload()
     {
         try {
+        errorMessage = "";
         await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", cachedName, cachedMimeType, cachedBytes);
 
         } catch (Exception ex) { 
             Console.WriteLine(ex);
+            SetErrorMessage(ex);
         } finally {
             await ClearLateDownload();
         }
@@ -319,11 +331,26 @@
 
     async Task DownloadBriefing()
     {
-            byte[] zipBytes = campaign.ExportBriefingsToCompressedByteArray(briefingRoom.Database);
-            if (zipBytes == null) return; // Something went wrong during the .miz export
+            try
+            {
+                errorMessage = "";
+                byte[] zipBytes = campaign.ExportBriefingsToCompressedByteArray(briefingRoom.Database);
+                if (zipBytes == null) return; // Something went wrong during the .miz export
 
-            try { await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", $"{Template.ContextTheater} - {campaign.Name} - Briefings.zip", "text/html", zipBytes); }
-            catch (Exception) { }
+                await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", $"{Template.ContextTheater} - {campaign.Name} - Briefings.zip", "text/html", zipBytes);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                SetErrorMessage(ex);
+            }
+    }
+
+    private void SetErrorMessage(Exception ex)
+    {
+        errorMessage = ex.Message;
+        if (ex.InnerException != null)
+            errorMessage += " " + ex.InnerException.Message;
     }
 
     private string tab = "context-&-enviroment";

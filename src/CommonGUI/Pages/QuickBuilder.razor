@@ -361,10 +361,18 @@
     private async Task SaveTemplate()
     {
         var fileBytes = Template.GetIniBytes();
-        try { await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", $"Default.brt", "application/octet-stream", fileBytes); }
-        catch (Exception) { }
-        templateMessage = "Template Saved";
-        clearTemplateMessageDelay();
+        try
+        {
+            errorMessage = "";
+            await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", $"Default.brt", "application/octet-stream", fileBytes);
+            templateMessage = "Template Saved";
+            clearTemplateMessageDelay();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+            SetErrorMessage(ex);
+        }
     }
 
     private Task ClearTemplate()
@@ -413,6 +421,7 @@
         try {
             spinner = true;
             StateHasChanged();
+            errorMessage = "";
             var fileName = $"{(Template.OptionsMission.Contains("DSMC")? "DSMC_": "")}{Template.ContextTheater} - {mission.Briefing.Name}.miz";
             var downloadData = await Task.Run(async () => {
                 Stopwatch stopwatch = Stopwatch.StartNew(); 
@@ -433,6 +442,7 @@
             await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", fileName, "application/octet-stream", downloadData.zipBytes);
         } catch (Exception ex){
             Console.WriteLine(ex);
+            SetErrorMessage(ex);
         } finally {
             spinner = false;
             StateHasChanged();
@@ -456,10 +466,12 @@
     private async Task LateDownload()
     {
         try {
+        errorMessage = "";
         await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", cachedName, cachedMimeType, cachedBytes);
 
         } catch (Exception ex) { 
             Console.WriteLine(ex);
+            SetErrorMessage(ex);
         } finally {
             await ClearLateDownload();
         }
@@ -478,15 +490,26 @@
 
     async Task DownloadBriefing()
     {
-        byte[] zipBytes = Encoding.ASCII.GetBytes(mission.Briefing.GetBriefingAsHTML(briefingRoom.Database, mission));
-        if (zipBytes == null) return; // Something went wrong during the .miz export
-
         try
         {
+            errorMessage = "";
+            byte[] zipBytes = Encoding.ASCII.GetBytes(mission.Briefing.GetBriefingAsHTML(briefingRoom.Database, mission));
+            if (zipBytes == null) return; // Something went wrong during the .miz export
             await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", $"{Template.ContextTheater} - {mission.Briefing.Name}.html",
             "text/html", zipBytes);
         }
-        catch (Exception) { }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex);
+            SetErrorMessage(ex);
+        }
+    }
+
+    private void SetErrorMessage(Exception ex)
+    {
+        errorMessage = ex.Message;
+        if (ex.InnerException != null)
+            errorMessage += " " + ex.InnerException.Message;
     }
 
     private void ClearStrikePackages()
