@@ -439,7 +439,10 @@
                 return;
             }
 
+            var jsHandoffStopwatch = Stopwatch.StartNew();
             await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", fileName, "application/octet-stream", downloadData.zipBytes);
+            jsHandoffStopwatch.Stop();
+            Console.WriteLine($"Download JS handoff in {jsHandoffStopwatch.ElapsedMilliseconds}ms");
         } catch (Exception ex){
             Console.WriteLine(ex);
             SetErrorMessage(ex);
@@ -467,7 +470,10 @@
     {
         try {
         errorMessage = "";
+        var jsHandoffStopwatch = Stopwatch.StartNew();
         await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", cachedName, cachedMimeType, cachedBytes);
+        jsHandoffStopwatch.Stop();
+        Console.WriteLine($"Late download JS handoff in {jsHandoffStopwatch.ElapsedMilliseconds}ms");
 
         } catch (Exception ex) { 
             Console.WriteLine(ex);
@@ -495,8 +501,11 @@
             errorMessage = "";
             byte[] zipBytes = Encoding.ASCII.GetBytes(mission.Briefing.GetBriefingAsHTML(briefingRoom.Database, mission));
             if (zipBytes == null) return; // Something went wrong during the .miz export
-            await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", $"{Template.ContextTheater} - {mission.Briefing.Name}.html",
+                       var jsHandoffStopwatch = Stopwatch.StartNew();
+                       await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", $"{Template.ContextTheater} - {mission.Briefing.Name}.html",
             "text/html", zipBytes);
+                       jsHandoffStopwatch.Stop();
+                       Console.WriteLine($"Briefing download JS handoff in {jsHandoffStopwatch.ElapsedMilliseconds}ms");
         }
         catch (Exception ex)
         {

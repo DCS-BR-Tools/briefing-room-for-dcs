@@ -20,6 +20,7 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -297,13 +298,34 @@ namespace BriefingRoom4DCS.Mission
 
         public async Task<byte[]> SaveToMizBytes(IDatabase database)
         {
-            // Generate image files
-            BriefingRoom.PrintToLog("Generating images...");
-            await Imagery.GenerateTitleImage(database, this);
-            if (!TemplateRecord.OptionsMission.Contains("DisableKneeboardImages"))
-                await Imagery.GenerateKneeboardImagesAsync(database, this);
+            var exportStopwatch = Stopwatch.StartNew();
 
-            return MizMaker.ExportToMizBytes(database, this, TemplateRecord.Template);
+            var titleImageStopwatch = Stopwatch.StartNew();
+            await Imagery.GenerateTitleImage(database, this);
+            titleImageStopwatch.Stop();
+            BriefingRoom.PrintToLog($"SaveToMizBytes: Title image generated in {titleImageStopwatch.ElapsedMilliseconds}ms.");
+
+            if (!TemplateRecord.OptionsMission.Contains("DisableKneeboardImages"))
+            {
+                var kneeboardStopwatch = Stopwatch.StartNew();
+                await Imagery.GenerateKneeboardImagesAsync(database, this);
+                kneeboardStopwatch.Stop();
+                BriefingRoom.PrintToLog($"SaveToMizBytes: Kneeboard images generated in {kneeboardStopwatch.ElapsedMilliseconds}ms.");
+            }
+            else
+            {
+                BriefingRoom.PrintToLog("SaveToMizBytes: Kneeboard image generation skipped (DisableKneeboardImages).");
+            }
+
+            var archiveStopwatch = Stopwatch.StartNew();
+            var mizBytes = MizMaker.ExportToMizBytes(database, this, TemplateRecord.Template);
+            archiveStopwatch.Stop();
+            BriefingRoom.PrintToLog($"SaveToMizBytes: MIZ archive created in {archiveStopwatch.ElapsedMilliseconds}ms.");
+
+            exportStopwatch.Stop();
+            BriefingRoom.PrintToLog($"SaveToMizBytes: Completed in {exportStopwatch.ElapsedMilliseconds}ms (size: {mizBytes?.Length ?? 0} bytes).");
+
+            return mizBytes;
         }
 
         internal string[] GetMediaFileNames()
@@ -399,4 +421,3 @@ namespace BriefingRoom4DCS.Mission
         }
     }
 }
-

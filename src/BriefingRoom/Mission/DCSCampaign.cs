@@ -21,6 +21,7 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -75,6 +76,7 @@ namespace BriefingRoom4DCS.Mission
 
         public async Task<byte[]> ExportToCompressedByteArray(IDatabase database, CampaignTemplate template)
         {
+            var exportStopwatch = Stopwatch.StartNew();
             Dictionary<string, byte[]> FileEntries = new()
             {
                 { "Campaign.cmp", Encoding.UTF8.GetBytes(CMPFile) },
@@ -82,7 +84,10 @@ namespace BriefingRoom4DCS.Mission
             };
             
             string baseFileName = Toolbox.RemoveInvalidPathCharacters(this.Name);
+            var campaignImageryStopwatch = Stopwatch.StartNew();
             await Imagery.GenerateCampaignImages(database, template, this, baseFileName);
+            campaignImageryStopwatch.Stop();
+            BriefingRoom.PrintToLog($"ExportToCompressedByteArray: Campaign imagery generated in {campaignImageryStopwatch.ElapsedMilliseconds}ms.");
 
             foreach (string key in MediaFiles.Keys)
             {
@@ -90,9 +95,22 @@ namespace BriefingRoom4DCS.Mission
             }
 
             for (int i = 0; i < Missions.Count; i++)
-                FileEntries.Add($"{i+1}_{Missions[i].Briefing.Name}.miz", await Missions[i].SaveToMizBytes(database));
+            {
+                var missionExportStopwatch = Stopwatch.StartNew();
+                FileEntries.Add($"{i + 1}_{Missions[i].Briefing.Name}.miz", await Missions[i].SaveToMizBytes(database));
+                missionExportStopwatch.Stop();
+                BriefingRoom.PrintToLog($"ExportToCompressedByteArray: Mission {i + 1}/{Missions.Count} exported in {missionExportStopwatch.ElapsedMilliseconds}ms.");
+            }
 
-            return Toolbox.ZipData(database, Missions[0].LangKey, FileEntries);
+            var archiveStopwatch = Stopwatch.StartNew();
+            var zipBytes = Toolbox.ZipData(database, Missions[0].LangKey, FileEntries);
+            archiveStopwatch.Stop();
+            BriefingRoom.PrintToLog($"ExportToCompressedByteArray: Campaign ZIP created in {archiveStopwatch.ElapsedMilliseconds}ms.");
+
+            exportStopwatch.Stop();
+            BriefingRoom.PrintToLog($"ExportToCompressedByteArray: Completed in {exportStopwatch.ElapsedMilliseconds}ms (size: {zipBytes?.Length ?? 0} bytes).");
+
+            return zipBytes;
         }
 
         public byte[] ExportBriefingsToCompressedByteArray(IDatabase database)
@@ -122,4 +140,3 @@ namespace BriefingRoom4DCS.Mission
 
     }
 }
-
