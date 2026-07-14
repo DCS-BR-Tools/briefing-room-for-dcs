@@ -257,19 +257,24 @@
         try {
             spinner = true;
             StateHasChanged();
-            await Task.Run(async () => {
+            var fileName = $"{Template.ContextTheater} - {campaign.Name}.zip";
+            var downloadData = await Task.Run(async () => {
                 Stopwatch stopwatch = Stopwatch.StartNew(); 
                 byte[] zipBytes = await campaign.ExportToCompressedByteArray(briefingRoom.Database, Template);
-                if (zipBytes == null) return; // Something went wrong during the .miz export
                 stopwatch.Stop();
-                Console.WriteLine($"Download Prep in {stopwatch.Elapsed.Seconds}s");
-                if(stopwatch.Elapsed.Seconds > 5)
-                {
-                    ShowLateDownloadButton($"{Template.ContextTheater} - {campaign.Name}.zip", "application/octet-stream", zipBytes);
-                return;  
-                } 
-                await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", $"{Template.ContextTheater} - {campaign.Name}.zip", "application/octet-stream", zipBytes);
+                return (zipBytes, stopwatch.Elapsed.Seconds);
             });
+
+            if (downloadData.zipBytes == null) return; // Something went wrong during the .miz export
+
+            Console.WriteLine($"Download Prep in {downloadData.Seconds}s");
+            if(downloadData.Seconds > 5)
+            {
+                ShowLateDownloadButton(fileName, "application/octet-stream", downloadData.zipBytes);
+                return;  
+            } 
+
+            await JSRuntime.InvokeVoidAsync("BlazorDownloadFile", fileName, "application/octet-stream", downloadData.zipBytes);
         } catch (Exception ex){
             Console.WriteLine(ex);
         } finally {
