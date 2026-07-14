@@ -299,22 +299,30 @@ namespace BriefingRoom4DCS.Mission
         public async Task<byte[]> SaveToMizBytes(IDatabase database)
         {
             var exportStopwatch = Stopwatch.StartNew();
+            var skipImagery = IsImageryExportBypassed();
 
-            var titleImageStopwatch = Stopwatch.StartNew();
-            await Imagery.GenerateTitleImage(database, this);
-            titleImageStopwatch.Stop();
-            BriefingRoom.PrintToLog($"SaveToMizBytes: Title image generated in {titleImageStopwatch.ElapsedMilliseconds}ms.");
-
-            if (!TemplateRecord.OptionsMission.Contains("DisableKneeboardImages"))
+            if (skipImagery)
             {
-                var kneeboardStopwatch = Stopwatch.StartNew();
-                await Imagery.GenerateKneeboardImagesAsync(database, this);
-                kneeboardStopwatch.Stop();
-                BriefingRoom.PrintToLog($"SaveToMizBytes: Kneeboard images generated in {kneeboardStopwatch.ElapsedMilliseconds}ms.");
+                BriefingRoom.PrintToLog("SaveToMizBytes: Imagery generation bypassed via BR_DISABLE_EXPORT_IMAGERY.");
             }
             else
             {
-                BriefingRoom.PrintToLog("SaveToMizBytes: Kneeboard image generation skipped (DisableKneeboardImages).");
+                var titleImageStopwatch = Stopwatch.StartNew();
+                await Imagery.GenerateTitleImage(database, this);
+                titleImageStopwatch.Stop();
+                BriefingRoom.PrintToLog($"SaveToMizBytes: Title image generated in {titleImageStopwatch.ElapsedMilliseconds}ms.");
+
+                if (!TemplateRecord.OptionsMission.Contains("DisableKneeboardImages"))
+                {
+                    var kneeboardStopwatch = Stopwatch.StartNew();
+                    await Imagery.GenerateKneeboardImagesAsync(database, this);
+                    kneeboardStopwatch.Stop();
+                    BriefingRoom.PrintToLog($"SaveToMizBytes: Kneeboard images generated in {kneeboardStopwatch.ElapsedMilliseconds}ms.");
+                }
+                else
+                {
+                    BriefingRoom.PrintToLog("SaveToMizBytes: Kneeboard image generation skipped (DisableKneeboardImages).");
+                }
             }
 
             var archiveStopwatch = Stopwatch.StartNew();
@@ -326,6 +334,20 @@ namespace BriefingRoom4DCS.Mission
             BriefingRoom.PrintToLog($"SaveToMizBytes: Completed in {exportStopwatch.ElapsedMilliseconds}ms (size: {mizBytes?.Length ?? 0} bytes).");
 
             return mizBytes;
+        }
+
+        internal static bool IsImageryExportBypassed()
+        {
+            var value = Environment.GetEnvironmentVariable("BR_DISABLE_EXPORT_IMAGERY");
+            if (string.IsNullOrWhiteSpace(value))
+                return false;
+
+            if (bool.TryParse(value, out var boolValue))
+                return boolValue;
+
+            return string.Equals(value, "1", StringComparison.OrdinalIgnoreCase)
+                || string.Equals(value, "yes", StringComparison.OrdinalIgnoreCase)
+                || string.Equals(value, "on", StringComparison.OrdinalIgnoreCase);
         }
 
         internal string[] GetMediaFileNames()

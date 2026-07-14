@@ -84,10 +84,17 @@ namespace BriefingRoom4DCS.Mission
             };
             
             string baseFileName = Toolbox.RemoveInvalidPathCharacters(this.Name);
-            var campaignImageryStopwatch = Stopwatch.StartNew();
-            await Imagery.GenerateCampaignImages(database, template, this, baseFileName);
-            campaignImageryStopwatch.Stop();
-            BriefingRoom.PrintToLog($"ExportToCompressedByteArray: Campaign imagery generated in {campaignImageryStopwatch.ElapsedMilliseconds}ms.");
+            if (DCSMission.IsImageryExportBypassed())
+            {
+                BriefingRoom.PrintToLog("ExportToCompressedByteArray: Campaign imagery generation bypassed via BR_DISABLE_EXPORT_IMAGERY.");
+            }
+            else
+            {
+                var campaignImageryStopwatch = Stopwatch.StartNew();
+                await Imagery.GenerateCampaignImages(database, template, this, baseFileName);
+                campaignImageryStopwatch.Stop();
+                BriefingRoom.PrintToLog($"ExportToCompressedByteArray: Campaign imagery generated in {campaignImageryStopwatch.ElapsedMilliseconds}ms.");
+            }
 
             foreach (string key in MediaFiles.Keys)
             {

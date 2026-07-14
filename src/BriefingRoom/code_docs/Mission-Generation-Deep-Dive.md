@@ -11,7 +11,8 @@ Briefing Room for DCS World is a sophisticated mission generator that creates dy
 3. [Generation Stages](#generation-stages)
 4. [Supporting Systems](#supporting-systems)
 5. [Error Handling and Recovery](#error-handling-and-recovery)
-6. [Data Models](#data-models)
+6. [Export Diagnostics and Troubleshooting](#export-diagnostics-and-troubleshooting)
+7. [Data Models](#data-models)
 
 ---
 
@@ -191,6 +192,25 @@ Each stage is executed in a try-catch loop with sophisticated fallback logic.
    - Briefing items with airbase details (runways, TACAN, ILS, etc.)
 
 **Data Set**: `mission.PlayerAirbase`, `mission.PlayerAirbaseDestination`, `mission.StrikePackages`
+
+---
+
+## Export Diagnostics and Troubleshooting
+
+Mission and campaign export now log timing for:
+
+- imagery generation
+- archive creation
+- total export duration
+- JS handoff timing from UI pages
+
+For troubleshooting browser/image-rendering issues during export, you can bypass image generation by setting:
+
+```text
+BR_DISABLE_EXPORT_IMAGERY=true
+```
+
+Accepted truthy values also include `1`, `yes`, and `on`.
 
 ### Stage 3: WorldPreload
 
