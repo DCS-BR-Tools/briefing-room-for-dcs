@@ -272,7 +272,7 @@ namespace BriefingRoom4DCS.Generator
 
         internal static string FormatRadioFrequency(double radioFrequency)
         {
-            return (radioFrequency > 10000 ? radioFrequency / 1000000.0 : radioFrequency).ToString("F1", NumberFormatInfo.InvariantInfo);
+            return (radioFrequency > 10000 ? radioFrequency / 1000000.0 : radioFrequency).ToString("F3", NumberFormatInfo.InvariantInfo);
         }
 
         internal static void ReplaceKey(ref string lua, string key, object value)
