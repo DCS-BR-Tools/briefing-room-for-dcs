@@ -928,6 +928,7 @@ Sophisticated system for finding valid spawn locations.
 - **KD-Bush Spatial Index**: Fast nearest-neighbor search for thousands of spawn points
 - **Iterative Expansion**: If no valid points found, expands search radius
 - **Front Line Awareness**: Prefers positions near frontline for ground units
+- **Unanchored Extra Groups Flag**: Mission features can set `UnanchoredExtraGroups` to make each extra group spawn search from the original anchor instead of chaining from the previous extra group
 
 ### UnitGenerator
 

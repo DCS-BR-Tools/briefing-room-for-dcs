@@ -264,10 +264,14 @@ namespace BriefingRoom4DCS.Generator.Mission
         private static void SpawnExtraGroups(IBriefingRoom briefingRoom, T featureDB, ref DCSMission mission, Side groupSide, GroupFlags groupFlags, Coordinates coordinates, Coordinates coordinates2, Dictionary<string, object> extraSettings)
         {
             var flags = featureDB.UnitGroupFlags;
+            var useUnanchoredExtraGroups = flags.HasFlag(FeatureUnitGroupFlags.UnanchoredExtraGroups);
+            var initialCoordinates = coordinates;
             foreach (var i in Enumerable.Range(1, featureDB.ExtraGroups.GetValue()))
             {
                 if (flags.HasFlag(FeatureUnitGroupFlags.MoveAnyWhere))
                 {
+                    var moveAnywhereOrigin = useUnanchoredExtraGroups ? initialCoordinates : coordinates;
+                    coordinates = moveAnywhereOrigin;
                     coordinates = coordinates.CreateNearRandom(50 * Toolbox.NM_TO_METERS, 100 * Toolbox.NM_TO_METERS);
                     coordinates2 = coordinates.CreateNearRandom(50 * Toolbox.NM_TO_METERS, 100 * Toolbox.NM_TO_METERS);
                     if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.DestinationSpawnPoint))
@@ -295,10 +299,11 @@ namespace BriefingRoom4DCS.Generator.Mission
                 extraSettings.Remove("TemplatePositionMap");
                 List<string> units = [];
                 List<DBEntryJSONUnit> unitDBs = [];
+                var spawnSearchOrigin = useUnanchoredExtraGroups ? initialCoordinates : coordinates;
                 if (Constants.THEATER_TEMPLATE_LOCATION_MAP.Keys.Any(x => featureDB.UnitGroupFamilies.Contains(x)))
                 {
                     var locationType = Toolbox.RandomFrom(Constants.THEATER_TEMPLATE_LOCATION_MAP.Keys.Intersect(featureDB.UnitGroupFamilies).Select(x => Constants.THEATER_TEMPLATE_LOCATION_MAP[x]).ToList());
-                    var templateLocation = SpawnPointSelector.GetNearestTemplateLocation(ref mission, locationType, coordinates, true);
+                    var templateLocation = SpawnPointSelector.GetNearestTemplateLocation(ref mission, locationType, spawnSearchOrigin, true);
                     if (templateLocation.HasValue)
                     {
                         spawnCoords = templateLocation.Value.Coordinates;
@@ -326,7 +331,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                         spawnCoords = SpawnPointSelector.GetNearestSpawnPoint(
                             mission,
                             featureDB.UnitGroupValidSpawnPoints,
-                            coordinates,
+                            spawnSearchOrigin,
                             true,
                             mission.TemplateRecord.FlightPlanObjectiveSeparation.Max);
                     else
@@ -339,7 +344,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                         spawnCoords = SpawnPointSelector.GetRandomSpawnPoint(
                             briefingRoom.Database,
                             ref mission,
-                            featureDB.UnitGroupValidSpawnPoints, coordinates,
+                            featureDB.UnitGroupValidSpawnPoints, spawnSearchOrigin,
                             spawnDistance,
                             coalition: GeneratorTools.GetSpawnPointCoalition(mission.TemplateRecord, groupSide),
                             nearFrontLineFamily: featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.UseFrontLine) ? unitFamily : null

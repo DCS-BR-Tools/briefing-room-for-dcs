@@ -38,75 +38,82 @@ namespace BriefingRoom4DCS.Generator.Mission
                 briefingRoom.PrintTranslatableWarning("MissionFeatureNotFound", featureID);
                 return;
             }
-            Coalition coalition = featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.Friendly) ? mission.TemplateRecord.ContextPlayerCoalition : mission.TemplateRecord.ContextPlayerCoalition.GetEnemy();
+            try
+            {
+                Coalition coalition = featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.Friendly) ? mission.TemplateRecord.ContextPlayerCoalition : mission.TemplateRecord.ContextPlayerCoalition.GetEnemy();
 
-            if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.ForEachAirbase))
-            {
-                ForEachAirbase(briefingRoom, ref mission, featureID, featureDB, coalition);
-                return;
-            }
-
-            if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.ForEachCarrier))
-            {
-                ForEachCarrier(briefingRoom, ref mission, featureDB);
-                return;
-            }
-
-            if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.ForEachFOB))
-            {
-                ForEachFob(briefingRoom, ref mission, featureID, featureDB);
-                return;
-            }
-            Coordinates? spawnPoint = null;
-            Coordinates? coordinates2 = null;
-            if (FeatureHasUnitGroup(featureDB))
-            {
-                var unitFamily = Toolbox.RandomFrom(featureDB.UnitGroupFamilies);
-                var useFrontLine = mission.FrontLine.Count > 0 && featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.UseFrontLine);
-                Coordinates pointSearchCenter = useFrontLine ? mission.FrontLine[(int)Math.Floor((double)mission.FrontLine.Count / 2)] : Coordinates.Lerp(mission.AverageInitialPosition, mission.ObjectivesCenter, featureDB.UnitGroupSpawnDistance);
-                var spawnDistance = new MinMaxD(0, 25);
-                if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.SpawnAnywhere))
-                    spawnDistance = new MinMaxD(0, 100);
-                else if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.AwayFromMissionArea))
-                    spawnDistance = new MinMaxD(50, 100);
-                spawnPoint =
-                    SpawnPointSelector.GetRandomSpawnPoint(
-                        briefingRoom.Database,
-                        ref mission,
-                        featureDB.UnitGroupValidSpawnPoints, pointSearchCenter,
-                        spawnDistance,
-                        coalition: (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.IgnoreBorders) || featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.Neutral)) ? null : coalition,
-                        nearFrontLineFamily: useFrontLine ? unitFamily : null
-                        );
-                if (!spawnPoint.HasValue) // No spawn point found
+                if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.ForEachAirbase))
                 {
-                    throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "NoSpawnPointForMissionFeature", featureID);
+                    ForEachAirbase(briefingRoom, ref mission, featureID, featureDB, coalition);
+                    return;
                 }
 
+                if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.ForEachCarrier))
+                {
+                    ForEachCarrier(briefingRoom, ref mission, featureDB);
+                    return;
+                }
 
-                var goPoint = spawnPoint.Value;
+                if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.ForEachFOB))
+                {
+                    ForEachFob(briefingRoom, ref mission, featureID, featureDB);
+                    return;
+                }
+                Coordinates? spawnPoint = null;
+                Coordinates? coordinates2 = null;
+                if (FeatureHasUnitGroup(featureDB))
+                {
+                    var unitFamily = Toolbox.RandomFrom(featureDB.UnitGroupFamilies);
+                    var useFrontLine = mission.FrontLine.Count > 0 && featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.UseFrontLine);
+                    Coordinates pointSearchCenter = useFrontLine ? mission.FrontLine[(int)Math.Floor((double)mission.FrontLine.Count / 2)] : Coordinates.Lerp(mission.AverageInitialPosition, mission.ObjectivesCenter, featureDB.UnitGroupSpawnDistance);
+                    var spawnDistance = new MinMaxD(0, 25);
+                    if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.SpawnAnywhere))
+                        spawnDistance = new MinMaxD(0, 100);
+                    else if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.AwayFromMissionArea))
+                        spawnDistance = new MinMaxD(50, 100);
+                    spawnPoint =
+                        SpawnPointSelector.GetRandomSpawnPoint(
+                            briefingRoom.Database,
+                            ref mission,
+                            featureDB.UnitGroupValidSpawnPoints, pointSearchCenter,
+                            spawnDistance,
+                            coalition: (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.IgnoreBorders) || featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.Neutral)) ? null : coalition,
+                            nearFrontLineFamily: useFrontLine ? unitFamily : null
+                            );
+                    if (!spawnPoint.HasValue) // No spawn point found
+                    {
+                        throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "NoSpawnPointForMissionFeature", featureID);
+                    }
 
-                if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.MoveTowardObjectives))
-                    goPoint = mission.ObjectivesCenter;
-                else if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.MoveAnyWhere))
-                    goPoint = goPoint.CreateNearRandom(50 * Toolbox.NM_TO_METERS, 100 * Toolbox.NM_TO_METERS);
-                else if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.MoveTowardPlayerBase))
-                    goPoint = mission.AverageInitialPosition;
 
-                coordinates2 = goPoint + Coordinates.CreateRandom(5, 20) * Toolbox.NM_TO_METERS;
+                    var goPoint = spawnPoint.Value;
 
-                if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.DestinationSpawnPoint))
-                    coordinates2 = SpawnPointSelector.GetNearestSpawnPoint(
-                        mission,
-                        featureDB.UnitGroupValidSpawnPoints,
-                        goPoint,
-                        false,
-                        mission.TemplateRecord.FlightPlanObjectiveSeparation.Max);
+                    if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.MoveTowardObjectives))
+                        goPoint = mission.ObjectivesCenter;
+                    else if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.MoveAnyWhere))
+                        goPoint = goPoint.CreateNearRandom(50 * Toolbox.NM_TO_METERS, 100 * Toolbox.NM_TO_METERS);
+                    else if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.MoveTowardPlayerBase))
+                        goPoint = mission.AverageInitialPosition;
+
+                    coordinates2 = goPoint + Coordinates.CreateRandom(5, 20) * Toolbox.NM_TO_METERS;
+
+                    if (featureDB.UnitGroupFlags.HasFlag(FeatureUnitGroupFlags.DestinationSpawnPoint))
+                        coordinates2 = SpawnPointSelector.GetNearestSpawnPoint(
+                            mission,
+                            featureDB.UnitGroupValidSpawnPoints,
+                            goPoint,
+                            false,
+                            mission.TemplateRecord.FlightPlanObjectiveSeparation.Max);
+                }
+                Dictionary<string, object> extraSettings = new();
+                GroupInfo? groupInfo = AddMissionFeature(briefingRoom, featureDB, ref mission, spawnPoint, coordinates2, ref extraSettings, missionLevelFeature: true);
+
+                AddBriefingRemarkFromFeature(featureDB, ref mission, false, groupInfo, extraSettings);
             }
-            Dictionary<string, object> extraSettings = new();
-            GroupInfo? groupInfo = AddMissionFeature(briefingRoom, featureDB, ref mission, spawnPoint, coordinates2, ref extraSettings, missionLevelFeature: true);
-
-            AddBriefingRemarkFromFeature(featureDB, ref mission, false, groupInfo, extraSettings);
+            catch (BriefingRoomException ex)
+            {
+                briefingRoom.PrintTranslatableWarning("RecoverableError", ex.Message);
+            }
         }
 
         private static void ForEachAirbase(IBriefingRoom briefingRoom, ref DCSMission mission, string featureID, DBEntryFeatureMission featureDB, Coalition coalition)
@@ -125,11 +132,21 @@ namespace BriefingRoom4DCS.Generator.Mission
                     mission.TemplateRecord.FlightPlanObjectiveSeparation.Max);
                 if (!spawnPoint.HasValue) // No spawn point found
                 {
-                    throw new BriefingRoomException(briefingRoom.Database, mission.LangKey, "NoSpawnPointForMissionFeature", featureID);
+                    briefingRoom.PrintTranslatableWarning("NoSpawnPointForMissionFeature", featureID);
+                    continue;
                 }
 
                 Dictionary<string, object> extraSettings = new() { { "TACAN_NAME", airbase.UIDisplayName.Get(mission.LangKey) } };
-                GroupInfo? groupInfo = AddMissionFeature(briefingRoom, featureDB, ref mission, spawnPoint.Value, spawnPoint.Value, ref extraSettings);
+                GroupInfo? groupInfo;
+                try
+                {
+                    groupInfo = AddMissionFeature(briefingRoom, featureDB, ref mission, spawnPoint.Value, spawnPoint.Value, ref extraSettings);
+                }
+                catch (BriefingRoomException ex)
+                {
+                    briefingRoom.PrintTranslatableWarning("RecoverableError", ex.Message);
+                    continue;
+                }
 
                 AddBriefingRemarkFromFeature(featureDB, ref mission, false, groupInfo, extraSettings);
                 if (featureID == "TacanAirbases")
@@ -149,7 +166,16 @@ namespace BriefingRoom4DCS.Generator.Mission
 
                 var coordinates = carrier.GroupInfo.Coordinates + Coordinates.CreateRandom(30, 100);
                 Dictionary<string, object> extraSettings = new() { { "CarrierGroupId", carrier.GroupInfo.GroupID } };
-                GroupInfo? groupInfo = AddMissionFeature(briefingRoom, featureDB, ref mission, coordinates, coordinates, ref extraSettings);
+                GroupInfo? groupInfo;
+                try
+                {
+                    groupInfo = AddMissionFeature(briefingRoom, featureDB, ref mission, coordinates, coordinates, ref extraSettings);
+                }
+                catch (BriefingRoomException ex)
+                {
+                    briefingRoom.PrintTranslatableWarning("RecoverableError", ex.Message);
+                    continue;
+                }
 
                 AddBriefingRemarkFromFeature(featureDB, ref mission, false, groupInfo, extraSettings);
 
@@ -167,7 +193,16 @@ namespace BriefingRoom4DCS.Generator.Mission
 
                 var coordinates = fob.GroupInfo.Coordinates + Coordinates.CreateRandom(150, 400);
                 Dictionary<string, object> extraSettings = new() { { "TACAN_NAME", fob.GroupInfo.Name.Replace("FOB ", "") } };
-                GroupInfo? groupInfo = AddMissionFeature(briefingRoom, featureDB, ref mission, coordinates, coordinates, ref extraSettings);
+                GroupInfo? groupInfo;
+                try
+                {
+                    groupInfo = AddMissionFeature(briefingRoom, featureDB, ref mission, coordinates, coordinates, ref extraSettings);
+                }
+                catch (BriefingRoomException ex)
+                {
+                    briefingRoom.PrintTranslatableWarning("RecoverableError", ex.Message);
+                    continue;
+                }
 
                 AddBriefingRemarkFromFeature(featureDB, ref mission, false, groupInfo, extraSettings);
                 if (featureID == "TacanFOBs")
