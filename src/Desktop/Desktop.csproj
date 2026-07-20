@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="10.0.9" />
+    <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="10.0.10" />
     <!-- Data files go into bin/ subfolder, exe stays at root -->
     <Content Include="..\..\Database\**" LinkBase="$(BRDataFolder)\Database" CopyToPublishDirectory="PreserveNewest" />
     <Content Include="..\..\DatabaseJSON\**" LinkBase="$(BRDataFolder)\DatabaseJSON" CopyToPublishDirectory="PreserveNewest" />
