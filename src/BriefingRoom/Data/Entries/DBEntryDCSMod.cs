@@ -46,7 +46,6 @@ namespace BriefingRoom4DCS.Data
             "Currenthill Assets Pack",
             "F-100D AI by GrinnelliDesigns",
             "F-14B AI by Heatblur Simulations",
-            "F-14B AI by Heatblur Simulations",
             "F-15E AI by RAZBAM",
             "F-16C bl.50 AI",
             "F-4E AI by Heatblur Simulations",

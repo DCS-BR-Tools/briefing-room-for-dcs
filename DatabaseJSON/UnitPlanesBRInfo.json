@@ -555,6 +555,17 @@
     "lowPolly": false,
     "playerControllable": true
   },
+    {
+    "type": "F-14BU",
+    "families": [
+      "PlaneFighter",
+      "PlaneInterceptor",
+      "PlaneStrike",
+      "PlaneCATOBAR"
+    ],
+    "lowPolly": false,
+    "playerControllable": true
+  },
   {
     "type": "F-14A-135-GR",
     "families": [

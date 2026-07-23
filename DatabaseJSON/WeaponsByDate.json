@@ -1860,5 +1860,15 @@
   { "decade": 1970, "clsid": "{LAU-7 wtip - AIM-9P}" },
   { "decade": 1970, "clsid": "{LAU-7 wtip - AIM-9J}" },
   { "decade": 1980, "clsid": "{MISSILE_R-60M_APU-60}" },
-  { "decade": 1980, "clsid": "{MISSILE_R-73_APU-73}" }
+  { "decade": 1980, "clsid": "{MISSILE_R-73_APU-73}" },
+  { "decadeGuess": 1960, "clsid": "{SUU_23_POD_Centerline}" },
+  { "decadeGuess": 1960, "clsid": "{SUU_23_POD_Wing}" },
+  { "decade": 2000, "clsid": "{LAU-138 wtip - CATM-9M}" },
+  { "decade": 2000, "clsid": "{F14-300gal-empty}" },
+  { "decade": 2000, "clsid": "{LAU-138 wtip - TCTS R}" },
+  { "decade": 2000, "clsid": "{BRU-32 GBU-24E}" },
+  { "decade": 2000, "clsid": "{HB_F14_EMPTY_PHOENIX_ADAPTER_L}" },
+  { "decade": 2000, "clsid": "{HB_F14_EMPTY_LAU-92_ADAPTER}" },
+  { "decade": 2000, "clsid": "{BRU-32 GBU-38}" },
+  { "decade": 2000, "clsid": "{BRU-32 GBU_31_V_2B}" }
 ]
