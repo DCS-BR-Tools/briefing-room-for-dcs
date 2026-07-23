@@ -28,7 +28,8 @@
 }
 
 @code {
-    [Parameter] public List<Tuple<DateTime, LogMessageErrorLevel, string>> logs { get; set; }
+    private const string GenerationStartLogMessage = "Generating mission date and time...";
+    [Parameter] public List<Tuple<DateTime, LogMessageErrorLevel, string>> logs { get; set; } = [];
     private bool showLogs = false;
 
     public void ClearLogs()
@@ -46,6 +47,11 @@
     private bool LogsIfAboveWarn(Tuple<DateTime, LogMessageErrorLevel, string> x) =>
     x.Item2 == LogMessageErrorLevel.Warning || x.Item2 == LogMessageErrorLevel.Error;
 
-    private List<Tuple<DateTime, LogMessageErrorLevel, string>> GetLastRunLogs() =>
-    logs.Count() == 0 ? [] : logs.Skip(logs.LastIndexOf(logs.Last(x => x.Item3 == "Generating mission date and time..."))).ToList();
+    private List<Tuple<DateTime, LogMessageErrorLevel, string>> GetLastRunLogs()
+    {
+        if (logs.Count == 0) return [];
+
+        var lastRunStartIndex = logs.FindLastIndex(x => x.Item3 == GenerationStartLogMessage);
+        return lastRunStartIndex < 0 ? logs : logs.Skip(lastRunStartIndex).ToList();
+    }
 }
