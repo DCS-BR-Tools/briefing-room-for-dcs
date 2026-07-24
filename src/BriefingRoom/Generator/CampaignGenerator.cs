@@ -34,6 +34,7 @@ namespace BriefingRoom4DCS.Generator
     {
         private static readonly string CAMPAIGN_LUA_TEMPLATE = Path.Combine(BRPaths.INCLUDE_LUA, "Campaign", "Campaign.lua");
         private static readonly string CAMPAIGN_STAGE_LUA_TEMPLATE = Path.Combine(BRPaths.INCLUDE_LUA, "Campaign", "CampaignStage.lua");
+        private const int OBJECTIVE_COMPATIBILITY_ATTEMPTS = 40;
 
         internal static DCSCampaign Generate(IBriefingRoom briefingRoom, CampaignTemplate campaignTemplate)
         {
@@ -248,11 +249,14 @@ namespace BriefingRoom4DCS.Generator
             var i = 0;
             do
             {
-                var obj = new MissionTemplateObjective(database, Toolbox.RandomFrom(campaignTemplate.MissionsObjectives), campaignTemplate.MissionTargetCount);
+                var obj = CreateCompatibleObjective(database, campaignTemplate.MissionsObjectives, campaignTemplate.MissionTargetCount);
                 i++;
                 while (i < Toolbox.RandomInt(i, Math.Min(i + 5, objectiveCount)))
                 {
-                    obj.SubTasks.Add(new MissionTemplateSubTask(database, Toolbox.RandomFrom(campaignTemplate.MissionsObjectives), campaignTemplate.MissionTargetCount));
+                    var subTask = CreateCompatibleSubTask(database, campaignTemplate.MissionsObjectives, campaignTemplate.MissionTargetCount, obj);
+                    if (subTask == null)
+                        break;
+                    obj.SubTasks.Add(subTask);
                     i++;
                 }
                 template.Objectives.Add(obj);
@@ -269,6 +273,81 @@ namespace BriefingRoom4DCS.Generator
                 template.Objectives[0].CoordinateHint_ = previousObjectiveCenterCoords.CreateNearRandom(5 * Toolbox.NM_TO_METERS, GetObjectiveVariationDistance(campaignTemplate.MissionsObjectiveVariationDistance) * Toolbox.NM_TO_METERS);
 
             return template;
+        }
+
+        private static MissionTemplateObjective CreateCompatibleObjective(IDatabase database, List<string> objectivePresets, Amount missionTargetCount)
+        {
+            for (var attempt = 0; attempt < OBJECTIVE_COMPATIBILITY_ATTEMPTS; attempt++)
+            {
+                var objective = new MissionTemplateObjective(database, Toolbox.RandomFrom(objectivePresets), missionTargetCount);
+                if (IsObjectiveDefinitionCompatible(database, objective))
+                    return objective;
+            }
+
+            return new MissionTemplateObjective(database, Toolbox.RandomFrom(objectivePresets), missionTargetCount);
+        }
+
+        private static MissionTemplateSubTask CreateCompatibleSubTask(
+            IDatabase database,
+            List<string> objectivePresets,
+            Amount missionTargetCount,
+            MissionTemplateObjective parentObjective)
+        {
+            for (var attempt = 0; attempt < OBJECTIVE_COMPATIBILITY_ATTEMPTS; attempt++)
+            {
+                var candidate = new MissionTemplateSubTask(database, Toolbox.RandomFrom(objectivePresets), missionTargetCount);
+                if (!IsObjectiveDefinitionCompatible(database, candidate))
+                    continue;
+                if (IsSubTaskCompatibleWithObjective(database, parentObjective, candidate))
+                    return candidate;
+            }
+
+            return null;
+        }
+
+        private static bool IsObjectiveDefinitionCompatible(IDatabase database, MissionTemplateSubTask taskTemplate)
+        {
+            var targetDB = database.GetEntry<DBEntryObjectiveTarget>(taskTemplate.Target);
+            var targetBehaviorDB = database.GetEntry<DBEntryObjectiveTargetBehavior>(taskTemplate.TargetBehavior);
+            var taskDB = database.GetEntry<DBEntryObjectiveTask>(taskTemplate.Task);
+            if (targetDB == null || targetBehaviorDB == null || taskDB == null)
+                return false;
+            if (!taskDB.ValidUnitCategories.Contains(targetDB.UnitCategory))
+                return false;
+            if (!targetBehaviorDB.ValidUnitCategories.Contains(targetDB.UnitCategory))
+                return false;
+            if (targetBehaviorDB.InvalidTasks.Contains(taskDB.ID))
+                return false;
+            return true;
+        }
+
+        private static bool IsSubTaskCompatibleWithObjective(IDatabase database, MissionTemplateObjective parentObjective, MissionTemplateSubTask candidateSubTask)
+        {
+            var mainTargetDB = database.GetEntry<DBEntryObjectiveTarget>(parentObjective.Target);
+            var mainBehaviorDB = database.GetEntry<DBEntryObjectiveTargetBehavior>(parentObjective.TargetBehavior);
+            var candidateTargetDB = database.GetEntry<DBEntryObjectiveTarget>(candidateSubTask.Target);
+            var candidateBehaviorDB = database.GetEntry<DBEntryObjectiveTargetBehavior>(candidateSubTask.TargetBehavior);
+            if (mainTargetDB == null || mainBehaviorDB == null || candidateTargetDB == null || candidateBehaviorDB == null)
+                return false;
+
+            if (Constants.AIRBASE_LOCATIONS.Contains(candidateBehaviorDB.Location) && !Constants.AIRBASE_LOCATIONS.Contains(mainBehaviorDB.Location))
+                return false;
+
+            var combinedSpawnTypes = new HashSet<SpawnPointType>(mainTargetDB.ValidSpawnPoints);
+            foreach (var subTask in parentObjective.SubTasks)
+            {
+                var subTaskTargetDB = database.GetEntry<DBEntryObjectiveTarget>(subTask.Target);
+                if (subTaskTargetDB == null)
+                    continue;
+                foreach (var spawnType in subTaskTargetDB.ValidSpawnPoints)
+                    combinedSpawnTypes.Add(spawnType);
+            }
+            foreach (var spawnType in candidateTargetDB.ValidSpawnPoints)
+                combinedSpawnTypes.Add(spawnType);
+
+            var hasSea = combinedSpawnTypes.Contains(SpawnPointType.Sea);
+            var hasLand = combinedSpawnTypes.Any(x => Constants.LAND_SPAWNS.Contains(x));
+            return !(hasSea && hasLand);
         }
 
         private static void ApplyProgression(IDatabase database, string langKey, int progressionChance, ref MissionTemplate template)
