@@ -212,6 +212,12 @@ BR_DISABLE_EXPORT_IMAGERY=true
 
 Accepted truthy values also include `1`, `yes`, and `on`.
 
+Browser launch now also caches the last successful browser executable path at:
+
+`%LOCALAPPDATA%\BriefingRoom\last-working-browser-path.txt`
+
+This cached path is tried first on next startup. If launch fails, the cache is invalidated and the full browser fallback chain is used.
+
 ### Stage 3: WorldPreload
 
 **Purpose**: DCS rendering hack - spawns invisible helicopter to force DCS to load terrain near player airbase

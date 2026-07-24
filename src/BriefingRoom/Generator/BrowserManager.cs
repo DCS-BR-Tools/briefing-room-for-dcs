@@ -25,6 +25,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using PuppeteerSharp;
 
@@ -42,6 +43,8 @@ namespace BriefingRoom4DCS.Generator
         // Page pool for reuse - avoids creating new pages for each render
         private static readonly ConcurrentBag<IPage> _pagePool = new();
         private const int MaxPooledPages = 4;
+        private static readonly string BrowserCacheDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "BriefingRoom");
+        private static readonly string LastWorkingBrowserPathFile = Path.Combine(BrowserCacheDirectory, "last-working-browser-path.txt");
 
         private static readonly string[] FirefoxBasedExecutableNames = ["firefox", "librewolf", "waterfox"];
 
@@ -58,67 +61,36 @@ namespace BriefingRoom4DCS.Generator
                 _browserInitialized = true;
             }
 
-            var executablePath = FindInstalledBrowser();
+            var failures = new StringBuilder();
+            var attemptedPaths = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
-            if (executablePath == null)
+            foreach (var executablePath in GetInstalledBrowserCandidates().Distinct(StringComparer.OrdinalIgnoreCase))
             {
-                // Download Chromium if no browser found
+                attemptedPaths.Add(executablePath);
+                if (await TryLaunchBrowserAsync(executablePath, failures))
+                    return;
+            }
+
+            // Final fallback: try downloading Chromium and launching it.
+            try
+            {
+                BriefingRoom.PrintToLog("BrowserManager: no working installed browser found, downloading Chromium fallback...", LogMessageErrorLevel.Warning);
                 var browserFetcher = new BrowserFetcher();
                 await browserFetcher.DownloadAsync();
-                executablePath = browserFetcher.GetInstalledBrowsers().First().GetExecutablePath();
-            }
-
-            // Build browser args based on browser type
-            // Firefox does not accept Chromium/Chrome-specific flags
-            var isFirefox = IsFirefoxExecutable(executablePath);
-            string[] browserArgs;
-
-            if (isFirefox)
-            {
-                // Firefox uses minimal args; headless mode is handled by PuppeteerSharp via Headless = true
-                browserArgs = BriefingRoom.RUNNING_IN_DOCKER
-                    ? ["-safe-mode"]
-                    : [];
-            }
-            else
-            {
-                // Chromium-based browser args
-                var chromiumArgs = new List<string>
+                var downloadedPath = browserFetcher.GetInstalledBrowsers().First().GetExecutablePath();
+                if (!attemptedPaths.Contains(downloadedPath))
                 {
-                    "--no-sandbox",
-                    "--disable-setuid-sandbox",
-                    "--disable-dev-shm-usage",
-                    "--disable-extensions",
-                    "--disable-background-networking",
-                    "--disable-sync",
-                    "--disable-translate",
-                    "--disable-default-apps",
-                    "--no-first-run"
-                };
-
-                if (BriefingRoom.RUNNING_IN_DOCKER)
-                {
-                    // Disable GPU in Docker (no display/driver)
-                    chromiumArgs.Add("--disable-gpu");
-                    chromiumArgs.Add("--single-process");
+                    if (await TryLaunchBrowserAsync(downloadedPath, failures))
+                        return;
                 }
-                else
-                {
-                    // Enable GPU acceleration on desktop
-                    chromiumArgs.Add("--enable-gpu-rasterization");
-                    chromiumArgs.Add("--enable-accelerated-2d-canvas");
-                }
-
-                browserArgs = chromiumArgs.ToArray();
+            }
+            catch (Exception ex)
+            {
+                failures.AppendLine($"Chromium download fallback failed: {ex.GetType().Name} - {ex.Message}");
+                BriefingRoom.PrintToLog($"BrowserManager: Chromium download fallback failed ({ex.Message})", LogMessageErrorLevel.Error);
             }
 
-            _browser = await Puppeteer.LaunchAsync(new LaunchOptions
-            {
-                Headless = true,
-                ExecutablePath = executablePath,
-                Browser = isFirefox ? SupportedBrowser.Firefox : SupportedBrowser.Chrome,
-                Args = browserArgs
-            });
+            throw new InvalidOperationException($"Failed to launch any supported browser for imagery generation.{Environment.NewLine}{failures}");
         }
 
         /// <summary>
@@ -171,14 +143,86 @@ namespace BriefingRoom4DCS.Generator
             return _browser!;
         }
 
-        private static string? FindInstalledBrowser()
+        private static async Task<bool> TryLaunchBrowserAsync(string executablePath, StringBuilder failures)
         {
+            var isFirefox = IsFirefoxExecutable(executablePath);
+            var browserArgs = GetBrowserArgs(isFirefox);
+            try
+            {
+                _browser = await Puppeteer.LaunchAsync(new LaunchOptions
+                {
+                    Headless = true,
+                    ExecutablePath = executablePath,
+                    Browser = isFirefox ? SupportedBrowser.Firefox : SupportedBrowser.Chrome,
+                    Args = browserArgs,
+                    Timeout = 60000
+                });
+
+                SaveLastWorkingBrowserPath(executablePath);
+                BriefingRoom.PrintToLog($"BrowserManager: launched {(isFirefox ? "Firefox-based" : "Chromium-based")} browser '{executablePath}'.");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                InvalidateLastWorkingBrowserPath(executablePath);
+                failures.AppendLine($"Browser launch failed for '{executablePath}': {ex.GetType().Name} - {ex.Message}");
+                BriefingRoom.PrintToLog($"BrowserManager: failed to launch '{executablePath}' ({ex.Message})", LogMessageErrorLevel.Warning);
+                return false;
+            }
+        }
+
+        private static string[] GetBrowserArgs(bool isFirefox)
+        {
+            if (isFirefox)
+            {
+                // Firefox uses minimal args; headless mode is handled by PuppeteerSharp via Headless = true
+                return BriefingRoom.RUNNING_IN_DOCKER
+                    ? ["-safe-mode"]
+                    : [];
+            }
+
+            // Chromium-based browser args
+            var chromiumArgs = new List<string>
+            {
+                "--no-sandbox",
+                "--disable-setuid-sandbox",
+                "--disable-dev-shm-usage",
+                "--disable-extensions",
+                "--disable-background-networking",
+                "--disable-sync",
+                "--disable-translate",
+                "--disable-default-apps",
+                "--no-first-run"
+            };
+
+            if (BriefingRoom.RUNNING_IN_DOCKER)
+            {
+                // Disable GPU in Docker (no display/driver)
+                chromiumArgs.Add("--disable-gpu");
+                chromiumArgs.Add("--single-process");
+            }
+            else
+            {
+                // Enable GPU acceleration on desktop
+                chromiumArgs.Add("--enable-gpu-rasterization");
+                chromiumArgs.Add("--enable-accelerated-2d-canvas");
+            }
+
+            return chromiumArgs.ToArray();
+        }
+
+        private static IEnumerable<string> GetInstalledBrowserCandidates()
+        {
+            var lastWorkingPath = GetLastWorkingBrowserPath();
+            if (!string.IsNullOrWhiteSpace(lastWorkingPath) && File.Exists(lastWorkingPath))
+                yield return lastWorkingPath;
+
             // Check environment variable first
             var envPath = Environment.GetEnvironmentVariable("CHROME_PATH")
                        ?? Environment.GetEnvironmentVariable("PUPPETEER_EXECUTABLE_PATH")
                        ?? Environment.GetEnvironmentVariable("FIREFOX_PATH");
             if (!string.IsNullOrEmpty(envPath) && File.Exists(envPath))
-                return envPath;
+                yield return envPath;
 
             string[] candidates = OperatingSystem.IsWindows() ?
             [
@@ -248,7 +292,68 @@ namespace BriefingRoom4DCS.Generator
                 "/opt/waterfox/waterfox"
             ];
 
-            return candidates.FirstOrDefault(File.Exists);
+            foreach (var candidate in candidates)
+            {
+                if (File.Exists(candidate))
+                    yield return candidate;
+            }
+        }
+
+        private static string? GetLastWorkingBrowserPath()
+        {
+            try
+            {
+                if (!File.Exists(LastWorkingBrowserPathFile))
+                    return null;
+
+                var path = File.ReadAllText(LastWorkingBrowserPathFile).Trim();
+                if (string.IsNullOrWhiteSpace(path))
+                    return null;
+
+                return path;
+            }
+            catch (Exception ex)
+            {
+                BriefingRoom.PrintToLog($"BrowserManager: unable to read last-working browser path ({ex.Message})", LogMessageErrorLevel.Warning);
+                return null;
+            }
+        }
+
+        private static void SaveLastWorkingBrowserPath(string executablePath)
+        {
+            try
+            {
+                if (!Toolbox.CreateMissingDirectory(BrowserCacheDirectory))
+                {
+                    BriefingRoom.PrintToLog($"BrowserManager: unable to create cache directory '{BrowserCacheDirectory}'.", LogMessageErrorLevel.Warning);
+                    return;
+                }
+
+                File.WriteAllText(LastWorkingBrowserPathFile, executablePath);
+            }
+            catch (Exception ex)
+            {
+                BriefingRoom.PrintToLog($"BrowserManager: unable to persist last-working browser path ({ex.Message})", LogMessageErrorLevel.Warning);
+            }
+        }
+
+        private static void InvalidateLastWorkingBrowserPath(string executablePath)
+        {
+            try
+            {
+                if (!File.Exists(LastWorkingBrowserPathFile))
+                    return;
+
+                var cachedPath = File.ReadAllText(LastWorkingBrowserPathFile).Trim();
+                if (!string.Equals(cachedPath, executablePath, StringComparison.OrdinalIgnoreCase))
+                    return;
+
+                File.Delete(LastWorkingBrowserPathFile);
+            }
+            catch (Exception ex)
+            {
+                BriefingRoom.PrintToLog($"BrowserManager: unable to invalidate last-working browser path ({ex.Message})", LogMessageErrorLevel.Warning);
+            }
         }
 
         private static bool IsFirefoxExecutable(string? path) =>
