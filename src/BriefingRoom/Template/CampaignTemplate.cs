@@ -69,7 +69,11 @@ namespace BriefingRoom4DCS.Template
 
             MissionsCount = 5;
             MissionsDifficultyVariation = CampaignDifficultyVariation.Random;
-            MissionsObjectives = briefingRoom.GetDatabaseEntriesIDs(DatabaseEntryType.ObjectivePreset).ToList();
+            var suitabilityProfile = ObjectivePresetSuitabilityProfile.FromPlayerFlightGroups(Database, PlayerFlightGroups);
+            MissionsObjectives = briefingRoom
+                .GetDatabaseEntriesIDs(DatabaseEntryType.ObjectivePreset)
+                .Where(x => ObjectivePresetSuitability.GetUnsuitabilityReason(Database, x, suitabilityProfile) == ObjectivePresetUnsuitabilityReason.None)
+                .ToList();
             MissionsObjectiveCount = Amount.Average;
             MissionsObjectiveVariationDistance = Amount.Average;
             MissionsAirbaseVariationDistance = AmountN.Average;

@@ -59,7 +59,7 @@ nightmissionchance=VeryLow
 [missions]
 count=5
 difficultyvariation=Random
-objectives=AirbaseStrike,AntiShipStrike,CloseAirSupport,CombatAirPatrol,CombatSearchAndRescue,CommandoDrop,Custom,DEAD,DeepStrike,DeepStrikeJTAC,DeliverPackage,DeliverTerms,EscortGroundForces,EscortHelicopters,EscortPlane,HeloHunt,Interception,Interdiction,InterdictionJTAC,MoralFlyover,OffensiveCounterAir,Random,RandomFixedWing,RandomRotor,Reconnaissance,ShowOfForce,TransportCargo,TransportTroops
+objectives=AirbaseStrike,AntiShipStrike,CloseAirSupport,CombatAirPatrol,Custom,DEAD,DeepStrike,DeepStrikeJTAC,EscortGroundForces,EscortHelicopters,EscortPlane,HeloHunt,Interception,Interdiction,InterdictionJTAC,MoralFlyover,OffensiveCounterAir,Random,RandomFixedWing,Reconnaissance,ShowOfForce
 objectivecount=Average
 objectivevariationdistance=Average
 airbasevariationdistance=Average
@@ -68,4 +68,3 @@ progression=None
 
 [campaignoptions]
 staticsituation=False
-

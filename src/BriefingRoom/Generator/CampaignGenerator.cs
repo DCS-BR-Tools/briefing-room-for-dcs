@@ -38,6 +38,10 @@ namespace BriefingRoom4DCS.Generator
 
         internal static DCSCampaign Generate(IBriefingRoom briefingRoom, CampaignTemplate campaignTemplate)
         {
+            var objectivePresets = FilterObjectivePresets(briefingRoom, campaignTemplate);
+            if (objectivePresets.Count == 0)
+                throw new BriefingRoomException(briefingRoom.Database, briefingRoom.LanguageKey, "CampaignNoSuitableObjectives");
+
             DCSCampaign campaign = new()
             {
                 Name = GeneratorTools.GenerateCampaignName(briefingRoom.Database, briefingRoom.LanguageKey, campaignTemplate.BriefingCampaignName)
@@ -60,6 +64,7 @@ namespace BriefingRoom4DCS.Generator
                     briefingRoom.Database,
                     briefingRoom.LanguageKey,
                     campaignTemplate,
+                    objectivePresets,
                     i,
                     (int)campaignTemplate.MissionsObjectiveCount,
                     previousSituationId,
@@ -142,6 +147,7 @@ namespace BriefingRoom4DCS.Generator
             IDatabase database,
             string langKey,
             CampaignTemplate campaignTemplate,
+            List<string> objectivePresets,
             int missionIndex, int missionCount,
             string previousSituationId, Coordinates previousObjectiveCenterCoords, string previousPlayerAirbaseId, string previousDestinationAirbaseId)
         {
@@ -249,11 +255,11 @@ namespace BriefingRoom4DCS.Generator
             var i = 0;
             do
             {
-                var obj = CreateCompatibleObjective(database, campaignTemplate.MissionsObjectives, campaignTemplate.MissionTargetCount);
+                var obj = CreateCompatibleObjective(database, objectivePresets, campaignTemplate.MissionTargetCount);
                 i++;
                 while (i < Toolbox.RandomInt(i, Math.Min(i + 5, objectiveCount)))
                 {
-                    var subTask = CreateCompatibleSubTask(database, campaignTemplate.MissionsObjectives, campaignTemplate.MissionTargetCount, obj);
+                    var subTask = CreateCompatibleSubTask(database, objectivePresets, campaignTemplate.MissionTargetCount, obj);
                     if (subTask == null)
                         break;
                     obj.SubTasks.Add(subTask);
@@ -273,6 +279,55 @@ namespace BriefingRoom4DCS.Generator
                 template.Objectives[0].CoordinateHint_ = previousObjectiveCenterCoords.CreateNearRandom(5 * Toolbox.NM_TO_METERS, GetObjectiveVariationDistance(campaignTemplate.MissionsObjectiveVariationDistance) * Toolbox.NM_TO_METERS);
 
             return template;
+        }
+
+        private static List<string> FilterObjectivePresets(IBriefingRoom briefingRoom, CampaignTemplate campaignTemplate)
+        {
+            if (ObjectivePresetSuitability.IsDynamicSpawnEnabled(campaignTemplate))
+                return campaignTemplate.MissionsObjectives.Distinct().ToList();
+
+            var suitabilityProfile = ObjectivePresetSuitabilityProfile.FromPlayerFlightGroups(briefingRoom.Database, campaignTemplate.PlayerFlightGroups);
+            var filteredPresets = new List<string>();
+            var aircraftTypeFiltered = new List<string>();
+            var transportFiltered = new List<string>();
+            var planeTargetFiltered = new List<string>();
+
+            foreach (var presetId in campaignTemplate.MissionsObjectives.Distinct())
+            {
+                var unsuitabilityReason = ObjectivePresetSuitability.GetUnsuitabilityReason(
+                    briefingRoom.Database,
+                    presetId,
+                    suitabilityProfile);
+
+                if (unsuitabilityReason == ObjectivePresetUnsuitabilityReason.None)
+                {
+                    filteredPresets.Add(presetId);
+                    continue;
+                }
+
+                var presetName = ObjectivePresetSuitability.GetPresetDisplayName(briefingRoom.Database, briefingRoom.LanguageKey, presetId);
+                switch (unsuitabilityReason)
+                {
+                    case ObjectivePresetUnsuitabilityReason.AircraftTypeMismatch:
+                        aircraftTypeFiltered.Add(presetName);
+                        break;
+                    case ObjectivePresetUnsuitabilityReason.TransportRequired:
+                        transportFiltered.Add(presetName);
+                        break;
+                    case ObjectivePresetUnsuitabilityReason.PlaneTargetsRotorOnly:
+                        planeTargetFiltered.Add(presetName);
+                        break;
+                }
+            }
+
+            if (aircraftTypeFiltered.Count > 0)
+                briefingRoom.PrintTranslatableWarning("CampaignObjectivesFilteredAircraftType", string.Join(", ", aircraftTypeFiltered));
+            if (transportFiltered.Count > 0)
+                briefingRoom.PrintTranslatableWarning("CampaignObjectivesFilteredTransport", string.Join(", ", transportFiltered));
+            if (planeTargetFiltered.Count > 0)
+                briefingRoom.PrintTranslatableWarning("CampaignObjectivesFilteredRotorPlanes", string.Join(", ", planeTargetFiltered));
+
+            return filteredPresets;
         }
 
         private static MissionTemplateObjective CreateCompatibleObjective(IDatabase database, List<string> objectivePresets, Amount missionTargetCount)
