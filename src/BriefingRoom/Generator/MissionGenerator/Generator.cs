@@ -31,6 +31,8 @@ namespace BriefingRoom4DCS.Generator.Mission
 {
     internal class MissionGenerator
     {
+        private const int STAGE_RETRY_COUNT = 5;
+        private const int MAX_CONSECUTIVE_REPEATED_STAGE_ERRORS = 3;
 
         private static readonly List<MissionStageName> STAGE_ORDER = new List<MissionStageName>{
             MissionStageName.Situation,
@@ -43,6 +45,13 @@ namespace BriefingRoom4DCS.Generator.Mission
             MissionStageName.CAPResponse,
             MissionStageName.AirDefense,
             MissionStageName.MissionFeatures
+        };
+
+        private static readonly HashSet<MissionStageName> REPEATED_ERROR_CUTOFF_STAGES = new HashSet<MissionStageName>
+        {
+            MissionStageName.Objective,
+            MissionStageName.Carrier,
+            MissionStageName.PlayerFlightGroups
         };
 
         internal static DCSMission Generate(IBriefingRoom briefingRoom, MissionTemplateRecord template)
@@ -112,13 +121,17 @@ namespace BriefingRoom4DCS.Generator.Mission
             mission.SaveStage(MissionStageName.Initialization);
 
             MissionStageName? nextStage = MissionStageName.Situation;
-            int triesLeft = 5;
+            int triesLeft = STAGE_RETRY_COUNT;
             int fallbackSteps = 1;
             MissionStageName? lastErrorStage = null;
+            MissionStageName? repeatedErrorStage = null;
+            string repeatedErrorMessage = string.Empty;
+            int consecutiveRepeatedErrorCount = 0;
             do
             {
                 try
                 {
+                    var currentStage = nextStage.Value;
                     BriefingRoom.PrintToLog($"Stage: {nextStage}");
                     switch (nextStage)
                     {
@@ -157,6 +170,9 @@ namespace BriefingRoom4DCS.Generator.Mission
                             nextStage = null;
                             break;
                     }
+                    if (repeatedErrorStage == currentStage)
+                        ResetRepeatedErrorTracking(ref repeatedErrorStage, ref repeatedErrorMessage, ref consecutiveRepeatedErrorCount);
+
                     if (nextStage.HasValue)
                     {
                         nextStage = STAGE_ORDER[STAGE_ORDER.IndexOf(nextStage.Value) + 1];
@@ -165,6 +181,33 @@ namespace BriefingRoom4DCS.Generator.Mission
                 catch (BriefingRoomRawException err)
                 {
                     var currentStageIndex = STAGE_ORDER.IndexOf(nextStage.Value);
+                    if (ShouldCutOffRepeatedStageFailures(nextStage.Value))
+                    {
+                        if (repeatedErrorStage == nextStage && string.Equals(repeatedErrorMessage, err.Message, StringComparison.Ordinal))
+                            consecutiveRepeatedErrorCount++;
+                        else
+                        {
+                            repeatedErrorStage = nextStage;
+                            repeatedErrorMessage = err.Message;
+                            consecutiveRepeatedErrorCount = 1;
+                        }
+
+                        if (consecutiveRepeatedErrorCount >= MAX_CONSECUTIVE_REPEATED_STAGE_ERRORS && triesLeft > 0)
+                        {
+                            briefingRoom.PrintTranslatableWarning(
+                                "StageRepeatedFailureCutoff",
+                                nextStage,
+                                consecutiveRepeatedErrorCount,
+                                MAX_CONSECUTIVE_REPEATED_STAGE_ERRORS,
+                                err.Message);
+                            triesLeft = 0;
+                        }
+                    }
+                    else
+                    {
+                        ResetRepeatedErrorTracking(ref repeatedErrorStage, ref repeatedErrorMessage, ref consecutiveRepeatedErrorCount);
+                    }
+
                     BriefingRoom.PrintToLog($"Failed on stage: {STAGE_ORDER[currentStageIndex]} => {err.Message}");
                     var revertStageCount = 1;
                     if (triesLeft > 0)
@@ -182,7 +225,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                         lastErrorStage = nextStage;
                         nextStage = STAGE_ORDER[fallbackStageIndex];
                         BriefingRoom.PrintToLog($"Falling Back to Stage: {nextStage}");
-                        triesLeft = 5;
+                        triesLeft = STAGE_RETRY_COUNT;
                     }
                     mission.RevertStage(revertStageCount);
 
@@ -515,6 +558,15 @@ namespace BriefingRoom4DCS.Generator.Mission
                 extremeRetriesUsed = maxExtremeDistanceRetries - extremeDistanceRetriesLeft;
                 briefingRoom.PrintTranslatableWarning("ExtremeDistanceRetryUsage", extremeRetriesUsed, maxExtremeDistanceRetries);
             }
+        }
+
+        private static bool ShouldCutOffRepeatedStageFailures(MissionStageName stageName) => REPEATED_ERROR_CUTOFF_STAGES.Contains(stageName);
+
+        private static void ResetRepeatedErrorTracking(ref MissionStageName? repeatedErrorStage, ref string repeatedErrorMessage, ref int consecutiveRepeatedErrorCount)
+        {
+            repeatedErrorStage = null;
+            repeatedErrorMessage = string.Empty;
+            consecutiveRepeatedErrorCount = 0;
         }
     }
 }

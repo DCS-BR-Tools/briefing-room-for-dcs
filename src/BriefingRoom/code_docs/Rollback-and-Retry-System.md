@@ -36,8 +36,9 @@ The rollback and retry system is designed around the principle that **mission ge
 1. **Snapshot at Stage Boundaries**: Each major generation stage creates a snapshot before executing
 2. **Incremental Retry**: Try the same stage multiple times before giving up
 3. **Progressive Fallback**: Move back through stages if repeated retries fail
-4. **Preserved Work**: Earlier stages don't need to be regenerated
-5. **Deterministic Restoration**: State is completely recoverable from snapshots
+4. **Repeated-Error Cutoff**: Objective-stage failures with the same error message are escalated early instead of burning the full retry budget
+5. **Preserved Work**: Earlier stages don't need to be regenerated
+6. **Deterministic Restoration**: State is completely recoverable from snapshots
 
 ### System Flow
 
@@ -235,6 +236,16 @@ Each stage gets **5 attempts** before falling back:
 ```csharp
 int triesLeft = 5;
 ```
+
+### Objective Repeated-Error Cutoff
+
+The objective stage now has an additional safeguard for pathological cases where the same failure keeps recurring with little or no meaningful change between attempts, for example repeated:
+
+- `Failed to spawn objective unit group. Sea`
+- `Failed to spawn objective unit group. LandMedium, LandLarge`
+- `Failed to find Cargo SpawnPoint`
+
+When the objective stage throws the **same error message 3 times in a row** during a single mission-generation attempt, the generator stops spending the remaining in-stage retries and immediately escalates to the normal fallback path. This keeps fallback recovery intact while avoiding long same-error retry churn.
 
 ### Retry Loop
 
