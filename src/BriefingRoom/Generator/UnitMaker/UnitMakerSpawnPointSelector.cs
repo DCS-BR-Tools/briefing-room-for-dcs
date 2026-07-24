@@ -30,11 +30,11 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
 {
     internal static class SpawnPointSelector
     {
-        private const int MAX_RADIUS_SEARCH_ITERATIONS = 15;
-        private const double MAX_LAND_RANGE_EXPANSION_FACTOR = 1.35;
-        private const double MAX_AIRSEA_RANGE_EXPANSION_FACTOR = 1.75;
-        private const double MAX_SECONDARY_RANGE_EXPANSION_FACTOR = 1.35;
-        private const double MAX_BORDER_LIMIT_EXPANSION_FACTOR = 1.2;
+        private const int MAX_RADIUS_SEARCH_ITERATIONS = 10;
+        private const double MAX_LAND_RANGE_EXPANSION_FACTOR = 1.5;
+        private const double MAX_AIRSEA_RANGE_EXPANSION_FACTOR = 2.0;
+        private const double MAX_SECONDARY_RANGE_EXPANSION_FACTOR = 1.45;
+        private const double MAX_BORDER_LIMIT_EXPANSION_FACTOR = 1.3;
 
         internal sealed record ParkingDemand(DBEntryAircraft Aircraft, int UnitCount, bool RequiresOpenAirParking = false, int ReservedSpots = 0);
 
