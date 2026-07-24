@@ -26,7 +26,6 @@ using BriefingRoom4DCS.Data;
 using BriefingRoom4DCS.Generator.UnitMaker;
 using BriefingRoom4DCS.Mission;
 using BriefingRoom4DCS.Template;
-using Polly;
 
 namespace BriefingRoom4DCS.Generator.Mission
 {
@@ -473,19 +472,49 @@ namespace BriefingRoom4DCS.Generator.Mission
         internal static DCSMission GenerateRetryable(IBriefingRoom briefingRoom, MissionTemplate template)
         {
             var templateRecord = new MissionTemplateRecord(briefingRoom.Database, template);
-            var mission = Policy
-                .HandleResult<DCSMission>(x => x.IsExtremeDistance(briefingRoom, template, out double distance))
-                .Or<BriefingRoomException>(x =>
-                {
-                    briefingRoom.PrintTranslatableWarning("RecoverableError", x.Message);
-                    return true;
-                })
-                .Retry(3)
-                .Execute(() => Generate(briefingRoom, templateRecord));
-            if (mission.IsExtremeDistance(briefingRoom, template, out double distance))
-                briefingRoom.PrintTranslatableWarning("ExcessDistance", Math.Round(distance, 2));
+            const int maxGeneralRetries = 1;
+            const int maxExtremeDistanceRetries = 4;
+            var generalRetriesLeft = maxGeneralRetries;
+            var extremeDistanceRetriesLeft = maxExtremeDistanceRetries;
 
-            return mission;
+            while (true)
+            {
+                DCSMission mission;
+                try
+                {
+                    mission = Generate(briefingRoom, templateRecord);
+                }
+                catch (BriefingRoomException ex)
+                {
+                    briefingRoom.PrintTranslatableWarning("RecoverableError", ex.Message);
+                    var retriesUsed = maxGeneralRetries - generalRetriesLeft;
+                    if (generalRetriesLeft <= 0)
+                    {
+                        briefingRoom.PrintTranslatableWarning("RecoverableErrorRetryUsageExhausted", retriesUsed, maxGeneralRetries);
+                        throw;
+                    }
+
+                    generalRetriesLeft--;
+                    retriesUsed = maxGeneralRetries - generalRetriesLeft;
+                    briefingRoom.PrintTranslatableWarning("RecoverableErrorRetryUsage", retriesUsed, maxGeneralRetries);
+                    continue;
+                }
+
+                if (!mission.IsExtremeDistance(briefingRoom, template, out double distance))
+                    return mission;
+
+                var extremeRetriesUsed = maxExtremeDistanceRetries - extremeDistanceRetriesLeft;
+                if (extremeDistanceRetriesLeft <= 0)
+                {
+                    briefingRoom.PrintTranslatableWarning("ExtremeDistanceRetryUsageExhausted", extremeRetriesUsed, maxExtremeDistanceRetries);
+                    briefingRoom.PrintTranslatableWarning("ExcessDistance", Math.Round(distance, 2));
+                    return mission;
+                }
+
+                extremeDistanceRetriesLeft--;
+                extremeRetriesUsed = maxExtremeDistanceRetries - extremeDistanceRetriesLeft;
+                briefingRoom.PrintTranslatableWarning("ExtremeDistanceRetryUsage", extremeRetriesUsed, maxExtremeDistanceRetries);
+            }
         }
     }
 }

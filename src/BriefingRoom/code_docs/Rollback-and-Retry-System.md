@@ -504,30 +504,43 @@ catch (BriefingRoomRawException err)
 }
 ```
 
-### Top-Level Retry (Polly)
+### Top-Level Retry (`GenerateRetryable`)
 
-The `GenerateRetryable()` method wraps the entire generation in Polly retry policy:
+The `GenerateRetryable()` method applies separate retry budgets for general failures vs. extreme-distance outcomes:
 
 ```csharp
 public static DCSMission GenerateRetryable(...)
 {
-    var retryPolicy = Policy
-        .Handle<BriefingRoomRawException>()
-        .Retry(3, (exception, retryCount) =>
+    const int maxGeneralRetries = 1;
+    const int maxExtremeDistanceRetries = 4;
+
+    while (true)
+    {
+        try
         {
-            BriefingRoom.PrintToLog($"Retry {retryCount}/3: {exception.Message}");
-        });
-    
-    return retryPolicy.Execute(() => Generate(...));
+            var mission = Generate(...);
+            if (!mission.IsExtremeDistance(...))
+                return mission;
+
+            // Retries focused on distance outliers
+            ...
+        }
+        catch (BriefingRoomException ex)
+        {
+            // Reduced full-regeneration retries for general failures
+            ...
+        }
+    }
 }
 ```
 
-**Purpose**: Handle extreme cases where entire mission generation fails
-- Theater coordinate calculation errors
-- Database loading issues
-- Mission too spread out validation
+**Purpose**:
+- Keep full-mission retries low for general recoverable failures
+- Preserve additional retries for extreme-distance outliers
 
-**Total Attempts**: Up to 4 complete generations (1 initial + 3 retries)
+**Current Attempts**:
+- General failures: up to 2 complete generations (1 initial + 1 retry)
+- Extreme distance: up to 5 complete generations (1 initial + 4 retries)
 
 ---
 
