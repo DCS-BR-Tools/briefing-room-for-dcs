@@ -90,13 +90,24 @@ namespace BriefingRoom4DCS.Generator
 
             var langKey = campaign.Missions[0].LangKey;
             
-            // Render all 3 campaign images in parallel
-            await Task.WhenAll(
+            // Render all 3 campaign images in parallel with a 2-minute timeout.
+            // Timeout prevents indefinite hangs if SetContentAsync/ScreenshotAsync block.
+            var campaignTasks = new[]
+            {
                 GenerateCampaignImageAsync(database, langKey, titleHTML, campaign, $"{baseFileName}_Title"),
                 GenerateCampaignImageAsync(database, langKey, winHTML, campaign, $"{baseFileName}_Success"),
                 GenerateCampaignImageAsync(database, langKey, lossHTML, campaign, $"{baseFileName}_Failure")
-            );
-
+            };
+            
+            try
+            {
+                await Task.WhenAll(campaignTasks).WaitAsync(TimeSpan.FromMinutes(2)).ConfigureAwait(false);
+            }
+            catch (OperationCanceledException)
+            {
+                BriefingRoom.PrintToLog("Imagery: campaign image generation TIMEOUT after 2 minutes - at least one image render hung", LogMessageErrorLevel.Error);
+                throw new InvalidOperationException("Campaign image generation timed out after 2 minutes. A browser render operation may be hung.");
+            }
         }
 
         internal static async Task GenerateTitleImage(IDatabase database, DCSMission mission)
@@ -224,6 +235,7 @@ namespace BriefingRoom4DCS.Generator
             }
             catch (Exception e)
             {
+                BriefingRoom.PrintToLog($"Imagery: campaign image '{fileName}' FAILED: {e.GetType().Name}: {e.Message}", LogMessageErrorLevel.Error);
                 throw new BriefingRoomException(database, langKey, "FailedToCreateTitleImage", e);
             }
 
@@ -239,13 +251,14 @@ namespace BriefingRoom4DCS.Generator
             {
                 page = await BrowserManager.GetPooledPageAsync();
                 await page.SetViewportAsync(new ViewPortOptions { Width = iWidth, Height = iHeight });
+
                 // Use DOMContentLoaded - faster since images are base64 embedded
                 await page.SetContentAsync(html, new SetContentOptions { WaitUntil = [WaitUntilNavigation.DOMContentLoaded] });
-                
+
                 // Get full page height for multi-page kneeboards
                 var bodyHeight = await page.EvaluateExpressionAsync<int>("document.body.scrollHeight");
                 var pageCount = (int)Math.Ceiling((double)bodyHeight / iHeight);
-                
+
                 var imagePaths = new List<string>();
                 for (int i = 0; i < pageCount; i++)
                 {
@@ -286,9 +299,10 @@ namespace BriefingRoom4DCS.Generator
             {
                 page = await BrowserManager.GetPooledPageAsync();
                 await page.SetViewportAsync(new ViewPortOptions { Width = iWidth, Height = iHeight });
+
                 // Use DOMContentLoaded - faster since images are base64 embedded
                 await page.SetContentAsync(html, new SetContentOptions { WaitUntil = [WaitUntilNavigation.DOMContentLoaded] });
-                
+
                 var tempPath = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.png");
                 await page.ScreenshotAsync(tempPath, new ScreenshotOptions
                 {

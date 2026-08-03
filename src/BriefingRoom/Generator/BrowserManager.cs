@@ -21,7 +21,6 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 #nullable enable
 
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -33,7 +32,7 @@ using PuppeteerSharp;
 namespace BriefingRoom4DCS.Generator
 {
     /// <summary>
-    /// Manages the headless browser instance and page pool used for image generation.
+    /// Manages the headless browser instance used for image generation.
     /// </summary>
     internal static class BrowserManager
     {
@@ -41,9 +40,6 @@ namespace BriefingRoom4DCS.Generator
         private static readonly SemaphoreSlim _initSemaphore = new(1, 1);
         private static bool _browserInitialized;
 
-        // Page pool for reuse - avoids creating new pages for each render
-        private static readonly ConcurrentBag<IPage> _pagePool = new();
-        private const int MaxPooledPages = 4;
         private static readonly string BrowserCacheDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "BriefingRoom");
         private static readonly string LastWorkingBrowserPathFile = Path.Combine(BrowserCacheDirectory, "last-working-browser-path.txt");
 
@@ -55,8 +51,6 @@ namespace BriefingRoom4DCS.Generator
         internal static async Task InitializeAsync()
         {
             if (Volatile.Read(ref _browserInitialized)) return;
-
-            BriefingRoom.PrintToLog("BrowserManager: starting browser initialization...", LogMessageErrorLevel.Info);
 
             // SemaphoreSlim(1,1) gives async-safe exclusive access so concurrent callers
             // wait rather than racing past each other. The flag is only set on success,
@@ -74,11 +68,9 @@ namespace BriefingRoom4DCS.Generator
                 {
                     candidateCount++;
                     attemptedPaths.Add(executablePath);
-                    BriefingRoom.PrintToLog($"BrowserManager: attempting candidate #{candidateCount}: '{executablePath}'", LogMessageErrorLevel.Info);
                     if (await TryLaunchBrowserAsync(executablePath, failures))
                     {
                         Volatile.Write(ref _browserInitialized, true);
-                        BriefingRoom.PrintToLog($"BrowserManager: initialization complete after {candidateCount} candidate(s).", LogMessageErrorLevel.Info);
                         return;
                     }
                 }
@@ -90,17 +82,13 @@ namespace BriefingRoom4DCS.Generator
                 {
                     BriefingRoom.PrintToLog("BrowserManager: no working installed browser found, downloading Chromium fallback...", LogMessageErrorLevel.Warning);
                     var browserFetcher = new BrowserFetcher();
-                    BriefingRoom.PrintToLog("BrowserManager: invoking BrowserFetcher.DownloadAsync()...", LogMessageErrorLevel.Info);
                     await browserFetcher.DownloadAsync();
-                    BriefingRoom.PrintToLog("BrowserManager: BrowserFetcher.DownloadAsync() completed.", LogMessageErrorLevel.Info);
                     var downloadedPath = browserFetcher.GetInstalledBrowsers().First().GetExecutablePath();
-                    BriefingRoom.PrintToLog($"BrowserManager: attempting Chromium fallback at '{downloadedPath}'", LogMessageErrorLevel.Info);
                     if (!attemptedPaths.Contains(downloadedPath))
                     {
                         if (await TryLaunchBrowserAsync(downloadedPath, failures))
                         {
                             Volatile.Write(ref _browserInitialized, true);
-                            BriefingRoom.PrintToLog("BrowserManager: initialization complete via Chromium fallback.", LogMessageErrorLevel.Info);
                             return;
                         }
                     }
@@ -127,12 +115,6 @@ namespace BriefingRoom4DCS.Generator
             await _initSemaphore.WaitAsync();
             try
             {
-                // Clean up pooled pages
-                while (_pagePool.TryTake(out var page))
-                {
-                    page.Dispose();
-                }
-
                 var browserToClose = _browser;
                 _browser = null;
                 Volatile.Write(ref _browserInitialized, false);
@@ -151,25 +133,31 @@ namespace BriefingRoom4DCS.Generator
 
         internal static async Task<IPage> GetPooledPageAsync()
         {
-            if (_pagePool.TryTake(out var page))
-            {
-                return page;
-            }
+            var browser = await GetBrowserAsync();
+            return await browser.NewPageAsync();
+        }
 
+        internal static async Task<IPage> GetFreshPageAsync()
+        {
             var browser = await GetBrowserAsync();
             return await browser.NewPageAsync();
         }
 
         internal static void ReturnPageToPool(IPage page)
         {
-            if (_pagePool.Count < MaxPooledPages)
-            {
-                _pagePool.Add(page);
-            }
-            else
+            try
             {
                 page.Dispose();
             }
+            catch (Exception ex)
+            {
+                BriefingRoom.PrintToLog($"BrowserManager: failed to dispose page ({ex.Message})", LogMessageErrorLevel.Warning);
+            }
+        }
+
+        internal static void ClearPagePool()
+        {
+            // No-op: page pooling has been removed.
         }
 
         private static async Task<IBrowser> GetBrowserAsync()
@@ -190,7 +178,6 @@ namespace BriefingRoom4DCS.Generator
             var browserArgs = GetBrowserArgs(isFirefox);
             try
             {
-                BriefingRoom.PrintToLog($"BrowserManager: invoking Puppeteer.LaunchAsync() for '{Path.GetFileName(executablePath)}'...", LogMessageErrorLevel.Info);
                 _browser = await Puppeteer.LaunchAsync(new LaunchOptions
                 {
                     Headless = true,
@@ -199,11 +186,8 @@ namespace BriefingRoom4DCS.Generator
                     Args = browserArgs,
                     Timeout = 60000
                 });
-                BriefingRoom.PrintToLog($"BrowserManager: Puppeteer.LaunchAsync() succeeded for '{Path.GetFileName(executablePath)}'.", LogMessageErrorLevel.Info);
-
                 // Canary test: verify the browser can actually render and screenshot.
                 // This catches issues that only appear at render-time (e.g. display server issues, missing libs).
-                BriefingRoom.PrintToLog($"BrowserManager: running canary test for '{Path.GetFileName(executablePath)}'...", LogMessageErrorLevel.Info);
                 if (!await CanaryTestBrowserAsync(_browser, failures))
                 {
                     BriefingRoom.PrintToLog($"BrowserManager: canary test FAILED for '{Path.GetFileName(executablePath)}'.", LogMessageErrorLevel.Warning);
@@ -212,10 +196,8 @@ namespace BriefingRoom4DCS.Generator
                     _browser = null;
                     return false;
                 }
-                BriefingRoom.PrintToLog($"BrowserManager: canary test PASSED for '{Path.GetFileName(executablePath)}'.", LogMessageErrorLevel.Info);
 
                 SaveLastWorkingBrowserPath(executablePath);
-                BriefingRoom.PrintToLog($"BrowserManager: launched {(isFirefox ? "Firefox-based" : "Chromium-based")} browser '{executablePath}'.", LogMessageErrorLevel.Info);
                 return true;
             }
             catch (Exception ex)
@@ -232,18 +214,14 @@ namespace BriefingRoom4DCS.Generator
             IPage? testPage = null;
             try
             {
-                BriefingRoom.PrintToLog("BrowserManager: canary test: creating new page...", LogMessageErrorLevel.Info);
                 testPage = await browser.NewPageAsync();
-                BriefingRoom.PrintToLog("BrowserManager: canary test: setting viewport to 256x256...", LogMessageErrorLevel.Info);
                 await testPage.SetViewportAsync(new ViewPortOptions { Width = 256, Height = 256 });
 
                 // Load minimal HTML to test rendering and JS execution
                 var testHtml = "<html><body>Canary</body></html>";
-                BriefingRoom.PrintToLog("BrowserManager: canary test: setting content and waiting for DOMContentLoaded...", LogMessageErrorLevel.Info);
                 await testPage.SetContentAsync(testHtml, new SetContentOptions { WaitUntil = [WaitUntilNavigation.DOMContentLoaded] });
 
                 // Verify JS execution works by reading a simple property
-                BriefingRoom.PrintToLog("BrowserManager: canary test: evaluating document.body.textContent...", LogMessageErrorLevel.Info);
                 var bodyText = await testPage.EvaluateExpressionAsync<string>("document.body.textContent");
                 if (string.IsNullOrEmpty(bodyText) || !bodyText.Contains("Canary"))
                 {
@@ -251,10 +229,7 @@ namespace BriefingRoom4DCS.Generator
                     failures.AppendLine($"Browser canary test failed: JS evaluation did not return expected content (got '{bodyText}')");
                     return false;
                 }
-                BriefingRoom.PrintToLog("BrowserManager: canary test: JS evaluation successful.", LogMessageErrorLevel.Info);
-
                 // Test screenshot capability
-                BriefingRoom.PrintToLog("BrowserManager: canary test: taking screenshot...", LogMessageErrorLevel.Info);
                 var tempPath = Path.Combine(Path.GetTempPath(), $"br-canary-{Guid.NewGuid()}.png");
                 await testPage.ScreenshotAsync(tempPath, new ScreenshotOptions { Type = ScreenshotType.Png });
 
@@ -264,10 +239,7 @@ namespace BriefingRoom4DCS.Generator
                     failures.AppendLine($"Browser canary test failed: screenshot produced no valid file");
                     return false;
                 }
-                BriefingRoom.PrintToLog($"BrowserManager: canary test: screenshot successful ({new FileInfo(tempPath).Length} bytes).", LogMessageErrorLevel.Info);
-
                 File.Delete(tempPath);
-                BriefingRoom.PrintToLog("BrowserManager: canary test: PASSED", LogMessageErrorLevel.Info);
                 return true;
             }
             catch (Exception ex)
@@ -282,7 +254,6 @@ namespace BriefingRoom4DCS.Generator
                 {
                     try
                     {
-                        BriefingRoom.PrintToLog("BrowserManager: canary test: closing test page...", LogMessageErrorLevel.Info);
                         await testPage.CloseAsync();
                     }
                     catch (Exception ex)
