@@ -44,12 +44,30 @@ jobs:
       - name: Set Build Version
         id: build_version
         run: |
-          (Get-Content -path  src\BriefingRoom\BriefingRoom.cs -Raw) -replace '~BUILD_VERSION~','${{ steps.current-time.outputs.formattedTime }}' | Set-Content src\BriefingRoom\BriefingRoom.cs
+          $path = "src\BriefingRoom\BriefingRoom.cs"
+          $content = Get-Content -Path $path -Raw
+          if (-not $content.Contains("~BUILD_VERSION~")) {
+            throw "BUILD_VERSION token not found in $path. Build version cannot be injected."
+          }
+          $content = $content -replace "~BUILD_VERSION~","${{ steps.current-time.outputs.formattedTime }}"
+          if ($content.Contains("~BUILD_VERSION~")) {
+            throw "BUILD_VERSION token replacement failed in $path."
+          }
+          Set-Content -Path $path -Value $content
 
       - name: Set Release Version
         id: release_version
         run: |
-          (Get-Content -path  src\BriefingRoom\BriefingRoom.cs -Raw) -replace '~RELEASE_VERSION~','${{ steps.current-date.outputs.formattedTime }}' | Set-Content src\BriefingRoom\BriefingRoom.cs
+          $path = "src\BriefingRoom\BriefingRoom.cs"
+          $content = Get-Content -Path $path -Raw
+          if (-not $content.Contains("~RELEASE_VERSION~")) {
+            throw "RELEASE_VERSION token not found in $path. Release version cannot be injected."
+          }
+          $content = $content -replace "~RELEASE_VERSION~","${{ steps.current-date.outputs.formattedTime }}"
+          if ($content.Contains("~RELEASE_VERSION~")) {
+            throw "RELEASE_VERSION token replacement failed in $path."
+          }
+          Set-Content -Path $path -Value $content
 
       - name: Build and Publish App
         run: |
@@ -193,12 +211,16 @@ jobs:
       - name: Set Build Version
         id: build_version
         run: |
+          grep -q "~BUILD_VERSION~" ./src/BriefingRoom/BriefingRoom.cs || { echo "BUILD_VERSION token not found"; exit 1; }
           sed -i 's/~BUILD_VERSION~/${{ steps.current-time.outputs.formattedTime }}/g' ./src/BriefingRoom/BriefingRoom.cs
+          grep -q "~BUILD_VERSION~" ./src/BriefingRoom/BriefingRoom.cs && { echo "BUILD_VERSION token replacement failed"; exit 1; }
 
       - name: Set Release Version
         id: release_version
         run: |
+          grep -q "~RELEASE_VERSION~" ./src/BriefingRoom/BriefingRoom.cs || { echo "RELEASE_VERSION token not found"; exit 1; }
           sed -i 's/~RELEASE_VERSION~/${{ steps.current-date.outputs.formattedTime }}/g' ./src/BriefingRoom/BriefingRoom.cs
+          grep -q "~RELEASE_VERSION~" ./src/BriefingRoom/BriefingRoom.cs && { echo "RELEASE_VERSION token replacement failed"; exit 1; }
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
