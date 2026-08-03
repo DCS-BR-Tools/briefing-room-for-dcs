@@ -21,7 +21,6 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 #nullable enable
 
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -33,7 +32,7 @@ using PuppeteerSharp;
 namespace BriefingRoom4DCS.Generator
 {
     /// <summary>
-    /// Manages the headless browser instance and page pool used for image generation.
+    /// Manages the headless browser instance used for image generation.
     /// </summary>
     internal static class BrowserManager
     {
@@ -41,9 +40,6 @@ namespace BriefingRoom4DCS.Generator
         private static readonly SemaphoreSlim _initSemaphore = new(1, 1);
         private static bool _browserInitialized;
 
-        // Page pool for reuse - avoids creating new pages for each render
-        private static readonly ConcurrentBag<IPage> _pagePool = new();
-        private const int MaxPooledPages = 4;
         private static readonly string BrowserCacheDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "BriefingRoom");
         private static readonly string LastWorkingBrowserPathFile = Path.Combine(BrowserCacheDirectory, "last-working-browser-path.txt");
 
@@ -66,9 +62,11 @@ namespace BriefingRoom4DCS.Generator
 
                 var failures = new StringBuilder();
                 var attemptedPaths = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+                var candidateCount = 0;
 
                 foreach (var executablePath in GetInstalledBrowserCandidates().Distinct(StringComparer.OrdinalIgnoreCase))
                 {
+                    candidateCount++;
                     attemptedPaths.Add(executablePath);
                     if (await TryLaunchBrowserAsync(executablePath, failures))
                     {
@@ -76,6 +74,8 @@ namespace BriefingRoom4DCS.Generator
                         return;
                     }
                 }
+
+                BriefingRoom.PrintToLog($"BrowserManager: all {candidateCount} installed browser candidate(s) failed. Attempting Chromium download fallback...", LogMessageErrorLevel.Warning);
 
                 // Final fallback: try downloading Chromium and launching it.
                 try
@@ -115,12 +115,6 @@ namespace BriefingRoom4DCS.Generator
             await _initSemaphore.WaitAsync();
             try
             {
-                // Clean up pooled pages
-                while (_pagePool.TryTake(out var page))
-                {
-                    page.Dispose();
-                }
-
                 var browserToClose = _browser;
                 _browser = null;
                 Volatile.Write(ref _browserInitialized, false);
@@ -137,26 +131,21 @@ namespace BriefingRoom4DCS.Generator
             }
         }
 
-        internal static async Task<IPage> GetPooledPageAsync()
+        internal static async Task<IPage> CreatePageAsync()
         {
-            if (_pagePool.TryTake(out var page))
-            {
-                return page;
-            }
-
             var browser = await GetBrowserAsync();
             return await browser.NewPageAsync();
         }
 
-        internal static void ReturnPageToPool(IPage page)
+        internal static void DisposePage(IPage page)
         {
-            if (_pagePool.Count < MaxPooledPages)
-            {
-                _pagePool.Add(page);
-            }
-            else
+            try
             {
                 page.Dispose();
+            }
+            catch (Exception ex)
+            {
+                BriefingRoom.PrintToLog($"BrowserManager: failed to dispose page ({ex.Message})", LogMessageErrorLevel.Warning);
             }
         }
 
@@ -186,9 +175,18 @@ namespace BriefingRoom4DCS.Generator
                     Args = browserArgs,
                     Timeout = 60000
                 });
+                // Canary test: verify the browser can actually render and screenshot.
+                // This catches issues that only appear at render-time (e.g. display server issues, missing libs).
+                if (!await CanaryTestBrowserAsync(_browser, failures))
+                {
+                    BriefingRoom.PrintToLog($"BrowserManager: canary test FAILED for '{Path.GetFileName(executablePath)}'.", LogMessageErrorLevel.Warning);
+                    InvalidateLastWorkingBrowserPath(executablePath);
+                    _browser.Dispose();
+                    _browser = null;
+                    return false;
+                }
 
                 SaveLastWorkingBrowserPath(executablePath);
-                BriefingRoom.PrintToLog($"BrowserManager: launched {(isFirefox ? "Firefox-based" : "Chromium-based")} browser '{executablePath}'.");
                 return true;
             }
             catch (Exception ex)
@@ -197,6 +195,61 @@ namespace BriefingRoom4DCS.Generator
                 failures.AppendLine($"Browser launch failed for '{executablePath}': {ex.GetType().Name} - {ex.Message}");
                 BriefingRoom.PrintToLog($"BrowserManager: failed to launch '{executablePath}' ({ex.Message})", LogMessageErrorLevel.Warning);
                 return false;
+            }
+        }
+
+        private static async Task<bool> CanaryTestBrowserAsync(IBrowser browser, StringBuilder failures)
+        {
+            IPage? testPage = null;
+            try
+            {
+                testPage = await browser.NewPageAsync();
+                await testPage.SetViewportAsync(new ViewPortOptions { Width = 256, Height = 256 });
+
+                // Load minimal HTML to test rendering and JS execution
+                var testHtml = "<html><body>Canary</body></html>";
+                await testPage.SetContentAsync(testHtml, new SetContentOptions { WaitUntil = [WaitUntilNavigation.DOMContentLoaded] });
+
+                // Verify JS execution works by reading a simple property
+                var bodyText = await testPage.EvaluateExpressionAsync<string>("document.body.textContent");
+                if (string.IsNullOrEmpty(bodyText) || !bodyText.Contains("Canary"))
+                {
+                    BriefingRoom.PrintToLog($"BrowserManager: canary test: JS evaluation returned '{bodyText}' (expected 'Canary')", LogMessageErrorLevel.Warning);
+                    failures.AppendLine($"Browser canary test failed: JS evaluation did not return expected content (got '{bodyText}')");
+                    return false;
+                }
+                // Test screenshot capability
+                var tempPath = Path.Combine(Path.GetTempPath(), $"br-canary-{Guid.NewGuid()}.png");
+                await testPage.ScreenshotAsync(tempPath, new ScreenshotOptions { Type = ScreenshotType.Png });
+
+                if (!File.Exists(tempPath) || new FileInfo(tempPath).Length == 0)
+                {
+                    BriefingRoom.PrintToLog($"BrowserManager: canary test: screenshot failed (file missing or empty)", LogMessageErrorLevel.Warning);
+                    failures.AppendLine($"Browser canary test failed: screenshot produced no valid file");
+                    return false;
+                }
+                File.Delete(tempPath);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                BriefingRoom.PrintToLog($"BrowserManager: canary test exception: {ex.GetType().Name}: {ex.Message}", LogMessageErrorLevel.Warning);
+                failures.AppendLine($"Browser canary test failed for: {ex.GetType().Name} - {ex.Message}");
+                return false;
+            }
+            finally
+            {
+                if (testPage != null)
+                {
+                    try
+                    {
+                        await testPage.CloseAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        BriefingRoom.PrintToLog($"BrowserManager: canary test: failed to close test page ({ex.Message})", LogMessageErrorLevel.Warning);
+                    }
+                }
             }
         }
 

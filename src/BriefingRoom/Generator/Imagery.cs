@@ -35,7 +35,7 @@ namespace BriefingRoom4DCS.Generator
 {
     public class Imagery
     {
-        private static string UNKOWN_IMAGE_PATH = Path.Combine(BRPaths.INCLUDE_JPG, "Flags", $"Unknown.png");
+        private static string UNKNOWN_IMAGE_PATH = Path.Combine(BRPaths.INCLUDE_JPG, "Flags", $"Unknown.png");
 
         /// <summary>
         /// Initialize the browser for HTML rendering. Call this at application startup.
@@ -64,7 +64,7 @@ namespace BriefingRoom4DCS.Generator
             GeneratorTools.ReplaceKey(ref lossHTML, "BackgroundImage", GetInternalImageHTMLBase64(Path.Combine(BRPaths.INCLUDE_JPG, "Fire.jpg")));
             var playerFlagPath = Path.Combine(BRPaths.INCLUDE_JPG, "Flags", $"{campaignTemplate.GetCoalitionID(campaignTemplate.ContextPlayerCoalition)}.png");
             if (!File.Exists(playerFlagPath))
-                playerFlagPath = UNKOWN_IMAGE_PATH;
+                playerFlagPath = UNKNOWN_IMAGE_PATH;
         
             GeneratorTools.ReplaceKey(ref titleHTML, "PlayerFlag", GetInternalImageHTMLBase64(playerFlagPath));
             GeneratorTools.ReplaceKey(ref winHTML, "PlayerFlag", GetInternalImageHTMLBase64(playerFlagPath));
@@ -73,7 +73,7 @@ namespace BriefingRoom4DCS.Generator
             var enemyFlagPath = Path.Combine(BRPaths.INCLUDE_JPG, "Flags", $"{campaignTemplate.GetCoalitionID(campaignTemplate.ContextPlayerCoalition.GetEnemy())}.png");
             
             if (!File.Exists(enemyFlagPath))
-                enemyFlagPath = UNKOWN_IMAGE_PATH;
+                enemyFlagPath = UNKNOWN_IMAGE_PATH;
             
             GeneratorTools.ReplaceKey(ref titleHTML, "EnemyFlag", GetInternalImageHTMLBase64(enemyFlagPath));
             GeneratorTools.ReplaceKey(ref winHTML, "EnemyFlag", GetInternalImageHTMLBase64(enemyFlagPath));
@@ -90,13 +90,24 @@ namespace BriefingRoom4DCS.Generator
 
             var langKey = campaign.Missions[0].LangKey;
             
-            // Render all 3 campaign images in parallel
-            await Task.WhenAll(
+            // Render all 3 campaign images in parallel with a 2-minute timeout.
+            // Timeout prevents indefinite hangs if SetContentAsync/ScreenshotAsync block.
+            var campaignTasks = new[]
+            {
                 GenerateCampaignImageAsync(database, langKey, titleHTML, campaign, $"{baseFileName}_Title"),
                 GenerateCampaignImageAsync(database, langKey, winHTML, campaign, $"{baseFileName}_Success"),
                 GenerateCampaignImageAsync(database, langKey, lossHTML, campaign, $"{baseFileName}_Failure")
-            );
-
+            };
+            
+            try
+            {
+                await Task.WhenAll(campaignTasks).WaitAsync(TimeSpan.FromMinutes(2)).ConfigureAwait(false);
+            }
+            catch (OperationCanceledException)
+            {
+                BriefingRoom.PrintToLog("Imagery: campaign image generation TIMEOUT after 2 minutes - at least one image render hung", LogMessageErrorLevel.Error);
+                throw new InvalidOperationException("Campaign image generation timed out after 2 minutes. A browser render operation may be hung.");
+            }
         }
 
         internal static async Task GenerateTitleImage(IDatabase database, DCSMission mission)
@@ -111,12 +122,12 @@ namespace BriefingRoom4DCS.Generator
 
             var playerFlagPath = Path.Combine(BRPaths.INCLUDE_JPG, "Flags", $"{mission.TemplateRecord.GetCoalitionID(mission.TemplateRecord.ContextPlayerCoalition)}.png");
             if (!File.Exists(playerFlagPath))
-                playerFlagPath = UNKOWN_IMAGE_PATH;
+                playerFlagPath = UNKNOWN_IMAGE_PATH;
             GeneratorTools.ReplaceKey(ref html, "PlayerFlag", GetInternalImageHTMLBase64(playerFlagPath));
 
             var enemyFlagPath = Path.Combine(BRPaths.INCLUDE_JPG, "Flags", $"{mission.TemplateRecord.GetCoalitionID(mission.TemplateRecord.ContextPlayerCoalition.GetEnemy())}.png");
             if (!File.Exists(enemyFlagPath))
-                enemyFlagPath = UNKOWN_IMAGE_PATH;
+                enemyFlagPath = UNKNOWN_IMAGE_PATH;
             GeneratorTools.ReplaceKey(ref html, "EnemyFlag", GetInternalImageHTMLBase64(enemyFlagPath));
             
             GeneratorTools.ReplaceKey(ref html, "MissionName", mission.Briefing.Name);
@@ -154,7 +165,6 @@ namespace BriefingRoom4DCS.Generator
                 foreach (var path in imagePaths)
                 {
                     var imgData = await File.ReadAllBytesAsync(path);
-                    using var ms = new MemoryStream();
                     output.Add(imgData);
                     File.Delete(path);
                 }
@@ -174,7 +184,7 @@ namespace BriefingRoom4DCS.Generator
             {
                 var midPath = !string.IsNullOrEmpty(aircraftID) ? $"{aircraftID}/" : "";
                 var imagePaths = await GenerateKneeboardImagePaths(html);
-                var multiImage = imagePaths.Count() > 1;
+                var multiImage = imagePaths.Length > 1;
                 var inc = 0;
                 foreach (var path in imagePaths)
                 {
@@ -224,6 +234,7 @@ namespace BriefingRoom4DCS.Generator
             }
             catch (Exception e)
             {
+                BriefingRoom.PrintToLog($"Imagery: campaign image '{fileName}' FAILED: {e.GetType().Name}: {e.Message}", LogMessageErrorLevel.Error);
                 throw new BriefingRoomException(database, langKey, "FailedToCreateTitleImage", e);
             }
 
@@ -237,15 +248,16 @@ namespace BriefingRoom4DCS.Generator
             IPage? page = null;
             try
             {
-                page = await BrowserManager.GetPooledPageAsync();
+                page = await BrowserManager.CreatePageAsync();
                 await page.SetViewportAsync(new ViewPortOptions { Width = iWidth, Height = iHeight });
+
                 // Use DOMContentLoaded - faster since images are base64 embedded
                 await page.SetContentAsync(html, new SetContentOptions { WaitUntil = [WaitUntilNavigation.DOMContentLoaded] });
-                
+
                 // Get full page height for multi-page kneeboards
                 var bodyHeight = await page.EvaluateExpressionAsync<int>("document.body.scrollHeight");
                 var pageCount = (int)Math.Ceiling((double)bodyHeight / iHeight);
-                
+
                 var imagePaths = new List<string>();
                 for (int i = 0; i < pageCount; i++)
                 {
@@ -265,7 +277,7 @@ namespace BriefingRoom4DCS.Generator
                     imagePaths.Add(tempPath);
                 }
 
-                BrowserManager.ReturnPageToPool(page);
+                BrowserManager.DisposePage(page);
                 page = null; // prevent disposal in finally
                 return imagePaths.ToArray();
             }
@@ -284,11 +296,12 @@ namespace BriefingRoom4DCS.Generator
             IPage? page = null;
             try
             {
-                page = await BrowserManager.GetPooledPageAsync();
+                page = await BrowserManager.CreatePageAsync();
                 await page.SetViewportAsync(new ViewPortOptions { Width = iWidth, Height = iHeight });
+
                 // Use DOMContentLoaded - faster since images are base64 embedded
                 await page.SetContentAsync(html, new SetContentOptions { WaitUntil = [WaitUntilNavigation.DOMContentLoaded] });
-                
+
                 var tempPath = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}.png");
                 await page.ScreenshotAsync(tempPath, new ScreenshotOptions
                 {
@@ -302,7 +315,7 @@ namespace BriefingRoom4DCS.Generator
                     Type = ScreenshotType.Png
                 });
 
-                BrowserManager.ReturnPageToPool(page);
+                BrowserManager.DisposePage(page);
                 page = null; // prevent disposal in finally
                 return tempPath;
             }
