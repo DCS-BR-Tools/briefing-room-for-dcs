@@ -26,6 +26,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using PuppeteerSharp;
 
@@ -37,7 +38,7 @@ namespace BriefingRoom4DCS.Generator
     internal static class BrowserManager
     {
         private static IBrowser? _browser;
-        private static readonly object _browserLock = new();
+        private static readonly SemaphoreSlim _initSemaphore = new(1, 1);
         private static bool _browserInitialized;
 
         // Page pool for reuse - avoids creating new pages for each render
@@ -53,44 +54,57 @@ namespace BriefingRoom4DCS.Generator
         /// </summary>
         internal static async Task InitializeAsync()
         {
-            if (_browserInitialized) return;
+            if (Volatile.Read(ref _browserInitialized)) return;
 
-            lock (_browserLock)
-            {
-                if (_browserInitialized) return;
-                _browserInitialized = true;
-            }
-
-            var failures = new StringBuilder();
-            var attemptedPaths = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-
-            foreach (var executablePath in GetInstalledBrowserCandidates().Distinct(StringComparer.OrdinalIgnoreCase))
-            {
-                attemptedPaths.Add(executablePath);
-                if (await TryLaunchBrowserAsync(executablePath, failures))
-                    return;
-            }
-
-            // Final fallback: try downloading Chromium and launching it.
+            // SemaphoreSlim(1,1) gives async-safe exclusive access so concurrent callers
+            // wait rather than racing past each other. The flag is only set on success,
+            // so a failed attempt releases the semaphore and allows a future retry.
+            await _initSemaphore.WaitAsync();
             try
             {
-                BriefingRoom.PrintToLog("BrowserManager: no working installed browser found, downloading Chromium fallback...", LogMessageErrorLevel.Warning);
-                var browserFetcher = new BrowserFetcher();
-                await browserFetcher.DownloadAsync();
-                var downloadedPath = browserFetcher.GetInstalledBrowsers().First().GetExecutablePath();
-                if (!attemptedPaths.Contains(downloadedPath))
-                {
-                    if (await TryLaunchBrowserAsync(downloadedPath, failures))
-                        return;
-                }
-            }
-            catch (Exception ex)
-            {
-                failures.AppendLine($"Chromium download fallback failed: {ex.GetType().Name} - {ex.Message}");
-                BriefingRoom.PrintToLog($"BrowserManager: Chromium download fallback failed ({ex.Message})", LogMessageErrorLevel.Error);
-            }
+                if (Volatile.Read(ref _browserInitialized)) return;
 
-            throw new InvalidOperationException($"Failed to launch any supported browser for imagery generation.{Environment.NewLine}{failures}");
+                var failures = new StringBuilder();
+                var attemptedPaths = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+                foreach (var executablePath in GetInstalledBrowserCandidates().Distinct(StringComparer.OrdinalIgnoreCase))
+                {
+                    attemptedPaths.Add(executablePath);
+                    if (await TryLaunchBrowserAsync(executablePath, failures))
+                    {
+                        Volatile.Write(ref _browserInitialized, true);
+                        return;
+                    }
+                }
+
+                // Final fallback: try downloading Chromium and launching it.
+                try
+                {
+                    BriefingRoom.PrintToLog("BrowserManager: no working installed browser found, downloading Chromium fallback...", LogMessageErrorLevel.Warning);
+                    var browserFetcher = new BrowserFetcher();
+                    await browserFetcher.DownloadAsync();
+                    var downloadedPath = browserFetcher.GetInstalledBrowsers().First().GetExecutablePath();
+                    if (!attemptedPaths.Contains(downloadedPath))
+                    {
+                        if (await TryLaunchBrowserAsync(downloadedPath, failures))
+                        {
+                            Volatile.Write(ref _browserInitialized, true);
+                            return;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    failures.AppendLine($"Chromium download fallback failed: {ex.GetType().Name} - {ex.Message}");
+                    BriefingRoom.PrintToLog($"BrowserManager: Chromium download fallback failed ({ex.Message})", LogMessageErrorLevel.Error);
+                }
+
+                throw new InvalidOperationException($"Failed to launch any supported browser for imagery generation.{Environment.NewLine}{failures}");
+            }
+            finally
+            {
+                _initSemaphore.Release();
+            }
         }
 
         /// <summary>
@@ -98,18 +112,28 @@ namespace BriefingRoom4DCS.Generator
         /// </summary>
         internal static async Task ShutdownAsync()
         {
-            // Clean up pooled pages
-            while (_pagePool.TryTake(out var page))
+            await _initSemaphore.WaitAsync();
+            try
             {
-                page.Dispose();
-            }
+                // Clean up pooled pages
+                while (_pagePool.TryTake(out var page))
+                {
+                    page.Dispose();
+                }
 
-            if (_browser != null)
-            {
-                await _browser.CloseAsync();
-                _browser.Dispose();
+                var browserToClose = _browser;
                 _browser = null;
-                _browserInitialized = false;
+                Volatile.Write(ref _browserInitialized, false);
+
+                if (browserToClose != null)
+                {
+                    await browserToClose.CloseAsync();
+                    browserToClose.Dispose();
+                }
+            }
+            finally
+            {
+                _initSemaphore.Release();
             }
         }
 
@@ -138,9 +162,14 @@ namespace BriefingRoom4DCS.Generator
 
         private static async Task<IBrowser> GetBrowserAsync()
         {
-            if (_browser == null)
+            if (!Volatile.Read(ref _browserInitialized) || _browser == null)
                 await InitializeAsync();
-            return _browser!;
+
+            var browser = _browser;
+            if (browser == null)
+                throw new InvalidOperationException("BrowserManager initialization completed without a browser instance.");
+
+            return browser;
         }
 
         private static async Task<bool> TryLaunchBrowserAsync(string executablePath, StringBuilder failures)
@@ -195,18 +224,13 @@ namespace BriefingRoom4DCS.Generator
                 "--no-first-run"
             };
 
+            // Disable GPU: headless screenshot rendering does not benefit from GPU
+            // acceleration, and GPU can cause renderer hangs or crashes on machines
+            // without a proper display driver (common in headless/server environments).
+            chromiumArgs.Add("--disable-gpu");
+
             if (BriefingRoom.RUNNING_IN_DOCKER)
-            {
-                // Disable GPU in Docker (no display/driver)
-                chromiumArgs.Add("--disable-gpu");
                 chromiumArgs.Add("--single-process");
-            }
-            else
-            {
-                // Enable GPU acceleration on desktop
-                chromiumArgs.Add("--enable-gpu-rasterization");
-                chromiumArgs.Add("--enable-accelerated-2d-canvas");
-            }
 
             return chromiumArgs.ToArray();
         }

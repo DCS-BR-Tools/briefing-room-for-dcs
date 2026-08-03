@@ -234,9 +234,10 @@ namespace BriefingRoom4DCS.Generator
             var iWidth = 768;
             var iHeight = 1024;
             
-            var page = await BrowserManager.GetPooledPageAsync();
+            IPage? page = null;
             try
             {
+                page = await BrowserManager.GetPooledPageAsync();
                 await page.SetViewportAsync(new ViewPortOptions { Width = iWidth, Height = iHeight });
                 // Use DOMContentLoaded - faster since images are base64 embedded
                 await page.SetContentAsync(html, new SetContentOptions { WaitUntil = [WaitUntilNavigation.DOMContentLoaded] });
@@ -264,11 +265,14 @@ namespace BriefingRoom4DCS.Generator
                     imagePaths.Add(tempPath);
                 }
 
+                BrowserManager.ReturnPageToPool(page);
+                page = null; // prevent disposal in finally
                 return imagePaths.ToArray();
             }
             finally
             {
-                BrowserManager.ReturnPageToPool(page);
+                // Only reached on exception: page may be in a bad state, discard it.
+                DisposeFailedRenderPage(page);
             }
         }
 
@@ -277,9 +281,10 @@ namespace BriefingRoom4DCS.Generator
             var iWidth = 1024;
             var iHeight = 1024;
             
-            var page = await BrowserManager.GetPooledPageAsync();
+            IPage? page = null;
             try
             {
+                page = await BrowserManager.GetPooledPageAsync();
                 await page.SetViewportAsync(new ViewPortOptions { Width = iWidth, Height = iHeight });
                 // Use DOMContentLoaded - faster since images are base64 embedded
                 await page.SetContentAsync(html, new SetContentOptions { WaitUntil = [WaitUntilNavigation.DOMContentLoaded] });
@@ -297,11 +302,14 @@ namespace BriefingRoom4DCS.Generator
                     Type = ScreenshotType.Png
                 });
 
+                BrowserManager.ReturnPageToPool(page);
+                page = null; // prevent disposal in finally
                 return tempPath;
             }
             finally
             {
-                BrowserManager.ReturnPageToPool(page);
+                // Only reached on exception: page may be in a bad state, discard it.
+                DisposeFailedRenderPage(page);
             }
         }
 
@@ -310,6 +318,20 @@ namespace BriefingRoom4DCS.Generator
             var bytes = File.ReadAllBytes(filePath);
             var fileBase64 = Convert.ToBase64String(bytes);
             return $"data:image/png;base64, {fileBase64}";
+        }
+
+        private static void DisposeFailedRenderPage(IPage? page)
+        {
+            if (page == null) return;
+
+            try
+            {
+                page.Dispose();
+            }
+            catch (Exception ex)
+            {
+                BriefingRoom.PrintToLog($"Imagery: failed to dispose page after render failure ({ex.Message})", LogMessageErrorLevel.Warning);
+            }
         }
     }
 }
