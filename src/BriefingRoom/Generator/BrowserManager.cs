@@ -131,19 +131,13 @@ namespace BriefingRoom4DCS.Generator
             }
         }
 
-        internal static async Task<IPage> GetPooledPageAsync()
+        internal static async Task<IPage> CreatePageAsync()
         {
             var browser = await GetBrowserAsync();
             return await browser.NewPageAsync();
         }
 
-        internal static async Task<IPage> GetFreshPageAsync()
-        {
-            var browser = await GetBrowserAsync();
-            return await browser.NewPageAsync();
-        }
-
-        internal static void ReturnPageToPool(IPage page)
+        internal static void DisposePage(IPage page)
         {
             try
             {
@@ -153,11 +147,6 @@ namespace BriefingRoom4DCS.Generator
             {
                 BriefingRoom.PrintToLog($"BrowserManager: failed to dispose page ({ex.Message})", LogMessageErrorLevel.Warning);
             }
-        }
-
-        internal static void ClearPagePool()
-        {
-            // No-op: page pooling has been removed.
         }
 
         private static async Task<IBrowser> GetBrowserAsync()
