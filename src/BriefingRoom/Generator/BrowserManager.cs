@@ -187,6 +187,16 @@ namespace BriefingRoom4DCS.Generator
                     Timeout = 60000
                 });
 
+                // Canary test: verify the browser can actually render and screenshot.
+                // This catches issues that only appear at render-time (e.g. display server issues, missing libs).
+                if (!await CanaryTestBrowserAsync(_browser, failures))
+                {
+                    InvalidateLastWorkingBrowserPath(executablePath);
+                    _browser.Dispose();
+                    _browser = null;
+                    return false;
+                }
+
                 SaveLastWorkingBrowserPath(executablePath);
                 BriefingRoom.PrintToLog($"BrowserManager: launched {(isFirefox ? "Firefox-based" : "Chromium-based")} browser '{executablePath}'.");
                 return true;
@@ -197,6 +207,60 @@ namespace BriefingRoom4DCS.Generator
                 failures.AppendLine($"Browser launch failed for '{executablePath}': {ex.GetType().Name} - {ex.Message}");
                 BriefingRoom.PrintToLog($"BrowserManager: failed to launch '{executablePath}' ({ex.Message})", LogMessageErrorLevel.Warning);
                 return false;
+            }
+        }
+
+        private static async Task<bool> CanaryTestBrowserAsync(IBrowser browser, StringBuilder failures)
+        {
+            IPage? testPage = null;
+            try
+            {
+                testPage = await browser.NewPageAsync();
+                await testPage.SetViewportAsync(new ViewPortOptions { Width = 256, Height = 256 });
+
+                // Load minimal HTML to test rendering and JS execution
+                var testHtml = "<html><body>Canary</body></html>";
+                await testPage.SetContentAsync(testHtml, new SetContentOptions { WaitUntil = [WaitUntilNavigation.DOMContentLoaded] });
+
+                // Verify JS execution works by reading a simple property
+                var bodyText = await testPage.EvaluateExpressionAsync<string>("document.body.textContent");
+                if (string.IsNullOrEmpty(bodyText) || !bodyText.Contains("Canary"))
+                {
+                    failures.AppendLine($"Browser canary test failed: JS evaluation did not return expected content");
+                    return false;
+                }
+
+                // Test screenshot capability
+                var tempPath = Path.Combine(Path.GetTempPath(), $"br-canary-{Guid.NewGuid()}.png");
+                await testPage.ScreenshotAsync(tempPath, new ScreenshotOptions { Type = ScreenshotType.Png });
+
+                if (!File.Exists(tempPath) || new FileInfo(tempPath).Length == 0)
+                {
+                    failures.AppendLine($"Browser canary test failed: screenshot produced no valid file");
+                    return false;
+                }
+
+                File.Delete(tempPath);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                failures.AppendLine($"Browser canary test failed for: {ex.GetType().Name} - {ex.Message}");
+                return false;
+            }
+            finally
+            {
+                if (testPage != null)
+                {
+                    try
+                    {
+                        await testPage.CloseAsync();
+                    }
+                    catch
+                    {
+                        // Swallow close errors — page cleanup is best-effort
+                    }
+                }
             }
         }
 
