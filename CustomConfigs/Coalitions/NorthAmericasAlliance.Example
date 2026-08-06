@@ -12,3 +12,4 @@ Elements.TheCoalition=the NAU
 [Coalition]
 Countries=USA,Canada
 DefaultUnitList=FirstWorld
+ShareArms=True
