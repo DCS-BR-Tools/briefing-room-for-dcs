@@ -34,8 +34,6 @@ namespace BriefingRoom4DCS.Data
 
         internal (Decade start, Decade end) Operational { get; private set; } = new(Decade.Decade1940, Decade.Decade2020);
 
-        internal bool ShareArms { get; private set; } = true;
-
         internal string DefaultUnitList { get; private set; }
 
 
@@ -59,7 +57,6 @@ namespace BriefingRoom4DCS.Data
             var tempOperational = ini.GetValueArray<Decade>("Coalition", "Operational");
             if (tempOperational.Length > 0)
                 Operational = new(tempOperational[0], tempOperational[1]);
-            ShareArms = ini.GetValue("Coalition", "ShareArms", true);
 
             DefaultUnitList = ini.GetValue<string>("Coalition", "DefaultUnitList");
             if (!Database.EntryExists<DBEntryDefaultUnitList>(DefaultUnitList))
@@ -221,11 +218,7 @@ namespace BriefingRoom4DCS.Data
         {
             // Operates on the assumption that allies will supply them with arms. Most nations are in a coalition with the USA or Russia/USSR so is replacement for default unit lists.
             return Database.GetAllEntries<DBEntryCoalition>()
-                .Where(x =>
-                    x.ShareArms &&
-                    x.Countries.Where(x => x != Country.ALL).Intersect(Countries).Any() &&
-                    (x.Operational.start <= decade) &&
-                    (x.Operational.end >= decade))
+                .Where(x => x.Countries.Where(x => x != Country.ALL).Intersect(Countries).Any() && (x.Operational.start <= decade) && (x.Operational.end >= decade))
                 .SelectMany(x => x.Countries)
                 .Where(x => !Countries.Contains(x))
                 .ToArray();
