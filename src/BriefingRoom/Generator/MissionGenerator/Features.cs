@@ -175,16 +175,29 @@ namespace BriefingRoom4DCS.Generator.Mission
                 if (
                     groupSide == Side.Ally &&
                     groupInfo.HasValue &&
-                    groupInfo.Value.UnitDB != null &&
-                    groupInfo.Value.UnitDB.IsAircraft &&
-                    !flags.HasFlag(FeatureUnitGroupFlags.StaticAircraft))
-                    mission.Briefing.AddItem(DCSMissionBriefingItemType.FlightGroup,
-                            $"{groupInfo.Value.Name.Split("-")[0]}{(featureDB.GetDBEntryInfo().Category.Get("en") == "Direct Support" ? "(DS)" : "")}\t" +
-                            $"{unitCount}× {groupInfo.Value.UnitDB.UIDisplayName.Get(mission.LangKey)}\t" +
-                            $"{GeneratorTools.FormatRadioFrequency(groupInfo.Value.Frequency)}{TACANStr}\t" +
-                            $"{featureDB.UnitGroupTask}" +
-                            (airbaseName != null ? $"\t{airbaseName}" : "") +
-                            (airbaseName != null ? $"\t{airbaseName}" : ""));
+                    groupInfo.Value.UnitDB != null)
+                {
+                    if (groupInfo.Value.UnitDB.IsAircraft && !flags.HasFlag(FeatureUnitGroupFlags.StaticAircraft))
+                    {
+                        mission.Briefing.AddItem(DCSMissionBriefingItemType.FlightGroup,
+                                $"{groupInfo.Value.Name.Split("-")[0]}{(featureDB.GetDBEntryInfo().Category.Get("en") == "Direct Support" ? "(DS)" : "")}\t" +
+                                $"{unitCount}× {groupInfo.Value.UnitDB.UIDisplayName.Get(mission.LangKey)}\t" +
+                                $"{GeneratorTools.FormatRadioFrequency(groupInfo.Value.Frequency)}{TACANStr}\t" +
+                                $"{featureDB.UnitGroupTask}" +
+                                (airbaseName != null ? $"\t{airbaseName}" : "") +
+                                (airbaseName != null ? $"\t{airbaseName}" : ""));
+                    }
+                    else if (!groupInfo.Value.UnitDB.IsAircraft)
+                    {
+                        mission.Briefing.AddItem(DCSMissionBriefingItemType.Remark, $"Supported Units: {groupInfo.Value.Name.Split("-")[0]} ({unitCount}× {groupInfo.Value.UnitDB.UIDisplayName.Get(mission.LangKey)})");
+
+                        if (mission.TemplateRecord.OptionsMission.Contains("MarkWaypoints"))
+                        {
+                            DrawingMaker.AddDrawing(ref mission, $"Supported Unit Area {groupInfo.Value.Name}", DrawingType.Circle, groupInfo.Value.Coordinates, "Radius".ToKeyValuePair(1.0 * Toolbox.NM_TO_METERS), "Colour".ToKeyValuePair(DrawingColour.Blue));
+                            DrawingMaker.AddDrawing(ref mission, $"Supported Unit Text {groupInfo.Value.Name}", DrawingType.TextBox, groupInfo.Value.Coordinates, "Text".ToKeyValuePair($"Supported: {groupInfo.Value.Name.Split("-")[0]}"), "Colour".ToKeyValuePair(DrawingColour.Blue), "FillColour".ToKeyValuePair(DrawingColour.Clear));
+                        }
+                    }
+                }
                 if (!groupInfo.Value.UnitDB.IsAircraft)
                     mission.MapData.Add($"UNIT-{groupInfo.Value.UnitDB.Families[0]}-{groupSide}-{groupInfo.Value.GroupID}", new List<double[]> { groupInfo.Value.Coordinates.ToArray() });
 
