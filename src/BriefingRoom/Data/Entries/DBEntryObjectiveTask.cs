@@ -39,6 +39,8 @@ namespace BriefingRoom4DCS.Data
 
         internal UnitCategory[] ValidPlayerUnitCategories { get; private set; }
 
+        internal string[] ValidTargetIDs { get; private set; }
+
         internal string[] IncludeOgg { get; private set; }
 
         internal string[] RequiredFeatures { get; private set; }
@@ -75,6 +77,8 @@ namespace BriefingRoom4DCS.Data
 
             ValidPlayerUnitCategories = ini.GetValueArray<UnitCategory>("ObjectiveTask", "ValidPlayerUnitCategories").Distinct().ToArray();
             if (ValidPlayerUnitCategories.Length == 0) ValidPlayerUnitCategories = Toolbox.GetEnumValues<UnitCategory>(); // No category means all categories
+
+            ValidTargetIDs = ini.GetValueArray<string>("ObjectiveTask", "ValidTargetIDs").Distinct().ToArray();
 
             // Included files
             IncludeOgg = Toolbox.AddMissingFileExtensions(ini.GetValueArray<string>("Include", "Ogg"), ".ogg");

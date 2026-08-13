@@ -1,4 +1,4 @@
-﻿/*
+/*
 ==========================================================================
 This file is part of Briefing Room for DCS World, a mission
 generator for DCS World, by @akaAgar (https://github.com/akaAgar/briefing-room-for-dcs)
@@ -316,6 +316,10 @@ namespace BriefingRoom4DCS.Generator.Mission
 
         private static DCSTask AssignTask(MissionTemplateSubTaskRecord objective)
         {
+            if (objective.Task == "SupportStrike")
+                return DCSTask.SEAD;
+            if (objective.Task.StartsWith("Support") || objective.Task.StartsWith("Escort") || objective.Task.StartsWith("HoldSuperiority"))
+                return DCSTask.CAP;
             if (objective.Task.StartsWith("Transport") || objective.Task.StartsWith("LandNear") || objective.Task.StartsWith("Extract"))
                 return DCSTask.Transport;
             if (objective.Task.StartsWith("FlyNear"))

@@ -62,6 +62,16 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
 
             ObjectiveCreationHelpers.AddAircraftSpawnFlags(ctx);
 
+            var taskType = taskDB.ID switch
+            {
+                "SupportStrike" => DCSTask.GroundAttack,
+                "SupportRecon" => DCSTask.Reconnaissance,
+                "SupportTransport" => DCSTask.Transport,
+                "EscortHVA" => DCSTask.AWACS,
+                _ => DCSTask.Nothing
+            };
+            ctx.ExtraSettings.AddIfKeyUnused("DCSTask", taskType);
+
             var groupLua = targetBehaviorDB.GroupLua[(int)targetDB.DCSUnitCategory];
             if (originAirbase != null)
                 ctx.ExtraSettings["HotStart"] = true;
@@ -119,7 +129,7 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             AddEscortAltitudeInfo(ctx, VIPGroupInfo.Value, targetDB.UnitCategory);
             ObjectiveUtils.AssignTargetSuffix(ref VIPGroupInfo, ctx.ObjectiveName, false);
             AddEscortBriefingTokens(ctx, VIPGroupInfo.Value, targetDB.UnitCategory, escortGroupName);
-            AddEscortKneeboardFlightEntry(ctx, VIPGroupInfo.Value, targetDB.UnitCategory, escortGroupName);
+            AddEscortKneeboardFlightEntry(ctx, VIPGroupInfo.Value, targetDB.UnitCategory, escortGroupName, originAirbase);
             ObjectiveCreationHelpers.AddBriefingItems(ctx, VIPGroupInfo.Value, false);            
             ObjectiveCreationHelpers.AddBriefingRemarks(ctx, ObjectiveCreationHelpers.GetPluralIndex(VIPGroupInfo.Value, false));
             ObjectiveCreationHelpers.AddOggFilesAndFeatures(ctx, VIPGroupInfo.Value);
@@ -163,17 +173,19 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
         /// aircraft type, and radio frequency alongside their own flights. Only added for airborne
         /// escorts (Plane/Helicopter) - ground/ship escorts have no equivalent kneeboard table.
         /// </summary>
-        private static void AddEscortKneeboardFlightEntry(ObjectiveContext ctx, GroupInfo escortedGroup, UnitCategory unitCategory, string groupName)
+        private static void AddEscortKneeboardFlightEntry(ObjectiveContext ctx, GroupInfo escortedGroup, UnitCategory unitCategory, string groupName, DBEntryAirbase originAirbase)
         {
             if (unitCategory != UnitCategory.Plane && unitCategory != UnitCategory.Helicopter)
                 return;
+
+            string departure = originAirbase != null ? $"{originAirbase.UIDisplayName.Get(ctx.Mission.LangKey)} (Ramp)" : "Air Spawn";
 
             ctx.Mission.Briefing.AddItem(DCSMissionBriefingItemType.FlightGroup,
                 $"{groupName}(ESCORT)\t" +
                 $"{ctx.UnitCount}× {escortedGroup.UnitDB.UIDisplayName.Get(ctx.Mission.LangKey)}\t" +
                 $"{GeneratorTools.FormatRadioFrequency(escortedGroup.Frequency)}\t" +
                 "-\t" +
-                $"{ctx.ObjectiveName} Pickup\t" +
+                $"{departure}\t" +
                 $"{ctx.ObjectiveName}");
         }
         private static void AddEscortAltitudeInfo(ObjectiveContext ctx, GroupInfo escortedGroup, UnitCategory unitCategory)
