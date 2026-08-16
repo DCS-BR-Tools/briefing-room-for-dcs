@@ -174,7 +174,10 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             if (targetBehaviorDB == null) throw new BriefingRoomException(database, langKey, "BehaviorNotFound", targetBehaviorDB.UIDisplayName);
             if (taskDB == null) throw new BriefingRoomException(database, langKey, "TaskNotFound", taskDB.UIDisplayName);
             if (!taskDB.ValidUnitCategories.Contains(targetDB.UnitCategory))
-                throw new BriefingRoomException(database, langKey, "TaskTargetsInvalid", taskDB.UIDisplayName, targetDB.UnitCategory);
+                throw new BriefingRoomException(database, langKey, "TargetCategoryMismatch", targetDB.UIDisplayName, targetDB.UnitCategory, taskDB.UIDisplayName, String.Join(", ", taskDB.ValidUnitCategories.Select(x => x.ToString()).ToList()));
+
+            if (taskDB.ValidTargetIDs.Length > 0 && !taskDB.ValidTargetIDs.Contains(targetDB.ID))
+                throw new BriefingRoomException(database, langKey, "TargetCategoryMismatch", targetDB.UIDisplayName, targetDB.UnitCategory, taskDB.UIDisplayName, String.Join(", ", taskDB.ValidTargetIDs));
         }
     }
 }

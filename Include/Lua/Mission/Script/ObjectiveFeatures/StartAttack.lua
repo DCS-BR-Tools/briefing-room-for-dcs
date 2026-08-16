@@ -1,7 +1,7 @@
 function briefingRoom.mission.objectivesTriggersCommon.startAttack(args)
     local objectiveIndex = args[1]
+    local groupNames = args[2]
     briefingRoom.radioManager.play("$LANG_PILOT$: $LANG_LAUNCHATTACKREQUEST$", "RadioPilotBeginYourAttack")
-    local groupNames = dcsExtensions.getGroupNamesContaining("%-STGT%-$OBJECTIVENAME$")
     briefingRoom.debugPrint("Activating Attack group objectiveIndex: " .. table.count(groupNames), 1)
     for _, value in pairs(groupNames) do
         local acGroup = Group.getByName(value) -- get the group
@@ -21,9 +21,9 @@ function briefingRoom.mission.objectivesTriggersCommon.startAttack(args)
         briefingRoom.mission.objectives[objectiveIndex].f10Commands[idx].commandPath)
 end
 
-function briefingRoom.mission.objectiveFeaturesCommon.registerStartAttack(objectiveIndex)
+function briefingRoom.mission.objectiveFeaturesCommon.registerStartAttack(objectiveIndex, groupNames)
     table.insert(briefingRoom.mission.objectives[objectiveIndex].f10Commands,
-        { text = "$LANG_LAUNCHATTACK$", func = briefingRoom.mission.objectivesTriggersCommon.startAttack, args = { objectiveIndex } })
+        { text = "$LANG_LAUNCHATTACK$", func = briefingRoom.mission.objectivesTriggersCommon.startAttack, args = { objectiveIndex, groupNames } })
     briefingRoom.mission.objectiveFeatures[objectiveIndex].startAttackCommandIndex = table.count(briefingRoom.mission
     .objectives[objectiveIndex].f10Commands)
 end

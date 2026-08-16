@@ -91,7 +91,13 @@ namespace BriefingRoom4DCS
                     if (string.IsNullOrEmpty(parameter)) // No parameter, return none
                         return (from DBEntryObjectiveTarget objectiveTarget in Database.GetAllEntries<DBEntryObjectiveTarget>() select objectiveTarget.GetDBEntryInfo()).OrderBy(x => x.Name.Get(LanguageKey)).ToArray();
                     else
-                        return (from DBEntryObjectiveTarget objectiveTarget in Database.GetAllEntries<DBEntryObjectiveTarget>() where Database.GetEntry<DBEntryObjectiveTask>(parameter).ValidUnitCategories.Contains(objectiveTarget.UnitCategory) select objectiveTarget.GetDBEntryInfo()).OrderBy(x => x.Name.Get(LanguageKey)).ToArray();
+                    {
+                        var taskDB = Database.GetEntry<DBEntryObjectiveTask>(parameter);
+                        return (from DBEntryObjectiveTarget objectiveTarget in Database.GetAllEntries<DBEntryObjectiveTarget>() 
+                                where taskDB.ValidUnitCategories.Contains(objectiveTarget.UnitCategory) && 
+                                      (taskDB.ValidTargetIDs.Length == 0 || taskDB.ValidTargetIDs.Contains(objectiveTarget.ID)) 
+                                select objectiveTarget.GetDBEntryInfo()).OrderBy(x => x.Name.Get(LanguageKey)).ToArray();
+                    }
                 case DatabaseEntryType.ObjectiveTargetBehavior:
                     if (string.IsNullOrEmpty(parameter)) // No parameter, return none
                         return (from DBEntryObjectiveTargetBehavior objectiveTargetBehavior in Database.GetAllEntries<DBEntryObjectiveTargetBehavior>() select objectiveTargetBehavior.GetDBEntryInfo()).OrderBy(x => x.Name.Get(LanguageKey)).ToArray();
