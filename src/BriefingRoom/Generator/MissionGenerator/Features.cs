@@ -189,12 +189,18 @@ namespace BriefingRoom4DCS.Generator.Mission
                     }
                     else if (!groupInfo.Value.UnitDB.IsAircraft)
                     {
-                        mission.Briefing.AddItem(DCSMissionBriefingItemType.Remark, $"Supported Units: {groupInfo.Value.Name.Split("-")[0]} ({unitCount}× {groupInfo.Value.UnitDB.UIDisplayName.Get(mission.LangKey)})");
-
-                        if (mission.TemplateRecord.OptionsMission.Contains("MarkWaypoints"))
+                        var isNearObjective = mission.ObjectiveCoordinates.Count == 0 || mission.ObjectiveCoordinates.Any(x => x.GetDistanceFrom(groupInfo.Value.Coordinates) < 15 * Toolbox.NM_TO_METERS);
+                        if (isNearObjective)
                         {
-                            DrawingMaker.AddDrawing(ref mission, $"Supported Unit Area {groupInfo.Value.Name}", DrawingType.Circle, groupInfo.Value.Coordinates, "Radius".ToKeyValuePair(1.0 * Toolbox.NM_TO_METERS), "Colour".ToKeyValuePair(DrawingColour.Blue));
-                            DrawingMaker.AddDrawing(ref mission, $"Supported Unit Text {groupInfo.Value.Name}", DrawingType.TextBox, groupInfo.Value.Coordinates, "Text".ToKeyValuePair($"Supported: {groupInfo.Value.Name.Split("-")[0]}"), "Colour".ToKeyValuePair(DrawingColour.Blue), "FillColour".ToKeyValuePair(DrawingColour.Clear));
+                            var friendlyForcesListStr = briefingRoom.Database.Language.Translate(mission.LangKey, "FriendlyForcesList");
+                            mission.Briefing.AddItem(DCSMissionBriefingItemType.Remark, $"{friendlyForcesListStr}: {groupInfo.Value.Name.Split("-")[0]} ({unitCount}× {groupInfo.Value.UnitDB.UIDisplayName.Get(mission.LangKey)})");
+
+                            if (mission.TemplateRecord.OptionsMission.Contains("MarkWaypoints"))
+                            {
+                                var friendlyForcesLabelStr = briefingRoom.Database.Language.Translate(mission.LangKey, "FriendlyForcesLabel");
+                                DrawingMaker.AddDrawing(ref mission, $"Friendly Forces Area {groupInfo.Value.Name}", DrawingType.Circle, groupInfo.Value.Coordinates, "Radius".ToKeyValuePair(1.0 * Toolbox.NM_TO_METERS), "Colour".ToKeyValuePair(DrawingColour.Blue));
+                                DrawingMaker.AddDrawing(ref mission, $"Friendly Forces Text {groupInfo.Value.Name}", DrawingType.TextBox, groupInfo.Value.Coordinates, "Text".ToKeyValuePair($"{friendlyForcesLabelStr} {groupInfo.Value.Name.Split("-")[0]}"), "Colour".ToKeyValuePair(DrawingColour.Blue), "FillColour".ToKeyValuePair(DrawingColour.Clear));
+                            }
                         }
                     }
                 }
@@ -437,12 +443,18 @@ namespace BriefingRoom4DCS.Generator.Mission
                     }
                     else if (!groupInfo.Value.UnitDB.IsAircraft)
                     {
-                        mission.Briefing.AddItem(DCSMissionBriefingItemType.Remark, $"Supported Units: {groupInfo.Value.Name.Split("-")[0]} ({unitCount}× {groupInfo.Value.UnitDB.UIDisplayName.Get(mission.LangKey)})");
-
-                        if (mission.TemplateRecord.OptionsMission.Contains("MarkWaypoints"))
+                        var isNearObjective = mission.ObjectiveCoordinates.Count == 0 || mission.ObjectiveCoordinates.Any(x => x.GetDistanceFrom(groupInfo.Value.Coordinates) < 15 * Toolbox.NM_TO_METERS);
+                        if (isNearObjective)
                         {
-                            DrawingMaker.AddDrawing(ref mission, $"Supported Unit Area {groupInfo.Value.Name}", DrawingType.Circle, groupInfo.Value.Coordinates, "Radius".ToKeyValuePair(1.0 * Toolbox.NM_TO_METERS), "Colour".ToKeyValuePair(DrawingColour.Blue));
-                            DrawingMaker.AddDrawing(ref mission, $"Supported Unit Text {groupInfo.Value.Name}", DrawingType.TextBox, groupInfo.Value.Coordinates, "Text".ToKeyValuePair($"Supported: {groupInfo.Value.Name.Split("-")[0]}"), "Colour".ToKeyValuePair(DrawingColour.Blue), "FillColour".ToKeyValuePair(DrawingColour.Clear));
+                            var friendlyForcesListStr = briefingRoom.Database.Language.Translate(mission.LangKey, "FriendlyForcesList");
+                            mission.Briefing.AddItem(DCSMissionBriefingItemType.Remark, $"{friendlyForcesListStr}: {groupInfo.Value.Name.Split("-")[0]} ({unitCount}× {groupInfo.Value.UnitDB.UIDisplayName.Get(mission.LangKey)})");
+
+                            if (mission.TemplateRecord.OptionsMission.Contains("MarkWaypoints"))
+                            {
+                                var friendlyForcesLabelStr = briefingRoom.Database.Language.Translate(mission.LangKey, "FriendlyForcesLabel");
+                                DrawingMaker.AddDrawing(ref mission, $"Friendly Forces Area {groupInfo.Value.Name}", DrawingType.Circle, groupInfo.Value.Coordinates, "Radius".ToKeyValuePair(1.0 * Toolbox.NM_TO_METERS), "Colour".ToKeyValuePair(DrawingColour.Blue));
+                                DrawingMaker.AddDrawing(ref mission, $"Friendly Forces Text {groupInfo.Value.Name}", DrawingType.TextBox, groupInfo.Value.Coordinates, "Text".ToKeyValuePair($"{friendlyForcesLabelStr} {groupInfo.Value.Name.Split("-")[0]}"), "Colour".ToKeyValuePair(DrawingColour.Blue), "FillColour".ToKeyValuePair(DrawingColour.Clear));
+                            }
                         }
                     }
                 }

@@ -14,7 +14,7 @@ public class ObjectiveBriefingTests
     }
 
     [Fact]
-    public void EscortAndDynamicSpawnObjectivesAddSpawnDetailsToBriefingRemarks()
+    public void EscortAndDynamicSpawnObjectivesAddSpawnDetailsToBriefing()
     {
         var templatePath = Path.Combine(Path.GetTempPath(), $"escort-briefing-{Guid.NewGuid():N}.brt");
         try
@@ -85,11 +85,16 @@ public class ObjectiveBriefingTests
             var briefingRoom = new BriefingRoom(fixture.Db);
             var mission = briefingRoom.GenerateMission(templatePath);
 
+            var tasks = mission.Briefing.GetItems(DCSMissionBriefingItemType.Task)
+                .Select(x => x.ToLowerInvariant())
+                .ToList();
+
             var remarks = mission.Briefing.GetItems(DCSMissionBriefingItemType.Remark)
                 .Select(x => x.ToLowerInvariant())
                 .ToList();
 
-            Assert.Contains(remarks, x => x.Contains("altitude") && x.Contains("spawn"));
+            Assert.Contains(tasks, x => x.Contains("approximately") && x.Contains("ft"));
+            Assert.NotEmpty(remarks);
         }
         finally
         {
@@ -97,4 +102,6 @@ public class ObjectiveBriefingTests
                 File.Delete(templatePath);
         }
     }
+
+
 }

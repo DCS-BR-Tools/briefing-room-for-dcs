@@ -44,6 +44,27 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             // Get units with validation
             ObjectiveCreationHelpers.GetUnitsWithValidation(ctx);
 
+            if ((ctx.Task.Preset == "EscortPlane" || ctx.Task.Preset == "EscortHelicopters") && ctx.UnitDBs.FirstOrDefault() is DBEntryAircraft aircraftDB)
+            {
+                bool isAirSpawn = !Constants.AIRBASE_LOCATIONS.Contains(targetBehaviorDB.Location);
+                string newBehaviorId = null;
+
+                if (aircraftDB.Tasks.Contains(DCSTask.GroundAttack) || aircraftDB.Tasks.Contains(DCSTask.CAS))
+                    newBehaviorId = isAirSpawn ? "AttackObjectiveFromAir" : "AttackObjective";
+                else if (aircraftDB.Tasks.Contains(DCSTask.Reconnaissance))
+                    newBehaviorId = isAirSpawn ? "ReconObjectiveFromAir" : "ReconObjective";
+                else if (aircraftDB.Tasks.Contains(DCSTask.Transport))
+                    newBehaviorId = isAirSpawn ? "InsertAtObjectiveFromAir" : "InsertAtObjective";
+
+                if (newBehaviorId != null)
+                {
+                    targetBehaviorDB = briefingRoom.Database.GetEntry<DBEntryObjectiveTargetBehavior>(newBehaviorId);
+                    ctx.TargetBehaviorDB = targetBehaviorDB;
+                    
+                    ctx.Mission.SetValue($"DynamicBehavior_{ctx.Task.GetHashCode()}", newBehaviorId);
+                }
+            }
+
             // Get transport origin and destination for escort
             var (originAirbase, unitCoordinates) = ObjectiveTransportUtils.GetTransportOrigin(briefingRoom, ref ctx.Mission, targetBehaviorDB.Location, objectiveCoordinates, true, ctx.ObjectiveTargetUnitFamily.GetUnitCategory());
             if (Constants.AIRBASE_LOCATIONS.Contains(targetBehaviorDB.Location) && targetDB.UnitCategory.IsAircraft())
@@ -62,12 +83,20 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
 
             ObjectiveCreationHelpers.AddAircraftSpawnFlags(ctx);
 
-            var taskType = taskDB.ID switch
+            var taskType = ctx.ObjectiveTargetUnitFamily switch
             {
-                "SupportStrike" => DCSTask.GroundAttack,
-                "SupportRecon" => DCSTask.Reconnaissance,
-                "SupportTransport" => DCSTask.Transport,
-                "EscortHVA" => DCSTask.AWACS,
+                UnitFamily.PlaneAttack or UnitFamily.PlaneBomber or UnitFamily.PlaneStrike => DCSTask.GroundAttack,
+                UnitFamily.PlaneSEAD => DCSTask.SEAD,
+                UnitFamily.HelicopterAttack => DCSTask.CAS,
+                UnitFamily.PlaneTransport or UnitFamily.HelicopterTransport or UnitFamily.HelicopterUtility => DCSTask.Transport,
+                UnitFamily.PlaneAWACS => DCSTask.AWACS,
+                UnitFamily.PlaneTankerBasket or UnitFamily.PlaneTankerBoom => DCSTask.Refueling,
+                UnitFamily.PlaneDrone => DCSTask.Reconnaissance,
+                UnitFamily.PlaneFighter or UnitFamily.PlaneInterceptor when targetBehaviorDB.ID.StartsWith("Recon") => DCSTask.Reconnaissance,
+                UnitFamily.PlaneFighter or UnitFamily.PlaneInterceptor => DCSTask.CAP,
+                _ when targetBehaviorDB.ID.StartsWith("Attack") => DCSTask.GroundAttack,
+                _ when targetBehaviorDB.ID.StartsWith("Recon") => DCSTask.Reconnaissance,
+                _ when targetBehaviorDB.ID.StartsWith("Insert") => DCSTask.Transport,
                 _ => DCSTask.Nothing
             };
             ctx.ExtraSettings.AddIfKeyUnused("DCSTask", taskType);
@@ -85,6 +114,18 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             else if (ctx.ObjectiveTargetUnitFamily == UnitFamily.HelicopterTransport || ctx.ObjectiveTargetUnitFamily == UnitFamily.HelicopterUtility)
             {
                 groupLua = "HeloCombatDrop";
+            }
+
+            if (ctx.UnitDBs.FirstOrDefault() is DBEntryAircraft escortedAircraft)
+            {
+                double slowestPlayerSpeed = escortedAircraft.CruiseSpeed;
+                foreach (var playerGroup in ctx.Mission.TemplateRecord.PlayerFlightGroups)
+                {
+                    var playerAircraft = briefingRoom.Database.GetEntry<DBEntryJSONUnit>(playerGroup.Aircraft) as DBEntryAircraft;
+                    if (playerAircraft != null && playerAircraft.CruiseSpeed < slowestPlayerSpeed)
+                        slowestPlayerSpeed = playerAircraft.CruiseSpeed;
+                }
+                ctx.ExtraSettings["Speed"] = slowestPlayerSpeed;
             }
 
             GroupInfo? VIPGroupInfo = UnitGenerator.AddUnitGroup(
@@ -162,7 +203,9 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 escortedGroup.UnitDB is DBEntryAircraft aircraftDB)
             {
                 int altitudeFt = (int)Math.Round(aircraftDB.CruiseAlt * Toolbox.METERS_TO_FEET / 500.0) * 500;
-                altitudeClause = $" at approximately {altitudeFt:N0} ft";
+                bool isHelicopter = aircraftDB.Families != null && aircraftDB.Families.Length > 0 && aircraftDB.Families[0].GetUnitCategory() == UnitCategory.Helicopter;
+                string altTypeStr = isHelicopter ? "AGL" : "MSL";
+                altitudeClause = $" at approximately {altitudeFt:N0} ft {altTypeStr}";
             }
             ctx.LuaExtraSettings["EscortAltitudeClause"] = altitudeClause;
         }
@@ -178,7 +221,15 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             if (unitCategory != UnitCategory.Plane && unitCategory != UnitCategory.Helicopter)
                 return;
 
-            string departure = originAirbase != null ? $"{originAirbase.UIDisplayName.Get(ctx.Mission.LangKey)} (Ramp)" : "Air Spawn";
+            bool isRampSpawn = originAirbase != null && Constants.AIRBASE_LOCATIONS.Contains(ctx.TargetBehaviorDB.Location);
+            string departure = isRampSpawn ? $"{originAirbase.UIDisplayName.Get(ctx.Mission.LangKey)} (Ramp)" : "Air Spawn";
+
+            if (!isRampSpawn && escortedGroup.UnitDB is DBEntryAircraft aircraftDB)
+            {
+                double speed = ctx.ExtraSettings.ContainsKey("Speed") ? Convert.ToDouble(ctx.ExtraSettings["Speed"]) : aircraftDB.CruiseSpeed;
+                int speedKts = (int)Math.Round(speed * Toolbox.METERS_PER_SECOND_TO_KNOTS);
+                departure += $" ({speedKts:N0} kts)";
+            }
 
             ctx.Mission.Briefing.AddItem(DCSMissionBriefingItemType.FlightGroup,
                 $"{groupName}(ESCORT)\t" +
@@ -195,7 +246,9 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 escortedGroup.UnitDB is DBEntryAircraft aircraftDB)
             {
                 int altitudeFt = (int)Math.Round(aircraftDB.CruiseAlt * Toolbox.METERS_TO_FEET / 500.0) * 500;
-                altitudeClause = $" at approximately {altitudeFt:N0} ft";
+                bool isHelicopter = aircraftDB.Families != null && aircraftDB.Families.Length > 0 && aircraftDB.Families[0].GetUnitCategory() == UnitCategory.Helicopter;
+                string altTypeStr = isHelicopter ? "AGL" : "MSL";
+                altitudeClause = $" at approximately {altitudeFt:N0} ft {altTypeStr}";
             }
             ctx.LuaExtraSettings["EscortAltitudeClause"] = altitudeClause;
         }

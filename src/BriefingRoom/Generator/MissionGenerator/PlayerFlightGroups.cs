@@ -211,8 +211,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 extraSettings.AddIfKeyUnused("ParkingID", parkingSpotIDsList);
                 extraSettings.AddIfKeyUnused("UnitCoords", parkingSpotCoordinatesList);
             }
-
-            var task = GetTaskType(mission.TemplateRecord.Objectives, extraSettings, package);
+            var task = GetTaskType(mission, mission.TemplateRecord.Objectives, extraSettings, package, unitDB);
 
             GroupInfo? groupInfo = UnitGenerator.AddUnitGroup(
                 briefingRoom,
@@ -304,22 +303,51 @@ namespace BriefingRoom4DCS.Generator.Mission
             });
         }
 
-        private static DCSTask GetTaskType(List<MissionTemplateObjectiveRecord> objectives, Dictionary<string, object> extraSettings, MissionTemplatePackageRecord package)
+        private static DCSTask GetTaskType(DCSMission mission, List<MissionTemplateObjectiveRecord> objectives, Dictionary<string, object> extraSettings, MissionTemplatePackageRecord package, DBEntryAircraft unitDB)
         {
             var objs = objectives;
             if (package != null)
                 objs = objs.Where((x, i) => package.ObjectiveIndexes.Contains(i)).ToList();
-            var task = objectives.Select(x => new List<DCSTask> { AssignTask(x) }.Concat(x.SubTasks.Select(y => AssignTask(y)).ToList())).SelectMany(x => x).ToList().GroupBy(x => x).MaxBy(g => g.Count()).ToList().First();
+            var task = objs.Select(x => new List<DCSTask> { AssignTask(mission, x, unitDB) }.Concat(x.SubTasks.Select(y => AssignTask(mission, y, unitDB)).ToList())).SelectMany(x => x).ToList().GroupBy(x => x).MaxBy(g => g.Count()).ToList().First();
             extraSettings.AddIfKeyUnused("DCSTask", task);
             return task;
         }
 
-        private static DCSTask AssignTask(MissionTemplateSubTaskRecord objective)
+        private static DCSTask AssignTask(DCSMission mission, MissionTemplateSubTaskRecord objective, DBEntryAircraft unitDB)
         {
-            if (objective.Task == "SupportStrike")
-                return DCSTask.SEAD;
-            if (objective.Task.StartsWith("Support") || objective.Task.StartsWith("Escort") || objective.Task.StartsWith("HoldSuperiority"))
+            if (objective.Task.StartsWith("Escort") || objective.Task.StartsWith("Support") || objective.Task.StartsWith("HoldSuperiority"))
+            {
+                string dynamicBehavior = objective.TargetBehavior;
+                string dynamicKey = $"DynamicBehavior_{objective.GetHashCode()}";
+                if (mission.Values.ContainsKey(dynamicKey))
+                    dynamicBehavior = mission.Values[dynamicKey];
+
+                bool isEscortTargetAttacking = objective.Preset == "SupportStrikePackage" ||
+                    objective.Target == "PlaneAttack" ||
+                    objective.Target == "PlaneBomber" ||
+                    objective.Target == "PlaneStrike" ||
+                    objective.Target == "HelicopterAttack" ||
+                    (dynamicBehavior != null && dynamicBehavior.StartsWith("Attack"));
+
+                bool isSeadCapable = unitDB != null && unitDB.Tasks != null && unitDB.Tasks.Contains(DCSTask.SEAD);
+
+                if (isSeadCapable)
+                {
+                    AmountNR samThreat = mission.TemplateRecord.SituationEnemyAirDefense.Get();
+                    AmountNR fighterThreat = mission.TemplateRecord.SituationEnemyAirForce.Get();
+
+                    // If escorted unit is attacking ground, SAMs are a major threat. Provide SEAD if SAMs are Average or higher.
+                    if (isEscortTargetAttacking && samThreat >= AmountNR.Average)
+                        return DCSTask.SEAD;
+
+                    // If escorted unit is not attacking (e.g. Cargo, AWACS, CAP), fighters are usually the primary threat.
+                    // Only take SEAD if SAM threat is actively worse than Fighter threat AND is at least Average.
+                    if (!isEscortTargetAttacking && samThreat >= AmountNR.Average && samThreat > fighterThreat)
+                        return DCSTask.SEAD;
+                }
+
                 return DCSTask.CAP;
+            }
             if (objective.Task.StartsWith("Transport") || objective.Task.StartsWith("LandNear") || objective.Task.StartsWith("Extract"))
                 return DCSTask.Transport;
             if (objective.Task.StartsWith("FlyNear"))
