@@ -79352,7 +79352,7 @@
       "2": [
         [
           "usaf standard",
-          "USAF Standard "
+          "usaf standard"
         ],
         [
           "b-1b_desert_camo",
@@ -79428,8 +79428,8 @@
           32,
           33
         ],
-        "displayName": "GBU-38*48",
-        "name": "GBU-38*48"
+        "displayName": "GBU-38*84",
+        "name": "GBU-38*84"
       },
       {
         "pylons": [
@@ -79491,8 +79491,8 @@
         "tasks": [
           31
         ],
-        "displayName": "GBU-38*16, CBU-97*20",
-        "name": "GBU-38*16, CBU-97*20"
+        "displayName": "GBU-38*28, CBU-97*20",
+        "name": "GBU-38*28, CBU-97*20"
       },
       {
         "pylons": [
@@ -79579,8 +79579,8 @@
           32,
           33
         ],
-        "displayName": "GBU-31*8, GBU-38*32",
-        "name": "GBU-31*8, GBU-38*32"
+        "displayName": "GBU-31*8, GBU-38*56",
+        "name": "GBU-31*8, GBU-38*56"
       }
     ],
     "displayName": "B-1B",
@@ -84530,19 +84530,6 @@
         ],
         "displayName": "AGM-86C*20",
         "name": "AGM-86C*20"
-      },
-      {
-        "pylons": [
-          {
-            "CLSID": "{46ACDCF8-5451-4E26-BDDB-E78D5830E93C}",
-            "num": 2
-          }
-        ],
-        "tasks": [
-          30
-        ],
-        "displayName": "AGM-84A*8",
-        "name": "AGM-84A*8"
       }
     ],
     "displayName": "B-52H",
@@ -238131,6 +238118,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -238207,6 +238198,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -238287,6 +238282,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -238363,6 +238362,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -238443,6 +238446,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -238519,6 +238526,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -238599,6 +238610,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -238675,6 +238690,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -238755,6 +238774,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -238831,6 +238854,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -238911,6 +238938,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -238987,6 +239018,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -239067,6 +239102,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -239143,6 +239182,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -239223,6 +239266,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -239299,6 +239346,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -239379,6 +239430,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -239455,6 +239510,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -239535,6 +239594,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -239611,6 +239674,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -239691,6 +239758,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -239767,6 +239838,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -239847,6 +239922,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -239923,6 +240002,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -240003,6 +240086,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -240079,6 +240166,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -240159,6 +240250,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -240235,6 +240330,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -240315,6 +240414,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -240391,6 +240494,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -240471,6 +240578,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -240547,6 +240658,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -240627,6 +240742,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -240703,6 +240822,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -240783,6 +240906,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -240859,6 +240986,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -240939,6 +241070,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -241015,6 +241150,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -241095,6 +241234,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -241171,6 +241314,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -241251,6 +241398,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -241327,6 +241478,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -241407,6 +241562,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -241483,6 +241642,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -241563,6 +241726,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -241639,6 +241806,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -241719,6 +241890,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -241795,6 +241970,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -241875,6 +242054,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -241951,6 +242134,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -242031,6 +242218,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -242107,6 +242298,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -242187,6 +242382,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -242263,6 +242462,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -242343,6 +242546,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -242419,6 +242626,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -242499,6 +242710,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -242575,6 +242790,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -242655,6 +242874,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -242731,6 +242954,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -242811,6 +243038,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -242887,6 +243118,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -242967,6 +243202,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -243043,6 +243282,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -243123,6 +243366,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -243199,6 +243446,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -243279,6 +243530,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -243355,6 +243610,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -243435,6 +243694,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -243511,6 +243774,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -243591,6 +243858,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -243667,6 +243938,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -243747,6 +244022,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -243823,6 +244102,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -243903,6 +244186,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -243979,6 +244266,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -244059,6 +244350,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -244135,6 +244430,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -244215,6 +244514,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -244291,6 +244594,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -244371,6 +244678,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -244447,6 +244758,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -244527,6 +244842,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -244603,6 +244922,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -244683,6 +245006,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -244759,6 +245086,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -244839,6 +245170,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -244915,6 +245250,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -244995,6 +245334,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -245071,6 +245414,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -245151,6 +245498,10 @@
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
         ],
         [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
+        ],
+        [
           "vf-32 2004 ac100 campaign",
           "x - Campaign: VF-32 - Swordsmen - AC100"
         ],
@@ -245227,6 +245578,10 @@
         [
           "vf-32 2004 ac111 buno 161428",
           "VF-32 - Swordsmen - AC111 - BuNo 161428 - 2004"
+        ],
+        [
+          "vf-32 2005 ac112 buno 162691",
+          "VF-32 - Swordsmen - AC112 - BuNO 162691 - 2005 - Heritage"
         ],
         [
           "vf-32 2004 ac100 campaign",
@@ -285324,7 +285679,7 @@
         2020
       ],
       "Iraq": [
-        2010,
+        1990,
         2020
       ],
       "Pakistan": [
@@ -295167,7 +295522,7 @@
         2020
       ],
       "Iraq": [
-        2010,
+        1990,
         2020
       ],
       "Pakistan": [
@@ -413921,15 +414276,15 @@
         "id": "F4U_CW_number"
       },
       {
-        "defValue": 6,
+        "defValue": 7,
         "id": "F4U_CW_number_1"
       },
       {
-        "defValue": 7,
+        "defValue": 5,
         "id": "F4U_CW_number_2"
       },
       {
-        "defValue": 8,
+        "defValue": 1,
         "id": "F4U_CW_number_3"
       }
     ],
@@ -505207,6 +505562,10 @@
             "min": 137
           },
           {
+            "max": 173.975,
+            "min": 156
+          },
+          {
             "max": 399.975,
             "min": 225
           }
@@ -509902,6 +510261,10 @@
           {
             "max": 155.975,
             "min": 137
+          },
+          {
+            "max": 173.975,
+            "min": 156
           },
           {
             "max": 399.975,
@@ -582745,7 +583108,7 @@
       "frequency": 124,
       "modulation": 0
     },
-    "ammoType": 5,
+    "ammoType": 1,
     "maxAlt": 18000,
     "cruiseSpeed": 222,
     "shape": "mig-29-fulcrum",

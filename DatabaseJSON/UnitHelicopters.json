@@ -21780,7 +21780,7 @@
         "id": "flaresProgram_Label"
       },
       {
-        "defValue": 0,
+        "defValue": 1,
         "id": "FlareBurstCount"
       },
       {
@@ -21796,7 +21796,7 @@
         "id": "FlareSalvoInterval"
       },
       {
-        "defValue": 0,
+        "defValue": 3,
         "id": "FlareProgramDelay"
       },
       {
