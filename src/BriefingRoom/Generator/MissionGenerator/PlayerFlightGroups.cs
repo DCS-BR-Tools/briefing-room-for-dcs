@@ -91,9 +91,9 @@ namespace BriefingRoom4DCS.Generator.Mission
             var country = flightGroup.Country;
             var payload = flightGroup.Payload;
             var extraSettings = new Dictionary<string, object>();
-            var clientOrPLayer = mission.IsSinglePlayerMission ? DCSSkillLevel.Player : DCSSkillLevel.Client;
+            var clientOrPLayer = mission.IsSinglePlayerMission ? DCSAircraftSkillLevel.Player : DCSAircraftSkillLevel.Client;
             GroupFlags GroupFlags = flightGroup.AIWingmen ? GroupFlags.FirstUnitIsClient : 0;
-            DCSSkillLevel skillLevel = flightGroup.AIWingmen ? Toolbox.RandomFrom(DCSSkillLevel.High, DCSSkillLevel.Excellent) : clientOrPLayer;
+            DCSAircraftSkillLevel skillLevel = flightGroup.AIWingmen ? Toolbox.RandomFrom(DCSAircraftSkillLevel.High, DCSAircraftSkillLevel.Excellent) : clientOrPLayer;
             var atcRadioFrequency = 0d;
             if (airbase.ATC != null)
                 _ = double.TryParse(airbase.ATC.Split("/")[0], out atcRadioFrequency);

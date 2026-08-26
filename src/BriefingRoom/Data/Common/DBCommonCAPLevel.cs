@@ -18,6 +18,7 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 ==========================================================================
 */
 
+using System;
 using System.Linq;
 using BriefingRoom4DCS.Template;
 
@@ -25,7 +26,7 @@ namespace BriefingRoom4DCS.Data
 {
     internal readonly struct DBCommonCAPLevel
     {
-        internal DCSSkillLevel[] SkillLevel { get; }
+        internal DCSAircraftSkillLevel[] SkillLevel { get; }
 
         internal MinMaxI UnitCount { get; }
 
@@ -33,13 +34,13 @@ namespace BriefingRoom4DCS.Data
         {
             if ((capLevel == AmountNR.None) || (capLevel == AmountNR.Random))
             {
-                SkillLevel = new DCSSkillLevel[] { DCSSkillLevel.Random };
+                SkillLevel = [DCSAircraftSkillLevel.Random];
                 UnitCount = new MinMaxI(0, 0);
                 return;
             }
 
-            SkillLevel = ini.GetValueArray<DCSSkillLevel>("CAPLevels", $"{capLevel}.SkillLevel").Distinct().ToArray();
-            if (SkillLevel.Length == 0) SkillLevel = new DCSSkillLevel[] { DCSSkillLevel.Average, DCSSkillLevel.Good, DCSSkillLevel.High, DCSSkillLevel.Excellent };
+            SkillLevel = ini.GetValueArray<DCSAircraftSkillLevel>("CAPLevels", $"{capLevel}.SkillLevel").Distinct().ToArray();
+            if (SkillLevel.Length == 0) SkillLevel = Enum.GetValues(typeof(DCSAircraftSkillLevel)).Cast<DCSAircraftSkillLevel>().ToArray();
             UnitCount = ini.GetValue<MinMaxI>("CAPLevels", $"{capLevel}.UnitCount");
         }
     }

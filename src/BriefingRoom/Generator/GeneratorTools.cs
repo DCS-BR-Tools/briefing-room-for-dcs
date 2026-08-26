@@ -83,11 +83,11 @@ namespace BriefingRoom4DCS.Generator
             foreach (Country country in Enum.GetValues(typeof(Country)).Cast<Country>().Where(x => !IgnoreCountries.Contains(x)).ToList())
                 validUnits[country] = (
                         from unit in allUnits
-                        where !unitBanList.Contains(unit.ID) && unit.Families.Intersect(families).ToList().Count > 0 
-                            && (unit.Operators.ContainsKey(Country.ALL) || unit.Operators.ContainsKey(country)) 
-                            && (string.IsNullOrEmpty(unit.Module) || unitMods.Contains(unit.Module, StringComparer.InvariantCultureIgnoreCase) || DBEntryDCSMod.CORE_MODS.Contains(unit.Module, StringComparer.InvariantCultureIgnoreCase)) 
-                            && IsOperational(unit, country, decade) 
-                            &&(!unit.LowPolly || allowLowPolly)
+                        where !unitBanList.Contains(unit.ID) && unit.Families.Intersect(families).ToList().Count > 0
+                            && (unit.Operators.ContainsKey(Country.ALL) || unit.Operators.ContainsKey(country))
+                            && (string.IsNullOrEmpty(unit.Module) || unitMods.Contains(unit.Module, StringComparer.InvariantCultureIgnoreCase) || DBEntryDCSMod.CORE_MODS.Contains(unit.Module, StringComparer.InvariantCultureIgnoreCase))
+                            && IsOperational(unit, country, decade)
+                            && (!unit.LowPolly || allowLowPolly)
                         select unit.ID
                     ).Distinct().ToList();
 
@@ -135,12 +135,12 @@ namespace BriefingRoom4DCS.Generator
 
         internal static bool IsOperational(DBEntryJSONUnit unit, Country country, Decade decade)
         {
-            if(unit.Operators.ContainsKey(country))
+            if (unit.Operators.ContainsKey(country))
             {
                 var ops = unit.Operators[country];
                 return ops.start <= decade && ops.end >= decade;
             }
-            else if(unit.Operators.ContainsKey(Country.ALL))
+            else if (unit.Operators.ContainsKey(Country.ALL))
             {
                 var ops = unit.Operators[Country.ALL];
                 return ops.start <= decade && ops.end >= decade;
@@ -260,15 +260,34 @@ namespace BriefingRoom4DCS.Generator
             };
         }
 
-        internal static DCSSkillLevel GetDefaultSkillLevel(MissionTemplateRecord template, Side side) => (Side.Ally == side ? template.SituationFriendlySkill : template.SituationEnemySkill) switch
+        internal static string GetDefaultSkillLevel(MissionTemplateRecord template, Side side, bool isAircraft)
         {
-            AmountR.VeryLow => DCSSkillLevel.Average,
-            AmountR.Low => Toolbox.RandomFrom(DCSSkillLevel.Average, DCSSkillLevel.Good),
-            AmountR.Average => Toolbox.RandomFrom(DCSSkillLevel.Average, DCSSkillLevel.Good, DCSSkillLevel.High),
-            AmountR.High => Toolbox.RandomFrom(DCSSkillLevel.Good, DCSSkillLevel.High),
-            AmountR.VeryHigh => Toolbox.RandomFrom(DCSSkillLevel.High, DCSSkillLevel.Excellent),
-            _ => DCSSkillLevel.Random,
-        };
+            var sideSkill = Side.Ally == side ? template.SituationFriendlySkill : template.SituationEnemySkill;
+            if (!isAircraft)
+            {
+                return (sideSkill switch
+                {
+
+                    AmountR.VeryLow => DCSSkillLevel.Average,
+                    AmountR.Low => Toolbox.RandomFrom(DCSSkillLevel.Average, DCSSkillLevel.Good),
+                    AmountR.Average => Toolbox.RandomFrom(DCSSkillLevel.Average, DCSSkillLevel.Good, DCSSkillLevel.High),
+                    AmountR.High => Toolbox.RandomFrom(DCSSkillLevel.Good, DCSSkillLevel.High),
+                    AmountR.VeryHigh => Toolbox.RandomFrom(DCSSkillLevel.High, DCSSkillLevel.Excellent),
+                    _ => DCSSkillLevel.Random,
+                }).ToString();
+            }
+
+            return (sideSkill switch
+            {
+                AmountR.VeryLow => Toolbox.RandomFrom(DCSAircraftSkillLevel.Cadet, DCSAircraftSkillLevel.Average),
+                AmountR.Low => Toolbox.RandomFrom(DCSAircraftSkillLevel.Average, DCSAircraftSkillLevel.Good),
+                AmountR.Average => Toolbox.RandomFrom(DCSAircraftSkillLevel.Good, DCSAircraftSkillLevel.High),
+                AmountR.High => Toolbox.RandomFrom(DCSAircraftSkillLevel.High, DCSAircraftSkillLevel.Excellent),
+                AmountR.VeryHigh => Toolbox.RandomFrom(DCSAircraftSkillLevel.Excellent),
+                _ => DCSAircraftSkillLevel.Random,
+            }).ToString();
+
+        }
 
         internal static string FormatRadioFrequency(double radioFrequency)
         {
