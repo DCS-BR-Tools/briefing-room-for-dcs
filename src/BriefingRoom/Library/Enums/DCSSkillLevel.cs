@@ -22,8 +22,18 @@ namespace BriefingRoom4DCS
 {
     internal enum DCSSkillLevel
     {
+        Average,
+        Good,
+        High,
+        Excellent,
+        Random
+    }
+
+     internal enum DCSAircraftSkillLevel
+    {
         Player,
         Client,
+        Cadet,
         Average,
         Good,
         High,

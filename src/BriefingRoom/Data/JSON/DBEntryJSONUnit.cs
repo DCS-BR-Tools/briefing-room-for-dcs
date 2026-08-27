@@ -71,7 +71,12 @@ namespace BriefingRoom4DCS.Data
 
         internal static Dictionary<Country, (Decade start, Decade end)> GetOperationalCountries(Unit unit)
         {
-            return unit.Operators.ToDictionary(x => (Country)Enum.Parse(typeof(Country), x.Key.Replace(" ", ""), true), x => (start: (Decade)x.Value[0], end: (Decade)x.Value[1]));
+            var unitId = string.IsNullOrWhiteSpace(unit?.type) ? "<unknown>" : unit.type;
+            if (unit?.Operators == null || unit.Operators.Count == 0)
+                BriefingRoom.PrintToLog($"\"{unitId}\" operational data is empty.", LogMessageErrorLevel.Warning);
+
+            return (unit?.Operators ?? new Dictionary<string, List<int>>())
+                .ToDictionary(x => (Country)Enum.Parse(typeof(Country), x.Key.Replace(" ", ""), true), x => (start: (Decade)x.Value[0], end: (Decade)x.Value[1]));
         }
     }
 }

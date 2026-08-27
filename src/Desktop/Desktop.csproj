@@ -19,12 +19,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="10.0.90" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebView.WindowsForms" Version="10.0.100" />
     <ProjectReference Include="../CommonGUI/CommonGUI.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="10.0.10" />
+    <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="10.0.11" />
     <!-- Data files go into bin/ subfolder, exe stays at root -->
     <Content Include="..\..\Database\**" LinkBase="$(BRDataFolder)\Database" CopyToPublishDirectory="PreserveNewest" />
     <Content Include="..\..\DatabaseJSON\**" LinkBase="$(BRDataFolder)\DatabaseJSON" CopyToPublishDirectory="PreserveNewest" />

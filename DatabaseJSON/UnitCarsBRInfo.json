@@ -72,6 +72,12 @@
     "immovable": false
   },
   {
+    "type": "CHAP_BMP3_ERA",
+    "families": ["VehicleAPC"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
     "type": "BRDM-2",
     "families": ["VehicleAPC"],
     "lowPolly": false,
@@ -314,7 +320,13 @@
   },
   {
     "type": "SA-11 Buk LN 9A310M1",
-    "families": ["VehicleSAMMedium", "VehicleStatic", "VehicleSAMLauncher", "VehicleSAMtr", "VehicleSAMShort"],
+    "families": [
+      "VehicleSAMMedium",
+      "VehicleStatic",
+      "VehicleSAMLauncher",
+      "VehicleSAMtr",
+      "VehicleSAMShort"
+    ],
     "lowPolly": false,
     "immovable": true
   },
@@ -530,7 +542,12 @@
   },
   {
     "type": "Kub 1S91 str",
-    "families": ["VehicleSAMMedium", "VehicleStatic", "VehicleSAMsr", "VehicleSAMtr"],
+    "families": [
+      "VehicleSAMMedium",
+      "VehicleStatic",
+      "VehicleSAMsr",
+      "VehicleSAMtr"
+    ],
     "lowPolly": false,
     "immovable": true
   },
@@ -1248,12 +1265,18 @@
     "immovable": false
   },
   {
+    "type": "ATZ-60_TANK",
+    "families": ["VehicleStatic"],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
     "type": "ZIL-135",
     "families": ["VehicleTransport", "VehicleSupply"],
     "lowPolly": false,
     "immovable": false
   },
-    {
+  {
     "type": "zil-131_civil",
     "families": ["VehicleTransport", "VehicleSupply", "VehicleCivilian"],
     "lowPolly": false,
@@ -2074,7 +2097,7 @@
     "lowPolly": false,
     "immovable": false
   },
-    {
+  {
     "type": "BTR-70",
     "families": ["VehicleAPC"],
     "lowPolly": false,
@@ -2092,13 +2115,13 @@
     "lowPolly": false,
     "immovable": false
   },
-    {
+  {
     "type": "T-80B",
     "families": ["VehicleMBT"],
     "lowPolly": false,
     "immovable": false
   },
-      {
+  {
     "type": "T62M",
     "families": ["VehicleMBT"],
     "lowPolly": false,
@@ -2107,6 +2130,60 @@
   {
     "type": "P14_SR",
     "families": ["VehicleEWR"],
+    "lowPolly": false,
+    "immovable": true
+  },
+  {
+    "type": "CHAP_HX77",
+    "families": ["VehicleTransport"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "CHAP_HX81_Tractor",
+    "families": ["VehicleTransport"],
+    "lowPolly": false,
+    "immovable": false
+  },
+  {
+    "type": "CHAP_M1296",
+    "families": ["VehicleAPC"],
+    "lowPolly": false,
+    "immovable": false
+  },
+    {
+    "type": "CHAP_SLT50_Tractor",
+    "families": ["VehicleTransport"],
+    "lowPolly": false,
+    "immovable": false
+  },
+      {
+    "type": "CHAP_SLT50_Trailer",
+    "families": ["VehicleStatic"],
+    "lowPolly": false,
+    "immovable": true
+  },
+        {
+    "type": "CHAP_Titan",
+    "families": ["VehicleTransport"],
+    "lowPolly": false,
+    "immovable": false
+  },
+          {
+    "type": "GCI_station_MiG29",
+    "families": ["VehicleStatic"],
+    "lowPolly": false,
+    "immovable": true
+  },
+            {
+    "type": "S_75_Zil_Trailer",
+    "families": ["VehicleTransport"],
+    "lowPolly": false,
+    "immovable": true
+  },
+              {
+    "type": "TZ-22_TANK",
+    "families": ["VehicleTransport"],
     "lowPolly": false,
     "immovable": true
   }

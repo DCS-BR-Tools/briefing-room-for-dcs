@@ -690,7 +690,7 @@ namespace BriefingRoom4DCS.Generator.UnitMaker
             if (Toolbox.IsAircraft(unitDB.Category) && (unitLuaIndex == 1) && GroupFlags.HasFlag(GroupFlags.FirstUnitIsClient))
                 unit.Skill = mission.IsSinglePlayerMission ? "Player" : "Client";
             else
-                unit.Skill = extraSettings.GetValueOrDefault("Skill", GeneratorTools.GetDefaultSkillLevel(mission.TemplateRecord, side)).ToString(); ;
+                unit.Skill = extraSettings.GetValueOrDefault("Skill", GeneratorTools.GetDefaultSkillLevel(mission.TemplateRecord, side, Toolbox.IsAircraft(unitDB.Category))).ToString();
 
             unit.LiveryId = extraSettings.GetValueOrDefault("Livery", "default").ToString();
             unit.ShapeName = unitDB.Shape;
