@@ -91,10 +91,12 @@ namespace BriefingRoom4DCS.Generator
                         }
             );
             }
+            bool isHelicopter = aircraftData.Families != null && aircraftData.Families.Length > 0 && aircraftData.Families[0].GetUnitCategory() == UnitCategory.Helicopter;
+
             return new DCSWaypoint
             {
                 Alt = OnGround ? 0 : aircraftData.CruiseAlt,
-                AltType = OnGround ? "RADIO" : "BARO",
+                AltType = OnGround || isHelicopter ? "RADIO" : "BARO",
                 Action = "Turning Point",
                 Speed = aircraftData.CruiseSpeed,
                 Type = "Turning Point",
