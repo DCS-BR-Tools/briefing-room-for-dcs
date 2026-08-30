@@ -1,4 +1,4 @@
-﻿/*
+/*
 ==========================================================================
 This file is part of Briefing Room for DCS World, a mission
 generator for DCS World, by @akaAgar
@@ -111,7 +111,7 @@ namespace BriefingRoom4DCS.Template
 
             Mods = new List<string>();
 
-            OptionsFogOfWar = FogOfWar.All;
+            OptionsFogOfWar = FogOfWar.PlayerSettings;
             OptionsMission = new List<string> { "ImperialUnitsForBriefing", "MarkWaypoints", "CombinedArmsPilotControl", "AllowLowPoly" };
             OptionsRealism = new RealismOption[] { RealismOption.DisableDCSRadioAssists, RealismOption.NoBDA }.ToList();
             OptionsUnitBanList = new List<string>();
