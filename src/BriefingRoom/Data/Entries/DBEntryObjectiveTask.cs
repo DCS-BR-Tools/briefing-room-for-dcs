@@ -1,4 +1,4 @@
-﻿/*
+/*
 ==========================================================================
 This file is part of Briefing Room for DCS World, a mission
 generator for DCS World, by @akaAgar (https://github.com/akaAgar/briefing-room-for-dcs)
@@ -37,6 +37,10 @@ namespace BriefingRoom4DCS.Data
 
         internal UnitCategory[] ValidUnitCategories { get; private set; }
 
+        internal UnitCategory[] ValidPlayerUnitCategories { get; private set; }
+
+        internal string[] ValidTargetIDs { get; private set; }
+
         internal string[] IncludeOgg { get; private set; }
 
         internal string[] RequiredFeatures { get; private set; }
@@ -71,6 +75,11 @@ namespace BriefingRoom4DCS.Data
             ValidUnitCategories = ini.GetValueArray<UnitCategory>("ObjectiveTask", "ValidUnitCategories").Distinct().ToArray();
             if (ValidUnitCategories.Length == 0) ValidUnitCategories = Toolbox.GetEnumValues<UnitCategory>(); // No category means all categories
 
+            ValidPlayerUnitCategories = ini.GetValueArray<UnitCategory>("ObjectiveTask", "ValidPlayerUnitCategories").Distinct().ToArray();
+            if (ValidPlayerUnitCategories.Length == 0) ValidPlayerUnitCategories = Toolbox.GetEnumValues<UnitCategory>(); // No category means all categories
+
+            ValidTargetIDs = ini.GetValueArray<string>("ObjectiveTask", "ValidTargetIDs").Distinct().ToArray();
+
             // Included files
             IncludeOgg = Toolbox.AddMissingFileExtensions(ini.GetValueArray<string>("Include", "Ogg"), ".ogg");
 
@@ -79,7 +88,7 @@ namespace BriefingRoom4DCS.Data
             return true;
         }
 
-        internal bool IsEscort() => ID == "Escort";
+        internal bool IsEscort() => ID.StartsWith("Escort") || ID == "SupportStrike" || ID == "SupportRecon" || ID == "SupportTransport";
         internal bool IsHoldSuperiority() => ID == "HoldSuperiority";
     }
 }

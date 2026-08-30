@@ -1,4 +1,4 @@
-﻿/*
+/*
 ==========================================================================
 This file is part of Briefing Room for DCS World, a mission
 generator for DCS World, by @akaAgar (https://github.com/akaAgar/briefing-room-for-dcs)
@@ -67,6 +67,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 FogOfWar.KnownUnitsOnly => "[\"optionsView\"] = \"optview_allies\",",
                 FogOfWar.SelfOnly => "[\"optionsView\"] = \"optview_myaircraft\",",
                 FogOfWar.None => "[\"optionsView\"] = \"optview_onlymap\",",
+                FogOfWar.PlayerSettings => "",
                 _ => "[\"optionsView\"] = \"optview_all\",",
             };
             mission.SetValue("ForcedOptions", forcedOptionsLua);

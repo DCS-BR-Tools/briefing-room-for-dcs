@@ -30,7 +30,9 @@ namespace BriefingRoom4DCS.Template
 
         SelfOnly,
 
-        None
+        None,
+
+        PlayerSettings
     }
 }
 
