@@ -100,7 +100,13 @@
 
     public ReleaseInfo NewerMainRelease = null;
     public ReleaseInfo NewerBetaRelease = null;
+    public UpdateDebugState UpdateDebugState = UpdateDebugState.Detected;
     public UpdateManager UpdateManager = null;
+    public bool IsDevelopmentMode { get; } =
+        string.Equals(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"), "Development", StringComparison.OrdinalIgnoreCase) ||
+        string.Equals(Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT"), "Development", StringComparison.OrdinalIgnoreCase);
+    private ReleaseInfo detectedMainRelease = null;
+    private ReleaseInfo detectedBetaRelease = null;
 
     public bool IsUpdating = false;
     public string UpdateStatus = "";
@@ -155,10 +161,9 @@
                         InvokeAsync(StateHasChanged);
                     };
                     var versions = await UpdateManager.GetLatestVersions();
-                    if (versions != null)                {
-                        NewerMainRelease = versions.Item1;
-                        NewerBetaRelease = versions.Item2;
-                    }
+                    detectedMainRelease = versions?.Item1;
+                    detectedBetaRelease = versions?.Item2;
+                    ApplyUpdateDebugState();
                 }
                 catch (System.Exception)
                 {
@@ -226,6 +231,9 @@
 
     public async Task StartUpdateAsync(bool useBeta)
     {
+        if (IsDevelopmentMode && UpdateDebugState != UpdateDebugState.Detected)
+            return;
+
         IsUpdating = true;
         DownloadErrorMessage = "";
         StateHasChanged();
@@ -250,5 +258,36 @@
             IsUpdating = false;
             StateHasChanged();
         }
+    }
+
+    public void SetUpdateDebugState(UpdateDebugState state)
+    {
+        if (!IsDevelopmentMode)
+            return;
+        UpdateDebugState = state;
+        ApplyUpdateDebugState();
+        StateHasChanged();
+    }
+
+    private void ApplyUpdateDebugState()
+    {
+        NewerMainRelease = detectedMainRelease;
+        NewerBetaRelease = detectedBetaRelease;
+        if (!IsDevelopmentMode || UpdateDebugState == UpdateDebugState.Detected)
+            return;
+        if (UpdateDebugState == UpdateDebugState.None)
+        {
+            NewerMainRelease = null;
+            NewerBetaRelease = null;
+            return;
+        }
+
+        var release = new ReleaseInfo
+        {
+            Name = "Debug update",
+            HtmlUrl = "#"
+        };
+        NewerMainRelease = UpdateDebugState == UpdateDebugState.Main ? release : null;
+        NewerBetaRelease = UpdateDebugState == UpdateDebugState.Beta ? release : null;
     }
 }
