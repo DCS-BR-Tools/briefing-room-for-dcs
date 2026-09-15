@@ -22,8 +22,10 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -34,6 +36,9 @@ namespace BriefingRoom4DCS.UpdateService
     /// </summary>
     public class UpdateManager : IDisposable
     {
+        private static readonly Regex BuildIdRegex =
+            new Regex(@"(?<!\d)(?<build>\d{8}-\d{6})(?!\d)", RegexOptions.Compiled);
+
         private readonly GitHubReleaseClient _releaseClient;
         private readonly BackupManager _backupManager;
         private readonly UpdateOptions _options;
@@ -76,43 +81,56 @@ namespace BriefingRoom4DCS.UpdateService
         /// <returns>The latest release info if an update is available, null otherwise.</returns>
         public async Task<Tuple<ReleaseInfo, ReleaseInfo>> GetLatestVersions(CancellationToken cancellationToken = default)
         {
-            var releases = await _releaseClient.GetReleasesAsync(cancellationToken);
-            releases = releases.Where(r => !r.IsDraft).ToArray(); // Exclude drafts
-            releases = releases.OrderByDescending(r => r.PublishedAt).ToArray(); // Sort by publish date
-            var latestBetaRelease = releases.FirstOrDefault(r => r.IsPrerelease);
-            var latestStableRelease = releases.FirstOrDefault(r => !r.IsPrerelease);
-
-            if (latestBetaRelease == null && latestStableRelease == null)
-            {
-                return null;
-            }
-
+            var releases = (await _releaseClient.GetReleasesAsync(cancellationToken))
+                .Where(release => !release.IsDraft)
+                .ToArray();
             var currentVersionDate = GetCurrentBuildVersionDate();
             BriefingRoom.PrintToLog($"Current build version date: {currentVersionDate:yyyy-MM-dd HH:mm:ss}", LogMessageErrorLevel.Warning);
-            var betaNewerThanStable = DateTime.Compare(latestBetaRelease.PublishedAt, latestStableRelease.PublishedAt) > 0;
-            var newerStable = DateTime.Compare(latestStableRelease.PublishedAt, currentVersionDate) > 0;
-            var newerBeta = DateTime.Compare(latestBetaRelease.PublishedAt, currentVersionDate) > 0;
-            if (!newerStable && !newerBeta)
-            {
-                return null;
-            }
-            if (newerStable & !betaNewerThanStable)
-            {
-                return new Tuple<ReleaseInfo, ReleaseInfo>(latestStableRelease, null);
-            }
-            if (newerStable & betaNewerThanStable)
-            {
-                return new Tuple<ReleaseInfo, ReleaseInfo>(latestStableRelease, latestBetaRelease);
-            }
-            return new Tuple<ReleaseInfo, ReleaseInfo>(null, latestBetaRelease);
+            var latestStableRelease = FindLatestNewerRelease(
+                releases.Where(release => !release.IsPrerelease), currentVersionDate);
+            var latestBetaRelease = FindLatestNewerRelease(
+                releases.Where(release => release.IsPrerelease), currentVersionDate);
+
+            return latestStableRelease == null && latestBetaRelease == null
+                ? null
+                : new Tuple<ReleaseInfo, ReleaseInfo>(latestStableRelease, latestBetaRelease);
         }
 
-        private DateTime GetCurrentBuildVersionDate()
+        public static ReleaseInfo FindLatestNewerRelease(
+            System.Collections.Generic.IEnumerable<ReleaseInfo> releases,
+            DateTime currentBuildDate)
         {
-            if (DateTime.TryParseExact(BriefingRoom.BUILD_VERSION, "yyyyMMdd-HHmmss", null, System.Globalization.DateTimeStyles.None, out var date))
-                return date;
+            return releases
+                .Select(release => new { Release = release, BuildDate = GetReleaseBuildDate(release) })
+                .Where(candidate => candidate.BuildDate > currentBuildDate)
+                .OrderByDescending(candidate => candidate.BuildDate)
+                .Select(candidate => candidate.Release)
+                .FirstOrDefault();
+        }
 
-            return DateTime.MinValue;
+        public static DateTime GetReleaseBuildDate(ReleaseInfo release)
+        {
+            var match = BuildIdRegex.Match(release?.TagName ?? string.Empty);
+            return match.Success
+                ? ParseBuildDate(match.Groups["build"].Value)
+                : release?.PublishedAt ?? DateTime.MinValue;
+        }
+
+        private static DateTime GetCurrentBuildVersionDate()
+        {
+            return ParseBuildDate(BriefingRoom.BUILD_VERSION);
+        }
+
+        private static DateTime ParseBuildDate(string buildId)
+        {
+            return DateTime.TryParseExact(
+                buildId,
+                "yyyyMMdd-HHmmss",
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal,
+                out var date)
+                ? date
+                : DateTime.MinValue;
         }
 
         /// <summary>
