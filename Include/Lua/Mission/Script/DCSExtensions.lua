@@ -84,6 +84,7 @@ function dcsExtensions.isUnitAlive(name)
 end
 
 function dcsExtensions.getUnitOrStatic(name)
+  if name == nil then return nil end
   local unit = Unit.getByName(name)
   if unit == nil then -- no unit found with the ID, try searching for a static
     unit = StaticObject.getByName(name)
