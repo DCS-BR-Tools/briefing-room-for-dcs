@@ -1,4 +1,4 @@
-﻿/*
+/*
 ==========================================================================
 This file is part of Briefing Room for DCS World, a mission
 generator for DCS World, by @akaAgar (https://github.com/akaAgar/briefing-room-for-dcs)
@@ -38,7 +38,16 @@ namespace BriefingRoom4DCS.Data
         internal int Chaff { get; init; }
         internal int? AmmoType { get; init; }
         internal int MaxAlt { get; init; }
-        internal int CruiseAlt { get { return (int)Math.Floor(MaxAlt * 0.6); } }
+        internal int CruiseAlt 
+        { 
+            get 
+            { 
+                int alt = (int)Math.Floor(MaxAlt * 0.6);
+                if (Families != null && Families.Length > 0 && Families[0].GetUnitCategory() == UnitCategory.Helicopter)
+                    return Math.Min(alt, 500);
+                return alt;
+            } 
+        }
         internal double CruiseSpeed { get; init; }
         internal bool PlayerControllable { get; init; }
         internal RadioChannel Radio { get; init; }
@@ -100,6 +109,7 @@ namespace BriefingRoom4DCS.Data
 
 
                 bool modAircraft = !string.IsNullOrEmpty(aircraft.module) && !DBEntryDCSMod.CORE_MODS.Contains(aircraft.module);
+                bool isHelicopter = supportInfo.families.Any(f => f.StartsWith("Helicopter", StringComparison.OrdinalIgnoreCase));
                 var DBaircraft = new DBEntryAircraft
                 {
                     ID = id,
@@ -114,7 +124,7 @@ namespace BriefingRoom4DCS.Data
                     Chaff = aircraft.chaff,
                     AmmoType = aircraft.ammoType,
                     MaxAlt = (int)aircraft.maxAlt,
-                    CruiseSpeed = aircraft.cruiseSpeed,
+                    CruiseSpeed = isHelicopter && aircraft.cruiseSpeed > 100 ? aircraft.cruiseSpeed / 3.6 : aircraft.cruiseSpeed,
                     Radio = new RadioChannel(aircraft.radio.frequency, (RadioModulation)aircraft.radio.modulation),
                     PanelRadios = (aircraft.panelRadio ?? new List<PanelRadio>()).Select(radio =>
                     {
