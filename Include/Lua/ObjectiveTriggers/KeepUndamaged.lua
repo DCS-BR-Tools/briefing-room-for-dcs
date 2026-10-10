@@ -1,0 +1,1 @@
+briefingRoom.mission.objectivesTriggersCommon.registerKeepUndamagedTrigger($OBJECTIVEINDEX$)

@@ -1,4 +1,4 @@
-﻿/*
+/*
 ==========================================================================
 This file is part of Briefing Room for DCS World, a mission
 generator for DCS World, by @akaAgar (https://github.com/akaAgar/briefing-room-for-dcs)
@@ -368,6 +368,8 @@ namespace BriefingRoom4DCS.Generator
             if (targetDB == null || targetBehaviorDB == null || taskDB == null)
                 return false;
             if (!taskDB.ValidUnitCategories.Contains(targetDB.UnitCategory))
+                return false;
+            if (taskDB.ValidTargetIDs.Length > 0 && !taskDB.ValidTargetIDs.Contains(targetDB.ID))
                 return false;
             if (!targetBehaviorDB.ValidUnitCategories.Contains(targetDB.UnitCategory))
                 return false;
