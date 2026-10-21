@@ -2,6 +2,11 @@
 
 ----
 **Try the <a href="https://dcs-briefingroom.co.uk/">Web version</a> now!**
+
+## Development status
+
+BriefingRoom is no longer in active development by John681611 (Mike_64). Community contributions are still welcome, including fixes, DCS content updates, and documentation improvements. See [CONTRIBUTING.md](CONTRIBUTING.md) to get involved.
+
 ## Installation
  App is generally standalone .exe with caveats on desktop:
  1. Desktop version requires [WebView2 Runtime](https://go.microsoft.com/fwlink/p/?linkid=2124703) this may not be installed on windows by default. If Web Exe works and Desktop doesn't this is likely the issue.
@@ -16,7 +21,7 @@ While BriefingRoom is designed to be easy to use and to allow the creation of mi
 
 **Not interested in the source code? Get the latest version from the project website and begin creating missions right now: [akaagar.itch.io/briefing-room-for-dcs](https://akaagar.itch.io/briefing-room-for-dcs/)**
 
-BriefingRoom is free and open source and will always remain so, but if you want to support its development, you can make a one-time or monthly donation.
+BriefingRoom is free and open source and will always remain so. Optional Ko-fi donations are a way to give kudos for the work already done, not to cover hosting costs or fund ongoing development.
 
 
 ### Features summary
@@ -43,7 +48,7 @@ BriefingRoom is free and open source and will always remain so, but if you want 
 
 ### Call for Contributions
 
-We are always looking for contributors to keep us up to date with the latest DCS content. You don't need any technical skill and we are always happy to help. Areas we are looking for help to improve:
+Community contributions are still welcome to keep BriefingRoom up to date with the latest DCS content. Many contributions do not require programming skills. Areas where you can help:
 
 * Aircraft Loadouts
 * Implementing Mod Units
@@ -64,7 +69,7 @@ The generation of Kneeboard images has been prone to issues. While we aim to fix
 
 ### Additional information
 
-* Created by Ambroise Garel (@akaAgar), maintained by John Harvey (@john681611)
+* Created by Ambroise Garel (@akaAgar), previously maintained by John Harvey (@john681611 / Mike_64)
 * Released under the [GNU General Public License 3.0](https://www.gnu.org/licenses/gpl-3.0.en.html)
 * Project website: [akaagar.itch.io/briefing-room-for-dcs](https://akaagar.itch.io/briefing-room-for-dcs/)
 * Source code repository: [github.com/akaAgar/briefing-room-for-dcs](https://github.com/akaAgar/briefing-room-for-dcs)
@@ -74,8 +79,10 @@ The generation of Kneeboard images has been prone to issues. While we aim to fix
 ## Sponsors
 Free code signing provided by [SignPath.io](https://about.signpath.io), certificate by [SignPath Foundation](https://signpath.org/)
 
-### Hosting costs and Current maintainer:
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V0IZI9N) or <a href="https://www.patreon.com/bePatron?u=99514930" data-patreon-widget-type="become-patron-button">Become a patron member!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+### Kudos for past development:
+Optional donations are a thank-you for John681611 (Mike_64)'s past work, not contributions towards hosting costs or a promise of future development.
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V0IZI9N)
 
 ### Original Creator:
  [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VTLATJ7URMMWY)

@@ -1,5 +1,9 @@
 # BriefingRoom for DCS World
 
+## Development status
+
+BriefingRoom is no longer in active development by John681611 (Mike_64). Community contributions are still welcome through the source repository.
+
 ## Quick Start
 
 This folder contains three applications for generating DCS World missions:

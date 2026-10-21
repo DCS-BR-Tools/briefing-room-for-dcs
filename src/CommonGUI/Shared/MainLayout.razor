@@ -54,21 +54,6 @@
                         src="_content/CommonGUI/img/discord-icon-svgrepo-com.svg"></a>
                 <a href="@BriefingRoom.REPO_URL" target="_blank" class="img-link"><img alt="Github"
                         src="_content/CommonGUI/img/github-mark@((darkmode ? "-white" : "")).svg"></a>
-                <a href="https://www.patreon.com/bePatron?u=99514930" target="_blank" class="img-link"><img
-                        alt="Become a Patron!" src="_content/CommonGUI/img/patreon-icon.png"></a>
-                @if (BriefingRoom.RUNNING_IN_DOCKER)
-                {
-                    <div class="btn-container"><a title="Support me on ko-fi.com" class="kofi-button"
-                            style="background-color:#29abe0;" href="https://ko-fi.com/V7V0IZI9N" target="_blank"> <span
-                                class="kofitext"><img src="https://storage.ko-fi.com/cdn/cup-border.png"
-                                    alt="Ko-fi donations"
-                                    class="kofiimg">@briefingRoom.Translate("KoFiContributeBeg")</span></a></div>
-                }
-                else
-                {
-                    <a href="https://ko-fi.com/V7V0IZI9N" target="_blank" class="img-link"><img alt="Support us with Ko-fi"
-                            src="_content/CommonGUI/img/Kofi-icon.png"></a>
-                }
                 <ThemeSwitcher OnThemeChanged="OnThemeChanged" />
                 <label class="bulb" style="margin-bottom: 3px">
                     <input type="checkbox" checked=@autoLoadPreviousState
