@@ -338,6 +338,12 @@ User Template (.brt / .cbrt)
 
 | Workflow | Trigger | What it does |
 |----------|---------|--------------|
-| `build.yml` | Push / PR | Build + run tests |
-| `release.yml` | Tag push | Publish EXE + Docker image + GitHub Release |
-| `docker.yml` | Manual / tag | Build & push Docker image |
+| `dotnet-test.yml` | Push / PR | Run smoke tests |
+| `dotnet-release.yml` | Push to `release` | Publish EXE + Docker image + GitHub Release |
+| `dotnet-beta-release.yml` | Push to `beta-release` | Publish beta EXE + Docker image + GitHub prerelease |
+
+Release workflows run the Windows build and Ubuntu Docker jobs on separate
+hosted runners with independent checkouts. Each job injects its own build and
+release versions. Docker's Bash validation uses explicit `if` checks so that
+successfully removing a placeholder does not leave the step with `grep`'s
+non-match exit status (1).

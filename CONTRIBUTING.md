@@ -2,6 +2,8 @@
 
 Thank you for taking the time to contribute! Please read the guidelines below before opening a pull request.
 
+BriefingRoom is no longer in active development by John681611 (Mike_64). Community contributions are still welcome, including bug fixes, DCS content updates, translations, and documentation improvements.
+
 ---
 
 ## Code Quality

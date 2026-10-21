@@ -206,14 +206,20 @@ jobs:
         run: |
           grep -q "~BUILD_VERSION~" ./src/BriefingRoom/BriefingRoom.cs || { echo "BUILD_VERSION token not found"; exit 1; }
           sed -i 's/~BUILD_VERSION~/${{ steps.current-time.outputs.formattedTime }}/g' ./src/BriefingRoom/BriefingRoom.cs
-          grep -q "~BUILD_VERSION~" ./src/BriefingRoom/BriefingRoom.cs && { echo "BUILD_VERSION token replacement failed"; exit 1; }
+          if grep -q "~BUILD_VERSION~" ./src/BriefingRoom/BriefingRoom.cs; then
+            echo "BUILD_VERSION token replacement failed"
+            exit 1
+          fi
 
       - name: Set Release Version
         id: release_version
         run: |
           grep -q "~RELEASE_VERSION~" ./src/BriefingRoom/BriefingRoom.cs || { echo "RELEASE_VERSION token not found"; exit 1; }
           sed -i 's/~RELEASE_VERSION~/BETA/g' ./src/BriefingRoom/BriefingRoom.cs
-          grep -q "~RELEASE_VERSION~" ./src/BriefingRoom/BriefingRoom.cs && { echo "RELEASE_VERSION token replacement failed"; exit 1; }
+          if grep -q "~RELEASE_VERSION~" ./src/BriefingRoom/BriefingRoom.cs; then
+            echo "RELEASE_VERSION token replacement failed"
+            exit 1
+          fi
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3

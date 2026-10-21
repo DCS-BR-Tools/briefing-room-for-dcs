@@ -1,6 +1,19 @@
 @using BriefingRoom4DCS.UpdateService
 @inject BriefingRoom4DCS.IBriefingRoom briefingRoom
 
+@if (!BriefingRoom.RUNNING_IN_DOCKER && Layout?.IsDevelopmentMode == true)
+{
+    <select class="form-control form-control-sm"
+            aria-label="Debug update UI"
+            value="@Layout.UpdateDebugState"
+            @onchange="e => Layout.SetUpdateDebugState(Enum.Parse<UpdateDebugState>((string)e.Value))">
+        <option value="@UpdateDebugState.Detected">Actual detected updates</option>
+        <option value="@UpdateDebugState.None">No update</option>
+        <option value="@UpdateDebugState.Beta">Beta update waiting</option>
+        <option value="@UpdateDebugState.Main">Main update waiting</option>
+    </select>
+}
+
 @if (!BriefingRoom.RUNNING_IN_DOCKER && (Layout?.NewerMainRelease != null || Layout.NewerBetaRelease != null))
 {
     <div class="version-note">
@@ -27,7 +40,9 @@
                            title="@Layout.NewerMainRelease.Name">
                         @Layout.NewerMainRelease.Name
                     </a>
-                    <button class="btn btn-sm btn-primary update-btn" @onclick="() => Layout.StartUpdateAsync(false)">
+                    <button class="btn btn-sm btn-primary update-btn"
+                            disabled="@(Layout.IsDevelopmentMode && Layout.UpdateDebugState != UpdateDebugState.Detected)"
+                            @onclick="() => Layout.StartUpdateAsync(false)">
                         @briefingRoom.Translate("UpdateNow")
                     </button>
 
@@ -42,7 +57,9 @@
                         Beta: @Layout.NewerBetaRelease.Name
                     </a>
 
-                    <button class="btn btn-sm btn-warning update-btn" @onclick="() => Layout.StartUpdateAsync(true)">
+                    <button class="btn btn-sm btn-warning update-btn"
+                            disabled="@(Layout.IsDevelopmentMode && Layout.UpdateDebugState != UpdateDebugState.Detected)"
+                            @onclick="() => Layout.StartUpdateAsync(true)">
                         @briefingRoom.Translate("UpdateNow")
                     </button>
 
