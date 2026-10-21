@@ -1,1 +1,1 @@
-briefingRoom.mission.objectiveFeaturesCommon.registerStartAttack($OBJECTIVEINDEX$)
+briefingRoom.mission.objectiveFeaturesCommon.registerStartAttack($OBJECTIVEINDEX$, $SUPPORTINGTARGETGROUPNAMES$)

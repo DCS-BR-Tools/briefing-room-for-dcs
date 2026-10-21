@@ -1,4 +1,4 @@
-﻿/*
+/*
 ==========================================================================
 This file is part of Briefing Room for DCS World, a mission
 generator for DCS World, by @akaAgar (https://github.com/akaAgar/briefing-room-for-dcs)
@@ -151,9 +151,11 @@ namespace BriefingRoom4DCS.Generator.Mission
             List<UnitFamily> unitFamilies = null)
         {
             BriefingRoom.PrintToLog($"Generating objective {objectiveIndex} ...");
+            if (taskDB.IsEscort())
+                return Escort.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID, unitFamilies);
+
             return taskDB.ID switch
             {
-                "Escort" => Escort.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID, unitFamilies),
                 "Hold" or "HoldSuperiority" => Hold.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID, unitFamilies),
                 "TransportTroops" or "TransportCargo" or "ExtractTroops" => Transport.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID, unitFamilies),
                 "TransportDynamicCargo" => TransportDynamicCargo.CreateObjective(briefingRoom, task, taskDB, targetDB, targetBehaviorDB, ref objectiveIndex, ref objectiveCoords, objectiveOptions, ref mission, featuresID, unitFamilies),

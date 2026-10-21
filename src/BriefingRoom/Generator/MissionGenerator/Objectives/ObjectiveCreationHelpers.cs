@@ -37,7 +37,13 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             
             mission.AppendValue("ScriptObjectives", objectiveLua);
 
-            foreach (var completionTriggerLua in taskDB.CompletionTriggersLua)
+            var triggers = taskDB.CompletionTriggersLua;
+            if (taskDB.IsEscort() && mission.TemplateRecord.OptionsMission.Contains("StrictEscortDamageThreshold"))
+            {
+                triggers = triggers.Select(x => x == "KeepAlive.lua" ? "KeepUndamaged.lua" : x).ToArray();
+            }
+
+            foreach (var completionTriggerLua in triggers)
             {
                 string triggerLua = Toolbox.ReadAllTextIfFileExists(
                     Path.Combine(BRPaths.INCLUDE_LUA_OBJECTIVETRIGGERS, completionTriggerLua));
