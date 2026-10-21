@@ -97,6 +97,7 @@ namespace BriefingRoom4DCS.Data
             }
             var supportData = JsonConvert.DeserializeObject<List<BRInfo>>(File.ReadAllText($"{filepath.Replace(".json", "")}BRInfo.json")).ToDictionary(x => x.type, x => x);
             Dictionary<string, Tuple<int, Decade>> missingCSLIDcount = new Dictionary<string, Tuple<int, Decade>>(StringComparer.InvariantCulture);
+            var localFiles = new LocalAircraftFiles(database.DCSSaveGamePath);
             foreach (var aircraft in data)
             {
                 var id = aircraft.type;
@@ -148,9 +149,9 @@ namespace BriefingRoom4DCS.Data
                     Families = supportInfo.families.Select(x => (UnitFamily)Enum.Parse(typeof(UnitFamily), x, true)).ToArray(),
                     LowPolly = supportInfo.lowPolly
                 };
-                DBaircraft.GetDCSPayloads(database);
+                DBaircraft.GetDCSPayloads(database, localFiles);
                 DBaircraft.ApplyPayloadDates(database, ref missingCSLIDcount);
-                DBaircraft.GetDCSLiveries(database);
+                DBaircraft.GetDCSLiveries(database, localFiles);
                 itemMap.Add(id, DBaircraft);
 
             }
@@ -201,13 +202,16 @@ namespace BriefingRoom4DCS.Data
             return payload.pylons.Where(x => x != null).ToDictionary(x => x.num, x => new Dictionary<string, object> { { "CLSID", x.CLSID }, { "settings", x.settings } });
         }
 
-        internal void GetDCSPayloads(IDatabase database)
+        internal void GetDCSPayloads(IDatabase database, LocalAircraftFiles localFiles = null)
         {
-            var folderPath = Path.Join(database.DCSSaveGamePath, "MissionEditor", "UnitPayloads");
-            if (!File.Exists(Path.Join(folderPath, $"{DCSID}.lua")))
-                return;
+            localFiles ??= new LocalAircraftFiles(database.DCSSaveGamePath);
+            foreach (var file in localFiles.GetPayloadFiles(DCSID))
+                ImportDCSPayloadFile(file);
+        }
 
-            var fileText = File.ReadAllText(Path.Join(folderPath, $"{DCSID}.lua"))
+        private void ImportDCSPayloadFile(string file)
+        {
+            var fileText = File.ReadAllText(file)
                 .Replace("local unitPayloads = ", "")
                 .Replace("return unitPayloads", "");
             try
@@ -267,32 +271,24 @@ namespace BriefingRoom4DCS.Data
 
         }
 
-        internal void GetDCSLiveries(IDatabase database)
+        internal void GetDCSLiveries(IDatabase database, LocalAircraftFiles localFiles = null)
         {
-            var folderPath = Path.Join(database.DCSSaveGamePath, "Liveries");
-
-            if (!Directory.Exists(Path.Join(folderPath, $"{DCSID}")))
-                return;
-
-            foreach (var item in Directory.GetFiles(Path.Join(folderPath, $"{DCSID}"), "*.*", SearchOption.TopDirectoryOnly))
+            localFiles ??= new LocalAircraftFiles(database.DCSSaveGamePath);
+            foreach (var folder in localFiles.GetLiveryFolders(DCSID))
             {
-                var rawFileName = item.Replace(".zip", "").Split("\\").Last();
-                Liveries.AddIfKeyUnused(Country.ALL, new List<Tuple<string, string>>());
-                if (!Liveries[Country.ALL].Contains(Tuple.Create(rawFileName, rawFileName)))
+                var names = Directory.EnumerateFiles(folder, "*.*", SearchOption.TopDirectoryOnly)
+                    .Select(item => Path.GetExtension(item).Equals(".zip", StringComparison.OrdinalIgnoreCase)
+                        ? Path.GetFileNameWithoutExtension(item) : Path.GetFileName(item))
+                    .Concat(Directory.EnumerateFiles(folder, "description.lua", SearchOption.AllDirectories)
+                        .Select(item => Path.GetFileName(Path.GetDirectoryName(item))));
+                foreach (var rawFileName in names)
                 {
-                    Liveries[Country.ALL].Add(Tuple.Create(rawFileName, rawFileName));
-                    BriefingRoom.PrintToLog($"Imported Livery {rawFileName} for {DCSID}");
-                }
-            }
-
-            foreach (var item in Directory.GetFiles(Path.Join(folderPath, $"{DCSID}"), "description.lua", SearchOption.AllDirectories))
-            {
-                var rawFileName = item.Replace("description.lua", "").Split("\\")[^2];
-                Liveries.AddIfKeyUnused(Country.ALL, new List<Tuple<string, string>>());
-                if (!Liveries[Country.ALL].Contains(Tuple.Create(rawFileName, rawFileName)))
-                {
-                    Liveries[Country.ALL].Add(Tuple.Create(rawFileName, rawFileName));
-                    BriefingRoom.PrintToLog($"Imported Livery {rawFileName} for {DCSID}");
+                    Liveries.AddIfKeyUnused(Country.ALL, new List<Tuple<string, string>>());
+                    if (!Liveries[Country.ALL].Contains(Tuple.Create(rawFileName, rawFileName)))
+                    {
+                        Liveries[Country.ALL].Add(Tuple.Create(rawFileName, rawFileName));
+                        BriefingRoom.PrintToLog($"Imported Livery {rawFileName} for {DCSID}");
+                    }
                 }
             }
 
