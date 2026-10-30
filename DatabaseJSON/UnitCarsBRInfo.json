@@ -2151,40 +2151,85 @@
     "lowPolly": false,
     "immovable": false
   },
-    {
+  {
     "type": "CHAP_SLT50_Tractor",
     "families": ["VehicleTransport"],
     "lowPolly": false,
     "immovable": false
   },
-      {
+  {
     "type": "CHAP_SLT50_Trailer",
     "families": ["VehicleStatic"],
     "lowPolly": false,
     "immovable": true
   },
-        {
+  {
     "type": "CHAP_Titan",
     "families": ["VehicleTransport"],
     "lowPolly": false,
     "immovable": false
   },
-          {
+  {
     "type": "GCI_station_MiG29",
     "families": ["VehicleStatic"],
     "lowPolly": false,
     "immovable": true
   },
-            {
+  {
     "type": "S_75_Zil_Trailer",
     "families": ["VehicleTransport"],
     "lowPolly": false,
     "immovable": true
   },
-              {
+  {
     "type": "TZ-22_TANK",
     "families": ["VehicleTransport"],
     "lowPolly": false,
     "immovable": true
+  },
+    {
+    "type": "CHAP_Atlet",
+    "families": ["VehicleTransport"],
+    "lowPolly": false,
+    "immovable": false
+  },
+      {
+    "type": "CHAP_BMD2",
+    "families": ["VehicleAPC"],
+    "lowPolly": false,
+    "immovable": false
+  },
+      {
+    "type": "CHAP_PGZ09",
+    "families": ["VehicleAAA"],
+    "lowPolly": false,
+    "immovable": false
+  },
+      {
+    "type": "CHAP_Ural4320_ZU232",
+    "families": ["VehicleAAA"],
+    "lowPolly": false,
+    "immovable": false
+  },
+      {
+    "type": "CHAP_UralTyphoon",
+    "families": ["VehicleTransport"],
+    "lowPolly": false,
+    "immovable": false
+  },    {
+    "type": "CHAP_ZIL131",
+    "families": ["VehicleTransport"],
+    "lowPolly": false,
+    "immovable": false
+  },    {
+    "type": "CHAP_ZIL131_Kung",
+    "families": ["VehicleTransport"],
+    "lowPolly": false,
+    "immovable": false
+  },    {
+    "type": "CHAP_ZTQ15",
+    "families": ["VehicleMBT"],
+    "lowPolly": false,
+    "immovable": false
   }
 ]
