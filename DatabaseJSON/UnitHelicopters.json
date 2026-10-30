@@ -29937,6 +29937,10 @@
         "id": "DustProtectionDevices"
       },
       {
+        "defValue": false,
+        "id": "ExhaustScreen"
+      },
+      {
         "defValue": 0,
         "id": "NetCrewControlPriority"
       }
@@ -56410,11 +56414,11 @@
             "num": 1
           },
           {
-            "CLSID": "{B919B0F4-7C25-455E-9A02-CEA51DB895E3}",
+            "CLSID": "{2x9M114_with_adapter}",
             "num": 5
           },
           {
-            "CLSID": "{B919B0F4-7C25-455E-9A02-CEA51DB895E3}",
+            "CLSID": "{2x9M114_with_adapter}",
             "num": 2
           },
           {
@@ -56686,11 +56690,11 @@
             "num": 3
           },
           {
-            "CLSID": "{B919B0F4-7C25-455E-9A02-CEA51DB895E3}",
+            "CLSID": "{2x9M114_with_adapter}",
             "num": 5
           },
           {
-            "CLSID": "{B919B0F4-7C25-455E-9A02-CEA51DB895E3}",
+            "CLSID": "{2x9M114_with_adapter}",
             "num": 2
           }
         ],
