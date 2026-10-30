@@ -46,7 +46,7 @@ namespace BriefingRoom4DCS
 
         public const string BUILD_VERSION = "~BUILD_VERSION~";
 
-        public const string TARGETED_DCS_WORLD_VERSION = "2.9.29.27278";
+        public const string TARGETED_DCS_WORLD_VERSION = "2.9.31.29434";
 
         public const int MAXFILESIZE = 50000000;
 
