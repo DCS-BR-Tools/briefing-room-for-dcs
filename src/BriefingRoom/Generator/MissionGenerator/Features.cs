@@ -189,7 +189,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                     }
                     else if (!groupInfo.Value.UnitDB.IsAircraft)
                     {
-                        var isNearObjective = mission.ObjectiveCoordinates.Count == 0 || mission.ObjectiveCoordinates.Any(x => x.GetDistanceFrom(groupInfo.Value.Coordinates) < 15 * Toolbox.NM_TO_METERS);
+                        var isNearObjective = featureDB.GetDBEntryInfo().Category.Get("en") == "Direct Support" || mission.ObjectiveCoordinates.Count == 0 || mission.ObjectiveCoordinates.Any(x => x.GetDistanceFrom(groupInfo.Value.Coordinates) < 15 * Toolbox.NM_TO_METERS);
                         if (isNearObjective)
                         {
                             var friendlyForcesListStr = briefingRoom.Database.Language.Translate(mission.LangKey, "FriendlyForcesList");
@@ -225,6 +225,8 @@ namespace BriefingRoom4DCS.Generator.Mission
             {
                 featureLua += $"briefingRoom.mission.missionFeatures.groupNames.{GeneratorTools.LowercaseFirstCharacter(featureDB.ID)} = \"{(groupInfo.HasValue ? groupInfo.Value.Name : 0)}\"\n";
                 featureLua += $"briefingRoom.mission.missionFeatures.unitNames.{GeneratorTools.LowercaseFirstCharacter(featureDB.ID)} = {{{(groupInfo.HasValue ? string.Join(",", groupInfo.Value.UnitNames.Select(x => $"\"{x}\"")) : "")}}}\n";
+                if (groupInfo.HasValue && groupInfo.Value.UnitDB != null)
+                    featureLua += $"briefingRoom.mission.missionFeatures.threatRanges.{GeneratorTools.LowercaseFirstCharacter(featureDB.ID)} = {{ min = {groupInfo.Value.UnitDB.ThreatRangeMin}, max = {groupInfo.Value.UnitDB.ThreatRange} }}\n";
             }
 
             foreach (string luaFile in featureDB.IncludeLua)
@@ -443,7 +445,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                     }
                     else if (!groupInfo.Value.UnitDB.IsAircraft)
                     {
-                        var isNearObjective = mission.ObjectiveCoordinates.Count == 0 || mission.ObjectiveCoordinates.Any(x => x.GetDistanceFrom(groupInfo.Value.Coordinates) < 15 * Toolbox.NM_TO_METERS);
+                        var isNearObjective = featureDB.GetDBEntryInfo().Category.Get("en") == "Direct Support" || mission.ObjectiveCoordinates.Count == 0 || mission.ObjectiveCoordinates.Any(x => x.GetDistanceFrom(groupInfo.Value.Coordinates) < 15 * Toolbox.NM_TO_METERS);
                         if (isNearObjective)
                         {
                             var friendlyForcesListStr = briefingRoom.Database.Language.Translate(mission.LangKey, "FriendlyForcesList");
