@@ -1,5 +1,6 @@
 using System.Text.RegularExpressions;
 using BriefingRoom4DCS.Mission;
+using BriefingRoom4DCS.Template;
 
 namespace BriefingRoom4DCS.Tests;
 
@@ -94,5 +95,30 @@ public class SmokeTests
             var minutes = int.Parse(m.Groups[1].Value);
             Assert.InRange(minutes, 1, 5);
         }
+    }
+
+    [Fact]
+    public void FriendlyTaskableArtilleryPopulatesScriptMissionFeatures()
+    {
+        var briefingRoom = new BriefingRoom(fixture.Db);
+        var template = new MissionTemplate(
+            fixture.Db,
+            $"{BriefingRoom.GetBriefingRoomRootPath()}\\testTemplates\\Caucasus.brt");
+        template.MissionFeatures.Add("FriendlyTaskableArtillery");
+
+        DCSMission mission = briefingRoom.GenerateMission(template);
+
+        Assert.NotNull(mission);
+        var scriptMissionFeatures = mission.GetValue("ScriptMissionFeatures");
+        Assert.Contains("briefingRoom.mission.missionFeatures.groupNames.friendlyTaskableArtillery = \"", scriptMissionFeatures);
+        Assert.Contains("briefingRoom.mission.missionFeatures.unitNames.friendlyTaskableArtillery = {", scriptMissionFeatures);
+        Assert.Matches(@"briefingRoom\.mission\.missionFeatures\.threatRanges\.friendlyTaskableArtillery = \{ min = \d+, max = \d+ \}", scriptMissionFeatures);
+        Assert.Contains("FriendlyTaskableArtillery.lua", mission.ScriptFileSet);
+
+        var groupNameMatch = Regex.Match(scriptMissionFeatures, @"briefingRoom\.mission\.missionFeatures\.groupNames\.friendlyTaskableArtillery = ""([^""]+)""");
+        Assert.True(groupNameMatch.Success);
+        var artilleryGroupName = groupNameMatch.Groups[1].Value;
+        var kneeboardHtml = mission.Briefing.GetBriefingKneeBoardTasksAndRemarksHTML(fixture.Db, mission);
+        Assert.Contains($"Fire support ({artilleryGroupName}) is available.", kneeboardHtml);
     }
 }

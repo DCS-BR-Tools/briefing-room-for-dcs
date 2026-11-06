@@ -5,4 +5,5 @@
 briefingRoom.mission.missionFeatures = { } -- Mission features
 briefingRoom.mission.missionFeatures.groupNames = { } -- Mission features group ID
 briefingRoom.mission.missionFeatures.unitNames = { } -- Mission features units ID
+briefingRoom.mission.missionFeatures.threatRanges = { } -- Mission features threat ranges
 $SCRIPTMISSIONFEATURES$

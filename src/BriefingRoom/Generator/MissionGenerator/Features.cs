@@ -200,6 +200,8 @@ namespace BriefingRoom4DCS.Generator.Mission
             {
                 featureLua += $"briefingRoom.mission.missionFeatures.groupNames.{GeneratorTools.LowercaseFirstCharacter(featureDB.ID)} = \"{(groupInfo.HasValue ? groupInfo.Value.Name : 0)}\"\n";
                 featureLua += $"briefingRoom.mission.missionFeatures.unitNames.{GeneratorTools.LowercaseFirstCharacter(featureDB.ID)} = {{{(groupInfo.HasValue ? string.Join(",", groupInfo.Value.UnitNames.Select(x => $"\"{x}\"")) : "")}}}\n";
+                if (groupInfo.HasValue && groupInfo.Value.UnitDB != null)
+                    featureLua += $"briefingRoom.mission.missionFeatures.threatRanges.{GeneratorTools.LowercaseFirstCharacter(featureDB.ID)} = {{ min = {groupInfo.Value.UnitDB.ThreatRangeMin}, max = {groupInfo.Value.UnitDB.ThreatRange} }}\n";
             }
 
             foreach (string luaFile in featureDB.IncludeLua)
