@@ -19,6 +19,22 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
     /// </remarks>
     internal static class ObjectiveUtils
     {
+        internal static string DynamicBehaviorKey(int objectiveIndex) => $"DynamicBehavior_{objectiveIndex}";
+
+        /// <summary>
+        /// Enumerates objectives and their subtasks in the same flat order as <see cref="ObjectiveGenerator"/>.
+        /// </summary>
+        internal static IEnumerable<(int TemplateIndex, int ObjectiveIndex, MissionTemplateSubTaskRecord Record)> EnumerateObjectiveIndexes(IReadOnlyList<MissionTemplateObjectiveRecord> objectives)
+        {
+            var flatIndex = 0;
+            for (var i = 0; i < objectives.Count; i++)
+            {
+                yield return (i, flatIndex++, objectives[i]);
+                foreach (var subTask in objectives[i].SubTasks)
+                    yield return (i, flatIndex++, subTask);
+            }
+        }
+
         internal static (string luaUnit, int unitCount, MinMaxI unitCountMinMax, List<UnitFamily> objectiveTargetUnitFamily, GroupFlags groupFlags) GetUnitData(MissionTemplateSubTaskRecord task, DBEntryObjectiveTarget targetDB, DBEntryObjectiveTargetBehavior targetBehaviorDB, ObjectiveOption[] objectiveOptions)
         {
             GroupFlags groupFlags = 0;
