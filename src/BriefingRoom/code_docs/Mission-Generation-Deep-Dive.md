@@ -833,7 +833,7 @@ mission.SetValue("MISSIONNAME", missionName);
 
 Briefing.GenerateMissionBriefingDescription(database, ref mission, template, ...);
 mission.SetValue("DescriptionText", mission.Briefing.GetBriefingAsRawText(...));
-mission.SetValue("EditorNotes", mission.Briefing.GetEditorNotes(...));
+mission.SetValue("EditorNotes", mission.Briefing.GetEditorNotes(database, mission.LangKey, "\\\n", mission));
 ```
 
 Creates comprehensive mission briefing:

@@ -1,4 +1,4 @@
-﻿/*
+/*
 ==========================================================================
 This file is part of Briefing Room for DCS World, a mission
 generator for DCS World, by @akaAgar (https://github.com/akaAgar/briefing-room-for-dcs)
@@ -159,11 +159,13 @@ namespace BriefingRoom4DCS.Mission
             return text.Replace("\r\n", "\n").Replace("\n", newLine).Replace("\"", "''");
         }
 
-        public string GetEditorNotes(IDatabase database, string langKey, string newLine = "\n")
+        public string GetEditorNotes(IDatabase database, string langKey, string newLine = "\n", DCSMission mission = null)
         {
             string text = Toolbox.ReadAllTextIfFileExists(Path.Combine(BRPaths.INCLUDE_HTML, "EditorNotes.txt"));
             text = database.Language.ReplaceValues(langKey, text);
             GeneratorTools.ReplaceKey(ref text, "TARGETGROUPNAMES", GeneratorTools.MakeRawTextList(GetItems(DCSMissionBriefingItemType.TargetGroupName)).Replace("\t", "    "));
+            if (mission != null)
+                text = mission.ReplaceValues(text);
             return text.Replace("\r\n", "\n").Replace("\n", newLine).Replace("\"", "''");
         }
 
