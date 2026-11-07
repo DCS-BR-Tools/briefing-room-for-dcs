@@ -43,6 +43,28 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
 
             // Get units with validation
             ObjectiveCreationHelpers.GetUnitsWithValidation(ctx);
+
+            if ((ctx.Task.Preset == "EscortPlane" || ctx.Task.Preset == "EscortHelicopters") && ctx.UnitDBs.FirstOrDefault() is DBEntryAircraft aircraftDB)
+            {
+                bool isAirSpawn = !Constants.AIRBASE_LOCATIONS.Contains(targetBehaviorDB.Location);
+                string newBehaviorId = null;
+
+                if (aircraftDB.Tasks.Contains(DCSTask.GroundAttack) || aircraftDB.Tasks.Contains(DCSTask.CAS))
+                    newBehaviorId = isAirSpawn ? "AttackObjectiveFromAir" : "AttackObjective";
+                else if (aircraftDB.Tasks.Contains(DCSTask.Reconnaissance))
+                    newBehaviorId = isAirSpawn ? "ReconObjectiveFromAir" : "ReconObjective";
+                else if (aircraftDB.Tasks.Contains(DCSTask.Transport))
+                    newBehaviorId = isAirSpawn ? "InsertAtObjectiveFromAir" : "InsertAtObjective";
+
+                if (newBehaviorId != null)
+                {
+                    targetBehaviorDB = briefingRoom.Database.GetEntry<DBEntryObjectiveTargetBehavior>(newBehaviorId);
+                    ctx.TargetBehaviorDB = targetBehaviorDB;
+                    
+                    ctx.Mission.SetValue($"DynamicBehavior_{ctx.Task.GetHashCode()}", newBehaviorId);
+                }
+            }
+
             // Get transport origin and destination for escort
             var (originAirbase, unitCoordinates) = ObjectiveTransportUtils.GetTransportOrigin(briefingRoom, ref ctx.Mission, targetBehaviorDB.Location, objectiveCoordinates, true, ctx.ObjectiveTargetUnitFamily.GetUnitCategory());
             if (Constants.AIRBASE_LOCATIONS.Contains(targetBehaviorDB.Location) && targetDB.UnitCategory.IsAircraft())
