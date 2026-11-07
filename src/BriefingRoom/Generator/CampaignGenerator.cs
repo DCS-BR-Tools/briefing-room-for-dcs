@@ -369,6 +369,8 @@ namespace BriefingRoom4DCS.Generator
                 return false;
             if (!taskDB.ValidUnitCategories.Contains(targetDB.UnitCategory))
                 return false;
+            if (taskDB.ValidTargetIDs.Length > 0 && !taskDB.ValidTargetIDs.Contains(targetDB.ID))
+                return false;
             if (!targetBehaviorDB.ValidUnitCategories.Contains(targetDB.UnitCategory))
                 return false;
             if (targetBehaviorDB.InvalidTasks.Contains(taskDB.ID))
