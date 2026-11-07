@@ -1,4 +1,4 @@
-﻿/*
+/*
 ==========================================================================
 This file is part of Briefing Room for DCS World, a mission
 generator for DCS World, by @akaAgar (https://github.com/akaAgar/briefing-room-for-dcs)
@@ -58,7 +58,7 @@ namespace BriefingRoom4DCS.Generator.Mission
         {
             // Reseed before any RNG draws so that runs with the same RandomSeed produce
             // identical missions. Null restores the time-based default.
-            Toolbox.Reseed(template.RandomSeed);
+            var randomSeed = Toolbox.Reseed(template.RandomSeed);
 
             // -- START INITIALIZATION
             // Check for missing entries in the database
@@ -72,6 +72,8 @@ namespace BriefingRoom4DCS.Generator.Mission
             Toolbox.CheckObjectiveProgressionLogic(briefingRoom.Database, template, briefingRoom.LanguageKey);
 
             var mission = new DCSMission(briefingRoom.Database, briefingRoom.LanguageKey, template);
+            mission.RandomSeed = randomSeed;
+            mission.SetValue("RandomSeed", randomSeed);
 
 
             Toolbox.SetMinMaxTheaterCoords(briefingRoom.Database, ref mission);
@@ -257,7 +259,7 @@ namespace BriefingRoom4DCS.Generator.Mission
 
             Briefing.GenerateMissionBriefingDescription(briefingRoom.Database, ref mission, template, mission.ObjectiveTargetUnitFamilies, mission.SituationDB);
             mission.SetValue("DescriptionText", mission.Briefing.GetBriefingAsRawText(briefingRoom.Database, ref mission, "\\\n"));
-            mission.SetValue("EditorNotes", mission.Briefing.GetEditorNotes(briefingRoom.Database, mission.LangKey, "\\\n"));
+            mission.SetValue("EditorNotes", mission.Briefing.GetEditorNotes(briefingRoom.Database, mission.LangKey, "\\\n", mission));
 
 
             BriefingRoom.PrintToLog("Generating options...");
@@ -540,6 +542,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                     generalRetriesLeft--;
                     retriesUsed = maxGeneralRetries - generalRetriesLeft;
                     briefingRoom.PrintTranslatableWarning("RecoverableErrorRetryUsage", retriesUsed, maxGeneralRetries);
+                    templateRecord = templateRecord with { RandomSeed = null };
                     continue;
                 }
 
@@ -557,6 +560,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 extremeDistanceRetriesLeft--;
                 extremeRetriesUsed = maxExtremeDistanceRetries - extremeDistanceRetriesLeft;
                 briefingRoom.PrintTranslatableWarning("ExtremeDistanceRetryUsage", extremeRetriesUsed, maxExtremeDistanceRetries);
+                templateRecord = templateRecord with { RandomSeed = null };
             }
         }
 

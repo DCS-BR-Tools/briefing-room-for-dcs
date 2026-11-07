@@ -1,4 +1,4 @@
-﻿/*
+/*
 ==========================================================================
 This file is part of Briefing Room for DCS World, a mission
 generator for DCS World, by @akaAgar (https://github.com/akaAgar/briefing-room-for-dcs)
@@ -98,9 +98,11 @@ namespace BriefingRoom4DCS
         // When the user provides a RandomSeed in their template, MissionGenerator.Generate
         // calls Reseed at entry so every Toolbox.Random* draw is reproducible. Pass null to
         // restore the default time-based RNG (test isolation, CLI batch runs without a seed).
-        internal static void Reseed(int? seed)
+        internal static int Reseed(int? seed)
         {
-            _rnd = seed.HasValue ? new Random(seed.Value) : new Random();
+            int actualSeed = seed ?? Random.Shared.Next();
+            _rnd = new Random(actualSeed);
+            return actualSeed;
         }
 
         internal static bool StringICompare(string string1, string string2)

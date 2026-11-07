@@ -1,4 +1,4 @@
-﻿/*
+/*
 ==========================================================================
 This file is part of Briefing Room for DCS World, a mission
 generator for DCS World, by @akaAgar (https://github.com/akaAgar/briefing-room-for-dcs)
@@ -37,6 +37,7 @@ namespace BriefingRoom4DCS.Mission
 
         private const int MAX_VALUE_LENGTH_DISPLAY = 16;
         public string TheaterID { get { return GetValue("TheaterID"); } }
+        public int RandomSeed { get; internal set; }
 
         internal Stack<DCSMissionState> PreviousStates;
 

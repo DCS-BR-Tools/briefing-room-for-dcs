@@ -80,6 +80,63 @@ public class DeterminismTests
         }
     }
 
+    [Fact]
+    public void UnsetSeedCapturesAndPrintsSeedAndReproducesMission()
+    {
+        var briefingRoom = new BriefingRoom(fixture.Db);
+        var template = new MissionTemplate(
+            fixture.Db,
+            $"{BriefingRoom.GetBriefingRoomRootPath()}\\testTemplates\\Caucasus.brt");
+        Assert.Null(template.RandomSeed);
+
+        var first = briefingRoom.GenerateMission(template);
+        var capturedSeed = first.RandomSeed;
+
+        Assert.Equal(capturedSeed.ToString(), first.GetValue("RandomSeed"));
+        Assert.Contains($"Random Seed: {capturedSeed}", first.GetValue("DescriptionText"));
+        Assert.Contains($"Random Seed: {capturedSeed}", first.GetValue("EditorNotes"));
+        Assert.Contains(capturedSeed.ToString(), first.Briefing.GetBriefingAsHTML(fixture.Db, first));
+        Assert.Contains(capturedSeed.ToString(), first.Briefing.GetShortBriefingAsHTML(fixture.Db, first));
+
+        // Re-running with the captured seed reproduces the exact same mission.
+        var second = GenerateWithSeed(capturedSeed);
+        Assert.Equal(first.TheaterID, second.TheaterID);
+        Assert.Equal(first.Briefing.Name, second.Briefing.Name);
+        Assert.Equal(first.GetValue("CountriesBlue"), second.GetValue("CountriesBlue"));
+        Assert.Equal(first.GetValue("CountriesRed"), second.GetValue("CountriesRed"));
+        Assert.Equal(first.GetValue("CountriesNeutral"), second.GetValue("CountriesNeutral"));
+        Assert.Equal(first.GetValue("DescriptionText"), second.GetValue("DescriptionText"));
+    }
+
+    [Fact]
+    public void CapturedSeedPreservesMissionSetupWhenMissionFeaturesOrDefensesChange()
+    {
+        var briefingRoom = new BriefingRoom(fixture.Db);
+        var template = new MissionTemplate(
+            fixture.Db,
+            $"{BriefingRoom.GetBriefingRoomRootPath()}\\testTemplates\\Caucasus.brt");
+
+        var original = briefingRoom.GenerateMission(template);
+
+        var modifiedTemplate = new MissionTemplate(
+            fixture.Db,
+            $"{BriefingRoom.GetBriefingRoomRootPath()}\\testTemplates\\Caucasus.brt")
+        {
+            RandomSeed = original.RandomSeed,
+            SituationEnemyAirDefense = AmountNR.VeryHigh,
+            SituationFriendlyAirDefense = AmountNR.Low,
+            MissionFeatures = new System.Collections.Generic.List<string> { "FriendlyAWACS" }
+        };
+
+        var modified = briefingRoom.GenerateMission(modifiedTemplate);
+
+        Assert.Equal(original.RandomSeed, modified.RandomSeed);
+        Assert.Equal(original.TheaterID, modified.TheaterID);
+        Assert.Equal(original.GetValue("PlayerAirbaseId"), modified.GetValue("PlayerAirbaseId"));
+        Assert.Equal(original.GetValue("MissionCenterX"), modified.GetValue("MissionCenterX"));
+        Assert.Equal(original.GetValue("MissionCenterY"), modified.GetValue("MissionCenterY"));
+    }
+
     DCSMission GenerateWithSeed(int seed)
     {
         var briefingRoom = new BriefingRoom(fixture.Db);
