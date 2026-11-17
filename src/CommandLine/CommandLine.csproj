@@ -2,7 +2,7 @@
 
   <!-- Project-specific settings; common publish settings are in Directory.Build.props -->
   <PropertyGroup>
-    <TargetFramework>net10.0-windows</TargetFramework>
+    <TargetFramework>net11.0-windows</TargetFramework>
     <RootNamespace>BriefingRoom4DCS.CommandLineTool</RootNamespace>
     <AssemblyName>BriefingRoom-CLI</AssemblyName>
     <OutputType>Exe</OutputType>
@@ -17,7 +17,7 @@
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="10.0.14" />
+    <PackageReference Include="Microsoft.NET.ILLink.Tasks" Version="11.0.0" />
     <ProjectReference Include="../BriefingRoom/BriefingRoom.csproj" />
   </ItemGroup>
   <ItemGroup>

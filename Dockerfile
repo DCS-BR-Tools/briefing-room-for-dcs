@@ -1,5 +1,5 @@
 # https://hub.docker.com/_/microsoft-dotnet
-FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:11.0 AS build
 WORKDIR /source
 
 # copy csproj and restore as distinct layers
@@ -8,7 +8,7 @@ COPY src src
 RUN dotnet publish -c Release -o /app --use-current-runtime --self-contained false src/Web/Web.csproj
 
 # final stage/image
-FROM mcr.microsoft.com/dotnet/aspnet:10.0
+FROM mcr.microsoft.com/dotnet/aspnet:11.0
 ENV DOTNET_RUNNING_IN_CONTAINER=true
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
 

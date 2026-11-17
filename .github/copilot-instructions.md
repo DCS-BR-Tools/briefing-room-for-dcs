@@ -7,7 +7,7 @@ BriefingRoom is a mission generator for DCS World (Digital Combat Simulator).
 
 | Component | Version/Details | Location |
 |-----------|-----------------|----------|
-| .NET | 10 | `src/` |
+| .NET | 11 | `src/` |
 | Solution | `src/BriefingRoom.sln` | - |
 | Main Library | `src/BriefingRoom/` | - |
 | Web Project | `src/Web/Web.csproj` | - |
@@ -17,7 +17,7 @@ BriefingRoom is a mission generator for DCS World (Digital Combat Simulator).
 
 ## Runtime Environments
 - **Windows**: 64-bit executable
-- **Docker**: `mcr.microsoft.com/dotnet/aspnet:10.0` (Linux)
+- **Docker**: `mcr.microsoft.com/dotnet/aspnet:11.0` (Linux)
 
 ## Build Commands
 ```bash
@@ -57,7 +57,7 @@ rm -r ./Release;  dotnet publish src/BriefingRoom.sln -c Release -p:Flavor=EXE
 
 ## Language-Specific Notes
 
-### .NET 10
+### .NET 11
 - Use modern C# features (records, pattern matching, file-scoped namespaces)
 - Prefer `Span<T>`, `Memory<T>` for performance-critical code
 - Use `System.Text.Json` (not Newtonsoft)
@@ -70,7 +70,7 @@ rm -r ./Release;  dotnet publish src/BriefingRoom.sln -c Release -p:Flavor=EXE
 
 ### Docker
 - Multi-stage builds required (build stage + runtime stage)
-- Base images: `mcr.microsoft.com/dotnet/sdk:10.0` and `mcr.microsoft.com/dotnet/aspnet:10.0`
+- Base images: `mcr.microsoft.com/dotnet/sdk:11.0` and `mcr.microsoft.com/dotnet/aspnet:11.0`
 - Minimize final image size
 
 ### GitHub Actions
