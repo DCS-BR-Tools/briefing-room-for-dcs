@@ -78,23 +78,23 @@ namespace BriefingRoom4DCS
                 AddScriptFileToEntries(database, MizFileEntries, fileName, $"Mission/Script/{fileName}", mission);
             });
 
-            Directory.EnumerateFiles(Path.Combine(BRPaths.INCLUDE_LUA, "Mission/Script/MissionTriggers")).ToList().ForEach(fileName =>
+            foreach (var fileName in Directory.EnumerateFiles(Path.Combine(BRPaths.INCLUDE_LUA, "Mission/Script/MissionTriggers")))
             {
                 var fileNameOnly = Path.GetFileName(fileName);
                 AddScriptFileToEntries(database, MizFileEntries, $"triggers/{fileNameOnly}", $"Mission/Script/MissionTriggers/{fileNameOnly}", mission);
-            });
+            }
 
-            Directory.EnumerateFiles(Path.Combine(BRPaths.INCLUDE_LUA, "Mission/Script/ObjectiveFeatures")).ToList().ForEach(fileName =>
+            foreach (var fileName in Directory.EnumerateFiles(Path.Combine(BRPaths.INCLUDE_LUA, "Mission/Script/ObjectiveFeatures")))
             {
                 var fileNameOnly = Path.GetFileName(fileName);
                 AddScriptFileToEntries(database, MizFileEntries, $"objectiveFeatures/{fileNameOnly}", $"Mission/Script/ObjectiveFeatures/{fileNameOnly}", mission);
-            });
+            }
 
-            mission.ScriptFileSet.ToList().ForEach(fileName =>
+            foreach (var fileName in mission.ScriptFileSet.ToList())
             {
                 var fileNameOnly = Path.GetFileName(fileName);
                 AddScriptFileToEntries(database, MizFileEntries,  $"missionFeatures/{fileNameOnly}", $"MissionFeatures/{fileNameOnly}", mission);
-            });
+            }
 
             new List<string> {
             "MissionTriggersInit.lua",
@@ -130,7 +130,7 @@ namespace BriefingRoom4DCS
                 var resKey = $"ResKey_Script_{Path.GetFileNameWithoutExtension(mizPath)}";
                 mission.AppendValue("MapResourcesFiles", $"[\"{resKey}\"] = \"{mizPath}\",\n");
                 mission.AppendValue("TrigScriptActions", $"a_do_script_file(getValueResourceByKey(\"{resKey}\"));\n");
-                var rulesIndex = Regex.Matches(mission.GetValue("TrigScriptRules"), "predicate").Count + 1;
+                var rulesIndex = PredicateRegex().Count(mission.GetValue("TrigScriptRules")) + 1;
                 mission.AppendValue("TrigScriptRules", $@"
                 [{rulesIndex}] = 
                 {{
@@ -164,6 +164,9 @@ namespace BriefingRoom4DCS
             mizFileEntries.Add(mizEntryKey, Encoding.UTF8.GetBytes(stringValue));
             return true;
         }
+
+        [GeneratedRegex("predicate")]
+        private static partial Regex PredicateRegex();
 
         [GeneratedRegex("\\$\\w*?\\$")]
         private static partial Regex UnassignedRegex();

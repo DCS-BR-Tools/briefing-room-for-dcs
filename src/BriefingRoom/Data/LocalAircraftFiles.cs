@@ -6,8 +6,11 @@ using System.Text.RegularExpressions;
 
 namespace BriefingRoom4DCS.Data
 {
-    internal sealed class LocalAircraftFiles
+    internal sealed partial class LocalAircraftFiles
     {
+        [GeneratedRegex("""(?m)^\s*(?:\[\s*["']unitType["']\s*\]|unitType)\s*=\s*["']([^"'\r\n]+)["']""")]
+        private static partial Regex UnitTypeRegex();
+
         private static readonly Dictionary<string, string> LiveryAliases = new(StringComparer.OrdinalIgnoreCase)
         {
             ["A-10CII"] = "A-10C_2"
@@ -40,8 +43,7 @@ namespace BriefingRoom4DCS.Data
                     .Where(x => Path.GetExtension(x).Equals(".lua", StringComparison.OrdinalIgnoreCase)))
                 {
                     // Read metadata without executing user Lua or requiring the payload table to parse.
-                    var match = Regex.Match(File.ReadAllText(file),
-                        """(?m)^\s*(?:\[\s*["']unitType["']\s*\]|unitType)\s*=\s*["']([^"'\r\n]+)["']""");
+                    var match = UnitTypeRegex().Match(File.ReadAllText(file));
                     Add(payloadFiles, Path.GetFileNameWithoutExtension(file), file);
                     if (match.Success)
                         Add(payloadFiles, match.Groups[1].Value, file);

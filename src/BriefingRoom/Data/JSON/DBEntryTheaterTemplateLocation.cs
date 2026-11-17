@@ -81,11 +81,11 @@ namespace BriefingRoom4DCS.Data
 
                 var unitID = Toolbox.RandomFrom(options);
                 if (tryUseAll) // Remove the unitID from all families unless its the last one
-                    familyMap.Keys.ToList().ForEach(x =>
+                    foreach (var familyUnits in familyMap.Values)
                     {
-                        if (familyMap[x].Count > 1)
-                            familyMap[x].Remove(unitID);
-                    });
+                        if (familyUnits.Count > 1)
+                            familyUnits.Remove(unitID);
+                    }
 
                 var templateUnit = new DBEntryTemplateUnit
                 {

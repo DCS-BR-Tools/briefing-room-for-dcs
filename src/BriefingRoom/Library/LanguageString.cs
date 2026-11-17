@@ -50,15 +50,17 @@ namespace BriefingRoom4DCS
         internal void AddOverrides(DatabaseLanguage langDB, string classId, string id, string key)
         {
             var searchKey = $"{classId}.{id}.{key}".ToUpper();
-            if (langDB.LangMap.ContainsKey(searchKey))
-                langDB.LangMap.GetValueOrDefault(searchKey).ToList().ForEach(x => this.AddIfKeyUnused(x.Key, x.Value));
+            if (langDB.LangMap.TryGetValue(searchKey, out var overrides))
+                foreach (var x in overrides)
+                    this.AddIfKeyUnused(x.Key, x.Value);
         }
 
         internal void AddOverrides(DatabaseLanguage langDB, string classId, string id, string section, string key)
         {
             var searchKey = $"{classId}.{id}.{section}.{key}".ToUpper();
-            if (langDB.LangMap.ContainsKey(searchKey))
-                langDB.LangMap.GetValueOrDefault(searchKey).ToList().ForEach(x => this.AddIfKeyUnused(x.Key, x.Value));
+            if (langDB.LangMap.TryGetValue(searchKey, out var overrides))
+                foreach (var x in overrides)
+                    this.AddIfKeyUnused(x.Key, x.Value);
         }
         public string Get(string langKey)
         {

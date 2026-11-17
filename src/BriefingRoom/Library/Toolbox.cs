@@ -722,14 +722,15 @@ namespace BriefingRoom4DCS
         {
             var tasks = new List<MissionTemplateSubTaskRecord>();
             template.Objectives.ForEach(x => { tasks.Add(x); tasks.AddRange(x.SubTasks);});
-            tasks.Select((value, i) => new { i, value }).ToList().ForEach(x => CheckProgressionLogic(database, x.value, x.i + 1, tasks, langKey));
+            for (var i = 0; i < tasks.Count; i++)
+                CheckProgressionLogic(database, tasks[i], i + 1, tasks, langKey);
         }
 
         internal static void CheckProgressionLogic(IDatabase database, MissionTemplateSubTaskRecord task, int taskIndex,  List<MissionTemplateSubTaskRecord> tasks,  string langKey)
         {
             if(!task.ProgressionActivation)
                 return;
-            if(!string.IsNullOrEmpty(task.ProgressionOverrideCondition) && !Regex.IsMatch(task.ProgressionOverrideCondition, @"^([\(\)\d+]| and | or )+$")) 
+            if(!string.IsNullOrEmpty(task.ProgressionOverrideCondition) && !ProgressionConditionRegex().IsMatch(task.ProgressionOverrideCondition)) 
                 throw new BriefingRoomException(database, langKey, "InvalidProgressionOverrideCondition", taskIndex , task.ProgressionOverrideCondition);
             CheckProgressionDeps(database, tasks, task, taskIndex, taskIndex, langKey);
         }
@@ -741,7 +742,7 @@ namespace BriefingRoom4DCS
             if(seenTaskIndexes.Contains(taskIndex))
                 return; // Skip paths we have already seen
 
-            var dependentTasks = string.IsNullOrEmpty(task.ProgressionOverrideCondition) ? task.ProgressionDependentTasks.Select(x => x + 1).ToList() : Regex.Matches(task.ProgressionOverrideCondition, @"\d+").Select(x => int.Parse(x.Value)).ToList();
+            var dependentTasks = string.IsNullOrEmpty(task.ProgressionOverrideCondition) ? task.ProgressionDependentTasks.Select(x => x + 1).ToList() : DigitsRegex().Matches(task.ProgressionOverrideCondition).Select(x => int.Parse(x.Value)).ToList();
 
             if(dependentTasks.Count == 0)
                 return;
@@ -753,6 +754,12 @@ namespace BriefingRoom4DCS
             seenTaskIndexes.Add(taskIndex);
             dependentTasks.ForEach(x => CheckProgressionDeps(database, tasks, tasks[x -1], x, searchIndex, langKey, seenTaskIndexes));
         }
+
+        [GeneratedRegex(@"^([\(\)\d+]| and | or )+$")]
+        private static partial Regex ProgressionConditionRegex();
+
+        [GeneratedRegex(@"\d+")]
+        private static partial Regex DigitsRegex();
 
         [GeneratedRegex("\\[\\\"(.*?)\\\"\\] ?= ?(.*)")]
         private static partial Regex LuaDictRegex();

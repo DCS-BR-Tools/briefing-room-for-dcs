@@ -34,10 +34,10 @@ namespace BriefingRoom4DCS.UpdateService
     /// <summary>
     /// Manages the update process for BriefingRoom applications.
     /// </summary>
-    public class UpdateManager : IDisposable
+    public partial class UpdateManager : IDisposable
     {
-        private static readonly Regex BuildIdRegex =
-            new Regex(@"(?<!\d)(?<build>\d{8}-\d{6})(?!\d)", RegexOptions.Compiled);
+        [GeneratedRegex(@"(?<!\d)(?<build>\d{8}-\d{6})(?!\d)")]
+        private static partial Regex BuildIdRegex();
 
         private readonly GitHubReleaseClient _releaseClient;
         private readonly BackupManager _backupManager;
@@ -110,7 +110,7 @@ namespace BriefingRoom4DCS.UpdateService
 
         public static DateTime GetReleaseBuildDate(ReleaseInfo release)
         {
-            var match = BuildIdRegex.Match(release?.TagName ?? string.Empty);
+            var match = BuildIdRegex().Match(release?.TagName ?? string.Empty);
             return match.Success
                 ? ParseBuildDate(match.Groups["build"].Value)
                 : release?.PublishedAt ?? DateTime.MinValue;
