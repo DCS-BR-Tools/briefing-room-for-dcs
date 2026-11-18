@@ -212,7 +212,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 extraSettings.AddIfKeyUnused("UnitCoords", parkingSpotCoordinatesList);
             }
 
-            var task = GetTaskType(mission.TemplateRecord.Objectives, extraSettings, package);
+            var task = GetTaskType(mission, mission.TemplateRecord.Objectives, extraSettings, package);
 
             GroupInfo? groupInfo = UnitGenerator.AddUnitGroup(
                 briefingRoom,
@@ -304,18 +304,32 @@ namespace BriefingRoom4DCS.Generator.Mission
             });
         }
 
-        private static DCSTask GetTaskType(List<MissionTemplateObjectiveRecord> objectives, Dictionary<string, object> extraSettings, MissionTemplatePackageRecord package)
+        private static DCSTask GetTaskType(DCSMission mission, List<MissionTemplateObjectiveRecord> objectives, Dictionary<string, object> extraSettings, MissionTemplatePackageRecord package)
         {
-            var objs = objectives;
+            var indexedObjectives = Objectives.ObjectiveUtils.EnumerateObjectiveIndexes(objectives);
             if (package != null)
-                objs = objs.Where((x, i) => package.ObjectiveIndexes.Contains(i)).ToList();
-            var task = objectives.Select(x => new List<DCSTask> { AssignTask(x) }.Concat(x.SubTasks.Select(y => AssignTask(y)).ToList())).SelectMany(x => x).ToList().GroupBy(x => x).MaxBy(g => g.Count()).ToList().First();
+                indexedObjectives = indexedObjectives.Where(x => package.ObjectiveIndexes.Contains(x.TemplateIndex));
+            var task = indexedObjectives
+                .Select(x => AssignTask(mission, x.Record, x.ObjectiveIndex))
+                .GroupBy(x => x)
+                .MaxBy(g => g.Count())
+                .First();
             extraSettings.AddIfKeyUnused("DCSTask", task);
             return task;
         }
 
-        private static DCSTask AssignTask(MissionTemplateSubTaskRecord objective)
+        private static DCSTask AssignTask(DCSMission mission, MissionTemplateSubTaskRecord objective, int objectiveIndex)
         {
+            if (objective.Task.StartsWith("Escort"))
+            {
+                string dynamicBehavior = objective.TargetBehavior;
+                string dynamicKey = Objectives.ObjectiveUtils.DynamicBehaviorKey(objectiveIndex);
+                if (mission.Values.ContainsKey(dynamicKey))
+                    dynamicBehavior = mission.Values[dynamicKey];
+                if (dynamicBehavior != null && dynamicBehavior.StartsWith("Attack"))
+                    return DCSTask.CAS;
+                return DCSTask.CAP;
+            }
             if (objective.Task.StartsWith("Transport") || objective.Task.StartsWith("LandNear") || objective.Task.StartsWith("Extract"))
                 return DCSTask.Transport;
             if (objective.Task.StartsWith("FlyNear"))
