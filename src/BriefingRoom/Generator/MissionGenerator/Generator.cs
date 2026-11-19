@@ -333,7 +333,7 @@ namespace BriefingRoom4DCS.Generator.Mission
                 mission.PlayerAirbaseDestination = mission.PlayerAirbase;
             else
             {
-                mission.PlayerAirbaseDestination = Airbases.SelectStartingAirbase(briefingRoom.Database, mission.TemplateRecord.FlightPlanTheaterDestinationAirbase, ref mission);
+                mission.PlayerAirbaseDestination = Airbases.SelectDestinationAirbase(briefingRoom.Database, mission.TemplateRecord.FlightPlanTheaterDestinationAirbase, ref mission);
                 mission.PopulatedAirbaseIds[mission.TemplateRecord.ContextPlayerCoalition].Add(mission.PlayerAirbaseDestination.DCSID);
                 if (mission.PlayerAirbaseDestination.DCSID > 0)
                 {
