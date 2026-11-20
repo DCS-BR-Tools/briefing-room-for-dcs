@@ -1,4 +1,4 @@
-﻿/*
+/*
 ==========================================================================
 This file is part of Briefing Room for DCS World, a mission
 generator for DCS World, by @akaAgar (https://github.com/akaAgar/briefing-room-for-dcs)
@@ -18,6 +18,7 @@ along with Briefing Room for DCS World. If not, see https://www.gnu.org/licenses
 ==========================================================================
 */
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using BriefingRoom4DCS.Data;
@@ -75,40 +76,88 @@ namespace BriefingRoom4DCS.Generator.Mission
             mission.StrikePackages.AddRange(missionPackages);
         }
 
+        private const double RANDOM_DESTINATION_DISTANCE_MULTIPLIER = 1.3;
+        private const double RANDOM_DESTINATION_MIN_DISTANCE_NM = 15.0;
+
         internal static DBEntryAirbase SelectStartingAirbase(IDatabase database, string selectedAirbaseID, ref DCSMission mission, int requiredParkingSpots = 0, IReadOnlyCollection<SpawnPointSelector.ParkingDemand> parkingDemand = null)
+        {
+            if (!string.IsNullOrEmpty(selectedAirbaseID))
+                return mission.AirbaseDB.FirstOrDefault(x => x.ID == selectedAirbaseID) ?? throw new BriefingRoomException(database, mission.LangKey, "AirbaseNotFoundForPlayer", selectedAirbaseID);
+
+            var opts = GetCandidatePlayerAirbases(database, mission, requiredParkingSpots, parkingDemand);
+            if (opts.Count == 0)
+                return GetCarrierFallbackAirbaseOrThrow(database, mission);
+
+            return Toolbox.RandomFrom(opts);
+        }
+
+        internal static DBEntryAirbase SelectDestinationAirbase(IDatabase database, string selectedAirbaseID, ref DCSMission mission)
+        {
+            if (!string.IsNullOrEmpty(selectedAirbaseID))
+                return mission.AirbaseDB.FirstOrDefault(x => x.ID == selectedAirbaseID) ?? throw new BriefingRoomException(database, mission.LangKey, "AirbaseNotFoundForPlayer", selectedAirbaseID);
+
+            var opts = GetCandidatePlayerAirbases(database, mission);
+            if (opts.Count == 0)
+                return GetCarrierFallbackAirbaseOrThrow(database, mission);
+
+            var playerAirbase = mission.PlayerAirbase;
+            double maxDistanceMeters = GetRandomDestinationMaxDistanceNM(database, mission.TemplateRecord) * Toolbox.NM_TO_METERS;
+            var origin = playerAirbase.Coordinates;
+            var withinRangeAlternates = opts
+                .Where(x => x.DCSID != playerAirbase.DCSID && x.Coordinates.GetDistanceFrom(origin) <= maxDistanceMeters)
+                .ToList();
+            if (withinRangeAlternates.Count > 0)
+                return Toolbox.RandomFrom(withinRangeAlternates);
+
+            if (opts.Any(x => x.DCSID == playerAirbase.DCSID))
+                return playerAirbase;
+
+            return opts.OrderBy(x => x.Coordinates.GetDistanceFrom(origin)).First();
+        }
+
+        private static List<DBEntryAirbase> GetCandidatePlayerAirbases(
+            IDatabase database,
+            DCSMission mission,
+            int requiredParkingSpots = 0,
+            IReadOnlyCollection<SpawnPointSelector.ParkingDemand> parkingDemand = null)
         {
             parkingDemand ??= GetParkingDemandForFlightGroups(database, mission.TemplateRecord.PlayerFlightGroups);
 
             if (requiredParkingSpots == 0)
                 requiredParkingSpots = parkingDemand.Sum(x => x.UnitCount);
 
-            // Select all airbases for this theater
-            var airbases = mission.AirbaseDB;
-
-            // If a particular airbase name has been specified and an airbase with this name exists, pick it
-            if (!string.IsNullOrEmpty(selectedAirbaseID))
-            {
-                var airbase = mission.AirbaseDB.FirstOrDefault(x => x.ID == selectedAirbaseID) ?? throw new BriefingRoomException(database, mission.LangKey, "AirbaseNotFoundForPlayer", selectedAirbaseID);
-                return airbase;
-            }
-
             var templateRecord = mission.TemplateRecord;
             var theaterDB = mission.TheaterDB;
-            var missionLocal = mission;
 
-            var opts = airbases.Where(x =>
+            var playerAirbaseId = mission.PlayerAirbase?.DCSID ?? -1;
+            return mission.AirbaseDB.Where(x =>
                     x.ParkingSpots.Length >= requiredParkingSpots &&
-                    (x.Coalition == templateRecord.ContextPlayerCoalition || templateRecord.SpawnAnywhere) &&
+                    (x.Coalition == templateRecord.ContextPlayerCoalition || templateRecord.SpawnAnywhere || x.DCSID == playerAirbaseId) &&
                     (!MissionPrefersShoreAirbase(database, templateRecord) || IsNearWater(x.Coordinates, theaterDB)) &&
-                    (parkingDemand.Count == 0 || SpawnPointSelector.CanSatisfyParkingDemand(missionLocal, x.DCSID, parkingDemand))
-                    ).ToList();
+                    (parkingDemand.Count == 0 || SpawnPointSelector.CanSatisfyParkingDemand(mission, x.DCSID, parkingDemand)))
+                .ToList();
+        }
 
-            if (opts.Count == 0)
-                if (!mission.TemplateRecord.PlayerFlightGroups.Any(x => string.IsNullOrEmpty(x.Carrier)))
-                    return new DBEntryAirbase(Coordinates.GetCenter(mission.SituationDB.GetBlueZones(mission.TemplateRecord.OptionsMission.Contains("InvertCountriesCoalitions")).First().ToArray()));
-                else
-                    throw new BriefingRoomException(database, mission.LangKey, "NoPlayerAirbaseSpawnPoint");
-            return Toolbox.RandomFrom(opts);
+        private static DBEntryAirbase GetCarrierFallbackAirbaseOrThrow(IDatabase database, DCSMission mission)
+        {
+            if (!mission.TemplateRecord.PlayerFlightGroups.Any(x => string.IsNullOrEmpty(x.Carrier)))
+                return new DBEntryAirbase(Coordinates.GetCenter(mission.SituationDB.GetBlueZones(mission.TemplateRecord.OptionsMission.Contains("InvertCountriesCoalitions")).First().ToArray()));
+
+            throw new BriefingRoomException(database, mission.LangKey, "NoPlayerAirbaseSpawnPoint");
+        }
+
+        private static double GetRandomDestinationMaxDistanceNM(IDatabase database, MissionTemplateRecord templateRecord)
+        {
+            bool hasRotorcraft = templateRecord.PlayerFlightGroups
+                .Where(x => !x.Hostile)
+                .Select(x => database.GetEntry<DBEntryJSONUnit>(x.Aircraft))
+                .Any(x => x != null && x.Category == UnitCategory.Helicopter);
+
+            double baseMaxNM = hasRotorcraft
+                ? Math.Min(templateRecord.FlightPlanObjectiveDistance.Max, templateRecord.FlightPlanObjectiveSeparation.Max)
+                : templateRecord.FlightPlanObjectiveDistance.Max;
+
+            return Math.Max(RANDOM_DESTINATION_MIN_DISTANCE_NM, baseMaxNM * RANDOM_DESTINATION_DISTANCE_MULTIPLIER);
         }
 
         private static bool MissionPrefersShoreAirbase(IDatabase database, MissionTemplateRecord template)

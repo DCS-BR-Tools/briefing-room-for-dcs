@@ -168,8 +168,18 @@ Each stage is executed in a try-catch loop with sophisticated fallback logic.
      - Proximity to water (if carrier-capable aircraft)
 
 2. **Select Destination Airbase**
-   - Can be same as starting ("home")
-   - Or different airbase for recovery
+   ```csharp
+   mission.PlayerAirbaseDestination = Airbases.SelectDestinationAirbase(
+       database,
+       template.FlightPlanTheaterDestinationAirbase,
+       ref mission
+   );
+   ```
+   - Can be same as starting (`"home"`) or an explicitly specified airbase ID
+   - When set to Random (`""`), constrains alternate candidate airbases within a maximum radius from `mission.PlayerAirbase.Coordinates` (with a `15 NM` floor):
+     - **Helicopter / mixed rotorcraft missions**: `1.3 * Math.Min(FlightPlanObjectiveDistance.Max, FlightPlanObjectiveSeparation.Max)`
+     - **Fixed-wing only missions**: `1.3 * FlightPlanObjectiveDistance.Max`
+   - Falls back to `mission.PlayerAirbase` (if valid) or the nearest valid airbase when no alternate airbase exists within that radius, skipping duplicate `PopulatedAirbaseIds`, `AIRBASE_DEST_NAME_*` map markers, and briefing airbase rows when the destination resolves to the starting airbase
 
 3. **Configure Aircraft Packages**
    ```csharp

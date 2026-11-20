@@ -333,12 +333,15 @@ namespace BriefingRoom4DCS.Generator.Mission
                 mission.PlayerAirbaseDestination = mission.PlayerAirbase;
             else
             {
-                mission.PlayerAirbaseDestination = Airbases.SelectStartingAirbase(briefingRoom.Database, mission.TemplateRecord.FlightPlanTheaterDestinationAirbase, ref mission);
-                mission.PopulatedAirbaseIds[mission.TemplateRecord.ContextPlayerCoalition].Add(mission.PlayerAirbaseDestination.DCSID);
-                if (mission.PlayerAirbaseDestination.DCSID > 0)
+                mission.PlayerAirbaseDestination = Airbases.SelectDestinationAirbase(briefingRoom.Database, mission.TemplateRecord.FlightPlanTheaterDestinationAirbase, ref mission);
+                if (mission.PlayerAirbaseDestination.DCSID != mission.PlayerAirbase.DCSID)
                 {
-                    mission.MapData.Add($"AIRBASE_DEST_NAME_{mission.PlayerAirbaseDestination.UIDisplayName.Get(mission.LangKey)}", new List<double[]> { mission.PlayerAirbaseDestination.Coordinates.ToArray() });
-                    mission.Briefing.AddItem(DCSMissionBriefingItemType.Airbase, $"{mission.PlayerAirbaseDestination.UIDisplayName.Get(mission.LangKey)}{(string.IsNullOrEmpty(mission.PlayerAirbaseDestination.ICAO) ? "" : $"<br />{mission.PlayerAirbaseDestination.ICAO}")}\t{mission.PlayerAirbaseDestination.Runways}\t{mission.PlayerAirbaseDestination.ATC}\t{mission.PlayerAirbaseDestination.ILS}\t{mission.PlayerAirbaseDestination.TACAN}");
+                    mission.PopulatedAirbaseIds[mission.TemplateRecord.ContextPlayerCoalition].Add(mission.PlayerAirbaseDestination.DCSID);
+                    if (mission.PlayerAirbaseDestination.DCSID > 0)
+                    {
+                        mission.MapData.Add($"AIRBASE_DEST_NAME_{mission.PlayerAirbaseDestination.UIDisplayName.Get(mission.LangKey)}", new List<double[]> { mission.PlayerAirbaseDestination.Coordinates.ToArray() });
+                        mission.Briefing.AddItem(DCSMissionBriefingItemType.Airbase, $"{mission.PlayerAirbaseDestination.UIDisplayName.Get(mission.LangKey)}{(string.IsNullOrEmpty(mission.PlayerAirbaseDestination.ICAO) ? "" : $"<br />{mission.PlayerAirbaseDestination.ICAO}")}\t{mission.PlayerAirbaseDestination.Runways}\t{mission.PlayerAirbaseDestination.ATC}\t{mission.PlayerAirbaseDestination.ILS}\t{mission.PlayerAirbaseDestination.TACAN}");
+                    }
                 }
             }
 
