@@ -97,7 +97,7 @@ namespace BriefingRoom4DCS.Template
             {
                 if (profile.HasFixedWingAircraft && !profile.HasRotorAircraft && !task.ValidPlayerUnitCategories.Contains(UnitCategory.Plane))
                     return ObjectivePresetUnsuitabilityReason.AircraftTypeMismatch;
-                
+
                 if (profile.IsRotorOnly && !task.ValidPlayerUnitCategories.Contains(UnitCategory.Helicopter))
                     return ObjectivePresetUnsuitabilityReason.AircraftTypeMismatch;
             }
