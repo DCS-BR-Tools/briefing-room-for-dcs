@@ -129,9 +129,10 @@ namespace BriefingRoom4DCS.Generator.Mission
             var templateRecord = mission.TemplateRecord;
             var theaterDB = mission.TheaterDB;
 
+            var playerAirbaseId = mission.PlayerAirbase?.DCSID ?? -1;
             return mission.AirbaseDB.Where(x =>
                     x.ParkingSpots.Length >= requiredParkingSpots &&
-                    (x.Coalition == templateRecord.ContextPlayerCoalition || templateRecord.SpawnAnywhere) &&
+                    (x.Coalition == templateRecord.ContextPlayerCoalition || templateRecord.SpawnAnywhere || x.DCSID == playerAirbaseId) &&
                     (!MissionPrefersShoreAirbase(database, templateRecord) || IsNearWater(x.Coordinates, theaterDB)) &&
                     (parkingDemand.Count == 0 || SpawnPointSelector.CanSatisfyParkingDemand(mission, x.DCSID, parkingDemand)))
                 .ToList();
