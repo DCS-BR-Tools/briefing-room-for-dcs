@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using BriefingRoom4DCS.Mission;
 using BriefingRoom4DCS.Template;
 
 namespace BriefingRoom4DCS.Tests;
@@ -122,6 +124,35 @@ public class AirbaseSelectionTests
         template.FlightPlanTheaterDestinationAirbase = "CaucasusKobuleti";
         var explicitMission = briefingRoom.GenerateMission(template);
         Assert.Equal("CaucasusKobuleti", explicitMission.PlayerAirbaseDestination.ID);
+    }
+
+    [Fact]
+    public void RandomDestinationAirbase_FallbackToStartingAirbase_DoesNotDuplicateRegistration()
+    {
+        var briefingRoom = new BriefingRoom(fixture.Db);
+        var template = new MissionTemplate(
+            fixture.Db,
+            $"{BriefingRoom.GetBriefingRoomRootPath()}\\testTemplates\\Caucasus.brt");
+        template.RandomSeed = 700;
+        template.ContextSituation = "None";
+        template.PlayerFlightGroups[0].Aircraft = "UH-1H";
+        template.FlightPlanTheaterStartingAirbase = "CaucasusBatumi";
+        template.FlightPlanTheaterDestinationAirbase = "";
+        template.FlightPlanObjectiveDistanceMin = 5;
+        template.FlightPlanObjectiveDistanceMax = 10;
+        template.FlightPlanObjectiveSeparationMin = 5;
+        template.FlightPlanObjectiveSeparationMax = 10;
+
+        var mission = briefingRoom.GenerateMission(template);
+
+        Assert.Equal("CaucasusBatumi", mission.PlayerAirbase.ID);
+        Assert.Equal("CaucasusBatumi", mission.PlayerAirbaseDestination.ID);
+        Assert.Equal(
+            1,
+            mission.PopulatedAirbaseIds[mission.TemplateRecord.ContextPlayerCoalition].Count(id => id == mission.PlayerAirbase.DCSID));
+        Assert.Single(mission.Briefing.GetItems(DCSMissionBriefingItemType.Airbase));
+        Assert.Contains(mission.GetMapData().Keys, k => k.StartsWith("AIRBASE_HOME_NAME_"));
+        Assert.DoesNotContain(mission.GetMapData().Keys, k => k.StartsWith("AIRBASE_DEST_NAME_"));
     }
 }
 
