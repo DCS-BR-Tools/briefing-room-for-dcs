@@ -93,9 +93,9 @@ namespace BriefingRoom4DCS
                     else
                     {
                         var taskDB = Database.GetEntry<DBEntryObjectiveTask>(parameter);
-                        return (from DBEntryObjectiveTarget objectiveTarget in Database.GetAllEntries<DBEntryObjectiveTarget>() 
-                                where taskDB.ValidUnitCategories.Contains(objectiveTarget.UnitCategory) && 
-                                      (taskDB.ValidTargetIDs.Length == 0 || taskDB.ValidTargetIDs.Contains(objectiveTarget.ID)) 
+                        return (from DBEntryObjectiveTarget objectiveTarget in Database.GetAllEntries<DBEntryObjectiveTarget>()
+                                where taskDB.ValidUnitCategories.Contains(objectiveTarget.UnitCategory) &&
+                                      (taskDB.ValidTargetIDs.Length == 0 || taskDB.ValidTargetIDs.Contains(objectiveTarget.ID))
                                 select objectiveTarget.GetDBEntryInfo()).OrderBy(x => x.Name.Get(LanguageKey)).ToArray();
                     }
                 case DatabaseEntryType.ObjectiveTargetBehavior:
