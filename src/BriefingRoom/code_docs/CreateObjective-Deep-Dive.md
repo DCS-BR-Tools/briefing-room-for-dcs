@@ -1130,7 +1130,13 @@ internal Side TargetSide { get; private set; }
 // Which side the target belongs to (Ally/Enemy/Neutral)
 
 internal UnitCategory[] ValidUnitCategories { get; private set; }
-// What unit types can be used (Plane, Ship, Vehicle, etc.)
+// What unit types can be used (INI: [ObjectiveTask] ValidUnitCategories; defaults to all if omitted)
+
+internal UnitCategory[] ValidPlayerUnitCategories { get; private set; }
+// What player aircraft categories are suitable for this task (INI: [ObjectiveTask] ValidPlayerUnitCategories; defaults to all if omitted)
+
+internal string[] ValidTargetIDs { get; private set; }
+// Specific DBEntryObjectiveTarget IDs allowed for this task (INI: [ObjectiveTask] ValidTargetIDs; empty allows all targets in ValidUnitCategories)
 
 internal string[] IncludeOgg { get; private set; }
 // Sound files to include

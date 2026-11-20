@@ -146,9 +146,12 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
 
         internal static (DBEntryObjectiveTarget targetDB, DBEntryObjectiveTargetBehavior targetBehaviorDB, DBEntryObjectiveTask taskDB, ObjectiveOption[] objectiveOptions, DBEntryObjectivePreset presetDB) GetCustomObjectiveData(IDatabase database, string langKey, MissionTemplateSubTaskRecord objectiveTemplate)
         {
-            var targetDB = database.GetEntry<DBEntryObjectiveTarget>(objectiveTemplate.Target);
-            var targetBehaviorDB = database.GetEntry<DBEntryObjectiveTargetBehavior>(objectiveTemplate.TargetBehavior);
-            var taskDB = database.GetEntry<DBEntryObjectiveTask>(objectiveTemplate.Task);
+            var targetId = objectiveTemplate.Target;
+            var targetBehaviorId = objectiveTemplate.TargetBehavior;
+            var taskId = objectiveTemplate.Task;
+            var targetDB = database.GetEntry<DBEntryObjectiveTarget>(targetId);
+            var targetBehaviorDB = database.GetEntry<DBEntryObjectiveTargetBehavior>(targetBehaviorId);
+            var taskDB = database.GetEntry<DBEntryObjectiveTask>(taskId);
             var objectiveOptions = objectiveTemplate.Options.ToArray();
             DBEntryObjectivePreset presetDB = null;
 
@@ -157,24 +160,42 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 presetDB = database.GetEntry<DBEntryObjectivePreset>(objectiveTemplate.Preset);
                 if (presetDB != null)
                 {
-                    targetDB = database.GetEntry<DBEntryObjectiveTarget>(Toolbox.RandomFrom(presetDB.Targets));
-                    targetBehaviorDB = database.GetEntry<DBEntryObjectiveTargetBehavior>(Toolbox.RandomFrom(presetDB.TargetsBehaviors));
-                    taskDB = database.GetEntry<DBEntryObjectiveTask>(presetDB.Task);
+                    targetId = Toolbox.RandomFrom(presetDB.Targets);
+                    targetBehaviorId = Toolbox.RandomFrom(presetDB.TargetsBehaviors);
+                    taskId = presetDB.Task;
+                    targetDB = database.GetEntry<DBEntryObjectiveTarget>(targetId);
+                    targetBehaviorDB = database.GetEntry<DBEntryObjectiveTargetBehavior>(targetBehaviorId);
+                    taskDB = database.GetEntry<DBEntryObjectiveTask>(taskId);
                     objectiveOptions = presetDB.Options.Concat(objectiveTemplate.Options).Distinct().ToArray();
                 }
             }
 
-            ObjectiveNullCheck(database, langKey, targetDB, targetBehaviorDB, taskDB);
+            ObjectiveNullCheck(database, langKey, targetDB, targetBehaviorDB, taskDB, targetId, targetBehaviorId, taskId);
             return (targetDB, targetBehaviorDB, taskDB, objectiveOptions, presetDB);
         }
 
-        internal static void ObjectiveNullCheck(IDatabase database, string langKey, DBEntryObjectiveTarget targetDB, DBEntryObjectiveTargetBehavior targetBehaviorDB, DBEntryObjectiveTask taskDB)
+        internal static void ObjectiveNullCheck(
+            IDatabase database,
+            string langKey,
+            DBEntryObjectiveTarget targetDB,
+            DBEntryObjectiveTargetBehavior targetBehaviorDB,
+            DBEntryObjectiveTask taskDB,
+            string targetId = null,
+            string targetBehaviorId = null,
+            string taskId = null)
         {
-            if (targetDB == null) throw new BriefingRoomException(database, langKey, "TargetNotFound", targetDB.UIDisplayName);
-            if (targetBehaviorDB == null) throw new BriefingRoomException(database, langKey, "BehaviorNotFound", targetBehaviorDB.UIDisplayName);
-            if (taskDB == null) throw new BriefingRoomException(database, langKey, "TaskNotFound", taskDB.UIDisplayName);
+            if (targetDB == null) throw new BriefingRoomException(database, langKey, "TargetNotFound", targetId ?? "unknown");
+            if (targetBehaviorDB == null) throw new BriefingRoomException(database, langKey, "BehaviorNotFound", targetBehaviorId ?? "unknown");
+            if (taskDB == null) throw new BriefingRoomException(database, langKey, "TaskNotFound", taskId ?? "unknown");
             if (!taskDB.ValidUnitCategories.Contains(targetDB.UnitCategory))
-                throw new BriefingRoomException(database, langKey, "TaskTargetsInvalid", taskDB.UIDisplayName, targetDB.UnitCategory);
+                throw new BriefingRoomException(database, langKey, "TargetCategoryMismatch", targetDB.UIDisplayName.Get(langKey), targetDB.UnitCategory, taskDB.UIDisplayName.Get(langKey), String.Join(", ", taskDB.ValidUnitCategories.Select(x => x.ToString()).ToList()));
+
+            if (taskDB.ValidTargetIDs.Length > 0 && !taskDB.ValidTargetIDs.Contains(targetDB.ID))
+            {
+                var validTargetNames = taskDB.ValidTargetIDs
+                    .Select(id => database.GetEntry<DBEntryObjectiveTarget>(id)?.UIDisplayName.Get(langKey) ?? id);
+                throw new BriefingRoomException(database, langKey, "TargetNotAllowedForTask", targetDB.UIDisplayName.Get(langKey), taskDB.UIDisplayName.Get(langKey), String.Join(", ", validTargetNames));
+            }
         }
     }
 }
