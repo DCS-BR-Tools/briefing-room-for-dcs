@@ -57,24 +57,6 @@ namespace BriefingRoom4DCS.Generator.Mission
             }
 
 
-            // Skip waypoints that are not relevant for player flights
-            var landingWaypointName = briefingRoom.Database.Common.Names.WPFinalName.Get(mission.LangKey);
-            flightWaypoints = flightWaypoints.Where((w) =>
-            {
-                var startsWith_P = w.Name.StartsWith("P-");
-                var distanceFromStart = w.Coordinates.GetDistanceFrom(groupStartingCoords);
-                var isClosePickup = startsWith_P && distanceFromStart < 5 * Toolbox.NM_TO_METERS;
-                var distanceFromDestination = w.Coordinates.GetDistanceFrom(groupDestinationCoords);
-                var isCloseDropoff = !startsWith_P
-                    && flightWaypoints.Any(x => x.Name.StartsWith("P-") && x.Name.Contains(w.Name))
-                    && distanceFromDestination < 5 * Toolbox.NM_TO_METERS;
-                return !isClosePickup && !isCloseDropoff;
-            }
-
-            )
-            .ToList();
-
-
             var unitDB = (DBEntryAircraft)briefingRoom.Database.GetEntry<DBEntryJSONUnit>(flightGroup.Aircraft);
 
             // Not an unit, or not a player-controllable unit, abort.
