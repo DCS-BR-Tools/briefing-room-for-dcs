@@ -65,10 +65,11 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
             var allyCoalition = mission.TemplateRecord.ContextPlayerCoalition;
             var playerAirbaseDCSID = mission.PlayerAirbase.DCSID;
             var spawnAnywhere = mission.TemplateRecord.SpawnAnywhere;
-            var targetAirbaseOptions =
-                (from DBEntryAirbase airbaseDB in mission.AirbaseDB
-                 where airbaseDB.DCSID != playerAirbaseDCSID && (spawnAnywhere || (airbaseDB.Coalition == (Friendly ? allyCoalition : enemyCoalition)))
-                 select airbaseDB).OrderBy(x => x.Coordinates.GetDistanceFrom(objectiveCoordinates));
+            var targetAirbaseOptions = targetBehaviorDB.Location == DBEntryObjectiveTargetBehaviorLocation.PlayerAirbase
+                ? new[] { mission.PlayerAirbase }.AsEnumerable()
+                : (from DBEntryAirbase airbaseDB in mission.AirbaseDB
+                   where airbaseDB.DCSID != playerAirbaseDCSID && (spawnAnywhere || (airbaseDB.Coalition == (Friendly ? allyCoalition : enemyCoalition)))
+                   select airbaseDB).OrderBy(x => x.Coordinates.GetDistanceFrom(objectiveCoordinates));
 
             BriefingRoomRawException exception = null;
             foreach (var targetAirbase in targetAirbaseOptions)
