@@ -37,5 +37,48 @@ public class EscortTasksAndDynamicBehaviorTests
         Assert.NotNull(preset);
         Assert.Equal(expected, preset.DynamicEscortBehavior);
     }
+
+    [Theory]
+    [InlineData("ToFrontLineFromPlayerAirbase", "A-10C_2", "AttackObjective")]
+    [InlineData("ToFrontLineFromAirbase", "A-10C_2", "AttackObjectiveFromAirbase")]
+    [InlineData("ParkedOnAirBase", "A-10C_2", "AttackObjectiveFromAirbase")]
+    [InlineData("ToFrontLine", "A-10C_2", "AttackObjectiveFromAir")]
+    [InlineData("Patrolling", "A-10C_2", "AttackObjectiveFromAir")]
+    [InlineData("ToFrontLineFromAirbase", "C-130", "InsertAtObjectiveFromAirbase")]
+    [InlineData("ToFrontLineFromPlayerAirbase", "C-130", "InsertAtObjective")]
+    [InlineData("ToFrontLine", "C-130", "InsertAtObjectiveFromAir")]
+    public void ResolveDynamicEscortBehaviorPreservesOriginType(
+        string sourceBehaviorId,
+        string aircraftId,
+        string expectedBehaviorId)
+    {
+        var sourceBehavior = fixture.Db.GetEntry<DBEntryObjectiveTargetBehavior>(sourceBehaviorId);
+        var aircraft = fixture.Db.GetEntry<DBEntryJSONUnit, DBEntryAircraft>(aircraftId);
+        Assert.NotNull(sourceBehavior);
+        Assert.NotNull(aircraft);
+
+        var resolved = Escort.ResolveDynamicEscortBehaviorId(sourceBehavior.Location, aircraft);
+
+        Assert.Equal(expectedBehaviorId, resolved);
+    }
+
+    [Fact]
+    public void EscortHVAPresetUsesMovingDestinationBehaviors()
+    {
+        var preset = fixture.Db.GetEntry<DBEntryObjectivePreset>("EscortHVA");
+        Assert.NotNull(preset);
+        Assert.NotEmpty(preset.TargetsBehaviors);
+        Assert.DoesNotContain("Patrolling", preset.TargetsBehaviors);
+        Assert.DoesNotContain("IdleCAP", preset.TargetsBehaviors);
+
+        foreach (var behaviorId in preset.TargetsBehaviors)
+        {
+            var behavior = fixture.Db.GetEntry<DBEntryObjectiveTargetBehavior>(behaviorId);
+            Assert.NotNull(behavior);
+            Assert.False(behavior.IsStatic);
+            Assert.DoesNotContain("Escort", behavior.InvalidTasks);
+            Assert.DoesNotContain("EscortHVA", behavior.InvalidTasks);
+        }
+    }
 }
 
