@@ -35,6 +35,8 @@ namespace BriefingRoom4DCS.Data
 
         internal string Task { get; private set; }
 
+        internal bool DynamicEscortBehavior { get; private set; }
+
         protected override bool OnLoad(string iniFilePath)
         {
             var ini = new INIFile(iniFilePath);
@@ -46,6 +48,7 @@ namespace BriefingRoom4DCS.Data
             if (TargetsBehaviors.Length == 0) { BriefingRoom.PrintToLog($"No valid target behaviors for objective preset \"{ID}\"", LogMessageErrorLevel.Warning); return false; }
             Task = Database.CheckID<DBEntryObjectiveTask>(ini.GetValue<string>("ObjectivePreset", "Task"));
             if (string.IsNullOrEmpty(Task)) { BriefingRoom.PrintToLog($"No valid task for objective preset \"{ID}\"", LogMessageErrorLevel.Warning); return false; }
+            DynamicEscortBehavior = ini.GetValue<bool>("ObjectivePreset", "DynamicEscortBehavior");
 
             return true;
         }

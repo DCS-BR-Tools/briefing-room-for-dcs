@@ -88,7 +88,7 @@ namespace BriefingRoom4DCS.Data
             return true;
         }
 
-        internal bool IsEscort() => ID == "Escort";
+        internal bool IsEscort() => ID.StartsWith("Escort");
         internal bool IsHoldSuperiority() => ID == "HoldSuperiority";
     }
 }

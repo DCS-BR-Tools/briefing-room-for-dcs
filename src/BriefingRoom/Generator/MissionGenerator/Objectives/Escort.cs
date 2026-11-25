@@ -43,6 +43,19 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
 
             // Get units with validation
             ObjectiveCreationHelpers.GetUnitsWithValidation(ctx);
+
+            var presetDB = ctx.Task.HasPreset ? briefingRoom.Database.GetEntry<DBEntryObjectivePreset>(ctx.Task.Preset) : null;
+            if (presetDB != null && presetDB.DynamicEscortBehavior && ctx.UnitDBs.FirstOrDefault() is DBEntryAircraft aircraftDB)
+            {
+                string newBehaviorId = ResolveDynamicEscortBehaviorId(targetBehaviorDB.Location, aircraftDB);
+                if (newBehaviorId != null)
+                {
+                    targetBehaviorDB = briefingRoom.Database.GetEntry<DBEntryObjectiveTargetBehavior>(newBehaviorId);
+                    ctx.TargetBehaviorDB = targetBehaviorDB;
+
+                    ctx.Mission.SetValue(ObjectiveUtils.DynamicBehaviorKey(ctx.ObjectiveIndex), newBehaviorId);
+                }
+            }
             // Get transport origin and destination for escort
             var (originAirbase, unitCoordinates) = ObjectiveTransportUtils.GetTransportOrigin(briefingRoom, ref ctx.Mission, targetBehaviorDB.Location, objectiveCoordinates, true, ctx.ObjectiveTargetUnitFamily.GetUnitCategory());
             if (Constants.AIRBASE_LOCATIONS.Contains(targetBehaviorDB.Location) && targetDB.UnitCategory.IsAircraft())
@@ -286,5 +299,31 @@ namespace BriefingRoom4DCS.Generator.Mission.Objectives
                 "Ship" => (new MinMaxD(0.05, 0.6), new List<UnitFamily> { UnitFamily.ShipCruiser, UnitFamily.ShipFrigate, UnitFamily.ShipSpeedboat, UnitFamily.ShipSubmarine }, "ShipAttacking", "Ship", new MinMaxI(1, 4), new[] { SpawnPointType.Sea }, new MinMaxD(30, 60)),
                 _ => (new MinMaxD(0.05, 0.7), new List<UnitFamily> { UnitFamily.VehicleAPC, UnitFamily.VehicleMBT, UnitFamily.Infantry }, "VehicleAttackingUncontrolled", "Vehicle", new MinMaxI(1, 10), new[] { SpawnPointType.LandMedium, SpawnPointType.LandLarge }, new MinMaxD(5, 20))
             };
+
+        /// <summary>
+        /// Resolves a task-specific escort target behavior ID while preserving the original origin location type.
+        /// </summary>
+        internal static string ResolveDynamicEscortBehaviorId(DBEntryObjectiveTargetBehaviorLocation location, DBEntryAircraft aircraftDB)
+        {
+            string behaviorPrefix = null;
+            if (aircraftDB.Tasks.Contains(DCSTask.GroundAttack) || aircraftDB.Tasks.Contains(DCSTask.CAS))
+                behaviorPrefix = "AttackObjective";
+            else if (aircraftDB.Tasks.Contains(DCSTask.Reconnaissance))
+                behaviorPrefix = "ReconObjective";
+            else if (aircraftDB.Tasks.Contains(DCSTask.Transport))
+                behaviorPrefix = "InsertAtObjective";
+
+            if (behaviorPrefix == null)
+                return null;
+
+            string behaviorSuffix = location switch
+            {
+                DBEntryObjectiveTargetBehaviorLocation.PlayerAirbase => "",
+                var loc when Constants.AIRBASE_LOCATIONS.Contains(loc) => "FromAirbase",
+                _ => "FromAir"
+            };
+
+            return $"{behaviorPrefix}{behaviorSuffix}";
+        }
     }
 }

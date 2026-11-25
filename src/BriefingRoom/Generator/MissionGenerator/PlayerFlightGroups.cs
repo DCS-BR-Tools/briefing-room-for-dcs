@@ -305,24 +305,33 @@ namespace BriefingRoom4DCS.Generator.Mission
 
         private static DCSTask GetTaskType(DCSMission mission, List<MissionTemplateObjectiveRecord> objectives, Dictionary<string, object> extraSettings, MissionTemplatePackageRecord package, DBEntryAircraft unitDB)
         {
-            var objs = objectives;
+            var indexedObjectives = Objectives.ObjectiveUtils.EnumerateObjectiveIndexes(objectives);
             if (package != null)
-                objs = objs.Where((x, i) => package.ObjectiveIndexes.Contains(i)).ToList();
-            var task = objs.Select(x => new List<DCSTask> { AssignTask(mission, x, unitDB) }.Concat(x.SubTasks.Select(y => AssignTask(mission, y, unitDB)).ToList())).SelectMany(x => x).ToList().GroupBy(x => x).MaxBy(g => g.Count()).ToList().First();
+                indexedObjectives = indexedObjectives.Where(x => package.ObjectiveIndexes.Contains(x.TemplateIndex));
+            var task = indexedObjectives
+                .Select(x => AssignTask(mission, x.Record, x.ObjectiveIndex, unitDB))
+                .GroupBy(x => x)
+                .MaxBy(g => g.Count())
+                .First();
             extraSettings.AddIfKeyUnused("DCSTask", task);
             return task;
         }
 
-        private static DCSTask AssignTask(DCSMission mission, MissionTemplateSubTaskRecord objective, DBEntryAircraft unitDB)
+        private static DCSTask AssignTask(DCSMission mission, MissionTemplateSubTaskRecord objective, int objectiveIndex, DBEntryAircraft unitDB)
         {
             if (objective.Task.StartsWith("Escort") || objective.Task.StartsWith("HoldSuperiority"))
             {
+                string dynamicBehavior = objective.TargetBehavior;
+                string dynamicKey = Objectives.ObjectiveUtils.DynamicBehaviorKey(objectiveIndex);
+                if (mission.Values.ContainsKey(dynamicKey))
+                    dynamicBehavior = mission.Values[dynamicKey];
+
                 bool isEscortTargetAttacking =
                     objective.Target == "PlaneAttack" ||
                     objective.Target == "PlaneBomber" ||
                     objective.Target == "PlaneStrike" ||
                     objective.Target == "HelicopterAttack" ||
-                    (objective.TargetBehavior != null && objective.TargetBehavior.StartsWith("Attack"));
+                    (dynamicBehavior != null && dynamicBehavior.StartsWith("Attack"));
 
                 bool isSeadCapable = unitDB != null && unitDB.Tasks != null && unitDB.Tasks.Contains(DCSTask.SEAD);
 
